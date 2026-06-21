@@ -4,7 +4,7 @@
 
 ## Core concepts
 - The Flag Model: a leadership-execution framework — a Flag (the 2–3 priorities everything serves) held upright by four disciplines: the Decision, the Rhythm, the Standard, and the Learning. Governing principle: Truth Over Comfort.
-- The five disciplines a team can lose: the Flag (alignment), the Decision (commitment), the Rhythm (finishing), the Standard (holding the bar), the Learning (correcting).
+- The five components a team can lose: the Flag (alignment), the Decision (commitment), the Rhythm (finishing), the Standard (holding the bar), the Learning (correcting).
 - FlagScore: a composite measure of an executive team's health across the five components.
 - Calibration Call: a free 15-minute CEO-only conversation that surfaces a team's first break point.
 - ELFS (Executive Leadership Failure Simulation): a solo CEO pressure simulation with a written report.

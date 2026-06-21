@@ -6,7 +6,7 @@ import BreakPointAssessment from '../components/BreakPointAssessment.astro';
 import { SLUGS } from '../lib/site';
 
 const title = 'Where Will Your Executive Team Break First? Free Break-Point Self-Assessment | Be Legendary';
-const description = 'A free 4-minute self-assessment for CEOs: ten honest questions across the five disciplines of the Flag Model reveal where your executive team is most likely to break first — and what to do about it. Instant on-screen result.';
+const description = 'A free 4-minute self-assessment for CEOs: ten honest questions across the five components of the Flag Model reveal where your executive team is most likely to break first — and what to do about it. Instant on-screen result.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -16,12 +16,12 @@ const schema = [
   ] },
   { '@type': 'WebApplication', name: 'Break-Point Self-Assessment', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, description: 'A free self-assessment that reveals which of the five Flag Model disciplines an executive team is most likely to lose first.', publisher: { '@type': 'Organization', name: 'Be Legendary' } },
   { '@type': 'FAQPage', mainEntity: [
-    { '@type': 'Question', name: 'How do I know where my executive team will break first?', acceptedAnswer: { '@type': 'Answer', text: 'Score your team honestly across the five disciplines of the Flag Model — the Flag (alignment), the Decision, the Rhythm, the Standard and the Learning. The lowest-scoring discipline is the one most likely to break first under pressure. This free ten-question self-assessment produces that read in about four minutes.' } },
-    { '@type': 'Question', name: 'What are the five disciplines a leadership team can lose?', acceptedAnswer: { '@type': 'Answer', text: 'The Flag (shared priorities), the Decision (the team can commit and a call sticks), the Rhythm (work gets finished, not just started), the Standard (the team holds each other to the bar), and the Learning (the team examines misses and corrects). Teams rarely fail at all five — they fail at one first.' } },
+    { '@type': 'Question', name: 'How do I know where my executive team will break first?', acceptedAnswer: { '@type': 'Answer', text: 'Score your team honestly across the five components of the Flag Model — the Flag (alignment), the Decision, the Rhythm, the Standard and the Learning. The lowest-scoring discipline is the one most likely to break first under pressure. This free ten-question self-assessment produces that read in about four minutes.' } },
+    { '@type': 'Question', name: 'What are the five components a leadership team can lose?', acceptedAnswer: { '@type': 'Answer', text: 'The Flag (shared priorities), the Decision (the team can commit and a call sticks), the Rhythm (work gets finished, not just started), the Standard (the team holds each other to the bar), and the Learning (the team examines misses and corrects). Teams rarely fail at all five — they fail at one first.' } },
   ] },
 ];
 ---
-<BaseLayout title={title} description={description} path={SLUGS.breakPointAssessment} ogTitle="Where will your executive team break first? Free self-assessment" ogDescription="Ten questions. Five disciplines. One honest read on where your leadership team breaks first." schema={schema}>
+<BaseLayout title={title} description={description} path={SLUGS.breakPointAssessment} ogTitle="Where will your executive team break first? Free self-assessment" ogDescription="Ten questions. Five components. One honest read on where your leadership team breaks first." schema={schema}>
   <Header maxWidth={980} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
 
   <header style="position:relative;max-width:980px;margin:0 auto;padding:76px 32px 30px;">
@@ -31,7 +31,7 @@ const schema = [
     </nav>
     <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Free &middot; 4 minutes &middot; no email to see your result</p>
     <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,62px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">Where will your executive team break first?</h1>
-    <p style="margin-top:24px;font-size:clamp(17px,2vw,21px);line-height:1.54;max-width:60ch;color:rgba(244,240,231,0.82);">Ten honest questions across the five disciplines that hold a leadership team upright. Answer for the team as it actually operates &mdash; not as you hope it does. You'll get your break-point on screen, immediately.</p>
+    <p style="margin-top:24px;font-size:clamp(17px,2vw,21px);line-height:1.54;max-width:60ch;color:rgba(244,240,231,0.82);">Ten honest questions across the five components that hold a leadership team upright. Answer for the team as it actually operates &mdash; not as you hope it does. You'll get your break-point on screen, immediately.</p>
   </header>
 
   <BreakPointAssessment />

@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Glossary: The Flag Model, FlagScore, Calibration Call & More | Be Legendary';
-const description = 'Plain definitions of the Be Legendary vocabulary — the Flag Model, the five disciplines (the Flag, the Decision, the Rhythm, the Standard, the Learning), FlagScore, the Calibration Call, ELFS, and Truth Over Comfort.';
+const description = 'Plain definitions of the Be Legendary vocabulary — the Flag Model, the five components (the Flag, the Decision, the Rhythm, the Standard, the Learning), FlagScore, the Calibration Call, ELFS, and Truth Over Comfort.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -24,12 +24,12 @@ const schema = [
     { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#calibration-call', name: 'Calibration Call', description: 'A 15-minute conversation, CEO only, in which a short exercise surfaces where an executive team actually stands. The participant leaves with a concrete read on their team\'s first break point — whether or not they engage further. It is a calibration, not a sales pitch.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
     { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#elfs', name: 'Executive Leadership Failure Simulation (ELFS)', description: 'A solo CEO pressure simulation with an individual debrief and written report showing where the leader chose comfort over truth — the low-risk way to experience the diagnostic before a team runs it.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
     { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#performance-partnership', name: 'Performance Partnership', description: 'The ongoing engagement through which the Flag Model is installed over time, with progress measured by FlagScore movement across quarters. A relationship, not a workshop.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
-    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#break-point', name: 'Break point', description: 'The single discipline an executive team is most likely to lose first under pressure. Teams rarely fail at all five disciplines at once — they fail at one first, and that one pulls the others down.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#break-point', name: 'Break point', description: 'The single discipline an executive team is most likely to lose first under pressure. Teams rarely fail at all five components at once — they fail at one first, and that one pulls the others down.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
     { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#4ds', name: 'The 4Ds', description: "The decision protocol that rebuilds the Decision discipline: every decision gets an Owner, the Data it rests on, a Deadline, and the duty to Defend it — so a call sticks without the CEO's sign-off.", inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
   ] },
 ];
 ---
-<BaseLayout title={title} description={description} path={SLUGS.glossary} ogType="website" ogTitle="Be Legendary Glossary — the Flag Model vocabulary, defined" ogDescription="Plain definitions of the Flag Model, the five disciplines, FlagScore, the Calibration Call, ELFS, and Truth Over Comfort." schema={schema}>
+<BaseLayout title={title} description={description} path={SLUGS.glossary} ogType="website" ogTitle="Be Legendary Glossary — the Flag Model vocabulary, defined" ogDescription="Plain definitions of the Flag Model, the five components, FlagScore, the Calibration Call, ELFS, and Truth Over Comfort." schema={schema}>
   <Header maxWidth={1040} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
 
   <header style="position:relative;max-width:1040px;margin:0 auto;padding:80px 32px 44px;">
@@ -38,7 +38,7 @@ const schema = [
       <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Glossary</span>
     </nav>
     <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5.4vw,64px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">The Be Legendary glossary.</h1>
-    <p style="margin-top:24px;font-size:clamp(17px,2vw,21px);line-height:1.54;max-width:60ch;color:rgba(244,240,231,0.82);">Plain definitions of the vocabulary behind the work &mdash; the Flag Model™, its five disciplines, and the tools that measure and rebuild them. No jargon for its own sake; every term earns its place.</p>
+    <p style="margin-top:24px;font-size:clamp(17px,2vw,21px);line-height:1.54;max-width:60ch;color:rgba(244,240,231,0.82);">Plain definitions of the vocabulary behind the work &mdash; the Flag Model™, its five components, and the tools that measure and rebuild them. No jargon for its own sake; every term earns its place.</p>
   </header>
 
   <nav aria-label="Glossary index" style="max-width:1040px;margin:0 auto;padding:0 32px 8px;">
@@ -118,7 +118,7 @@ const schema = [
 
     <article id="break-point" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Break point</h2>
-      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The single discipline an executive team is most likely to lose first under pressure. Teams rarely fail at all five disciplines at once &mdash; they fail at one first, and that one quietly pulls the others down with it. <a href={SLUGS.breakPointAssessment} style="color:#E0744A;text-decoration:underline;">Find yours &rarr;</a></p>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The single discipline an executive team is most likely to lose first under pressure. Teams rarely fail at all five components at once &mdash; they fail at one first, and that one quietly pulls the others down with it. <a href={SLUGS.breakPointAssessment} style="color:#E0744A;text-decoration:underline;">Find yours &rarr;</a></p>
     </article>
 
     <article id="the-4ds" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
