@@ -69,8 +69,16 @@ Keep the param names (`from`, `break`, `waste`) and discipline keys stable.
 Forms POST to `api.hsforms.com/submissions/v3/integration/submit/{portal}/{guid}`.
 **Before launch:** verify CORS/region from the live domain and test both forms end-to-end.
 
-## SEO / AEO notes (do not regress)
-- Everything is server-rendered, including JSON-LD; entity `@id`s cross-reference
+## Copy & terminology conventions (keep exact)
+- **Never use "Team LFS" / "LFS" / "Leadership Failure Simulation" in public copy** —
+  those are internal/conversation-stage names. Where the ELFS fee credit is described,
+  the approved wording is **"applies toward your full team engagement."** (The named
+  product **ELFS** — and its expansion *Executive Leadership Failure Simulation (ELFS)* —
+  stays; it's the public second-door product.)
+- **One CTA only:** *Book a Calibration Call* → `meetings.hubspot.com/jcarter28`. The ELFS
+  page's primary CTA is the softer *Request your ELFS* (a qualifying touch, same booking link).
+
+## SEO / AEO notes (do not regress)- Everything is server-rendered, including JSON-LD; entity `@id`s cross-reference
   (`#org`, `#james`, `#flagmodel`) so the graph resolves.
 - Each page has a unique title/description/canonical/OG/Twitter and question-format
   headings with answer-first "short answer" boxes.
