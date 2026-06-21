@@ -1,0 +1,116 @@
+---
+import { CTA_URL } from '../lib/site';
+
+// Cost of Lost Disciplines Calculator. Five sliders; outputs recompute on input.
+// Server-renders the default state so the tool is meaningful without JS.
+function fmtMoney(n: number): string {
+  if (n >= 1e6) {
+    const m = n / 1e6;
+    return '$' + (m >= 10 ? Math.round(m) : m.toFixed(m >= 1 ? 1 : 2)) + 'M';
+  }
+  if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'K';
+  return '$' + Math.round(n).toLocaleString();
+}
+
+const init = { revM: 50, execs: 7, rate: 150, hours: 10, waste: 40 };
+const revenue = init.revM * 1e6;
+const low = revenue * 0.025;
+const high = revenue * 0.04;
+const wastedHoursNum = init.execs * init.hours * (init.waste / 100) * 52;
+const meetingWasteNum = wastedHoursNum * init.rate;
+const mid = (low + high) / 2;
+const recovery = fmtMoney(mid * 0.6) + '–' + fmtMoney(mid * 0.75);
+const revLabel = init.revM >= 1000 ? '$' + (init.revM / 1000).toFixed(1) + 'B' : '$' + init.revM + 'M';
+
+const sliders = [
+  { id: 'rev', label: 'Annual revenue', min: 5, max: 1000, step: 5, value: init.revM, lo: '$5M', hi: '$1B', valEl: 'cc-revLabel', display: revLabel, note: '' },
+  { id: 'execs', label: 'Leaders on the executive team', min: 3, max: 15, step: 1, value: init.execs, lo: '3', hi: '15', valEl: 'cc-execs', display: String(init.execs), note: '' },
+  { id: 'rate', label: 'Loaded cost per exec hour', min: 75, max: 600, step: 25, value: init.rate, lo: '$75', hi: '$600', valEl: 'cc-rate', display: '$' + init.rate, note: 'Quick math: total comp ÷ 2,080 working hours, then ×~1.3 for benefits & overhead. A $300K exec ≈ $185/hr loaded. Average it across your team.' },
+  { id: 'hours', label: 'Average hours/week each exec is in leadership meetings', min: 3, max: 25, step: 1, value: init.hours, lo: '3', hi: '25', valEl: 'cc-hours', display: String(init.hours), note: 'Count standing executive-team and cross-functional decision meetings — where the team decides and coordinates. Not 1:1s, heads-down work, or external meetings.' },
+  { id: 'waste', label: 'Share of that time lost to re-litigation & indecision', min: 10, max: 60, step: 5, value: init.waste, lo: '10%', hi: '60%', valEl: 'cc-waste', display: init.waste + '%', note: 'McKinsey finds over half of decision-making time is typically wasted; 40% is a common real-world read.' },
+];
+---
+<section style="max-width:1140px;margin:0 auto;padding:20px 32px 40px;">
+  <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.92fr 1.08fr;gap:28px;align-items:start;">
+    <!-- INPUTS -->
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:20px;padding:34px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:6px;">Your numbers</h2>
+      <p style="font-size:14px;color:rgba(244,240,231,0.6);margin-bottom:28px;">Five inputs. Nothing leaves your browser.</p>
+      <div style="display:flex;flex-direction:column;gap:26px;">
+        {sliders.map((s) => (
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;">
+              <label for={s.id} style="font-size:15px;font-weight:600;color:#F4F0E7;">{s.label}</label>
+              <span id={s.valEl} style="font-family:'Newsreader',serif;font-size:20px;color:#E0744A;">{s.display}</span>
+            </div>
+            <input id={s.id} type="range" min={s.min} max={s.max} step={s.step} value={s.value} aria-label={s.label} />
+            <div style="display:flex;justify-content:space-between;font-size:11.5px;color:rgba(244,240,231,0.4);margin-top:7px;"><span>{s.lo}</span><span>{s.hi}</span></div>
+            {s.note && <p style="font-size:12.5px;color:rgba(244,240,231,0.5);margin-top:9px;line-height:1.45;">{s.note}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style="background:linear-gradient(160deg,#C04A26,#7E2D13);border-radius:20px;padding:34px;color:#fff;position:relative;overflow:hidden;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.8);margin-bottom:14px;">Estimated annual cost of dysfunction</p>
+        <p style="font-family:'Newsreader',serif;font-size:clamp(40px,6vw,64px);line-height:1;font-weight:500;"><span id="cc-rangeLow">{fmtMoney(low)}</span> &ndash; <span id="cc-rangeHigh">{fmtMoney(high)}</span></p>
+        <p style="margin-top:16px;font-size:15px;line-height:1.5;color:rgba(255,255,255,0.9);max-width:42ch;">That's the research range of <strong>2.5&ndash;4% of your revenue</strong> lost to decision chaos and misalignment &mdash; the part most teams never see leave the building.</p>
+      </div>
+
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:28px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">What we can measure precisely, from your numbers</p>
+        <div class="bl-stats-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div>
+            <p id="cc-meetingWaste" style="font-family:'Newsreader',serif;font-size:clamp(28px,4vw,40px);color:#FBF8F1;line-height:1;">{fmtMoney(meetingWasteNum)}</p>
+            <p style="margin-top:8px;font-size:13.5px;color:rgba(244,240,231,0.66);line-height:1.45;">a year in pure leadership-meeting waste &mdash; <span id="cc-wastedHours">{Math.round(wastedHoursNum).toLocaleString()}</span> executive hours lost to re-litigation.</p>
+          </div>
+          <div>
+            <p id="cc-recovery" style="font-family:'Newsreader',serif;font-size:clamp(28px,4vw,40px);color:#FBF8F1;line-height:1;">{recovery}</p>
+            <p style="margin-top:8px;font-size:13.5px;color:rgba(244,240,231,0.66);line-height:1.45;">potentially recoverable over 18 months &mdash; research suggests 60&ndash;75% of the waste is reversible.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#211D15;border:1px solid rgba(244,240,231,0.1);border-radius:16px;padding:22px 24px;">
+        <p style="font-size:13.5px;line-height:1.6;color:rgba(244,240,231,0.66);"><strong style="color:#F4F0E7;">An honest note on this estimate.</strong> These are conservative ranges from third-party research applied to your inputs &mdash; not a precise audit. The meeting-waste figure is exact from your numbers; the revenue figure is a research-based estimate. We'd rather show you a defensible range than false precision. The direction is what matters: the cost is real, and most of it is recoverable.</p>
+      </div>
+
+      <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 30px;border-radius:13px;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">See where your team breaks first &mdash; book a Calibration Call <span style="font-size:19px;">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  function fmtMoney(n: number): string {
+    if (n >= 1e6) { const m = n / 1e6; return '$' + (m >= 10 ? Math.round(m) : m.toFixed(m >= 1 ? 1 : 2)) + 'M'; }
+    if (n >= 1e3) return '$' + Math.round(n / 1e3) + 'K';
+    return '$' + Math.round(n).toLocaleString();
+  }
+  const state = { revM: 50, execs: 7, rate: 150, hours: 10, waste: 40 };
+  const $ = (id: string) => document.getElementById(id)!;
+  function recompute() {
+    const { revM, execs, rate, hours, waste } = state;
+    const revenue = revM * 1e6;
+    const low = revenue * 0.025, high = revenue * 0.04;
+    const wastedHoursNum = execs * hours * (waste / 100) * 52;
+    const meetingWasteNum = wastedHoursNum * rate;
+    const mid = (low + high) / 2;
+    $('cc-revLabel').textContent = revM >= 1000 ? '$' + (revM / 1000).toFixed(1) + 'B' : '$' + revM + 'M';
+    $('cc-execs').textContent = String(execs);
+    $('cc-rate').textContent = '$' + rate;
+    $('cc-hours').textContent = String(hours);
+    $('cc-waste').textContent = waste + '%';
+    $('cc-rangeLow').textContent = fmtMoney(low);
+    $('cc-rangeHigh').textContent = fmtMoney(high);
+    $('cc-meetingWaste').textContent = fmtMoney(meetingWasteNum);
+    $('cc-wastedHours').textContent = Math.round(wastedHoursNum).toLocaleString();
+    $('cc-recovery').textContent = fmtMoney(mid * 0.6) + '–' + fmtMoney(mid * 0.75);
+  }
+  const bind = (id: string, key: keyof typeof state) => {
+    const el = document.getElementById(id) as HTMLInputElement | null;
+    el?.addEventListener('input', () => { state[key] = +el.value; recompute(); });
+  };
+  bind('rev', 'revM'); bind('execs', 'execs'); bind('rate', 'rate'); bind('hours', 'hours'); bind('waste', 'waste');
+</script>

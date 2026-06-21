@@ -1,0 +1,91 @@
+/* ============================================================================
+   Be Legendary — global styles
+   Self-hosted fonts (Newsreader display / Hanken Grotesk body), base reset,
+   design tokens, and the responsive layer. The design files use inline styles
+   exclusively for pixel fidelity; we keep those and add mobile breakpoints here
+   via opt-in classes that override inline grid/flex declarations.
+   ============================================================================ */
+
+/* ---- Self-hosted fonts (replaces hotlinked Google Fonts) ---- */
+@import '@fontsource/newsreader/400.css';
+@import '@fontsource/newsreader/500.css';
+@import '@fontsource/newsreader/600.css';
+@import '@fontsource/newsreader/400-italic.css';
+@import '@fontsource/newsreader/500-italic.css';
+@import '@fontsource/hanken-grotesk/400.css';
+@import '@fontsource/hanken-grotesk/500.css';
+@import '@fontsource/hanken-grotesk/600.css';
+@import '@fontsource/hanken-grotesk/700.css';
+@import '@fontsource/hanken-grotesk/800.css';
+
+:root {
+  --ink: #15130E;
+  --ink-raised: #1B1810;
+  --ink-raised-2: #211D15;
+  --footer: #100E0A;
+  --paper: #F4F0E7;
+  --paper-raised: #FBF8F1;
+  --terracotta: #C04A26;
+  --terracotta-hover: #9E3A1C;
+  --terracotta-light: #E0744A;
+  --sand: #D98A5E;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  background: #15130E;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: #C04A26; color: #fff; }
+
+/* ---- Range inputs (Cost Calculator) ---- */
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 6px; border-radius: 99px; background: #3A352B; outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 22px; height: 22px; border-radius: 50%; background: #C04A26; cursor: pointer;
+  border: 3px solid #FBF8F1; box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+input[type=range]::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; background: #C04A26; cursor: pointer;
+  border: 3px solid #FBF8F1;
+}
+
+/* ============================================================================
+   Responsive layer — opt-in classes the components/pages attach to inline-styled
+   grids so we can collapse them on small screens (inline styles need !important).
+   ============================================================================ */
+@media (max-width: 860px) {
+  .bl-grid-collapse { grid-template-columns: 1fr !important; }
+  .bl-grid-collapse--gap { gap: 22px !important; }
+  .bl-flag-layout { grid-template-columns: 1fr !important; }
+  .bl-books-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .bl-section-pad { padding-top: 64px !important; padding-bottom: 64px !important; }
+  .bl-hero-pad { padding-top: 72px !important; padding-bottom: 56px !important; }
+  .bl-nav-links { gap: 16px !important; flex-wrap: wrap; row-gap: 10px; }
+  .bl-nav-secondary { display: none !important; }
+}
+@media (max-width: 560px) {
+  .bl-books-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .bl-result-grid { grid-template-columns: 1fr !important; }
+  .bl-stats-grid { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* Tap targets: ensure interactive controls clear 44px on touch */
+@media (pointer: coarse) {
+  button, .bl-tap { min-height: 44px; }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,145 @@
+---
+// Interactive Flag Model diagram (homepage).
+// Click a "pain" -> the matching cable snaps, the flag tilts, the verdict updates.
+// Server-renders the full default (no selection) state; hydrates via vanilla JS.
+
+const pains = [
+  { key: 'decision', text: '“We can’t make decisions — I’m the bottleneck.”' },
+  { key: 'rhythm', text: '“Initiatives never finish. Everyone’s busy, nothing ships.”' },
+  { key: 'standard', text: '“Nobody holds anybody accountable. We tolerate mediocrity.”' },
+  { key: 'learning', text: '“We keep repeating the same mistakes.”' },
+  { key: 'flag', text: '“My team isn’t aligned — they’d each name different priorities.”' },
+  { key: 'truth', text: '“My organization doesn’t tell me the truth.”' },
+];
+
+const nodes = ['decision', 'rhythm', 'standard', 'learning'];
+const nodePos: Record<string, { x: number; y: number; label: string }> = {
+  decision: { x: 42, y: 298, label: 'Decision' },
+  rhythm: { x: 138, y: 320, label: 'Rhythm' },
+  standard: { x: 262, y: 320, label: 'Standard' },
+  learning: { x: 358, y: 298, label: 'Learning' },
+};
+const T = { x: 200, y: 118 };
+---
+<div class="bl-grid-collapse" style="margin-top:48px;display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center;">
+  <!-- pains -->
+  <div id="flag-pains" style="display:flex;flex-direction:column;gap:11px;">
+    {pains.map((p) => (
+      <button data-k={p.key} class="flag-pain bl-tap" style="width:100%;display:flex;align-items:center;gap:14px;padding:17px 19px;border-radius:13px;cursor:pointer;text-align:left;font-family:'Hanken Grotesk',sans-serif;transition:all .18s;border:1px solid rgba(244,240,231,0.13);background:#1B1810;color:#F4F0E7;">
+        <span class="flag-dot" style="flex:none;width:11px;height:11px;border-radius:50%;background:transparent;border:2px solid rgba(244,240,231,0.3);transition:all .18s;"></span>
+        <span style="font-size:16px;line-height:1.4;text-align:left;font-weight:500;">{p.text}</span>
+      </button>
+    ))}
+  </div>
+
+  <!-- viz + verdict -->
+  <div>
+    <div style="background:radial-gradient(circle at 50% 38%,#211D15,#15130E);border:1px solid rgba(244,240,231,0.10);border-radius:22px;padding:18px;">
+      <svg viewBox="0 0 400 360" width="100%" style="display:block;max-height:340px;margin:0 auto;" role="img" aria-label="The Flag Model: a flag held upright by four discipline cables">
+        <line x1="24" y1="300" x2="376" y2="300" stroke="rgba(201,192,174,0.18)" stroke-width="1.5" />
+        {nodes.map((k) => (
+          <line id={`cable-${k}`} x1={T.x} y1={T.y} x2={nodePos[k].x} y2={nodePos[k].y} stroke="rgba(201,192,174,0.32)" stroke-width="1.6" />
+        ))}
+        <g id="flag-pole" style="transition:transform .55s cubic-bezier(.34,1.3,.5,1);" transform="rotate(0 200 300)">
+          <line x1="200" y1="300" x2="200" y2="82" stroke="#C9C0AE" stroke-width="4" stroke-linecap="round" />
+          <path id="flag-shape" d="M200 86 L268 104 L200 122 Z" fill="#C04A26" style="transition:all .4s;" />
+          <circle id="flag-base" cx="200" cy="300" r="4" fill="#C9C0AE" />
+        </g>
+        {nodes.map((k) => (
+          <g>
+            <circle id={`node-${k}-c`} cx={nodePos[k].x} cy={nodePos[k].y} r="6.5" fill="#15130E" stroke="rgba(201,192,174,0.5)" stroke-width="1.6" />
+            <text id={`node-${k}-t`} x={nodePos[k].x} y={nodePos[k].y + 24} text-anchor="middle" font-family="Hanken Grotesk, sans-serif" font-size="12.5" font-weight="600" fill="rgba(244,240,231,0.55)">{nodePos[k].label}</text>
+          </g>
+        ))}
+        <text id="flag-truth" x="200" y="348" text-anchor="middle" font-family="Newsreader, serif" font-size="13" font-style="italic" fill="#E0744A" style="opacity:0;">the ground gives way</text>
+      </svg>
+    </div>
+    <div style="margin-top:18px;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:24px 26px;min-height:150px;">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;">
+        <span id="verdict-name" style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">Pick a sentence &rarr;</span>
+        <span id="verdict-tag" style="display:none;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:5px 11px;border-radius:999px;"></span>
+      </div>
+      <p id="verdict-line" style="margin-top:12px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.74);">Tap whichever sounds most like your team. The cable that holds that discipline upright will go slack &mdash; and the flag starts to tilt.</p>
+      <p id="verdict-fix" style="margin-top:12px;font-size:15.5px;line-height:1.55;color:#E0744A;font-weight:500;"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const data: Record<string, { name: string; tag: string; line: string; fix: string }> = {
+    decision: { name: 'The Decision', tag: 'Lost to Chaos', line: "The team can't commit. Decisions get made, then quietly un-made, so every call routes back to you.", fix: 'We run the 4Ds — Owner, Data, Deadline, Defend — so a decision sticks without your sign-off.' },
+    rhythm: { name: 'The Rhythm', tag: 'Lost to Sprawl', line: "The team can't complete. Everyone is busy and nothing ships; initiatives roll over quarter after quarter.", fix: 'WIP limits: one in, one out. The default answer becomes “not yet,” and work actually finishes.' },
+    standard: { name: 'The Standard', tag: 'Lost to Avoidance', line: "The team can't hold each other. Mediocrity gets tolerated because candor feels like conflict.", fix: 'The Name-It Protocol makes naming the problem a habit, not a confrontation.' },
+    learning: { name: 'The Learning', tag: 'Lost to Stagnation', line: 'The team repeats the same mistakes because nothing is examined after it goes wrong.', fix: 'After-Action Reviews turn every miss into a correction the team actually keeps.' },
+    flag: { name: 'The Flag', tag: 'Shredded by exceptions', line: "The team isn't aligned. Ask each leader for the top priorities and you'd get different lists.", fix: 'We define 2–3 priorities precise enough that anyone can test a decision against them.' },
+    truth: { name: 'Truth Over Comfort', tag: 'Comfort over truth', line: "Your organization doesn't tell you the truth, because comfort is always available and always reasonable-sounding.", fix: 'Truth over comfort is the price of entry for every discipline — paid daily, or not at all.' },
+  };
+  const tilt: Record<string, number> = { decision: 5.5, rhythm: 3, standard: -3, learning: -5.5, flag: 0, truth: 0 };
+  const nodeKeys = ['decision', 'rhythm', 'standard', 'learning'];
+
+  let active: string | null = null;
+
+  function resetCablesNodes() {
+    for (const k of nodeKeys) {
+      const cable = document.getElementById('cable-' + k)!;
+      cable.setAttribute('stroke', 'rgba(201,192,174,0.32)');
+      cable.setAttribute('stroke-width', '1.6');
+      cable.removeAttribute('stroke-dasharray');
+      const c = document.getElementById('node-' + k + '-c')!;
+      c.setAttribute('r', '6.5'); c.setAttribute('fill', '#15130E'); c.setAttribute('stroke', 'rgba(201,192,174,0.5)');
+      const t = document.getElementById('node-' + k + '-t')!;
+      t.setAttribute('fill', 'rgba(244,240,231,0.55)');
+    }
+  }
+
+  function render() {
+    // pains
+    document.querySelectorAll<HTMLButtonElement>('.flag-pain').forEach((btn) => {
+      const on = btn.dataset.k === active;
+      btn.style.border = '1px solid ' + (on ? '#C04A26' : 'rgba(244,240,231,0.13)');
+      btn.style.background = on ? 'rgba(192,74,38,0.14)' : '#1B1810';
+      const dot = btn.querySelector('.flag-dot') as HTMLElement;
+      dot.style.background = on ? '#C04A26' : 'transparent';
+      dot.style.border = '2px solid ' + (on ? '#C04A26' : 'rgba(244,240,231,0.3)');
+    });
+
+    // svg
+    resetCablesNodes();
+    if (active && nodeKeys.includes(active)) {
+      const cable = document.getElementById('cable-' + active)!;
+      cable.setAttribute('stroke', '#C04A26'); cable.setAttribute('stroke-width', '3'); cable.setAttribute('stroke-dasharray', '7 7');
+      const c = document.getElementById('node-' + active + '-c')!;
+      c.setAttribute('r', '8'); c.setAttribute('fill', '#C04A26'); c.setAttribute('stroke', '#E0744A');
+      const t = document.getElementById('node-' + active + '-t')!;
+      t.setAttribute('fill', '#E0744A');
+    }
+    const angle = active ? (tilt[active] || 0) : 0;
+    document.getElementById('flag-pole')!.setAttribute('transform', `rotate(${angle} 200 300)`);
+    const flagShape = document.getElementById('flag-shape')!;
+    const flagActive = active === 'flag';
+    flagShape.setAttribute('fill', flagActive ? '#E0744A' : '#C04A26');
+    if (flagActive) { flagShape.setAttribute('stroke', '#FBF8F1'); flagShape.setAttribute('stroke-width', '1.5'); }
+    else { flagShape.removeAttribute('stroke'); flagShape.removeAttribute('stroke-width'); }
+    document.getElementById('flag-base')!.setAttribute('r', flagActive ? '5' : '4');
+    (document.getElementById('flag-truth') as HTMLElement).style.opacity = active === 'truth' ? '1' : '0';
+
+    // verdict
+    const d = active ? data[active] : null;
+    const nameEl = document.getElementById('verdict-name')!;
+    const tagEl = document.getElementById('verdict-tag')!;
+    const lineEl = document.getElementById('verdict-line')!;
+    const fixEl = document.getElementById('verdict-fix')!;
+    nameEl.textContent = d ? d.name : 'Pick a sentence →';
+    if (d) { tagEl.style.display = 'inline'; tagEl.textContent = d.tag; } else { tagEl.style.display = 'none'; }
+    lineEl.textContent = d ? d.line : 'Tap whichever sounds most like your team. The cable that holds that discipline upright will go slack — and the flag starts to tilt.';
+    fixEl.textContent = d ? '→ ' + d.fix : '';
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.flag-pain').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const k = btn.dataset.k!;
+      active = active === k ? null : k;
+      render();
+    });
+  });
+</script>

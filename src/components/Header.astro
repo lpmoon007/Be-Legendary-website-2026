@@ -1,0 +1,35 @@
+---
+import { CTA_URL, CTA_LABEL } from '../lib/site';
+
+export interface Props {
+  maxWidth?: number;
+  /** Logo target (homepage uses an in-page anchor; inner pages link home). */
+  home?: string;
+  links?: { label: string; href: string }[];
+}
+
+const {
+  maxWidth = 1140,
+  home = '/',
+  links = [
+    { label: 'The Flag Model', href: '/flag-model/' },
+    { label: 'Resources', href: '/resources/' },
+    { label: 'Field notes', href: '/field-notes/' },
+    { label: 'James', href: '/about/james-carter/' },
+  ],
+} = Astro.props;
+---
+<header style="position:sticky;top:0;z-index:50;background:rgba(21,19,14,0.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(244,240,231,0.10);">
+  <nav aria-label="Primary" style={`max-width:${maxWidth}px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;`}>
+    <a href={home} style="display:flex;align-items:center;gap:11px;text-decoration:none;color:#F4F0E7;">
+      <span style="width:30px;height:30px;border-radius:7px;background:#C04A26;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:600;font-size:17px;color:#fff;">B</span>
+      <span style="font-weight:800;letter-spacing:0.14em;font-size:14px;">BE LEGENDARY</span>
+    </a>
+    <div class="bl-nav-links" style="display:flex;align-items:center;gap:26px;font-size:14.5px;font-weight:500;color:rgba(244,240,231,0.72);">
+      {links.map((l) => (
+        <a class="bl-nav-secondary" href={l.href} style="color:inherit;text-decoration:none;" onmouseover="this.style.color='#F4F0E7'" onmouseout="this.style.color='rgba(244,240,231,0.72)'">{l.label}</a>
+      ))}
+      <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:11px 20px;border-radius:9px;font-weight:700;font-size:14px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">{CTA_LABEL}</a>
+    </div>
+  </nav>
+</header>

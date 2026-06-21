@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FlagDiagram from '../components/FlagDiagram.astro';
+import Faq from '../components/Faq.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'The Flag Model — Where Will Your Executive Team Break First? | Be Legendary';
+const description = "You've already bought the offsite, the framework, the coach — and behavior didn't change. There's no lightswitch. But there is a place your executive team breaks first, and it's findable. The Flag Model shows you where. Book a 15-minute Calibration Call.";
+
+const schema = [
+  { '@type': 'WebSite', '@id': 'https://www.belegendary.org/#website', url: 'https://www.belegendary.org/', name: 'Be Legendary', publisher: { '@id': 'https://www.belegendary.org/#org' } },
+  { '@type': ['Organization', 'ProfessionalService'], '@id': 'https://www.belegendary.org/#org', name: 'Be Legendary', alternateName: 'Repario', url: 'https://www.belegendary.org/', logo: { '@type': 'ImageObject', url: 'https://www.belegendary.org/assets/logo.png', width: 512, height: 512 }, image: 'https://www.belegendary.org/assets/share-card.png', description: 'An executive-team diagnostic and performance firm. We rebuild the disciplines of the Flag Model that turn a stalled leadership team into one that executes.', slogan: 'Where does your executive team break first?', founder: { '@id': 'https://www.belegendary.org/#james' }, foundingDate: '2010', areaServed: 'US', knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation', 'leadership offsites', 'team accountability'], contactPoint: { '@type': 'ContactPoint', contactType: 'sales', url: 'https://meetings.hubspot.com/jcarter28' }, sameAs: ['https://www.buildingteams.com/', 'https://www.legendary-retreats.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'] },
+  { '@type': 'Person', '@id': 'https://www.belegendary.org/#james', name: 'James Carter', jobTitle: 'Founder, Be Legendary', worksFor: { '@id': 'https://www.belegendary.org/#org' }, description: 'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership and co-author of Discover Your Inner Strength alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Twenty-five years with hundreds of leadership teams; featured in CNN, CNN Money and Business Insider.', sameAs: ['https://www.linkedin.com/in/jlcarter/', 'https://www.buildingteams.com/about/james-carter/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'] },
+  { '@type': 'Book', '@id': 'https://www.belegendary.org/#book', name: 'Lost Disciplines of Leadership', author: { '@id': 'https://www.belegendary.org/#james' }, about: 'Why leaders and teams know what to do and still fail to do it — and the disciplines that close the gap.' },
+  { '@type': 'Book', name: 'Discover Your Inner Strength', author: [{ '@id': 'https://www.belegendary.org/#james' }, { '@type': 'Person', name: 'Stephen Covey' }, { '@type': 'Person', name: 'Ken Blanchard' }, { '@type': 'Person', name: 'Brian Tracy' }] },
+  { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/#flagmodel', name: 'The Flag Model', description: 'A leadership-execution framework with five components: a center (the Flag — the 2 to 3 operational priorities everything serves) and four disciplines that hold it upright — the Decision, the Rhythm, the Standard and the Learning — governed by the principle Truth Over Comfort.', inDefinedTermSet: 'Be Legendary' },
+  { '@type': 'Service', '@id': 'https://www.belegendary.org/#partnership', name: 'Performance Partnership', provider: { '@id': 'https://www.belegendary.org/#org' }, serviceType: 'Executive team performance engagement', description: 'The engagement through which the Flag Model is installed over time, measured by FlagScore movement across quarters.' },
+  { '@type': 'Service', '@id': 'https://www.belegendary.org/#elfs', name: 'Executive Leadership Failure Simulation (ELFS)', provider: { '@id': 'https://www.belegendary.org/#org' }, serviceType: 'Executive diagnostic simulation', description: 'A solo CEO pressure simulation — where do you break first? — with an individual debrief and written report. The low-risk way to experience the diagnostic before an engagement; fees apply toward the Team LFS if you move forward.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: "Why isn't my executive team executing?", acceptedAnswer: { '@type': 'Answer', text: "Because the problem usually isn't strategy, intelligence, or effort — it's discipline. Teams know what to do and still don't do it when comfort is easier than truth. The Flag Model locates which of four disciplines has broken down so you can rebuild that one, instead of buying another framework." } },
+    { '@type': 'Question', name: "We did EOS and OKRs and behavior didn't change. Why?", acceptedAnswer: { '@type': 'Answer', text: 'Frameworks like EOS and OKRs assume a team that can already commit, complete, and hold each other accountable. If those disciplines are missing, the framework sits on a poster and behavior stays the same. The work is rebuilding the disciplines underneath, not installing another framework on top.' } },
+    { '@type': 'Question', name: 'What is the Flag Model?', acceptedAnswer: { '@type': 'Answer', text: 'The Flag Model is a leadership-execution framework. At its center is the Flag — the 2 to 3 priorities everything serves. Four disciplines hold it upright: the Decision, the Rhythm, the Standard and the Learning. The governing principle is Truth Over Comfort. Remove one discipline and the flag tilts; remove two and it falls.' } },
+    { '@type': 'Question', name: "My executives can't make a decision without me. Why?", acceptedAnswer: { '@type': 'Answer', text: "That's the Decision discipline lost to chaos: the team can't commit, so every call routes back to you. The fix is a decision protocol — owner, data, deadline, and the obligation to defend it — that lets a decision stick without your sign-off." } },
+    { '@type': 'Question', name: 'What happens on a Calibration Call?', acceptedAnswer: { '@type': 'Answer', text: "It's a 15-minute conversation, CEO only. You'll run a short Choices exercise that surfaces priority misalignment in real time, and you'll leave with a concrete read on where your team stands — whether or not we work together. It's a calibration, not a pitch." } },
+  ] },
+];
+
+const faqs = [
+  { q: "Why isn't my executive team executing?", a: "Because the problem usually isn't strategy, intelligence, or effort — it's discipline. Teams know what to do and still don't do it when comfort is easier than truth. The Flag Model locates which of four disciplines has broken down, so you rebuild that one instead of buying another framework." },
+  { q: "We did EOS and OKRs and behavior didn't change. Why?", a: 'Frameworks like EOS and OKRs assume a team that can already commit, complete, and hold each other accountable. If those disciplines are missing, the framework lives on a poster and behavior stays the same. The work is rebuilding the disciplines underneath — not installing another framework on top.' },
+  { q: 'What is the Flag Model?', a: "It's a leadership-execution framework. At the center is the Flag — the 2 to 3 priorities everything serves. Four disciplines hold it upright: the Decision, the Rhythm, the Standard, and the Learning. The governing principle is Truth Over Comfort. Remove one discipline and the flag tilts; remove two and it falls." },
+  { q: 'What happens on a Calibration Call?', a: "It's 15 minutes, CEO only. You'll run a short Choices exercise that surfaces priority misalignment in real time, and you'll leave with a concrete read on where your team stands — whether or not we work together. It's a calibration, not a pitch." },
+  { q: 'Is this just another framework or coach?', a: "No. We don't sell a lightswitch. We find where your team breaks first, measure it with FlagScore, and rebuild the specific discipline that broke — over time, as a Performance Partnership. The Flag Model is the system we install, not a poster we hand you." },
+];
+
+const homeLinks = [
+  { label: 'The truth', href: '#truth' },
+  { label: 'The Flag Model', href: '#model' },
+  { label: 'Resources', href: SLUGS.resources },
+  { label: 'How it works', href: '#work' },
+  { label: 'James', href: '#james' },
+];
+---
+<BaseLayout title={title} description={description} path="/" ogTitle="Where is your executive team going to break first?" ogDescription="There's no single fix for a stalled leadership team. But there is a place it breaks first. The Flag Model finds it." schema={schema}>
+  <Header maxWidth={1200} home="#top" links={homeLinks} />
+
+  <!-- HERO -->
+  <section id="top" class="bl-hero-pad" style="position:relative;max-width:1200px;margin:0 auto;padding:108px 32px 92px;">
+    <div style="position:absolute;top:-100px;right:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(192,74,38,0.20),transparent 62%);pointer-events:none;"></div>
+    <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:28px;">
+      <span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive team performance
+    </p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(42px,7vw,92px);line-height:1.0;letter-spacing:-0.025em;max-width:15ch;color:#FBF8F1;">
+      Where is your executive team going to <span style="font-style:italic;color:#E0744A;">break first?</span>
+    </h1>
+    <p style="margin-top:32px;font-size:clamp(18px,2.1vw,23px);line-height:1.55;max-width:58ch;color:rgba(244,240,231,0.80);font-weight:400;">
+      You've already bought the offsite, the framework, the coach. Behavior didn't change. Here's the part no one will tell you: there is no single fix &mdash; but there <em style="font-style:italic;color:#F4F0E7;">is</em> a place your team breaks first, and it's findable.
+    </p>
+    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+      <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+      <a href="#model" style="border:1px solid rgba(244,240,231,0.26);color:#F4F0E7;text-decoration:none;padding:17px 28px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.26)'">See where teams break</a>
+      <span style="font-size:13.5px;color:rgba(244,240,231,0.55);max-width:24ch;line-height:1.4;">15 minutes, CEO only. You leave with a concrete read on your team &mdash; work with us or not.</span>
+    </div>
+  </section>
+
+  <!-- THE LIGHTSWITCH TRUTH -->
+  <section id="truth" class="bl-section-pad" style="background:#F4F0E7;color:#1B1810;padding:100px 32px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;">The truth no one sells you</p>
+      <p style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.6vw,40px);line-height:1.28;letter-spacing:-0.01em;color:#1B1810;">
+        Every CEO wants a lightswitch &mdash; one purchase that fixes the team. So you bought the framework, the offsite, the coach. And the behavior didn't change. That's not because you chose wrong. <span style="color:#C04A26;">It's because the lightswitch doesn't exist.</span> A leadership team doesn't fail all at once. It fails in one specific place first &mdash; and that place is locatable, measurable, and fixable.
+      </p>
+      <p style="margin-top:28px;font-size:18px;line-height:1.6;color:#56524A;max-width:56ch;">
+        Saying that out loud is the whole difference. We don't sell you a switch. We find where your team breaks, measure it, and rebuild the discipline that broke &mdash; in that order, over time.
+      </p>
+    </div>
+  </section>
+
+  <!-- THE FLAG MODEL — interactive -->
+  <section id="model" class="bl-section-pad" style="background:#15130E;color:#F4F0E7;padding:100px 32px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="max-width:64ch;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The Flag Model&trade;</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.4vw,52px);line-height:1.04;letter-spacing:-0.02em;">A flag, held upright by four cables.</h2>
+        <p style="margin-top:22px;font-size:18px;line-height:1.6;color:rgba(244,240,231,0.78);">The Flag is the 2&ndash;3 priorities everything serves. Four disciplines hold it upright. Cut one cable and the flag tilts. Cut two and it falls. <strong style="color:#F4F0E7;">Pick the sentence that sounds like your team</strong> &mdash; and watch which cable goes.</p>
+        <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:22px;align-items:center;">
+          <a href={SLUGS.flagModel} style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;text-decoration:none;font-weight:700;font-size:15.5px;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">Read the full Flag Model <span style="transition:transform .2s;">&rarr;</span></a>
+          <a href={SLUGS.costCalculator} style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;text-decoration:none;font-weight:700;font-size:15.5px;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">What it's costing you &mdash; run the calculator <span style="transition:transform .2s;">&rarr;</span></a>
+        </div>
+      </div>
+
+      <FlagDiagram />
+
+      <p style="margin-top:34px;font-size:15px;line-height:1.6;color:rgba(244,240,231,0.6);max-width:78ch;border-left:2px solid rgba(192,74,38,0.6);padding-left:18px;">
+        The four disciplines are interdependent. The Decision feeds the Rhythm feeds the Standard feeds the Learning &mdash; and back into the Decision. Break the loop anywhere and it doesn't close. The governing principle underneath all four: <strong style="color:#F4F0E7;">Truth Over Comfort</strong>, paid daily or not at all.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW THE WORK GOES -->
+  <section id="work" class="bl-section-pad" style="background:#F4F0E7;color:#1B1810;padding:100px 32px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="max-width:62ch;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How the work actually goes</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-0.02em;">Three moves. None of them a switch.</h2>
+        <p style="margin-top:22px;font-size:18px;line-height:1.6;color:#56524A;">This is effortful and it takes time. That's the point &mdash; durable execution isn't bought, it's built and measured.</p>
+      </div>
+      <div class="bl-grid-collapse" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+        <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:34px;">
+          <span style="font-family:'Newsreader',serif;font-size:34px;color:#C04A26;">01</span>
+          <h3 style="margin-top:14px;font-size:22px;font-weight:700;">Diagnose</h3>
+          <p style="margin-top:12px;font-size:15.5px;line-height:1.58;color:#56524A;">A pressure simulation surfaces how your team actually performs &mdash; not how it describes itself. The CEO can preview it solo through the <strong>Executive Leadership Failure Simulation (ELFS)</strong> &mdash; <em style="font-style:italic;">where do you break first?</em> &mdash; before the team ever runs it.</p>
+        </div>
+        <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:34px;">
+          <span style="font-family:'Newsreader',serif;font-size:34px;color:#C04A26;">02</span>
+          <h3 style="margin-top:14px;font-size:22px;font-weight:700;">Measure</h3>
+          <p style="margin-top:12px;font-size:15.5px;line-height:1.58;color:#56524A;">Your <strong>FlagScore&trade;</strong> &mdash; your executive team's vitals &mdash; turns "we feel stuck" into a composite read across the five components. We measure what other firms only assert.</p>
+        </div>
+        <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:34px;">
+          <span style="font-family:'Newsreader',serif;font-size:34px;color:#C04A26;">03</span>
+          <h3 style="margin-top:14px;font-size:22px;font-weight:700;">Rebuild</h3>
+          <p style="margin-top:12px;font-size:15.5px;line-height:1.58;color:#56524A;">In a <strong>Performance Partnership</strong>, we rebuild the lost discipline and embed it into how the team works &mdash; tracking FlagScore movement quarter over quarter. A relationship, not a workshop.</p>
+          <p style="margin-top:12px;font-size:14px;line-height:1.5;color:#6B675E;">Often anchored by an immersive <a href="https://www.legendary-retreats.com" target="_blank" rel="noopener" style="color:#C04A26;text-decoration:underline;">Legendary Retreat</a> &mdash; the format that resets a team fastest.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BELIEVE — authority -->
+  <section id="james" class="bl-section-pad" style="background:#15130E;color:#F4F0E7;padding:100px 32px;">
+    <div class="bl-grid-collapse" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;">
+      <div style="aspect-ratio:4/5;border-radius:20px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);background:#100E0A;">
+        <img src="/assets/james.jpg" alt="James Carter, founder of Be Legendary and creator of the Flag Model" width="500" height="417" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block;" />
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Why believe this</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.06;letter-spacing:-0.015em;color:#FBF8F1;">James Carter</h2>
+        <p style="margin-top:22px;font-size:18.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:54ch;">
+          James is the sole author of the forthcoming <em style="font-style:italic;">Lost Disciplines of Leadership</em>&trade;, and co-authored <em style="font-style:italic;">Discover Your Inner Strength</em> alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. He built the Flag Model across twenty-five years inside hundreds of leadership teams &mdash; work featured in CNN, CNN Money and Business Insider. One $3B client's leadership team improved its daily mindset scores <strong style="color:#E0744A;">209% in the thirty days</strong> after working with him. The conviction here isn't a logo wall. It's an original, named framework, a measure that proves it, and the willingness to tell a CEO the thing other firms won't.
+        </p>
+        <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;">
+          <span style="font-size:13.5px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:9px 15px;border-radius:999px;">Author, Lost Disciplines of Leadership (forthcoming)</span>
+          <span style="font-size:13.5px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:9px 15px;border-radius:999px;">Co-author with Covey, Blanchard, Chopra &amp; Tracy</span>
+          <span style="font-size:13.5px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:9px 15px;border-radius:999px;">Creator of the Flag Model</span>
+          <span style="font-size:13.5px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:9px 15px;border-radius:999px;">Featured: CNN &middot; Business Insider</span>
+        </div>
+        <p style="margin-top:18px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.55);">Twenty-five years. Hundreds of leadership teams. <a href={SLUGS.about} style="color:#E0744A;text-decoration:none;">More about James &rarr;</a></p>
+      </div>
+    </div>
+
+    <!-- THE BOOKS -->
+    <div style="max-width:1200px;margin:64px auto 0;padding-top:40px;border-top:1px solid rgba(244,240,231,0.12);">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:8px;">The books</p>
+      <p style="font-size:16.5px;line-height:1.6;color:rgba(244,240,231,0.7);max-width:60ch;">Sole author of the forthcoming <em style="font-style:italic;">Lost Disciplines of Leadership</em> &mdash; and a co-author, alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy, of three collaborative works on leadership and growth.</p>
+      <div class="bl-books-grid" style="margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;position:relative;">
+            <img src="/assets/book-ldol.png" alt="The Lost Disciplines of Leadership, a leadership fable by James Carter" width="438" height="658" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <span style="position:absolute;top:11px;right:11px;font-size:9.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#15243F;background:#C9A24B;padding:4px 8px;border-radius:999px;">Forthcoming</span>
+          </div>
+          <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">James Carter <span style="color:rgba(244,240,231,0.4);">&middot; sole author</span></span>
+        </div>
+        <a href="https://www.amazon.com/Discover-Inner-Strength-James-Carter/dp/1600135129" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
+          <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;transition:transform .2s;">
+            <img src="/assets/book-discover.jpg" alt="Discover Your Inner Strength, co-authored by James Carter with Brian Tracy, Ken Blanchard and Stephen Covey" width="432" height="648" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+          <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">w/ Covey, Blanchard &amp; Tracy <span style="color:#E0744A;">&middot; Amazon &rarr;</span></span>
+        </a>
+        <a href="https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
+          <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;transition:transform .2s;">
+            <img src="/assets/book-roadmap.png" alt="Roadmap to Success, co-authored by James Carter with Deepak Chopra and Ken Blanchard" width="432" height="648" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+          <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">w/ Chopra &amp; Blanchard <span style="color:#E0744A;">&middot; Amazon &rarr;</span></span>
+        </a>
+        <a href="https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
+          <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;transition:transform .2s;">
+            <img src="/assets/book-onegreatidea.jpg" alt="One Great Idea Can Revolutionize Your Business, featuring James Carter" width="2068" height="3173" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+          <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">18 power-house ideas <span style="color:#E0744A;">&middot; Amazon &rarr;</span></span>
+        </a>
+      </div>
+      <p style="margin-top:18px;font-size:14px;line-height:1.5;color:rgba(244,240,231,0.5);">Collaborative works featuring James alongside Covey, Blanchard, Chopra and Tracy.</p>
+    </div>
+  </section>
+
+  <!-- THE TWO DOORS -->
+  <section class="bl-section-pad" style="background:#F4F0E7;color:#1B1810;padding:100px 32px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="max-width:60ch;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Two doors in</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-0.02em;">Start with a conversation, or a test drive.</h2>
+      </div>
+      <div class="bl-grid-collapse" style="margin-top:44px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:24px;align-items:stretch;">
+        <article style="background:#1B1810;color:#F4F0E7;border-radius:22px;padding:40px;display:flex;flex-direction:column;">
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;">Primary &middot; free &middot; 15 minutes</p>
+          <h3 style="margin-top:14px;font-family:'Newsreader',serif;font-weight:500;font-size:32px;line-height:1.08;color:#FBF8F1;">The Calibration Call</h3>
+          <p style="margin-top:16px;font-size:17px;line-height:1.6;color:rgba(244,240,231,0.82);">CEO only. You'll run a short <strong style="color:#F4F0E7;">Choices</strong> exercise that surfaces priority misalignment in real time, then face one question: how many of your leaders have the same flag in mind right now? You leave with a concrete read on where your team stands &mdash; whether or not we ever work together. It's a calibration, not a pitch.</p>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:28px;align-self:flex-start;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;display:inline-flex;align-items:center;gap:9px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+        </article>
+        <article style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.10);border-radius:22px;padding:40px;display:flex;flex-direction:column;">
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A8578;">Second door &middot; the test drive</p>
+          <h3 style="margin-top:14px;font-family:'Newsreader',serif;font-weight:500;font-size:32px;line-height:1.08;">ELFS</h3>
+          <p style="margin-top:6px;font-family:'Newsreader',serif;font-style:italic;font-size:16px;color:#9E3A1C;">Where do you break first?</p>
+          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#56524A;">The solo CEO simulation: roughly 90 minutes, an individual debrief, and a written report telling you where you chose comfort over truth. The low-risk way to feel the diagnostic before the team runs it.</p>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:auto;padding-top:24px;color:#C04A26;text-decoration:none;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:8px;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">See if ELFS is a fit <span style="transition:transform .2s;">&rarr;</span></a>
+          <p style="margin-top:14px;font-size:13.5px;line-height:1.5;color:#6B675E;"><strong style="color:#1B1810;">No money lost:</strong> every dollar you spend on the test drive applies toward your Team LFS, should you decide to move forward.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="bl-section-pad" style="background:#15130E;color:#F4F0E7;padding:100px 32px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The questions CEOs actually ask</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,48px);line-height:1.04;letter-spacing:-0.02em;margin-bottom:36px;">Answered, plainly.</h2>
+      <Faq faqs={faqs} />
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="book" style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:120px 32px;text-align:center;position:relative;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:780px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.4vw,64px);line-height:1.02;letter-spacing:-0.025em;color:#FBF8F1;">Where is your executive team going to <span style="font-style:italic;color:#E0744A;">break first?</span></h2>
+      <p style="margin-top:24px;font-size:19px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:50ch;margin-left:auto;margin-right:auto;">Find out in 15 minutes. You'll leave with a concrete read on where your team stands &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:36px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 38px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:20px;">&rarr;</span></a>
+    </div>
+  </section>
+
+  <Footer variant="full" />
+</BaseLayout>

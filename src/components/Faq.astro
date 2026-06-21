@@ -1,0 +1,45 @@
+---
+// Reusable FAQ accordion. One-at-a-time expand/collapse; "+" rotates 45° to "×".
+export interface Props {
+  faqs: { q: string; a: string }[];
+  defaultOpen?: number;
+}
+const { faqs, defaultOpen = 0 } = Astro.props;
+---
+<div class="bl-faq" style="display:flex;flex-direction:column;gap:12px;">
+  {faqs.map((f, i) => {
+    const open = i === defaultOpen;
+    return (
+      <div style="border:1px solid rgba(244,240,231,0.13);border-radius:14px;overflow:hidden;background:#1B1810;">
+        <button class="bl-faq-q bl-tap" data-i={i} aria-expanded={open ? 'true' : 'false'} style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 26px;background:transparent;border:none;cursor:pointer;color:#FBF8F1;text-align:left;font-family:'Hanken Grotesk',sans-serif;">
+          <span style="font-size:18px;font-weight:600;">{f.q}</span>
+          <span class="bl-faq-icon" style={`flex:none;font-size:26px;font-weight:300;color:#E0744A;transition:transform .25s;transform:rotate(${open ? '45deg' : '0deg'});`}>+</span>
+        </button>
+        <div class="bl-faq-panel" style={`overflow:hidden;transition:max-height .3s ease,opacity .25s;max-height:${open ? '360px' : '0'};opacity:${open ? '1' : '0'};`}>
+          <p style="padding:0 26px 24px;font-size:16px;line-height:1.62;color:rgba(244,240,231,0.74);max-width:64ch;">{f.a}</p>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.bl-faq').forEach((group) => {
+    const items = Array.from(group.querySelectorAll<HTMLButtonElement>('.bl-faq-q'));
+    let open = items.findIndex((b) => b.getAttribute('aria-expanded') === 'true');
+    const apply = () => {
+      items.forEach((btn, i) => {
+        const isOpen = i === open;
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        const icon = btn.querySelector('.bl-faq-icon') as HTMLElement;
+        icon.style.transform = `rotate(${isOpen ? '45deg' : '0deg'})`;
+        const panel = btn.nextElementSibling as HTMLElement;
+        panel.style.maxHeight = isOpen ? '360px' : '0';
+        panel.style.opacity = isOpen ? '1' : '0';
+      });
+    };
+    items.forEach((btn, i) => {
+      btn.addEventListener('click', () => { open = open === i ? -1 : i; apply(); });
+    });
+  });
+</script>

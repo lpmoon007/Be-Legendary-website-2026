@@ -1,0 +1,55 @@
+---
+// Reusable newsletter signup (embedded in Resources + Field Notes hubs).
+// Validates email, posts to the HubSpot newsletter form, shows success state.
+import { HUBSPOT } from '../lib/site';
+---
+<div style="background:linear-gradient(150deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:20px;padding:38px;">
+  <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;">
+    <div>
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">Field notes, by email</p>
+      <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.12;color:#FBF8F1;">Straight thinking on executive-team execution.</h3>
+      <p style="margin-top:14px;font-size:16px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:46ch;">One short note, roughly monthly, on the disciplines that decide whether a leadership team executes. No fluff, no pitch. Unsubscribe anytime.</p>
+    </div>
+    <div>
+      <div class="bl-news-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.newsletterFormGuid}>
+        <input class="bl-news-email" type="email" placeholder="you@company.com" aria-label="Work email" style="width:100%;padding:15px 18px;border-radius:11px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+        <button class="bl-news-submit bl-tap" style="margin-top:12px;width:100%;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 18px;border-radius:11px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Subscribe</button>
+        <p class="bl-news-err" style="margin-top:10px;font-size:13px;color:#E0744A;min-height:18px;visibility:hidden;"></p>
+      </div>
+      <div class="bl-news-sent" style="display:none;">
+        <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">You're on the list.</p>
+        <p style="margin-top:8px;font-size:15px;line-height:1.5;color:rgba(244,240,231,0.75);">Watch your inbox for the next field note.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  document.querySelectorAll<HTMLElement>('.bl-news-form').forEach((form) => {
+    const email = form.querySelector('.bl-news-email') as HTMLInputElement;
+    const submit = form.querySelector('.bl-news-submit') as HTMLButtonElement;
+    const err = form.querySelector('.bl-news-err') as HTMLElement;
+    const sent = form.nextElementSibling as HTMLElement;
+    const portal = form.dataset.portal!;
+    const guid = form.dataset.guid!;
+    email.addEventListener('input', () => { err.style.visibility = 'hidden'; });
+    submit.addEventListener('click', async () => {
+      const value = email.value.trim();
+      if (!EMAIL_RE.test(value)) {
+        err.textContent = 'Please enter a valid email.';
+        err.style.visibility = 'visible';
+        return;
+      }
+      try {
+        await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portal}/${guid}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: [{ name: 'email', value }], context: { pageUri: location.href, pageName: document.title } }),
+        });
+      } catch (e) { /* swallow — still confirm to the user */ }
+      form.style.display = 'none';
+      sent.style.display = 'block';
+    });
+  });
+</script>
