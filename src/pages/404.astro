@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const links = [
+  { label: 'The Flag Model', href: SLUGS.flagModel, note: 'The framework, in full.' },
+  { label: 'Break-Point Self-Assessment', href: SLUGS.breakPointAssessment, note: 'Find where your team breaks first.' },
+  { label: 'Field Notes', href: SLUGS.fieldNotes, note: 'Answers to the questions CEOs ask.' },
+  { label: 'Resources', href: SLUGS.resources, note: 'Tools, research and guides.' },
+];
+---
+<BaseLayout
+  title="Page not found (404) | Be Legendary"
+  description="That page couldn't be found. Head back to the Flag Model, the assessment, or the field notes."
+  path="/404/"
+  siteGraph={false}
+  noindex={true}
+>
+  <Header maxWidth={960} links={[]} />
+
+  <main style="max-width:760px;margin:0 auto;padding:110px 32px 90px;position:relative;">
+    <div style="position:absolute;top:-80px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Error 404</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5.4vw,64px);line-height:1.02;letter-spacing:-0.02em;color:#FBF8F1;">This page broke first.</h1>
+    <p style="margin-top:22px;font-size:clamp(17px,2vw,20px);line-height:1.6;max-width:54ch;color:rgba(244,240,231,0.8);">The link is gone or never existed &mdash; but you're one click from where you were headed. Pick a discipline:</p>
+
+    <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      {links.map((l) => (
+        <a href={l.href} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:14px;padding:22px 24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.55)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+          <span style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;">{l.label}</span>
+          <span style="display:block;margin-top:6px;font-size:14px;color:rgba(244,240,231,0.64);line-height:1.5;">{l.note}</span>
+        </a>
+      ))}
+    </div>
+
+    <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+      <a href="/" style="background:#C04A26;color:#fff;text-decoration:none;padding:15px 28px;border-radius:11px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Back to home <span style="font-size:18px;">&rarr;</span></a>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:none;font-weight:600;font-size:15.5px;">Or book a Calibration Call &rarr;</a>
+    </div>
+  </main>
+
+  <Footer maxWidth={960} note="© 2026 Be Legendary" />
+</BaseLayout>

@@ -78,10 +78,23 @@ Forms POST to `api.hsforms.com/submissions/v3/integration/submit/{portal}/{guid}
 - **One CTA only:** *Book a Calibration Call* → `meetings.hubspot.com/jcarter28`. The ELFS
   page's primary CTA is the softer *Request your ELFS* (a qualifying touch, same booking link).
 
-## SEO / AEO notes (do not regress)- Everything is server-rendered, including JSON-LD; entity `@id`s cross-reference
+## SEO / AEO / GEO notes (do not regress)
+- Everything is server-rendered, including JSON-LD; entity `@id`s cross-reference
   (`#org`, `#james`, `#flagmodel`) so the graph resolves.
-- Each page has a unique title/description/canonical/OG/Twitter and question-format
-  headings with answer-first "short answer" boxes.
+- **Entity graph injected site-wide** by `BaseLayout` (`siteGraph`, default on;
+  homepage opts out, it defines the full versions): every inner page emits the
+  canonical `Organization` + founder `Person` (with `sameAs`) + `WebSite` + a
+  per-page `WebPage` node, and articles' `author`/`publisher` resolve to
+  `#james`/`#org` — consolidating author authority across the content cluster.
+- Each page has unique title/description/canonical/OG (incl. `og:image:alt`,
+  `og:locale`) + Twitter card, `theme-color`, favicons + `site.webmanifest`, and
+  question-format headings with answer-first "short answer" boxes.
+- **Images** go through `astro:assets` (`<Image>`, WebP, explicit dimensions):
+  homepage image payload ~230 KB (was ~2 MB). Display images live in `src/assets`;
+  `logo.png`/`share-card.png` stay in `/public` (schema/OG reference them by URL).
+- `sitemap.xml` is generated at build time (`src/pages/sitemap.xml.ts`) so
+  `<lastmod>` is always current; curated per-route priorities live there.
+- Custom branded `404` page (noindex).
 - The homepage's internal "strategy band" (a note to the client) is intentionally
   **not** shipped.
 

@@ -4,6 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FlagDiagram from '../components/FlagDiagram.astro';
 import Faq from '../components/Faq.astro';
+import { Image } from 'astro:assets';
+import imgJames from '../assets/james.jpg';
+import imgLdol from '../assets/book-ldol.png';
+import imgDiscover from '../assets/book-discover.jpg';
+import imgRoadmap from '../assets/book-roadmap.png';
+import imgOneGreatIdea from '../assets/book-onegreatidea.jpg';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'The Flag Model — Where Will Your Executive Team Break First? | Be Legendary';
@@ -43,7 +49,7 @@ const homeLinks = [
   { label: 'James', href: '#james' },
 ];
 ---
-<BaseLayout title={title} description={description} path="/" ogTitle="Where is your executive team going to break first?" ogDescription="There's no single fix for a stalled leadership team. But there is a place it breaks first. The Flag Model finds it." schema={schema}>
+<BaseLayout title={title} description={description} path="/" siteGraph={false} ogTitle="Where is your executive team going to break first?" ogDescription="There's no single fix for a stalled leadership team. But there is a place it breaks first. The Flag Model finds it." schema={schema}>
   <Header maxWidth={1200} home="#top" links={homeLinks} />
 
   <!-- HERO -->
@@ -132,7 +138,7 @@ const homeLinks = [
   <section id="james" class="bl-section-pad" style="background:#15130E;color:#F4F0E7;padding:100px 32px;">
     <div class="bl-grid-collapse" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;">
       <div style="aspect-ratio:4/5;border-radius:20px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);background:#100E0A;">
-        <img src="/assets/james.jpg" alt="James Carter, founder of Be Legendary and creator of the Flag Model" width="500" height="417" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block;" />
+        <Image src={imgJames} alt="James Carter, founder of Be Legendary and creator of the Flag Model" width={760} format="webp" quality={80} loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block;" />
       </div>
       <div>
         <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Why believe this</p>
@@ -157,26 +163,26 @@ const homeLinks = [
       <div class="bl-books-grid" style="margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;position:relative;">
-            <img src="/assets/book-ldol.png" alt="The Lost Disciplines of Leadership, a leadership fable by James Carter" width="438" height="658" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <Image src={imgLdol} alt="The Lost Disciplines of Leadership, a leadership fable by James Carter" width={540} format="webp" quality={80} loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span style="position:absolute;top:11px;right:11px;font-size:9.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#15243F;background:#C9A24B;padding:4px 8px;border-radius:999px;">Forthcoming</span>
           </div>
           <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">James Carter <span style="color:rgba(244,240,231,0.4);">&middot; sole author</span></span>
         </div>
         <a href="https://www.amazon.com/Discover-Inner-Strength-James-Carter/dp/1600135129" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
           <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;transition:transform .2s;">
-            <img src="/assets/book-discover.jpg" alt="Discover Your Inner Strength, co-authored by James Carter with Brian Tracy, Ken Blanchard and Stephen Covey" width="432" height="648" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <Image src={imgDiscover} alt="Discover Your Inner Strength, co-authored by James Carter with Brian Tracy, Ken Blanchard and Stephen Covey" width={540} format="webp" quality={80} loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
           </div>
           <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">w/ Covey, Blanchard &amp; Tracy <span style="color:#E0744A;">&middot; Amazon &rarr;</span></span>
         </a>
         <a href="https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
           <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;transition:transform .2s;">
-            <img src="/assets/book-roadmap.png" alt="Roadmap to Success, co-authored by James Carter with Deepak Chopra and Ken Blanchard" width="432" height="648" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <Image src={imgRoadmap} alt="Roadmap to Success, co-authored by James Carter with Deepak Chopra and Ken Blanchard" width={540} format="webp" quality={80} loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
           </div>
           <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">w/ Chopra &amp; Blanchard <span style="color:#E0744A;">&middot; Amazon &rarr;</span></span>
         </a>
         <a href="https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
           <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 14px 30px -12px rgba(0,0,0,0.7);overflow:hidden;transition:transform .2s;">
-            <img src="/assets/book-onegreatidea.jpg" alt="One Great Idea Can Revolutionize Your Business, featuring James Carter" width="2068" height="3173" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <Image src={imgOneGreatIdea} alt="One Great Idea Can Revolutionize Your Business, featuring James Carter" width={540} format="webp" quality={80} loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
           </div>
           <span style="font-size:13px;color:rgba(244,240,231,0.6);line-height:1.4;">18 power-house ideas <span style="color:#E0744A;">&middot; Amazon &rarr;</span></span>
         </a>

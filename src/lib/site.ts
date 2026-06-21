@@ -47,3 +47,45 @@ export const SLUGS = {
   // Legal
   privacy: '/privacy/',
 } as const;
+
+// ── Canonical entity nodes (GEO/E-E-A-T) ─────────────────────────────────────
+// Stable @ids so every page's JSON-LD resolves the same Organization, founder
+// Person, and WebSite. Injected on inner pages by BaseLayout; the homepage
+// defines the full versions itself.
+export const ORG_ID = `${SITE_URL}/#org`;
+export const PERSON_ID = `${SITE_URL}/#james`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
+export const ORG_NODE = {
+  '@type': ['Organization', 'ProfessionalService'],
+  '@id': ORG_ID,
+  name: 'Be Legendary',
+  alternateName: 'Repario',
+  url: `${SITE_URL}/`,
+  logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/logo.png`, width: 512, height: 512 },
+  image: `${SITE_URL}/assets/share-card.png`,
+  description: 'An executive-team diagnostic and performance firm. We rebuild the disciplines of the Flag Model that turn a stalled leadership team into one that executes.',
+  founder: { '@id': PERSON_ID },
+  foundingDate: '2010',
+  areaServed: 'US',
+  sameAs: ['https://www.buildingteams.com/', 'https://www.legendary-retreats.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
+};
+
+export const PERSON_NODE = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: 'James Carter',
+  jobTitle: 'Founder, Be Legendary',
+  url: `${SITE_URL}/about/james-carter/`,
+  worksFor: { '@id': ORG_ID },
+  sameAs: ['https://www.linkedin.com/in/jlcarter/', 'https://www.buildingteams.com/about/james-carter/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
+};
+
+export const WEBSITE_NODE = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
+  url: `${SITE_URL}/`,
+  name: 'Be Legendary',
+  publisher: { '@id': ORG_ID },
+};
+
