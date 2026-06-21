@@ -60,6 +60,23 @@ the carried break point. Revenue/headcount/rate/hours keep their defaults (the
 assessment never collects them). With no params, the Calculator shows no banner.
 Keep the param names (`from`, `break`, `waste`) and discipline keys stable.
 
+## Analytics (GA4)
+Set `PUBLIC_GA_ID` (your `G-XXXXXXXXXX` Measurement ID) in `.env` (see
+`.env.example`) — it's read at **build time**, so rebuild after setting it.
+Analytics load only when it's set, so the site ships clean until then.
+
+Conversion events fired:
+| Event | When |
+|---|---|
+| `book_calibration_call` | Any click on the single booking CTA, site-wide (event delegation) |
+| `generate_lead` | Break-Point Report form submit (includes the computed `break_point`) |
+| `newsletter_signup` | Newsletter form submit |
+| `assessment_completed` | The assessment result is revealed (includes `break_point`) |
+
+In the GA4 UI, mark `book_calibration_call` and `generate_lead` as **key events**
+to count them as conversions. Wiring lives in `src/components/Analytics.astro`
+(loader + CTA delegation) and the form components.
+
 ## Integrations (HubSpot — region `na2`, portal `20276071`)
 - Calibration Call scheduling: `https://meetings.hubspot.com/jcarter28`
 - Break-Point Report form: `8e01345a-ccef-43b8-8598-e3bb6d7397f1`

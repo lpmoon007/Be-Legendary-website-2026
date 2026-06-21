@@ -50,6 +50,9 @@ import { HUBSPOT } from '../lib/site';
       } catch (e) { /* swallow — still confirm to the user */ }
       form.style.display = 'none';
       sent.style.display = 'block';
+      if (typeof (window as any).gtag === 'function') {
+        (window as any).gtag('event', 'newsletter_signup', { method: 'hubspot' });
+      }
     });
   });
 </script>

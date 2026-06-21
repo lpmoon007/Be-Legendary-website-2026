@@ -188,6 +188,9 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     result.style.display = 'block';
     revealBtn.textContent = 'Updated below ↓';
     renderResult();
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'assessment_completed', { break_point: comps[computeBreakIndex()].name });
+    }
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
@@ -223,5 +226,8 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     } catch (e) { /* swallow — still confirm to the user */ }
     form.style.display = 'none';
     sent.style.display = 'block';
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'generate_lead', { form: 'break_point_report', break_point: breakpoint });
+    }
   });
 </script>
