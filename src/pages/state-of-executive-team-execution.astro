@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'The State of Executive Team Execution: 2026 Research Report | Be Legendary';
+const description = 'What the research actually says about why executive teams fail to execute. A synthesis of 20+ studies (McKinsey, LSA Global, Gallup, HBR, Bridges) organized by the five disciplines of execution — with the key statistics on misalignment, decision waste, the execution gap, and accountability.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'State of Executive Team Execution', item: 'https://www.belegendary.org/state-of-executive-team-execution/' },
+  ] },
+  { '@type': 'Report', '@id': 'https://www.belegendary.org/state-of-executive-team-execution/#report', headline: 'The State of Executive Team Execution: 2026 Research Report', datePublished: '2026-06-16', dateModified: '2026-06-16', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary', logo: { '@type': 'ImageObject', url: 'https://www.belegendary.org/assets/logo.png' } }, about: 'A synthesis of published research on executive-team execution, organized by the five disciplines of the Flag Model.', description: 'Research shows roughly two-thirds of well-formulated strategies fail in execution rather than design. This report synthesizes 20+ studies on why leadership teams stall — across alignment, decision-making, focus, accountability and learning.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What percentage of strategies fail in execution?', acceptedAnswer: { '@type': 'Answer', text: 'Research consistently finds that roughly 67% of well-formulated strategies fail in execution rather than in design, and a Bridges Business Consultancy study found only about 10% of organizations achieve two-thirds or more of their strategic objectives. The gap is not the plan — it is the team\'s ability to execute it.' } },
+    { '@type': 'Question', name: 'How much does executive misalignment cost?', acceptedAnswer: { '@type': 'Answer', text: 'An LSA Global study of 410 companies found highly aligned organizations grow revenue 58% faster and are 72% more profitable than misaligned peers. Misalignment is estimated to cost companies several percent of annual revenue, and cross-functional misalignment alone is estimated as a trillion-dollar problem across U.S. business.' } },
+    { '@type': 'Question', name: 'How much time do executives waste on decisions?', acceptedAnswer: { '@type': 'Answer', text: 'McKinsey found that managers spend an average of 37% of their time making decisions, and roughly 60% of that time is wasted — equating to about 530,000 days of lost management time, or around $250 million in labor costs, for a typical Fortune 500 company.' } },
+    { '@type': 'Question', name: 'Why do leadership teams fail to execute?', acceptedAnswer: { '@type': 'Answer', text: 'The research points to five recurring failure points, not one: lost alignment (the Flag), the inability to make decisions stick (the Decision), starting more than the team finishes (the Rhythm), tolerated underperformance (the Standard), and not learning from misses (the Learning). Teams rarely fail at all five at once — they fail at one first.' } },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.research} ogType="article" ogTitle="The State of Executive Team Execution — 2026 Research Report" ogDescription="A synthesis of 20+ studies on why leadership teams fail to execute, organized by the five disciplines. The statistics, with sources." schema={schema}>
+  <Header maxWidth={1000} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
+
+  <article>
+  <header style="position:relative;max-width:1000px;margin:0 auto;padding:78px 32px 36px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">State of Executive Team Execution</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Research report &middot; 2026 edition</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,62px);line-height:1.02;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">The State of Executive Team Execution</h1>
+    <p style="margin-top:24px;font-size:clamp(17px,2vw,21px);line-height:1.55;max-width:62ch;color:rgba(244,240,231,0.82);">Most leadership teams don't fail for lack of strategy. They fail in the execution of it. This report synthesizes more than twenty published studies on <em>why</em> &mdash; organized by the five disciplines that determine whether a strategy ships or stalls. The statistics, with their sources, in one place.</p>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">Published June 2026 &middot; A synthesis of third-party research, read through the Flag Model™. Free to cite with attribution.</p>
+  </header>
+
+  <section style="max-width:1000px;margin:0 auto;padding:20px 32px 8px;">
+    <div style="background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:16px;padding:30px 34px;">
+      <h2 style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Key findings, at a glance</h2>
+      <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:12px;font-size:16.5px;line-height:1.55;color:rgba(244,240,231,0.88);">
+        <li><strong style="color:#FBF8F1;">~67% of well-formulated strategies fail in execution</strong>, not design &mdash; and only ~10% of organizations achieve two-thirds of their strategic objectives.</li>
+        <li><strong style="color:#FBF8F1;">Highly aligned companies grow revenue 58% faster and are 72% more profitable</strong> than misaligned peers (LSA Global, 410 companies).</li>
+        <li><strong style="color:#FBF8F1;">Managers spend 37% of their time on decisions, ~60% of it wasted</strong> &mdash; ~530,000 lost days and ~$250M in labor at a typical Fortune 500 (McKinsey).</li>
+        <li><strong style="color:#FBF8F1;">95% of employees don't understand their company's strategy</strong> (Kaplan &amp; Norton) &mdash; so effort scatters onto work that was never the priority.</li>
+        <li><strong style="color:#FBF8F1;">82% of managers say they can't hold others accountable</strong>, yet 91% rank it a top leadership need (Workplace Accountability Study).</li>
+      </ul>
+    </div>
+  </section>
+
+  <nav aria-label="Contents" style="max-width:1000px;margin:0 auto;padding:30px 32px 8px;">
+    <div style="display:flex;flex-wrap:wrap;gap:9px;">
+      <a href="#flag" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">1 &middot; Alignment</a>
+      <a href="#decision" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">2 &middot; Decisions</a>
+      <a href="#rhythm" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">3 &middot; Focus &amp; execution</a>
+      <a href="#standard" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">4 &middot; Accountability</a>
+      <a href="#learning" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">5 &middot; Learning</a>
+      <a href="#method" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Method &amp; sources</a>
+    </div>
+  </nav>
+
+  <section id="flag" style="max-width:1000px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:88px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;">Discipline 1 &middot; The Flag</p>
+    <h2 style="margin-top:10px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.6vw,40px);line-height:1.08;color:#FBF8F1;">Alignment is a P&amp;L lever, not a soft one.</h2>
+    <p style="margin-top:18px;font-size:17.5px;line-height:1.66;color:rgba(244,240,231,0.82);max-width:68ch;">The most-cited finding in the literature is also the most counterintuitive to skeptics: alignment shows up directly in the financials. When a team can't name the same two or three priorities, effort scatters &mdash; and the cost compounds quietly, because it never appears as a P&amp;L line item.</p>
+    <div class="bl-grid-collapse" style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">58% / 72%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">Aligned companies grow revenue 58% faster and are 72% more profitable than misaligned peers.</p>
+        <a href="https://lsaglobal.com/insights/proprietary-methodology/lsa-3x-organizational-alignment-model/" target="_blank" rel="noopener nofollow" style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;text-decoration:underline;">LSA Global &#8599;</a>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">95%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">of employees don't understand their company's strategy &mdash; the alignment gap, made personal.</p>
+        <a href="https://fundingforgood.org/statistics-about-strategic-planning/" target="_blank" rel="noopener nofollow" style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;text-decoration:underline;">Kaplan &amp; Norton &#8599;</a>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">$1T+</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">estimated annual cost of cross-functional misalignment across U.S. business &mdash; a hidden P&amp;L leak.</p>
+        <span style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;">Forrester / industry est.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="decision" style="max-width:1000px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:88px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;">Discipline 2 &middot; The Decision</p>
+    <h2 style="margin-top:10px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.6vw,40px);line-height:1.08;color:#FBF8F1;">Most decision time is wasted &mdash; and speed doesn't cost quality.</h2>
+    <p style="margin-top:18px;font-size:17.5px;line-height:1.66;color:rgba(244,240,231,0.82);max-width:68ch;">The data overturns the old excuse that careful teams must decide slowly. The best decision-makers are both faster <em>and</em> better; the rest burn over half their decision time re-litigating calls that should already be closed.</p>
+    <div class="bl-grid-collapse" style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">37% &middot; 60%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">Managers spend 37% of their time deciding; ~60% of it is wasted &mdash; ~530K days, ~$250M at a Fortune 500.</p>
+        <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener nofollow" style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;text-decoration:underline;">McKinsey &#8599;</a>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">20%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">of leaders say their organizations are good at making decisions &mdash; only the top fifth.</p>
+        <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener nofollow" style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;text-decoration:underline;">McKinsey &#8599;</a>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">70%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">information rule: Amazon's "Day 1" culture commits at ~70% of the data you wish you had.</p>
+        <span style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;">Bezos shareholder letter</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="rhythm" style="max-width:1000px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:88px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;">Discipline 3 &middot; The Rhythm</p>
+    <h2 style="margin-top:10px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.6vw,40px);line-height:1.08;color:#FBF8F1;">The execution gap is the most-studied failure in management.</h2>
+    <p style="margin-top:18px;font-size:17.5px;line-height:1.66;color:rgba(244,240,231,0.82);max-width:68ch;">The plan is rarely the problem. Teams start more than they finish, attention fragments, and strategies die in the doing. The teams that master focus don't do more &mdash; they finish more.</p>
+    <div class="bl-grid-collapse" style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">67%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">of well-formulated strategies fail in execution, not design.</p>
+        <a href="https://hbr.org/2017/11/executives-fail-to-execute-strategy-because-theyre-too-internally-focused" target="_blank" rel="noopener nofollow" style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;text-decoration:underline;">Harvard Business Review &#8599;</a>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">10%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">of organizations achieve two-thirds or more of their strategic objectives.</p>
+        <span style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;">Bridges Business Consultancy</span>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">~40%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">productivity lost to context-switching when teams juggle too many priorities at once.</p>
+        <span style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;">APA / cognitive research</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="standard" style="max-width:1000px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:88px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;">Discipline 4 &middot; The Standard</p>
+    <h2 style="margin-top:10px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.6vw,40px);line-height:1.08;color:#FBF8F1;">Leaders know accountability matters. Most can't enforce it.</h2>
+    <p style="margin-top:18px;font-size:17.5px;line-height:1.66;color:rgba(244,240,231,0.82);max-width:68ch;">The gap between valuing accountability and practicing it is the widest in the data &mdash; and it carries a measurable cost in engagement, productivity, and profit.</p>
+    <div class="bl-grid-collapse" style="margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">82%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">of managers say they have no ability to hold others accountable &mdash; yet 91% rank it a top need.</p>
+        <span style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;">Workplace Accountability Study</span>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">18% &middot; 15%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">lower productivity and lower profitability, on average, in teams with low engagement.</p>
+        <a href="https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx" target="_blank" rel="noopener nofollow" style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;text-decoration:underline;">Gallup &#8599;</a>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">12%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">higher stock price over three years for companies with strong accountability cultures.</p>
+        <span style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;">Harvard performance study</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="learning" style="max-width:1000px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:88px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;">Discipline 5 &middot; The Learning</p>
+    <h2 style="margin-top:10px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.6vw,40px);line-height:1.08;color:#FBF8F1;">The teams that examine misses outrun the ones that repeat them.</h2>
+    <p style="margin-top:18px;font-size:17.5px;line-height:1.66;color:rgba(244,240,231,0.82);max-width:68ch;">Less heavily quantified than the others, but consistent: organizations that institutionalize learning &mdash; reallocating resources and changing the playbook after a miss &mdash; outperform those that let mistakes recur under new names.</p>
+    <div class="bl-grid-collapse" style="margin-top:26px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">Outperform</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">Companies that rapidly reallocated resources during volatile periods &mdash; a proxy for organizational learning &mdash; outperformed slower-adapting peers.</p>
+        <a href="https://hbr.org/2017/11/executives-fail-to-execute-strategy-because-theyre-too-internally-focused" target="_blank" rel="noopener nofollow" style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;text-decoration:underline;">Harvard Business Review &#8599;</a>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;line-height:1;">11%</p>
+        <p style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">of every dollar squandered, on average, due to poor project and execution practices &mdash; much of it repeated, preventable error.</p>
+        <span style="margin-top:12px;display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#8A8578;">PMI Pulse of the Profession</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="method" style="max-width:1000px;margin:0 auto;padding:48px 32px 8px;scroll-margin-top:88px;">
+    <div style="background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:34px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Method &amp; a note on honesty</h2>
+      <p style="margin-top:16px;font-size:16px;line-height:1.66;color:rgba(244,240,231,0.8);max-width:74ch;">This 2026 edition is a <strong>synthesis of published, third-party research</strong> &mdash; more than twenty studies from McKinsey, LSA Global, Gallup, Harvard Business Review, Bridges Business Consultancy, the PMI and others &mdash; organized through one lens: the five disciplines of the Flag Model. We've used the figures as the original authors reported them and linked to sources wherever they're publicly available; a few industry estimates (e.g. the trillion-dollar misalignment figure) are directional and labeled as such.</p>
+      <p style="margin-top:14px;font-size:16px;line-height:1.66;color:rgba(244,240,231,0.8);max-width:74ch;">We're naming the obvious: this is others' data, not ours. That's deliberate &mdash; it's more trustworthy than numbers we'd grade ourselves. <strong style="color:#F4F0E7;">Future editions will add anonymized benchmarks from FlagScore™</strong>, our own measure of executive-team health, so the report grows from a synthesis into a primary source over time.</p>
+    </div>
+  </section>
+
+  <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:96px 32px;text-align:center;position:relative;margin-top:40px;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.2),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:720px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,4.4vw,48px);line-height:1.05;letter-spacing:-0.02em;color:#FBF8F1;">The research describes the room. You're standing in it.</h2>
+      <p style="margin-top:20px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:50ch;margin-left:auto;margin-right:auto;">These numbers point at five disciplines. A Calibration Call tells you which one your team is most likely to lose first &mdash; in 15 minutes, whether or not we work together.</p>
+      <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:17px 34px;border-radius:12px;font-weight:700;font-size:17px;box-shadow:0 16px 44px -14px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:19px;">&rarr;</span></a>
+        <a href={SLUGS.costCalculator} style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(244,240,231,0.26);color:#F4F0E7;text-decoration:none;padding:17px 28px;border-radius:12px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.26)'">Estimate your own cost &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1000px;margin:0 auto;padding:56px 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;">The Flag Model</span>
+        <span style="display:block;margin-top:8px;font-size:14px;color:rgba(244,240,231,0.66);line-height:1.5;">The framework behind the five disciplines.</span>
+      </a>
+      <a href={SLUGS.costCalculator} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;">Cost calculator</span>
+        <span style="display:block;margin-top:8px;font-size:14px;color:rgba(244,240,231,0.66);line-height:1.5;">Apply these ranges to your own numbers.</span>
+      </a>
+      <a href={SLUGS.breakPointAssessment} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;">Break-Point Self-Assessment</span>
+        <span style="display:block;margin-top:8px;font-size:14px;color:rgba(244,240,231,0.66);line-height:1.5;">Find your team's first break point.</span>
+      </a>
+    </div>
+  </section>
+  </article>
+
+  <Footer variant="slim" maxWidth={1000} note="© 2026 Be Legendary · Free to cite with attribution to belegendary.org." />
+</BaseLayout>
