@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'The Flag Model: The Five Disciplines That Keep an Executive Team Executing | Be Legendary';
+const description = "The Flag Model is a leadership-execution framework: a Flag (your 2-3 priorities) held upright by four disciplines — the Decision, the Rhythm, the Standard and the Learning — under one principle, Truth Over Comfort. Here's how each one works, how it breaks, and how it's rebuilt.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'The Flag Model', item: 'https://www.belegendary.org/flag-model/' },
+  ] },
+  { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/flag-model/#term', name: 'The Flag Model', description: 'A leadership-execution framework with five components: a center (the Flag — the 2 to 3 operational priorities everything serves) and four disciplines that hold it upright — the Decision, the Rhythm, the Standard and the Learning — all governed by one principle, Truth Over Comfort.', inDefinedTermSet: 'Be Legendary' },
+  { '@type': 'Article', headline: 'The Flag Model: the five disciplines that keep an executive team executing', datePublished: '2026-01-15', dateModified: '2026-06-16', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/flag-model/', about: { '@id': 'https://www.belegendary.org/flag-model/#term' } },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is the Flag Model?', acceptedAnswer: { '@type': 'Answer', text: 'The Flag Model is a leadership-execution framework. At its center is the Flag — the 2 to 3 priorities everything serves. Four disciplines hold it upright: the Decision, the Rhythm, the Standard and the Learning. The governing principle is Truth Over Comfort. Remove one discipline and the flag tilts; remove two and it falls.' } },
+    { '@type': 'Question', name: 'What are the four disciplines of the Flag Model?', acceptedAnswer: { '@type': 'Answer', text: 'The Decision (the team can commit and a call sticks), the Rhythm (work gets completed, not just started), the Standard (the team holds each other to the bar), and the Learning (the team examines what went wrong and corrects). Each is lost in a characteristic way: the Decision to chaos, the Rhythm to sprawl, the Standard to avoidance, the Learning to stagnation.' } },
+    { '@type': 'Question', name: 'What is FlagScore?', acceptedAnswer: { '@type': 'Answer', text: "FlagScore is the measure of an executive team's vitals across the five components of the Flag Model. It turns 'we feel stuck' into a composite read you can track quarter over quarter, so progress is measured rather than asserted." } },
+    { '@type': 'Question', name: 'How is the Flag Model different from EOS or OKRs?', acceptedAnswer: { '@type': 'Answer', text: 'EOS and OKRs are frameworks you run; they assume a team that can already commit, complete, and hold each other accountable. The Flag Model rebuilds those underlying disciplines. It is the layer beneath the framework, not another framework on top.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.flagModel}
+  ogType="article"
+  ogTitle="The Flag Model — the five disciplines that keep a team executing"
+  ogDescription="A flag held upright by four cables. Cut one and it tilts; cut two and it falls. The complete framework, explained."
+  schema={schema}
+>
+  <Header maxWidth={1140} links={[{ label: 'Home', href: '/' }, { label: 'Anatomy', href: '#anatomy' }, { label: 'The four disciplines', href: '#disciplines' }, { label: 'FlagScore', href: '#measure' }]} />
+
+  <!-- HERO / DEFINITION (answer-first) -->
+  <article>
+  <header style="position:relative;max-width:1140px;margin:0 auto;padding:92px 32px 72px;">
+    <div style="position:absolute;top:-100px;right:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(192,74,38,0.18),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">The Flag Model</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(40px,6.2vw,80px);line-height:1.0;letter-spacing:-0.025em;max-width:18ch;color:#FBF8F1;">The Flag Model™</h1>
+    <p style="margin-top:30px;font-size:clamp(19px,2.2vw,25px);line-height:1.5;max-width:62ch;color:rgba(244,240,231,0.86);">
+      <strong style="color:#FBF8F1;">The Flag Model is a leadership-execution framework.</strong> At its center is the <em style="font-style:italic;color:#E0744A;">Flag</em> &mdash; the two or three priorities everything serves. Four disciplines hold it upright: the <strong style="color:#F4F0E7;">Decision</strong>, the <strong style="color:#F4F0E7;">Rhythm</strong>, the <strong style="color:#F4F0E7;">Standard</strong> and the <strong style="color:#F4F0E7;">Learning</strong>. The governing principle underneath all four is <em style="font-style:italic;color:#E0744A;">Truth Over Comfort</em>.
+    </p>
+    <p style="margin-top:22px;font-size:18px;line-height:1.6;max-width:60ch;color:rgba(244,240,231,0.72);">
+      Remove one discipline and the flag tilts. Remove two and it falls. Most stalled executive teams don't fail everywhere at once &mdash; they fail in one specific discipline first. The Flag Model exists to find that one, and rebuild it.
+    </p>
+  </header>
+
+  <!-- ANATOMY DIAGRAM -->
+  <section id="anatomy" style="background:#F4F0E7;color:#1B1810;padding:90px 32px;">
+    <div class="bl-grid-collapse" style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+      <div style="background:radial-gradient(circle at 50% 36%,#FBF8F1,#EFEADD);border:1px solid rgba(27,24,16,0.10);border-radius:22px;padding:24px;">
+        <svg viewBox="0 0 400 380" width="100%" style="display:block;max-height:380px;margin:0 auto;" role="img" aria-label="The Flag Model diagram: a flag on a pole held upright by four labelled cables — the Decision, the Rhythm, the Standard and the Learning.">
+          <line x1="28" y1="312" x2="372" y2="312" stroke="rgba(27,24,16,0.16)" stroke-width="1.5"></line>
+          <!-- cables -->
+          <line x1="200" y1="120" x2="48" y2="300" stroke="rgba(27,24,16,0.30)" stroke-width="1.6"></line>
+          <line x1="200" y1="120" x2="146" y2="322" stroke="rgba(27,24,16,0.30)" stroke-width="1.6"></line>
+          <line x1="200" y1="120" x2="254" y2="322" stroke="rgba(27,24,16,0.30)" stroke-width="1.6"></line>
+          <line x1="200" y1="120" x2="352" y2="300" stroke="rgba(27,24,16,0.30)" stroke-width="1.6"></line>
+          <!-- pole + flag -->
+          <line x1="200" y1="312" x2="200" y2="84" stroke="#1B1810" stroke-width="4" stroke-linecap="round"></line>
+          <path d="M200 88 L274 108 L200 128 Z" fill="#C04A26"></path>
+          <circle cx="200" cy="312" r="4.5" fill="#1B1810"></circle>
+          <!-- nodes -->
+          <g><circle cx="48" cy="300" r="7" fill="#FBF8F1" stroke="#C04A26" stroke-width="2"></circle><text x="48" y="324" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="12.5" font-weight="700" fill="#1B1810">Decision</text></g>
+          <g><circle cx="146" cy="322" r="7" fill="#FBF8F1" stroke="#C04A26" stroke-width="2"></circle><text x="146" y="346" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="12.5" font-weight="700" fill="#1B1810">Rhythm</text></g>
+          <g><circle cx="254" cy="322" r="7" fill="#FBF8F1" stroke="#C04A26" stroke-width="2"></circle><text x="254" y="346" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="12.5" font-weight="700" fill="#1B1810">Standard</text></g>
+          <g><circle cx="352" cy="300" r="7" fill="#FBF8F1" stroke="#C04A26" stroke-width="2"></circle><text x="352" y="324" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="12.5" font-weight="700" fill="#1B1810">Learning</text></g>
+          <text x="216" y="104" font-family="Newsreader,serif" font-style="italic" font-size="15" fill="#9E3A1C">the Flag</text>
+        </svg>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">The anatomy</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.6vw,42px);line-height:1.08;letter-spacing:-0.015em;">One center. Four cables. One principle.</h2>
+        <p style="margin-top:22px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:48ch;">The flag is what the team is for. The four cables are the disciplines that keep it standing. They're <strong style="color:#1B1810;">interdependent</strong>: the Decision feeds the Rhythm feeds the Standard feeds the Learning &mdash; and back into the Decision. Break the loop anywhere and it stops closing.</p>
+        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:48ch;">That's why buying a single fix never works. You can't tighten a cable that isn't the one that snapped.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FOUR DISCIPLINES -->
+  <section id="disciplines" style="background:#15130E;color:#F4F0E7;padding:96px 32px;">
+    <div style="max-width:1140px;margin:0 auto;">
+      <div style="max-width:62ch;margin-bottom:48px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The four disciplines</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-0.02em;">Each one is lost in a characteristic way.</h2>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <!-- Decision -->
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.5fr 1fr 1fr;gap:28px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:34px;align-items:start;">
+          <div>
+            <span style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;">01</span>
+            <h3 style="margin-top:8px;font-family:'Newsreader',serif;font-weight:500;font-size:27px;color:#FBF8F1;">The Decision</h3>
+            <p style="margin-top:8px;font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;">Lost to chaos</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">When it holds</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);">The team can commit. A call gets made, it sticks, and it doesn't route back to the CEO for re-litigation a week later.</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">How we rebuild it</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);">The <strong style="color:#F4F0E7;">4Ds</strong> &mdash; every decision gets an Owner, the Data, a Deadline, and the obligation to Defend it. A decision sticks without your sign-off.</p>
+          </div>
+        </div>
+        <!-- Rhythm -->
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.5fr 1fr 1fr;gap:28px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:34px;align-items:start;">
+          <div>
+            <span style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;">02</span>
+            <h3 style="margin-top:8px;font-family:'Newsreader',serif;font-weight:500;font-size:27px;color:#FBF8F1;">The Rhythm</h3>
+            <p style="margin-top:8px;font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;">Lost to sprawl</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">When it holds</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);">Work gets completed, not just started. The team finishes what it begins instead of carrying a dozen half-done initiatives into the next quarter.</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">How we rebuild it</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);"><strong style="color:#F4F0E7;">WIP limits</strong> &mdash; one in, one out. The default answer to a new priority becomes &ldquo;not yet,&rdquo; and the work in flight actually ships.</p>
+          </div>
+        </div>
+        <!-- Standard -->
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.5fr 1fr 1fr;gap:28px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:34px;align-items:start;">
+          <div>
+            <span style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;">03</span>
+            <h3 style="margin-top:8px;font-family:'Newsreader',serif;font-weight:500;font-size:27px;color:#FBF8F1;">The Standard</h3>
+            <p style="margin-top:8px;font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;">Lost to avoidance</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">When it holds</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);">The team holds each other to the bar. Mediocrity gets named in the room, not tolerated in silence and discussed in the hallway afterward.</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">How we rebuild it</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);">The <strong style="color:#F4F0E7;">Name-It Protocol</strong> makes saying the hard thing a routine habit rather than a confrontation people brace for.</p>
+          </div>
+        </div>
+        <!-- Learning -->
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.5fr 1fr 1fr;gap:28px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:34px;align-items:start;">
+          <div>
+            <span style="font-family:'Newsreader',serif;font-size:34px;color:#E0744A;">04</span>
+            <h3 style="margin-top:8px;font-family:'Newsreader',serif;font-weight:500;font-size:27px;color:#FBF8F1;">The Learning</h3>
+            <p style="margin-top:8px;font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;">Lost to stagnation</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">When it holds</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);">The team examines what went wrong and corrects. Mistakes become inputs, not embarrassments to bury &mdash; so the same one doesn't return next quarter.</p>
+          </div>
+          <div>
+            <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">How we rebuild it</p>
+            <p style="font-size:16px;line-height:1.58;color:rgba(244,240,231,0.82);"><strong style="color:#F4F0E7;">After-Action Reviews</strong> turn every miss into a correction the team actually keeps, and feeds it back into the next Decision.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- the principle -->
+      <div style="margin-top:28px;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:40px;display:flex;gap:28px;align-items:center;flex-wrap:wrap;">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The governing principle</p>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:32px;color:#FBF8F1;line-height:1.1;">Truth Over Comfort</h3>
+        </div>
+        <p style="flex:1.4;min-width:300px;font-size:17px;line-height:1.6;color:rgba(244,240,231,0.82);">None of the four disciplines survives without it. Comfort is always available and always reasonable-sounding &mdash; which is exactly why teams drift. Truth over comfort is the price of entry for every discipline, <strong style="color:#F4F0E7;">paid daily, or not at all.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLAGSCORE / MEASURE -->
+  <section id="measure" style="background:#F4F0E7;color:#1B1810;padding:96px 32px;">
+    <div class="bl-grid-collapse" style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+      <div>
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How it's measured</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.06;letter-spacing:-0.015em;">FlagScore™: your team's vitals.</h2>
+        <p style="margin-top:22px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;"><strong style="color:#1B1810;">FlagScore</strong> turns &ldquo;we feel stuck&rdquo; into a composite read across all five components of the model. It's how a Performance Partnership stays honest: we track FlagScore movement quarter over quarter, so progress is <em>measured, not asserted.</em></p>
+        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;">One $3B client's leadership team improved its daily mindset scores <strong style="color:#C04A26;">209% in thirty days.</strong> The point isn't the number. The point is that there was a number at all.</p>
+      </div>
+      <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.10);border-radius:20px;padding:36px;">
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Decision</span><span style="color:#9E3A1C;">Rebuilding</span></div>
+            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:48%;background:#C04A26;border-radius:99px;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Rhythm</span><span style="color:#6B675E;">Holding</span></div>
+            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:71%;background:#1B1810;border-radius:99px;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Standard</span><span style="color:#9E3A1C;">At risk</span></div>
+            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:34%;background:#C04A26;border-radius:99px;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Learning</span><span style="color:#6B675E;">Holding</span></div>
+            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:66%;background:#1B1810;border-radius:99px;"></div></div>
+          </div>
+        </div>
+        <p style="margin-top:20px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#A39C8C;">Illustrative FlagScore readout &mdash; not live data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (visible, not collapsed) -->
+  <section style="background:#15130E;color:#F4F0E7;padding:96px 32px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Questions about the model</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,4vw,46px);line-height:1.05;letter-spacing:-0.02em;margin-bottom:38px;">The Flag Model, answered.</h2>
+      <div style="display:flex;flex-direction:column;gap:26px;">
+        <div style="border-bottom:1px solid rgba(244,240,231,0.12);padding-bottom:26px;">
+          <h3 style="font-size:20px;font-weight:600;color:#FBF8F1;">How is the Flag Model different from EOS or OKRs?</h3>
+          <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.76);max-width:70ch;">EOS and OKRs are frameworks you run; they assume a team that can already commit, complete, and hold each other accountable. The Flag Model rebuilds those underlying disciplines. It's the layer <em>beneath</em> the framework &mdash; not another framework on top. Get the disciplines back and any operating system you choose finally sticks.</p>
+        </div>
+        <div style="border-bottom:1px solid rgba(244,240,231,0.12);padding-bottom:26px;">
+          <h3 style="font-size:20px;font-weight:600;color:#FBF8F1;">What is the Flag at the center?</h3>
+          <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.76);max-width:70ch;">The Flag is the two or three priorities everything serves &mdash; defined precisely enough that any leader can test a decision against it. When the Flag is vague, it gets &ldquo;shredded by exceptions&rdquo;: every team makes a reasonable case for its own priority and the center quietly disappears.</p>
+        </div>
+        <div style="border-bottom:1px solid rgba(244,240,231,0.12);padding-bottom:26px;">
+          <h3 style="font-size:20px;font-weight:600;color:#FBF8F1;">Can you fix more than one discipline at once?</h3>
+          <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.76);max-width:70ch;">We start with the one that broke first, because it's usually pulling the others down. Fix the snapped cable and the flag straightens enough to see what's actually next. Trying to tighten all four at once is how teams end up changing nothing.</p>
+        </div>
+        <div>
+          <h3 style="font-size:20px;font-weight:600;color:#FBF8F1;">How do I find out which discipline my team has lost?</h3>
+          <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.76);max-width:70ch;">Start with a <a href={CTA_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:underline;">Calibration Call</a> &mdash; 15 minutes, CEO only &mdash; or read <a href={SLUGS.whyNotExecuting} style="color:#E0744A;text-decoration:underline;">why executive teams stop executing</a> to recognize the pattern first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </article>
+
+  <!-- CTA -->
+  <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:760px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;">Which cable has your team lost?</h2>
+      <p style="margin-top:24px;font-size:19px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:50ch;margin-left:auto;margin-right:auto;">Find out in 15 minutes. CEO only. You leave with a concrete read on where your team stands &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:36px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 38px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:20px;">&rarr;</span></a>
+    </div>
+  </section>
+
+  <Footer variant="slim" maxWidth={1140} note="© 2026 Be Legendary. The Flag Model is a framework of Be Legendary." />
+</BaseLayout>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = "My Leadership Team Won't Make Decisions Without Me. Why? | Be Legendary";
+const description = "If every decision routes back to the CEO, it's rarely a people problem — it's a broken Decision discipline. Here's why your executives can't commit, and the 4Ds protocol that lets a call stick without your sign-off.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Field Notes', item: 'https://www.belegendary.org/field-notes/' },
+    { '@type': 'ListItem', position: 3, name: "My team won't decide without me", item: 'https://www.belegendary.org/leadership-team-wont-make-decisions-without-me/' },
+  ] },
+  { '@type': 'Article', headline: "My leadership team won't make decisions without me. Why?", datePublished: '2026-06-18', dateModified: '2026-06-18', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/leadership-team-wont-make-decisions-without-me/', description: "If every decision routes back to the CEO, it's rarely a people problem — it's a broken Decision discipline. Here's why your executives can't commit, and the 4Ds protocol that lets a call stick without your sign-off." },
+  { '@type': 'HowTo', name: 'How to make a decision stick: the 4Ds', description: "A four-gate protocol that rebuilds the Decision discipline so a leadership team's calls hold without routing back to the CEO.", step: [
+    { '@type': 'HowToStep', position: 1, name: 'Owner', text: "Assign one name accountable for the decision — not a committee. 'The team decided' means no one did." },
+    { '@type': 'HowToStep', position: 2, name: 'Data', text: "Name the inputs the decision rests on and decide what counts as enough. 'We need more data' is the most common way a reversible decision dies." },
+    { '@type': 'HowToStep', position: 3, name: 'Deadline', text: 'Set when the decision is made and when it will be revisited, so revisiting is scheduled rather than constant.' },
+    { '@type': 'HowToStep', position: 4, name: 'Defend', text: 'Everyone argues before the call and defends it in public after — even the dissenters. This is the gate most teams skip, and the one that makes a decision hold.' },
+  ] },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: "Why won't my leadership team make decisions without me?", acceptedAnswer: { '@type': 'Answer', text: "Usually because decisions on the team don't reliably stick, so routing them back to the CEO is the rational move rather than a sign of weak leaders. The underlying cause is a broken Decision discipline: no single owner, no agreed standard for how much certainty is enough to act, and no genuine commitment after the call. Rebuild those and decisions hold without the CEO's sign-off." } },
+    { '@type': 'Question', name: 'How do I get my executives to make decisions on their own?', acceptedAnswer: { '@type': 'Answer', text: "Give every decision a single owner, define what 'enough information' means so calls can't be endlessly deferred for more data, and require disagree-and-commit so decisions don't get relitigated in the hallway. A simple protocol — Owner, Data, Deadline, Defend (the 4Ds) — installs all three and lets a decision stick without escalating to you." } },
+    { '@type': 'Question', name: 'Is it normal for every decision to come back to the CEO?', acceptedAnswer: { '@type': 'Answer', text: "It's common, but it's a symptom, not a fact of leadership. When every consequential call routes back to the CEO, the Decision discipline on the team has broken down. It is fixable: the pattern almost always traces to missing ownership or missing commitment, both of which can be rebuilt." } },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.wontDecide} ogType="article" ogTitle="My leadership team won't make decisions without me. Why?" ogDescription="It's not that your leaders are passive. It's that decisions don't stick. Here's the fix." schema={schema}>
+  <Header maxWidth={880} links={[]} />
+
+  <article>
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.fieldNotes} style="color:inherit;text-decoration:none;">Field notes</a><span>/</span><span style="color:#D98A5E;">My team won't decide without me</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,56px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">My leadership team won't make decisions without me. Why?</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Because in a team where decisions don't reliably stick, routing every call back to you is the <em>rational</em> move &mdash; not a sign your leaders are weak. The Decision discipline has broken down: no clear owner, no agreed bar for &ldquo;enough,&rdquo; and no real commitment after the call. Rebuild those three things &mdash; with a protocol we call the 4Ds &mdash; and decisions start sticking without your sign-off.</p>
+    </div>
+  </header>
+
+  <div style="max-width:880px;margin:0 auto;padding:24px 32px 20px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">It's the quiet tell of a stalled leadership team: every decision of consequence ends up on your desk. You delegated the authority. You said the words &mdash; &ldquo;you own this.&rdquo; And yet the calls keep coming back to you to be made, un-made, or blessed one more time.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">Here's the reframe that matters: <strong style="color:#FBF8F1;">this is almost never a people problem, and almost always a discipline problem.</strong> Your leaders aren't weak or passive. They're operating in a system where decisions don't reliably stick &mdash; so routing it back to you is the rational move. Why own a call that might get reopened next week?</p><h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 20px;">The three reasons it routes back to you</h2><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">1. No real owner.</strong> &ldquo;The team decided&rdquo; means no one did. When accountability is shared, it evaporates, and the only unambiguous owner left is you.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">2. No agreed bar for &lsquo;enough.&rsquo;</strong> If the team never defined how much certainty is enough to act, every decision can be deferred for more data &mdash; and deferral always points upward.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">3. No commitment after the call.</strong> If people relitigate in the hallway after the meeting, decisions never truly close &mdash; so they drift back to the one person who can end the debate.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">McKinsey found managers spend about 37% of their time making decisions, and over half of that time is wasted &mdash; much of it on exactly this: calls that were never really made, being made again.</p>
+  </div>
+
+  <div style="max-width:880px;margin:24px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The fix: the 4Ds</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;">Before any meaningful decision closes, force it through four gates. <strong>Owner</strong> &mdash; one name, not a committee. <strong>Data</strong> &mdash; what we know and what counts as enough. <strong>Deadline</strong> &mdash; decided by when, revisited when. <strong>Defend</strong> &mdash; everyone argues before the call and defends it in public after. Skip a gate and the decision quietly reopens. Run all four and it holds &mdash; without you.</p>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See if the Decision is your team's first break point.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A Calibration Call is 15 minutes, CEO only. You'll leave knowing whether the Decision is the discipline keeping you in the bottleneck &mdash; whether or not we ever work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.whyNotExecuting} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Why isn't my executive team executing?</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The four ways execution breaks — and how to spot which one is yours.</span>
+      </a>
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Decision is one of four cables holding the flag upright.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+</BaseLayout>

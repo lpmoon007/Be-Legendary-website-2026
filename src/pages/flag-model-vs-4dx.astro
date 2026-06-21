@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Flag Model vs 4DX: Why Your Scoreboard Says Green When Results Say Red | Be Legendary';
+const description = "4DX gives your team powerful execution machinery — WIGs, lead measures, a scoreboard, a cadence of accountability. The Flag Model is the leadership layer underneath that makes the scoreboard tell the truth. Here's how they fit together.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Flag Model vs 4DX', item: 'https://www.belegendary.org/flag-model-vs-4dx/' },
+  ] },
+  { '@type': 'Article', headline: 'Flag Model vs 4DX: why your scoreboard says green when results say red', datePublished: '2026-01-15', dateModified: '2026-06-16', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/flag-model-vs-4dx/', description: "How the Flag Model's leadership disciplines complement the 4 Disciplines of Execution (4DX)." },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is the difference between the Flag Model and 4DX?', acceptedAnswer: { '@type': 'Answer', text: '4DX (The 4 Disciplines of Execution) is execution machinery: focus on a wildly important goal, act on lead measures, keep a compelling scoreboard, and create a cadence of accountability. It assumes the leadership team can already choose the right goal, decide quickly, and hold a real standard. The Flag Model builds those leadership disciplines. 4DX is the how-to of execution; the Flag Model is the leadership capacity that makes it stick.' } },
+    { '@type': 'Question', name: 'Can you use the Flag Model and 4DX together?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — they stack well. Install the Flag Model first so the team picks fewer, braver goals, decides with clear ownership, and enforces real standards. Then snap 4DX on top to operationalize focus, measurement, and weekly accountability. The Flag Model keeps 4DX from becoming accountability theater.' } },
+    { '@type': 'Question', name: 'Why does 4DX sometimes stop working?', acceptedAnswer: { '@type': 'Answer', text: "When the underlying leadership disciplines are weak, 4DX produces WIG meetings with soft trade-offs, scoreboards that reflect negotiated comfort instead of reality, and a cadence where misses roll forward without consequence. The machinery runs, but the leadership behavior it assumes isn't there. The Flag Model rebuilds that behavior." } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.vs4dx}
+  ogType="article"
+  ogTitle="Flag Model vs 4DX — the layer that makes the scoreboard tell the truth"
+  ogDescription="4DX is the execution machinery. The Flag Model is the leadership discipline underneath it. Run both."
+  schema={schema}
+>
+  <Header maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Flag Model vs 4DX</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Comparison</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">The Flag Model™ vs 4DX</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">4DX is some of the best <em>execution machinery</em> ever written: focus on a wildly important goal, act on lead measures, keep a compelling scoreboard, run a cadence of accountability. Choosing it was a sign of a serious operator. The Flag Model isn't a competitor &mdash; it's the <strong>leadership layer underneath</strong> that makes the machinery tell the truth: braver goal choices, decisions that stick, and a cadence with real consequences instead of theater.</p>
+    </div>
+  </header>
+
+  <!-- HERO-AFFIRM -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you brought 4DX into your company, you already did the hard, unglamorous thing most leaders avoid: you committed to execution as a discipline. That instinct is exactly right. The only thing 4DX can't supply is the leadership behavior it assumes you already have &mdash; and when that behavior is thin, even a beautiful scoreboard starts to lie.</p>
+  </div>
+
+  <!-- TABLE -->
+  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Where each one lives</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">What it governs</p>
+        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">4DX</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The mechanics of execution: the goal, the measures, the scoreboard, the weekly cadence.</p></div>
+        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns.</p></div>
+      </div>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">It assumes</p>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">That you can already pick the right goal, decide fast, and enforce a standard.</p></div>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Nothing &mdash; it builds those capacities, then hands the team to a system like 4DX.</p></div>
+      </div>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">When it's thin, you see</p>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">WIG meetings with soft trade-offs; green scoreboards; misses that roll forward.</p></div>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Fewer, braver bets; decisions with owners; a cadence where misses trigger action.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE GAP -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The honest failure mode of 4DX</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Run 4DX on a team whose leadership disciplines have drifted and you get a recognizable pattern: too many WIGs because no one will veto; lead measures that look causal but no one truly owns; a scoreboard that's green because the numbers were negotiated to comfort; and a weekly cadence that becomes <em>accountability theater</em> &mdash; everyone reports, nothing changes. None of that is a flaw in 4DX. It's the absence of the leadership behavior 4DX was built to sit on.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">The Flag Model rebuilds that behavior: the Flag forces a braver, smaller set of priorities; the Decision gives every call an owner and a deadline; the Standard puts teeth into the cadence; the Learning turns a missed week into a correction. Then your scoreboard starts telling you the truth.</p>
+  </div>
+
+  <!-- STACK -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Keep 4DX. Stack it.</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">You don't rip anything out. You install the Flag Model first as a minimum viable leadership OS, then snap 4DX on top:</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;color:#3A372F;">
+        <li><strong>The Flag</strong> &rarr; choose 1&ndash;2 real WIGs with the trade-offs and vetoes actually resolved.</li>
+        <li><strong>The Decision</strong> &rarr; give owners and deadlines so lead measures can change the moment evidence shifts.</li>
+        <li><strong>The Standard</strong> &rarr; make the 4DX cadence enforce a real bar, with consequences, not reminders.</li>
+        <li><strong>The Learning</strong> &rarr; quarterly, retire dead measures and refresh the WIGs as reality moves.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See which discipline is making your scoreboard lie.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes, CEO only. You'll leave knowing which leadership discipline to rebuild so your 4DX cadence finally bites &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.eosOkrs} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs EOS &amp; OKRs</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why the framework didn't change behavior.</span>
+      </a>
+      <a href={SLUGS.vsFiveDysfunctions} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs the Five Dysfunctions</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Team health vs. a repeatable operating system.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <Footer variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside 4DX." />
+</BaseLayout>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SLUGS } from '../lib/site';
+
+const title = 'Privacy Policy | Be Legendary';
+const description = 'How Be Legendary collects, uses, and protects the information you share — including email addresses submitted through our forms and assessment tools.';
+---
+<BaseLayout title={title} description={description} path={SLUGS.privacy}>
+  <Header maxWidth={820} links={[]} />
+
+  <article style="max-width:820px;margin:0 auto;padding:72px 32px 40px;">
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Privacy</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,52px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;">Privacy Policy</h1>
+    <p style="margin-top:16px;font-size:14px;color:rgba(244,240,231,0.55);">Last updated: June 19, 2026</p>
+
+    <div style="margin-top:36px;display:flex;flex-direction:column;gap:30px;font-size:16.5px;line-height:1.68;color:rgba(244,240,231,0.82);">
+      <section>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">Who we are</h2>
+        <p>Be Legendary ("we," "us") is an executive-team performance firm. This policy explains what information we collect through belegendary.org, how we use it, and the choices you have. Questions? Reach us through the booking link above.</p>
+      </section>
+      <section>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">What we collect</h2>
+        <p>We only collect information you choose to give us:</p>
+        <ul style="margin:12px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:9px;">
+          <li><strong style="color:#F4F0E7;">Email address</strong> &mdash; when you request a Break-Point Report, subscribe to our field notes, or book a call.</li>
+          <li><strong style="color:#F4F0E7;">Assessment responses</strong> &mdash; if you complete the Break-Point Self-Assessment and ask us to email your report, we receive your result (for example, your team's likely first break point) along with your email.</li>
+          <li><strong style="color:#F4F0E7;">Basic usage data</strong> &mdash; standard, largely anonymized analytics (pages visited, general location, device type) to understand what's useful.</li>
+        </ul>
+        <p style="margin-top:12px;">Our interactive tools run in your browser. Your inputs to the calculator and assessment stay on your device unless you explicitly submit your email to receive a report.</p>
+      </section>
+      <section>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">How we use it</h2>
+        <p>To send what you asked for, to share occasional field notes you've subscribed to, to respond to you, and to improve the site. We do not sell your information, and we don't share it except with the service providers below who help us operate.</p>
+      </section>
+      <section>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">Service providers</h2>
+        <p>We use HubSpot to manage forms, email, and scheduling. Information you submit through our forms is processed and stored by HubSpot on our behalf, under their security and privacy practices. We may also use standard web analytics.</p>
+      </section>
+      <section>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">Your choices</h2>
+        <p>Every email we send includes an unsubscribe link, and you can opt out at any time. You may request a copy of the information we hold about you, or ask us to delete it, by contacting us. We honor applicable privacy rights, including those under GDPR and CCPA where they apply to you.</p>
+      </section>
+      <section>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">Cookies</h2>
+        <p>We use a small number of cookies for analytics and to make the site work. You can control cookies through your browser settings; blocking some may affect how parts of the site function.</p>
+      </section>
+      <section>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">Changes</h2>
+        <p>We'll update this page when our practices change and revise the date above. This is a starting template and should be reviewed by legal counsel before it goes live.</p>
+      </section>
+    </div>
+  </article>
+
+  <Footer variant="slim" maxWidth={820} note="© 2026 Be Legendary." />
+</BaseLayout>

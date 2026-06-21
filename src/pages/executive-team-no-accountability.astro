@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = "Nobody on My Executive Team Holds Anyone Accountable. Why? | Be Legendary";
+const description = "When a leadership team tolerates missed commitments in silence, it's rarely laziness — it's conflict avoidance, because candor feels like conflict. Here's why accountability disappears, and the protocol that makes naming a problem a habit instead of an attack.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Field Notes', item: 'https://www.belegendary.org/field-notes/' },
+    { '@type': 'ListItem', position: 3, name: 'No accountability on the team', item: 'https://www.belegendary.org/executive-team-no-accountability/' },
+  ] },
+  { '@type': 'Article', headline: 'Nobody on my executive team holds anyone accountable. Why?', datePublished: '2026-06-18', dateModified: '2026-06-18', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/executive-team-no-accountability/', description: "When a leadership team tolerates missed commitments in silence, it's rarely laziness — it's conflict avoidance, because candor feels like conflict. Here's why accountability disappears, and the protocol that makes naming a problem a habit instead of an attack." },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: "Why doesn't my leadership team hold each other accountable?", acceptedAnswer: { '@type': 'Answer', text: "Because on most teams candor feels like conflict, so people stay silent when a commitment is missed rather than risk an awkward confrontation. It's conflict avoidance, not laziness or dishonesty. The bar slips because the first tolerated miss sets the new standard. It's rebuilt by making the act of naming a problem a routine, shared habit instead of a personal attack." } },
+    { '@type': 'Question', name: 'How do I build accountability on my executive team?', acceptedAnswer: { '@type': 'Answer', text: 'Create a shared, low-drama norm for naming a missed commitment in the moment, so raising a problem is expected rather than aggressive. Stop being the only enforcer — when accountability only happens when the CEO is in the room, peers never learn to hold each other. Make candor a practiced habit and the standard starts holding on its own.' } },
+    { '@type': 'Question', name: 'Is a lack of accountability a people problem or a system problem?', acceptedAnswer: { '@type': 'Answer', text: 'Usually a system problem. The same individuals who avoid hard conversations on one team will hold a high bar on another, because the difference is the team’s norms around candor, not the people. When accountability is missing, the Standard discipline has broken down — and disciplines can be rebuilt.' } },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.noAccountability} ogType="article" ogTitle="Nobody on my executive team holds anyone accountable. Why?" ogDescription="It's not laziness — it's that candor feels like conflict. Here's how to rebuild the bar." schema={schema}>
+  <Header maxWidth={880} links={[]} />
+
+  <article>
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.fieldNotes} style="color:inherit;text-decoration:none;">Field notes</a><span>/</span><span style="color:#D98A5E;">No accountability on the team</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,56px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Nobody on my executive team holds anyone accountable. Why?</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Because on most teams candor feels like conflict, so people avoid it &mdash; a missed commitment passes without comment to keep the peace, and the bar slips a little every time. This is the Standard discipline, and the silence isn't a character flaw in your people; it's conflict avoidance, which is far more fixable. It's rebuilt by making &ldquo;naming the problem&rdquo; a routine, shared habit rather than a personal confrontation.</p>
+    </div>
+  </header>
+
+  <div style="max-width:880px;margin:0 auto;padding:24px 32px 20px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">You can feel it in the room. A commitment gets missed, and&hellip; nothing. No one names it. The meeting stays pleasant, everyone nods, and the real conversation happens afterward in ones and twos in the hallway. Accountability, on your team, has quietly become optional.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">The reframe most leaders miss: <strong style="color:#FBF8F1;">this isn't a character flaw in your people &mdash; it's that candor feels like conflict, so the team avoids it.</strong> Holding a peer to the standard feels like an attack, so no one does it, and the bar slips a little every time. The team isn't lazy or dishonest. It's conflict-avoidant, which looks almost identical from the outside and is far more fixable.</p><h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 20px;">Why accountability disappears</h2><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">Naming the miss feels personal.</strong> Without a shared way to raise a problem, every callout reads as a character judgment &mdash; so people stay silent to keep the peace.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">The CEO is the only enforcer.</strong> If accountability only happens when you're in the room, you've become the team's conscience &mdash; and peers never learn to hold each other.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">Tolerated once becomes tolerated always.</strong> The first unaddressed miss sets the bar. Everyone reads it, and the standard resets quietly downward.</p><p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">Gallup's research is blunt here: only a minority of employees strongly agree their team holds each other accountable. The default state of a team is avoidance &mdash; accountability is something you have to build on purpose.</p>
+  </div>
+
+  <div style="max-width:880px;margin:24px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The fix: make candor routine</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;">Give the team a shared, low-drama way to name a missed commitment in the moment &mdash; a norm where raising the problem is expected and unremarkable, not an act of aggression. When naming the miss becomes a habit the whole team practices &mdash; not a confrontation people brace for &mdash; accountability stops depending on you being in the room, and the standard holds on its own.</p>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See if the Standard is your team's first break point.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A Calibration Call is 15 minutes, CEO only. You'll leave knowing whether the Standard &mdash; the discipline of holding the bar &mdash; is where your team breaks first, whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.vsFiveDysfunctions} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs the Five Dysfunctions</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Team health vs. a repeatable operating system for accountability.</span>
+      </a>
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Standard is one of four cables holding the flag upright.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+</BaseLayout>

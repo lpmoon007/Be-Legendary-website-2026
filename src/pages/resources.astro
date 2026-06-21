@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Resources: Executive Team Tools, Framework Comparisons & Research | Be Legendary';
+const description = 'Free tools and straight answers for executive teams: the Cost of Dysfunction Calculator, the Flag Model framework, comparisons with EOS, OKRs, 4DX and the Five Dysfunctions, and research on what misalignment really costs.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+  ] },
+  { '@type': 'CollectionPage', '@id': 'https://www.belegendary.org/resources/#page', name: 'Resources', about: 'Tools, comparisons and research for executive teams', isPartOf: { '@type': 'Organization', name: 'Be Legendary' } },
+  { '@type': 'ItemList', name: 'Be Legendary resources', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Cost of Lost Disciplines Calculator', url: 'https://www.belegendary.org/cost-of-lost-disciplines-calculator/' },
+    { '@type': 'ListItem', position: 2, name: 'Break-Point Self-Assessment', url: 'https://www.belegendary.org/break-point-self-assessment/' },
+    { '@type': 'ListItem', position: 3, name: 'The Flag Model', url: 'https://www.belegendary.org/flag-model/' },
+    { '@type': 'ListItem', position: 4, name: 'Flag Model vs EOS and OKRs', url: 'https://www.belegendary.org/eos-okrs-didnt-change-behavior/' },
+    { '@type': 'ListItem', position: 5, name: 'Field Notes', url: 'https://www.belegendary.org/field-notes/' },
+    { '@type': 'ListItem', position: 6, name: 'The State of Executive Team Execution', url: 'https://www.belegendary.org/state-of-executive-team-execution/' },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.resources} ogTitle="Be Legendary — Resources for executive teams" ogDescription="Free tools, framework comparisons, and research on executive-team execution." schema={schema}>
+
+<div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+  <Header maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }, { label: 'James', href: SLUGS.about }]} />
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:1140px;margin:0 auto;padding:88px 32px 56px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Resources</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,70px);line-height:1.01;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">Tools to see what's actually happening on your team.</h1>
+    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:58ch;color:rgba(244,240,231,0.8);">Free, no email required. Estimate the cost, learn the framework, compare it to what you already run, and recognize the patterns &mdash; before you ever book a call.</p>
+  </header>
+
+  <!-- FEATURED TOOL -->
+  <section style="max-width:1140px;margin:0 auto;padding:0 32px 20px;">
+    <a href={SLUGS.costCalculator} style="text-decoration:none;display:block;background:linear-gradient(150deg,#C04A26,#7E2D13);border-radius:22px;padding:46px;color:#fff;position:relative;overflow:hidden;" onmouseover="this.querySelector('.arr').style.transform='translateX(6px)'" onmouseout="this.querySelector('.arr').style.transform='translateX(0)'">
+      <div style="position:absolute;top:-60px;right:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(255,255,255,0.12),transparent 65%);"></div>
+      <div class="bl-grid-collapse" style="position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;">
+        <div>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Featured tool &middot; interactive</span>
+          <h2 style="margin-top:14px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.06;">The Cost of Lost Disciplines Calculator</h2>
+          <p style="margin-top:14px;font-size:16.5px;line-height:1.55;color:rgba(255,255,255,0.92);max-width:46ch;">Put in five numbers and see what decision chaos and misalignment are costing you &mdash; grounded in McKinsey, LSA Global and Gallup research, not ours.</p>
+          <span class="arr" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;transition:transform .2s;">Open the calculator <span style="font-size:18px;">&rarr;</span></span>
+        </div>
+        <div style="background:rgba(0,0,0,0.18);border-radius:16px;padding:28px;text-align:center;">
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.75);">Research baseline</p>
+          <p style="font-family:'Newsreader',serif;font-size:clamp(36px,5vw,52px);line-height:1.05;margin-top:8px;">2.5&ndash;4%</p>
+          <p style="font-size:14px;color:rgba(255,255,255,0.85);margin-top:6px;">of revenue lost to decision chaos &amp; misalignment</p>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- SECOND TOOL: ASSESSMENT -->
+  <section style="max-width:1140px;margin:0 auto;padding:18px 32px 8px;">
+    <a href={SLUGS.breakPointAssessment} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px 38px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+      <div style="flex:1;min-width:280px;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Free tool &middot; 4 minutes</span>
+        <p style="margin-top:12px;font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;color:#FBF8F1;">Break-Point Self-Assessment</p>
+        <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:54ch;">Ten honest questions reveal which of the five disciplines your team is most likely to lose first. Instant on-screen read.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Take the assessment &rarr;</span>
+    </a>
+  </section>
+
+  <!-- THIRD TOOL: RESEARCH REPORT -->
+  <section style="max-width:1140px;margin:0 auto;padding:18px 32px 8px;">
+    <a href={SLUGS.research} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px 38px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+      <div style="flex:1;min-width:280px;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Research report &middot; 2026</span>
+        <p style="margin-top:12px;font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;color:#FBF8F1;">The State of Executive Team Execution</p>
+        <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:54ch;">20+ studies on why leadership teams fail to execute, synthesized through the five disciplines &mdash; with every statistic sourced. Free to cite.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Read the report &rarr;</span>
+    </a>
+  </section>
+
+  <!-- RESEARCH REPORT -->
+  <section style="max-width:1140px;margin:0 auto;padding:18px 32px 8px;">
+    <a href={SLUGS.research} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px 38px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+      <div style="flex:1;min-width:280px;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Research report &middot; cite &amp; link</span>
+        <p style="margin-top:12px;font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;color:#FBF8F1;">The State of Executive Team Execution</p>
+        <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:56ch;">The data on why leadership teams fail to execute &mdash; McKinsey, HBR, LSA Global, Gallup &mdash; synthesized into one citable report, plus early FlagScore&trade; signals.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Read the report &rarr;</span>
+    </a>
+  </section>
+
+  <!-- LEARN THE FRAMEWORK -->
+  <section style="max-width:1140px;margin:0 auto;padding:36px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Learn the framework</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:32px;display:flex;flex-direction:column;min-height:190px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">The framework</span>
+        <span style="margin-top:12px;font-family:'Newsreader',serif;font-size:25px;line-height:1.1;color:#FBF8F1;">The Flag Model</span>
+        <span style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">A flag held upright by four cables: the Decision, the Rhythm, the Standard, the Learning. Cut one and it tilts.</span>
+        <span style="margin-top:auto;padding-top:16px;font-weight:700;font-size:14.5px;color:#E0744A;">Read it &rarr;</span>
+      </a>
+      <a href={SLUGS.fieldNotes} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:32px;display:flex;flex-direction:column;min-height:190px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Straight answers</span>
+        <span style="margin-top:12px;font-family:'Newsreader',serif;font-size:25px;line-height:1.1;color:#FBF8F1;">Field Notes</span>
+        <span style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">The questions CEOs actually ask when a team stops executing &mdash; answered, and mapped to the discipline that broke.</span>
+        <span style="margin-top:auto;padding-top:16px;font-weight:700;font-size:14.5px;color:#E0744A;">Browse the library &rarr;</span>
+      </a>
+    </div>
+    <a href={SLUGS.glossary} style="margin-top:14px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+      <div>
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Glossary</p>
+        <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">Every term, defined plainly &mdash; the Flag Model, FlagScore, the Calibration Call, ELFS.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Open &rarr;</span>
+    </a>
+  </section>
+
+  <!-- COMPARE -->
+  <section style="max-width:1140px;margin:0 auto;padding:44px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:8px;">Compare to what you already run</p>
+    <p style="font-size:16px;line-height:1.55;color:rgba(244,240,231,0.66);max-width:60ch;margin-bottom:26px;">The Flag Model isn't a replacement for your operating system &mdash; it's the layer underneath that makes it stick. Honest, side-by-side comparisons:</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+      <a href={SLUGS.eosOkrs} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div>
+          <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs EOS &amp; OKRs</p>
+          <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">Why the framework didn't change behavior.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.vs4dx} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div>
+          <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs 4DX</p>
+          <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">Execution machinery vs. the disciplines underneath it.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.vsFiveDysfunctions} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div>
+          <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs the Five Dysfunctions</p>
+          <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">Team health vs. a repeatable operating system.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.vsCoaching} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div>
+          <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs executive coaching</p>
+          <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">Individual development vs. team disciplines.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- BUYER'S GUIDES -->
+  <section style="max-width:1140px;margin:0 auto;padding:44px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:8px;">Guides for choosing help</p>
+    <p style="font-size:16px;line-height:1.55;color:rgba(244,240,231,0.66);max-width:60ch;margin-bottom:26px;">Plain, no-pitch answers to the questions leaders ask when they're deciding whether &mdash; and who &mdash; to bring in.</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <a href={SLUGS.alignmentConsultant} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <p style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;line-height:1.15;">What does an alignment consultant do?</p>
+        <p style="margin-top:7px;font-size:14px;color:rgba(244,240,231,0.62);line-height:1.45;">What the work involves, and when you need one.</p>
+        <span style="margin-top:14px;display:inline-block;font-weight:700;font-size:13.5px;color:#E0744A;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.offsiteFacilitator} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <p style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;line-height:1.15;">How to choose an offsite facilitator</p>
+        <p style="margin-top:7px;font-size:14px;color:rgba(244,240,231,0.62);line-height:1.45;">What a great one does, and what to ask.</p>
+        <span style="margin-top:14px;display:inline-block;font-weight:700;font-size:13.5px;color:#E0744A;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.coachingCost} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <p style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;line-height:1.15;">How much does it cost?</p>
+        <p style="margin-top:7px;font-size:14px;color:rgba(244,240,231,0.62);line-height:1.45;">Honest 2026 ranges, and what drives them.</p>
+        <span style="margin-top:14px;display:inline-block;font-weight:700;font-size:13.5px;color:#E0744A;">Read &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section style="max-width:1140px;margin:0 auto;padding:44px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">See it in the wild</p>
+    <a href={SLUGS.caseStudies} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:30px 32px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+      <div style="flex:1;min-width:280px;">
+        <p style="font-family:'Newsreader',serif;font-size:24px;color:#FBF8F1;line-height:1.12;">Case studies: teams that chose to change</p>
+        <p style="margin-top:8px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.66);max-width:54ch;">A $350M construction holding company that unified seven rivals into one ~$1B firm, a wine maker that tripled, and leadership teams that rebuilt trust under pressure.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Read the stories &rarr;</span>
+    </a>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="max-width:1140px;margin:0 auto;padding:48px 32px 8px;">
+    <NewsletterSignup />
+  </section>
+
+  <!-- CTA -->
+  <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:100px 32px;text-align:center;position:relative;margin-top:60px;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.2),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:720px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.05;letter-spacing:-0.02em;color:#FBF8F1;">Tools point the way. A conversation finds the spot.</h2>
+      <p style="margin-top:22px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:48ch;margin-left:auto;margin-right:auto;">A Calibration Call is 15 minutes, CEO only. You leave knowing where your team breaks first &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:34px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 36px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:20px;">&rarr;</span></a>
+    </div>
+  </section>
+
+  <Footer variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Free resources for executive teams." />
+
+</div>
+
+</BaseLayout>

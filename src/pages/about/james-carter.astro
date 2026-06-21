@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../../lib/site';
+
+const title = 'James Carter — Founder of Be Legendary, Creator of the Flag Model | Be Legendary';
+const description = 'For 25 years, James Carter has sat inside executive teams as they made the calls that defined their companies. Founder of Be Legendary, creator of the Flag Model, sole author of Lost Disciplines of Leadership, and co-author with Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://www.belegendary.org/about/' },
+    { '@type': 'ListItem', position: 3, name: 'James Carter', item: 'https://www.belegendary.org/about/james-carter/' },
+  ] },
+  { '@type': 'ProfilePage', '@id': 'https://www.belegendary.org/about/james-carter/#page', mainEntity: { '@id': 'https://www.belegendary.org/#james' } },
+  { '@type': 'Person', '@id': 'https://www.belegendary.org/#james', name: 'James Carter', jobTitle: 'Founder & Lead Advisor, Be Legendary', worksFor: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' }, description: 'Founder of Be Legendary and creator of the Flag Model. For 25 years James has advised executive teams from inside the room where their hardest calls get made. Sole author of the forthcoming Lost Disciplines of Leadership and co-author of collaborative works alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Featured by CNN, CNN Money and Business Insider.', knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation'], sameAs: ['https://www.linkedin.com/in/jlcarter/', 'https://www.buildingteams.com/about/james-carter/', 'https://www.legendary-retreats.com/about-4', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'], author: [{ '@type': 'Book', name: 'Lost Disciplines of Leadership' }, { '@type': 'Book', name: 'Discover Your Inner Strength' }, { '@type': 'Book', name: 'Roadmap to Success' }, { '@type': 'Book', name: 'One Great Idea' }] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.about}
+  ogTitle="James Carter — Founder of Be Legendary, creator of the Flag Model"
+  ogDescription="25 years inside the room where the hardest calls get made. Founder of Be Legendary and creator of the Flag Model."
+  schema={schema}
+>
+  <Header maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }]} />
+
+  <!-- HERO -->
+  <section style="position:relative;max-width:1140px;margin:0 auto;padding:80px 32px 64px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:520px;height:520px;background:radial-gradient(circle,rgba(192,74,38,0.18),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">James Carter</span>
+    </nav>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 0.82fr;gap:56px;align-items:center;">
+      <div>
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:22px;">Your guide</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-0.02em;color:#FBF8F1;">Meet James Carter.</h1>
+        <p style="margin-top:28px;font-size:clamp(18px,2.1vw,23px);line-height:1.5;max-width:48ch;color:rgba(244,240,231,0.84);">You don't need another facilitator with a binder. You need someone who has sat where your hardest calls get made &mdash; and knows how to get a team to the other side of them. For 25 years, that's been James's work.</p>
+        <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:15px 28px;border-radius:11px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Work with James <span style="font-size:18px;">&rarr;</span></a>
+          <a href={SLUGS.flagModel} style="border:1px solid rgba(244,240,231,0.26);color:#F4F0E7;text-decoration:none;padding:15px 26px;border-radius:11px;font-weight:600;font-size:15.5px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.26)'">See his framework</a>
+        </div>
+      </div>
+      <div style="aspect-ratio:4/5;border-radius:22px;overflow:hidden;border:1px solid rgba(244,240,231,0.14);background:#100E0A;box-shadow:0 30px 80px -30px rgba(0,0,0,0.8);">
+        <img src="/assets/james.jpg" alt="James Carter, founder and lead advisor of Be Legendary" width="500" height="417" style="width:100%;height:100%;object-fit:cover;object-position:50% 26%;display:block;">
+      </div>
+    </div>
+
+    <!-- stat band -->
+    <div class="bl-grid-collapse" style="margin-top:64px;padding-top:38px;border-top:1px solid rgba(244,240,231,0.12);display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+      <div>
+        <p style="font-family:'Newsreader',serif;font-size:clamp(34px,4.4vw,54px);color:#FBF8F1;line-height:1;">25<span style="font-size:0.5em;color:#E0744A;"> yrs</span></p>
+        <p style="margin-top:12px;font-size:14.5px;color:rgba(244,240,231,0.66);max-width:24ch;">guiding executive and leadership teams</p>
+      </div>
+      <div>
+        <p style="font-family:'Newsreader',serif;font-size:clamp(34px,4.4vw,54px);color:#FBF8F1;line-height:1;">209<span style="font-size:0.5em;color:#E0744A;">%</span></p>
+        <p style="margin-top:12px;font-size:14.5px;color:rgba(244,240,231,0.66);max-width:26ch;">mindset gain in 30 days &mdash; one $3B client team</p>
+      </div>
+      <div>
+        <p style="font-family:'Newsreader',serif;font-size:clamp(34px,4.4vw,54px);color:#FBF8F1;line-height:1;">500k<span style="font-size:0.5em;color:#E0744A;">+</span></p>
+        <p style="margin-top:12px;font-size:14.5px;color:rgba(244,240,231,0.66);max-width:24ch;">participants reached across his career</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IN THE ROOM -->
+  <section style="background:#F4F0E7;color:#1B1810;padding:96px 32px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;margin-bottom:10px;">01</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.015em;max-width:20ch;">In the room for the decisions that matter.</h2>
+      <p style="margin-top:26px;font-size:18.5px;line-height:1.7;color:#3A372F;max-width:62ch;">James has spent his career not as an outside observer of leadership, but inside it &mdash; alongside executive teams as they made the calls that defined their companies. That vantage point is what makes his work different. He isn't delivering a curriculum. He's reading the room, surfacing what's unspoken, and guiding a team through it.</p>
+      <p style="margin-top:22px;font-size:18.5px;line-height:1.7;color:#3A372F;max-width:62ch;">He's co-authored books alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy, and his work has been featured by CNN, CNN Money and Business Insider. But the credential that matters most isn't on a cover or a broadcast &mdash; it's the thousands of leaders who left a session changed, and stayed that way.</p>
+      <figure style="margin:40px 0 0;border-left:3px solid #C04A26;padding:6px 0 6px 28px;">
+        <blockquote style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(22px,2.8vw,30px);line-height:1.32;color:#1B1810;">"Teams don't trust him because of the names on a book cover. They trust him because he gets them to the other side."</blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <!-- THE FRAMEWORK HE BUILT -->
+  <section style="background:#15130E;color:#F4F0E7;padding:96px 32px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#E0744A;margin-bottom:10px;">02</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.015em;max-width:22ch;color:#FBF8F1;">Twenty-five years, distilled into one framework.</h2>
+      <p style="margin-top:26px;font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.82);max-width:62ch;">Out of thousands of hours inside executive teams, James found the same truth surfacing again and again: the teams that execute aren't smarter or harder-working &mdash; they hold a small set of disciplines the others have quietly lost. He named them, and built a way to find and rebuild them. That's the <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a>: a flag held upright by four cables, governed by one principle &mdash; truth over comfort.</p>
+      <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:10px;">
+        <span style="font-size:13.5px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:9px 15px;border-radius:999px;">Creator of the Flag Model</span>
+        <span style="font-size:13.5px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:9px 15px;border-radius:999px;">Predictive-behavior based diagnostics</span>
+        <span style="font-size:13.5px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:9px 15px;border-radius:999px;">Featured: CNN &middot; CNN Money &middot; Business Insider</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE NAME / ORIGIN -->
+  <section style="background:#211D15;color:#F4F0E7;padding:96px 32px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#E0744A;margin-bottom:10px;">A note on the name</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.1;letter-spacing:-0.015em;max-width:22ch;color:#FBF8F1;">From <span style="font-style:italic;">Repario</span> to Be Legendary.</h2>
+      <p style="margin-top:24px;font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.82);max-width:60ch;">The firm began as <strong style="color:#FBF8F1;">Repario</strong> &mdash; Latin, roughly <em style="font-style:italic;">to rediscover, to find again</em>. It's still the truest description of the work: every executive team already has the disciplines it needs; the job is to find the ones it has lost. That idea became the Lost Disciplines.</p>
+      <p style="margin-top:20px;font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.82);max-width:60ch;">In 2010 the name changed to <strong style="color:#FBF8F1;">Be Legendary</strong> &mdash; less a description of the work, more a calling for the people who do it. Because finding what's lost isn't the destination. It's how an executive team becomes the kind other companies tell stories about.</p>
+    </div>
+  </section>
+
+  <!-- THE BOOKS -->
+  <section style="background:#F4F0E7;color:#1B1810;padding:96px 32px;">
+    <div style="max-width:1140px;margin:0 auto;">
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;margin-bottom:10px;">03</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.015em;">On the page, and on the shelf.</h2>
+      <p style="margin-top:20px;font-size:18px;line-height:1.62;color:#3A372F;max-width:60ch;">Sole author of the forthcoming <em style="font-style:italic;">Lost Disciplines of Leadership</em>&trade;, and a co-author &mdash; alongside Covey, Blanchard, Chopra and Tracy &mdash; of three collaborative works on leadership and growth.</p>
+      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 16px 34px -14px rgba(0,0,0,0.5);overflow:hidden;position:relative;">
+            <img src="/assets/book-ldol.png" alt="The Lost Disciplines of Leadership, a leadership fable by James Carter" width="438" height="658" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+            <span style="position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#15243F;background:#C9A24B;padding:4px 9px;border-radius:999px;">Forthcoming</span>
+          </div>
+          <span style="font-size:13px;color:#6B675E;line-height:1.4;">James Carter <span style="color:#A39C8C;">&middot; sole author</span></span>
+        </div>
+        <a href="https://www.amazon.com/Discover-Inner-Strength-James-Carter/dp/1600135129" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
+          <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 16px 34px -14px rgba(0,0,0,0.5);overflow:hidden;transition:transform .2s;">
+            <img src="/assets/book-discover.jpg" alt="Discover Your Inner Strength, co-authored by James Carter with Brian Tracy, Ken Blanchard and Stephen Covey" width="432" height="648" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <span style="font-size:13px;color:#6B675E;line-height:1.4;">w/ Covey, Blanchard &amp; Tracy <span style="color:#C04A26;">&middot; Amazon &rarr;</span></span>
+        </a>
+        <a href="https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
+          <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 16px 34px -14px rgba(0,0,0,0.5);overflow:hidden;transition:transform .2s;">
+            <img src="/assets/book-roadmap.png" alt="Roadmap to Success, co-authored by James Carter with Deepak Chopra and Ken Blanchard" width="432" height="648" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <span style="font-size:13px;color:#6B675E;line-height:1.4;">w/ Chopra &amp; Blanchard <span style="color:#C04A26;">&middot; Amazon &rarr;</span></span>
+        </a>
+        <a href="https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG" target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;gap:12px;" onmouseover="this.querySelector('.cv').style.transform='translateY(-5px)'" onmouseout="this.querySelector('.cv').style.transform='translateY(0)'">
+          <div class="cv" style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 16px 34px -14px rgba(0,0,0,0.5);overflow:hidden;transition:transform .2s;">
+            <img src="/assets/book-onegreatidea.jpg" alt="One Great Idea Can Revolutionize Your Business, featuring James Carter" width="2068" height="3173" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <span style="font-size:13px;color:#6B675E;line-height:1.4;">18 power-house ideas <span style="color:#C04A26;">&middot; Amazon &rarr;</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:720px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,56px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;">Sit across from James for 15 minutes.</h2>
+      <p style="margin-top:22px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:48ch;margin-left:auto;margin-right:auto;">A Calibration Call is CEO only. You'll leave with a concrete read on where your team breaks first &mdash; whether or not you ever work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:34px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 36px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:20px;">&rarr;</span></a>
+    </div>
+  </section>
+
+  <Footer variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Founded and led by James Carter." />
+</BaseLayout>

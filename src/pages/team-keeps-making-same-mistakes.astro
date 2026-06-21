@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = "My Team Keeps Making the Same Mistakes. Why? | Be Legendary";
+const description = "When the same problem returns each quarter wearing a new name, it's not carelessness — it's that misses get discussed but never examined, so nothing in the system actually changes. Here's why teams repeat mistakes, and the review that breaks the loop.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Field Notes', item: 'https://www.belegendary.org/field-notes/' },
+    { '@type': 'ListItem', position: 3, name: 'We keep making the same mistakes', item: 'https://www.belegendary.org/team-keeps-making-same-mistakes/' },
+  ] },
+  { '@type': 'Article', headline: 'My team keeps making the same mistakes. Why?', datePublished: '2026-06-19', dateModified: '2026-06-19', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/team-keeps-making-same-mistakes/', description: 'When the same problem returns wearing a new name, it\'s because misses get discussed but never examined, so nothing in the system changes.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'Why does my team keep repeating the same mistakes?', acceptedAnswer: { '@type': 'Answer', text: "Because misses get discussed but never examined. The team talks about what went wrong, assigns vague blame or resolves to 'do better,' and moves on — but nothing in the system changes, so the same conditions produce the same result next quarter. Repeated mistakes are a sign the Learning discipline has broken: experience isn't being converted into a changed rule or process." } },
+    { '@type': 'Question', name: 'How do I stop my team from repeating mistakes?', acceptedAnswer: { '@type': 'Answer', text: 'Run a real after-action review on each significant miss that ends in a specific, owned change to a rule, process or checklist — not a feeling or a resolution. The test of whether a team learned is whether something in how they operate is different afterward. If nothing changed, nothing was learned.' } },
+    { '@type': 'Question', name: 'What is an after-action review?', acceptedAnswer: { '@type': 'Answer', text: 'A structured look back at what happened versus what was expected, why the gap occurred, and what specific change will prevent a repeat. The discipline is in the last step: a good after-action review ends with a documented, owned change to the system — so the lesson outlives the meeting.' } },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.sameMistakes} ogType="article" ogTitle="My team keeps making the same mistakes. Why?" ogDescription="Misses get discussed but never examined, so the system never changes. Here's the loop, and how to break it." schema={schema}>
+  <Header maxWidth={880} links={[]} />
+
+  <article>
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.fieldNotes} style="color:inherit;text-decoration:none;">Field notes</a><span>/</span><span style="color:#D98A5E;">Same mistakes, repeated</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,56px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">My team keeps making the same mistakes. Why?</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Because misses get discussed but never examined. The team talks about what went wrong, resolves to do better, and moves on &mdash; but nothing in the system actually changes, so the same conditions produce the same result next quarter. This is the Learning discipline. The fix isn't more discussion; it's <strong style="color:#FBF8F1;">an after-action review that ends in a changed rule or process</strong> &mdash; because if nothing changed, nothing was learned.</p>
+    </div>
+  </header>
+
+  <div style="max-width:880px;margin:0 auto;padding:24px 32px 20px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">You recognize it the third time around. The botched launch, the deadline that slipped, the hire that didn't work &mdash; a slightly different version of a problem you're sure you already solved. You talked about it last time. Everyone agreed it was bad. And here it is again, wearing a new name.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">The reframe: <strong style="color:#FBF8F1;">discussing a mistake is not learning from it.</strong> Most teams confuse the conversation for the correction. They air the miss, feel the discomfort, make a resolution &mdash; and change nothing structural. The lesson lives in the meeting and dies there, because no rule, checklist, or process is different the next morning.</p>
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 20px;">Why the loop repeats</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">Blame substitutes for analysis.</strong> Naming who is easier than understanding why &mdash; but a person isn't a root cause, and replacing them leaves the conditions intact.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">The resolution is a feeling, not a change.</strong> &ldquo;Let's be more careful&rdquo; isn't a mechanism. Without a documented, owned change to the system, willpower is the only thing standing between you and the repeat.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">Nobody owns the lesson.</strong> A correction with no owner and no deadline isn't a correction. It's a hope &mdash; and hope doesn't survive the next busy week.</p>
+  </div>
+
+  <div style="max-width:880px;margin:24px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The fix: a review that changes the system</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;">After any significant miss, run a short after-action review with one rule: it doesn't end until something concrete is different. What did we expect, what actually happened, why the gap &mdash; and then the part that matters: one specific change to a rule, process, or checklist, with an owner and a date. The test of whether your team learned isn't how good the conversation felt. It's whether something in how you operate is measurably different the next day.</p>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See if the Learning is your team's first break point.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A Calibration Call is 15 minutes, CEO only. You'll leave knowing whether the Learning &mdash; the discipline of converting misses into change &mdash; is where your team breaks first, whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.initiativesNeverFinish} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Initiatives never finish</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">When everyone's busy and nothing ships.</span>
+      </a>
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Learning is one of four cables holding the flag.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+</BaseLayout>

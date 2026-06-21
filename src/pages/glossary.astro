@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Glossary: The Flag Model, FlagScore, Calibration Call & More | Be Legendary';
+const description = 'Plain definitions of the Be Legendary vocabulary — the Flag Model, the five disciplines (the Flag, the Decision, the Rhythm, the Standard, the Learning), FlagScore, the Calibration Call, ELFS, and Truth Over Comfort.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Glossary', item: 'https://www.belegendary.org/glossary/' },
+  ] },
+  { '@type': 'DefinedTermSet', '@id': 'https://www.belegendary.org/glossary/#set', name: 'Be Legendary Glossary', description: "The vocabulary of the Flag Model and Be Legendary's executive-team work.", hasDefinedTerm: [
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#flag-model', name: 'The Flag Model', description: 'A leadership-execution framework. At its center is the Flag — the 2 to 3 priorities everything serves. Four disciplines hold it upright: the Decision, the Rhythm, the Standard and the Learning. The governing principle is Truth Over Comfort. Remove one discipline and the flag tilts; remove two and it falls.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#flag', name: 'The Flag', description: 'The center of the Flag Model: the 2 to 3 priorities everything serves, defined precisely enough that any decision can be tested against them. When the Flag is vague it is shredded by exceptions and the team loses alignment to drift.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#decision', name: 'The Decision', description: 'The discipline of committing: a call gets made, it sticks, and it does not route back to the CEO to be re-litigated. When it breaks, the team is lost to chaos and the CEO becomes the bottleneck. Rebuilt with the 4Ds — Owner, Data, Deadline, Defend.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#rhythm', name: 'The Rhythm', description: 'The discipline of finishing: work gets completed, not just started. When it breaks, the team is lost to sprawl — initiatives roll over quarter after quarter. Rebuilt with work-in-progress limits: one in, one out.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#standard', name: 'The Standard', description: 'The discipline of holding the bar: the team names a missed commitment in the room rather than tolerating it. When it breaks, the team is lost to avoidance because candor feels like conflict.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#learning', name: 'The Learning', description: 'The discipline of examining misses and changing because of them. When it breaks, the team is lost to stagnation and the same mistake returns under a new name. Rebuilt with after-action reviews that end in a changed rule or process.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#truth-over-comfort', name: 'Truth Over Comfort', description: 'The governing principle beneath all four disciplines of the Flag Model: the willingness to choose the truthful, harder path over the comfortable one — paid daily, or not at all.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#flagscore', name: 'FlagScore', description: "Be Legendary's composite measure of an executive team's health across the five components of the Flag Model. It turns 'we feel stuck' into a tracked read that moves quarter over quarter.", inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#calibration-call', name: 'Calibration Call', description: 'A 15-minute conversation, CEO only, in which a short exercise surfaces where an executive team actually stands. The participant leaves with a concrete read on their team\'s first break point — whether or not they engage further. It is a calibration, not a sales pitch.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#elfs', name: 'Executive Leadership Failure Simulation (ELFS)', description: 'A solo CEO pressure simulation with an individual debrief and written report showing where the leader chose comfort over truth — the low-risk way to experience the diagnostic before a team runs it.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#performance-partnership', name: 'Performance Partnership', description: 'The ongoing engagement through which the Flag Model is installed over time, with progress measured by FlagScore movement across quarters. A relationship, not a workshop.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#break-point', name: 'Break point', description: 'The single discipline an executive team is most likely to lose first under pressure. Teams rarely fail at all five disciplines at once — they fail at one first, and that one pulls the others down.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#4ds', name: 'The 4Ds', description: "The decision protocol that rebuilds the Decision discipline: every decision gets an Owner, the Data it rests on, a Deadline, and the duty to Defend it — so a call sticks without the CEO's sign-off.", inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.glossary} ogType="website" ogTitle="Be Legendary Glossary — the Flag Model vocabulary, defined" ogDescription="Plain definitions of the Flag Model, the five disciplines, FlagScore, the Calibration Call, ELFS, and Truth Over Comfort." schema={schema}>
+  <Header maxWidth={1040} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
+
+  <header style="position:relative;max-width:1040px;margin:0 auto;padding:80px 32px 44px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Glossary</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5.4vw,64px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">The Be Legendary glossary.</h1>
+    <p style="margin-top:24px;font-size:clamp(17px,2vw,21px);line-height:1.54;max-width:60ch;color:rgba(244,240,231,0.82);">Plain definitions of the vocabulary behind the work &mdash; the Flag Model™, its five disciplines, and the tools that measure and rebuild them. No jargon for its own sake; every term earns its place.</p>
+  </header>
+
+  <nav aria-label="Glossary index" style="max-width:1040px;margin:0 auto;padding:0 32px 8px;">
+    <div style="display:flex;flex-wrap:wrap;gap:9px;">
+      <a href="#flag-model" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The Flag Model</a>
+      <a href="#flag" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The Flag</a>
+      <a href="#decision" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The Decision</a>
+      <a href="#rhythm" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The Rhythm</a>
+      <a href="#standard" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The Standard</a>
+      <a href="#learning" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The Learning</a>
+      <a href="#truth-over-comfort" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Truth Over Comfort</a>
+      <a href="#flagscore" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">FlagScore™</a>
+      <a href="#calibration-call" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Calibration Call</a>
+      <a href="#elfs" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">ELFS</a>
+      <a href="#performance-partnership" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Performance Partnership</a>
+      <a href="#break-point" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Break point</a>
+      <a href="#the-4ds" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The 4Ds</a>
+    </div>
+  </nav>
+
+  <main style="max-width:1040px;margin:0 auto;padding:36px 32px 20px;display:flex;flex-direction:column;gap:14px;">
+
+    <article id="flag-model" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">The Flag Model</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">A leadership-execution framework. At its center is the Flag &mdash; the 2 to 3 priorities everything serves. Four disciplines hold it upright: the Decision, the Rhythm, the Standard and the Learning. The governing principle is Truth Over Comfort. Remove one discipline and the flag tilts; remove two and it falls. <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">See the full framework &rarr;</a></p>
+    </article>
+
+    <article id="flag" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">The Flag</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The center of the Flag Model: the 2 to 3 priorities everything serves, defined precisely enough that any decision can be tested against them. When the Flag is vague, it gets shredded by exceptions &mdash; every team makes a reasonable case for its own priority &mdash; and the team loses alignment to drift.</p>
+    </article>
+
+    <article id="decision" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">The Decision</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The discipline of committing: a call gets made, it sticks, and it doesn't route back to the CEO to be re-litigated a week later. When it breaks, the team is lost to chaos and the CEO becomes the bottleneck for their own company. Rebuilt with the 4Ds &mdash; Owner, Data, Deadline, Defend.</p>
+    </article>
+
+    <article id="rhythm" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">The Rhythm</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The discipline of finishing: work gets completed, not just started. When it breaks, the team is lost to sprawl &mdash; everyone is busy, nothing ships, and initiatives roll over quarter after quarter. Rebuilt with work-in-progress limits: one in, one out.</p>
+    </article>
+
+    <article id="standard" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">The Standard</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The discipline of holding the bar: the team names a missed commitment in the room rather than tolerating it. When it breaks, the team is lost to avoidance &mdash; candor feels like conflict, so the hard conversation happens in the hallway, if at all.</p>
+    </article>
+
+    <article id="learning" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">The Learning</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The discipline of examining misses and changing because of them. When it breaks, the team is lost to stagnation &mdash; nothing gets looked at, and the same mistake returns next quarter under a new name. Rebuilt with after-action reviews that end in a changed rule or process within 30 days.</p>
+    </article>
+
+    <article id="truth-over-comfort" style="background:#211D15;border:1px solid rgba(192,74,38,0.35);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Truth Over Comfort</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The governing principle beneath all four disciplines: the willingness to choose the truthful, harder path over the comfortable one. Every discipline breaks the same way underneath &mdash; comfort is always available and always reasonable-sounding. Truth over comfort is the price of entry, paid daily or not at all.</p>
+    </article>
+
+    <article id="flagscore" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">FlagScore</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">Be Legendary's composite measure of an executive team's health across the five components of the Flag Model. It turns "we feel stuck" into a tracked read that moves quarter over quarter &mdash; the team's vitals, measured rather than asserted.</p>
+    </article>
+
+    <article id="calibration-call" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Calibration Call</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">A 15-minute conversation, CEO only, in which a short exercise surfaces where an executive team actually stands. The participant leaves with a concrete read on their team's first break point &mdash; whether or not they ever engage further. It's a calibration, not a pitch. <a href={CTA_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:underline;">Book one &rarr;</a></p>
+    </article>
+
+    <article id="elfs" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Executive Leadership Failure Simulation (ELFS)</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">A solo CEO pressure simulation with an individual debrief and a written report showing where the leader chose comfort over truth &mdash; the low-risk way to experience the diagnostic before a full team runs it. After the first reference, simply "ELFS."</p>
+    </article>
+
+    <article id="performance-partnership" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Performance Partnership</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The ongoing engagement through which the Flag Model is installed over time, with progress measured by FlagScore movement across quarters. A relationship, not a workshop &mdash; the disciplines are built to hold after the work ends.</p>
+    </article>
+
+    <article id="break-point" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Break point</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The single discipline an executive team is most likely to lose first under pressure. Teams rarely fail at all five disciplines at once &mdash; they fail at one first, and that one quietly pulls the others down with it. <a href={SLUGS.breakPointAssessment} style="color:#E0744A;text-decoration:underline;">Find yours &rarr;</a></p>
+    </article>
+
+    <article id="the-4ds" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">The 4Ds</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The decision protocol that rebuilds the Decision discipline: every decision gets an <strong>Owner</strong>, the <strong>Data</strong> it rests on, a <strong>Deadline</strong>, and the duty to <strong>Defend</strong> it &mdash; so a call sticks without the CEO's sign-off.</p>
+    </article>
+
+  </main>
+
+  <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:90px 32px;text-align:center;position:relative;margin-top:40px;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.2),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:680px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,4.4vw,46px);line-height:1.06;letter-spacing:-0.02em;color:#FBF8F1;">The words are simple. The work is the point.</h2>
+      <p style="margin-top:20px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:46ch;margin-left:auto;margin-right:auto;">See which discipline your team is most likely to lose first &mdash; in fifteen minutes.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:17px 34px;border-radius:12px;font-weight:700;font-size:17px;box-shadow:0 16px 44px -14px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:19px;">&rarr;</span></a>
+    </div>
+  </section>
+
+  <Footer variant="slim" maxWidth={1040} note="© 2026 Be Legendary · The vocabulary of the Flag Model." />
+</BaseLayout>

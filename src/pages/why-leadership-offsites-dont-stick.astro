@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = "Why Don't Our Leadership Offsites Stick? | Be Legendary";
+const description = "The energy from a leadership offsite usually evaporates by the following Monday — not because the offsite was bad, but because it produced alignment and feeling without changing the operating rhythm underneath. Here's why offsites fade, and what makes them hold.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Field Notes', item: 'https://www.belegendary.org/field-notes/' },
+    { '@type': 'ListItem', position: 3, name: "Why leadership offsites don't stick", item: 'https://www.belegendary.org/why-leadership-offsites-dont-stick/' },
+  ] },
+  { '@type': 'Article', headline: "Why don't our leadership offsites stick?", datePublished: '2026-06-19', dateModified: '2026-06-19', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/why-leadership-offsites-dont-stick/', description: 'Offsite energy fades by Monday because the offsite changed the mood and the alignment, but not the operating rhythm underneath.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: "Why don't leadership offsites stick?", acceptedAnswer: { '@type': 'Answer', text: "Because an offsite changes the mood and the alignment in the room, but not the operating rhythm the team returns to. People leave energized and aligned, then walk back into the same meeting cadence, decision habits and standards that produced the original problem — and within a week or two the old defaults reassert themselves. Offsites that stick change something durable in how the team operates afterward, not just how it feels during." } },
+    { '@type': 'Question', name: 'How do I make a leadership offsite actually work?', acceptedAnswer: { '@type': 'Answer', text: "Anchor it to a durable change in the operating rhythm, not just insight. The offsite should produce specific changes to how the team decides, what it focuses on, and how it holds the standard — each with an owner and a date — plus a cadence to check them afterward. The measure of a good offsite is what's different two months later, not how good the room felt that day." } },
+    { '@type': 'Question', name: 'Are leadership offsites worth it?', acceptedAnswer: { '@type': 'Answer', text: "They're worth it when they're a step in installing better disciplines, not a standalone event. As a once-a-year burst of alignment and morale, an offsite reliably fades. As the kickoff of a changed operating rhythm — with follow-through built in — it can be the moment a team actually shifts." } },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.offsitesDontStick} ogType="article" ogTitle="Why don't our leadership offsites stick?" ogDescription="The energy fades by Monday because the offsite changed the mood, not the operating rhythm. Here's the fix." schema={schema}>
+  <Header maxWidth={880} links={[]} />
+
+  <article>
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.fieldNotes} style="color:inherit;text-decoration:none;">Field notes</a><span>/</span><span style="color:#D98A5E;">Why offsites don't stick</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,56px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Why don't our leadership offsites stick?</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Because an offsite changes the mood and the alignment in the room &mdash; but not the operating rhythm the team walks back into. You leave energized and aligned, then return to the same meeting cadence, decision habits and standards that created the problem, and within a week the old defaults reassert. Offsites stick only when they <strong style="color:#FBF8F1;">change something durable in how the team operates afterward</strong>, not just how it feels during.</p>
+    </div>
+  </header>
+
+  <div style="max-width:880px;margin:0 auto;padding:24px 32px 20px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">You've felt the arc. Two days off-campus, real conversations, a whiteboard full of breakthroughs, a team that finally feels like a team. Everyone leaves lit up. And by the second Monday, the inbox has won, the old patterns are back, and the whiteboard photos are buried in someone's camera roll.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">The reframe: <strong style="color:#FBF8F1;">the offsite wasn't the problem &mdash; the Monday was.</strong> An offsite is a temporary environment with different rules: no interruptions, full attention, permission to be honest. Of course the team performs better there. But you don't run the company at the offsite. You run it in the cadence, the decisions, and the standards of an ordinary week &mdash; and none of those changed.</p>
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 20px;">Why the energy fades</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">It produced insight, not mechanism.</strong> Realizations feel like progress, but a realization with no change to a process is just a good memory. The system that produced the behavior is still intact.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">There's no follow-through cadence.</strong> The action items have no owner, no deadline, and no recurring check. By the time anyone looks again, the moment has passed and the urgency is gone.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;"><strong style="color:#FBF8F1;">The room reverts to its defaults.</strong> Candor was situational &mdash; it lived in the offsite's permission, not in a durable norm &mdash; so the team slides back to its usual conflict avoidance the moment the facilitator is gone.</p>
+  </div>
+
+  <div style="max-width:880px;margin:24px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The fix: change the Monday, not just the offsite</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;">Treat the offsite as the kickoff of a changed operating rhythm, not a standalone event. It should leave the team with specific changes to how it decides, what it focuses on, and how it holds the standard &mdash; each with an owner and a date &mdash; plus a recurring cadence to check them. The measure of a good offsite isn't how the room felt on day two. It's what's still different two months later, on an ordinary Monday.</p>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Before the next offsite, find what won't stick.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A Calibration Call is 15 minutes, CEO only. You'll leave knowing which discipline your team most needs to change in the operating rhythm &mdash; so the next offsite holds, whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <div style="max-width:880px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.whyNotExecuting} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Why isn't my executive team executing?</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The four disciplines, and which one breaks first.</span>
+      </a>
+      <a href={SLUGS.eosOkrs} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">We did EOS and OKRs and behavior didn't change</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why a framework on top of weak disciplines fades, too.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+</BaseLayout>

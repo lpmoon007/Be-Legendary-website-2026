@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Field Notes: Straight Answers for Executive Teams That Stopped Executing | Be Legendary';
+const description = 'Plain answers to the questions CEOs actually ask when a leadership team has the strategy but can\'t execute — decisions that won\'t stick, initiatives that never finish, accountability that won\'t hold. Each one maps to the discipline that broke.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Field Notes', item: 'https://www.belegendary.org/field-notes/' },
+  ] },
+  { '@type': 'CollectionPage', '@id': 'https://www.belegendary.org/field-notes/#page', name: 'Field Notes', about: 'Answers for executive teams that have stopped executing', isPartOf: { '@type': 'Organization', name: 'Be Legendary' } },
+  { '@type': 'ItemList', name: 'Field Notes — executive-team execution', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Why isn\'t my executive team executing?', url: 'https://www.belegendary.org/why-isnt-my-executive-team-executing/' },
+    { '@type': 'ListItem', position: 2, name: 'What is the Flag Model?', url: 'https://www.belegendary.org/flag-model/' },
+    { '@type': 'ListItem', position: 3, name: 'We did EOS and OKRs and behavior didn\'t change. Why?', url: 'https://www.belegendary.org/eos-okrs-didnt-change-behavior/' },
+    { '@type': 'ListItem', position: 4, name: 'My executives can\'t make a decision without me. Why?', url: 'https://www.belegendary.org/executives-cant-decide-without-me/' },
+    { '@type': 'ListItem', position: 5, name: 'Why don\'t leadership offsites stick?', url: 'https://www.belegendary.org/why-leadership-offsites-dont-stick/' },
+    { '@type': 'ListItem', position: 6, name: 'My leadership team isn\'t aligned. How do I fix it?', url: 'https://www.belegendary.org/leadership-team-not-aligned/' },
+    { '@type': 'ListItem', position: 7, name: 'How do I get my executive team to hold each other accountable?', url: 'https://www.belegendary.org/executive-team-accountability/' },
+    { '@type': 'ListItem', position: 8, name: 'Why does my team keep repeating the same mistakes?', url: 'https://www.belegendary.org/team-repeats-mistakes/' },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.fieldNotes} ogTitle="Field Notes — straight answers on executive-team execution" ogDescription="The questions CEOs ask when a team stops executing, answered — and mapped to the discipline that broke." schema={schema}>
+
+<div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+  <Header maxWidth={1080} links={[{ label: 'Home', href: '/' }, { label: 'The Flag Model', href: SLUGS.flagModel }]} />
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:1080px;margin:0 auto;padding:88px 32px 56px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Field Notes</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">Field Notes</h1>
+    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.55;max-width:60ch;color:rgba(244,240,231,0.8);">Straight answers to the questions CEOs actually ask when a leadership team has the strategy but can't execute. No frameworks to buy. Each answer ends in the same place: the specific discipline that broke &mdash; and what to do about it.</p>
+  </header>
+
+  <!-- START HERE -->
+  <section style="max-width:1080px;margin:0 auto;padding:20px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Start here</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+      <a href={SLUGS.whyNotExecuting} style="text-decoration:none;background:linear-gradient(165deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:32px;display:flex;flex-direction:column;min-height:200px;" onmouseover="this.style.borderColor='#C04A26'" onmouseout="this.style.borderColor='rgba(192,74,38,0.4)'">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">The big question</span>
+        <span style="margin-top:14px;font-family:'Newsreader',serif;font-size:27px;line-height:1.1;color:#FBF8F1;">Why isn't my executive team executing?</span>
+        <span style="margin-top:14px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.74);">It's almost never strategy. It's discipline &mdash; and it breaks in one of four specific places first.</span>
+        <span style="margin-top:auto;padding-top:18px;font-weight:700;font-size:15px;color:#E0744A;">Read the answer &rarr;</span>
+      </a>
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:linear-gradient(165deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:32px;display:flex;flex-direction:column;min-height:200px;" onmouseover="this.style.borderColor='#C04A26'" onmouseout="this.style.borderColor='rgba(192,74,38,0.4)'">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">The framework</span>
+        <span style="margin-top:14px;font-family:'Newsreader',serif;font-size:27px;line-height:1.1;color:#FBF8F1;">What is the Flag Model?</span>
+        <span style="margin-top:14px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.74);">A flag held upright by four cables: the Decision, the Rhythm, the Standard and the Learning. Cut one and it tilts.</span>
+        <span style="margin-top:auto;padding-top:18px;font-weight:700;font-size:15px;color:#E0744A;">See the framework &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- THE LIBRARY -->
+  <section style="max-width:1080px;margin:0 auto;padding:44px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:8px;">The library</p>
+    <p style="font-size:16px;line-height:1.55;color:rgba(244,240,231,0.66);max-width:58ch;margin-bottom:26px;">One page per question &mdash; each titled as the question, answered first, mapped to the discipline that broke. We publish these as we go.</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <!-- live: EOS -->
+      <a href={SLUGS.eosOkrs} style="text-decoration:none;display:flex;align-items:center;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">We did EOS and OKRs and behavior didn't change. Why?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">Frameworks assume a team that can already commit, complete and hold each other to it. If the disciplines are missing, the framework lives on a poster.</p>
+        </div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:6px 12px;border-radius:999px;white-space:nowrap;">All four disciplines</span>
+        <span style="font-weight:700;font-size:14px;color:#E0744A;white-space:nowrap;">Read &rarr;</span>
+      </a>
+
+      <!-- Decision -->
+      <a href={SLUGS.wontDecide} style="text-decoration:none;display:flex;align-items:center;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">My leadership team won't make decisions without me. Why?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">The team can't commit, so every call routes back to you and gets re-litigated. That's the Decision, lost to chaos.</p>
+        </div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:6px 12px;border-radius:999px;white-space:nowrap;">The Decision</span>
+        <span style="font-weight:700;font-size:14px;color:#E0744A;white-space:nowrap;">Read &rarr;</span>
+      </a>
+
+      <!-- Rhythm -->
+      <a href={SLUGS.initiativesNeverFinish} style="text-decoration:none;display:flex;align-items:center;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Our initiatives never finish. Everyone's busy, nothing ships. Why?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">Starting is free; finishing is the discipline. Too much work in flight means nothing lands. The Rhythm, lost to sprawl.</p>
+        </div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:6px 12px;border-radius:999px;white-space:nowrap;">The Rhythm</span>
+        <span style="font-weight:700;font-size:14px;color:#E0744A;white-space:nowrap;">Read &rarr;</span>
+      </a>
+
+      <!-- Standard -->
+      <a href={SLUGS.noAccountability} style="text-decoration:none;display:flex;align-items:center;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Nobody on my executive team holds anyone accountable. Why?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">Mediocrity gets tolerated because candor feels like conflict. That's the Standard, lost to avoidance.</p>
+        </div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:6px 12px;border-radius:999px;white-space:nowrap;">The Standard</span>
+        <span style="font-weight:700;font-size:14px;color:#E0744A;white-space:nowrap;">Read &rarr;</span>
+      </a>
+
+      <!-- Flag / alignment -->
+      <a href={SLUGS.notAligned} style="text-decoration:none;display:flex;align-items:center;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">My executive team isn't aligned on priorities. Why?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">Ask two leaders for the top three and you'd get different lists. The Flag, gone fuzzy.</p>
+        </div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:6px 12px;border-radius:999px;white-space:nowrap;">The Flag</span>
+        <span style="font-weight:700;font-size:14px;color:#E0744A;white-space:nowrap;">Read &rarr;</span>
+      </a>
+
+      <!-- Learning -->
+      <a href={SLUGS.sameMistakes} style="text-decoration:none;display:flex;align-items:center;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Why does my team keep repeating the same mistakes?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">Nothing gets examined after it goes wrong, so the same miss returns wearing a different name. The Learning, lost to stagnation.</p>
+        </div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:6px 12px;border-radius:999px;white-space:nowrap;">The Learning</span>
+        <span style="font-weight:700;font-size:14px;color:#E0744A;white-space:nowrap;">Read &rarr;</span>
+      </a>
+
+      <!-- Offsites -->
+      <a href={SLUGS.offsitesDontStick} style="text-decoration:none;display:flex;align-items:center;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div style="flex:1;min-width:260px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Why don't our leadership offsites stick?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">The energy fades by Monday because the offsite changed the mood, not the operating rhythm.</p>
+        </div>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;background:rgba(192,74,38,0.16);padding:6px 12px;border-radius:999px;white-space:nowrap;">Rhythm</span>
+        <span style="font-weight:700;font-size:14px;color:#E0744A;white-space:nowrap;">Read &rarr;</span>
+      </a>
+
+    </div>
+    <p style="margin-top:22px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#6E685C;">Each note ships as its own URL, titled as the question &mdash; that's what answer engines cite.</p>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section style="max-width:1080px;margin:0 auto;padding:48px 32px 8px;">
+    <NewsletterSignup />
+  </section>
+
+  <!-- CTA -->
+  <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:100px 32px;text-align:center;position:relative;margin-top:56px;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.2),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:740px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.6vw,52px);line-height:1.05;letter-spacing:-0.02em;color:#FBF8F1;">Done reading? Find out which one is yours.</h2>
+      <p style="margin-top:22px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:48ch;margin-left:auto;margin-right:auto;">A Calibration Call is 15 minutes, CEO only. You leave with a concrete read on where your team breaks first &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:34px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 36px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:20px;">&rarr;</span></a>
+    </div>
+  </section>
+
+  <Footer variant="slim" maxWidth={1080} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+
+</div>
+
+</BaseLayout>

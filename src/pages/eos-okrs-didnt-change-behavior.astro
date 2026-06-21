@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = "We Did EOS and OKRs and Behavior Didn't Change. Why? | Be Legendary";
+const description = "EOS, OKRs and Scaling Up are operating systems you run — they assume a team that can already commit, complete, and hold each other accountable. If those disciplines are missing, the framework lives on a poster. Here's why, and what to fix instead.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Field Notes', item: 'https://www.belegendary.org/field-notes/' },
+    { '@type': 'ListItem', position: 3, name: "We did EOS and OKRs and behavior didn't change", item: 'https://www.belegendary.org/eos-okrs-didnt-change-behavior/' },
+  ] },
+  { '@type': 'Article', headline: "We did EOS and OKRs and behavior didn't change. Why?", datePublished: '2026-01-15', dateModified: '2026-06-16', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/eos-okrs-didnt-change-behavior/', description: 'Why operating systems like EOS, OKRs and Scaling Up fail to change behavior when the underlying team disciplines are missing — and what to rebuild instead.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: "We did EOS and OKRs and behavior didn't change. Why?", acceptedAnswer: { '@type': 'Answer', text: "Because EOS and OKRs are operating systems you run, not the disciplines that make a team able to run them. They assume a team that can already commit to a decision, finish what it starts, and hold each other to a standard. If those disciplines are missing, the framework lives on a poster and behavior stays the same. The fix is rebuilding the disciplines underneath — not adopting another framework on top." } },
+    { '@type': 'Question', name: 'Is EOS or OKRs the problem?', acceptedAnswer: { '@type': 'Answer', text: "Usually not. EOS, OKRs, Scaling Up and 4DX are sound systems. They fail to stick when a team lacks the four underlying disciplines — the Decision, the Rhythm, the Standard and the Learning. Fix those and the operating system you already chose finally works." } },
+    { '@type': 'Question', name: 'Should I switch frameworks if EOS didn\'t work?', acceptedAnswer: { '@type': 'Answer', text: "Switching frameworks rarely helps, because the new one makes the same assumption about your team's disciplines as the old one. The higher-return move is to diagnose which discipline broke and rebuild that, then run whichever operating system you prefer on top of it." } },
+    { '@type': 'Question', name: 'What is the difference between the Flag Model and EOS?', acceptedAnswer: { '@type': 'Answer', text: 'EOS is a business operating system — meetings, scorecards, rocks. The Flag Model is the layer beneath it: the disciplines and behaviors that determine whether a team can actually run an operating system. They are complementary, not competing — the Flag Model is what makes EOS stick.' } },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.eosOkrs} ogType="article" ogTitle="We did EOS and OKRs and behavior didn't change. Why?" ogDescription="Frameworks assume a team that can already execute. The Flag Model rebuilds the disciplines underneath them." schema={schema}>
+  <Header maxWidth={880} links={[]} />
+
+  <article>
+  <!-- HERO + ANSWER-FIRST -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.fieldNotes} style="color:inherit;text-decoration:none;">Field notes</a><span>/</span><span style="color:#D98A5E;">EOS &amp; OKRs didn't change behavior</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">We did EOS and OKRs and behavior didn't change. Why?</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">EOS and OKRs are operating systems you <em>run</em> &mdash; not the disciplines that make a team able to run them. They quietly assume a team that can already commit to a decision, finish what it starts, and hold each other to a standard. When those disciplines are missing, the framework lives on a poster and behavior stays exactly the same. The fix isn't a different framework. It's <strong>rebuilding the disciplines underneath</strong> the one you already have.</p>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div style="max-width:880px;margin:0 auto;padding:24px 32px 20px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:26px;">You rolled it out properly. The Level 10 meetings, the scorecard, the rocks, the quarterly OKRs. For a few weeks it felt like motion. Then the meetings got skipped, the scorecard went stale, and the team drifted back to exactly how it operated before &mdash; just with new vocabulary. So you start to wonder whether you picked the wrong system.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:26px;">You almost certainly didn't. EOS, OKRs, Scaling Up, 4DX &mdash; these are good systems. But every one of them is an <strong style="color:#FBF8F1;">operating layer</strong> that sits on top of a team and assumes the team underneath can already do four things. When it can't, the system has nothing to grip.</p>
+
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 24px;">What every framework silently assumes</h2>
+  </div>
+
+  <!-- assumptions table -->
+  <div style="max-width:880px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:14px;">
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:28px;">
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">The framework assumes</p>
+        <p style="font-size:17px;line-height:1.5;color:#FBF8F1;">your team can commit to a decision and keep it.</p>
+      </div>
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">If it can't &rarr; the Decision</p>
+        <p style="font-size:16px;line-height:1.5;color:rgba(244,240,231,0.78);">Rocks get set, then quietly renegotiated. Every priority routes back to you. <em>Lost to chaos.</em></p>
+      </div>
+    </div>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:28px;">
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">The framework assumes</p>
+        <p style="font-size:17px;line-height:1.5;color:#FBF8F1;">your team finishes what it starts each quarter.</p>
+      </div>
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">If it can't &rarr; the Rhythm</p>
+        <p style="font-size:16px;line-height:1.5;color:rgba(244,240,231,0.78);">Every OKR is 60% done and rolls over. The scorecard turns yellow and stays there. <em>Lost to sprawl.</em></p>
+      </div>
+    </div>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:28px;">
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">The framework assumes</p>
+        <p style="font-size:17px;line-height:1.5;color:#FBF8F1;">your team holds each other to the number.</p>
+      </div>
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">If it can't &rarr; the Standard</p>
+        <p style="font-size:16px;line-height:1.5;color:rgba(244,240,231,0.78);">A missed commitment passes without comment. The meeting stays polite; the problem moves to the hallway. <em>Lost to avoidance.</em></p>
+      </div>
+    </div>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:28px;">
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">The framework assumes</p>
+        <p style="font-size:17px;line-height:1.5;color:#FBF8F1;">your team learns from a missed quarter.</p>
+      </div>
+      <div>
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">If it can't &rarr; the Learning</p>
+        <p style="font-size:16px;line-height:1.5;color:rgba(244,240,231,0.78);">The same rock fails three quarters running and nobody asks why out loud. <em>Lost to stagnation.</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- the reframe -->
+  <div style="max-width:880px;margin:0 auto;padding:44px 32px 20px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin-bottom:16px;">The framework isn't the foundation. The disciplines are.</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:22px;">Think of EOS or OKRs as the scaffolding you bolt onto a building. Scaffolding is useful &mdash; but it can't hold up a structure whose foundation is cracked. The <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> is the foundation work: the four disciplines that determine whether <em>any</em> operating system can stand on your team.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">That's why we don't sell you a replacement framework. We find which discipline cracked, rebuild it, and then your EOS, your OKRs, whatever you already run, finally grips &mdash; because the team underneath it can now do the things the system always assumed.</p>
+  </div>
+
+  <!-- complementary callout -->
+  <div style="max-width:880px;margin:24px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Keep your operating system</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;">This isn't &ldquo;rip out EOS.&rdquo; If you've invested in an operating system, keep it. The Flag Model runs <em>underneath</em> it &mdash; complementary, not competing. Most teams find their existing framework suddenly works once the broken discipline is rebuilt. The system was never the problem; it just had nothing solid to attach to.</p>
+    </div>
+  </div>
+
+  <!-- bridge / CTA -->
+  <div style="max-width:880px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find out which discipline is breaking your framework.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes, CEO only. You'll leave knowing which of the four disciplines is keeping your operating system from sticking &mdash; whether or not we ever work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- related -->
+  <div style="max-width:880px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.whyNotExecuting} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Why isn't my executive team executing?</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The four ways execution breaks &mdash; and how to spot which one is yours.</span>
+      </a>
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The foundation beneath every operating system: the Flag and its four disciplines.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+</BaseLayout>

@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Case Studies: Executive Teams That Chose to Change | Be Legendary';
+const description = 'Real turnarounds led by courageous executives — a $350M construction holding company that unified seven rival firms, a family wine manufacturer that ended the blame game, and leadership teams that rebuilt trust under pressure. The leaders made the calls; we helped them land.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://www.belegendary.org/case-studies/' },
+  ] },
+  { '@type': 'CollectionPage', '@id': 'https://www.belegendary.org/case-studies/#page', name: 'Case Studies', about: 'Executive-team turnarounds guided by Be Legendary', isPartOf: { '@type': 'Organization', name: 'Be Legendary' } },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.caseStudies} ogType="website" ogTitle="Case studies — executive teams that chose to change" ogDescription="Real turnarounds, led by the executives who had the courage to look honestly at their teams." schema={schema}>
+  <Header maxWidth={1080} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
+
+  <header style="position:relative;max-width:1080px;margin:0 auto;padding:84px 32px 56px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Case studies</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5.4vw,68px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">The leaders made the call. We helped them land it.</h1>
+    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:60ch;color:rgba(244,240,231,0.8);">Every turnaround below started the same way: an executive looked honestly at a team that wasn't working and chose to do something about it. That choice is the hero of each story. Our job was to stand beside them and help the disciplines hold. Names anonymized; outcomes are real.</p>
+  </header>
+
+  <section style="background:#F4F0E7;color:#1B1810;padding:84px 32px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:24px;">
+        <span style="font-size:12.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;">Construction holding company &middot; ~$350M</span>
+        <span style="font-size:12.5px;font-weight:600;color:#6B675E;">Turnaround &middot; 2 years</span>
+      </div>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.015em;max-width:24ch;">The COO who turned seven rivals into one company.</h2>
+      <div class="bl-grid-collapse" style="margin-top:28px;display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:start;">
+        <div>
+          <p style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;margin-bottom:8px;">The courageous call</p>
+          <p style="font-size:17.5px;line-height:1.66;color:#3A372F;">A holding company of seven separate construction firms was sliding toward insolvency &mdash; not for lack of talent, but because the structure rewarded competition over collaboration. Two of the seven company presidents were, on paper, each other's largest competitor. The COO saw the real ceiling and made the hard decision: unify the group under one set of books, one brand, one team. Then he brought James in &mdash; on a pay-for-performance blend, a small monthly fee plus bonuses tied to the numbers, so everyone had a stake in the outcome.</p>
+          <p style="margin-top:18px;font-size:17.5px;line-height:1.66;color:#3A372F;">The work was the human side. James supported the people executing the merger of seven accounting systems &mdash; helping them do it faster and better, streamlining communication, resolving the conflicts that erupt when rivals are asked to become teammates, and making sure the team paused to celebrate the wins.</p>
+        </div>
+        <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:30px;">
+          <p style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Within two years</p>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            <div><p style="font-family:'Newsreader',serif;font-size:34px;line-height:1;color:#1B1810;">~$1B</p><p style="margin-top:6px;font-size:14px;color:#6B675E;">revenue, up from ~$350M</p></div>
+            <div><p style="font-family:'Newsreader',serif;font-size:34px;line-height:1;color:#1B1810;">7 &rarr; 1</p><p style="margin-top:6px;font-size:14px;color:#6B675E;">sets of books, fully streamlined; one rebranded company</p></div>
+            <div><p style="font-family:'Newsreader',serif;font-size:34px;line-height:1;color:#1B1810;">0</p><p style="margin-top:6px;font-size:14px;color:#6B675E;">layoffs &mdash; non-performing sites closed, every willing employee relocated</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#15130E;color:#F4F0E7;padding:84px 32px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:24px;">
+        <span style="font-size:12.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Wine manufacturer &middot; family-owned &middot; $3.5M</span>
+        <span style="font-size:12.5px;font-weight:600;color:rgba(244,240,231,0.5);">Turnaround</span>
+      </div>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.015em;max-width:26ch;color:#FBF8F1;">The owner who ended the blame game &mdash; and tripled the company.</h2>
+      <div class="bl-grid-collapse" style="margin-top:28px;display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:start;">
+        <div>
+          <p style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">The courageous call</p>
+          <p style="font-size:17.5px;line-height:1.66;color:rgba(244,240,231,0.84);">The owner knew he had the right people. What he didn't have was a team. Sales blamed admin, admin blamed manufacturing, manufacturing blamed shipping &mdash; a vicious circle while the company watched every penny and inched toward insolvency. Rather than replace people, he made the harder choice: bring them together. With almost no operating cash, he and James worked on a pay-for-performance blend so the risk was shared.</p>
+          <p style="margin-top:18px;font-size:17.5px;line-height:1.66;color:rgba(244,240,231,0.84);">The result came fast &mdash; profitability and growth inside a year. Then a telling proof point: during a year when the engagement paused, the company stalled. When the disciplines came back, so did the growth.</p>
+        </div>
+        <div style="background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:30px;">
+          <p style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">The trajectory</p>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            <div><p style="font-family:'Newsreader',serif;font-size:34px;line-height:1;color:#FBF8F1;">$3.5M &rarr; $10M</p><p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.6);">revenue within the first year &mdash; and more profitable</p></div>
+            <div><p style="font-family:'Newsreader',serif;font-size:34px;line-height:1;color:#FBF8F1;">$15M</p><p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.6);">reached after the disciplines were re-established</p></div>
+            <div><p style="font-family:'Newsreader',serif;font-size:20px;line-height:1.2;color:#FBF8F1;font-style:italic;">Stalled when the work stopped. Grew when it resumed.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#F4F0E7;color:#1B1810;padding:84px 32px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">More teams that chose to change</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.08;letter-spacing:-0.015em;max-width:22ch;">Trust, rebuilt under real pressure.</h2>
+      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <article style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:30px;display:flex;flex-direction:column;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">National franchise &middot; COO</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Reuniting an exec team and 23 regional directors.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;">Trust between the executive team and 23 regional directors had broken down amid miscommunication and perceived divides. We designed a three-day conference, in a period of real crisis, to re-establish trust and a way to work through the hard things together &mdash; with ongoing coaching for the COO since.</p>
+        </article>
+        <article style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:30px;display:flex;flex-direction:column;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Enterprise software &middot; President &amp; CEO</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">The honest call about who fits.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;">Over six months of retreats and individual coaching with an executive team of five, it became clear &mdash; to everyone &mdash; that one leader wasn't a fit for the group. The CEO handled it with grace: an amicable parting, and a new hire chosen for fit, brought in with our help.</p>
+        </article>
+        <article style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:30px;display:flex;flex-direction:column;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Federal agency &middot; Branch chief &middot; $1B budget</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Five former rivals, one fiscal branch.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;">Five executives &mdash; one in each time zone, each from a previously competing branch &mdash; now jointly ran a $1B budget with no trust and poor communication. We ran retreats in every time zone to build trust, defuse long-standing beliefs, and forge one leadership team. The agency then awarded us the same work for the next two layers of the organization.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:720px;margin:0 auto;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.8vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;">Every one of these started with one honest conversation.</h2>
+      <p style="margin-top:22px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.78);max-width:48ch;margin-left:auto;margin-right:auto;">Yours can too. A Calibration Call is 15 minutes, CEO only &mdash; and you'll leave with a concrete read on your team whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:34px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 36px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:20px;">&rarr;</span></a>
+    </div>
+  </section>
+
+  <Footer variant="slim" maxWidth={1080} note="© 2026 Be Legendary · Names anonymized; outcomes real." />
+</BaseLayout>
