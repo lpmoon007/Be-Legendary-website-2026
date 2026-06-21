@@ -6,6 +6,10 @@ export const SITE_URL = 'https://www.belegendary.org';
 export const CTA_URL = 'https://meetings.hubspot.com/jcarter28';
 export const CTA_LABEL = 'Book a Calibration Call';
 
+// GA4 Measurement ID. Not a secret (it ships in the client). Override per-build
+// with the PUBLIC_GA_ID env var if needed; otherwise this baked-in value is used.
+export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID || 'G-M0Q17HCKMM';
+
 // HubSpot forms (region na2, portal 20276071)
 export const HUBSPOT = {
   portalId: '20276071',

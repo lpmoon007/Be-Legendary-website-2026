@@ -7,7 +7,7 @@
 //   - newsletter_signup     : newsletter form submit
 //   - assessment_completed  : the assessment result is revealed
 // (Mark the relevant ones as "key events" in the GA4 UI to count them as conversions.)
-const GA_ID = import.meta.env.PUBLIC_GA_ID;
+import { GA_MEASUREMENT_ID as GA_ID } from '../lib/site';
 ---
 {GA_ID && (
   <>
