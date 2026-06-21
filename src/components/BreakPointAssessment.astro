@@ -75,9 +75,21 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
           <div id="bp-sent" style="display:none;">
             <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">Check your inbox.</p>
             <p style="margin-top:8px;font-size:15px;line-height:1.5;color:rgba(244,240,231,0.75);">Your Break-Point Report is on its way, and you're on the field-notes list.</p>
+            <p style="margin-top:10px;font-size:15px;line-height:1.5;color:rgba(244,240,231,0.75);">Next: <a id="bp-sent-calc" href="#" style="color:#E0744A;text-decoration:underline;">see what this break point is costing you &rarr;</a> &mdash; we'll carry your answers over.</p>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- carry-over to cost calculator -->
+    <div style="margin-top:30px;">
+      <a id="bp-calc-card" href="#" style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:26px 30px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+        <div style="flex:1;min-width:280px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Now see what it's costing you.</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">We'll carry your break point and a starting estimate into the Cost of Lost Disciplines Calculator&trade; &mdash; no starting over. Add your revenue and team size for a grounded dollar figure.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Open the calculator &rarr;</span>
+      </a>
     </div>
 
     <div style="margin-top:24px;text-align:center;">
@@ -89,12 +101,15 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
 
 <script>
   const comps = [
-    { name: 'The Flag', tag: 'Alignment lost to drift', line: "Ask any two of your leaders for the top priorities and you'd get different lists. The center everyone is supposed to serve has quietly gone fuzzy.", fix: '→ Define 2–3 priorities precise enough that any decision can be tested against them.' },
-    { name: 'The Decision', tag: 'Lost to chaos', line: 'The team struggles to commit. Calls get made, then quietly reopened, so everything routes back to you.', fix: '→ Give every decision an owner, a deadline, and the duty to defend it — so it sticks without your sign-off.' },
-    { name: 'The Rhythm', tag: 'Lost to sprawl', line: 'The team starts faster than it finishes. Initiatives roll over quarter after quarter while everyone stays busy.', fix: '→ Install work-in-progress limits — one in, one out — so the work in flight actually ships.' },
-    { name: 'The Standard', tag: 'Lost to avoidance', line: 'Mediocrity gets tolerated in the room and discussed in the hallway, because candor feels like conflict.', fix: '→ Make naming the problem a routine habit, not a confrontation people brace for.' },
-    { name: 'The Learning', tag: 'Lost to stagnation', line: "Misses don't get examined, so the same problem returns next quarter wearing a different name.", fix: '→ Run after-action reviews that turn each miss into a correction the team actually keeps.' },
+    { key: 'flag', name: 'The Flag', tag: 'Alignment lost to drift', line: "Ask any two of your leaders for the top priorities and you'd get different lists. The center everyone is supposed to serve has quietly gone fuzzy.", fix: '→ Define 2–3 priorities precise enough that any decision can be tested against them.' },
+    { key: 'decision', name: 'The Decision', tag: 'Lost to chaos', line: 'The team struggles to commit. Calls get made, then quietly reopened, so everything routes back to you.', fix: '→ Give every decision an owner, a deadline, and the duty to defend it — so it sticks without your sign-off.' },
+    { key: 'rhythm', name: 'The Rhythm', tag: 'Lost to sprawl', line: 'The team starts faster than it finishes. Initiatives roll over quarter after quarter while everyone stays busy.', fix: '→ Install work-in-progress limits — one in, one out — so the work in flight actually ships.' },
+    { key: 'standard', name: 'The Standard', tag: 'Lost to avoidance', line: 'Mediocrity gets tolerated in the room and discussed in the hallway, because candor feels like conflict.', fix: '→ Make naming the problem a routine habit, not a confrontation people brace for.' },
+    { key: 'learning', name: 'The Learning', tag: 'Lost to stagnation', line: "Misses don't get examined, so the same problem returns next quarter wearing a different name.", fix: '→ Run after-action reviews that turn each miss into a correction the team actually keeps.' },
   ];
+  // Carry-over link to the Cost Calculator. The assessment never asks revenue/
+  // headcount, so only the break point + a suggested meeting-waste % carry over.
+  const CALC_BASE = '/cost-of-lost-disciplines-calculator/';
   const qComp = [0, 1, 2, 3, 4, 0, 1, 2, 3, 4];
 
   const answers = new Array(10).fill(0);
@@ -145,6 +160,15 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     document.getElementById('bp-line')!.textContent = d.line;
     document.getElementById('bp-fix')!.textContent = d.fix;
     const pcts = scores();
+
+    // Lower overall health → more meeting time lost to re-litigation. Honest
+    // heuristic, labeled as a starting estimate the user can adjust.
+    const overall = Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length);
+    const suggestedWaste = Math.max(15, Math.min(55, Math.round((60 - overall * 0.4) / 5) * 5));
+    const calcHref = `${CALC_BASE}?from=assessment&break=${d.key}&waste=${suggestedWaste}`;
+    (document.getElementById('bp-calc-card') as HTMLAnchorElement).href = calcHref;
+    (document.getElementById('bp-sent-calc') as HTMLAnchorElement).href = calcHref;
+
     const barsWrap = document.getElementById('bp-bars')!;
     barsWrap.innerHTML = '';
     comps.forEach((c, i) => {

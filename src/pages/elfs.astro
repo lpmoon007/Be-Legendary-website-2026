@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'ELFS — Run the Executive Leadership Simulation Yourself, First | Be Legendary';
+const description = 'ELFS (the Executive Leadership Failure Simulation) is a solo, ~90-minute pressure simulation for the CEO — with an individual debrief and a written report showing exactly where you default to comfort over truth. The low-risk way to feel the diagnostic before you bring the team.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'ELFS', item: 'https://www.belegendary.org/elfs/' },
+  ] },
+  { '@type': 'Service', '@id': 'https://www.belegendary.org/elfs/#service', name: 'Executive Leadership Failure Simulation (ELFS)', alternateName: 'ELFS', serviceType: 'Executive diagnostic simulation', provider: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' }, audience: { '@type': 'Audience', audienceType: 'Chief Executive Officer' }, description: 'A solo, roughly 90-minute pressure simulation for the CEO, with an individual debrief and a written report showing where the leader defaults to comfort over truth. The low-risk way to experience the Flag Model diagnostic before running it with the full executive team.', areaServed: 'US' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is ELFS?', acceptedAnswer: { '@type': 'Answer', text: "ELFS — the Executive Leadership Failure Simulation — is a solo, roughly 90-minute pressure simulation for the CEO. You're put under realistic executive pressure, then get an individual debrief and a written report showing where you default to comfort over truth, mapped to the five disciplines of the Flag Model. It's the low-risk way to feel the diagnostic before you bring the whole team." } },
+    { '@type': 'Question', name: 'How is ELFS different from the Calibration Call?', acceptedAnswer: { '@type': 'Answer', text: 'The Calibration Call is a free 15-minute conversation that surfaces where your team likely breaks first. ELFS is the next step for a CEO who wants to feel the work, not just talk about it: a paid, ~90-minute simulation with a written report. The call is a conversation; ELFS is an experience.' } },
+    { '@type': 'Question', name: 'What do I get from ELFS?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: the simulation itself (about 90 minutes, solo, under real pressure), an individual debrief that walks through what happened, and a written report identifying where you chose comfort over truth and which disciplines that maps to. You leave knowing how you actually lead under pressure — not how you describe it.' } },
+    { '@type': 'Question', name: 'Why would a CEO do ELFS before the team?', acceptedAnswer: { '@type': 'Answer', text: "Because it's the lowest-risk way to experience the engagement before committing the team's time. You preview exactly what the team work feels like, on yourself first, and decide from experience rather than a brochure. If you proceed, your ELFS fee is applied in full toward your Team LFS." } },
+    { '@type': 'Question', name: 'Does the ELFS fee count toward the full engagement?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Every dollar of your ELFS fee is applied toward your Team LFS if you decide to move forward, so the test drive is never wasted spend.' } },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.elfs} ogTitle="ELFS — run the executive leadership simulation yourself, first" ogDescription="A solo, ~90-minute CEO pressure simulation with a written report on where you choose comfort over truth. Feel the diagnostic before you bring the team." schema={schema}>
+  <Header maxWidth={960} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:960px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">ELFS</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The test drive &middot; CEO only</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.4vw,62px);line-height:1.02;letter-spacing:-0.02em;color:#FBF8F1;">Run the simulation yourself, <span style="font-style:italic;color:#E0744A;">before you bring the team.</span></h1>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;"><strong style="color:#FBF8F1;">ELFS</strong> &mdash; the Executive Leadership Failure Simulation &mdash; is a solo, roughly 90-minute pressure simulation for the CEO. You're put under real executive pressure, then get an individual debrief and a written report showing exactly where you default to <em style="font-style:italic;">comfort over truth</em>. It's the low-risk way to <strong style="color:#FBF8F1;">feel</strong> the diagnostic &mdash; on yourself first &mdash; before you ever commit the team.</p>
+    </div>
+    <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+      <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request your ELFS <span style="font-size:18px;">&rarr;</span></a>
+      <span style="font-size:14px;color:rgba(244,240,231,0.6);max-width:30ch;line-height:1.45;">We'll confirm fit and timing in a short note &mdash; no sales call required to start.</span>
+    </div>
+  </header>
+
+  <!-- WHAT HAPPENS -->
+  <div style="max-width:960px;margin:0 auto;padding:36px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;">What actually happens</h2>
+    <p style="margin-top:16px;font-size:18px;line-height:1.66;color:rgba(244,240,231,0.82);max-width:62ch;">About ninety minutes, start to finish. Three parts:</p>
+    <div class="bl-grid-collapse" style="margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px;">
+        <span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">01</span>
+        <h3 style="margin-top:12px;font-size:20px;font-weight:700;color:#FBF8F1;">The simulation</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.58;color:rgba(244,240,231,0.74);">You lead through a compressed, high-pressure scenario built to force the trade-offs real executive teams face. No theory &mdash; you make the calls, in real time, alone.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px;">
+        <span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">02</span>
+        <h3 style="margin-top:12px;font-size:20px;font-weight:700;color:#FBF8F1;">The debrief</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.58;color:rgba(244,240,231,0.74);">An individual walk-through of what just happened &mdash; the moments you reached for comfort, the calls you avoided, the ones you owned. Honest, and specific to you.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px;">
+        <span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">03</span>
+        <h3 style="margin-top:12px;font-size:20px;font-weight:700;color:#FBF8F1;">The written report</h3>
+        <p style="margin-top:10px;font-size:15px;line-height:1.58;color:rgba(244,240,231,0.74);">A document you keep: where you chose comfort over truth, mapped to the five disciplines of the Flag Model&trade; &mdash; so the lesson outlives the session.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY IT WORKS -->
+  <div style="max-width:960px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;">Why feel it, instead of read about it</h2>
+    <p style="margin-top:16px;font-size:18px;line-height:1.7;color:rgba(244,240,231,0.84);max-width:64ch;">You already know the theory. What you can't know from a brochure is how <em style="font-style:italic;">you</em> behave when the pressure is real and the easy answer is right there. ELFS makes that visible &mdash; not as a critique, but as data. Most CEOs leave having watched themselves do, under pressure, the exact thing they'd never sign off on in a calm room. That recognition is the whole point: you can't rebuild a discipline you can't see yourself losing.</p>
+    <p style="margin-top:18px;font-size:18px;line-height:1.7;color:rgba(244,240,231,0.84);max-width:64ch;">It's also the honest way to evaluate the work. Before you put your executive team's time on the line, you experience exactly what that engagement feels like &mdash; on yourself, at low cost. You decide from experience, not a pitch.</p>
+  </div>
+
+  <!-- COST / REASSURANCE -->
+  <div style="max-width:960px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">What it costs</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;max-width:62ch;">ELFS is a paid, productized entry point &mdash; deliberately low, because its job is to lower the risk of finding out. And it's never wasted spend: <strong style="color:#1B1810;">every dollar of your ELFS fee is applied toward your Team LFS</strong> if you decide to move forward. The test drive comes off the price of the car.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:960px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#FBF8F1;">Find out how you lead when it's hard.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:58ch;">Request your ELFS and we'll confirm fit and timing in a short note &mdash; no sales call required to begin.</p>
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+        <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;display:inline-flex;align-items:center;gap:9px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request your ELFS <span style="font-size:18px;">&rarr;</span></a>
+        <a href={CTA_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:none;font-weight:600;font-size:15.5px;">Not ready? Book a 15-min Calibration Call first &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:960px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model&trade;</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The framework ELFS is a preview of.</span>
+      </a>
+      <a href={SLUGS.breakPointAssessment} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Break-Point Self-Assessment</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">A free 4-minute snapshot, if you're not ready for ELFS.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <Footer maxWidth={960} note="© 2026 Be Legendary · ELFS is the test drive for the Flag Model engagement." />
+</BaseLayout>

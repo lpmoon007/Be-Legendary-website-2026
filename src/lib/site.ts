@@ -23,6 +23,7 @@ export const SLUGS = {
   costCalculator: '/cost-of-lost-disciplines-calculator/',
   research: '/state-of-executive-team-execution/',
   caseStudies: '/case-studies/',
+  elfs: '/elfs/',
   glossary: '/glossary/',
   resources: '/resources/',
   fieldNotes: '/field-notes/',

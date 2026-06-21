@@ -13,6 +13,7 @@
 - Home — the execution gap and the Flag Model overview: https://www.belegendary.org/
 - The Flag Model — the full framework: https://www.belegendary.org/flag-model/
 - Glossary — definitions of every term: https://www.belegendary.org/glossary/
+- ELFS (Executive Leadership Failure Simulation) — the solo CEO test-drive simulation: https://www.belegendary.org/elfs/
 - About James Carter — founder, author, creator of the Flag Model: https://www.belegendary.org/about/james-carter/
 - Break-Point Self-Assessment — free tool to find your team's first break point: https://www.belegendary.org/break-point-self-assessment/
 - Cost of Lost Disciplines Calculator — estimate the cost of misalignment, built on third-party research: https://www.belegendary.org/cost-of-lost-disciplines-calculator/

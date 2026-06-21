@@ -44,12 +44,21 @@ src/
   styles/global.css    fonts, design tokens, responsive layer, reduced-motion
 ```
 
-## Pages (24) → production slugs
+## Pages (25) → production slugs
 Home `/` · Flag Model `/flag-model/` · About `/about/james-carter/` ·
 Assessment `/break-point-self-assessment/` · Calculator `/cost-of-lost-disciplines-calculator/` ·
-Research `/state-of-executive-team-execution/` · Case studies `/case-studies/` ·
+ELFS `/elfs/` · Research `/state-of-executive-team-execution/` · Case studies `/case-studies/` ·
 Glossary `/glossary/` · Resources `/resources/` · Field Notes `/field-notes/` ·
 8 Field Notes articles · 3 framework comparisons · 3 buyer's guides · Privacy `/privacy/`.
+
+### Cross-tool carry-over (Assessment → Calculator)
+The Break-Point Self-Assessment result links to the Cost Calculator with
+`?from=assessment&break=<discipline>&waste=<n>` (a referral card + the email
+success state). The Calculator reads those params client-side on load: it
+pre-sets the meeting-waste slider and shows a "From your snapshot" banner naming
+the carried break point. Revenue/headcount/rate/hours keep their defaults (the
+assessment never collects them). With no params, the Calculator shows no banner.
+Keep the param names (`from`, `break`, `waste`) and discipline keys stable.
 
 ## Integrations (HubSpot — region `na2`, portal `20276071`)
 - Calibration Call scheduling: `https://meetings.hubspot.com/jcarter28`
