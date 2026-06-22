@@ -59,22 +59,31 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       </div>
     </div>
 
-    <!-- lead capture -->
+    <!-- download report (personalized PDF, generated in-browser) -->
+    <div style="margin-top:32px;background:#211D15;border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:28px 30px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:260px;">
+        <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;line-height:1.15;">Your full Break-Point Report is ready.</p>
+        <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.7);">A personalized breakdown of all five components &mdash; what's holding, what's at risk, and the first move for your break point. Yours to download now.</p>
+      </div>
+      <button id="bp-download" class="bl-tap" style="flex:none;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:16px 28px;border-radius:12px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;display:inline-flex;align-items:center;gap:9px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Download your report (PDF) <span style="font-size:18px;">&darr;</span></button>
+    </div>
+
+    <!-- field notes signup -->
     <div style="margin-top:40px;background:linear-gradient(150deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:20px;padding:38px;">
       <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;">
         <div>
-          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.1;color:#FBF8F1;">Get your full Break-Point Report.</h3>
-          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);max-width:46ch;">We'll email the written breakdown of all five components for your team &mdash; what's holding, what's at risk, and the first move for your break point &mdash; plus James's field notes on executive-team execution. Roughly monthly. Unsubscribe anytime.</p>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.1;color:#FBF8F1;">Keep the thinking coming.</h3>
+          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);max-width:46ch;">Get James's field notes by email &mdash; one short note, roughly monthly, on the disciplines that decide whether a leadership team executes. No fluff, no pitch. Unsubscribe anytime. <strong style="color:#F4F0E7;">Your report is the download above.</strong></p>
         </div>
         <div>
           <div id="bp-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.breakPointFormGuid}>
             <input id="bp-email" type="email" placeholder="you@company.com" aria-label="Work email" style="width:100%;padding:15px 18px;border-radius:11px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
-            <button id="bp-submit" class="bl-tap" style="margin-top:12px;width:100%;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 18px;border-radius:11px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Send my report &amp; subscribe</button>
+            <button id="bp-submit" class="bl-tap" style="margin-top:12px;width:100%;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 18px;border-radius:11px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Subscribe to field notes</button>
             <p id="bp-err" style="margin-top:10px;font-size:13px;color:#E0744A;min-height:18px;visibility:hidden;"></p>
           </div>
           <div id="bp-sent" style="display:none;">
-            <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">Check your inbox.</p>
-            <p style="margin-top:8px;font-size:15px;line-height:1.5;color:rgba(244,240,231,0.75);">Your Break-Point Report is on its way, and you're on the field-notes list.</p>
+            <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">You're on the list.</p>
+            <p style="margin-top:8px;font-size:15px;line-height:1.5;color:rgba(244,240,231,0.75);">Watch your inbox for the next field note.</p>
             <p style="margin-top:10px;font-size:15px;line-height:1.5;color:rgba(244,240,231,0.75);">Next: <a id="bp-sent-calc" href="#" style="color:#E0744A;text-decoration:underline;">see what this break point is costing you &rarr;</a> &mdash; we'll carry your answers over.</p>
           </div>
         </div>
@@ -99,13 +108,45 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
   </div>
 </section>
 
+<!-- PERSONALIZED REPORT (print-only PDF; populated on reveal, off-screen otherwise) -->
+<div id="bp-report" aria-hidden="true" style="font-family:'Hanken Grotesk',sans-serif;color:#1B1810;background:#fff;width:800px;padding:8px 4px;">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:3px solid #C04A26;padding-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:11px;">
+      <span style="width:30px;height:30px;border-radius:7px;background:#C04A26;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:600;font-size:17px;color:#fff;">B</span>
+      <span style="font-weight:800;letter-spacing:0.14em;font-size:14px;color:#1B1810;">BE LEGENDARY</span>
+    </div>
+    <div style="text-align:right;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;">Break-Point Report</p>
+      <p id="rep-date" style="font-size:12px;color:#6B675E;margin-top:3px;"></p>
+    </div>
+  </div>
+
+  <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A8578;margin-top:22px;">Your team's most likely first break point</p>
+  <h1 id="rep-name" style="font-family:'Newsreader',serif;font-weight:600;font-size:34px;line-height:1.05;color:#1B1810;margin-top:6px;"></h1>
+  <p id="rep-tag" style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;margin-top:6px;"></p>
+  <p id="rep-line" style="font-size:15px;line-height:1.6;color:#3A372F;margin-top:14px;max-width:70ch;"></p>
+  <p id="rep-fix" style="font-size:15px;line-height:1.6;color:#9E3A1C;font-weight:600;margin-top:10px;max-width:70ch;"></p>
+
+  <h2 style="font-family:'Newsreader',serif;font-weight:600;font-size:20px;color:#1B1810;margin-top:30px;border-top:1px solid #E2DCCE;padding-top:20px;">Your five components</h2>
+  <div id="rep-components" style="margin-top:14px;"></div>
+
+  <h2 style="font-family:'Newsreader',serif;font-weight:600;font-size:20px;color:#1B1810;margin-top:24px;border-top:1px solid #E2DCCE;padding-top:20px;">What to do next</h2>
+  <p style="font-size:15px;line-height:1.6;color:#3A372F;margin-top:12px;max-width:74ch;">Rebuild the one component that broke first &mdash; not all five at once. The governing principle underneath every component is <strong>Truth Over Comfort</strong>: choosing the truthful, harder path over the comfortable one, paid daily or not at all. Start with the first move above; straightening that one component is usually enough to see what's next.</p>
+  <p style="font-size:15px;line-height:1.6;color:#3A372F;margin-top:12px;max-width:74ch;">Want it named for certain, not estimated? Book a free 15-minute, CEO-only <strong>Calibration Call</strong> with James Carter:<br><span style="color:#C04A26;font-weight:700;">meetings.hubspot.com/jcarter28</span></p>
+
+  <div style="margin-top:26px;border-top:1px solid #E2DCCE;padding-top:14px;font-size:11.5px;color:#8A8578;display:flex;justify-content:space-between;gap:14px;">
+    <span>&copy; 2026 Be Legendary &middot; The Flag Model&trade;</span>
+    <span>belegendary.org</span>
+  </div>
+</div>
+
 <script>
   const comps = [
-    { key: 'flag', name: 'The Flag', tag: 'Alignment lost to drift', line: "Ask any two of your leaders for the top priorities and you'd get different lists. The center everyone is supposed to serve has quietly gone fuzzy.", fix: '→ Define 2–3 priorities precise enough that any decision can be tested against them.' },
-    { key: 'decision', name: 'The Decision', tag: 'Lost to chaos', line: 'The team struggles to commit. Calls get made, then quietly reopened, so everything routes back to you.', fix: '→ Give every decision an owner, a deadline, and the duty to defend it — so it sticks without your sign-off.' },
-    { key: 'rhythm', name: 'The Rhythm', tag: 'Lost to sprawl', line: 'The team starts faster than it finishes. Initiatives roll over quarter after quarter while everyone stays busy.', fix: '→ Install work-in-progress limits — one in, one out — so the work in flight actually ships.' },
-    { key: 'standard', name: 'The Standard', tag: 'Lost to avoidance', line: 'Mediocrity gets tolerated in the room and discussed in the hallway, because candor feels like conflict.', fix: '→ Make naming the problem a routine habit, not a confrontation people brace for.' },
-    { key: 'learning', name: 'The Learning', tag: 'Lost to stagnation', line: "Misses don't get examined, so the same problem returns next quarter wearing a different name.", fix: '→ Run after-action reviews that turn each miss into a correction the team actually keeps.' },
+    { key: 'flag', name: 'The Flag', tag: 'Alignment lost to drift', line: "Ask any two of your leaders for the top priorities and you'd get different lists. The center everyone is supposed to serve has quietly gone fuzzy.", fix: '→ Define 2–3 priorities precise enough that any decision can be tested against them.', hold: 'Your leaders are aligned on the priorities — protect that clarity as you add new initiatives.' },
+    { key: 'decision', name: 'The Decision', tag: 'Lost to chaos', line: 'The team struggles to commit. Calls get made, then quietly reopened, so everything routes back to you.', fix: '→ Give every decision an owner, a deadline, and the duty to defend it — so it sticks without your sign-off.', hold: 'Decisions are sticking without routing back to you. Keep the protocol explicit so it holds under pressure.' },
+    { key: 'rhythm', name: 'The Rhythm', tag: 'Lost to sprawl', line: 'The team starts faster than it finishes. Initiatives roll over quarter after quarter while everyone stays busy.', fix: '→ Install work-in-progress limits — one in, one out — so the work in flight actually ships.', hold: 'The team finishes what it starts. Guard your work-in-progress limits as new demands arrive.' },
+    { key: 'standard', name: 'The Standard', tag: 'Lost to avoidance', line: 'Mediocrity gets tolerated in the room and discussed in the hallway, because candor feels like conflict.', fix: '→ Make naming the problem a routine habit, not a confrontation people brace for.', hold: 'Candor is working — issues get named in the room. Keep it routine, not personal.' },
+    { key: 'learning', name: 'The Learning', tag: 'Lost to stagnation', line: "Misses don't get examined, so the same problem returns next quarter wearing a different name.", fix: '→ Run after-action reviews that turn each miss into a correction the team actually keeps.', hold: 'You examine misses and adjust. Keep the after-action habit even when things go well.' },
   ];
   // Carry-over link to the Cost Calculator. The assessment never asks revenue/
   // headcount, so only the break point + a suggested meeting-waste % carry over.
@@ -180,7 +221,48 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       barsWrap.appendChild(row);
       requestAnimationFrame(() => { (row.querySelector('div > div') as HTMLElement).style.width = p + '%'; });
     });
+
+    populateReport(idx, pcts);
   }
+
+  // Fill the printable personalized report.
+  function populateReport(idx: number, pcts: number[]) {
+    const d = comps[idx];
+    const set = (id: string, text: string) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+    set('rep-date', new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
+    set('rep-name', d.name);
+    set('rep-tag', d.tag + ' · ' + pcts[idx] + '% healthy');
+    set('rep-line', d.line);
+    set('rep-fix', d.fix);
+    const wrap = document.getElementById('rep-components');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    comps.forEach((c, i) => {
+      const p = pcts[i];
+      const status = p >= 70 ? 'Holding' : p >= 45 ? 'At risk' : 'Breaking';
+      const col = p >= 70 ? '#3E9B6B' : p >= 45 ? '#B86A2E' : '#C04A26';
+      const note = p >= 70 ? c.hold : c.line;
+      const row = document.createElement('div');
+      row.style.cssText = 'padding:14px 0;border-bottom:1px solid #EFEADD;';
+      row.innerHTML =
+        `<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+           <span style="font-family:'Newsreader',serif;font-size:17px;color:#1B1810;">${c.name}</span>
+           <span style="font-size:12px;font-weight:700;color:${col};white-space:nowrap;">${status} · ${p}%</span>
+         </div>
+         <div style="height:7px;border-radius:99px;background:#EFEADD;overflow:hidden;margin-top:7px;"><div style="height:100%;width:${p}%;background:${col};border-radius:99px;"></div></div>
+         <p style="font-size:13.5px;line-height:1.5;color:#56524A;margin-top:8px;">${note}</p>
+         <p style="font-size:13.5px;line-height:1.5;color:#9E3A1C;font-weight:600;margin-top:4px;">${c.fix}</p>`;
+      wrap.appendChild(row);
+    });
+  }
+
+  document.getElementById('bp-download')!.addEventListener('click', () => {
+    populateReport(computeBreakIndex(), scores());
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'download_report', { break_point: comps[computeBreakIndex()].name });
+    }
+    window.print();
+  });
 
   revealBtn.addEventListener('click', () => {
     if (answers.some((a) => a === 0)) return;
