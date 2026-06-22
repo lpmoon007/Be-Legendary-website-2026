@@ -1,0 +1,15 @@
+# Be Legendary — static site (Apache)
+# Serve directory URLs from index.html and use the branded 404.
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# Long-cache fingerprinted build assets (safe: filenames change on rebuild).
+<IfModule mod_expires.c>
+  ExpiresActive On
+  <FilesMatch "\.(woff2|webp|avif|png|jpg|jpeg|gif|svg|ico)$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+</IfModule>
