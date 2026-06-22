@@ -108,38 +108,6 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
   </div>
 </section>
 
-<!-- PERSONALIZED REPORT (print-only PDF; populated on reveal, off-screen otherwise) -->
-<div id="bp-report" aria-hidden="true" style="font-family:'Hanken Grotesk',sans-serif;color:#1B1810;background:#fff;width:800px;padding:8px 4px;">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:3px solid #C04A26;padding-bottom:16px;">
-    <div style="display:flex;align-items:center;gap:11px;">
-      <span style="width:30px;height:30px;border-radius:7px;background:#C04A26;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-weight:600;font-size:17px;color:#fff;">B</span>
-      <span style="font-weight:800;letter-spacing:0.14em;font-size:14px;color:#1B1810;">BE LEGENDARY</span>
-    </div>
-    <div style="text-align:right;">
-      <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;">Break-Point Report</p>
-      <p id="rep-date" style="font-size:12px;color:#6B675E;margin-top:3px;"></p>
-    </div>
-  </div>
-
-  <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A8578;margin-top:22px;">Your team's most likely first break point</p>
-  <h1 id="rep-name" style="font-family:'Newsreader',serif;font-weight:600;font-size:34px;line-height:1.05;color:#1B1810;margin-top:6px;"></h1>
-  <p id="rep-tag" style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;margin-top:6px;"></p>
-  <p id="rep-line" style="font-size:15px;line-height:1.6;color:#3A372F;margin-top:14px;max-width:70ch;"></p>
-  <p id="rep-fix" style="font-size:15px;line-height:1.6;color:#9E3A1C;font-weight:600;margin-top:10px;max-width:70ch;"></p>
-
-  <h2 style="font-family:'Newsreader',serif;font-weight:600;font-size:20px;color:#1B1810;margin-top:30px;border-top:1px solid #E2DCCE;padding-top:20px;">Your five components</h2>
-  <div id="rep-components" style="margin-top:14px;"></div>
-
-  <h2 style="font-family:'Newsreader',serif;font-weight:600;font-size:20px;color:#1B1810;margin-top:24px;border-top:1px solid #E2DCCE;padding-top:20px;">What to do next</h2>
-  <p style="font-size:15px;line-height:1.6;color:#3A372F;margin-top:12px;max-width:74ch;">Rebuild the one component that broke first &mdash; not all five at once. The governing principle underneath every component is <strong>Truth Over Comfort</strong>: choosing the truthful, harder path over the comfortable one, paid daily or not at all. Start with the first move above; straightening that one component is usually enough to see what's next.</p>
-  <p style="font-size:15px;line-height:1.6;color:#3A372F;margin-top:12px;max-width:74ch;">Want it named for certain, not estimated? Book a free 15-minute, CEO-only <strong>Calibration Call</strong> with James Carter:<br><span style="color:#C04A26;font-weight:700;">meetings.hubspot.com/jcarter28</span></p>
-
-  <div style="margin-top:26px;border-top:1px solid #E2DCCE;padding-top:14px;font-size:11.5px;color:#8A8578;display:flex;justify-content:space-between;gap:14px;">
-    <span>&copy; 2026 Be Legendary &middot; The Flag Model&trade;</span>
-    <span>belegendary.org</span>
-  </div>
-</div>
-
 <script>
   const comps = [
     { key: 'flag', name: 'The Flag', tag: 'Alignment lost to drift', line: "Ask any two of your leaders for the top priorities and you'd get different lists. The center everyone is supposed to serve has quietly gone fuzzy.", fix: '→ Define 2–3 priorities precise enough that any decision can be tested against them.', hold: 'Your leaders are aligned on the priorities — protect that clarity as you add new initiatives.' },
@@ -221,48 +189,114 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       barsWrap.appendChild(row);
       requestAnimationFrame(() => { (row.querySelector('div > div') as HTMLElement).style.width = p + '%'; });
     });
-
-    populateReport(idx, pcts);
   }
 
-  // Fill the printable personalized report.
-  function populateReport(idx: number, pcts: number[]) {
+  // Generate the personalized Break-Point Report as a real PDF that downloads in
+  // one click (jsPDF, drawn directly — no print dialog, no rendering glitches).
+  async function downloadReport() {
+    const { jsPDF } = await import('jspdf');
+    const idx = computeBreakIndex();
+    const pcts = scores();
     const d = comps[idx];
-    const set = (id: string, text: string) => { const el = document.getElementById(id); if (el) el.textContent = text; };
-    set('rep-date', new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }));
-    set('rep-name', d.name);
-    set('rep-tag', d.tag + ' · ' + pcts[idx] + '% healthy');
-    set('rep-line', d.line);
-    set('rep-fix', d.fix);
-    const wrap = document.getElementById('rep-components');
-    if (!wrap) return;
-    wrap.innerHTML = '';
+
+    const INK: [number, number, number] = [27, 24, 16];
+    const TERRA: [number, number, number] = [192, 74, 38];
+    const MUTED: [number, number, number] = [86, 82, 71];
+    const FAINT: [number, number, number] = [138, 133, 120];
+    const statusFor = (p: number) => p >= 70
+      ? { label: 'Holding', col: [62, 155, 107] as [number, number, number] }
+      : p >= 45 ? { label: 'At risk', col: [184, 106, 46] as [number, number, number] }
+      : { label: 'Breaking', col: TERRA };
+
+    const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+    const W = doc.internal.pageSize.getWidth();
+    const M = 54;            // margin
+    const CW = W - M * 2;    // content width
+    let y = M;
+
+    const wrap = (text: string, size: number, font = 'helvetica', style = 'normal') => {
+      doc.setFont(font, style); doc.setFontSize(size);
+      return doc.splitTextToSize(text, CW) as string[];
+    };
+    const para = (text: string, size: number, color: [number, number, number], opts: { font?: string; style?: string; gap?: number; lh?: number } = {}) => {
+      const lines = wrap(text, size, opts.font || 'helvetica', opts.style || 'normal');
+      doc.setTextColor(...color);
+      const lh = opts.lh || size * 1.4;
+      lines.forEach((ln) => { doc.text(ln, M, y); y += lh; });
+      y += opts.gap ?? 4;
+    };
+    const pageBreak = (need: number) => { if (y + need > doc.internal.pageSize.getHeight() - M) { doc.addPage(); y = M; } };
+
+    // Header
+    doc.setFillColor(...TERRA); doc.roundedRect(M, y, 22, 22, 4, 4, 'F');
+    doc.setFont('times', 'bold'); doc.setFontSize(14); doc.setTextColor(255, 255, 255); doc.text('B', M + 7.5, y + 15.5);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.setTextColor(...INK); doc.text('BE LEGENDARY', M + 30, y + 15.5);
+    doc.setFontSize(9); doc.setTextColor(...TERRA); doc.text('BREAK-POINT REPORT', W - M, y + 7, { align: 'right' });
+    doc.setTextColor(...FAINT); doc.setFont('helvetica', 'normal');
+    doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), W - M, y + 19, { align: 'right' });
+    y += 34;
+    doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 24;
+
+    // Break point
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
+    doc.text("YOUR TEAM'S MOST LIKELY FIRST BREAK POINT", M, y); y += 22;
+    doc.setFont('times', 'bold'); doc.setFontSize(30); doc.setTextColor(...INK); doc.text(d.name, M, y); y += 16;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...TERRA);
+    doc.text(`${d.tag.toUpperCase()}  ·  ${pcts[idx]}% HEALTHY`, M, y); y += 20;
+    para(d.line, 11, MUTED, { lh: 15, gap: 6 });
+    para(d.fix.replace(/^→\s*/, ''), 11, TERRA, { style: 'bold', lh: 15, gap: 14 });
+
+    // Components
+    doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 18;
+    doc.setFont('times', 'bold'); doc.setFontSize(16); doc.setTextColor(...INK); doc.text('Your five components', M, y); y += 20;
+
     comps.forEach((c, i) => {
       const p = pcts[i];
-      const status = p >= 70 ? 'Holding' : p >= 45 ? 'At risk' : 'Breaking';
-      const col = p >= 70 ? '#3E9B6B' : p >= 45 ? '#B86A2E' : '#C04A26';
+      const st = statusFor(p);
       const note = p >= 70 ? c.hold : c.line;
-      const row = document.createElement('div');
-      row.style.cssText = 'padding:14px 0;border-bottom:1px solid #EFEADD;';
-      row.innerHTML =
-        `<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
-           <span style="font-family:'Newsreader',serif;font-size:17px;color:#1B1810;">${c.name}</span>
-           <span style="font-size:12px;font-weight:700;color:${col};white-space:nowrap;">${status} · ${p}%</span>
-         </div>
-         <div style="height:7px;border-radius:99px;background:#EFEADD;overflow:hidden;margin-top:7px;"><div style="height:100%;width:${p}%;background:${col};border-radius:99px;"></div></div>
-         <p style="font-size:13.5px;line-height:1.5;color:#56524A;margin-top:8px;">${note}</p>
-         <p style="font-size:13.5px;line-height:1.5;color:#9E3A1C;font-weight:600;margin-top:4px;">${c.fix}</p>`;
-      wrap.appendChild(row);
+      const noteLines = wrap(note, 10, 'helvetica');
+      const fixLines = wrap(c.fix.replace(/^→\s*/, '→ '), 10, 'helvetica');
+      pageBreak(34 + noteLines.length * 13 + fixLines.length * 13);
+      doc.setFont('times', 'bold'); doc.setFontSize(13); doc.setTextColor(...INK); doc.text(c.name, M, y);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...st.col);
+      doc.text(`${st.label}  ·  ${p}%`, W - M, y, { align: 'right' }); y += 8;
+      // bar
+      doc.setFillColor(239, 234, 221); doc.roundedRect(M, y, CW, 5, 2.5, 2.5, 'F');
+      doc.setFillColor(...st.col); doc.roundedRect(M, y, Math.max(2, CW * p / 100), 5, 2.5, 2.5, 'F'); y += 16;
+      doc.setTextColor(...MUTED); doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
+      noteLines.forEach((ln: string) => { doc.text(ln, M, y); y += 13; });
+      doc.setTextColor(158, 58, 28); doc.setFont('helvetica', 'bold');
+      fixLines.forEach((ln: string) => { doc.text(ln, M, y); y += 13; });
+      y += 10;
     });
+
+    // What to do next
+    pageBreak(140);
+    doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 18;
+    doc.setFont('times', 'bold'); doc.setFontSize(16); doc.setTextColor(...INK); doc.text('What to do next', M, y); y += 20;
+    para('Rebuild the one component that broke first — not all five at once. The governing principle underneath every component is Truth Over Comfort: choosing the truthful, harder path over the comfortable one, paid daily or not at all. Start with the first move above; straightening that one component is usually enough to see what is next.', 11, MUTED, { lh: 15, gap: 8 });
+    para('Want it named for certain, not estimated? Book a free 15-minute, CEO-only Calibration Call with James Carter:', 11, MUTED, { lh: 15, gap: 4 });
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...TERRA);
+    doc.text('meetings.hubspot.com/jcarter28', M, y); y += 24;
+
+    // Footer on every page
+    const pages = doc.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+      doc.setPage(i);
+      const fy = doc.internal.pageSize.getHeight() - 30;
+      doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, fy, W - M, fy);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
+      doc.text('© 2026 Be Legendary · The Flag Model™', M, fy + 13);
+      doc.text('belegendary.org', W - M, fy + 13, { align: 'right' });
+    }
+
+    doc.save('Be-Legendary-Break-Point-Report.pdf');
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'download_report', { break_point: d.name });
+    }
   }
 
-  document.getElementById('bp-download')!.addEventListener('click', () => {
-    populateReport(computeBreakIndex(), scores());
-    if (typeof (window as any).gtag === 'function') {
-      (window as any).gtag('event', 'download_report', { break_point: comps[computeBreakIndex()].name });
-    }
-    window.print();
-  });
+  document.getElementById('bp-download')!.addEventListener('click', () => { downloadReport(); });
 
   revealBtn.addEventListener('click', () => {
     if (answers.some((a) => a === 0)) return;

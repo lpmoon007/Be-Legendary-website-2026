@@ -13,6 +13,7 @@
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/hanken-grotesk": "^5.2.8",
     "@fontsource/newsreader": "^5.2.10",
-    "astro": "^4.16.19"
+    "astro": "^4.16.19",
+    "jspdf": "^4.2.1"
   }
 }

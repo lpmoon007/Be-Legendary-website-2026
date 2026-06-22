@@ -81,19 +81,6 @@ input[type=range]::-moz-range-thumb {
   button, .bl-tap { min-height: 44px; }
 }
 
-/* ============================================================================
-   Break-Point Report — printable personalized PDF.
-   Kept off-screen during normal browsing; on print, only the report shows so
-   "Save as PDF" produces a clean branded document.
-   ============================================================================ */
-#bp-report { position: absolute; left: -10000px; top: 0; }
-@media print {
-  body * { visibility: hidden !important; }
-  #bp-report, #bp-report * { visibility: visible !important; }
-  #bp-report { left: 0 !important; top: 0 !important; width: 100% !important; padding: 0 !important; }
-  @page { margin: 16mm; }
-}
-
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
