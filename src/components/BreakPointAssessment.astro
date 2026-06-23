@@ -227,10 +227,14 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     const DEEP: [number, number, number] = [158, 58, 28];
     const MUTED: [number, number, number] = [86, 82, 71];
     const FAINT: [number, number, number] = [138, 133, 120];
+    // Semantic status colors: true red for breaking, muted/flat yellow for at-risk.
+    const RED: [number, number, number] = [198, 40, 40];
+    const AMBER: [number, number, number] = [171, 138, 22];
+    const GREEN: [number, number, number] = [62, 142, 100];
     const statusFor = (p: number) => p >= 70
-      ? { label: 'Holding', col: [62, 155, 107] as [number, number, number], mean: 'this is a current strength. Protect it as the pressure rises.' }
-      : p >= 45 ? { label: 'At risk', col: [184, 106, 46] as [number, number, number], mean: "this is holding for now, but showing strain. It's the next one to watch." }
-      : { label: 'Breaking', col: TERRA, mean: "this is where you're most exposed — the component most likely to give first under pressure." };
+      ? { label: 'Holding', col: GREEN, mean: 'this is a current strength. Protect it as the pressure rises.' }
+      : p >= 45 ? { label: 'At risk', col: AMBER, mean: "this is holding for now, but showing strain. It's the next one to watch." }
+      : { label: 'Breaking', col: RED, mean: "this is where you're most exposed — the component most likely to give first under pressure." };
 
     const doc = new jsPDF({ unit: 'pt', format: 'letter' });
     const W = doc.internal.pageSize.getWidth();
@@ -247,23 +251,25 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       y += o.gap ?? 9;
     };
     const eyebrow = (label: string) => { ensure(16); doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT); doc.text(label, M, y); y += 16; };
-    const heading = (label: string) => { ensure(48); y += 8; doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 20; doc.setFont('times', 'bold'); doc.setFontSize(15); doc.setTextColor(...INK); doc.text(label, M, y); y += 20; };
+    const heading = (label: string) => { ensure(48); y += 8; doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 20; doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor(...INK); doc.text(label, M, y); y += 20; };
     const linkCTA = (label: string, url: string) => { ensure(18); doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...TERRA); doc.textWithLink(label, M, y, { url }); y += 20; };
 
-    // Header
-    doc.setFillColor(...TERRA); doc.roundedRect(M, y, 22, 22, 4, 4, 'F');
-    doc.setFont('times', 'bold'); doc.setFontSize(14); doc.setTextColor(255, 255, 255); doc.text('B', M + 7.5, y + 15.5);
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.setTextColor(...INK); doc.text('BE LEGENDARY', M + 30, y + 15.5);
-    doc.setFontSize(9); doc.setTextColor(...TERRA); doc.text('BREAK-POINT REPORT', W - M, y + 7, { align: 'right' });
-    doc.setTextColor(...FAINT); doc.setFont('helvetica', 'normal');
-    doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), W - M, y + 19, { align: 'right' });
-    y += 34;
-    doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 24;
+    // Header — logo mark + wordmark (left), report label + date (right), vertically centered on the mark
+    const boxSize = 24, cy = y + boxSize / 2;
+    doc.setFillColor(...TERRA); doc.roundedRect(M, y, boxSize, boxSize, 5, 5, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.setTextColor(255, 255, 255); doc.text('B', M + boxSize / 2, cy + 5.2, { align: 'center' });
+    doc.setFontSize(12); doc.setTextColor(...INK); doc.text('BE LEGENDARY', M + boxSize + 11, cy + 4);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...TERRA); doc.text('BREAK-POINT REPORT', W - M, cy - 1.5, { align: 'right' });
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(...FAINT);
+    doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), W - M, cy + 10, { align: 'right' });
+    y += boxSize + 18;
+    doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 26;
 
     // Break point headline + interpretation
+    const bpStatus = statusFor(pcts[idx]);
     eyebrow("YOUR TEAM'S MOST LIKELY FIRST BREAK POINT");
-    doc.setFont('times', 'bold'); doc.setFontSize(28); doc.setTextColor(...INK); doc.text(d.name, M, y); y += 18;
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...TERRA);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(26); doc.setTextColor(...INK); doc.text(d.name, M, y); y += 20;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...bpStatus.col);
     doc.text(`${d.tag.toUpperCase()}  ·  ${pcts[idx]}% HEALTHY`, M, y); y += 20;
     para(`Of the five components that hold a leadership team upright, this is the one your answers say will give first under real pressure. ${d.def}`, { size: 11, lh: 15.5, gap: 8 });
     eyebrow('YOUR FIRST MOVE');
@@ -276,7 +282,7 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       const p = pcts[i];
       const st = statusFor(p);
       ensure(74);
-      doc.setFont('times', 'bold'); doc.setFontSize(13); doc.setTextColor(...INK); doc.text(c.name, M, y);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(12.5); doc.setTextColor(...INK); doc.text(c.name, M, y);
       doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...st.col);
       doc.text(`${st.label}  ·  ${p}%`, W - M, y, { align: 'right' }); y += 9;
       doc.setFillColor(239, 234, 221); doc.roundedRect(M, y, CW, 5, 2, 2, 'F');
