@@ -102,7 +102,7 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     </div>
 
     <div style="margin-top:24px;text-align:center;">
-      <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:52ch;margin:0 auto 18px;">Want it named for certain, not estimated? Sit with James for 15 minutes.</p>
+      <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:52ch;margin:0 auto 18px;">Want a second set of eyes on this? Spend 15 minutes with James and leave with a sharper read on where to start.</p>
       <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:17px 34px;border-radius:12px;font-weight:700;font-size:17px;box-shadow:0 14px 40px -14px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:19px;">&rarr;</span></a>
     </div>
   </div>
@@ -110,11 +110,31 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
 
 <script>
   const comps = [
-    { key: 'flag', name: 'The Flag', tag: 'Alignment lost to drift', line: "Ask any two of your leaders for the top priorities and you'd get different lists. The center everyone is supposed to serve has quietly gone fuzzy.", fix: '→ Define 2–3 priorities precise enough that any decision can be tested against them.', hold: 'Your leaders are aligned on the priorities — protect that clarity as you add new initiatives.' },
-    { key: 'decision', name: 'The Decision', tag: 'Lost to chaos', line: 'The team struggles to commit. Calls get made, then quietly reopened, so everything routes back to you.', fix: '→ Give every decision an owner, a deadline, and the duty to defend it — so it sticks without your sign-off.', hold: 'Decisions are sticking without routing back to you. Keep the protocol explicit so it holds under pressure.' },
-    { key: 'rhythm', name: 'The Rhythm', tag: 'Lost to sprawl', line: 'The team starts faster than it finishes. Initiatives roll over quarter after quarter while everyone stays busy.', fix: '→ Install work-in-progress limits — one in, one out — so the work in flight actually ships.', hold: 'The team finishes what it starts. Guard your work-in-progress limits as new demands arrive.' },
-    { key: 'standard', name: 'The Standard', tag: 'Lost to avoidance', line: 'Mediocrity gets tolerated in the room and discussed in the hallway, because candor feels like conflict.', fix: '→ Make naming the problem a routine habit, not a confrontation people brace for.', hold: 'Candor is working — issues get named in the room. Keep it routine, not personal.' },
-    { key: 'learning', name: 'The Learning', tag: 'Lost to stagnation', line: "Misses don't get examined, so the same problem returns next quarter wearing a different name.", fix: '→ Run after-action reviews that turn each miss into a correction the team actually keeps.', hold: 'You examine misses and adjust. Keep the after-action habit even when things go well.' },
+    { key: 'flag', name: 'The Flag', tag: 'Alignment lost to drift',
+      def: 'The 2–3 priorities everything serves — the center the whole team aligns to. When it is sharp, anyone can test a decision against it; when it is vague, effort scatters across work that was never the priority.',
+      line: "Ask any two of your leaders for the top priorities and you'd get different lists. The center everyone is supposed to serve has quietly gone fuzzy.",
+      fix: 'Define 2–3 priorities precise enough that any decision can be tested against them, and put them where every leader sees them weekly.',
+      hold: 'Your leaders are aligned on the priorities — protect that clarity as you add new initiatives.' },
+    { key: 'decision', name: 'The Decision', tag: 'Lost to chaos',
+      def: 'The team’s ability to commit: a call gets made, it sticks, and it does not route back to you a week later. When it breaks, you become the bottleneck for every decision.',
+      line: 'The team struggles to commit. Calls get made, then quietly reopened, so everything routes back to you.',
+      fix: 'Give every decision an owner, the data it rests on, a deadline, and the duty to defend it — so a call sticks without your sign-off.',
+      hold: 'Decisions are sticking without routing back to you. Keep the protocol explicit so it holds under pressure.' },
+    { key: 'rhythm', name: 'The Rhythm', tag: 'Lost to sprawl',
+      def: 'The discipline of finishing, not just starting — the work in flight actually ships. When it breaks, initiatives roll over quarter after quarter while everyone stays busy.',
+      line: 'The team starts faster than it finishes. Initiatives roll over quarter after quarter while everyone stays busy.',
+      fix: 'Install work-in-progress limits — one in, one out. The default answer to new work becomes “not yet,” so what’s started actually finishes.',
+      hold: 'The team finishes what it starts. Guard your work-in-progress limits as new demands arrive.' },
+    { key: 'standard', name: 'The Standard', tag: 'Lost to avoidance',
+      def: 'How the team holds the bar: a missed commitment gets named in the room, not in the hallway. When it breaks, mediocrity gets tolerated because candor feels like conflict.',
+      line: 'Mediocrity gets tolerated in the room and discussed in the hallway, because candor feels like conflict.',
+      fix: 'Make naming a missed commitment a routine, expected habit — a normal line item, not a confrontation people brace for.',
+      hold: 'Candor is working — issues get named in the room. Keep it routine, not personal.' },
+    { key: 'learning', name: 'The Learning', tag: 'Lost to stagnation',
+      def: 'The discipline of examining misses and changing because of them. When it breaks, the same mistake returns next quarter wearing a different name.',
+      line: "Misses don't get examined, so the same problem returns next quarter wearing a different name.",
+      fix: 'Run a short after-action review on every meaningful miss that ends in one changed rule or process — so the lesson outlives the meeting.',
+      hold: 'You examine misses and adjust. Keep the after-action habit even when things go well.' },
   ];
   // Carry-over link to the Cost Calculator. The assessment never asks revenue/
   // headcount, so only the break point + a suggested meeting-waste % carry over.
@@ -191,41 +211,44 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     });
   }
 
-  // Generate the personalized Break-Point Report as a real PDF that downloads in
-  // one click (jsPDF, drawn directly — no print dialog, no rendering glitches).
+  // Generate the personalized Break-Point Report as a real one-click PDF (jsPDF,
+  // drawn directly — no print dialog). Rich, valuable, and a marketing touch.
   async function downloadReport() {
     const { jsPDF } = await import('jspdf');
+    const SITE = 'https://www.belegendary.org';
     const idx = computeBreakIndex();
     const pcts = scores();
     const d = comps[idx];
+    const overall = Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length);
+    const suggestedWaste = Math.max(15, Math.min(55, Math.round((60 - overall * 0.4) / 5) * 5));
 
     const INK: [number, number, number] = [27, 24, 16];
     const TERRA: [number, number, number] = [192, 74, 38];
+    const DEEP: [number, number, number] = [158, 58, 28];
     const MUTED: [number, number, number] = [86, 82, 71];
     const FAINT: [number, number, number] = [138, 133, 120];
     const statusFor = (p: number) => p >= 70
-      ? { label: 'Holding', col: [62, 155, 107] as [number, number, number] }
-      : p >= 45 ? { label: 'At risk', col: [184, 106, 46] as [number, number, number] }
-      : { label: 'Breaking', col: TERRA };
+      ? { label: 'Holding', col: [62, 155, 107] as [number, number, number], mean: 'this is a current strength. Protect it as the pressure rises.' }
+      : p >= 45 ? { label: 'At risk', col: [184, 106, 46] as [number, number, number], mean: "this is holding for now, but showing strain. It's the next one to watch." }
+      : { label: 'Breaking', col: TERRA, mean: "this is where you're most exposed — the component most likely to give first under pressure." };
 
     const doc = new jsPDF({ unit: 'pt', format: 'letter' });
     const W = doc.internal.pageSize.getWidth();
-    const M = 54;            // margin
-    const CW = W - M * 2;    // content width
+    const PH = doc.internal.pageSize.getHeight();
+    const M = 56, CW = W - M * 2, BOTTOM = PH - 52;
     let y = M;
 
-    const wrap = (text: string, size: number, font = 'helvetica', style = 'normal') => {
-      doc.setFont(font, style); doc.setFontSize(size);
-      return doc.splitTextToSize(text, CW) as string[];
+    const ensure = (h: number) => { if (y + h > BOTTOM) { doc.addPage(); y = M; } };
+    const para = (text: string, o: { size?: number; color?: [number, number, number]; style?: string; font?: string; gap?: number; lh?: number; x?: number; width?: number } = {}) => {
+      const size = o.size ?? 10.5, lh = o.lh ?? size * 1.45, x = o.x ?? M, width = o.width ?? CW;
+      doc.setFont(o.font ?? 'helvetica', o.style ?? 'normal'); doc.setFontSize(size);
+      doc.setTextColor(...(o.color ?? MUTED));
+      (doc.splitTextToSize(text, width) as string[]).forEach((ln) => { ensure(lh); doc.text(ln, x, y); y += lh; });
+      y += o.gap ?? 9;
     };
-    const para = (text: string, size: number, color: [number, number, number], opts: { font?: string; style?: string; gap?: number; lh?: number } = {}) => {
-      const lines = wrap(text, size, opts.font || 'helvetica', opts.style || 'normal');
-      doc.setTextColor(...color);
-      const lh = opts.lh || size * 1.4;
-      lines.forEach((ln) => { doc.text(ln, M, y); y += lh; });
-      y += opts.gap ?? 4;
-    };
-    const pageBreak = (need: number) => { if (y + need > doc.internal.pageSize.getHeight() - M) { doc.addPage(); y = M; } };
+    const eyebrow = (label: string) => { ensure(16); doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT); doc.text(label, M, y); y += 16; };
+    const heading = (label: string) => { ensure(48); y += 8; doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 20; doc.setFont('times', 'bold'); doc.setFontSize(15); doc.setTextColor(...INK); doc.text(label, M, y); y += 20; };
+    const linkCTA = (label: string, url: string) => { ensure(18); doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...TERRA); doc.textWithLink(label, M, y, { url }); y += 20; };
 
     // Header
     doc.setFillColor(...TERRA); doc.roundedRect(M, y, 22, 22, 4, 4, 'F');
@@ -237,57 +260,64 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     y += 34;
     doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 24;
 
-    // Break point
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
-    doc.text("YOUR TEAM'S MOST LIKELY FIRST BREAK POINT", M, y); y += 22;
-    doc.setFont('times', 'bold'); doc.setFontSize(30); doc.setTextColor(...INK); doc.text(d.name, M, y); y += 16;
+    // Break point headline + interpretation
+    eyebrow("YOUR TEAM'S MOST LIKELY FIRST BREAK POINT");
+    doc.setFont('times', 'bold'); doc.setFontSize(28); doc.setTextColor(...INK); doc.text(d.name, M, y); y += 18;
     doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...TERRA);
     doc.text(`${d.tag.toUpperCase()}  ·  ${pcts[idx]}% HEALTHY`, M, y); y += 20;
-    para(d.line, 11, MUTED, { lh: 15, gap: 6 });
-    para(d.fix.replace(/^→\s*/, ''), 11, TERRA, { style: 'bold', lh: 15, gap: 14 });
+    para(`Of the five components that hold a leadership team upright, this is the one your answers say will give first under real pressure. ${d.def}`, { size: 11, lh: 15.5, gap: 8 });
+    eyebrow('YOUR FIRST MOVE');
+    para(d.fix, { size: 11, color: DEEP, style: 'bold', lh: 15.5, gap: 12 });
+    para(`Across all five, your team averaged ${overall}% — ${overall >= 70 ? 'a generally strong team with one clear weak point to protect.' : overall >= 50 ? 'a capable team carrying real strain in a few places.' : 'a team under significant strain across more than one component.'}`, { size: 10, color: MUTED, gap: 4 });
 
-    // Components
-    doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 18;
-    doc.setFont('times', 'bold'); doc.setFontSize(16); doc.setTextColor(...INK); doc.text('Your five components', M, y); y += 20;
-
+    // Components — definition + what the score means + first move
+    heading('Your five components — what your answers say');
     comps.forEach((c, i) => {
       const p = pcts[i];
       const st = statusFor(p);
-      const note = p >= 70 ? c.hold : c.line;
-      const noteLines = wrap(note, 10, 'helvetica');
-      const fixLines = wrap(c.fix.replace(/^→\s*/, '→ '), 10, 'helvetica');
-      pageBreak(34 + noteLines.length * 13 + fixLines.length * 13);
+      ensure(74);
       doc.setFont('times', 'bold'); doc.setFontSize(13); doc.setTextColor(...INK); doc.text(c.name, M, y);
       doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...st.col);
-      doc.text(`${st.label}  ·  ${p}%`, W - M, y, { align: 'right' }); y += 8;
-      // bar
-      doc.setFillColor(239, 234, 221); doc.roundedRect(M, y, CW, 5, 2.5, 2.5, 'F');
-      doc.setFillColor(...st.col); doc.roundedRect(M, y, Math.max(2, CW * p / 100), 5, 2.5, 2.5, 'F'); y += 16;
-      doc.setTextColor(...MUTED); doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
-      noteLines.forEach((ln: string) => { doc.text(ln, M, y); y += 13; });
-      doc.setTextColor(158, 58, 28); doc.setFont('helvetica', 'bold');
-      fixLines.forEach((ln: string) => { doc.text(ln, M, y); y += 13; });
-      y += 10;
+      doc.text(`${st.label}  ·  ${p}%`, W - M, y, { align: 'right' }); y += 9;
+      doc.setFillColor(239, 234, 221); doc.roundedRect(M, y, CW, 5, 2, 2, 'F');
+      const w = CW * p / 100; doc.setFillColor(...st.col); doc.roundedRect(M, y, Math.max(3, w), 5, w < 4 ? 0 : 2, w < 4 ? 0 : 2, 'F'); y += 14;
+      para(c.def, { size: 9.5, color: MUTED, lh: 13, gap: 4 });
+      para(`At ${p}%, ${st.mean}`, { size: 9.5, color: INK, style: 'bold', lh: 13, gap: 4 });
+      para(`First move: ${c.fix}`, { size: 9.5, color: DEEP, lh: 13, gap: 12 });
     });
 
-    // What to do next
-    pageBreak(140);
-    doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 18;
-    doc.setFont('times', 'bold'); doc.setFontSize(16); doc.setTextColor(...INK); doc.text('What to do next', M, y); y += 20;
-    para('Rebuild the one component that broke first — not all five at once. The governing principle underneath every component is Truth Over Comfort: choosing the truthful, harder path over the comfortable one, paid daily or not at all. Start with the first move above; straightening that one component is usually enough to see what is next.', 11, MUTED, { lh: 15, gap: 8 });
-    para('Want it named for certain, not estimated? Book a free 15-minute, CEO-only Calibration Call with James Carter:', 11, MUTED, { lh: 15, gap: 4 });
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...TERRA);
-    doc.text('meetings.hubspot.com/jcarter28', M, y); y += 24;
+    // What to do next — concrete, sequenced
+    heading('What to do next');
+    para(`1.  Start with one component — your break point, ${d.name}. Trying to fix all five at once is how teams stall; sequence beats scope.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 7 });
+    para(`2.  Install the first move. ${d.fix} Then put it on the agenda of your next three leadership meetings and watch whether it actually holds.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 7 });
+    para(`3.  Re-take this assessment in 90 days. If ${d.name} has climbed out of the danger zone, you're rebuilding the right thing.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 8 });
+
+    // Put a number on it — calculator
+    heading('Put a number on it');
+    para("Your break point isn't just friction — it carries a dollar figure. The Cost of Lost Disciplines Calculator turns it into an annual range for your company, built on third-party McKinsey and LSA Global research. We've carried your result over so it's pre-filled:", { size: 10.5, color: MUTED, lh: 14.5, gap: 6 });
+    linkCTA('Run the calculator with your result →', `${SITE}/cost-of-lost-disciplines-calculator/?from=assessment&break=${d.key}&waste=${suggestedWaste}`);
+
+    // Go deeper
+    heading('Go deeper');
+    para('The Flag Model, in full — how the five components fit together, and how each one is rebuilt:', { size: 10.5, color: MUTED, lh: 14.5, gap: 4 });
+    linkCTA('Read the Flag Model →', `${SITE}/flag-model/`);
+    para("James Carter's forthcoming book, Lost Disciplines of Leadership, goes deeper on why capable teams know what to do and still don't do it:", { size: 10.5, color: MUTED, lh: 14.5, gap: 4 });
+    linkCTA('More from James Carter →', `${SITE}/about/james-carter/`);
+
+    // Honest CTA
+    heading('Want a second set of eyes?');
+    para("A free 15-minute, CEO-only Calibration Call won't hand you certainty — but it will sharpen this read. You'll run a short exercise that surfaces where your team actually stands, and leave knowing where to start. A calibration, not a pitch.", { size: 10.5, color: MUTED, lh: 14.5, gap: 6 });
+    linkCTA('Book a Calibration Call → meetings.hubspot.com/jcarter28', 'https://meetings.hubspot.com/jcarter28');
 
     // Footer on every page
     const pages = doc.getNumberOfPages();
     for (let i = 1; i <= pages; i++) {
       doc.setPage(i);
-      const fy = doc.internal.pageSize.getHeight() - 30;
+      const fy = PH - 30;
       doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, fy, W - M, fy);
       doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
       doc.text('© 2026 Be Legendary · The Flag Model™', M, fy + 13);
-      doc.text('belegendary.org', W - M, fy + 13, { align: 'right' });
+      doc.text(`belegendary.org   ·   ${i} / ${pages}`, W - M, fy + 13, { align: 'right' });
     }
 
     doc.save('Be-Legendary-Break-Point-Report.pdf');
