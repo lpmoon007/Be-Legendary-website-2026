@@ -48,9 +48,22 @@ export const SLUGS = {
   alignmentConsultant: '/executive-team-alignment-consultant/',
   offsiteFacilitator: '/leadership-team-offsite-facilitator/',
   coachingCost: '/executive-team-coaching-cost/',
+  // The Library (individual-leader content cluster)
+  library: '/library/',
+  mindset: '/library/mindset-of-a-legend/',
+  goldenBuddha: '/library/the-golden-buddha/',
+  roadmap: '/library/roadmap-to-legendary/',
+  legendaryIntent: '/library/legendary-intent/',
   // Legal
   privacy: '/privacy/',
 } as const;
+
+// Sister sites (followed editorial cross-links, NOT nofollow — they pass authority)
+export const SISTER = {
+  retreats: 'https://www.legendary-retreats.com',
+  buildingTeams: 'https://www.buildingteams.com',
+  lpi: 'https://www.legendaryperformanceinstitute.com',
+};
 
 // ── Canonical entity nodes (GEO/E-E-A-T) ─────────────────────────────────────
 // Stable @ids so every page's JSON-LD resolves the same Organization, founder
@@ -66,7 +79,7 @@ export const ORG_NODE = {
   name: 'Be Legendary',
   alternateName: 'Repario',
   url: `${SITE_URL}/`,
-  logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/logo.png`, width: 512, height: 512 },
+  logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/favicon-snail.png`, width: 512, height: 512 },
   image: `${SITE_URL}/assets/share-card.png`,
   description: 'An executive-team diagnostic and performance firm. We rebuild the disciplines of the Flag Model that turn a stalled leadership team into one that executes.',
   founder: { '@id': PERSON_ID },
