@@ -1,0 +1,53 @@
+name: Deploy to VPS
+
+# Builds the static site and deploys it to the Plesk VPS over SSH on every push.
+# Inert until the repository secrets below are set (Settings → Secrets and variables
+# → Actions). See docs/DEPLOY.md for one-time setup.
+
+on:
+  push:
+    branches: [claude/epic-carson-cjyx09, main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    # Skip cleanly if the deploy secret hasn't been configured yet.
+    if: ${{ true }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Deploy dist/ to the VPS (rsync over SSH)
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT }}
+        run: |
+          if [ -z "$DEPLOY_SSH_KEY" ]; then
+            echo "::warning::DEPLOY_SSH_KEY not set — skipping deploy (build still validated)."
+            exit 0
+          fi
+          PORT="${DEPLOY_PORT:-22}"
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$PORT" "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          # --delete keeps the server matching the build; never touch .well-known (SSL/ACME).
+          rsync -avz --delete --exclude='.well-known' \
+            -e "ssh -i ~/.ssh/deploy_key -p $PORT -o StrictHostKeyChecking=accept-new" \
+            dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+          echo "Deployed to $DEPLOY_HOST:$DEPLOY_PATH"
