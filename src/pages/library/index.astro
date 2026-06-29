@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SLUGS, SISTER } from '../../lib/site';
+
+const title = 'The Library — The Deeper Work Behind Be Legendary';
+const description = "The body of work beneath the Flag Model: the mindset, the parables, and the practices James Carter has used for 25 years to help leaders become their best selves. Given away freely — no pitch, no gate.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'The Library', item: 'https://www.belegendary.org/library/' },
+  ] },
+  { '@type': 'CollectionPage', '@id': 'https://www.belegendary.org/library/#page', name: 'The Library', about: "The mindset, parables, and practices behind Be Legendary's work", isPartOf: { '@type': 'Organization', name: 'Be Legendary' } },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.library}
+  ogType="website"
+  ogTitle="The Library — the deeper work behind Be Legendary"
+  ogDescription="The mindset, parables, and practices behind the Flag Model. Given away freely."
+  schema={schema}
+>
+  <Header maxWidth={1100} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }]} />
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:1100px;margin:0 auto;padding:84px 32px 50px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">The Library</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,70px);line-height:1.01;letter-spacing:-0.02em;max-width:16ch;color:#FBF8F1;">The Library.</h1>
+    <p style="margin-top:24px;font-size:clamp(18px,2.1vw,22px);line-height:1.54;max-width:62ch;color:rgba(244,240,231,0.82);">The Flag Model&trade; is how executive teams find the gear they've been missing. This is the deeper body of work underneath it &mdash; the mindset, the parables, and the practices James has used for 25 years to help individual leaders become their best selves.</p>
+    <p style="margin-top:18px;font-size:17px;line-height:1.6;max-width:58ch;color:rgba(244,240,231,0.66);">No pitch. No gate. We give this away because the more leaders who think this way, the better. If it helps you, use it.</p>
+  </header>
+
+  <!-- CORNERSTONES -->
+  <section style="max-width:1100px;margin:0 auto;padding:20px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Start here &mdash; the three that go together</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+      <a href={SLUGS.mindset} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:32px;display:flex;flex-direction:column;min-height:230px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">The philosophy</span>
+        <span style="margin-top:12px;font-family:'Newsreader',serif;font-size:26px;line-height:1.1;color:#FBF8F1;">The Mindset of a Legend</span>
+        <span style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">Awareness, Beliefs, Courage &mdash; the ABCs that turn an ordinary leader into a legendary one. The idea the whole company is named for.</span>
+        <span style="margin-top:auto;padding-top:16px;font-weight:700;font-size:14.5px;color:#E0744A;">Read it &rarr;</span>
+      </a>
+      <a href={SLUGS.roadmap} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:32px;display:flex;flex-direction:column;min-height:230px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">The path</span>
+        <span style="margin-top:12px;font-family:'Newsreader',serif;font-size:26px;line-height:1.1;color:#FBF8F1;">The Roadmap to Legendary</span>
+        <span style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">How the mindset becomes a habit: the journey from stuck to legacy &mdash; Emerge, Explore, Evolve, Endow.</span>
+        <span style="margin-top:auto;padding-top:16px;font-weight:700;font-size:14.5px;color:#E0744A;">Read it &rarr;</span>
+      </a>
+      <a href={SLUGS.legendaryIntent} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:32px;display:flex;flex-direction:column;min-height:230px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">The tool</span>
+        <span style="margin-top:12px;font-family:'Newsreader',serif;font-size:26px;line-height:1.1;color:#FBF8F1;">Your Legendary Intent</span>
+        <span style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">One sentence that declares how you'll make a difference &mdash; and becomes the filter you see every day through. With the exercise to write yours.</span>
+        <span style="margin-top:auto;padding-top:16px;font-weight:700;font-size:14.5px;color:#E0744A;">Read it &rarr;</span>
+      </a>
+    </div>
+
+    <!-- THE STORY BENEATH IT -->
+    <a href={SLUGS.goldenBuddha} style="margin-top:18px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.32);border-radius:18px;padding:30px 34px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.32)'">
+      <div style="flex:1;min-width:300px;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">The story beneath it all</span>
+        <p style="margin-top:10px;font-family:'Newsreader',serif;font-size:25px;line-height:1.12;color:#FBF8F1;">The Golden Buddha</p>
+        <p style="margin-top:8px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.7);max-width:60ch;">The whole mindset, rolled into one true story &mdash; the clay we let cover the gold we already are. The most-requested talk James gives.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Read the story &rarr;</span>
+    </a>
+  </section>
+
+  <!-- MORE COMING (Tier 1 rewrites land here) -->
+  <section style="max-width:1100px;margin:0 auto;padding:44px 32px 8px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:14px;">Essays for the individual leader</p>
+    <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.66);max-width:60ch;margin-bottom:20px;">Shorter pieces on the inner work of leading &mdash; energy, fear, the questions worth asking. More are added here over time.</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;">
+      <div style="background:#1B1810;border:1px dashed rgba(244,240,231,0.16);border-radius:14px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:19px;color:rgba(244,240,231,0.72);line-height:1.15;">Leaders, you're asking the wrong question</p>
+        <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.5);">The questions a leader asks shape what the team can do.</p>
+        <span style="margin-top:12px;display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6E685C;">coming soon</span>
+      </div>
+      <div style="background:#1B1810;border:1px dashed rgba(244,240,231,0.16);border-radius:14px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:19px;color:rgba(244,240,231,0.72);line-height:1.15;">The journey to overwhelm</p>
+        <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.5);">Managing executive energy before it manages you.</p>
+        <span style="margin-top:12px;display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#6E685C;">coming soon</span>
+      </div>
+    </div>
+    <a href={SISTER.lpi} target="_blank" rel="noopener" style="margin-top:18px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 28px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+      <div style="flex:1;min-width:280px;">
+        <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Go deeper on individual leadership</p>
+        <p style="margin-top:6px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);max-width:54ch;">This Library is the thinking behind our team work. For the full individual-development path &mdash; the Legendary Leadership course, core values, energy management &mdash; visit our sister site, the Legendary Performance Institute.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:14.5px;white-space:nowrap;">Visit LPI &#8599;</span>
+    </a>
+  </section>
+
+  <!-- SOFT BRIDGE (no hard CTA — this is a trust asset) -->
+  <section style="max-width:900px;margin:0 auto;padding:64px 32px 20px;">
+    <div style="background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:34px;text-align:center;">
+      <p style="font-size:17px;line-height:1.66;color:rgba(244,240,231,0.82);max-width:60ch;margin:0 auto;">This is the thinking behind the work. If it resonates and you lead a team, the <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> is where the mindset becomes a system &mdash; but there's nothing to buy here. Just take what's useful.</p>
+    </div>
+  </section>
+
+  <Footer variant="slim" maxWidth={1100} note="© 2026 Be Legendary · The deeper work, given away freely." />
+</BaseLayout>
