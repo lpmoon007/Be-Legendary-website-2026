@@ -127,7 +127,21 @@ export default function EnrollPage() {
             <SnailMark className="h-6 w-8 text-accent-light" />
             <span className="font-serif">Be Legendary</span>
           </div>
-          <p>Reply STOP to cancel, HELP for help. We never share your number.</p>
+          <div className="flex flex-col items-center gap-2 sm:items-end">
+            <p>Reply STOP to cancel, HELP for help. We never share your number.</p>
+            <nav className="flex items-center gap-4 text-ink-light/60">
+              <a href="/terms" className="hover:text-ink-light">
+                SMS Terms
+              </a>
+              <span aria-hidden>·</span>
+              <a
+                href="https://www.belegendary.org/privacy/"
+                className="hover:text-ink-light"
+              >
+                Privacy
+              </a>
+            </nav>
+          </div>
         </div>
       </footer>
     </div>
