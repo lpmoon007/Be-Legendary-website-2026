@@ -1,8 +1,15 @@
+"use client";
+
 import Link from "next/link";
-import { createUser } from "@/app/admin/actions";
+import { useFormState, useFormStatus } from "react-dom";
+import { createUser, type CreateUserState } from "@/app/admin/actions";
 import { COMMON_TIMEZONES } from "@/lib/timezone";
 
+const initialState: CreateUserState = {};
+
 export default function NewUserPage() {
+  const [state, formAction] = useFormState(createUser, initialState);
+
   return (
     <div className="mx-auto max-w-xl">
       <Link href="/admin" className="text-sm text-ink-light/60 hover:text-ink-light">
@@ -12,7 +19,7 @@ export default function NewUserPage() {
         Add a participant
       </h1>
 
-      <form action={createUser} className="surface mt-6 bg-card-light p-6 shadow-card">
+      <form action={formAction} className="surface mt-6 bg-card-light p-6 shadow-card">
         <div className="space-y-4">
           <Field label="Name" name="name" placeholder="Jordan Ellis" required />
           <Field
@@ -72,9 +79,24 @@ export default function NewUserPage() {
           </div>
         </div>
 
-        <button className="btn-cta mt-6 w-full">Create participant</button>
+        {state?.error && (
+          <p className="mt-4 rounded-btn bg-accent/10 px-4 py-3 text-sm font-600 text-accent">
+            {state.error}
+          </p>
+        )}
+
+        <SubmitButton />
       </form>
     </div>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button className="btn-cta mt-6 w-full" disabled={pending}>
+      {pending ? "Creating…" : "Create participant"}
+    </button>
   );
 }
 
