@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
   phone          text UNIQUE NOT NULL,       -- E.164: +13035551234
   timezone       text NOT NULL,              -- IANA: America/Denver
   commitment     text NOT NULL,              -- The lead measure / daily rep
-  morning_time   time NOT NULL DEFAULT '07:00',
+  morning_time   time NOT NULL DEFAULT '08:00',
   afternoon_time time NOT NULL DEFAULT '16:00',
   active         boolean DEFAULT true,
   created_at     timestamptz DEFAULT now()

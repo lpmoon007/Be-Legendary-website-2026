@@ -24,7 +24,7 @@ export async function createUser(
   const commitment = String(formData.get("commitment") ?? "").trim();
   // `|| default` (not `??`) so an empty string from a cleared time input still
   // falls back to a valid time instead of hitting the DB as "".
-  const morning_time = String(formData.get("morning_time") || "07:00");
+  const morning_time = String(formData.get("morning_time") || "08:00");
   const afternoon_time = String(formData.get("afternoon_time") || "16:00");
 
   if (!name || !commitment)
@@ -140,18 +140,22 @@ export async function sendCoachMessage(
 
 const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/; // HH:MM 24-hour
 
-export async function updateSendTimes(
+export async function updateSchedule(
   userId: string,
   morning: string,
-  afternoon: string
+  afternoon: string,
+  timezone: string
 ) {
   const supabase = createClient();
   if (!TIME_RE.test(morning) || !TIME_RE.test(afternoon)) {
     throw new Error("Enter valid times (HH:MM).");
   }
+  if (!isValidTimezone(timezone)) {
+    throw new Error("Choose a valid timezone.");
+  }
   const { error } = await supabase
     .from("users")
-    .update({ morning_time: morning, afternoon_time: afternoon })
+    .update({ morning_time: morning, afternoon_time: afternoon, timezone })
     .eq("id", userId);
   if (error) throw new Error(error.message);
   revalidatePath(`/admin/users/${userId}`);
