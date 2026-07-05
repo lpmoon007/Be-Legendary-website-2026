@@ -61,7 +61,7 @@ export default function NewUserPage() {
               <input
                 type="time"
                 name="morning_time"
-                defaultValue="07:00"
+                defaultValue="08:00"
                 className="mt-1 w-full rounded-btn border border-ink-muted/40 bg-white px-4 py-3 text-ink-body outline-none focus:border-accent"
               />
             </label>

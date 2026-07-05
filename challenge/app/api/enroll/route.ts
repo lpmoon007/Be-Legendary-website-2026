@@ -84,7 +84,16 @@ export async function POST(req: NextRequest) {
 
   const { data: user, error } = await supabase
     .from("users")
-    .insert({ name, phone, commitment, timezone, active: true })
+    // Morning 8:00 AM matches the enrollment page's "Day 1 lands at 8 a.m."
+    // promise; afternoon uses the 16:00 (4 p.m.) column default.
+    .insert({
+      name,
+      phone,
+      commitment,
+      timezone,
+      morning_time: "08:00",
+      active: true,
+    })
     .select("id")
     .single();
 

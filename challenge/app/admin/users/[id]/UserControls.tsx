@@ -3,23 +3,27 @@
 import { useState, useTransition } from "react";
 import {
   updateCommitment,
-  updateSendTimes,
+  updateSchedule,
   toggleActive,
   sendCoachMessage,
 } from "@/app/admin/actions";
+import { COMMON_TIMEZONES } from "@/lib/timezone";
 
 export function SendTimesEditor({
   userId,
   morning,
   afternoon,
+  timezone,
 }: {
   userId: string;
   morning: string; // HH:MM
   afternoon: string; // HH:MM
+  timezone: string; // IANA
 }) {
   const [editing, setEditing] = useState(false);
   const [m, setM] = useState(morning);
   const [a, setA] = useState(afternoon);
+  const [tz, setTz] = useState(timezone);
   const [pending, start] = useTransition();
   const [error, setError] = useState<string | null>(null);
 
@@ -39,6 +43,12 @@ export function SendTimesEditor({
       </div>
     );
   }
+
+  // If the stored zone isn't in the preset list, keep it as an option so it
+  // isn't silently dropped on save.
+  const tzOptions = COMMON_TIMEZONES.some((z) => z.value === timezone)
+    ? COMMON_TIMEZONES
+    : [{ value: timezone, label: timezone }, ...COMMON_TIMEZONES];
 
   return (
     <div>
@@ -61,6 +71,20 @@ export function SendTimesEditor({
             className="mt-1 block rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-ink-body outline-none focus:border-accent"
           />
         </label>
+        <label className="block">
+          <span className="text-xs font-600 text-ink-muted">Timezone</span>
+          <select
+            value={tz}
+            onChange={(e) => setTz(e.target.value)}
+            className="mt-1 block rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-ink-body outline-none focus:border-accent"
+          >
+            {tzOptions.map((z) => (
+              <option key={z.value} value={z.value}>
+                {z.label}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       {error && <p className="mt-2 text-sm font-600 text-accent">{error}</p>}
       <div className="mt-3 flex gap-2">
@@ -70,7 +94,7 @@ export function SendTimesEditor({
             setError(null);
             start(async () => {
               try {
-                await updateSendTimes(userId, m, a);
+                await updateSchedule(userId, m, a, tz);
                 setEditing(false);
               } catch (e) {
                 setError(e instanceof Error ? e.message : "Could not save.");
@@ -85,6 +109,7 @@ export function SendTimesEditor({
           onClick={() => {
             setM(morning);
             setA(afternoon);
+            setTz(timezone);
             setError(null);
             setEditing(false);
           }}

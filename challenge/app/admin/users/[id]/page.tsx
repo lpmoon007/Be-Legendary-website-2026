@@ -114,6 +114,7 @@ export default async function UserDetailPage({
             userId={u.id}
             morning={u.morning_time.slice(0, 5)}
             afternoon={u.afternoon_time.slice(0, 5)}
+            timezone={u.timezone}
           />
         </div>
       </div>
