@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { toE164, digitCount } from "@/lib/phone";
 import { isValidTimezone } from "@/lib/timezone";
+import { sendSms } from "@/lib/twilio";
 
 // All admin mutations run through the request-bound (authenticated) server
 // client, which RLS grants full access. The middleware guarantees a session.
@@ -61,6 +62,31 @@ export async function updateCommitment(userId: string, commitment: string) {
     .update({ commitment: value })
     .eq("id", userId);
   if (error) throw new Error(error.message);
+  revalidatePath(`/admin/users/${userId}`);
+}
+
+/** Coach sends a free-form SMS to a participant; logs it to the thread. */
+export async function sendCoachMessage(userId: string, body: string) {
+  const supabase = createClient();
+  const text = body.trim();
+  if (!text) throw new Error("Message cannot be empty.");
+
+  const { data: user, error } = await supabase
+    .from("users")
+    .select("phone")
+    .eq("id", userId)
+    .maybeSingle();
+  if (error || !user) throw new Error("Participant not found.");
+
+  const sid = await sendSms(user.phone, text);
+
+  await supabase.from("sms_log").insert({
+    user_id: userId,
+    direction: "outbound",
+    body: text,
+    twilio_sid: sid,
+  });
+
   revalidatePath(`/admin/users/${userId}`);
 }
 

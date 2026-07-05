@@ -56,6 +56,27 @@ export function currentStreak(checkins: CheckinRow[], todayISO: string): number 
   return streak;
 }
 
+/**
+ * Whole local days a participant has been silent, measured from their last
+ * scored check-in — or from `enrolledISO` if they've never scored. Used for the
+ * "at risk" roster flag and mirrors the auto-nudge threshold.
+ */
+export function daysSilent(
+  checkins: CheckinRow[],
+  todayISO: string,
+  enrolledISO: string
+): number {
+  const scored = checkins
+    .filter((c) => c.score != null)
+    .map((c) => c.date)
+    .sort();
+  const anchor = scored.length ? scored[scored.length - 1] : enrolledISO;
+  const diff =
+    (Date.parse(`${todayISO}T00:00:00Z`) - Date.parse(`${anchor}T00:00:00Z`)) /
+    86_400_000;
+  return Math.max(0, Math.round(diff));
+}
+
 /** Consistency = share of the last `windowDays` days with a check-in (0–100). */
 export function consistencyPct(
   checkins: CheckinRow[],

@@ -16,6 +16,14 @@ interface DueRow {
   local_date: string;
 }
 
+interface NudgeRow {
+  user_id: string;
+  phone: string;
+  name: string;
+  timezone: string;
+  local_date: string;
+}
+
 // Internal endpoint. The Supabase scheduler (Edge Function / pg_cron) calls this
 // every minute with `Authorization: Bearer <CRON_SECRET>`. It asks Postgres who
 // is due *right now in their own timezone* (due_messages()), sends each text,
@@ -71,6 +79,29 @@ export async function POST(req: NextRequest) {
     } catch (err) {
       console.error(`Send failed for ${row.user_id} (${row.message_type}):`, err);
       results.push({ user_id: row.user_id, type: row.message_type, ok: false });
+    }
+  }
+
+  // ── Auto-nudge silent participants (noon local, 3+ days quiet, once/streak) ──
+  const { data: nudgeData, error: nudgeError } = await supabase.rpc("due_nudges");
+  if (nudgeError) {
+    console.error("due_nudges RPC failed:", nudgeError);
+  } else {
+    for (const row of (nudgeData ?? []) as NudgeRow[]) {
+      const body = messages.nudge(row.name?.split(" ")[0]);
+      try {
+        const sid = await sendSms(row.phone, body);
+        await supabase.from("sms_log").insert({
+          user_id: row.user_id,
+          direction: "outbound",
+          body,
+          twilio_sid: sid,
+        });
+        results.push({ user_id: row.user_id, type: "nudge", ok: true });
+      } catch (err) {
+        console.error(`Nudge failed for ${row.user_id}:`, err);
+        results.push({ user_id: row.user_id, type: "nudge", ok: false });
+      }
     }
   }
 
