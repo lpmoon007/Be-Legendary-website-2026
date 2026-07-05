@@ -124,6 +124,25 @@ export async function sendCoachMessage(userId: string, body: string) {
   revalidatePath(`/admin/users/${userId}`);
 }
 
+const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/; // HH:MM 24-hour
+
+export async function updateSendTimes(
+  userId: string,
+  morning: string,
+  afternoon: string
+) {
+  const supabase = createClient();
+  if (!TIME_RE.test(morning) || !TIME_RE.test(afternoon)) {
+    throw new Error("Enter valid times (HH:MM).");
+  }
+  const { error } = await supabase
+    .from("users")
+    .update({ morning_time: morning, afternoon_time: afternoon })
+    .eq("id", userId);
+  if (error) throw new Error(error.message);
+  revalidatePath(`/admin/users/${userId}`);
+}
+
 export async function toggleActive(userId: string, active: boolean) {
   const supabase = createClient();
   const { error } = await supabase
