@@ -17,8 +17,13 @@ function client() {
 }
 
 export async function sendSms(to: string, body: string): Promise<string> {
-  const from = process.env.TWILIO_PHONE_NUMBER;
-  if (!from) throw new Error("TWILIO_PHONE_NUMBER is not configured.");
+  const raw = process.env.TWILIO_PHONE_NUMBER;
+  if (!raw) throw new Error("TWILIO_PHONE_NUMBER is not configured.");
+  // Twilio requires the From number in E.164 (+15551234567). Tolerate a value
+  // set without the leading "+" (or with spaces/dashes) rather than failing.
+  const from = raw.trim().startsWith("+")
+    ? raw.trim()
+    : `+${raw.replace(/[^\d]/g, "")}`;
   const msg = await client().messages.create({ to, from, body });
   return msg.sid;
 }
