@@ -10,47 +10,81 @@ import { sendSms } from "@/lib/twilio";
 // All admin mutations run through the request-bound (authenticated) server
 // client, which RLS grants full access. The middleware guarantees a session.
 
-export async function createUser(formData: FormData) {
+export type CreateUserState = { error?: string };
+
+export async function createUser(
+  _prev: CreateUserState,
+  formData: FormData
+): Promise<CreateUserState> {
   const supabase = createClient();
 
   const name = String(formData.get("name") ?? "").trim();
   const rawPhone = String(formData.get("phone") ?? "").trim();
   const timezone = String(formData.get("timezone") ?? "").trim();
   const commitment = String(formData.get("commitment") ?? "").trim();
-  const morning_time = String(formData.get("morning_time") ?? "07:00");
-  const afternoon_time = String(formData.get("afternoon_time") ?? "16:00");
+  // `|| default` (not `??`) so an empty string from a cleared time input still
+  // falls back to a valid time instead of hitting the DB as "".
+  const morning_time = String(formData.get("morning_time") || "07:00");
+  const afternoon_time = String(formData.get("afternoon_time") || "16:00");
 
-  if (!name || !commitment) throw new Error("Name and commitment are required.");
-  if (digitCount(rawPhone) < 10) throw new Error("Enter a valid phone number.");
-  if (!isValidTimezone(timezone)) throw new Error("Choose a valid timezone.");
+  if (!name || !commitment)
+    return { error: "Name and commitment are required." };
+  if (digitCount(rawPhone) < 10)
+    return { error: "Enter a valid phone number." };
+  if (!isValidTimezone(timezone))
+    return { error: "Choose a valid timezone." };
 
   const phone = toE164(rawPhone);
-  if (!phone) throw new Error("Phone number could not be parsed to E.164.");
+  if (!phone)
+    return { error: "That phone number couldn't be read. Try a 10-digit US number or +country format." };
 
-  const { data: user, error } = await supabase
-    .from("users")
-    .insert({
-      name,
-      phone,
-      timezone,
-      commitment,
-      morning_time,
-      afternoon_time,
-      active: true,
-    })
-    .select("id")
-    .single();
+  let userId: string;
+  try {
+    // Friendly guard for the UNIQUE(phone) constraint — the coach may be adding
+    // someone who already self-enrolled.
+    const { data: existing } = await supabase
+      .from("users")
+      .select("id")
+      .eq("phone", phone)
+      .maybeSingle();
+    if (existing) {
+      return {
+        error:
+          "A participant with that phone number already exists. Open them from the roster instead.",
+      };
+    }
 
-  if (error || !user) {
-    throw new Error(error?.message ?? "Could not create user.");
+    const { data: user, error } = await supabase
+      .from("users")
+      .insert({
+        name,
+        phone,
+        timezone,
+        commitment,
+        morning_time,
+        afternoon_time,
+        active: true,
+      })
+      .select("id")
+      .single();
+
+    if (error || !user) {
+      return { error: error?.message ?? "Could not create participant." };
+    }
+
+    await supabase
+      .from("conversation_state")
+      .insert({ user_id: user.id, state: "idle" });
+
+    userId = user.id;
+  } catch (e) {
+    return {
+      error: e instanceof Error ? e.message : "Could not create participant.",
+    };
   }
 
-  await supabase
-    .from("conversation_state")
-    .insert({ user_id: user.id, state: "idle" });
-
   revalidatePath("/admin");
-  redirect(`/admin/users/${user.id}`);
+  redirect(`/admin/users/${userId}`); // NEXT_REDIRECT — must stay outside try/catch
 }
 
 export async function updateCommitment(userId: string, commitment: string) {
