@@ -2,7 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ScoreChart, type ChartPoint } from "./ScoreChart";
-import { CommitmentEditor, ActiveToggle, MessageSender } from "./UserControls";
+import {
+  CommitmentEditor,
+  ActiveToggle,
+  MessageSender,
+  SendTimesEditor,
+} from "./UserControls";
 import {
   recentAverage,
   currentStreak,
@@ -87,9 +92,6 @@ export default async function UserDetailPage({
       <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-ink-light/50">
         <span>{u.phone}</span>
         <span>{u.timezone}</span>
-        <span>
-          Sends {u.morning_time.slice(0, 5)} · {u.afternoon_time.slice(0, 5)}
-        </span>
       </div>
 
       {/* Commitment (inline editable) */}
@@ -99,6 +101,20 @@ export default async function UserDetailPage({
         </span>
         <div className="mt-2">
           <CommitmentEditor userId={u.id} initial={u.commitment} />
+        </div>
+      </div>
+
+      {/* Send times (inline editable) */}
+      <div className="surface mt-4 bg-card-light p-5 shadow-card">
+        <span className="text-xs font-700 uppercase tracking-wide text-ink-muted">
+          Send times · {u.timezone}
+        </span>
+        <div className="mt-2">
+          <SendTimesEditor
+            userId={u.id}
+            morning={u.morning_time.slice(0, 5)}
+            afternoon={u.afternoon_time.slice(0, 5)}
+          />
         </div>
       </div>
 
