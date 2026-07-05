@@ -99,20 +99,33 @@ export async function updateCommitment(userId: string, commitment: string) {
   revalidatePath(`/admin/users/${userId}`);
 }
 
-/** Coach sends a free-form SMS to a participant; logs it to the thread. */
-export async function sendCoachMessage(userId: string, body: string) {
+/**
+ * Coach sends a free-form SMS to a participant; logs it to the thread.
+ * Returns { error } (never throws) so the UI can surface the real Twilio reason
+ * — Next.js sanitizes thrown server-action errors in production.
+ */
+export async function sendCoachMessage(
+  userId: string,
+  body: string
+): Promise<{ error?: string }> {
   const supabase = createClient();
   const text = body.trim();
-  if (!text) throw new Error("Message cannot be empty.");
+  if (!text) return { error: "Message cannot be empty." };
 
   const { data: user, error } = await supabase
     .from("users")
     .select("phone")
     .eq("id", userId)
     .maybeSingle();
-  if (error || !user) throw new Error("Participant not found.");
+  if (error || !user) return { error: "Participant not found." };
 
-  const sid = await sendSms(user.phone, text);
+  let sid: string;
+  try {
+    sid = await sendSms(user.phone, text);
+  } catch (e) {
+    const detail = e instanceof Error ? e.message : "Unknown error";
+    return { error: `Twilio couldn't send this message — ${detail}` };
+  }
 
   await supabase.from("sms_log").insert({
     user_id: userId,
@@ -122,6 +135,7 @@ export async function sendCoachMessage(userId: string, body: string) {
   });
 
   revalidatePath(`/admin/users/${userId}`);
+  return {};
 }
 
 const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/; // HH:MM 24-hour

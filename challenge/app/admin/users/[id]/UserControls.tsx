@@ -116,8 +116,9 @@ export function MessageSender({ userId }: { userId: string }) {
     setError(null);
     start(async () => {
       try {
-        await sendCoachMessage(userId, text);
-        setValue("");
+        const res = await sendCoachMessage(userId, text);
+        if (res?.error) setError(res.error);
+        else setValue("");
       } catch (e) {
         setError(e instanceof Error ? e.message : "Could not send.");
       }
