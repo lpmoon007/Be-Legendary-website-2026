@@ -22,4 +22,10 @@ export const messages = {
 
   idle: () =>
     `Nothing to respond to right now. You'll hear from me tomorrow morning.`,
+
+  // Auto-nudge after 3 silent days. Warm, conversational, no pressure.
+  // The distinctive phrase "quiet days" is how due_nudges() dedupes (once/streak),
+  // so keep those two words if you edit this.
+  nudge: (name?: string) =>
+    `Hey${name ? ` ${name}` : ""} — it's been a few quiet days, and that's okay. No judgment here. Just checking: everything alright? I'm still in your corner whenever you're ready to pick it back up.`,
 } as const;

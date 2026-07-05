@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import {
   recentAverage,
   currentStreak,
+  daysSilent,
   scoreColor,
   type CheckinRow,
 } from "@/lib/metrics";
@@ -10,12 +11,16 @@ import { localDateISO } from "@/lib/timezone";
 
 export const dynamic = "force-dynamic";
 
+// Silent for this many local days → flagged "at risk" (matches the nudge threshold).
+const AT_RISK_DAYS = 3;
+
 interface UserRow {
   id: string;
   name: string;
   timezone: string;
   commitment: string;
   active: boolean;
+  created_at: string;
 }
 
 export default async function RosterPage() {
@@ -23,7 +28,7 @@ export default async function RosterPage() {
 
   const { data: users } = await supabase
     .from("users")
-    .select("id, name, timezone, commitment, active")
+    .select("id, name, timezone, commitment, active, created_at")
     .order("created_at", { ascending: true });
 
   const roster = (users ?? []) as UserRow[];
@@ -46,6 +51,14 @@ export default async function RosterPage() {
   const active = roster.filter((u) => u.active);
   const inactive = roster.filter((u) => !u.active);
 
+  const silentDaysFor = (u: UserRow) =>
+    daysSilent(
+      byUser.get(u.id) ?? [],
+      localDateISO(u.timezone),
+      localDateISO(u.timezone, new Date(u.created_at))
+    );
+  const atRiskCount = active.filter((u) => silentDaysFor(u) >= AT_RISK_DAYS).length;
+
   return (
     <div>
       <div className="mb-6 flex items-end justify-between">
@@ -53,6 +66,9 @@ export default async function RosterPage() {
           <h1 className="font-serif text-3xl font-500 text-ink-light">Roster</h1>
           <p className="mt-1 text-sm text-ink-light/50">
             {active.length} active · {inactive.length} inactive
+            {atRiskCount > 0 && (
+              <span className="text-accent-light"> · {atRiskCount} at risk</span>
+            )}
           </p>
         </div>
         <Link href="/admin/users/new" className="btn-cta !py-2.5">
@@ -70,6 +86,8 @@ export default async function RosterPage() {
             const todays = checkins.find((c) => c.date === today);
             const avg7 = recentAverage(checkins, 7);
             const streak = currentStreak(checkins, today);
+            const silent = silentDaysFor(u);
+            const atRisk = u.active && silent >= AT_RISK_DAYS;
             return (
               <Link
                 key={u.id}
@@ -86,6 +104,11 @@ export default async function RosterPage() {
                     {!u.active && (
                       <span className="pill bg-ink-muted/20 text-ink-muted">
                         inactive
+                      </span>
+                    )}
+                    {atRisk && (
+                      <span className="pill bg-accent/15 text-accent">
+                        ⚠ {silent} days silent
                       </span>
                     )}
                   </div>

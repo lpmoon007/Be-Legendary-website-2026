@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ScoreChart, type ChartPoint } from "./ScoreChart";
-import { CommitmentEditor, ActiveToggle } from "./UserControls";
+import { CommitmentEditor, ActiveToggle, MessageSender } from "./UserControls";
 import {
   recentAverage,
   currentStreak,
@@ -50,6 +50,20 @@ export default async function UserDetailPage({
     .order("date", { ascending: false });
 
   const checkins = (checkinData ?? []) as CheckinRow[];
+
+  const { data: smsData } = await supabase
+    .from("sms_log")
+    .select("id, direction, body, sent_at")
+    .eq("user_id", u.id)
+    .order("sent_at", { ascending: false })
+    .limit(30);
+  const thread = (smsData ?? []) as {
+    id: string;
+    direction: "inbound" | "outbound";
+    body: string;
+    sent_at: string;
+  }[];
+
   const today = localDateISO(u.timezone);
 
   // Build a continuous 30-day series (missed days → null) for the chart.
@@ -93,6 +107,37 @@ export default async function UserDetailPage({
         <StatTile label="7-day avg" value={avg7 != null ? avg7.toFixed(1) : "—"} />
         <StatTile label="Streak" value={`${streak}🔥`} />
         <StatTile label="Consistency" value={`${consistency}%`} />
+      </div>
+
+      {/* Conversation — thread + coach reply box */}
+      <div className="surface mt-4 bg-card-light p-5 shadow-card">
+        <span className="text-xs font-700 uppercase tracking-wide text-ink-muted">
+          Conversation
+        </span>
+
+        <div className="mt-3 flex max-h-80 flex-col-reverse gap-2 overflow-y-auto pr-1">
+          {thread.length === 0 ? (
+            <p className="text-sm text-ink-muted">No messages yet.</p>
+          ) : (
+            thread.map((m) => (
+              <div
+                key={m.id}
+                className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-sm leading-snug ${
+                  m.direction === "outbound"
+                    ? "self-start rounded-tl-md bg-[#26231C] text-[#EDE7DA]"
+                    : "self-end rounded-tr-md bg-accent text-ink-light"
+                }`}
+                title={new Date(m.sent_at).toLocaleString()}
+              >
+                {m.body}
+              </div>
+            ))
+          )}
+        </div>
+
+        <div className="mt-4 border-t border-ink-muted/15 pt-4">
+          <MessageSender userId={u.id} />
+        </div>
       </div>
 
       {/* Chart */}

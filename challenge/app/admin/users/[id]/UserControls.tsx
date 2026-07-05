@@ -1,7 +1,59 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { updateCommitment, toggleActive } from "@/app/admin/actions";
+import {
+  updateCommitment,
+  toggleActive,
+  sendCoachMessage,
+} from "@/app/admin/actions";
+
+export function MessageSender({ userId }: { userId: string }) {
+  const [value, setValue] = useState("");
+  const [pending, start] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  function send() {
+    const text = value.trim();
+    if (!text) return;
+    setError(null);
+    start(async () => {
+      try {
+        await sendCoachMessage(userId, text);
+        setValue("");
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "Could not send.");
+      }
+    });
+  }
+
+  return (
+    <div>
+      <div className="flex items-end gap-2">
+        <textarea
+          value={value}
+          rows={2}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) send();
+          }}
+          placeholder="Write a message to send to this participant…"
+          className="flex-1 rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-ink-body outline-none focus:border-accent"
+        />
+        <button
+          onClick={send}
+          disabled={pending || value.trim().length === 0}
+          className="btn-cta !py-2.5"
+        >
+          {pending ? "Sending…" : "Send"}
+        </button>
+      </div>
+      {error && <p className="mt-2 text-sm font-600 text-accent">{error}</p>}
+      <p className="mt-1 text-xs text-ink-muted">
+        Sends a real SMS now. ⌘/Ctrl+Enter to send.
+      </p>
+    </div>
+  );
+}
 
 export function CommitmentEditor({
   userId,
