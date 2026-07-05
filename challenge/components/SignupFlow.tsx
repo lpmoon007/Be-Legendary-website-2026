@@ -168,7 +168,23 @@ export function SignupFlow() {
               <span className="text-xs leading-relaxed text-ink-muted">
                 By checking this box, you agree to receive ~30 SMS messages over
                 30 days from Be Legendary. Msg &amp; data rates may apply. Reply
-                STOP to cancel, HELP for help.
+                STOP to cancel, HELP for help. See our{" "}
+                <a
+                  href="/terms"
+                  target="_blank"
+                  className="text-accent underline"
+                >
+                  SMS Terms
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://www.belegendary.org/privacy/"
+                  target="_blank"
+                  className="text-accent underline"
+                >
+                  Privacy Policy
+                </a>
+                .
               </span>
             </label>
           </div>
