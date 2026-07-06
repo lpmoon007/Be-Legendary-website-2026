@@ -1,0 +1,278 @@
+---
+// Shared "30-day commitment builder" block for Mindset Workouts.
+// Sits BELOW the mw-complete "Did the rep? Log it." block. Turns the workout's
+// lead measure into a ridiculously-easy, 100%-in-your-control daily rep and
+// enrolls the person in the 30-day SMS challenge. Ported from mw-commitment.js.
+import { CHALLENGE_URL } from '../lib/site';
+
+export interface Props {
+  workoutId: string;
+  dim: string;
+  dimLabel: string;
+  c1?: string;
+  c2?: string;
+  c3?: string;
+  c4?: string;
+  whenPh?: string;
+  insteadPh?: string;
+  willPh?: string;
+}
+
+const {
+  workoutId,
+  dim,
+  dimLabel,
+  c1,
+  c2,
+  c3,
+  c4,
+  whenPh,
+  insteadPh,
+  willPh,
+} = Astro.props;
+
+const enrollEndpoint = `${CHALLENGE_URL}/api/enroll`;
+---
+<mw-commitment
+  workout-id={workoutId}
+  dim={dim}
+  dim-label={dimLabel}
+  c1={c1}
+  c2={c2}
+  c3={c3}
+  c4={c4}
+  when-ph={whenPh}
+  instead-ph={insteadPh}
+  will-ph={willPh}
+  data-enroll={enrollEndpoint}
+></mw-commitment>
+
+<script>
+  (function () {
+    const KEY = 'bl_challenge_commit';
+    function readAll() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+    function writeAll(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
+
+    const esc = (s) => (s || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    function fmtTime(t) {
+      if (!t) return '7:00 AM';
+      const p = t.split(':').map(Number);
+      const h = p[0], m = p[1] || 0;
+      const ap = h >= 12 ? 'PM' : 'AM';
+      const hh = ((h + 11) % 12) + 1;
+      return hh + ':' + String(m).padStart(2, '0') + ' ' + ap;
+    }
+
+    class MwCommitment extends HTMLElement {
+      connectedCallback() {
+        const saved = readAll()[this.attr('workout-id', 'workout')];
+        this.state = saved && saved.commit
+          ? { step: 'done', sel: null, custom: false, commit: saved.commit, time: saved.time || '07:00' }
+          : { step: 'choose', sel: null, custom: false, commit: '', time: '07:00', cw: '', ci: '', ca: '', chooseErr: false, setupErr: '' };
+        this.render();
+      }
+      attr(n, f) { return this.getAttribute(n) || this.getAttribute(n.replace(/-/g, '')) || f || ''; }
+
+      // parse "pre||act" pairs from c1..c4
+      commitments() {
+        const out = [];
+        ['c1', 'c2', 'c3', 'c4'].forEach((k) => {
+          const v = this.getAttribute(k);
+          if (v && v.trim()) {
+            const i = v.indexOf('||');
+            out.push(i >= 0 ? { pre: v.slice(0, i), act: v.slice(i + 2) } : { pre: v, act: '' });
+          }
+        });
+        return out;
+      }
+
+      chosenCommit() {
+        const st = this.state;
+        if (st.custom) {
+          const w = (this.q('#cm-when') || {}).value ? this.q('#cm-when').value.trim() : '';
+          const i = (this.q('#cm-instead') || {}).value ? this.q('#cm-instead').value.trim() : '';
+          const a = (this.q('#cm-will') || {}).value ? this.q('#cm-will').value.trim() : '';
+          if (w || i || a) return 'When ' + (w || '…') + ', instead of ' + (i || '…') + ', I will ' + (a || '…') + '.';
+          return 'Your own daily rep';
+        }
+        if (st.sel !== null && st.sel !== undefined) {
+          const c = this.commitments()[st.sel];
+          if (c) return c.pre + c.act;
+        }
+        return '';
+      }
+
+      q(s) { return this.querySelector(s); }
+
+      optStyle(active) {
+        const base = 'width:100%;display:flex;align-items:flex-start;gap:14px;text-align:left;cursor:pointer;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:16px;line-height:1.5;padding:16px 18px;border-radius:12px;transition:all .16s;';
+        return active
+          ? base + 'background:rgba(192,74,38,0.16);border:1.5px solid #C04A26;color:#FBF8F1;'
+          : base + 'background:rgba(244,240,231,0.04);border:1.5px solid rgba(244,240,231,0.16);color:rgba(244,240,231,0.85);';
+      }
+      dot(active) {
+        const base = 'flex:none;width:20px;height:20px;border-radius:999px;display:inline-block;margin-top:2px;';
+        return active
+          ? base + 'background:#C04A26;box-shadow:inset 0 0 0 4px #15130E, 0 0 0 1.5px #C04A26;'
+          : base + 'background:transparent;box-shadow:inset 0 0 0 1.5px rgba(244,240,231,0.35);';
+      }
+
+      render() {
+        const st = this.state;
+        const id = this.attr('workout-id', 'workout');
+        const dimLabel = this.attr('dim-label', this.attr('dim', 'Mental'));
+        const commits = this.commitments();
+        const order = ['choose', 'setup', 'done'];
+        const cur = order.indexOf(st.step);
+        const railLabels = ['1 · Choose your rep', '2 · Set your nudge', '3 · Begin'];
+        const rail = railLabels.map((label, i) =>
+          '<div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">' +
+            '<span style="font-size:11px;font-weight:700;letter-spacing:0.05em;white-space:nowrap;color:' + (i <= cur ? '#E0744A' : 'rgba(244,240,231,0.4)') + ';">' + label + '</span>' +
+            '<span style="height:2px;flex:1;min-width:12px;background:' + (i < cur ? '#C04A26' : 'rgba(244,240,231,0.16)') + ';"></span>' +
+          '</div>').join('');
+
+        const optButtons = commits.map((c, i) =>
+          '<button data-sel="' + i + '" style="' + this.optStyle(st.sel === i && !st.custom) + '">' +
+            '<span style="' + this.dot(st.sel === i && !st.custom) + '"></span>' +
+            '<span>' + esc(c.pre) + (c.act ? '<b style="color:#E0744A;font-weight:600;">' + esc(c.act) + '</b>' : '') + '</span>' +
+          '</button>').join('');
+
+        const whenPh = esc(this.attr('when-ph', 'brush my teeth in the morning'));
+        const insteadPh = esc(this.attr('instead-ph', 'run on autopilot'));
+        const willPh = esc(this.attr('will-ph', 'do one small rep'));
+        const inputCss = 'flex:1;min-width:180px;font-family:Hanken Grotesk,system-ui,sans-serif;font-size:15px;padding:12px 14px;border-radius:9px;border:1px solid rgba(244,240,231,0.2);background:#0C0B08;color:#F4F0E7;outline:none;';
+
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'max-width:760px;margin:36px auto 0;padding:0 32px;font-family:Hanken Grotesk,system-ui,sans-serif;';
+        wrap.innerHTML =
+        '<div style="background:#15130E;border:1px solid rgba(192,74,38,0.4);border-radius:20px;padding:36px 38px;box-shadow:0 30px 70px -34px rgba(0,0,0,0.55);">' +
+          '<div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">' +
+            '<img src="/assets/snail-cream.png" alt="" style="height:20px;width:auto;opacity:0.9;">' +
+            '<span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">The 30-day challenge</span>' +
+          '</div>' +
+          '<div style="display:flex;align-items:center;gap:10px;margin-bottom:28px;">' + rail + '</div>' +
+
+          // STEP 1 CHOOSE
+          '<div data-step="choose" style="display:' + (st.step === 'choose' ? 'block' : 'none') + ';">' +
+            '<h3 style="font-family:Newsreader,serif;font-weight:400;font-size:28px;line-height:1.15;color:#FBF8F1;margin-bottom:10px;">Turn this into a daily rep for 30 days.</h3>' +
+            '<p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);margin-bottom:14px;">This is the place to start — but only commit to what you\'ll actually keep. Every rep you hit builds self-trust; every one you skip quietly erodes it. So make it so small you can\'t talk yourself out of it.</p>' +
+            '<p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);margin-bottom:8px;">Pick one <em style="font-style:italic;color:#E0744A;">ridiculously easy</em> commitment — 100% in your control, stacked onto something you already do. The point isn\'t the reps; it\'s pointing your mind at this every day. <b style="color:#FBF8F1;">Do it once and it counts.</b></p>' +
+            '<p style="font-size:13px;line-height:1.55;color:rgba(244,240,231,0.5);margin-bottom:22px;">The pattern: <b style="color:rgba(244,240,231,0.72);">When</b> [something you already do], <b style="color:rgba(244,240,231,0.72);">instead of</b> [the autopilot], <b style="color:rgba(244,240,231,0.72);">I will</b> [one tiny rep].</p>' +
+            '<div style="display:flex;flex-direction:column;gap:12px;margin-bottom:14px;">' +
+              optButtons +
+              '<button data-custom style="' + this.optStyle(st.custom) + '"><span style="' + this.dot(st.custom) + '"></span><span>Write my own daily rep…</span></button>' +
+            '</div>' +
+            '<div data-custombox style="display:' + (st.custom ? 'block' : 'none') + ';background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:14px;padding:22px 22px 20px;margin-bottom:16px;">' +
+              '<p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8473;margin-bottom:16px;">Keep it ridiculously easy — one rep counts</p>' +
+              '<div style="display:flex;flex-direction:column;gap:14px;">' +
+                '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;"><span style="font-family:Newsreader,serif;font-style:italic;font-size:17px;color:#E0744A;width:74px;flex:none;">When I</span><input id="cm-when" type="text" value="' + esc(st.cw) + '" placeholder="' + whenPh + '" style="' + inputCss + '"></div>' +
+                '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;"><span style="font-family:Newsreader,serif;font-style:italic;font-size:17px;color:#E0744A;width:74px;flex:none;">instead of</span><input id="cm-instead" type="text" value="' + esc(st.ci) + '" placeholder="' + insteadPh + '" style="' + inputCss + '"></div>' +
+                '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;"><span style="font-family:Newsreader,serif;font-style:italic;font-size:17px;color:#E0744A;width:74px;flex:none;">I will</span><input id="cm-will" type="text" value="' + esc(st.ca) + '" placeholder="' + willPh + '" style="' + inputCss + '"></div>' +
+              '</div>' +
+              '<p style="font-size:13px;line-height:1.5;color:rgba(244,240,231,0.5);margin-top:14px;">Make the rep smaller than feels worth it. If you end up doing more, great — but one is a full win.</p>' +
+            '</div>' +
+            '<p data-cherr style="display:' + (st.chooseErr ? 'block' : 'none') + ';font-size:14px;color:#E0744A;font-weight:600;margin-bottom:12px;">Choose one — or write your own — to continue.</p>' +
+            '<button data-continue style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 26px;border-radius:10px;font-family:inherit;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Continue →</button>' +
+          '</div>' +
+
+          // STEP 2 SETUP
+          '<div data-step="setup" style="display:' + (st.step === 'setup' ? 'block' : 'none') + ';">' +
+            '<h3 style="font-family:Newsreader,serif;font-weight:400;font-size:28px;line-height:1.15;color:#FBF8F1;margin-bottom:18px;">Set your daily nudge.</h3>' +
+            '<div style="background:rgba(192,74,38,0.12);border:1px solid rgba(192,74,38,0.35);border-radius:12px;padding:16px 18px;margin-bottom:24px;">' +
+              '<p style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:6px;">Your daily rep</p>' +
+              '<p data-chosen style="font-family:Newsreader,serif;font-size:18px;line-height:1.35;color:#FBF8F1;">' + esc(st.commit) + '</p>' +
+            '</div>' +
+            '<div style="display:flex;flex-direction:column;gap:18px;">' +
+              '<div>' +
+                '<label for="cm-time" style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;margin-bottom:7px;">Remind me at</label>' +
+                '<input id="cm-time" type="time" value="' + esc(st.time) + '" style="font-family:inherit;font-size:16px;padding:12px 14px;border-radius:10px;border:1px solid rgba(244,240,231,0.2);background:#0C0B08;color:#F4F0E7;outline:none;color-scheme:dark;">' +
+                '<p style="font-size:13px;line-height:1.5;color:rgba(244,240,231,0.55);margin-top:8px;">Set it a minute or two <em style="font-style:italic;">after</em> your anchor moment, so the text lands right when you\'d do the rep — not before. (A couple minutes after you wake works well.)</p>' +
+              '</div>' +
+              '<div>' +
+                '<label for="cm-phone" style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;margin-bottom:7px;">Mobile number <span style="color:#E0744A;">*</span></label>' +
+                '<input id="cm-phone" type="tel" placeholder="(555) 123-4567" style="width:100%;font-family:inherit;font-size:16px;padding:14px 16px;border-radius:10px;border:1px solid rgba(244,240,231,0.2);background:#0C0B08;color:#F4F0E7;outline:none;">' +
+              '</div>' +
+              '<label style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;"><input id="cm-consent" type="checkbox" style="margin-top:3px;width:18px;height:18px;accent-color:#C04A26;flex:none;"><span style="font-size:13px;line-height:1.55;color:rgba(244,240,231,0.66);">I agree to receive daily SMS from Be Legendary for this 30-day challenge. Msg &amp; data rates may apply; ~1/day. Reply <b style="color:#F4F0E7;">STOP</b> to cancel, <b style="color:#F4F0E7;">HELP</b> for help.</span></label>' +
+              '<p data-seterr style="display:' + (st.setupErr ? 'block' : 'none') + ';font-size:14px;color:#E0744A;font-weight:600;">' + esc(st.setupErr) + '</p>' +
+              '<div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">' +
+                '<button data-begin style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:16px 28px;border-radius:10px;font-family:inherit;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -14px rgba(192,74,38,0.7);">Begin my 30 days →</button>' +
+                '<button data-back style="background:none;border:none;cursor:pointer;font-size:14px;color:#8C8473;text-decoration:underline;font-family:inherit;">Back</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+
+          // STEP 3 DONE
+          '<div data-step="done" style="display:' + (st.step === 'done' ? 'block' : 'none') + ';text-align:center;">' +
+            '<div style="width:60px;height:60px;border-radius:999px;background:#C04A26;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px;">✓</div>' +
+            '<h3 style="font-family:Newsreader,serif;font-weight:400;font-size:29px;line-height:1.12;color:#FBF8F1;margin-bottom:12px;">You\'re in. Your first nudge lands tomorrow at ' + fmtTime(st.time) + '.</h3>' +
+            '<p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.72);max-width:46ch;margin:0 auto 20px;">For 30 days you\'ll get one nudge at your time and a check-in at 4 p.m. One rep is a win, and a missed day is recovery — not failure. Just keep showing up.</p>' +
+            '<div style="background:rgba(192,74,38,0.12);border:1px solid rgba(192,74,38,0.35);border-radius:12px;padding:16px 18px;max-width:460px;margin:0 auto 22px;">' +
+              '<p style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:6px;">Your daily rep</p>' +
+              '<p style="font-family:Newsreader,serif;font-size:18px;line-height:1.35;color:#FBF8F1;">' + esc(st.commit) + '</p>' +
+            '</div>' +
+            '<button data-restart style="background:none;border:none;cursor:pointer;font-size:13.5px;color:#8C8473;text-decoration:underline;font-family:inherit;">Choose a different rep</button>' +
+          '</div>' +
+        '</div>' +
+        '<p style="text-align:center;font-size:12.5px;color:#8A7F6C;margin-top:16px;">One text a day. Reply STOP anytime. We never share your number.</p>';
+
+        this.replaceChildren(wrap);
+
+        // wire events
+        wrap.querySelectorAll('[data-sel]').forEach((b) =>
+          b.addEventListener('click', () => { this.state.sel = Number(b.getAttribute('data-sel')); this.state.custom = false; this.state.chooseErr = false; this.render(); }));
+        const cust = wrap.querySelector('[data-custom]');
+        if (cust) cust.addEventListener('click', () => { this.state.custom = true; this.state.sel = null; this.state.chooseErr = false; this.render(); });
+
+        const cont = wrap.querySelector('[data-continue]');
+        if (cont) cont.addEventListener('click', () => {
+          if (this.state.custom) { this.state.cw = (this.q('#cm-when') || {}).value || ''; this.state.ci = (this.q('#cm-instead') || {}).value || ''; this.state.ca = (this.q('#cm-will') || {}).value || ''; }
+          const hasCustom = this.state.custom && (this.state.cw.trim() || this.state.ci.trim() || this.state.ca.trim());
+          if ((this.state.sel === null || this.state.sel === undefined) && !hasCustom) { this.state.chooseErr = true; this.render(); return; }
+          this.state.commit = this.chosenCommit();
+          this.state.step = 'setup'; this.state.chooseErr = false; this.render();
+        });
+
+        const begin = wrap.querySelector('[data-begin]');
+        if (begin) begin.addEventListener('click', () => {
+          const phone = (this.q('#cm-phone') || {}).value || '';
+          const consent = (this.q('#cm-consent') || {}).checked;
+          if (phone.replace(/[^0-9]/g, '').length < 10) { this.state.setupErr = 'Enter a valid mobile number so we can send your daily nudge.'; this.render(); return; }
+          if (!consent) { this.state.setupErr = 'Please agree to receive the daily texts to begin.'; this.render(); return; }
+          this.state.time = (this.q('#cm-time') || {}).value || '07:00';
+          const all = readAll();
+          all[id] = { commit: this.state.commit, time: this.state.time, dim: this.attr('dim', 'Mental'), enrolledAt: Date.now() };
+          writeAll(all);
+          // optimistic move to done
+          this.state.step = 'done'; this.state.setupErr = ''; this.render();
+          // best-effort real enrollment POST (does not block the UI)
+          try {
+            const endpoint = this.getAttribute('data-enroll') || '';
+            if (endpoint) {
+              let tz = 'America/Denver';
+              try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz; } catch (e) {}
+              fetch(endpoint, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+                workout_id: id,
+                lead_measure: this.state.commit,
+                reminder_time: this.state.time,
+                phone: phone,
+                consent: true,
+                timezone: tz
+              }) }).catch(function () {});
+            }
+          } catch (e) {}
+          try { if (window.gtag) window.gtag('event', 'challenge_enrolled', { workout_id: id, reminder_time: this.state.time }); } catch (e) {}
+        });
+
+        const back = wrap.querySelector('[data-back]');
+        if (back) back.addEventListener('click', () => { this.state.step = 'choose'; this.render(); });
+        const restart = wrap.querySelector('[data-restart]');
+        if (restart) restart.addEventListener('click', () => {
+          const all = readAll(); delete all[id]; writeAll(all);
+          this.state = { step: 'choose', sel: null, custom: false, commit: '', time: '07:00', cw: '', ci: '', ca: '', chooseErr: false, setupErr: '' };
+          this.render();
+        });
+      }
+    }
+    if (!customElements.get('mw-commitment')) customElements.define('mw-commitment', MwCommitment);
+  })();
+</script>

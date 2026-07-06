@@ -1,0 +1,109 @@
+---
+// Shared "complete & track" block for Mindset Workouts.
+// Reads/writes localStorage 'bl_mw_progress' so the library + readiness meters
+// stay in sync. Ported from the design prototype's mw-complete.js.
+import { SLUGS } from '../lib/site';
+
+export interface Props {
+  workoutId: string;
+  dim: string;
+  dimLabel: string;
+  notePlaceholder?: string;
+  doneHead?: string;
+  doneBody?: string;
+  nextHref?: string;
+  nextCta?: string;
+}
+
+const {
+  workoutId,
+  dim,
+  dimLabel,
+  notePlaceholder,
+  doneHead,
+  doneBody,
+  nextHref = SLUGS.workouts,
+  nextCta = 'Back to the gym',
+} = Astro.props;
+---
+<mw-complete
+  workout-id={workoutId}
+  dim={dim}
+  dim-label={dimLabel}
+  note-placeholder={notePlaceholder}
+  done-head={doneHead}
+  done-body={doneBody}
+  next-href={nextHref}
+  next-cta={nextCta}
+></mw-complete>
+
+<script>
+  (function () {
+    const KEY = 'bl_mw_progress';
+    function read() { try { return JSON.parse(localStorage.getItem(KEY)) || { done: {}, email: '' }; } catch (e) { return { done: {}, email: '' }; } }
+    function write(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
+
+    class MwComplete extends HTMLElement {
+      connectedCallback() { this.render(); }
+      attr(n, f) { return this.getAttribute(n) || this.getAttribute(n.replace(/-/g, '')) || f || ''; }
+
+      render() {
+        const id = this.attr('workout-id', 'workout');
+        const dim = this.getAttribute('dimension') || this.getAttribute('workout-dimension') || this.attr('dim', 'Mental');
+        const dimLabel = this.attr('dim-label', dim);
+        const notePh = this.attr('note-placeholder', 'One line, if you want to go deeper…');
+        const doneHead = this.attr('done-head', 'Rep logged.');
+        const doneBody = this.attr('done-body', "That's the first shift. Come back for the next rep when you're ready.");
+        const nextHref = this.attr('next-href', '/leaders/workouts/');
+        const nextCta = this.attr('next-cta', 'Back to the gym');
+
+        const data = read();
+        const isDone = !!(data.done && data.done[id]);
+
+        const wrap = document.createElement('div');
+        wrap.style.cssText = 'max-width:760px;margin:28px auto 0;padding:0 32px;font-family:Hanken Grotesk,system-ui,sans-serif;';
+        wrap.innerHTML = `
+          <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:32px 34px;box-shadow:0 24px 60px -34px rgba(0,0,0,0.55);">
+            <div data-form style="display:${isDone ? 'none' : 'block'};">
+              <h3 style="font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.15;margin-bottom:8px;">Did the rep? Log it.</h3>
+              <p style="font-size:15px;line-height:1.6;color:#56524A;margin-bottom:20px;">This lights up your <strong>${dimLabel}</strong> dimension toward Shakubuku. Add your email to start your path — your reflection is yours; sharing it just deepens the rep.</p>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <input data-email type="email" placeholder="you@company.com" value="${(data.email || '').replace(/"/g, '&quot;')}" style="width:100%;font-family:inherit;font-size:16px;padding:14px 16px;border-radius:10px;border:1px solid rgba(27,24,16,0.2);background:#FBF8F1;color:#1B1810;outline:none;">
+                <input data-note type="text" placeholder="${notePh.replace(/"/g, '&quot;')}" style="width:100%;font-family:inherit;font-size:16px;padding:14px 16px;border-radius:10px;border:1px solid rgba(27,24,16,0.2);background:#FBF8F1;color:#1B1810;outline:none;">
+                <p data-err style="display:none;font-size:14px;color:#C04A26;font-weight:600;">Add your email to log this rep.</p>
+                <button data-complete style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 26px;border-radius:10px;font-family:inherit;font-weight:700;font-size:16px;">Complete workout &amp; track my progress →</button>
+                <p style="font-size:12px;color:#B4A98E;">Saved to this browser · HubSpot form placeholder, GUID TBD.</p>
+              </div>
+            </div>
+            <div data-done style="display:${isDone ? 'block' : 'none'};text-align:center;">
+              <div style="width:56px;height:56px;border-radius:999px;background:#C04A26;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px;">✓</div>
+              <h3 style="font-family:Newsreader,serif;font-weight:400;font-size:27px;line-height:1.12;margin-bottom:10px;">${doneHead}</h3>
+              <p style="font-size:15.5px;line-height:1.6;color:#56524A;max-width:42ch;margin:0 auto 16px;">${doneBody}</p>
+              <a href="${nextHref}" style="display:inline-flex;align-items:center;gap:8px;background:#1B1810;color:#fff;padding:13px 24px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;">${nextCta} →</a>
+              <div><button data-undo style="margin-top:14px;background:none;border:none;cursor:pointer;font-size:13px;color:#8A7F6C;text-decoration:underline;font-family:inherit;">Undo</button></div>
+            </div>
+          </div>`;
+
+        this.replaceChildren(wrap);
+        const $ = (s) => wrap.querySelector(s);
+        const showDone = (on) => { $('[data-form]').style.display = on ? 'none' : 'block'; $('[data-done]').style.display = on ? 'block' : 'none'; };
+
+        const cbtn = $('[data-complete]');
+        if (cbtn) cbtn.addEventListener('click', () => {
+          const email = ($('[data-email]').value || '').trim();
+          if (!email || !/.+@.+\..+/.test(email)) { $('[data-err]').style.display = 'block'; return; }
+          const d = read();
+          d.done = d.done || {};
+          d.done[id] = { completedAt: Date.now(), note: ($('[data-note]').value || '').trim(), dim };
+          d.email = email;
+          write(d);
+          try { if (window.gtag) window.gtag('event', 'workout_completed', { workout_id: id, dimension: dim, source_url: location.pathname }); } catch (e) {}
+          showDone(true);
+        });
+        const ubtn = $('[data-undo]');
+        if (ubtn) ubtn.addEventListener('click', () => { const d = read(); if (d.done) delete d.done[id]; write(d); showDone(false); });
+      }
+    }
+    if (!customElements.get('mw-complete')) customElements.define('mw-complete', MwComplete);
+  })();
+</script>

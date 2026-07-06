@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import FlagDiagram from '../components/FlagDiagram.astro';
 import Faq from '../components/Faq.astro';
 import { Image } from 'astro:assets';
@@ -50,7 +50,7 @@ const homeLinks = [
 ];
 ---
 <BaseLayout title={title} description={description} path="/" siteGraph={false} ogTitle="Where is your executive team going to break first?" ogDescription="There's no single fix for a stalled leadership team. But there is a place it breaks first. The Flag Model finds it." schema={schema}>
-  <Header maxWidth={1200} home="#top" links={homeLinks} />
+  <SiteHeader audience="teams" maxWidth={1200} logoHref="#top" links={homeLinks} />
 
   <!-- HERO -->
   <section id="top" class="bl-hero-pad" style="position:relative;max-width:1200px;margin:0 auto;padding:108px 32px 92px;">
@@ -236,5 +236,5 @@ const homeLinks = [
     </div>
   </section>
 
-  <Footer variant="full" />
+  <SiteFooter audience="teams" />
 </BaseLayout>

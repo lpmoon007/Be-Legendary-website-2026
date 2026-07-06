@@ -48,15 +48,42 @@ export const SLUGS = {
   alignmentConsultant: '/executive-team-alignment-consultant/',
   offsiteFacilitator: '/leadership-team-offsite-facilitator/',
   coachingCost: '/executive-team-coaching-cost/',
-  // The Library (individual-leader content cluster)
-  library: '/library/',
+  // ── For Leaders universe (individual-leader development) ──────────────────
+  // /leaders/ is the canonical home. The 4 concept pages below still live at
+  // /library/ for now; they get migrated to /leaders/ with 301s in the leaders
+  // phase (design intent: /library → /leaders). Kept here to avoid live breakage.
+  leaders: '/leaders/',
   mindset: '/library/mindset-of-a-legend/',
   goldenBuddha: '/library/the-golden-buddha/',
   roadmap: '/library/roadmap-to-legendary/',
   legendaryIntent: '/library/legendary-intent/',
+  // The Mindset Workouts "gym"
+  workouts: '/leaders/workouts/',
+  challenge: '/leaders/30-day-challenge/',
+  leadersGlossary: '/leaders/glossary/',
+  // SEO/GEO clusters under /leaders/
+  habitStacking: '/leaders/what-is-habit-stacking/',
+  howToBuildHabit: '/leaders/how-to-build-a-habit/',
+  implementationIntentions: '/leaders/implementation-intentions/',
+  whyHabitsFail: '/leaders/why-habits-fail/',
+  leadVsLag: '/leaders/lead-vs-lag-measures/',
+  whatIsKintsugi: '/leaders/what-is-kintsugi/',
+  goldenBuddhaStory: '/leaders/the-golden-buddha-story/',
+  whatIsShakubuku: '/leaders/what-is-shakubuku/',
+  abcsOfMindset: '/leaders/abcs-of-mindset/',
+  whatIsMisogi: '/leaders/what-is-a-misogi/',
+  legendaryLeader: '/leaders/the-legendary-leader/',
+  // The Library hub (still live at /library/ until the leaders migration)
+  library: '/library/',
   // Legal
   privacy: '/privacy/',
 } as const;
+
+// The live 30-Day Challenge app (separate Next.js app on Vercel).
+export const CHALLENGE_URL = 'https://challenge.belegendary.org';
+
+// Workout gym slug → canonical route.
+export const workoutPath = (slug: string) => `/leaders/workouts/${slug}/`;
 
 // Sister sites (followed editorial cross-links, NOT nofollow — they pass authority)
 export const SISTER = {
