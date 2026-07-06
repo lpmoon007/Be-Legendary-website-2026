@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import { SLUGS } from '../../lib/site';
 
 const title = 'The Golden Buddha: The Clay We Let Cover Our Gold | Be Legendary';
@@ -10,10 +10,10 @@ const description = "A true story about a clay statue that turned out to be soli
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
-    { '@type': 'ListItem', position: 2, name: 'The Library', item: 'https://www.belegendary.org/library/' },
-    { '@type': 'ListItem', position: 3, name: 'The Golden Buddha', item: 'https://www.belegendary.org/library/the-golden-buddha/' },
+    { '@type': 'ListItem', position: 2, name: 'For Leaders', item: 'https://www.belegendary.org/leaders/' },
+    { '@type': 'ListItem', position: 3, name: 'The Golden Buddha', item: 'https://www.belegendary.org/leaders/the-golden-buddha/' },
   ] },
-  { '@type': 'Article', headline: 'The Golden Buddha: the clay we let cover our gold', datePublished: '2026-06-27', dateModified: '2026-06-27', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/library/the-golden-buddha/', description: 'A true story about a clay statue found to be solid gold, used as a parable for the layers leaders build over their true worth.' },
+  { '@type': 'Article', headline: 'The Golden Buddha: the clay we let cover our gold', datePublished: '2026-06-27', dateModified: '2026-06-27', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/leaders/the-golden-buddha/', description: 'A true story about a clay statue found to be solid gold, used as a parable for the layers leaders build over their true worth.' },
 ];
 ---
 <BaseLayout
@@ -25,7 +25,7 @@ const schema = [
   ogDescription="A true story about gold hidden under clay, and what it teaches leaders about their real worth."
   schema={schema}
 >
-  <Header maxWidth={880} links={[{ label: '← The Library', href: SLUGS.library }]} />
+  <SiteHeader audience="leaders" variant="slim" logoHref={SLUGS.leaders} contextLink={{label:'The Legendary Leader →', href: SLUGS.legendaryLeader}} />
 
   <article>
   <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 36px;">
@@ -89,5 +89,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary · From the Library." />
+  <SiteFooter audience="leaders" variant="slim" />
 </BaseLayout>

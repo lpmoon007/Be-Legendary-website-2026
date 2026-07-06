@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import { SLUGS, workoutPath } from '../../../lib/site';
+
+const path = SLUGS.legendsJourney;
+const title = "Where are you on your Legend's Journey? — Find your starting workout | Be Legendary";
+const description =
+  'A two-minute assessment that triangulates your current energy across head, heart and spirit with your stage on the Roadmap to Legendary — then points you to the one Mindset Workout to start with. Free.';
+
+// Route values for the client-side matrix (design linked .dc.html filenames).
+const gymUrl = SLUGS.workouts;
+const goForItUrl = workoutPath('go-for-it');
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Where are you on your Legend's Journey?"
+  ogDescription="Two minutes. Your energy × your stage → your starting workout."
+  bodyBg="#EFE8DA"
+>
+  <SiteHeader audience="leaders" variant="full" logoHref={SLUGS.leaders} />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;min-height:100vh;">
+
+    <section style="max-width:760px;margin:0 auto;padding:56px 32px 96px;">
+
+      <!-- progress rail -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:34px;">
+        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
+          <span class="lj-rail-label" data-i="0" style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#B4A98E;white-space:nowrap;">1 · Energy</span>
+          <span class="lj-rail-line" data-i="0" style="height:2px;flex:1;background:rgba(244,240,231,0.14);min-width:12px;"></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
+          <span class="lj-rail-label" data-i="1" style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#B4A98E;white-space:nowrap;">2 · Stage</span>
+          <span class="lj-rail-line" data-i="1" style="height:2px;flex:1;background:rgba(244,240,231,0.14);min-width:12px;"></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
+          <span class="lj-rail-label" data-i="2" style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#B4A98E;white-space:nowrap;">3 · Result</span>
+          <span class="lj-rail-line" data-i="2" style="height:2px;flex:1;background:rgba(244,240,231,0.14);min-width:12px;"></span>
+        </div>
+      </div>
+
+      <!-- ===== STEP: INTRO ===== -->
+      <div id="lj-intro" style="display:block;">
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Find your starting point · ~2 min</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.02em;color:#1B1810;max-width:16ch;">Where are you on your Legend's Journey?</h1>
+        <p style="margin-top:22px;font-size:18px;line-height:1.62;color:#56524A;max-width:52ch;">Two quick reads. First, where your energy sits right now — head, heart, and spirit. Then, where you are on the arc from just starting out to building a legacy. Cross the two, and we point you to the one workout to start with. No email, no wrong answers.</p>
+        <button id="lj-start" type="button" style="margin-top:32px;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:16px 30px;border-radius:10px;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -14px rgba(192,74,38,0.7);">Begin <span>&rarr;</span></button>
+      </div>
+
+      <!-- ===== STEP: ENERGY ===== -->
+      <div id="lj-energy" style="display:none;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">Part one · Your energy today</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.14;color:#1B1810;margin-bottom:8px;">Where are you running full — and where are you running empty?</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#6B6358;margin-bottom:30px;">Rate each right now, gut-level. The one that's lowest is where we'll start you.</p>
+        <div style="display:flex;flex-direction:column;gap:26px;">
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;">
+              <div><span style="font-family:'Newsreader',serif;font-size:22px;color:#1B1810;">Head</span> <span style="font-size:14px;color:#8C8473;">— mental clarity &amp; focus</span></div>
+            </div>
+            <input type="range" data-dim="Mental" min="1" max="10" value="5" class="lj-energy-input" style="width:100%;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:#6E6757;margin-top:8px;"><span>foggy, scattered</span><span>sharp, decisive</span></div>
+          </div>
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;">
+              <div><span style="font-family:'Newsreader',serif;font-size:22px;color:#1B1810;">Heart</span> <span style="font-size:14px;color:#8C8473;">— emotional fuel</span></div>
+            </div>
+            <input type="range" data-dim="Emotional" min="1" max="10" value="5" class="lj-energy-input" style="width:100%;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:#6E6757;margin-top:8px;"><span>depleted, heavy</span><span>full, resilient</span></div>
+          </div>
+          <div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;">
+              <div><span style="font-family:'Newsreader',serif;font-size:22px;color:#1B1810;">Spirit</span> <span style="font-size:14px;color:#8C8473;">— meaning &amp; purpose</span></div>
+            </div>
+            <input type="range" data-dim="Spiritual" min="1" max="10" value="5" class="lj-energy-input" style="width:100%;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:#6E6757;margin-top:8px;"><span>adrift, flat</span><span>clear, connected</span></div>
+          </div>
+        </div>
+        <div style="margin-top:34px;display:flex;align-items:center;gap:16px;">
+          <button id="lj-to-stage" type="button" style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 28px;border-radius:10px;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Next <span>&rarr;</span></button>
+          <button id="lj-back-intro" type="button" style="background:none;border:none;cursor:pointer;font-size:14px;color:#8C8473;text-decoration:underline;font-family:'Hanken Grotesk',sans-serif;">Back</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP: STAGE ===== -->
+      <div id="lj-stage" style="display:none;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">Part two · Your stage</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.14;color:#1B1810;margin-bottom:8px;">Where are you on the Roadmap to Legendary?</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#6B6358;margin-bottom:28px;">Every leader is on the same arc — from waking up to what's holding you back, all the way to building a legacy. <span style="color:#B4A98E;">(It's why our mark is a snail leaving its shell — growth means outgrowing the shell you built to feel safe.)</span> Pick the stage that sounds most like where you are right now.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <button type="button" class="lj-stage-btn" data-stage="emerge" style="width:100%;text-align:left;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;padding:18px 20px;border-radius:14px;transition:all .16s;border:1.5px solid rgba(244,240,231,0.14);background:rgba(244,240,231,0.03);">
+            <span style="display:flex;align-items:center;gap:12px;margin-bottom:5px;"><span class="lj-stage-dot" style="flex:none;width:18px;height:18px;border-radius:999px;display:inline-block;box-shadow:inset 0 0 0 1.5px rgba(244,240,231,0.4);"></span><span style="font-family:'Newsreader',serif;font-size:20px;color:#1B1810;">Emerge</span><span style="font-size:12.5px;font-weight:600;letter-spacing:0.03em;color:#8C8473;">· Just waking up</span></span>
+            <span style="font-size:14.5px;line-height:1.5;color:#6B6358;padding-left:32px;display:block;">Successful on paper, but restless. You sense there's another level in you — you just haven't named what's keeping you where you are.</span>
+          </button>
+          <button type="button" class="lj-stage-btn" data-stage="explore" style="width:100%;text-align:left;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;padding:18px 20px;border-radius:14px;transition:all .16s;border:1.5px solid rgba(244,240,231,0.14);background:rgba(244,240,231,0.03);">
+            <span style="display:flex;align-items:center;gap:12px;margin-bottom:5px;"><span class="lj-stage-dot" style="flex:none;width:18px;height:18px;border-radius:999px;display:inline-block;box-shadow:inset 0 0 0 1.5px rgba(244,240,231,0.4);"></span><span style="font-family:'Newsreader',serif;font-size:20px;color:#1B1810;">Explore</span><span style="font-size:12.5px;font-weight:600;letter-spacing:0.03em;color:#8C8473;">· Questioning</span></span>
+            <span style="font-size:14.5px;line-height:1.5;color:#6B6358;padding-left:32px;display:block;">You've started examining the beliefs and habits you inherited — testing which are actually yours, and which you'd choose again.</span>
+          </button>
+          <button type="button" class="lj-stage-btn" data-stage="evolve" style="width:100%;text-align:left;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;padding:18px 20px;border-radius:14px;transition:all .16s;border:1.5px solid rgba(244,240,231,0.14);background:rgba(244,240,231,0.03);">
+            <span style="display:flex;align-items:center;gap:12px;margin-bottom:5px;"><span class="lj-stage-dot" style="flex:none;width:18px;height:18px;border-radius:999px;display:inline-block;box-shadow:inset 0 0 0 1.5px rgba(244,240,231,0.4);"></span><span style="font-family:'Newsreader',serif;font-size:20px;color:#1B1810;">Evolve</span><span style="font-size:12.5px;font-weight:600;letter-spacing:0.03em;color:#8C8473;">· Rebuilding</span></span>
+            <span style="font-size:14.5px;line-height:1.5;color:#6B6358;padding-left:32px;display:block;">You're actively changing how you lead and who you are — living by new rules instead of the old autopilot.</span>
+          </button>
+          <button type="button" class="lj-stage-btn" data-stage="endow" style="width:100%;text-align:left;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;padding:18px 20px;border-radius:14px;transition:all .16s;border:1.5px solid rgba(244,240,231,0.14);background:rgba(244,240,231,0.03);">
+            <span style="display:flex;align-items:center;gap:12px;margin-bottom:5px;"><span class="lj-stage-dot" style="flex:none;width:18px;height:18px;border-radius:999px;display:inline-block;box-shadow:inset 0 0 0 1.5px rgba(244,240,231,0.4);"></span><span style="font-family:'Newsreader',serif;font-size:20px;color:#1B1810;">Endow</span><span style="font-size:12.5px;font-weight:600;letter-spacing:0.03em;color:#8C8473;">· Building a legacy</span></span>
+            <span style="font-size:14.5px;line-height:1.5;color:#6B6358;padding-left:32px;display:block;">You've done the deep work on yourself. Now it's about what you leave behind — and the people you lift on the way.</span>
+          </button>
+        </div>
+        <div style="margin-top:30px;display:flex;align-items:center;gap:16px;">
+          <button id="lj-to-result" type="button" disabled style="background:rgba(244,240,231,0.14);color:#fff;border:none;cursor:not-allowed;padding:15px 28px;border-radius:10px;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">See my starting workout <span>&rarr;</span></button>
+          <button id="lj-back-energy" type="button" style="background:none;border:none;cursor:pointer;font-size:14px;color:#8C8473;text-decoration:underline;font-family:'Hanken Grotesk',sans-serif;">Back</button>
+        </div>
+      </div>
+
+      <!-- ===== STEP: RESULT ===== -->
+      <div id="lj-result" style="display:none;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">Your starting point</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;color:#1B1810;background:rgba(224,116,74,0.16);border:1px solid rgba(224,116,74,0.4);padding:6px 12px;border-radius:999px;">Lowest energy · <span id="lj-res-dim"></span></span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.05em;color:#1B1810;background:rgba(27,24,16,0.06);border:1px solid rgba(27,24,16,0.16);padding:6px 12px;border-radius:999px;">Stage · <span id="lj-res-stage"></span></span>
+        </div>
+        <div style="background:#FBF8F1;border:1px solid rgba(192,74,38,0.35);border-radius:18px;padding:38px 40px;box-shadow:0 30px 70px -30px rgba(0,0,0,0.6);">
+          <p id="lj-res-why" style="font-size:15px;line-height:1.6;color:#56524A;margin-bottom:18px;"></p>
+          <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8C8473;margin-bottom:8px;">Start with</p>
+          <h2 id="lj-res-title" style="font-family:'Newsreader',serif;font-weight:400;font-size:34px;line-height:1.1;color:#1B1810;margin-bottom:14px;"></h2>
+          <p id="lj-res-blurb" style="font-size:16px;line-height:1.6;color:#56524A;margin-bottom:26px;"></p>
+          <a id="lj-res-cta" href="#" style="display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;padding:15px 28px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'"><span id="lj-res-cta-label"></span> <span>&rarr;</span></a>
+        </div>
+        <div style="margin-top:24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+          <a href={SLUGS.workouts} style="color:#E0744A;text-decoration:none;font-weight:700;font-size:15px;">Or browse the whole gym &rarr;</a>
+          <button id="lj-restart" type="button" style="background:none;border:none;cursor:pointer;font-size:14px;color:#8C8473;text-decoration:underline;font-family:'Hanken Grotesk',sans-serif;">Retake</button>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <SiteFooter audience="leaders" variant="full" />
+
+  <script define:vars={{ gymUrl, goForItUrl }}>
+    (function () {
+      var state = { step: 'intro', stage: null, scores: { Mental: 5, Emotional: 5, Spiritual: 5 } };
+
+      // dimension × stage → workout id
+      var MATRIX = {
+        Mental:    { emerge: 'what-the-beep', explore: 'mol-awareness',  evolve: 'choices',   endow: 'legendary-intent' },
+        Emotional: { emerge: 'let-go',        explore: 'count-blessings', evolve: 'go-for-it', endow: 'golden-buddha' },
+        Spiritual: { emerge: 'sit-down',      explore: 'find-your-why',   evolve: 'misogi',    endow: 'legendary-intent' }
+      };
+      var WORKOUTS = {
+        'go-for-it':       { title: 'Go For It', href: goForItUrl, live: true, blurb: 'When did you last truly go for it, knowing you might fall flat? Vulnerability as a strength — the rep of a leader ready to be seen.' },
+        'what-the-beep':   { title: 'What the Beep?!', href: gymUrl, live: false, blurb: 'See the invisible forces steering your behavior. The first shift is noticing the lens you never chose.' },
+        'find-your-why':   { title: 'Find Your Why', href: gymUrl, live: false, blurb: 'The 5 Whys turned inward. Dig to the core motivation underneath — knowing your why is a source of strength.' },
+        'count-blessings': { title: 'Count Your Blessings', href: gymUrl, live: false, blurb: 'Gratitude as a muscle — the antidote to the daily poison of resentment and fear. Refill the heart first.' },
+        'legendary-intent':{ title: 'Legendary Intent', href: gymUrl, live: false, blurb: 'Your one-line filter: "If I accomplish nothing else, I will ___." Decide who you intend to be, then live by it.' },
+        'golden-buddha':   { title: 'The Golden Buddha', href: gymUrl, live: false, blurb: 'Kintsugi for leaders: stop hiding the flaw. The break is exactly where the gold shows through.' },
+        'mol-awareness':   { title: 'Mindset of a Legend · Awareness', href: gymUrl, live: false, blurb: 'See the mindset running you on autopilot — you can’t outperform a mindset you can’t yet see.' },
+        'let-go':          { title: 'Let Go of Negativity', href: gymUrl, live: false, blurb: 'Name the grudge or story you’re still carrying, and put it down. It’s been carrying you.' },
+        'choices':         { title: 'Choices', href: gymUrl, live: false, blurb: 'For the logical mind: wire your calculating side to your purpose, and hard decisions get simple.' },
+        'sit-down':        { title: 'Sit Down, Shut Up & Learn', href: gymUrl, live: false, blurb: 'You were taught how to see the world. This rep is about noticing that — and choosing whether to keep it.' },
+        'misogi':          { title: 'Design Your Misogi', href: gymUrl, live: false, blurb: 'One hard real-world challenge with a real chance of failure, lived through the body. Proof over talk.' }
+      };
+      var STAGE_NAMES = { emerge: 'Emerge', explore: 'Explore', evolve: 'Evolve', endow: 'Endow' };
+      var WHY = {
+        Mental: 'Your head is where you’re running lowest right now — so we start in the mental dimension, clearing the fog before anything else.',
+        Emotional: 'Your heart is running lowest right now — so we start in the emotional dimension, refilling the fuel that everything else runs on.',
+        Spiritual: 'Your spirit is running lowest right now — so we start in the spiritual dimension, reconnecting to the meaning underneath the work.'
+      };
+
+      var steps = { intro: 'lj-intro', energy: 'lj-energy', stage: 'lj-stage', result: 'lj-result' };
+      var order = ['intro', 'energy', 'stage', 'result'];
+
+      function el(id) { return document.getElementById(id); }
+
+      function renderRail() {
+        var cur = order.indexOf(state.step);
+        var labels = document.querySelectorAll('.lj-rail-label');
+        var lines = document.querySelectorAll('.lj-rail-line');
+        for (var i = 0; i < labels.length; i++) {
+          var active = (i + 1) === cur;
+          var done = (i + 1) < cur;
+          labels[i].style.color = (active || done) ? '#C04A26' : '#B4A98E';
+          lines[i].style.background = done ? '#C04A26' : 'rgba(244,240,231,0.14)';
+        }
+      }
+
+      function show(step) {
+        state.step = step;
+        for (var k in steps) {
+          if (Object.prototype.hasOwnProperty.call(steps, k)) {
+            el(steps[k]).style.display = (k === step) ? 'block' : 'none';
+          }
+        }
+        renderRail();
+        if (step === 'result') renderResult();
+      }
+
+      function setStageActive() {
+        var btns = document.querySelectorAll('.lj-stage-btn');
+        for (var i = 0; i < btns.length; i++) {
+          var b = btns[i];
+          var active = b.getAttribute('data-stage') === state.stage;
+          var dot = b.querySelector('.lj-stage-dot');
+          if (active) {
+            b.style.borderColor = '#C04A26';
+            b.style.background = 'rgba(192,74,38,0.1)';
+            if (dot) dot.style.boxShadow = 'inset 0 0 0 4px #FBF8F1,0 0 0 1.5px #C04A26';
+            if (dot) dot.style.background = '#C04A26';
+          } else {
+            b.style.borderColor = 'rgba(244,240,231,0.14)';
+            b.style.background = 'rgba(244,240,231,0.03)';
+            if (dot) { dot.style.boxShadow = 'inset 0 0 0 1.5px rgba(244,240,231,0.4)'; dot.style.background = 'transparent'; }
+          }
+        }
+        var see = el('lj-to-result');
+        if (state.stage) {
+          see.disabled = false;
+          see.style.background = '#C04A26';
+          see.style.cursor = 'pointer';
+        } else {
+          see.disabled = true;
+          see.style.background = 'rgba(244,240,231,0.14)';
+          see.style.cursor = 'not-allowed';
+        }
+      }
+
+      function renderResult() {
+        var scores = state.scores;
+        var resDim = Object.keys(scores).reduce(function (a, b) { return scores[b] < scores[a] ? b : a; }, 'Mental');
+        var resStageId = state.stage || 'emerge';
+        var wid = (MATRIX[resDim] || {})[resStageId] || 'what-the-beep';
+        var workout = WORKOUTS[wid] || WORKOUTS['what-the-beep'];
+        el('lj-res-dim').textContent = resDim;
+        el('lj-res-stage').textContent = STAGE_NAMES[resStageId] || '';
+        el('lj-res-why').textContent = WHY[resDim] || '';
+        el('lj-res-title').textContent = workout.title;
+        el('lj-res-blurb').textContent = workout.blurb;
+        el('lj-res-cta').setAttribute('href', workout.href);
+        el('lj-res-cta-label').textContent = workout.live ? 'Begin this workout' : 'See it in the gym';
+      }
+
+      el('lj-start').addEventListener('click', function () { show('energy'); });
+      el('lj-back-intro').addEventListener('click', function () { show('intro'); });
+      el('lj-to-stage').addEventListener('click', function () { show('stage'); });
+      el('lj-back-energy').addEventListener('click', function () { show('energy'); });
+      el('lj-to-result').addEventListener('click', function () { if (state.stage) show('result'); });
+
+      var inputs = document.querySelectorAll('.lj-energy-input');
+      for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('input', function (ev) {
+          var dim = ev.target.getAttribute('data-dim');
+          state.scores[dim] = parseInt(ev.target.value, 10);
+        });
+      }
+
+      var stageBtns = document.querySelectorAll('.lj-stage-btn');
+      for (var j = 0; j < stageBtns.length; j++) {
+        stageBtns[j].addEventListener('click', function (ev) {
+          state.stage = ev.currentTarget.getAttribute('data-stage');
+          setStageActive();
+        });
+      }
+
+      el('lj-restart').addEventListener('click', function () {
+        state.stage = null;
+        state.scores = { Mental: 5, Emotional: 5, Spiritual: 5 };
+        var ins = document.querySelectorAll('.lj-energy-input');
+        for (var k = 0; k < ins.length; k++) { ins[k].value = 5; }
+        setStageActive();
+        show('intro');
+      });
+
+      renderRail();
+      setStageActive();
+    })();
+  </script>
+</BaseLayout>

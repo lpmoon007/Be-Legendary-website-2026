@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import { SLUGS } from '../../lib/site';
 
 const title = 'The Roadmap to Legendary: How the Mindset Becomes a Habit | Be Legendary';
@@ -10,10 +10,10 @@ const description = "Legendary isn't a moment — it's a loop. Awareness feeds b
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
-    { '@type': 'ListItem', position: 2, name: 'The Library', item: 'https://www.belegendary.org/library/' },
-    { '@type': 'ListItem', position: 3, name: 'The Roadmap to Legendary', item: 'https://www.belegendary.org/library/roadmap-to-legendary/' },
+    { '@type': 'ListItem', position: 2, name: 'For Leaders', item: 'https://www.belegendary.org/leaders/' },
+    { '@type': 'ListItem', position: 3, name: 'The Roadmap to Legendary', item: 'https://www.belegendary.org/leaders/roadmap-to-legendary/' },
   ] },
-  { '@type': 'Article', headline: 'The Roadmap to Legendary: how the mindset becomes a habit', datePublished: '2026-06-27', dateModified: '2026-06-27', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/library/roadmap-to-legendary/', description: 'The self-reinforcing loop of awareness, belief, and courageous action.' },
+  { '@type': 'Article', headline: 'The Roadmap to Legendary: how the mindset becomes a habit', datePublished: '2026-06-27', dateModified: '2026-06-27', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/leaders/roadmap-to-legendary/', description: 'The self-reinforcing loop of awareness, belief, and courageous action.' },
 ];
 ---
 <BaseLayout
@@ -25,7 +25,7 @@ const schema = [
   ogDescription="The self-reinforcing loop of awareness, belief, and courageous action that compounds over a career."
   schema={schema}
 >
-  <Header maxWidth={880} links={[{ label: '← The Library', href: SLUGS.library }]} />
+  <SiteHeader audience="leaders" variant="slim" logoHref={SLUGS.leaders} contextLink={{label:'The Legendary Leader →', href: SLUGS.legendaryLeader}} />
 
   <article>
   <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 36px;">
@@ -103,5 +103,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary · From the Library." />
+  <SiteFooter audience="leaders" variant="slim" />
 </BaseLayout>

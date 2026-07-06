@@ -149,9 +149,9 @@ const dials = [
           <a href={SLUGS.retreatFormats} style="display:flex;flex-direction:column;text-decoration:none;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;overflow:hidden;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(100,1,10,0.4)';this.style.boxShadow='0 16px 34px -20px rgba(58,10,12,0.4)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)';this.style.boxShadow='none'">
             <img src={f.img} alt={f.alt} loading="lazy" style="height:120px;width:100%;object-fit:cover;display:block;" />
             <div style="padding:22px 24px 26px;">
-              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#3A0A0C;margin-bottom:8px;" set:html={f.name}></h3>
+              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#3A0A0C;margin-bottom:8px;">{f.name}</h3>
               <p style="font-size:14.5px;line-height:1.55;color:#5A4A44;margin-bottom:12px;">{f.desc}</p>
-              <span style="font-size:12.5px;font-weight:600;color:#9A7A74;">Best for <span set:html={f.best}></span></span>
+              <span style="font-size:12.5px;font-weight:600;color:#9A7A74;">Best for {f.best}</span>
             </div>
           </a>
         ))}

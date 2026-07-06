@@ -49,14 +49,13 @@ export const SLUGS = {
   offsiteFacilitator: '/leadership-team-offsite-facilitator/',
   coachingCost: '/executive-team-coaching-cost/',
   // ── For Leaders universe (individual-leader development) ──────────────────
-  // /leaders/ is the canonical home. The 4 concept pages below still live at
-  // /library/ for now; they get migrated to /leaders/ with 301s in the leaders
-  // phase (design intent: /library → /leaders). Kept here to avoid live breakage.
+  // /leaders/ is the canonical home. The 4 concept pages migrated from /library/
+  // (design intent), with 301s in public/.htaccess.
   leaders: '/leaders/',
-  mindset: '/library/mindset-of-a-legend/',
-  goldenBuddha: '/library/the-golden-buddha/',
-  roadmap: '/library/roadmap-to-legendary/',
-  legendaryIntent: '/library/legendary-intent/',
+  mindset: '/leaders/mindset-of-a-legend/',
+  goldenBuddha: '/leaders/the-golden-buddha/',
+  roadmap: '/leaders/roadmap-to-legendary/',
+  legendaryIntent: '/leaders/legendary-intent/',
   // The Mindset Workouts "gym"
   workouts: '/leaders/workouts/',
   challenge: '/leaders/30-day-challenge/',
@@ -106,8 +105,8 @@ export const SLUGS = {
   leadershipRetreatIdeas: '/teams/leadership-retreat-ideas/',
   luxuryExecutiveRetreat: '/teams/luxury-executive-retreat/',
 
-  // The Library hub (still live at /library/ until the leaders migration)
-  library: '/library/',
+  // Legacy Library alias → the For Leaders home (old /library/ 301s here).
+  library: '/leaders/',
   // Legal
   privacy: '/privacy/',
 } as const;
@@ -117,6 +116,15 @@ export const CHALLENGE_URL = 'https://challenge.belegendary.org';
 
 // Workout gym slug → canonical route.
 export const workoutPath = (slug: string) => `/leaders/workouts/${slug}/`;
+
+// The 18 Mindset Workouts (canonical slugs) — used for the sitemap + any listing.
+export const WORKOUTS = [
+  'go-for-it', 'mindset-of-a-legend', '5-whys', 'big-rocks', 'choices',
+  'count-your-blessings', 'design-your-misogi', 'find-your-why', 'kintsugi-wabi-sabi',
+  'legendary-intent', 'let-go-of-negativity', 'making-change-stick', 'pre-mortem',
+  'sit-down-shut-up-learn', 'the-golden-buddha', 'villain-or-hero', 'what-the-beep',
+  'whats-your-story',
+] as const;
 
 // Sister sites (followed editorial cross-links, NOT nofollow — they pass authority)
 export const SISTER = {

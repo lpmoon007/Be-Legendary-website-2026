@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import { SITE_URL, SLUGS, CTA_URL } from '../../../lib/site';
+
+const path = SLUGS.retreatFormats;
+const title = 'Retreat Formats — Off-Road, Winter Survival, Sailing & More | Be Legendary';
+const description =
+  'The experiential retreat formats behind a legendary leadership retreat: off-road immersion, winter survival, sailing, wilderness & open water, cabin fever, and five-star estate. What each is best for, a sample arc, and its four-dimension intensity. From Be Legendary.';
+
+// JSON-LD preserved from the design head (BreadcrumbList + ItemList), same @types.
+const schema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Be Legendary', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}/teams/` },
+      { '@type': 'ListItem', position: 3, name: 'Retreats', item: `${SITE_URL}${SLUGS.teamRetreats}` },
+      { '@type': 'ListItem', position: 4, name: 'Formats', item: `${SITE_URL}${SLUGS.retreatFormats}` },
+    ],
+  },
+  {
+    '@type': 'ItemList',
+    name: 'Retreat Formats',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Off-Road Immersion' },
+      { '@type': 'ListItem', position: 2, name: 'Winter Survival' },
+      { '@type': 'ListItem', position: 3, name: 'Sailing Offsite' },
+      { '@type': 'ListItem', position: 4, name: 'Wilderness & Open Water' },
+      { '@type': 'ListItem', position: 5, name: 'Cabin Fever' },
+      { '@type': 'ListItem', position: 6, name: 'Five-Star Estate' },
+    ],
+  },
+];
+
+const NAV_LINKS = [
+  { label: 'Ways to Work Together', href: SLUGS.waysToWorkTogether },
+  { label: 'Formats', href: SLUGS.retreatFormats },
+  { label: 'Destinations', href: SLUGS.destinations },
+  { label: 'Case studies', href: SLUGS.caseStudies },
+];
+
+const formats = [
+  {
+    name: 'Off-Road Immersion', best: 'interdependence under pressure',
+    photo: '/assets/dest-rubicon.webp', photoAlt: 'A convoy of off-road vehicles on a mountain trail',
+    desc: 'Real terrain, real adversity, shared. When a team has to spot each other over obstacles and trust a call they can’t see around, the pecking order dissolves and genuine interdependence takes its place.',
+    dims: [
+      { name: 'Physical', label: 'High', pct: '75%' },
+      { name: 'Emotional', label: 'High', pct: '80%' },
+      { name: 'Mental', label: 'Moderate', pct: '55%' },
+      { name: 'Spiritual', label: 'Moderate', pct: '45%' },
+    ],
+    arc: [
+      { n: '1', text: 'Arrival and briefing — the outcome named out loud before a single wheel turns.' },
+      { n: '2', text: 'The trail: staged obstacles that can only be cleared by spotting and trusting each other.' },
+      { n: '3', text: 'The stuck moment — engineered adversity where the team’s real dynamics surface.' },
+      { n: '4', text: 'Fireside debrief: what happened out there, and what it says about how you work.' },
+    ],
+    caseTitle: 'Five-star egos, one fractured team, +178% teaming',
+  },
+  {
+    name: 'Winter Survival', best: 'breaking through stubborn divides',
+    photo: '/assets/cs-sanjuan.webp', photoAlt: 'Building a snow shelter in the backcountry',
+    desc: 'Cold, stakes, and interdependence strip away ego fast. For two camps that won’t budge, a night that depends on cooperation does what a year of meetings couldn’t.',
+    dims: [
+      { name: 'Physical', label: 'High', pct: '80%' },
+      { name: 'Emotional', label: 'Very high', pct: '92%' },
+      { name: 'Mental', label: 'High', pct: '70%' },
+      { name: 'Spiritual', label: 'High', pct: '75%' },
+    ],
+    arc: [
+      { n: '1', text: 'Base camp: skills, safety, and the honest naming of the divide in the room.' },
+      { n: '2', text: 'Into the backcountry — shelter, warmth and progress now depend on the other camp.' },
+      { n: '3', text: 'The long night: the moment cooperation stops being optional.' },
+      { n: '4', text: 'Return and integration — turning a shared ordeal into a new working agreement.' },
+    ],
+    caseTitle: 'Two camps, one mountain, +268% behavior change',
+  },
+  {
+    name: 'Sailing Offsite', best: 'alignment & command under pressure',
+    photo: '/assets/dest-sailing.webp', photoAlt: 'A sailing yacht underway on open water',
+    desc: 'A boat is your company compressed into a day: one heading, clear roles, real consequences for a missed call. It surfaces exactly how your team aligns and who steps up when it counts.',
+    dims: [
+      { name: 'Physical', label: 'Moderate', pct: '50%' },
+      { name: 'Emotional', label: 'High', pct: '70%' },
+      { name: 'Mental', label: 'High', pct: '75%' },
+      { name: 'Spiritual', label: 'Moderate', pct: '50%' },
+    ],
+    arc: [
+      { n: '1', text: 'Dock briefing: roles assigned, the destination set, the crew’s one job made clear.' },
+      { n: '2', text: 'Underway — wind shifts and course corrections force real-time alignment.' },
+      { n: '3', text: 'The maneuver that needs everyone: a tack or landfall no one person can execute alone.' },
+      { n: '4', text: 'Anchored debrief: how the crew decided, and what that mirrors back at the office.' },
+    ],
+    caseTitle: 'A team that learned to depend on each other',
+  },
+  {
+    name: 'Wilderness & Open Water', best: 'shared purpose, deep off-grid',
+    photo: '/assets/cs-everglades.webp', photoAlt: 'Kayaking through a wilderness waterway',
+    desc: 'River, alpine or paddle — a crew with one heading, far from signal. Removed from the noise, teams rediscover why they’re together and what they’re actually building.',
+    dims: [
+      { name: 'Physical', label: 'Moderate–High', pct: '65%' },
+      { name: 'Emotional', label: 'High', pct: '78%' },
+      { name: 'Mental', label: 'Moderate', pct: '55%' },
+      { name: 'Spiritual', label: 'High', pct: '80%' },
+    ],
+    arc: [
+      { n: '1', text: 'Put-in: provisioning, roles, and the shared route the whole crew owns.' },
+      { n: '2', text: 'The passage — hours of paddling where the only conversation is the real one.' },
+      { n: '3', text: 'The abundance moment: seeing what you have, not what’s scarce.' },
+      { n: '4', text: 'Camp reflection under open sky — purpose named and carried home.' },
+    ],
+    caseTitle: 'A team that stopped seeing scarcity, +113% abundance',
+  },
+  {
+    name: 'Cabin Fever', best: 'trust & candor',
+    photo: '/assets/lr-mining-lodge.webp', photoAlt: 'A remote lodge in the mountains',
+    desc: 'A remote lodge, close quarters, no escape hatch. When there’s nowhere to hide and nothing to perform for, the polished surface drops and the team finally talks straight.',
+    dims: [
+      { name: 'Physical', label: 'Low', pct: '25%' },
+      { name: 'Emotional', label: 'High', pct: '80%' },
+      { name: 'Mental', label: 'Moderate', pct: '55%' },
+      { name: 'Spiritual', label: 'Moderate–High', pct: '65%' },
+    ],
+    arc: [
+      { n: '1', text: 'Arrival: phones away, the outside world genuinely left behind.' },
+      { n: '2', text: 'Facilitated sessions by the fire — the conversations a conference room never allows.' },
+      { n: '3', text: 'The candor threshold: the moment someone finally says the true thing.' },
+      { n: '4', text: 'Commitments made face to face, with no audience to perform for.' },
+    ],
+    caseTitle: 'When a leadership team finally stopped performing',
+  },
+  {
+    name: 'Five-Star Estate', best: 'reflection & vision',
+    photo: '/assets/dest-napa.webp', photoAlt: 'A luxury estate at golden hour',
+    desc: 'Space, beauty, remarkable food and the right table. When the work is strategy and vision, comfort isn’t indulgence — it’s the condition that lets a team think at altitude.',
+    dims: [
+      { name: 'Physical', label: 'Light', pct: '20%' },
+      { name: 'Emotional', label: 'Moderate', pct: '50%' },
+      { name: 'Mental', label: 'Very high', pct: '88%' },
+      { name: 'Spiritual', label: 'Moderate', pct: '55%' },
+    ],
+    arc: [
+      { n: '1', text: 'Settle in — a setting good enough to lower the guard and lift the thinking.' },
+      { n: '2', text: 'Facilitated strategy: the year’s one most-important outcome, worked hard.' },
+      { n: '3', text: 'The long dinner — where the real alignment quietly happens.' },
+      { n: '4', text: 'A plan the whole team owns, not one handed down.' },
+    ],
+    caseTitle: 'One outcome: a year’s strategy the whole team owns',
+  },
+];
+
+const tabBase = "cursor:pointer;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:13.5px;padding:10px 16px;border-radius:999px;transition:all .16s;border:1px solid;";
+const tabActive = 'background:#64010a;color:#F6EFE0;border-color:#64010a;';
+const tabInactive = 'background:transparent;color:#6B4A44;border-color:rgba(100,1,10,0.22);';
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogTitle="Retreat Formats — Be Legendary"
+  ogDescription="Each format is a vehicle for a specific outcome. Here's what each one is built for."
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader audience="teams" variant="full" logoHref="/" links={NAV_LINKS} />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1180px;margin:0 auto;padding:56px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><a href={SLUGS.teamRetreats} style="color:inherit;text-decoration:none;">Retreats</a><span>/</span><span style="color:#64010a;">Formats</span>
+      </nav>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.02;letter-spacing:-0.02em;color:#3A0A0C;max-width:20ch;">Every format is a vehicle for a specific outcome.</h1>
+      <p style="margin-top:20px;font-size:18px;line-height:1.6;color:#4A3A34;max-width:56ch;">Pick by what you need to change in the team, not by the scenery. Here's what each one is built for — with a sample arc and its four-dimension intensity.</p>
+    </section>
+
+    <!-- FORMAT SWITCHER -->
+    <section style="max-width:1180px;margin:36px auto 0;padding:0 32px;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;">
+        {formats.map((f, i) => (
+          <button type="button" data-fmt-tab={i} style={tabBase + (i === 0 ? tabActive : tabInactive)}>{f.name}</button>
+        ))}
+      </div>
+
+      {formats.map((f, i) => (
+        <div class="bl-grid-collapse" data-fmt-panel={i} style={`display:${i === 0 ? 'grid' : 'none'};grid-template-columns:1.15fr 0.85fr;gap:32px;align-items:start;`}>
+          {/* LEFT: image + arc */}
+          <div>
+            <div style="border-radius:16px;overflow:hidden;box-shadow:0 24px 54px -28px rgba(58,10,12,0.45);margin-bottom:24px;">
+              <img src={f.photo} alt={f.photoAlt} loading="lazy" style="width:100%;height:340px;object-fit:cover;display:block;" />
+            </div>
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">A sample arc</p>
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              {f.arc.map((step) => (
+                <div style="display:flex;gap:16px;padding:14px 0;border-top:1px solid rgba(100,1,10,0.14);">
+                  <span style="font-family:'Newsreader',serif;font-size:18px;color:#C04A26;flex:none;width:26px;">{step.n}</span>
+                  <p style="font-size:15.5px;line-height:1.55;color:#4A3A34;">{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* RIGHT: detail */}
+          <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:30px 32px;position:sticky;top:96px;">
+            <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.08;color:#3A0A0C;margin-bottom:6px;">{f.name}</h2>
+            <p style="font-size:14px;font-weight:700;color:#C04A26;margin-bottom:18px;">Best for {f.best}</p>
+            <p style="font-size:16px;line-height:1.65;color:#4A3A34;margin-bottom:24px;">{f.desc}</p>
+
+            <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A6A64;margin-bottom:14px;">Four-dimension intensity</p>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:24px;">
+              {f.dims.map((d) => (
+                <div>
+                  <div style="display:flex;justify-content:space-between;font-size:13px;color:#5A4A44;margin-bottom:5px;"><span style="font-weight:600;">{d.name}</span><span style="color:#9A7A74;">{d.label}</span></div>
+                  <div style="height:6px;background:rgba(100,1,10,0.1);border-radius:999px;overflow:hidden;"><div style={`width:${d.pct};height:100%;background:#64010a;`}></div></div>
+                </div>
+              ))}
+            </div>
+
+            <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:18px;">
+              <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;margin-bottom:6px;">Seen in a real retreat</p>
+              <a href={SLUGS.caseStudies} style="font-family:'Newsreader',serif;font-size:18px;line-height:1.25;color:#64010a;text-decoration:none;">{f.caseTitle} <span style="font-size:14px;">&rarr;</span></a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- CTA -->
+    <section style="max-width:1180px;margin:64px auto 0;padding:0 32px;">
+      <div style="background:#64010a;color:#F6EFE0;border-radius:18px;padding:44px 46px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+        <div style="max-width:34ch;">
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF3E7;margin-bottom:10px;">Not sure which format fits your outcome?</h2>
+          <p style="font-size:16px;line-height:1.6;color:rgba(246,239,224,0.82);">That's the first conversation. Tell us the outcome and we'll tell you the format — honestly, even if it's the simpler one.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:15px 26px;border-radius:10px;font-weight:700;font-size:15.5px;text-align:center;">Book a Strategy Call</a>
+          <a href={SLUGS.teamRetreats} style="border:1px solid rgba(246,239,224,0.35);color:#F6EFE0;text-decoration:none;padding:15px 26px;border-radius:10px;font-weight:600;font-size:15.5px;text-align:center;">See the three ways to work</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+
+  <script>
+    (function () {
+      const tabBase = "cursor:pointer;font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:13.5px;padding:10px 16px;border-radius:999px;transition:all .16s;border:1px solid;";
+      const tabActive = 'background:#64010a;color:#F6EFE0;border-color:#64010a;';
+      const tabInactive = 'background:transparent;color:#6B4A44;border-color:rgba(100,1,10,0.22);';
+      const tabs = Array.from(document.querySelectorAll('[data-fmt-tab]'));
+      const panels = Array.from(document.querySelectorAll('[data-fmt-panel]'));
+      function activate(i) {
+        tabs.forEach((t, idx) => { t.style.cssText = tabBase + (idx === i ? tabActive : tabInactive); });
+        panels.forEach((p, idx) => { p.style.display = idx === i ? 'grid' : 'none'; });
+      }
+      tabs.forEach((t, i) => t.addEventListener('click', () => activate(i)));
+    })();
+  </script>
+</BaseLayout>
