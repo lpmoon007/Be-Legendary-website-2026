@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Flag Model vs OKRs: A Scoreboard Isn’t a System';
+const description = "OKRs set direction and expose the execution gap. They don't close it. The Flag Model builds the leadership disciplines that make OKRs actually move.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Flag Model vs OKRs', item: 'https://www.belegendary.org/flag-model-vs-okrs/' },
+  ] },
+  { '@type': 'Article', headline: 'Flag Model vs OKRs: why a scoreboard exposes the execution gap but never closes it', datePublished: '2026-07-06', dateModified: '2026-07-06', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/flag-model-vs-okrs/', description: 'How the Flag Model builds the leadership disciplines that make OKRs (Objectives and Key Results) move instead of drift.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is the difference between OKRs and the Flag Model?', acceptedAnswer: { '@type': 'Answer', text: 'OKRs — Objectives and Key Results — are a goal-setting and alignment system: a small number of ambitious objectives, each with measurable key results, cascaded across the org. They are excellent at direction and focus. But OKRs are a scoreboard, not a leadership system: they show you the execution gap without closing it. The Flag Model builds the decision-making, standard-holding, and learning disciplines that actually move the key results.' } },
+    { '@type': 'Question', name: 'Can you use OKRs and the Flag Model together?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, and they complement each other well. The Flag Model gets the team to a braver, smaller set of objectives, gives each key result a real owner, and enforces the weekly bar. OKRs then give that behavior a clean measurement frame. The Flag Model is what keeps OKRs from being set in January and forgotten by March.' } },
+    { '@type': 'Question', name: 'Why do OKRs stop working?', acceptedAnswer: { '@type': 'Answer', text: "OKRs drift when the leadership disciplines underneath are weak: key results get sandbagged so they're safe to hit, no one owns the trade-off when two objectives collide, and the quarter-end grade becomes theater with no change in behavior. OKRs measured the gap honestly — but measuring a gap doesn't close it. The Flag Model rebuilds the behavior that does." } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.vsOkrs}
+  ogType="article"
+  ogTitle="Flag Model vs OKRs — the system underneath the scoreboard"
+  ogDescription="OKRs set direction and expose the gap. The Flag Model is the leadership discipline that closes it. Run both."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Flag Model vs OKRs</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Comparison</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">The Flag Model™ vs OKRs</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">OKRs are a superb way to point a company: a few ambitious objectives, measurable key results, aligned top to bottom. Adopting them meant you took focus seriously. But an OKR is a <em>scoreboard</em> &mdash; it shows you the execution gap in vivid color without closing it. The Flag Model isn&rsquo;t a competitor to OKRs; it&rsquo;s the <strong>leadership system underneath</strong> that makes the key results actually move: owners for every trade-off, a real weekly bar, and misses that turn into corrections instead of quarter-end excuses.</p>
+    </div>
+  </header>
+
+  <!-- HERO-AFFIRM -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you rolled out OKRs, you did something most teams dodge: you made your goals measurable and public, where everyone could see whether you hit them. That takes nerve. The one thing OKRs can&rsquo;t supply is the leadership behavior that turns a key result from red to green &mdash; and when that behavior is thin, OKRs simply document the miss with great precision.</p>
+  </div>
+
+  <!-- TABLE -->
+  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Where each one lives</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">What it governs</p>
+        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">OKRs</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Direction and measurement: the objectives, the key results, the alignment and the grade.</p></div>
+        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns.</p></div>
+      </div>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">It assumes</p>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">That the team can already commit, own the trade-offs, and hold the line week to week.</p></div>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Nothing &mdash; it builds those capacities, then hands the team to a system like OKRs.</p></div>
+      </div>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">When it's thin, you see</p>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Sandbagged key results; objectives forgotten by week 3; grading theater at quarter end.</p></div>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Fewer, braver objectives; owned trade-offs; a weekly bar where a red KR triggers action.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE GAP -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The honest failure mode of OKRs</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Set OKRs on a team whose leadership disciplines have drifted and the pattern is familiar: key results quietly sandbagged so they&rsquo;re safe to hit; five objectives per team because no one will say &ldquo;not this quarter&rdquo;; two objectives that silently contradict each other and no one owns the trade-off; and a quarter-end grading ritual where everyone scores their 0.7 and nothing about next quarter changes. None of that is a flaw in OKRs. OKRs did their job &mdash; they measured the gap honestly. Measuring a gap just doesn&rsquo;t close it.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">The Flag Model closes it: the Flag forces two or three objectives that reflect real trade-offs; the Decision hands every key result an owner and a deadline so it moves when the evidence moves; the Standard makes the weekly review enforce a bar instead of narrate a number; the Learning retires vanity KRs before they calcify. Then the scoreboard starts reflecting a team that actually executes.</p>
+  </div>
+
+  <!-- STACK -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Keep OKRs. Stack it.</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">You don&rsquo;t abandon the scoreboard. You install the Flag Model first so the scoreboard measures a team that can execute:</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;color:#3A372F;">
+        <li><strong>The Flag</strong> &rarr; set 2&ndash;3 objectives with the trade-offs actually resolved, not stacked.</li>
+        <li><strong>The Decision</strong> &rarr; give every key result an owner and a deadline so it moves on evidence.</li>
+        <li><strong>The Standard</strong> &rarr; make the weekly review enforce the bar &mdash; a red KR costs a decision, not a shrug.</li>
+        <li><strong>The Learning</strong> &rarr; grade to learn, then retire the vanity KRs before next quarter.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See which discipline is keeping your key results red.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which leadership discipline to rebuild so your OKRs move instead of drift &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.vsEos} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs EOS &amp; Traction</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why your Rocks keep rolling over.</span>
+      </a>
+      <a href={SLUGS.vs4dx} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs 4DX</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">When the scoreboard says green and results say red.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside OKRs." />
+</BaseLayout>

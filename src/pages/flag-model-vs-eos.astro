@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Flag Model vs EOS / Traction: Why Rocks Roll Over';
+const description = "EOS gives you the operating system — Rocks, Level 10s, the Scorecard. The Flag Model builds the leadership disciplines EOS assumes you already have.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Flag Model vs EOS', item: 'https://www.belegendary.org/flag-model-vs-eos/' },
+  ] },
+  { '@type': 'Article', headline: 'Flag Model vs EOS (Traction): why your Rocks keep rolling to next quarter', datePublished: '2026-07-06', dateModified: '2026-07-06', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/flag-model-vs-eos/', description: 'How the Flag Model builds the leadership disciplines that EOS (the Entrepreneurial Operating System, from Traction) assumes a team already has.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is the difference between EOS and the Flag Model?', acceptedAnswer: { '@type': 'Answer', text: 'EOS — the Entrepreneurial Operating System from the book Traction — is a complete set of tools: quarterly Rocks, the weekly Level 10 meeting, the Scorecard, the V/TO, and the Accountability Chart. It assumes a leadership team that can already commit to priorities, be honest in the room, and hold each other accountable. The Flag Model builds those leadership disciplines. EOS is the operating system; the Flag Model is the leadership behavior that makes the operating system run.' } },
+    { '@type': 'Question', name: 'Can you use EOS and the Flag Model together?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Install the Flag Model first so the team sets fewer, truer Rocks, resolves issues in the Level 10 with a real owner, and enforces a genuine standard. Then EOS gives that behavior a durable structure. The Flag Model keeps the Level 10 from becoming a status meeting and keeps Rocks from rolling to next quarter.' } },
+    { '@type': 'Question', name: 'Why do Rocks keep rolling over in EOS?', acceptedAnswer: { '@type': 'Answer', text: "Rocks roll over when the leadership disciplines underneath EOS are thin: the team sets too many Rocks because no one will veto, the IDS in the Level 10 discusses without deciding, and a missed Rock carries no consequence. The tools are fine — the leadership behavior they sit on isn't there yet. The Flag Model rebuilds it." } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.vsEos}
+  ogType="article"
+  ogTitle="Flag Model vs EOS / Traction — the layer that makes Rocks actually land"
+  ogDescription="EOS is the operating system. The Flag Model is the leadership discipline underneath it. Run both."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Flag Model vs EOS</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Comparison</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">The Flag Model™ vs EOS &amp; Traction</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">EOS &mdash; the Entrepreneurial Operating System from <em>Traction</em> &mdash; is one of the best structural toolkits ever handed to a growing company: Rocks, the Level 10 meeting, the Scorecard, the V/TO, the Accountability Chart. Adopting it was the mark of a serious operator. The Flag Model isn't a competitor &mdash; it's the <strong>leadership layer underneath</strong> that makes the tools land: fewer and truer Rocks, a Level 10 that actually solves, and a standard with teeth instead of a rolling list of last quarter's misses.</p>
+    </div>
+  </header>
+
+  <!-- HERO-AFFIRM -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you ran your company on EOS, you already did the unglamorous thing most leaders avoid: you committed to structure, cadence, and accountability on purpose. That instinct is exactly right. The one thing EOS can't hand you is the leadership behavior it assumes you already have &mdash; and when that behavior is thin, even a disciplined system produces green Scorecards and Rocks that quietly roll to next quarter.</p>
+  </div>
+
+  <!-- TABLE -->
+  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Where each one lives</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">What it governs</p>
+        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">EOS</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The structure of running the business: Rocks, the weekly Level 10, the Scorecard, the V/TO, roles.</p></div>
+        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns.</p></div>
+      </div>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">It assumes</p>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">That the team can already commit to Rocks, be honest in the room, and hold each other to account.</p></div>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Nothing &mdash; it builds those capacities, then hands the team to a system like EOS.</p></div>
+      </div>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">When it's thin, you see</p>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Too many Rocks; an IDS that discusses but won't decide; Rocks that roll to next quarter.</p></div>
+        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Fewer, braver Rocks; issues that resolve with an owner; a cadence where misses trigger action.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE GAP -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The honest failure mode of EOS</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Run EOS on a team whose leadership disciplines have drifted and you get a recognizable pattern: seven Rocks per person because no one will cut the list; a Level 10 where the Issues List is worked through but the hardest issue keeps getting &ldquo;tabled&rdquo;; a Scorecard that&rsquo;s green because the measures were set where they&rsquo;d stay green; and a same-page meeting where the real disagreement never actually makes it onto the table. None of that is a flaw in EOS. It&rsquo;s the absence of the leadership behavior EOS was built to sit on.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">The Flag Model rebuilds that behavior: the Flag forces a smaller, braver set of priorities; the Decision gives every issue an owner and a deadline so IDS ends in a decision; the Standard puts consequences into the cadence; the Learning turns a missed Rock into a correction instead of a carry-over. Then the operating system does what it was designed to do.</p>
+  </div>
+
+  <!-- STACK -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Keep EOS. Stack it.</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">You don&rsquo;t rip anything out. You install the Flag Model first as a minimum viable leadership OS, then let EOS give it structure:</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;color:#3A372F;">
+        <li><strong>The Flag</strong> &rarr; set 1&ndash;3 Rocks that reflect real trade-offs, with the vetoes actually resolved.</li>
+        <li><strong>The Decision</strong> &rarr; give every Issue an owner and a deadline so IDS <em>solves</em> instead of tables.</li>
+        <li><strong>The Standard</strong> &rarr; make the Level 10 enforce a real bar &mdash; a missed Rock costs something.</li>
+        <li><strong>The Learning</strong> &rarr; quarterly, kill dead Rocks and refresh the V/TO as reality moves.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See which discipline is making your Rocks roll over.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which leadership discipline to rebuild so your EOS finally sticks &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.vsOkrs} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs OKRs</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">A scoreboard exposes the gap. It doesn&rsquo;t close it.</span>
+      </a>
+      <a href={SLUGS.eosOkrs} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">We did EOS and behavior didn&rsquo;t change</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why the framework sat on a poster.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside EOS." />
+</BaseLayout>

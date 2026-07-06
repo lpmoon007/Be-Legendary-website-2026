@@ -44,6 +44,9 @@ export const SLUGS = {
   vs4dx: '/flag-model-vs-4dx/',
   vsFiveDysfunctions: '/flag-model-vs-five-dysfunctions/',
   vsCoaching: '/flag-model-vs-executive-coaching/',
+  vsEos: '/flag-model-vs-eos/',
+  vsOkrs: '/flag-model-vs-okrs/',
+  vsScalingUp: '/flag-model-vs-scaling-up/',
   // Buyer's guides
   alignmentConsultant: '/executive-team-alignment-consultant/',
   offsiteFacilitator: '/leadership-team-offsite-facilitator/',
