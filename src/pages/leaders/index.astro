@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
+import { Image } from 'astro:assets';
+import shakubukuField from '../../assets/shakubuku-field.jpg';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath, CTA_URL } from '../../lib/site';
 
 const path = SLUGS.leaders;
@@ -56,6 +58,51 @@ const faqs = [
   {
     q: 'How does this relate to Be Legendary for teams?',
     a: "Same brand, one entity, two audiences. Be Legendary helps executive teams execute through the Flag Model; the Leaders side is the home for the individual leader's personal growth. A team is only as strong as the leader behind it — the toggle up top takes you across.",
+  },
+];
+
+// "Go deeper" — guides & essays that were otherwise orphaned. Grouped so the
+// hub links every leader-side SEO/GEO page and passes them internal authority.
+const deeperGroups = [
+  {
+    label: 'Build better habits',
+    links: [
+      { href: SLUGS.habitStacking, label: 'What is habit stacking?' },
+      { href: SLUGS.howToBuildHabit, label: 'How to build a habit' },
+      { href: SLUGS.implementationIntentions, label: 'Implementation intentions' },
+      { href: SLUGS.whyHabitsFail, label: 'Why habits fail' },
+      { href: SLUGS.leadVsLag, label: 'Lead vs. lag measures' },
+    ],
+  },
+  {
+    label: 'Grow as a leader',
+    links: [
+      { href: SLUGS.whatIsLeadership, label: 'What is leadership?' },
+      { href: SLUGS.whatMakesGoodLeader, label: 'What makes a good leader?' },
+      { href: SLUGS.leadershipQualities, label: 'Leadership qualities' },
+      { href: SLUGS.improveLeadershipSkills, label: 'How to improve leadership skills' },
+      { href: SLUGS.whatIsExecutiveCoaching, label: 'What is executive coaching?' },
+      { href: SLUGS.leadershipPlateau, label: 'Breaking a leadership plateau' },
+      { href: SLUGS.executiveImposterSyndrome, label: 'Executive imposter syndrome' },
+    ],
+  },
+  {
+    label: 'When you’ve “made it”',
+    links: [
+      { href: SLUGS.successfulButUnfulfilled, label: 'Successful but unfulfilled' },
+      { href: SLUGS.whatsNextAfterSuccess, label: 'What’s next after success?' },
+      { href: SLUGS.whoAmIWithoutTitle, label: 'Who am I without my title?' },
+    ],
+  },
+  {
+    label: 'Recharge & reset',
+    links: [
+      { href: SLUGS.executiveBurnoutRetreat, label: 'Executive burnout retreat' },
+      { href: SLUGS.stressManagementRetreat, label: 'Stress management retreat' },
+      { href: SLUGS.wildernessTherapy, label: 'Wilderness therapy for executives' },
+      { href: SLUGS.whereExecutivesRecharge, label: 'Where executives recharge' },
+      { href: SLUGS.type2Fun, label: 'What is Type 2 fun?' },
+    ],
   },
 ];
 
@@ -291,7 +338,7 @@ const schema = [
         <!-- press + media -->
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:stretch;">
           <div style="position:relative;border-radius:16px;overflow:hidden;min-height:280px;background:#15130E;">
-            <img src="/assets/shakubuku-field.jpg" alt="A leader on a recent Shakubuku, overlooking the San Juan mountains in Colorado" style="width:100%;height:100%;position:absolute;inset:0;object-fit:cover;" />
+            <Image src={shakubukuField} alt="A leader on a recent Shakubuku, overlooking the San Juan mountains in Colorado" width={2049} height={1536} format="webp" quality={82} loading="eager" fetchpriority="high" style="width:100%;height:100%;position:absolute;inset:0;object-fit:cover;" />
             <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(21,19,14,0.6));"></div>
             <span style="position:absolute;bottom:16px;left:18px;font-size:12px;font-weight:600;letter-spacing:0.03em;color:#F4F0E7;">A recent Shakubuku · San Juan Mountains, Colorado</span>
           </div>
@@ -430,6 +477,31 @@ const schema = [
           </div>
           <span style="display:inline-flex;align-items:center;gap:9px;color:#F4F0E7;font-weight:700;font-size:15.5px;white-space:nowrap;">Go to Be Legendary for Teams <span>&rarr;</span></span>
         </a>
+      </div>
+    </section>
+
+    <!-- ============ GO DEEPER — guides & essays ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:96px 32px 120px;border-top:1px solid rgba(244,240,231,0.1);">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Go deeper — guides &amp; essays</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;letter-spacing:-0.015em;max-width:20ch;color:#FBF8F1;">Short reads for the leader who wants the why behind the reps.</h2>
+        <p style="margin-top:18px;font-size:17px;line-height:1.65;color:rgba(244,240,231,0.72);max-width:48ch;">Habits, leadership, meaning after success, and how the best leaders recharge — pick a thread and pull.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+          {deeperGroups.map((g) => (
+            <div style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:28px 26px;">
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;margin-bottom:18px;color:#FBF8F1;">{g.label}</h3>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;">
+                {g.links.map((l) => (
+                  <li>
+                    <a href={l.href} style="display:inline-flex;align-items:baseline;gap:8px;font-size:15px;line-height:1.4;color:rgba(244,240,231,0.82);text-decoration:none;" onmouseover="this.style.color='#E0744A'" onmouseout="this.style.color='rgba(244,240,231,0.82)'">
+                      <span style="color:#C04A26;flex:none;">&rarr;</span><span>{l.label}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   </div>

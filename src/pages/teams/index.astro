@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
+
+const path = SLUGS.teams;
+const title = 'For Teams — Get your executive team executing again | Be Legendary';
+const description =
+  'Be Legendary is an executive-team performance firm. We diagnose where your leadership team breaks first, then rebuild the four disciplines and the Flag that turn a stalled team into one that executes — through a diagnostic, a facilitated retreat, and 30 days of reinforcement. Start with a free Break-Point Self-Assessment.';
+
+// ── Card data. Grouped so the hub links the whole team cluster — nothing orphaned. ──
+const framework = [
+  { name: 'The Flag Model', href: SLUGS.flagModel, desc: 'The operating system for how an executive team executes — four disciplines and the Flag they plant together.', meta: 'The framework' },
+  { name: 'Glossary', href: SLUGS.glossary, desc: 'Every term we use, defined plainly — the Flag Model, FlagScore, Break Points, the Calibration Call and more.', meta: 'Definitions' },
+];
+
+const diagnose = [
+  { name: 'Break-Point Self-Assessment', href: SLUGS.breakPointAssessment, desc: 'A free 4-minute, self-scored read on where your team is most likely to break first under pressure.', meta: 'Free · 4 min' },
+  { name: 'Cost of Lost Disciplines Calculator', href: SLUGS.costCalculator, desc: 'Put a number on what decision chaos and misalignment are costing you every quarter.', meta: 'Free tool' },
+  { name: 'ELFS Simulation', href: SLUGS.elfs, desc: 'A solo ~90-minute pressure simulation for the leader — feel the diagnostic before you bring the team.', meta: 'Solo · ~90 min' },
+  { name: 'Team Diagnostic', href: SLUGS.teamDiagnostic, desc: 'How we read your team before we design anything — so the work targets the real fracture, not the symptom.', meta: 'With your team' },
+];
+
+const work = [
+  { name: 'Team Retreats', href: SLUGS.teamRetreats, desc: 'Focused, Signature or Bespoke — every retreat facilitated, built around one outcome, reinforced for 30 days.', meta: 'The core engagement' },
+  { name: 'Ways to Work Together', href: SLUGS.waysToWorkTogether, desc: 'The three shapes an engagement can take, and how to tell which one your team actually needs.', meta: 'Engagement shapes' },
+  { name: 'Case Studies', href: SLUGS.caseStudies, desc: 'Executive teams that chose to change — with the measured behavior shifts to show for it.', meta: 'Proof' },
+  { name: 'Research Report', href: SLUGS.research, desc: 'The State of Executive Team Execution — 2026 data on where leadership teams stall.', meta: '2026 research' },
+];
+
+// SEO/GEO cluster — currently orphaned; linking these is the whole point of the hub.
+const guideGroups = [
+  {
+    title: 'Plan the retreat',
+    items: [
+      { name: 'Corporate Retreat Ideas', href: SLUGS.corporateRetreatIdeas },
+      { name: 'Executive Offsite Ideas', href: SLUGS.executiveOffsiteIdeas },
+      { name: 'Leadership Retreat Ideas', href: SLUGS.leadershipRetreatIdeas },
+      { name: 'Luxury Executive Retreats', href: SLUGS.luxuryExecutiveRetreat },
+    ],
+  },
+  {
+    title: 'How the Flag Model compares',
+    items: [
+      { name: 'Flag Model vs 4DX', href: SLUGS.vs4dx },
+      { name: 'Flag Model vs The Five Dysfunctions', href: SLUGS.vsFiveDysfunctions },
+      { name: 'Flag Model vs Executive Coaching', href: SLUGS.vsCoaching },
+    ],
+  },
+  {
+    title: 'Choosing help & core ideas',
+    items: [
+      { name: 'Executive Team Alignment Consultant', href: SLUGS.alignmentConsultant },
+      { name: 'Leadership Offsite Facilitator', href: SLUGS.offsiteFacilitator },
+      { name: 'Executive Team Coaching Cost', href: SLUGS.coachingCost },
+      { name: 'Followership', href: SLUGS.followership },
+    ],
+  },
+];
+
+// ── JSON-LD. Identity (Org/Person/WebSite/WebPage) is injected by BaseLayout via
+// siteGraph; here we add the hub-specific CollectionPage, its ItemList, and the
+// breadcrumb. Strings use double quotes so apostrophes need no escaping.
+const collectionId = `${SITE_URL}/teams/#collection`;
+const itemListId = `${SITE_URL}/teams/#resources`;
+const mainResources = [...framework, ...diagnose, ...work];
+
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': collectionId,
+    url: `${SITE_URL}/teams/`,
+    name: 'Be Legendary for Teams',
+    description:
+      'The hub for executive teams: the Flag Model framework, the diagnostics that show where a team breaks first, the retreats that rebuild it, and the guides that answer the questions leaders ask.',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': ORG_ID },
+    publisher: { '@id': ORG_ID },
+    mainEntity: { '@id': itemListId },
+  },
+  {
+    '@type': 'ItemList',
+    '@id': itemListId,
+    name: 'Be Legendary for Teams — key resources',
+    itemListElement: mainResources.map((r, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: r.name,
+      url: `${SITE_URL}${r.href}`,
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}/teams/` },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Be Legendary for Teams — get your executive team executing again"
+  ogDescription="Diagnose where your team breaks first, then rebuild the four disciplines and the Flag that make it execute. Start with a free Break-Point Self-Assessment."
+  bodyBg="#15130E"
+  schema={schema}
+>
+  <SiteHeader
+    audience="teams"
+    variant="full"
+    logoHref="/"
+    links={[
+      { label: 'The Flag Model', href: SLUGS.flagModel },
+      { label: 'Diagnostics', href: '#diagnose' },
+      { label: 'Retreats', href: SLUGS.teamRetreats },
+      { label: 'Guides', href: '#guides' },
+    ]}
+  />
+
+  <div style="background:#15130E;color:#F4F0E7;overflow:hidden;">
+    <div id="top"></div>
+
+    <!-- ============ HERO ============ -->
+    <section style="background:#F4F0E7;color:#1B1810;">
+      <div style="max-width:1180px;margin:0 auto;padding:64px 32px 96px;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><span style="color:#C04A26;">For Teams</span>
+        </nav>
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>For executive teams that have stopped executing</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,6vw,76px);line-height:1.0;letter-spacing:-0.024em;color:#1B1810;max-width:17ch;">Your team isn't short on talent. <span style="font-style:italic;color:#C04A26;">It's short on disciplines.</span></h1>
+        <p style="margin-top:26px;font-size:20px;line-height:1.6;color:#56524A;max-width:52ch;">Be Legendary is an executive-team performance firm. We find where your leadership team breaks first, then rebuild the four disciplines and the Flag that turn a stalled team into one that executes.</p>
+
+        <!-- short-answer / featured-snippet box -->
+        <div style="margin-top:34px;max-width:60ch;background:#EFE8DA;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:26px 28px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">What is Be Legendary for teams?</p>
+          <p style="font-size:18px;line-height:1.62;color:#3A362D;">Be Legendary is an <strong style="font-weight:700;">executive-team diagnostic and performance firm</strong>. We diagnose where a leadership team breaks first, then rebuild the <strong style="font-weight:700;">four disciplines and the Flag</strong> of the Flag Model that make a team execute — delivered through a diagnostic, a facilitated retreat, and 30 days of reinforcement that makes it hold.</p>
+        </div>
+
+        <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 40px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+          <a href={SLUGS.breakPointAssessment} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#C04A26;text-decoration:none;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">or take the free Break-Point Self-Assessment <span style="transition:transform .2s;">&rarr;</span></a>
+        </div>
+        <p style="margin-top:18px;font-size:14px;color:#8A7F6C;">Leading this journey yourself, not just your team? <a href={SLUGS.leaders} style="color:#8A7F6C;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(138,127,108,0.4);padding-bottom:1px;" onmouseover="this.style.color='#1B1810'" onmouseout="this.style.color='#8A7F6C'">For individual leaders &rarr;</a></p>
+      </div>
+    </section>
+
+    <!-- ============ THE FRAMEWORK ============ -->
+    <section id="framework" style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Start with the framework</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-0.015em;max-width:18ch;">One model for how a team executes — and the language to name it.</h2>
+        <p style="margin-top:18px;font-size:18px;line-height:1.65;color:#56524A;max-width:48ch;">Everything else on this page hangs off the Flag Model: the four disciplines a team runs on, and the Flag they plant together.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          {framework.map((c) => (
+            <a href={c.href} style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.11);border-radius:16px;padding:30px 30px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)';this.style.boxShadow='0 16px 34px -22px rgba(26,23,18,0.4)'" onmouseout="this.style.borderColor='rgba(27,24,16,0.11)';this.style.boxShadow='none'">
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;margin-bottom:12px;">{c.meta}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin-bottom:10px;color:#1B1810;">{c.name}</h3>
+              <p style="font-size:15.5px;line-height:1.55;color:#56524A;margin-bottom:16px;">{c.desc}</p>
+              <span style="margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#C04A26;">Explore <span>&rarr;</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DIAGNOSE (dark) ============ -->
+    <section id="diagnose" style="background:#15130E;color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Diagnose where you break first</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.6vw,50px);line-height:1.06;letter-spacing:-0.02em;max-width:16ch;color:#FBF8F1;">Don't guess where the team is failing. <span style="font-style:italic;color:#E0744A;">Find out.</span></h2>
+        <p style="margin-top:22px;font-size:18.5px;line-height:1.65;color:rgba(244,240,231,0.8);max-width:48ch;">Every team fractures somewhere specific under pressure. Four ways to see yours clearly before anyone books anything — from a four-minute self-scan to a full team read.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+          {diagnose.map((c) => (
+            <a href={c.href} style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:32px 32px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(244,240,231,0.4)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">{c.meta}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;margin-bottom:10px;color:#FBF8F1;">{c.name}</h3>
+              <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.72);margin-bottom:18px;">{c.desc}</p>
+              <span style="margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F4F0E7;">Open <span>&rarr;</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK TOGETHER ============ -->
+    <section id="work" style="background:#F4F0E7;color:#1B1810;padding:112px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Then work together</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-0.015em;max-width:18ch;">A facilitated experience that rebuilds the disciplines — and holds after.</h2>
+        <p style="margin-top:18px;font-size:18px;line-height:1.65;color:#56524A;max-width:48ch;">The retreat is where the diagnosis becomes change. Outcome-driven, honestly facilitated, and reinforced for 30 days so it doesn't evaporate by Monday.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+          {work.map((c) => (
+            <a href={c.href} style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.11);border-radius:16px;padding:32px 32px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)';this.style.boxShadow='0 16px 34px -22px rgba(26,23,18,0.4)'" onmouseout="this.style.borderColor='rgba(27,24,16,0.11)';this.style.boxShadow='none'">
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;margin-bottom:12px;">{c.meta}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;margin-bottom:10px;color:#1B1810;">{c.name}</h3>
+              <p style="font-size:15.5px;line-height:1.55;color:#56524A;margin-bottom:16px;">{c.desc}</p>
+              <span style="margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#C04A26;">See more <span>&rarr;</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GUIDES & ANSWERS (SEO cluster) ============ -->
+    <section id="guides" style="background:#15130E;color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Guides &amp; straight answers</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-0.015em;max-width:20ch;color:#FBF8F1;">The questions leaders ask before they call us — answered.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.78);max-width:50ch;">Planning a retreat, weighing the Flag Model against another approach, or figuring out what help you actually need. Start here.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+          {guideGroups.map((g) => (
+            <div style="background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:30px 30px;">
+              <h3 style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">{g.title}</h3>
+              <div style="display:flex;flex-direction:column;">
+                {g.items.map((it, i) => (
+                  <a href={it.href} style={`display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:#E7E0D2;font-size:15.5px;padding:13px 0;${i === 0 ? '' : 'border-top:1px solid rgba(244,240,231,0.1);'}`} onmouseover="this.style.color='#fff';this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.style.color='#E7E0D2';this.querySelector('span').style.transform='translateX(0)'">
+                    <span style="flex:1;">{it.name}</span>
+                    <span style="transition:transform .2s;color:#C04A26;">&rarr;</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Field Notes hub -->
+        <a href={SLUGS.fieldNotes} style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:14px;padding:26px 30px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(244,240,231,0.4)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+          <div>
+            <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Field Notes</p>
+            <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">Straight answers for teams that stopped executing.</p>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:9px;color:#F4F0E7;font-weight:700;font-size:15.5px;white-space:nowrap;">Read Field Notes <span>&rarr;</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA + BRIDGE ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:40px 32px 90px;border-top:1px solid rgba(244,240,231,0.08);">
+      <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.06;letter-spacing:-0.02em;color:#FBF8F1;">Start with where you break. We'll tell you straight.</h2>
+        <p style="margin-top:22px;font-size:19px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:52ch;margin-left:auto;margin-right:auto;">One call is enough to know whether this is right for your team — and we'll say so if it isn't.</p>
+        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 44px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+          <a href={SLUGS.breakPointAssessment} style="border:1px solid rgba(244,240,231,0.28);color:#F4F0E7;text-decoration:none;padding:18px 30px;border-radius:10px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.28)'">Take the free self-assessment</a>
+        </div>
+      </div>
+      <!-- cross-link bridge to leaders -->
+      <div style="max-width:900px;margin:64px auto 0;">
+        <a href={SLUGS.leaders} style="display:flex;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:14px;padding:26px 30px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(244,240,231,0.4)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+          <div>
+            <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Growing yourself, not just the team?</p>
+            <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">A team is only as strong as the leader behind it.</p>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:9px;color:#F4F0E7;font-weight:700;font-size:15.5px;white-space:nowrap;">For individual leaders <span>&rarr;</span></span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>

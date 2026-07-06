@@ -92,7 +92,8 @@ export const SLUGS = {
   whereExecutivesRecharge: '/leaders/where-executives-recharge/',
   type2Fun: '/leaders/type-2-fun/',
 
-  // ── For Teams — retreats, diagnostic, and team-side SEO (/teams/…) ─────────
+  // ── For Teams — hub, retreats, diagnostic, and team-side SEO (/teams/…) ────
+  teams: '/teams/',
   teamRetreats: '/teams/retreats/',
   destinations: '/teams/retreats/destinations/',
   retreatFormats: '/teams/retreats/formats/',

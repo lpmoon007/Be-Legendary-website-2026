@@ -4,6 +4,8 @@ import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import MwComplete from '../../../components/MwComplete.astro';
 import MwCommitment from '../../../components/MwCommitment.astro';
+import { Image } from 'astro:assets';
+import kintsugiCover from '../../../assets/kintsugi-cover.jpg';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
 
 const path = workoutPath('kintsugi-wabi-sabi');
@@ -90,7 +92,7 @@ const schema = [
     <!-- ============ HERO (real bowl image) ============ -->
     <div style="position:relative;max-width:1000px;margin:0 auto;padding:32px 32px 0;">
       <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);">
-        <img src="/assets/kintsugi-cover.jpg" alt="A blue ceramic bowl repaired with veins of gold — Kintsugi" style="width:100%;height:clamp(240px,42vw,420px);object-fit:cover;display:block;">
+        <Image src={kintsugiCover} alt="A blue ceramic bowl repaired with veins of gold — Kintsugi" width={1200} height={900} format="webp" quality={82} loading="eager" fetchpriority="high" style="width:100%;height:clamp(240px,42vw,420px);object-fit:cover;display:block;">
         <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,19,14,0.1),rgba(21,19,14,0.82));"></div>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:36px 34px;">
           <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;">
@@ -108,6 +110,8 @@ const schema = [
     <!-- ============ WARMUP (always visible) ============ -->
     <section style="max-width:760px;margin:36px auto 0;padding:0 32px;">
       <p style="font-size:19px;line-height:1.65;color:#3A362E;margin-bottom:22px;">When a bowl breaks in Japan, one practice doesn't hide the repair — it mends the cracks with <strong style="color:#1B1810;">gold.</strong> That's <em style="font-style:italic;">Kintsugi.</em> The bowl becomes more precious broken-and-mended than it ever was whole. Its cousin, <em style="font-style:italic;">Wabi-Sabi,</em> is the practice — even the devotion — of loving something <strong style="color:#1B1810;">because</strong> of its imperfections, not in spite of them.</p>
+
+      <p style="margin-bottom:22px;"><a href={SLUGS.whatIsKintsugi} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#C04A26;text-decoration:none;" onmouseover="this.querySelector('span:last-child').style.transform='translateX(4px)'" onmouseout="this.querySelector('span:last-child').style.transform='translateX(0)'"><span>New to the idea? What is Kintsugi?</span><span style="transition:transform .2s;">&rarr;</span></a></p>
 
       <p style="font-size:19px;line-height:1.65;color:#3A362E;margin-bottom:26px;">For tens of thousands of years we looked up and saw sparkling diamonds. Then in 1933 an engineer named Karl Jansky, chasing radio static, realized he was hearing the hum of the black hole at the center of our galaxy. After that, astronomers looked up with <em style="font-style:italic;">New Eyes</em> — and saw quasars, pulsars, the afterglow of the Big Bang. Same sky. New Eyes. <strong style="color:#1B1810;">The biggest breakthroughs come from looking at what everyone sees and seeing what no one has.</strong></p>
 
@@ -149,9 +153,9 @@ const schema = [
       <!-- gallery -->
       <section style="max-width:900px;margin:32px auto 0;padding:0 32px;">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
-          <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);"><img src="/assets/kintsugi-1.jpg" alt="Kintsugi bowl mended with gold" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
-          <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);"><img src="/assets/kintsugi-grigia.jpg" alt="Grey Kintsugi vessel with gold seams" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
-          <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);"><img src="/assets/kintsugi-metamorphosis.jpg" alt="Paige Bradley's Metamorphosis — a cracked figure lit from within" loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
+          <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);"><img src="/assets/kintsugi-1.jpg" alt="Kintsugi bowl mended with gold" width={770} height={400} loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
+          <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);"><img src="/assets/kintsugi-grigia.jpg" alt="Grey Kintsugi vessel with gold seams" width={1920} height={1440} loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
+          <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(244,240,231,0.12);"><img src="/assets/kintsugi-metamorphosis.jpg" alt="Paige Bradley's Metamorphosis — a cracked figure lit from within" width={558} height={375} loading="lazy" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
         </div>
         <p style="margin-top:12px;font-size:13px;color:#8A7F6C;">Left &amp; center: Kintsugi — the repair made precious. Right: Paige Bradley's <em style="font-style:italic;">Metamorphosis</em> — the light escapes through the cracks.</p>
       </section>

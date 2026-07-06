@@ -58,7 +58,7 @@ const slim = variant === 'slim';
         <span style="font-weight:800;letter-spacing:0.14em;font-size:14px;">BE LEGENDARY</span>
       </a>
       <div role="tablist" aria-label="Audience" style="display:flex;align-items:center;background:rgba(244,240,231,0.06);border:1px solid rgba(244,240,231,0.12);border-radius:999px;padding:3px;">
-        <a href="/" role="tab" aria-selected={teamsActive ? 'true' : 'false'} style={`font-size:13px;text-decoration:none;padding:6px 14px;border-radius:999px;${teamsActive ? pillOn : pillOff}`}>For Teams</a>
+        <a href={SLUGS.teams} role="tab" aria-selected={teamsActive ? 'true' : 'false'} style={`font-size:13px;text-decoration:none;padding:6px 14px;border-radius:999px;${teamsActive ? pillOn : pillOff}`}>For Teams</a>
         <a href={SLUGS.leaders} role="tab" aria-selected={teamsActive ? 'false' : 'true'} style={`font-size:13px;text-decoration:none;padding:6px 14px;border-radius:999px;${teamsActive ? pillOff : pillOn}`}>For Leaders</a>
       </div>
     </div>
