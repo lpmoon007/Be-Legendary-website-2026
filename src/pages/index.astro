@@ -10,7 +10,7 @@ import imgLdol from '../assets/book-ldol.png';
 import imgDiscover from '../assets/book-discover.jpg';
 import imgRoadmap from '../assets/book-roadmap.png';
 import imgOneGreatIdea from '../assets/book-onegreatidea.jpg';
-import { CTA_URL, SLUGS, SISTER } from '../lib/site';
+import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'The Flag Model — Where Will Your Executive Team Break First? | Be Legendary';
 const description = "You've already bought the offsite, the framework, the coach — and behavior didn't change. There's no lightswitch. But there is a place your executive team breaks first, and it's findable. The Flag Model shows you where. Book a 15-minute Calibration Call.";
@@ -41,12 +41,16 @@ const faqs = [
   { q: 'Is this just another framework or coach?', a: "No. We don't sell a lightswitch. We find where your team breaks first, measure it with FlagScore, and rebuild the specific discipline that broke — over time, as a Performance Partnership. The Flag Model is the system we install, not a poster we hand you." },
 ];
 
+// In-page nav mirrors the design's primary nav: section anchors plus real
+// routes (Resources → hub, Retreats → team retreats). The CTA button and the
+// For Teams/For Leaders toggle are supplied by SiteHeader.
 const homeLinks = [
+  { label: 'The truth', href: '#truth' },
   { label: 'The Flag Model', href: '#model' },
   { label: 'Resources', href: SLUGS.resources },
-  { label: 'The Library', href: SLUGS.library },
+  { label: 'How it works', href: '#work' },
+  { label: 'Retreats', href: SLUGS.teamRetreats },
   { label: 'James', href: '#james' },
-  { label: 'Retreats', href: SISTER.retreats },
 ];
 ---
 <BaseLayout title={title} description={description} path="/" siteGraph={false} ogTitle="Where is your executive team going to break first?" ogDescription="There's no single fix for a stalled leadership team. But there is a place it breaks first. The Flag Model finds it." schema={schema}>
