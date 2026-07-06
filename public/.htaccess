@@ -2,6 +2,10 @@
 # Serve directory URLs from index.html and use the branded 404.
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+# An index-less directory (e.g. a hub page not built yet during the phased
+# rollout) otherwise returns Apache's raw "Forbidden" — map 403 to the 404 too.
+ErrorDocument 403 /404.html
+Options -Indexes
 
 # Long-cache fingerprinted build assets (safe: filenames change on rebuild).
 <IfModule mod_expires.c>
