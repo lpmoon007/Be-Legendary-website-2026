@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
-import { SLUGS } from '../../lib/site';
+import { SLUGS, PERSON_ID, ORG_ID } from '../../lib/site';
 
 const title = 'Legendary Intent: Your One-Line Leadership Filter | Be Legendary';
 const description = "Borrowed from the military's Commander's Intent, your Legendary Intent is a single sentence that declares how you'll make a difference — and becomes the filter through which you see every opportunity. Here's how to write yours.";
@@ -13,7 +13,7 @@ const schema = [
     { '@type': 'ListItem', position: 2, name: 'For Leaders', item: 'https://www.belegendary.org/leaders/' },
     { '@type': 'ListItem', position: 3, name: 'Legendary Intent', item: 'https://www.belegendary.org/leaders/legendary-intent/' },
   ] },
-  { '@type': 'Article', headline: 'Legendary Intent: your one-line leadership filter', datePublished: '2026-06-27', dateModified: '2026-06-27', author: { '@type': 'Person', name: 'James Carter' }, publisher: { '@type': 'Organization', name: 'Be Legendary' }, mainEntityOfPage: 'https://www.belegendary.org/leaders/legendary-intent/', description: "A single sentence, modeled on the military's Commander's Intent, that declares how you will make a difference and filters every opportunity." },
+  { '@type': 'Article', headline: 'Legendary Intent: your one-line leadership filter', datePublished: '2026-06-27', dateModified: '2026-06-27', author: { '@id': PERSON_ID }, publisher: { '@id': ORG_ID }, mainEntityOfPage: 'https://www.belegendary.org/leaders/legendary-intent/', description: "A single sentence, modeled on the military's Commander's Intent, that declares how you will make a difference and filters every opportunity." },
   { '@type': 'HowTo', name: 'How to write your Legendary Intent', description: 'A short exercise to distill your core belief into a single guiding sentence.', step: [
     { '@type': 'HowToStep', position: 1, name: 'List your beliefs', text: 'Write down what you believe matters most — as many as come to mind.' },
     { '@type': 'HowToStep', position: 2, name: 'Cut to the core', text: 'Cross off 25% of the list. Then 25% of what remains. Then 25% again, until one to three beliefs are left.' },

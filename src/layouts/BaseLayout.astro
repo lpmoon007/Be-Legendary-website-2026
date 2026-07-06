@@ -24,6 +24,8 @@ export interface Props {
   noindex?: boolean;
   /** Page background (most pages are ink-dark). */
   bodyBg?: string;
+  /** Override the last breadcrumb crumb (defaults to the title's leading phrase). */
+  breadcrumbLabel?: string;
 }
 
 const {
@@ -37,6 +39,7 @@ const {
   siteGraph = true,
   noindex = false,
   bodyBg = '#15130E',
+  breadcrumbLabel,
 } = Astro.props;
 
 const canonical = new URL(path, SITE_URL).href;
@@ -46,6 +49,57 @@ const shareAlt = 'Be Legendary — the Flag Model for executive-team performance
 // Assemble the JSON-LD graph: canonical identity entities (on inner pages) +
 // a WebPage node tying this page to the site + the page's own nodes.
 const pageNodes = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+// ── Auto-inject datePublished/dateModified on Article-type nodes lacking them ──
+const LAUNCH_DATE = '2026-07-06';
+const buildDate = new Date().toISOString().split('T')[0];
+const ARTICLE_TYPES = new Set(['Article', 'BlogPosting', 'NewsArticle', 'TechArticle', 'ScholarlyArticle']);
+const isType = (t: any, set: Set<string>) =>
+  typeof t === 'string' ? set.has(t) : Array.isArray(t) && t.some((x) => set.has(x));
+const datedNodes = pageNodes.map((n: any) => {
+  if (!isType(n['@type'], ARTICLE_TYPES)) return n;
+  return {
+    ...n,
+    datePublished: n.datePublished ?? LAUNCH_DATE,
+    dateModified: n.dateModified ?? buildDate,
+  };
+});
+
+// ── Auto-derive a BreadcrumbList from the URL path when the page didn't supply one ──
+const SEG_LABELS: Record<string, string> = {
+  leaders: 'For Leaders',
+  teams: 'For Teams',
+  workouts: 'Mindset Workouts',
+  retreats: 'Retreats',
+};
+const hasBreadcrumb = datedNodes.some((n: any) => isType(n['@type'], new Set(['BreadcrumbList'])));
+const leafLabel = (breadcrumbLabel ?? (ogTitle ?? title).split(/\s+[|—–]\s+/)[0]).trim();
+function deriveBreadcrumb() {
+  const segs = path.split('/').filter(Boolean);
+  if (!segs.length) return null; // homepage — no breadcrumb
+  const items = [{ name: 'Home', item: `${SITE_URL}/` }];
+  let acc = '';
+  segs.forEach((seg, i) => {
+    acc += `/${seg}`;
+    const isLast = i === segs.length - 1;
+    const name = isLast
+      ? leafLabel
+      : SEG_LABELS[seg] ?? seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    items.push({ name, item: `${SITE_URL}${acc}/` });
+  });
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${canonical}#breadcrumb`,
+    itemListElement: items.map((it, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: it.name,
+      item: it.item,
+    })),
+  };
+}
+const autoCrumb = !hasBreadcrumb && path !== '/' ? deriveBreadcrumb() : null;
+
 const webPage = {
   '@type': 'WebPage',
   '@id': `${canonical}#webpage`,
@@ -55,9 +109,10 @@ const webPage = {
   inLanguage: 'en-US',
   isPartOf: { '@id': WEBSITE_ID },
   primaryImageOfPage: { '@type': 'ImageObject', url: shareCard },
+  ...(autoCrumb ? { breadcrumb: { '@id': autoCrumb['@id'] } } : {}),
 };
 const identityNodes = siteGraph ? [ORG_NODE, PERSON_NODE, WEBSITE_NODE, webPage] : [];
-const graphNodes = [...identityNodes, ...pageNodes];
+const graphNodes = [...identityNodes, ...datedNodes, ...(autoCrumb ? [autoCrumb] : [])];
 
 const jsonLd = graphNodes.length
   ? JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes })

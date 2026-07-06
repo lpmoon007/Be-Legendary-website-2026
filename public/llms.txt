@@ -52,6 +52,23 @@
 - The Legendary Leader — the flagship whole-person program built around a Shakubuku: https://www.belegendary.org/leaders/the-legendary-leader/
 - Leader's Glossary — Shakubuku, Kintsugi, Misogi, the Golden Buddha, and more, defined: https://www.belegendary.org/leaders/glossary/
 
+## Leader guides & essays (individual-leader SEO/GEO cluster, all under /leaders/)
+- Habit-building: what is habit stacking (/leaders/what-is-habit-stacking/), how to build a habit (/leaders/how-to-build-a-habit/), implementation intentions (/leaders/implementation-intentions/), why habits fail (/leaders/why-habits-fail/), lead vs lag measures (/leaders/lead-vs-lag-measures/).
+- Leadership essentials: what is leadership (/leaders/what-is-leadership/), what makes a good leader (/leaders/what-makes-a-good-leader/), leadership qualities (/leaders/leadership-qualities/), how to improve leadership skills (/leaders/improve-leadership-skills/), what is executive coaching (/leaders/what-is-executive-coaching/), breaking a leadership plateau (/leaders/leadership-plateau/), executive imposter syndrome (/leaders/executive-imposter-syndrome/).
+- When you've "made it": successful but unfulfilled (/leaders/successful-but-unfulfilled/), what's next after success (/leaders/whats-next-after-success/), who am I without my title (/leaders/who-am-i-without-my-title/).
+- Recharge & reset: executive burnout retreat (/leaders/executive-burnout-retreat/), stress management retreat (/leaders/stress-management-retreat/), wilderness therapy for executives (/leaders/wilderness-therapy-for-executives/), where executives recharge (/leaders/where-executives-recharge/), what is Type 2 fun (/leaders/type-2-fun/).
+- Mindset vocabulary: what is Shakubuku (/leaders/what-is-shakubuku/), what is Kintsugi (/leaders/what-is-kintsugi/), what is a Misogi (/leaders/what-is-a-misogi/), the Golden Buddha story (/leaders/the-golden-buddha-story/).
+
+## For Teams — retreats & programs (all under /teams/)
+- For Teams hub — the framework, diagnostics, retreats, and guides in one place: https://www.belegendary.org/teams/
+- Team Retreats — executive-team retreats that turn alignment into execution: https://www.belegendary.org/teams/retreats/
+- Destinations — where the retreats happen: https://www.belegendary.org/teams/retreats/destinations/
+- Retreat Formats — the formats and how to choose: https://www.belegendary.org/teams/retreats/formats/
+- Ways to Work Together — engagement tiers: https://www.belegendary.org/teams/retreats/ways-to-work-together/
+- For Executive Assistants — planning a leadership retreat: https://www.belegendary.org/teams/retreats/for-executive-assistants/
+- Team Diagnostic — where your executive team breaks first: https://www.belegendary.org/teams/diagnostic/
+- Team guides: followership (/teams/followership/), corporate retreat ideas & locations (/teams/corporate-retreat-ideas/), executive offsite ideas (/teams/executive-offsite-ideas/), leadership retreat ideas (/teams/leadership-retreat-ideas/), luxury executive retreat (/teams/luxury-executive-retreat/).
+
 ## Key definitions (for leaders)
 - Shakubuku: a sudden, radical shift in how you see yourself — an awakening to your own inherent greatness; also Be Legendary's flagship by-application experience.
 - Misogi: one hard ordeal a year, real stakes, lived in the physical world, that resets what you believe you're capable of.

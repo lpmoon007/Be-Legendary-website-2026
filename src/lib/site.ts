@@ -162,9 +162,21 @@ export const PERSON_NODE = {
   '@id': PERSON_ID,
   name: 'James Carter',
   jobTitle: 'Founder, Be Legendary',
+  description:
+    'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership and co-author of Discover Your Inner Strength alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Twenty-five years working with hundreds of executive teams; featured in CNN, CNN Money and Business Insider.',
+  knowsAbout: [
+    'executive team performance', 'leadership team alignment', 'the Flag Model',
+    'organizational execution', 'leadership development', 'executive facilitation',
+    'leadership offsites', 'team accountability', 'decision-making', 'leadership mindset',
+    'personal transformation',
+  ],
   url: `${SITE_URL}/about/james-carter/`,
   worksFor: { '@id': ORG_ID },
-  sameAs: ['https://www.linkedin.com/in/jlcarter/', 'https://www.buildingteams.com/about/james-carter/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
+  sameAs: [
+    'https://www.linkedin.com/in/jlcarter/',
+    'https://www.buildingteams.com/about/james-carter/',
+    'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG',
+  ],
 };
 
 export const WEBSITE_NODE = {
