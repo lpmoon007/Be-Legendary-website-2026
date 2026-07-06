@@ -7,7 +7,7 @@ import { SITE_URL, CTA_URL, ORG_ID, SLUGS } from '../../lib/site';
 const path = SLUGS.legendaryLeader;
 const title = 'The Legendary Leader — Four Coaches, Six Months, One You | Be Legendary';
 const description =
-  'The private summit: a six-month program built around a Shakubuku, with four dedicated coaches — physical, mental, emotional, spiritual — developing the whole leader. By invitation. $95,000. From Be Legendary.';
+  'The private summit: a six-month program built around a Shakubuku, with four dedicated coaches — physical, mental, emotional, spiritual — developing the whole leader. By invitation. From Be Legendary.';
 
 const canonical = new URL(path, SITE_URL).href;
 
@@ -22,7 +22,7 @@ const schema = [
     serviceType: 'Private whole-person leadership program',
     description:
       'A six-month private program with four dedicated coaches — physical, mental, emotional and spiritual — built around a Shakubuku immersion. By invitation.',
-    offers: { '@type': 'Offer', price: '95000', priceCurrency: 'USD' },
+    offers: { '@type': 'Offer', availability: 'https://schema.org/LimitedAvailability', url: `${SITE_URL}/leaders/the-legendary-leader/` },
   },
   {
     '@type': 'FAQPage',
@@ -131,8 +131,8 @@ const schema = [
       <div class="bl-grid-collapse" style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:20px;padding:44px 46px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
         <div>
           <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F6C;margin-bottom:6px;">Investment</p>
-          <p style="font-family:'Newsreader',serif;font-size:40px;color:#1B1810;line-height:1;">$95,000</p>
-          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#56524A;max-width:36ch;">Private, six months, four coaches, one Shakubuku. By invitation — a short conversation tells us both whether this is your moment.</p>
+          <p style="font-family:'Newsreader',serif;font-size:40px;color:#1B1810;line-height:1;">By application</p>
+          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#56524A;max-width:36ch;">Private, six months, four coaches, one Shakubuku. By invitation — a short conversation tells us both whether this is your moment, and the investment is discussed on acceptance.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:12px;">
           <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:700;font-size:16px;text-align:center;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation</a>
