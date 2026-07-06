@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = "Flag Model vs Executive Coaching: Why Coaching One Leader Doesn't Fix the Team | Be Legendary";
@@ -30,7 +30,7 @@ const schema = [
   ogDescription="Coaching sharpens the individual leader. The Flag Model fixes how the team operates together. Different problems."
   schema={schema}
 >
-  <Header maxWidth={920} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
 
   <article>
   <!-- HERO -->
@@ -115,5 +115,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside coaching." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside coaching." />
 </BaseLayout>

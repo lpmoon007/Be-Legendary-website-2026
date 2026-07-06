@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Flag Model vs 4DX: Why Your Scoreboard Says Green When Results Say Red | Be Legendary';
@@ -30,7 +30,7 @@ const schema = [
   ogDescription="4DX is the execution machinery. The Flag Model is the leadership discipline underneath it. Run both."
   schema={schema}
 >
-  <Header maxWidth={920} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
 
   <article>
   <!-- HERO -->
@@ -121,5 +121,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside 4DX." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside 4DX." />
 </BaseLayout>

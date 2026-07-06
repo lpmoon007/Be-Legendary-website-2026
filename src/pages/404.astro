@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const links = [
@@ -18,7 +18,7 @@ const links = [
   siteGraph={false}
   noindex={true}
 >
-  <Header maxWidth={960} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={960} links={[]} />
 
   <main style="max-width:760px;margin:0 auto;padding:110px 32px 90px;position:relative;">
     <div style="position:absolute;top:-80px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
@@ -41,5 +41,5 @@ const links = [
     </div>
   </main>
 
-  <Footer maxWidth={960} note="© 2026 Be Legendary" />
+  <SiteFooter audience="teams" variant="slim" maxWidth={960} note="© 2026 Be Legendary" />
 </BaseLayout>

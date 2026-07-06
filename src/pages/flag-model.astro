@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'The Flag Model: The Five Components That Keep an Executive Team Executing | Be Legendary';
@@ -31,7 +31,7 @@ const schema = [
   ogDescription="A flag held upright by four cables. Cut one and it tilts; cut two and it falls. The complete framework, explained."
   schema={schema}
 >
-  <Header maxWidth={1140} links={[{ label: 'Home', href: '/' }, { label: 'Anatomy', href: '#anatomy' }, { label: 'The four disciplines', href: '#disciplines' }, { label: 'FlagScore', href: '#measure' }]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1140} links={[{ label: 'Home', href: '/' }, { label: 'Anatomy', href: '#anatomy' }, { label: 'The four disciplines', href: '#disciplines' }, { label: 'FlagScore', href: '#measure' }]} />
 
   <!-- HERO / DEFINITION (answer-first) -->
   <article>
@@ -239,5 +239,5 @@ const schema = [
     </div>
   </section>
 
-  <Footer variant="slim" maxWidth={1140} note="© 2026 Be Legendary. The Flag Model is a framework of Be Legendary." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={1140} note="© 2026 Be Legendary. The Flag Model is a framework of Be Legendary." />
 </BaseLayout>

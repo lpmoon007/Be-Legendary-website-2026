@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import { Image } from 'astro:assets';
 import imgJames from '../../assets/james.jpg';
 import imgLdol from '../../assets/book-ldol.png';
@@ -32,7 +32,7 @@ const schema = [
   ogDescription="25 years inside the room where the hardest calls get made. Founder of Be Legendary and creator of the Flag Model."
   schema={schema}
 >
-  <Header maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }]} />
 
   <!-- HERO -->
   <section style="position:relative;max-width:1140px;margin:0 auto;padding:80px 32px 64px;">
@@ -162,5 +162,5 @@ const schema = [
     </div>
   </section>
 
-  <Footer variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Founded and led by James Carter." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Founded and led by James Carter." />
 </BaseLayout>
