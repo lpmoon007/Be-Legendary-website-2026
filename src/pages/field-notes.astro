@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
@@ -30,7 +30,7 @@ const schema = [
 
 <div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
 
-  <Header maxWidth={1080} links={[{ label: 'Home', href: '/' }, { label: 'The Flag Model', href: SLUGS.flagModel }]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1080} links={[{ label: 'Home', href: '/' }, { label: 'The Flag Model', href: SLUGS.flagModel }]} />
 
   <!-- HERO -->
   <header style="position:relative;max-width:1080px;margin:0 auto;padding:88px 32px 56px;">
@@ -156,7 +156,7 @@ const schema = [
     </div>
   </section>
 
-  <Footer variant="slim" maxWidth={1080} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={1080} note="© 2026 Be Legendary. Field notes on executive-team execution." />
 
 </div>
 

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = "My Executive Team Isn't Aligned on Priorities. Why? | Be Legendary";
@@ -22,7 +22,7 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.notAligned} ogType="article" ogTitle="My executive team isn't aligned on priorities. Why?" ogDescription="If two leaders would name different top priorities, the Flag has gone fuzzy. Here's how alignment is rebuilt." schema={schema}>
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
@@ -77,5 +77,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
 </BaseLayout>

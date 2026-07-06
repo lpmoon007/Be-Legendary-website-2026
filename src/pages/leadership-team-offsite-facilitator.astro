@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'How to Choose a Leadership Team Offsite Facilitator | Be Legendary';
@@ -30,7 +30,7 @@ const schema = [
   ogDescription="What a great facilitator does, the questions to ask, and how to make the offsite hold afterward."
   schema={schema}
 >
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
@@ -94,5 +94,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. A guide for executive teams." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. A guide for executive teams." />
 </BaseLayout>

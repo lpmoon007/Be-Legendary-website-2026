@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = "We Did EOS and OKRs and Behavior Didn't Change. Why? | Be Legendary";
@@ -23,7 +23,7 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.eosOkrs} ogType="article" ogTitle="We did EOS and OKRs and behavior didn't change. Why?" ogDescription="Frameworks assume a team that can already execute. The Flag Model rebuilds the disciplines underneath them." schema={schema}>
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <!-- HERO + ANSWER-FIRST -->
@@ -132,5 +132,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
 </BaseLayout>

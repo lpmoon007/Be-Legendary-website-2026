@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'The State of Executive Team Execution: 2026 Research Report | Be Legendary';
@@ -23,7 +23,7 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.research} ogType="article" ogTitle="The State of Executive Team Execution — 2026 Research Report" ogDescription="A synthesis of 20+ studies on why leadership teams fail to execute, organized by the five components. The statistics, with sources." schema={schema}>
-  <Header maxWidth={1000} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1000} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
 
   <article>
   <header style="position:relative;max-width:1000px;margin:0 auto;padding:78px 32px 36px;">
@@ -210,5 +210,5 @@ const schema = [
   </section>
   </article>
 
-  <Footer variant="slim" maxWidth={1000} note="© 2026 Be Legendary · Free to cite with attribution to belegendary.org." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={1000} note="© 2026 Be Legendary · Free to cite with attribution to belegendary.org." />
 </BaseLayout>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = "Why Isn't My Executive Team Executing? (And How to Fix It) | Be Legendary";
@@ -23,7 +23,7 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.whyNotExecuting} ogType="article" ogTitle="Why isn't my executive team executing?" ogDescription="It's almost never a strategy problem. It's a discipline problem — and it breaks in one of four specific places first." schema={schema}>
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <!-- HERO + ANSWER-FIRST -->
@@ -113,5 +113,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
 </BaseLayout>
