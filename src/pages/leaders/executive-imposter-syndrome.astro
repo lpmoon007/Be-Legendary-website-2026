@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../lib/site';
+
+const path = SLUGS.executiveImposterSyndrome;
+const title = 'Executive Imposter Syndrome: Why the Top Feels Like a Fraud | Be Legendary';
+const description =
+  "Executive imposter syndrome — the higher you rise, the more you feel you're faking it. Why senior leaders feel like frauds, why competence doesn't fix it, and the mindset shift that does. From Be Legendary.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design, enriched with
+// entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Executive Imposter Syndrome: Why the Top Feels Like a Fraud',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['executive imposter syndrome', 'imposter syndrome leaders', 'self-doubt at the top'],
+    description:
+      'Why senior leaders feel like frauds despite competence, and the mindset shift that resolves executive imposter syndrome.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is executive imposter syndrome?', acceptedAnswer: { '@type': 'Answer', text: "Executive imposter syndrome is the persistent feeling — at senior levels — that you're not as capable as people think and will eventually be found out, despite clear evidence of competence. It often intensifies with seniority, because the stakes rise and there's no one above you to validate the work. It's not a lack of ability; it's an old belief about your worth running unchallenged." } },
+      { '@type': 'Question', name: 'Why does imposter syndrome get worse the higher you go?', acceptedAnswer: { '@type': 'Answer', text: "Because achievement can't cure a belief. Each promotion raises the stakes and removes another layer of external validation, so a leader who ties worth to proof needs ever bigger proof — and never feels safe. The fix isn't more accomplishment; it's seeing and rewriting the belief that your value has to be constantly earned." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Executive Imposter Syndrome: Why the Top Feels Like a Fraud"
+  ogDescription="You're not fooling anyone — you're running an old belief. Here's how to rewrite it."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Executive Imposter Syndrome</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">The higher you rise, the more you feel like a fraud. Here's why.</h1>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p style="font-size:18px;line-height:1.6;color:#2E2A22;">Executive imposter syndrome is the nagging sense you'll be found out, no matter how much you achieve. It gets <em style="font-style:italic;">worse</em> with seniority because achievement can't cure a belief. You're not unqualified — you're running an old story that your worth has to be constantly proven. Change the story and the fraud feeling loses its grip.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">Here's the cruel logic of it: every promotion was supposed to be the one that finally made you feel legitimate. Instead each new level raised the stakes and removed another person above you to say "good job" — so the doubt got <em style="font-style:italic;">louder</em>, not quieter. You've accumulated a mountain of evidence you're capable, and it changes nothing, because the problem was never evidence.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">You can't achieve your way out of a belief. You can only rewrite it.</p>
+          <p>Somewhere early, you learned that your worth had to be earned — that you were only as safe as your last win. That belief made you driven, and it's also the engine of the fraud feeling: it can never be satisfied, because there's always a next test. The way out isn't more proof. It's seeing the belief clearly, and deliberately writing a truer one — that your value isn't contingent on the next performance.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Rewrite the belief — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">Catch the story running you — then change it.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The free Mindset Workouts are built on exactly this — Awareness, Beliefs, Courage — the reps that turn "I'll be found out" into something truer. Ten minutes to start.</p>
+          <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+            <a href={SLUGS.workouts} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Try a Mindset Workout — free <span>&rarr;</span></a>
+            <a href={workoutPath('mindset-of-a-legend')} style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Start with the ABCs</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px 90px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Why does it get worse the higher I go?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Because each level raises the stakes and strips away external validation, so a leader who ties worth to proof needs ever-bigger proof and never feels safe. Achievement feeds the cycle instead of ending it. The fix is rewriting the belief, not adding another win.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Does everyone at the top feel this?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">A striking number do — they just don't say it. The confident exterior is often covering the same private doubt. Naming it is the first step out; it's a pattern, not a personal flaw.</p></div>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
+
+const path = SLUGS.whatIsExecutiveCoaching;
+const title = 'What Is Executive Coaching? And When It Actually Helps | Be Legendary';
+const description =
+  "What is executive coaching, what happens in it, what it costs, and when it's the right tool versus something deeper. An honest guide for leaders, plus a free way to start the inner work today. From Be Legendary.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'What Is Executive Coaching? And When It Actually Helps',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['what is executive coaching', 'executive coach', 'leadership coaching'],
+    description:
+      "A clear, honest explanation of executive coaching — what it is, what it costs, and when it's the right tool.",
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is executive coaching?', acceptedAnswer: { '@type': 'Answer', text: "Executive coaching is a confidential, one-on-one partnership between a senior leader and a coach, focused on the leader's growth, blind spots and goals. A good coach acts as a mirror and a sparring partner — asking the questions no one on the team will, and holding the leader accountable to their own commitments. It's development, not therapy and not consulting: the answers come from the leader, drawn out by the coach." } },
+      { '@type': 'Question', name: 'How much does executive coaching cost?', acceptedAnswer: { '@type': 'Answer', text: "It varies widely by coach and scope — often several hundred to a few thousand dollars per session, or structured engagements over six to twelve months. Price tracks the coach's experience and the depth of the work more than anything else." } },
+      { '@type': 'Question', name: 'When is executive coaching the right choice?', acceptedAnswer: { '@type': 'Answer', text: "When you have a specific development goal or blind spot and want a skilled outside perspective and accountability to work on it. It's less suited to a deeper identity shift — feeling successful but empty, or questioning who you are beyond the role — which often calls for more immersive personal work. Many leaders use coaching alongside their own daily practice rather than instead of it." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="What Is Executive Coaching? And When It Actually Helps"
+  ogDescription="Coaching is a mirror and a sparring partner — not a fix. Here's when it's the right one."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">What Is Executive Coaching</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">What is executive coaching — and when does it actually help?</h1>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p style="font-size:18px;line-height:1.6;color:#2E2A22;">Executive coaching is a confidential, one-on-one partnership focused on a leader's growth, blind spots and goals. A good coach is a <strong style="font-weight:700;">mirror and a sparring partner</strong> — asking the questions no one on your team will, and holding you to your own commitments. It's development, not therapy or consulting: the answers come from you, drawn out by the coach.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">At the top, honest feedback dries up. Your team manages up, your board sees a highlight reel, and the higher you go the fewer people will tell you the truth about your blind spots. A good executive coach exists to fill that vacuum — a trusted outsider whose only job is your growth, with no agenda in your org chart.</p>
+          <p style="margin-bottom:22px;">What it looks like in practice: regular confidential sessions, real talk about where you're getting in your own way, and accountability to the changes you say you want. Not advice-giving — the best coaches ask better questions than they answer.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">Coaching is a mirror and a sparring partner. It's powerful for a specific goal — and it's not the whole toolbox.</p>
+          <p>Here's the honest part: coaching is excellent when you have a defined goal or blind spot to work. It's less suited to the deeper shift — feeling successful but empty, or questioning who you are beyond the title. That kind of change usually needs more immersive work. The most effective leaders don't treat coaching as the answer; they pair it with a daily practice of their own.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Start the inner work — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">Coaching or not, the work starts with you.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">Whether or not you hire a coach, the free Mindset Workouts build the self-awareness that makes any coaching land harder. Do one today — no cost, no commitment.</p>
+          <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+            <a href={SLUGS.workouts} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Try a Mindset Workout — free <span>&rarr;</span></a>
+            <a href={CTA_URL} target="_blank" rel="noopener" style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Talk it through with James</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px 20px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">How much does executive coaching cost?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">It varies widely — often several hundred to a few thousand dollars per session, or a structured engagement over six to twelve months. Price tracks the coach's experience and the depth of the work more than anything else.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Coaching, therapy, or something deeper — which do I need?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Coaching is for growth goals and blind spots. Therapy is for healing and mental health, with a licensed professional. If what you're feeling is a deeper identity shift — successful but empty, unsure who you are beyond the role — that often calls for immersive personal work. They're not mutually exclusive.</p></div>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
+
+const path = SLUGS.followership;
+const title = 'Followership: The Skill No One Teaches Leaders | Be Legendary';
+const description =
+  'Followership is the other half of leadership — how well people engage, think and support from any seat. What it means, the types of followers, and why the best leaders build good followership on purpose. From Be Legendary.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + DefinedTerm + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Followership: The Skill No One Teaches Leaders',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['followership', 'types of followers', 'effective followership'],
+    description:
+      'What followership is, the types of followers, and why great leaders build strong followership deliberately.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'Followership',
+    description:
+      "Followership is the capacity to engage, think critically and support effectively from a non-leading role. It is the complement to leadership: no leader succeeds without capable, engaged followers, and the best followers lead from any seat.",
+    inDefinedTermSet: 'Be Legendary',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is followership?', acceptedAnswer: { '@type': 'Answer', text: "Followership is the ability to engage, think critically, and support effectively from a role other than the top one. It's the essential complement to leadership: no leader accomplishes anything without capable, committed followers. Strong followership isn't passive obedience — it's active, honest, engaged participation that includes speaking up." } },
+      { '@type': 'Question', name: 'What are the types of followers?', acceptedAnswer: { '@type': 'Answer', text: 'A common model describes five: the exemplary follower (engaged and independent-thinking), the conformist (engaged but uncritical), the passive follower (neither engaged nor questioning), the alienated follower (critical but disengaged), and the pragmatist (hedging in the middle). The goal is more exemplary followers — people who think for themselves and commit fully.' } },
+      { '@type': 'Question', name: 'Why does followership matter for leaders?', acceptedAnswer: { '@type': 'Answer', text: "Because leadership only works if people follow well. A leader surrounded by passive or alienated followers gets compliance, not commitment. Building good followership — a culture where people engage, think and speak up — is one of the highest-leverage things a leader can do, and it's a skill leaders themselves need when they're not the one in charge." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Followership: The Skill No One Teaches Leaders"
+  ogDescription="Leadership gets all the attention. Followership is what determines whether it works."
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader
+    audience="teams"
+    variant="slim"
+    logoHref="/"
+    contextLink={{ label: 'Book a Calibration Call', href: CTA_URL, external: true }}
+  />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <article>
+    <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">Followership</span>
+      </nav>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#3A0A0C;max-width:18ch;">Followership: the skill no one teaches leaders.</h1>
+      <div style="margin-top:28px;background:#F6F1E7;border-left:3px solid #64010a;border-radius:0 12px 12px 0;padding:24px 26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">The short answer</p>
+        <p style="font-size:18px;line-height:1.6;color:#4A3A34;">Followership is <strong style="font-weight:700;">how well people engage, think and support from a seat that isn't the top one</strong> — the other half of leadership. It isn't obedience; the best followers think for themselves, speak up, and commit fully. No leader succeeds without it.</p>
+      </div>
+    </header>
+
+    <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+      <div style="font-size:19px;line-height:1.72;color:#4A3A34;">
+        <p style="margin-bottom:22px;">We pour endless attention into leadership and almost none into its counterpart. Yet every leader is also a follower — to a board, a market, a mission — and every team's results depend less on the person at the top than on how well everyone else engages. A brilliant leader with passive followers gets compliance. Ordinary direction with exemplary followers gets commitment.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#3A0A0C;margin:34px 0;padding-left:22px;border-left:3px solid #64010a;">Leadership gets the credit. Followership decides whether it works.</p>
+      </div>
+    </section>
+
+    <!-- types -->
+    <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:18px;">The five types of followers</h2>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#64010a;color:#F6EFE0;border-radius:12px;padding:18px 22px;"><span style="font-family:'Newsreader',serif;font-size:18px;color:#FBF3E7;">Exemplary</span><span style="font-size:14.5px;color:rgba(246,239,224,0.82);"> — engaged and thinks independently. The goal.</span></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:18px 22px;"><span style="font-family:'Newsreader',serif;font-size:18px;color:#3A0A0C;">Conformist</span><span style="font-size:14.5px;color:#5A4A44;"> — engaged but uncritical. The "yes" person.</span></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:18px 22px;"><span style="font-family:'Newsreader',serif;font-size:18px;color:#3A0A0C;">Pragmatist</span><span style="font-size:14.5px;color:#5A4A44;"> — hedges in the middle, waits to see which way it goes.</span></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:18px 22px;"><span style="font-family:'Newsreader',serif;font-size:18px;color:#3A0A0C;">Alienated</span><span style="font-size:14.5px;color:#5A4A44;"> — thinks critically but has checked out. Wasted talent.</span></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:18px 22px;"><span style="font-family:'Newsreader',serif;font-size:18px;color:#3A0A0C;">Passive</span><span style="font-size:14.5px;color:#5A4A44;"> — neither engaged nor questioning. Just there.</span></div>
+      </div>
+      <p style="margin-top:16px;font-size:15.5px;color:#6B4A44;">The leader's job isn't to demand compliance — it's to build a culture that grows more <em style="font-style:italic;">exemplary</em> followers, people who think for themselves and still commit.</p>
+    </section>
+
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="background:#64010a;color:#F6EFE0;border-radius:18px;padding:40px 42px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E9A98F;margin-bottom:12px;">Build it on your team</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.12;color:#FBF3E7;max-width:26ch;margin-bottom:14px;">Great followership is a culture you build, not a trait you hope for.</h2>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(246,239,224,0.85);max-width:56ch;margin-bottom:26px;">It grows where people feel both challenged and safe enough to speak up. That's exactly what a well-run leadership retreat creates — and what the Flag Model builds into how a team operates.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href={SLUGS.teamRetreats} style="background:#C04A26;color:#fff;text-decoration:none;padding:15px 26px;border-radius:10px;font-weight:700;font-size:15.5px;">See team retreats</a>
+          <a href={SLUGS.flagModel} style="border:1px solid rgba(246,239,224,0.35);color:#F6EFE0;text-decoration:none;padding:15px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">The Flag Model</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:820px;margin:56px auto 0;padding:0 32px 90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:28px;">Straight answers</h2>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:8px;">Isn't followership just doing what you're told?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">No — that's the passive or conformist kind, and it's the weak version. Real followership is active and honest: engaging fully, thinking critically, and speaking up when something's off. The best followers make their leaders better.</p></div>
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:8px;">Why should leaders care about their own followership?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">Because every leader answers to someone, and the skill of following well — engaged, candid, committed — is what they most want from their own people. You can't build what you don't practice.</p></div>
+      </div>
+    </section>
+    </article>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="slim" />
+</BaseLayout>
