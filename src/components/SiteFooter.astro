@@ -38,7 +38,7 @@ const primary = teamsActive ? TEAMS_COL : LEADERS_COL;
 const secondary = teamsActive ? LEADERS_COL : TEAMS_COL;
 ---
 {slim ? (
-  <footer style="background:#15130E;color:#B7AE9C;padding:48px 32px 40px;border-top:1px solid rgba(244,240,231,0.08);">
+  <footer style="margin-top:76px;background:#15130E;color:#B7AE9C;padding:48px 32px 40px;border-top:1px solid rgba(244,240,231,0.08);">
     <div style={`max-width:${maxWidth}px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;`}>
       <a href={teamsActive ? '/' : SLUGS.leaders} style="display:flex;align-items:center;gap:11px;text-decoration:none;">
         <img src="/assets/snail-cream.png" alt="Be Legendary" width="42" height="26" style="height:26px;width:auto;display:block;" />
@@ -55,7 +55,7 @@ const secondary = teamsActive ? LEADERS_COL : TEAMS_COL;
     </div>
   </footer>
 ) : (
-<footer style="background:#100E0A;color:rgba(244,240,231,0.6);padding:56px 32px 40px;border-top:1px solid rgba(244,240,231,0.08);">
+<footer style="margin-top:76px;background:#100E0A;color:rgba(244,240,231,0.6);padding:56px 32px 40px;border-top:1px solid rgba(244,240,231,0.08);">
   <div class="bl-grid-collapse bl-grid-collapse--gap" style={`max-width:${maxWidth}px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;`}>
     <div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
