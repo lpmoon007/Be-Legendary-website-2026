@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SLUGS, CTA_URL, ORG_ID } from '../../lib/site';
+
+const path = SLUGS.teamDiagnostic;
+const title = 'How We Diagnose Your Team — Before We Design the Retreat | Be Legendary';
+const description =
+  "Most retreats guess. We don't. A live behavioral simulation surfaces how your executive team actually breaks under pressure — real actions, not self-reports — then the retreat is built around what we find. From Be Legendary.";
+
+// JSON-LD — Service (provider by @id) + FAQPage. Types preserved from the design.
+const schema = [
+  {
+    '@type': 'Service',
+    name: 'Team Diagnostic',
+    provider: { '@id': ORG_ID },
+    serviceType: 'Executive team behavioral diagnostic',
+    description:
+      'A live, behavioral simulation that surfaces how an executive team actually breaks down under pressure, using real observed actions rather than self-report, to inform the design of a bespoke leadership retreat.',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'How is this different from a team assessment survey?', acceptedAnswer: { '@type': 'Answer', text: "Surveys and 360s capture what people say about themselves and each other. This captures what they actually do. Your team works through a live crisis scenario built from your own organization's context — each person plays themselves, decisions ripple to affect what everyone else sees, and every action is logged. The result is behavioral evidence of how your team coordinates and breaks under real ambiguity, not opinions about it." } },
+      { '@type': 'Question', name: 'What does the diagnostic produce?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: an individual report for each leader with trait-by-trait analysis backed by what they actually did in the simulation; a team dynamics report mapping influence, coordination patterns and where your collective failure modes appear; and a 30-day lead-measure commitment per participant. That becomes the blueprint for a retreat designed around your real fault lines, not generic ones.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="How We Diagnose Your Team — Before We Design the Retreat"
+  ogDescription="We don't guess how your team breaks. We watch it happen — safely — then build the retreat around it."
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader audience="teams" variant="full" logoHref="/" links={[]} maxWidth={1080} />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1080px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">The Diagnostic</span>
+      </nav>
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Step one · before any retreat</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.4vw,66px);line-height:1.0;letter-spacing:-0.022em;color:#3A0A0C;max-width:17ch;">We don't guess how your team breaks. <span style="font-style:italic;color:#C04A26;">We watch it happen.</span></h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:52ch;">Most retreats start with a guess and hope the activities land. Ours start with evidence. A live simulation — built from your own company's reality — surfaces exactly how your executive team coordinates and cracks under pressure. Then we design the retreat around what we actually found.</p>
+      <div style="margin-top:32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -16px rgba(192,74,38,0.6);">Book a Strategy Call <span>&rarr;</span></a>
+        <a href="#how" style="color:#64010a;text-decoration:none;font-weight:700;font-size:15px;">How it works &darr;</a>
+      </div>
+    </section>
+
+    <!-- SURVEY VS BEHAVIOR -->
+    <section style="max-width:1080px;margin:64px auto 0;padding:0 32px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:30px 32px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:16px;">Everyone else</p>
+          <p style="font-family:'Newsreader',serif;font-size:24px;line-height:1.2;color:#3A0A0C;margin-bottom:12px;">Surveys &amp; 360s</p>
+          <p style="font-size:16px;line-height:1.6;color:#5A4A44;">What people <em style="font-style:italic;">say</em> about themselves and each other. Filtered, polite, and easy to game — the truth everyone already agreed to tell.</p>
+        </div>
+        <div style="background:#64010a;color:#F6EFE0;border-radius:16px;padding:30px 32px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E9A98F;margin-bottom:16px;">Us</p>
+          <p style="font-family:'Newsreader',serif;font-size:24px;line-height:1.2;color:#FBF3E7;margin-bottom:12px;">Behavior under pressure</p>
+          <p style="font-size:16px;line-height:1.6;color:rgba(246,239,224,0.85);">What people <em style="font-style:italic;">actually do</em> when the stakes are real and the outcome is ambiguous. Unfiltered, unrehearsed, and impossible to fake.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">How it works</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#3A0A0C;max-width:22ch;">A live crisis, built from your own reality.</h2>
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;">
+          <span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">01</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;margin:10px 0;color:#3A0A0C;">We interview first</h3>
+          <p style="font-size:15px;line-height:1.55;color:#5A4A44;">Pre-engagement interviews build a scenario from your real organizational context — and a private hypothesis about where your team will break.</p>
+        </div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;">
+          <span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">02</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;margin:10px 0;color:#3A0A0C;">The team plays itself</h3>
+          <p style="font-size:15px;line-height:1.55;color:#5A4A44;">Each leader works the crisis on their own device. Their decisions ripple into the shared scenario — so no two people face the same simulation, and everyone lives with the others' choices.</p>
+        </div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;">
+          <span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">03</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;margin:10px 0;color:#3A0A0C;">Behavior becomes evidence</h3>
+          <p style="font-size:15px;line-height:1.55;color:#5A4A44;">Every action is logged. Afterward, the full state is analyzed into individual and team reports — showing who does what when the pressure is on, in observable behavior, not theory.</p>
+        </div>
+      </div>
+      <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;">Retreat-based · up to 10 leaders on individual devices · 90–120 minutes, facilitator-paced · debrief immediately after.</p>
+    </section>
+
+    <!-- THE FOUR FAILURE MODES (FLAG MODEL) -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <div style="background:#64010a;border-radius:20px;padding:48px 46px;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:16px;">What it stresses</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.12;color:#FBF3E7;max-width:24ch;margin-bottom:14px;">The four places every executive team breaks.</h2>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(246,239,224,0.82);max-width:58ch;margin-bottom:32px;">The scenario is engineered to stress the four failure modes of the Flag Model. The simulation surfaces which one is yours — and who behaves which way when it's under pressure.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Decision</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">Who actually decides — and what happens when no one will.</p></div>
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Rhythm</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">Whether the team keeps cadence, or scatters when it's hit.</p></div>
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Standard</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">What the team tolerates when the standard gets expensive.</p></div>
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Learning</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">Whether the team adapts from what's happening, or repeats it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">What you get</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#3A0A0C;max-width:20ch;">Three outputs — and a retreat that's finally aimed.</h2>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">Individual reports</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">A trait-by-trait read on each leader, every finding backed by what they actually did in the simulation.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">Team dynamics report</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">How individual patterns interact to produce collective breakdown — influence mapping, coordination, and the failure mode that's yours.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">30-day commitments</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">One lead-measure per person to change starting immediately — the same reinforcement engine behind everything we do.</p></div>
+      </div>
+    </section>
+
+    <!-- BRIDGE TO RETREAT -->
+    <section style="max-width:1080px;margin:72px auto 0;padding:0 32px 90px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border-radius:20px;padding:48px 46px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;">
+        <div>
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">Then — the retreat</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#FBF3E7;margin-bottom:14px;">This is why our retreats change teams and others don't.</h2>
+          <p style="font-size:16px;line-height:1.65;color:rgba(246,239,224,0.82);">The diagnostic tells us exactly what to build. The retreat is then engineered around your real fault line — not a generic team-building day. Evidence in, transformation out.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href={SLUGS.teamRetreats} style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#C04A26;color:#fff;padding:15px 24px;border-radius:10px;font-weight:700;font-size:15.5px;text-decoration:none;">See the retreats &rarr;</a>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(246,239,224,0.3);color:#F6EFE0;padding:15px 24px;border-radius:10px;font-weight:600;font-size:15.5px;text-decoration:none;">Book a Strategy Call</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>

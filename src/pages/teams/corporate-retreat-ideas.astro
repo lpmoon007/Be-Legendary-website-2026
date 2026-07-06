@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
+
+const path = SLUGS.corporateRetreatIdeas;
+const title = "Corporate Retreat Ideas & Locations: A Planner's Guide | Be Legendary";
+const description =
+  'Corporate retreat ideas, locations, and planning — sorted by the outcome you need. Team retreat ideas, venue types, what it costs, and how to make it stick. A straight guide for the person planning it. From Be Legendary.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design, enriched with
+// entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: "Corporate Retreat Ideas & Locations: A Planner's Guide",
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['corporate retreat ideas', 'corporate retreat locations', 'team retreat ideas', 'corporate retreat planning'],
+    description:
+      "A planner's guide to corporate retreat ideas, locations and planning, organized by the outcome you need.",
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What are good corporate retreat ideas?', acceptedAnswer: { '@type': 'Answer', text: 'Good corporate retreat ideas start from the outcome, not the activity. For trust and candor, a remote cabin or backcountry immersion. For interdependence, an off-road or survival challenge. For alignment and vision, a facilitated planning retreat at a venue built for deep work. For decisiveness, sailing or open water. Pick the result first; the idea is the vehicle that produces it.' } },
+      { '@type': 'Question', name: 'Where are the best corporate retreat locations?', acceptedAnswer: { '@type': 'Answer', text: "The best location is the one that fits the outcome and removes distraction — a place remarkable enough to lower people's guard. That can mean a five-star lodge or estate for reflection and strategy, or genuine backcountry, water or off-road terrain for trust and interdependence. Accessibility, food and privacy matter more than a famous name." } },
+      { '@type': 'Question', name: 'How much does a corporate retreat cost?', acceptedAnswer: { '@type': 'Answer', text: 'A facilitated executive retreat typically runs $25,000-$50,000 for a content-led format, $35,000-$100,000 for an experiential one at a curated venue, and $75,000-$500,000+ for a fully bespoke build. Cost is driven by the depth of the outcome and the level of design, not just headcount and nights.' } },
+      { '@type': 'Question', name: 'How do you plan a corporate retreat that works?', acceptedAnswer: { '@type': 'Answer', text: 'Choose one clear outcome before anything else, pick the format and location that produce it, bring real facilitation so the experience becomes decisions, and plan reinforcement for the weeks after so it holds. A great venue with no outcome is an expensive trip.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Corporate Retreat Ideas & Locations: A Planner's Guide"
+  ogDescription="Ideas, locations and planning — sorted by outcome, not novelty. The planner's straight guide."
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader
+    audience="teams"
+    variant="slim"
+    logoHref="/"
+    contextLink={{ label: 'Book a Calibration Call', href: CTA_URL, external: true }}
+  />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <article>
+    <header style="max-width:860px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">Corporate Retreat Ideas &amp; Locations</span>
+      </nav>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#3A0A0C;max-width:20ch;">Corporate retreat ideas &amp; locations, sorted by outcome.</h1>
+      <div style="margin-top:28px;background:#F6F1E7;border-left:3px solid #64010a;border-radius:0 12px 12px 0;padding:24px 26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">The short answer</p>
+        <p style="font-size:18px;line-height:1.6;color:#4A3A34;">The best corporate retreat idea isn't the most novel one — it's the one matched to your <em style="font-style:italic;">outcome</em>. Below: ideas by result, how to choose a location, what it costs, and the one thing that makes any of it actually stick.</p>
+      </div>
+    </header>
+
+    <!-- IDEAS BY OUTCOME -->
+    <section style="max-width:860px;margin:44px auto 0;padding:0 32px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:8px;">Retreat ideas by what you need to change</h2>
+      <p style="font-size:15.5px;line-height:1.6;color:#5A4A44;margin-bottom:22px;">Team, staff, company, or executive — the label matters less than the result. Find your outcome, and the format follows.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;"><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;">Remote cabin or backcountry immersion</h3><p style="font-size:14.5px;line-height:1.5;color:#5A4A44;margin-top:4px;">Close quarters, nowhere to hide — the team finally talks straight.</p></div><span style="font-size:13px;font-weight:700;color:#C04A26;white-space:nowrap;">Trust &amp; candor</span></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;"><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;">Off-road or survival challenge</h3><p style="font-size:14.5px;line-height:1.5;color:#5A4A44;margin-top:4px;">Shared adversity where the team has to depend on each other for real.</p></div><span style="font-size:13px;font-weight:700;color:#C04A26;white-space:nowrap;">Interdependence</span></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;"><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;">Facilitated planning at a five-star estate</h3><p style="font-size:14.5px;line-height:1.5;color:#5A4A44;margin-top:4px;">Space, beauty and the right table — room to think at altitude.</p></div><span style="font-size:13px;font-weight:700;color:#C04A26;white-space:nowrap;">Alignment &amp; vision</span></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline;"><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;">Sailing or open water</h3><p style="font-size:14.5px;line-height:1.5;color:#5A4A44;margin-top:4px;">One heading, one crew — how your team decides when it counts.</p></div><span style="font-size:13px;font-weight:700;color:#C04A26;white-space:nowrap;">Decisiveness</span></div>
+      </div>
+      <p style="margin-top:16px;font-size:14.5px;color:#6B4A44;">See each in depth on the <a href={SLUGS.retreatFormats} style="color:#C04A26;text-decoration:none;font-weight:600;">retreat formats page &rarr;</a></p>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section style="max-width:860px;margin:52px auto 0;padding:0 32px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:16px;">Choosing a location</h2>
+      <div style="font-size:18px;line-height:1.7;color:#4A3A34;">
+        <p style="margin-bottom:18px;">Skip the "top 10 retreat destinations" lists. The best <strong style="font-weight:700;">corporate retreat location</strong> is the one that fits the outcome and removes distraction — remarkable enough to lower the guard, private enough for honesty, with food and logistics that don't get in the way. A famous name is worth nothing if the room can't hold the work.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:22px;line-height:1.4;color:#3A0A0C;margin:26px 0;padding-left:22px;border-left:3px solid #64010a;">Reflection wants a lodge. Interdependence wants a mountain. Match the place to the point.</p>
+        <p>We run retreats across curated lodges, estates and genuine backcountry, water and off-road terrain — see <a href={SLUGS.destinations} style="color:#C04A26;text-decoration:none;font-weight:600;">destinations</a>.</p>
+      </div>
+    </section>
+
+    <!-- COST -->
+    <section style="max-width:860px;margin:52px auto 0;padding:0 32px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:16px;">What it costs</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 20px;"><p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;margin-bottom:6px;">Focused</p><p style="font-family:'Newsreader',serif;font-size:21px;color:#3A0A0C;">$25k–$50k</p><p style="font-size:13.5px;line-height:1.5;color:#5A4A44;margin-top:6px;">Content-led, one outcome, ready to run.</p></div>
+        <div style="background:#64010a;color:#F6EFE0;border-radius:12px;padding:22px 20px;"><p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D99A88;margin-bottom:6px;">Signature</p><p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF3E7;">$35k–$100k</p><p style="font-size:13.5px;line-height:1.5;color:rgba(246,239,224,0.82);margin-top:6px;">Experiential, curated venue, tailored.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 20px;"><p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;margin-bottom:6px;">Bespoke</p><p style="font-family:'Newsreader',serif;font-size:21px;color:#3A0A0C;">$75k–$500k+</p><p style="font-size:13.5px;line-height:1.5;color:#5A4A44;margin-top:6px;">Built from scratch around your team.</p></div>
+      </div>
+      <p style="margin-top:14px;font-size:14.5px;color:#6B4A44;">Full breakdown on <a href={SLUGS.waysToWorkTogether} style="color:#C04A26;text-decoration:none;font-weight:600;">ways to work together &rarr;</a></p>
+    </section>
+
+    <!-- THE STICK -->
+    <section style="max-width:860px;margin:52px auto 0;padding:0 32px;">
+      <div style="background:#64010a;color:#F6EFE0;border-radius:18px;padding:40px 42px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E9A98F;margin-bottom:12px;">The one thing that makes it stick</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.12;color:#FBF3E7;max-width:24ch;margin-bottom:14px;">A retreat without follow-through is a morale bump.</h2>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(246,239,224,0.85);max-width:56ch;margin-bottom:26px;">Pick one outcome, facilitate so the experience becomes commitments, and reinforce for 30 days after. That last part is why our retreats hold when others fade — measurably.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href={SLUGS.teamRetreats} style="background:#C04A26;color:#fff;text-decoration:none;padding:15px 26px;border-radius:10px;font-weight:700;font-size:15.5px;">See how our retreats work</a>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="border:1px solid rgba(246,239,224,0.35);color:#F6EFE0;text-decoration:none;padding:15px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Book a Strategy Call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="max-width:860px;margin:56px auto 0;padding:0 32px 90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:28px;">Straight answers</h2>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;margin-bottom:8px;">What are good team retreat ideas on a budget?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">Start with a single outcome and a facilitated day at a nearby lodge — depth beats spectacle. The spend that matters is on facilitation and follow-through, not nightly rate. A focused retreat delivers more than an expensive unfocused one.</p></div>
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;margin-bottom:8px;">How long should a corporate retreat be?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">Two to three days for experiential work, less for a focused planning session. Long enough to reach depth, short enough to protect the calendar. The outcome sets the length.</p></div>
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;margin-bottom:8px;">Who plans it?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">We do — format, location, logistics, facilitation and the 30-day reinforcement, end to end. You bring the outcome and the calendar. Planning for an executive? See <a href={SLUGS.forExecutiveAssistants} style="color:#C04A26;text-decoration:none;font-weight:600;">the EA guide</a>.</p></div>
+      </div>
+    </section>
+    </article>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="slim" />
+</BaseLayout>

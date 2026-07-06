@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
+
+const path = SLUGS.wildernessTherapy;
+const title = 'Adventure & Wilderness Therapy for Executives, Explained | Be Legendary';
+const description =
+  'What adventure and wilderness therapy means for executives — and why the wild works on leaders when a coaching room doesn\'t. The idea, the evidence, and how Shakubuku uses it. From Be Legendary.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design, enriched with
+// entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Adventure & Wilderness Therapy for Executives, Explained',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['wilderness therapy for executives', 'adventure therapy', 'executive retreat'],
+    description:
+      'What adventure and wilderness immersion does for executives and why the physical world reaches leaders that a coaching room cannot.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is wilderness therapy for executives?', acceptedAnswer: { '@type': 'Answer', text: 'For executives, wilderness or adventure immersion means using real, demanding experiences in nature — backcountry, off-road, open water — as the setting for personal growth. Away from the title, the phone and the usual defenses, a leader meets who they are underneath the role. It is leadership development and personal growth, not clinical therapy, though it borrows the principle that experience in the natural world changes people more deeply than talk alone.' } },
+      { '@type': 'Question', name: "Why does the wilderness work on leaders when a coaching room doesn't?", acceptedAnswer: { '@type': 'Answer', text: "Because a conference room lets you stay in your head and keep your armor on. The wild doesn't. Cold, effort, uncertainty and real stakes bypass the intellect and reach the body and emotions, where lasting change actually happens. Roles stop mattering; what's left is the real person, which is exactly what growth requires." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Adventure & Wilderness Therapy for Executives, Explained"
+  ogDescription="The wild strips the title away and shows a leader who they are underneath it."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Wilderness Therapy for Executives</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">Why the wilderness reaches a leader when a coaching room can't.</h1>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p style="font-size:18px;line-height:1.6;color:#2E2A22;">Adventure and wilderness immersion for executives uses real, demanding experiences in nature as the setting for growth. Away from the title and the usual defenses, a leader meets who they are underneath the role. It's personal development, not clinical therapy — but it borrows the truth that the natural world changes people more deeply than talk alone.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">In a conference room you can stay in your head all day. You can perform, deflect, manage the impression. The room lets you keep your armor on — which is exactly why so much executive "development" slides off within a week.</p>
+          <p style="margin-bottom:22px;">The wild doesn't allow it. Cold, effort, uncertainty and real stakes go straight past the intellect to the body and the emotions — where change actually lives. You can't think your way out of a river crossing or a night in the backcountry. You have to <em style="font-style:italic;">be</em> there, fully, which is a thing most leaders haven't done in years.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">Strip away the title, the phone, and the armor, and what's left is the real person — which is the only thing growth can work with.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="background:#15130E;border-radius:16px;overflow:hidden;">
+          <div style="height:220px;background-image:url('/assets/cs-sanjuan.webp');background-size:cover;background-position:center;"></div>
+          <div style="padding:28px 30px;">
+            <p style="font-family:'Newsreader',serif;font-weight:400;font-style:italic;font-size:22px;line-height:1.4;color:#FBF8F1;margin-bottom:14px;">"Being the CEO or VP of whatever no longer matters — all that matters is that we have to come together to survive."</p>
+            <p style="font-size:13.5px;color:#8C8473;">— James Carter, on Shakubuku · <span style="color:#B7AE9C;">the physical challenge is the vehicle; the real work is emotional and spiritual.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Start on solid ground</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">You don't have to fly anywhere to start.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">Do one free Mindset Workout — about ten minutes — to feel the shift. When you're ready for the full immersion, Shakubuku is the wild version of the same work.</p>
+          <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+            <a href={SLUGS.workouts} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Try a Mindset Workout — free <span>&rarr;</span></a>
+            <a href={`${SLUGS.leaders}#shakubuku`} style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">What is Shakubuku?</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px 90px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Is this clinical therapy?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">No. It's leadership development and personal growth that borrows the principle behind wilderness therapy — that nature and challenge change people deeply. For a clinical condition, work with a licensed professional; this complements that work rather than replacing it.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Do I need to be an athlete?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">No. The challenge is calibrated to the group and the outcome — it's designed to be daunting, not to break you. The point isn't fitness; it's presence.</p></div>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

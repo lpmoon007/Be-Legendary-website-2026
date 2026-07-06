@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, CTA_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
+
+const path = SLUGS.legendaryLeader;
+const title = 'The Legendary Leader — Four Coaches, Six Months, One You | Be Legendary';
+const description =
+  'The private summit: a six-month program built around a Shakubuku, with four dedicated coaches — physical, mental, emotional, spiritual — developing the whole leader. By invitation. $95,000. From Be Legendary.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's Service + FAQPage, enriched so the org/founder graph
+// resolves by @id (provider → ORG_ID).
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': `${canonical}#service`,
+    name: 'The Legendary Leader',
+    provider: { '@id': ORG_ID },
+    serviceType: 'Private whole-person leadership program',
+    description:
+      'A six-month private program with four dedicated coaches — physical, mental, emotional and spiritual — built around a Shakubuku immersion. By invitation.',
+    offers: { '@type': 'Offer', price: '95000', priceCurrency: 'USD' },
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is The Legendary Leader program?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "It is Be Legendary's most complete offering: a six-month private program built around a Shakubuku, with four dedicated coaches developing you across all four dimensions — physical, mental, emotional and spiritual — at once. It's for the leader who wants to become legendary as a whole person, not improve a single skill. By invitation.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Why four coaches?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Because a leader is not one dimension. Most development touches only the mind. The Legendary Leader develops the body, mind, heart and spirit in parallel, each with its own dedicated coach, so growth in one reinforces the others and the change holds across your whole life.',
+        },
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="The Legendary Leader — the private summit"
+  ogDescription="Four coaches across four dimensions, six months, built around a Shakubuku. The whole leader."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="full"
+    logoHref={SLUGS.leaders}
+    cta={{ label: 'Request an invitation', href: CTA_URL, external: true }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="position:relative;max-width:1080px;margin:0 auto;padding:72px 32px 0;">
+      <div style="position:absolute;top:-60px;right:-140px;width:520px;height:520px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">The Legendary Leader</span>
+      </nav>
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>The summit · by invitation</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,5.6vw,70px);line-height:1.0;letter-spacing:-0.022em;color:#1B1810;max-width:15ch;">Four coaches. Six months. <span style="font-style:italic;color:#C04A26;">The whole you.</span></h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#2E2A22;max-width:50ch;">Everything else develops a part of you. The Legendary Leader develops all of you at once — body, mind, heart and spirit — each with its own dedicated coach, all built around a Shakubuku. It is the most complete thing we do.</p>
+      <div style="margin-top:32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation <span>&rarr;</span></a>
+        <a href="#four" style="color:#C04A26;text-decoration:none;font-weight:700;font-size:15px;">The four dimensions &darr;</a>
+      </div>
+    </section>
+
+    <!-- FOUR COACHES -->
+    <section id="four" style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">One leader, four dimensions</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#1B1810;max-width:20ch;">A leader is not one dimension. Why develop like they are?</h2>
+      <p style="margin-top:18px;font-size:17.5px;line-height:1.65;color:#56524A;max-width:56ch;">Most programs work on the mind and leave the rest to chance. Here, four coaches work in parallel — and growth in one dimension reinforces the others, so the change holds across your whole life, not just your calendar.</p>
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:30px 32px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Physical</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:24px;color:#1B1810;margin-bottom:10px;">The body that carries it all</h3><p style="font-size:15.5px;line-height:1.6;color:#56524A;">Energy, resilience, presence. The vehicle every other kind of strength runs on — trained, not neglected.</p></div>
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:30px 32px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Mental</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:24px;color:#1B1810;margin-bottom:10px;">The mind that decides</h3><p style="font-size:15.5px;line-height:1.6;color:#56524A;">Clarity, focus, the beliefs you lead from. You can't outperform your current mindset — so we change it.</p></div>
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:30px 32px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Emotional</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:24px;color:#1B1810;margin-bottom:10px;">The heart that connects</h3><p style="font-size:15.5px;line-height:1.6;color:#56524A;">Emotional strength — the great equalizer. Steadiness under stress, and the courage to be seen.</p></div>
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:30px 32px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Spiritual</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:24px;color:#1B1810;margin-bottom:10px;">The meaning that pulls you</h3><p style="font-size:15.5px;line-height:1.6;color:#56524A;">Purpose beyond the title — spiritual, not religious. The reason the whole climb is worth it.</p></div>
+      </div>
+    </section>
+
+    <!-- THE SIX-MONTH ARC -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">How the six months run</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#1B1810;max-width:22ch;">A six-month transformation, in four movements.</h2>
+      <p style="margin-top:18px;font-size:17.5px;line-height:1.65;color:#56524A;max-width:56ch;">Built for the executive and the high-potential — designed around a real life, not a classroom. Two anchors run underneath the whole arc: <strong style="color:#1B1810;font-weight:700;">weekly workouts</strong> that build resilience and agility, and <strong style="color:#1B1810;font-weight:700;">unlimited coaching and feedback</strong> across all six months.</p>
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:26px 24px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">01</span><p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F6C;margin:8px 0 6px;">First 30 days</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;color:#1B1810;margin-bottom:8px;">Assessment &amp; Plan</h3><p style="font-size:14.5px;line-height:1.55;color:#56524A;">Deep assessment builds the roadmap — your operating system connected to the leadership it drives.</p></div>
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:26px 24px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">02</span><p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F6C;margin:8px 0 6px;">3-day offsite</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;color:#1B1810;margin-bottom:8px;">Executive Residence</h3><p style="font-size:14.5px;line-height:1.55;color:#56524A;">A private residence with your coaches that launches the next six months of your life.</p></div>
+        <div style="background:rgba(192,74,38,0.12);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:26px 24px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">03</span><p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;margin:8px 0 6px;">4-day offsite</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-style:italic;font-size:22px;color:#1B1810;margin-bottom:8px;">Shakubuku</h3><p style="font-size:14.5px;line-height:1.55;color:#2E2A22;">The invite-only adventure immersion at the center of it all — the experience that changes you.</p></div>
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:26px 24px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">04</span><p style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F6C;margin:8px 0 6px;">Last 30 days</p><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;color:#1B1810;margin-bottom:8px;">Re-Assess &amp; Plan</h3><p style="font-size:14.5px;line-height:1.55;color:#56524A;">Measure what changed, integrate it, and build the plan that makes the shift permanent.</p></div>
+      </div>
+      <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="border:1px dashed rgba(27,24,16,0.2);border-radius:12px;padding:16px 20px;font-size:14.5px;color:#2E2A22;"><strong style="color:#C04A26;">Throughout ·</strong> Weekly workouts to build resilience &amp; agility</div>
+        <div style="border:1px dashed rgba(27,24,16,0.2);border-radius:12px;padding:16px 20px;font-size:14.5px;color:#2E2A22;"><strong style="color:#C04A26;">Throughout ·</strong> Unlimited coaching &amp; feedback, all six months</div>
+      </div>
+      <p style="margin-top:22px;font-size:14.5px;line-height:1.6;color:#8A7F6C;max-width:60ch;">Offered only from outside your company — no internal employee can effectively coach an executive. Nothing worth achieving is easy. But it is worth it.</p>
+    </section>
+
+    <!-- BUILT AROUND A SHAKUBUKU -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <div style="border-radius:20px;overflow:hidden;position:relative;min-height:340px;">
+        <img src="/assets/shakubuku-field.jpg" alt="The San Juan Mountains, a Shakubuku setting" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,19,14,0.9) 30%,rgba(21,19,14,0.35));"></div>
+        <div style="position:relative;padding:48px 46px;max-width:34ch;">
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">The center of gravity</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.12;color:#FBF8F1;margin-bottom:16px;">Built around a Shakubuku.</h2>
+          <p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.85);">The six months orbit a single invite-only adventure immersion — the experience that changes you in the physical world. The coaching prepares you for it, and integrates it after, so the shift becomes permanent instead of a memory.</p>
+          <a href={SLUGS.whatIsShakubuku} style="margin-top:22px;display:inline-flex;align-items:center;gap:8px;color:#F4F0E7;font-weight:700;font-size:15px;text-decoration:none;">What is Shakubuku? <span>&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTMENT + CTA -->
+    <section style="max-width:1080px;margin:64px auto 0;padding:0 32px 90px;">
+      <div class="bl-grid-collapse" style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:20px;padding:44px 46px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+        <div>
+          <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F6C;margin-bottom:6px;">Investment</p>
+          <p style="font-family:'Newsreader',serif;font-size:40px;color:#1B1810;line-height:1;">$95,000</p>
+          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#56524A;max-width:36ch;">Private, six months, four coaches, one Shakubuku. By invitation — a short conversation tells us both whether this is your moment.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:700;font-size:16px;text-align:center;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation</a>
+          <a href={`${SLUGS.leaders}#climb`} style="border:1px solid rgba(27,24,16,0.26);color:#1B1810;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;text-align:center;">See the whole climb</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="leaders" variant="full" />
+</BaseLayout>

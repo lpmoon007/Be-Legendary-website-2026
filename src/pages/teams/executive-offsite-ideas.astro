@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
+
+const path = SLUGS.executiveOffsiteIdeas;
+const title = "Executive Offsite Ideas That Don't Get Forgotten by Monday | Be Legendary";
+const description =
+  'Executive offsite ideas built around an outcome, not an agenda: experiential formats, a planning structure that sticks, and the reinforcement that makes an offsite hold. From Be Legendary.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design, enriched with
+// entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: "Executive Offsite Ideas That Don't Get Forgotten by Monday",
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['executive offsite ideas', 'leadership offsite', 'corporate retreat'],
+    description:
+      'Executive offsite ideas built around one outcome, with the structure and reinforcement that make them stick.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What are good executive offsite ideas?', acceptedAnswer: { '@type': 'Answer', text: 'Good offsite ideas start from the outcome. For strategy and alignment, a structured planning offsite at a venue built for deep work. For trust and candor, an experiential immersion like a remote cabin or backcountry challenge. For decisiveness under pressure, sailing or off-road. The idea matters less than pairing it with real facilitation and post-offsite reinforcement.' } },
+      { '@type': 'Question', name: 'How do you make an executive offsite stick?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: choose one clear outcome before you choose the activity; facilitate so the experience turns into decisions and commitments; and reinforce for the weeks after — otherwise the energy fades by the next quarter. An offsite without follow-through is a morale bump, not a change.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Executive Offsite Ideas That Don't Get Forgotten by Monday"
+  ogDescription="The best offsite idea is the one built around one outcome — and reinforced after."
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader
+    audience="teams"
+    variant="slim"
+    logoHref="/"
+    contextLink={{ label: 'Book a Calibration Call', href: CTA_URL, external: true }}
+  />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <article>
+    <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">Executive Offsite Ideas</span>
+      </nav>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#3A0A0C;max-width:20ch;">Executive offsite ideas that don't get forgotten by Monday.</h1>
+      <div style="margin-top:28px;background:#F6F1E7;border-left:3px solid #64010a;border-radius:0 12px 12px 0;padding:24px 26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">The short answer</p>
+        <p style="font-size:18px;line-height:1.6;color:#4A3A34;">The best offsite idea starts from the <em style="font-style:italic;">outcome</em>, not the agenda: strategy and alignment call for one format, trust and candor another, decisiveness a third. And whatever you choose only sticks if it's facilitated and reinforced afterward. The idea is a fifth of the work.</p>
+      </div>
+    </header>
+
+    <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Ideas by what you need to happen</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Structured planning offsite</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for strategy &amp; alignment</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">A venue built for deep work and a facilitated arc that ends in a plan the whole team owns.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Experiential immersion</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for trust &amp; candor</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">A remote cabin or backcountry challenge that gets the team past its polished surface.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Off-road or sailing</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for decisiveness under pressure</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">Real stakes and shared command surface how the team actually decides when it counts.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Start / stop / continue intensive</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for pain points</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">The thorny issues named out loud and turned into decisions, not a vent session.</p></div>
+      </div>
+    </section>
+
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="font-size:19px;line-height:1.72;color:#4A3A34;">
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#3A0A0C;margin:0 0 22px;padding-left:22px;border-left:3px solid #64010a;">An offsite without follow-through is a morale bump. An offsite with it is a turning point.</p>
+        <p>Whatever idea you land on, the pattern that makes it stick is the same: one clear outcome chosen before the activity, facilitation that turns experience into commitments, and reinforcement in the weeks after so it doesn't evaporate by the next quarter.</p>
+      </div>
+    </section>
+
+    <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+      <div style="background:#64010a;color:#F6EFE0;border-radius:18px;padding:40px 42px;text-align:center;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF3E7;max-width:24ch;margin:0 auto 16px;">Bring us the outcome. We'll design the offsite around it.</h2>
+        <p style="font-size:17px;line-height:1.6;color:rgba(246,239,224,0.82);max-width:48ch;margin:0 auto 28px;">Format, facilitation, logistics, and the 30-day reinforcement — handled end to end. Twenty minutes with James gets you a real recommendation.</p>
+        <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+          <a href={SLUGS.teamRetreats} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">See the three ways to work <span>&rarr;</span></a>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="border:1px solid rgba(246,239,224,0.35);color:#F6EFE0;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Book a Strategy Call</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:820px;margin:56px auto 0;padding:0 32px 90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:28px;">Straight answers</h2>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:8px;">How do you make an offsite actually stick?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">Choose one outcome before the activity, facilitate so the experience becomes decisions and commitments, and reinforce for the weeks after. Without follow-through it's a morale bump, not a change.</p></div>
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:8px;">How long should an executive offsite be?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">Long enough to reach depth and short enough to protect the calendar — typically two to three days for experiential work, less for a focused planning session. The outcome sets the length.</p></div>
+      </div>
+    </section>
+    </article>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="slim" />
+</BaseLayout>
