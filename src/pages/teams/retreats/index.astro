@@ -27,12 +27,13 @@ const formats = [
   { name: 'Five-Star Estate', desc: 'Space, beauty, room to think — remarkable food and the right table.', best: 'reflection & vision', img: '/assets/lr-lodge.webp', alt: 'A five-star mountain estate at golden hour' },
 ];
 
-// Four-dimension dials (design's `dials` list).
+// Four-dimension dials — interactive sliders; the Example-intensity box below
+// recomputes live from the average (see the inline script + .dial-range style).
 const dials = [
-  { name: 'Physical', lo: 'conference room', hi: '8,000m peak', pct: '45%' },
-  { name: 'Emotional', lo: 'back-to-back slides', hi: 'life-changing day', pct: '60%' },
-  { name: 'Mental', lo: 'passive', hi: 'total focus', pct: '55%' },
-  { name: 'Spiritual', lo: 'surface', hi: 'who am I, really', pct: '50%' },
+  { name: 'Physical', lo: 'conference room', hi: '8,000m peak', value: 45 },
+  { name: 'Emotional', lo: 'back-to-back slides', hi: 'life-changing day', value: 60 },
+  { name: 'Mental', lo: 'passive', hi: 'total focus', value: 55 },
+  { name: 'Spiritual', lo: 'surface', hi: 'who am I, really', value: 50 },
 ];
 ---
 <BaseLayout
@@ -168,23 +169,70 @@ const dials = [
           <p style="font-size:16.5px;line-height:1.65;color:rgba(246,239,224,0.82);">The further you push, the more a moment imprints — and the more deliberately it has to be designed. There are no wrong settings; there's only what your team needs. It's the same four-dimension read behind a leader's Shakubuku, tuned for a team.</p>
           <p style="margin-top:18px;font-size:14px;color:#D99A88;">Adventure when it serves the outcome. Comfort, beauty, and remarkable food when that does.</p>
         </div>
-        <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;flex-direction:column;gap:20px;" data-dials>
           {dials.map((d) => (
             <div>
-              <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;"><span style="font-weight:700;color:#FBF3E7;">{d.name}</span><span style="color:#D99A88;">{d.lo} → {d.hi}</span></div>
-              <div style="position:relative;height:8px;background:rgba(246,239,224,0.16);border-radius:999px;">
-                <div style={`position:absolute;left:0;top:0;bottom:0;width:${d.pct};background:#E9A98F;border-radius:999px;`}></div>
-                <div style={`position:absolute;left:${d.pct};top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:999px;background:#FBF3E7;border:3px solid #C04A26;`}></div>
-              </div>
+              <label style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;"><span style="font-weight:700;color:#FBF3E7;">{d.name}</span><span style="color:#D99A88;">{d.lo} → {d.hi}</span></label>
+              <input
+                type="range" min="0" max="100" value={d.value}
+                class="dial-range" data-dial
+                aria-label={`${d.name} intensity, from ${d.lo} to ${d.hi}`}
+                style={`width:100%;background:linear-gradient(to right,#E9A98F 0 ${d.value}%,rgba(246,239,224,0.16) ${d.value}% 100%);`}
+              />
             </div>
           ))}
           <div style="margin-top:6px;background:rgba(246,239,224,0.1);border:1px solid rgba(246,239,224,0.2);border-radius:12px;padding:16px 18px;">
-            <p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#D99A88;margin-bottom:4px;">Example intensity · Elevated</p>
-            <p style="font-size:14.5px;line-height:1.5;color:#F6EFE0;">Deep, honest work in a safe place — conversations that go where a conference room never lets them.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+              <p style="font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:#D99A88;">Example intensity · <span data-dial-tier>Elevated</span></p>
+              <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF3E7;line-height:1;"><span data-dial-score>53</span><span style="font-size:12px;color:#D99A88;">/100</span></span>
+            </div>
+            <div style="height:6px;border-radius:999px;background:rgba(246,239,224,0.16);margin-bottom:12px;overflow:hidden;">
+              <div data-dial-fill style="height:100%;border-radius:999px;width:53%;background:linear-gradient(to right,#E9A98F,#F6EFE0);transition:width .08s linear;"></div>
+            </div>
+            <p data-dial-desc style="font-size:14.5px;line-height:1.5;color:#F6EFE0;">Deep, honest work in a safe place — conversations that go where a conference room never lets them.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <style is:global>
+      .dial-range { -webkit-appearance: none; appearance: none; height: 8px; border-radius: 999px; outline: none; cursor: pointer; }
+      .dial-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 999px; background: #FBF3E7; border: 3px solid #C04A26; cursor: grab; }
+      .dial-range::-moz-range-thumb { width: 18px; height: 18px; border-radius: 999px; background: #FBF3E7; border: 3px solid #C04A26; cursor: grab; }
+      .dial-range::-moz-range-track { height: 8px; border-radius: 999px; background: transparent; }
+      .dial-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px rgba(251,243,231,0.4); }
+    </style>
+    <script>
+      document.querySelectorAll('[data-dials]').forEach((root) => {
+        const inputs = Array.from(root.querySelectorAll('input[data-dial]'));
+        const scoreEl = root.querySelector('[data-dial-score]');
+        const tierEl = root.querySelector('[data-dial-tier]');
+        const descEl = root.querySelector('[data-dial-desc]');
+        const fillEl = root.querySelector('[data-dial-fill]');
+        const TIERS = [
+          { max: 19, name: 'Grounded', desc: 'A focused working session — clear heads, real decisions, no theatrics. The imprint is clarity, not adrenaline.' },
+          { max: 39, name: 'Considered', desc: 'A deliberate step out of the day-to-day — enough change of scene to think differently, without leaving anyone’s comfort zone for long.' },
+          { max: 59, name: 'Elevated', desc: 'Deep, honest work in a safe place — conversations that go where a conference room never lets them.' },
+          { max: 79, name: 'Immersive', desc: 'Shared stakes in real terrain — the team is pulled out of routine far enough that the masks come off.' },
+          { max: 100, name: 'Legendary', desc: 'A genuine crucible. Designed adversity with real consequence — the kind of day a team still references years later.' },
+        ];
+        const paint = (inp) => {
+          const v = Number(inp.value);
+          inp.style.background = `linear-gradient(to right,#E9A98F 0 ${v}%,rgba(246,239,224,0.16) ${v}% 100%)`;
+        };
+        const recompute = () => {
+          const vals = inputs.map((i) => Number(i.value));
+          const score = Math.round(vals.reduce((s, x) => s + x, 0) / vals.length);
+          const tier = TIERS.find((t) => score <= t.max) || TIERS[TIERS.length - 1];
+          if (scoreEl) scoreEl.textContent = String(score);
+          if (fillEl) fillEl.style.width = score + '%';
+          if (tierEl) tierEl.textContent = tier.name;
+          if (descEl) descEl.textContent = tier.desc;
+        };
+        inputs.forEach((inp) => { inp.addEventListener('input', () => { paint(inp); recompute(); }); paint(inp); });
+        recompute();
+      });
+    </script>
 
     <!-- ============ HOW IT STARTS ============ -->
     <section style="max-width:1240px;margin:88px auto 0;padding:0 32px;">
