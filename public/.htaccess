@@ -12,6 +12,12 @@ Options -Indexes
 # /leaders/mindset-of-a-legend/ (same leaf slugs), and /library/ → /leaders/.
 Redirect 301 /library/ /leaders/
 
+# ── 30-Day Challenge (301) ──
+# /leaders/30-day-challenge/ is the canonical slug we cite (SLUGS.challenge,
+# llms.txt, cross-domain redirects) but has no static page — the live app runs
+# on the challenge subdomain. Send it there so the canonical URL resolves.
+Redirect 301 /leaders/30-day-challenge/ https://challenge.belegendary.org/
+
 # ── Text compression (biggest transfer win on an inline-styled site) ──
 <IfModule mod_brotli.c>
   AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json image/svg+xml application/manifest+json
