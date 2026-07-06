@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, CTA_URL, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = SLUGS.workouts;
+const title = 'Mindset Workouts — The gym for your mindset | Be Legendary';
+const description =
+  'A library of short, guided Mindset Workouts on the three dimensions of a legendary mindset — mental, emotional, and spiritual. About ten minutes each, free to start. Follow your interest, or find your starting point. Work all three and earn your invitation to Shakubuku.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Dimension accent palette. Physical lives in the Misogi, not as a track —
+// the readiness meter works the inner three.
+const DIM_COLOR = { Mental: '#E0A34A', Emotional: '#E0744A', Spiritual: '#B48AD9' };
+const DIMS = ['Mental', 'Emotional', 'Spiritual'];
+
+// The gym library. `id` is the localStorage progress key (matches the workout
+// page's MwComplete workoutId); `slug` resolves the canonical route. The three
+// Mindset of a Legend parts all open the same page but track independently.
+const workouts = [
+  { id: 'go-for-it', slug: 'go-for-it', title: 'When Did You Last Truly Go For It?', dims: ['Mental', 'Spiritual'], time: '~10 min',
+    blurb: `When did you last truly go for it — knowing you might fall flat in front of everyone? Vulnerability is a strength you exercise like a muscle.` },
+  { id: 'what-the-beep', slug: 'what-the-beep', title: 'What the Beep?!', dims: ['Mental', 'Spiritual'], time: '~10 min',
+    blurb: `The invisible forces shaping your behavior. Challenge WHY you do a thing — and find the belief, or the emptiness, underneath.` },
+  { id: 'find-your-why', slug: 'find-your-why', title: 'Find Your Why', dims: ['Spiritual'], time: '~10 min',
+    blurb: `The 5 Whys, turned inward. Dig past the surface to the core motivation that drives you — knowing your why is a source of strength.` },
+  { id: 'count-your-blessings', slug: 'count-your-blessings', title: 'Count Your Blessings', dims: ['Emotional', 'Mental'], time: '~3–10 min',
+    blurb: `Gratitude is a muscle. Build an antidote to the daily poison of anger, resentment and fear — and feel the ripple through everything.` },
+  { id: 'legendary-intent', slug: 'legendary-intent', title: 'Legendary Intent', dims: ['Mental', 'Spiritual'], time: '~3–10 min',
+    blurb: `Your one-line leadership filter: "If I accomplish nothing else, I will ___." Decide who you intend to be before the day decides for you.` },
+  { id: 'whats-your-story', slug: 'whats-your-story', title: 'What’s Your Story', dims: ['Mental', 'Emotional'], time: '~5 min',
+    blurb: `A warmup: you live by the story you tell about who you are. Find the one running you, and rewrite it.` },
+  { id: 'villain-or-hero', slug: 'villain-or-hero', title: 'Are You a Villain or a Hero?', dims: ['Emotional', 'Spiritual'], time: '~20 min',
+    blurb: `The capstone. Excavate the beliefs behind your proudest and least-proud moments — and face the question most people get wrong.` },
+  { id: 'making-change-stick', slug: 'making-change-stick', title: 'Making Change Stick', dims: ['Mental', 'Spiritual'], time: 'Series · 9 parts',
+    blurb: `A nine-part series on leading change that lasts — the Switch framework run through the ABCs. Direct the mind, move the heart, shape the path.` },
+  { id: 'big-rocks', slug: 'big-rocks', title: 'Big Rocks', dims: ['Mental', 'Spiritual'], time: '~10 min',
+    blurb: `If you don’t put the big rocks in first, they never fit. Name your priorities — and schedule them before the day fills with sand.` },
+  { id: 'pre-mortem', slug: 'pre-mortem', title: 'Prevent Your Next Failure', dims: ['Mental'], time: '~12 min',
+    blurb: `Run time backward. Imagine you failed and find what killed it; imagine you won and find the path. Then change the present.` },
+  { id: '5-whys', slug: '5-whys', title: 'Discover Your Inner Strength', dims: ['Emotional', 'Mental'], time: '~8 min',
+    blurb: `Ask why five times — inward. Past the surface reaction to the belief underneath it. Toyoda’s tool, turned toward your own emotional strength.` },
+  { id: 'the-golden-buddha', slug: 'the-golden-buddha', title: 'You’ve Hidden the Best of Who You Are', dims: ['Emotional', 'Spiritual'], time: '~10 min',
+    blurb: `The gold under the clay. You’re already gold — the work is subtraction: chip away what covers it.` },
+  { id: 'kintsugi-wabi-sabi', slug: 'kintsugi-wabi-sabi', title: 'Broken Is Not the Opposite of Beautiful', dims: ['Emotional', 'Spiritual'], time: '~3–10 min',
+    blurb: `Love a thing because of its flaws, not in spite of them. New Eyes for the earned imperfections in others — then yourself.` },
+  { id: 'mol-awareness', slug: 'mindset-of-a-legend', title: 'Mindset of a Legend · Awareness', dims: ['Mental'], time: '~10 min',
+    blurb: `Part one of three. See the mindset running you on autopilot — you can’t outperform a mindset you can’t see.` },
+  { id: 'mol-beliefs', slug: 'mindset-of-a-legend', title: 'Mindset of a Legend · Beliefs', dims: ['Mental', 'Emotional'], time: '~10 min',
+    blurb: `Part two. Find one belief that’s quietly costing you, and rewrite it to match the leader you mean to be.` },
+  { id: 'mol-courage', slug: 'mindset-of-a-legend', title: 'Mindset of a Legend · Courage', dims: ['Emotional'], time: '~10 min',
+    blurb: `Part three. Turn awareness and belief into action when it counts. Courage is the muscle that moves the other two.` },
+  { id: 'let-go-of-negativity', slug: 'let-go-of-negativity', title: 'Let Go of Negativity', dims: ['Emotional'], time: '~3–10 min',
+    blurb: `The grudge, the story, the resentment you’re still carrying. Name one, and put it down — it’s been carrying you.` },
+  { id: 'choices', slug: 'choices', title: 'Nobody Is Making You Feel This Way', dims: ['Mental'], time: '~3–10 min',
+    blurb: `Choices. For the logical mind: connect your calculating side to your purpose, and hard decisions get simple. Purpose makes choices easy.` },
+  { id: 'sit-down-shut-up-learn', slug: 'sit-down-shut-up-learn', title: 'Sit Down, Shut Up & Learn', dims: ['Spiritual'], time: '~3–10 min',
+    blurb: `You’ve been taught how to see the world. This rep is about noticing the lens — and choosing whether to keep it.` },
+  { id: 'design-your-misogi', slug: 'design-your-misogi', title: 'Design Your Misogi', dims: ['Spiritual', 'Emotional'], time: 'The real thing',
+    blurb: `Not a daily rep — the real thing. One challenge a year with a genuine chance of failure. It resets what you believe you’re capable of.` },
+];
+
+// Unique-by-slug list for the ItemList (Mindset of a Legend collapses to one).
+const seen = new Set<string>();
+const listItems = workouts
+  .filter((w) => (seen.has(w.slug) ? false : (seen.add(w.slug), true)))
+  .map((w, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: new URL(workoutPath(w.slug), SITE_URL).href,
+    name: w.title.replace(/ · .*/, ''),
+  }));
+
+// JSON-LD: the design's ItemList, enriched with itemListElement and entity @ids.
+const schema = [
+  {
+    '@type': 'ItemList',
+    '@id': `${canonical}#workouts`,
+    name: 'Mindset Workouts',
+    description:
+      'A library of short, guided Mindset Workouts on the three dimensions of a legendary mindset — mental, emotional, and spiritual.',
+    numberOfItems: listItems.length,
+    itemListElement: listItems,
+    provider: { '@id': ORG_ID },
+    author: { '@id': PERSON_ID },
+  },
+];
+
+const chipBase =
+  "cursor:pointer;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:13px;padding:8px 15px;border-radius:999px;transition:all .16s;border:1px solid ";
+const chipOff = chipBase + 'rgba(244,240,231,0.2);background:transparent;color:rgba(244,240,231,0.7);';
+const chipOn = chipBase + '#C04A26;background:#C04A26;color:#fff;';
+const filters = [{ id: 'all', label: 'All' }, ...DIMS.map((d) => ({ id: d.toLowerCase(), label: d }))];
+
+const cardBase =
+  'display:flex;flex-direction:column;text-decoration:none;border-radius:16px;padding:26px 26px 24px;transition:border-color .16s,transform .16s;min-height:220px;background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.16);';
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Mindset Workouts — the gym for your mindset"
+  ogDescription="Short guided reps on the three dimensions of a legendary mindset. Follow your interest. Earn your Shakubuku."
+  bodyBg="#15130E"
+  schema={schema}
+>
+  <SiteHeader audience="leaders" variant="full" logoHref={SLUGS.leaders} />
+
+  <div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1180px;margin:0 auto;padding:64px 32px 0;">
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>The mindset gym</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,6vw,72px);line-height:1.0;letter-spacing:-0.022em;color:#FBF8F1;max-width:16ch;">Mindset Workouts</h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:rgba(244,240,231,0.8);max-width:62ch;">Short, guided reps on the three dimensions of a legendary mindset — mental, emotional, spiritual. A video, a story, a few honest questions, and one real-world rep. About ten minutes each. There’s no fixed order: <em style="font-style:italic;color:#E7E0D2;">follow your interest</em>, or find your starting point. Work all three dimensions and you earn your invitation to Shakubuku.</p>
+    </section>
+
+    <!-- TWO DOORS: assess vs browse -->
+    <section style="max-width:1180px;margin:40px auto 0;padding:0 32px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <a href={workoutPath('legends-journey')} style="display:flex;flex-direction:column;text-decoration:none;background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(224,116,74,0.35);border-radius:16px;padding:30px 32px;" onmouseover="this.style.borderColor='rgba(224,116,74,0.7)'" onmouseout="this.style.borderColor='rgba(224,116,74,0.35)'">
+          <span style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">Not sure where to start?</span>
+          <span style="font-family:'Newsreader',serif;font-size:24px;color:#FBF8F1;line-height:1.15;margin-bottom:8px;">Find where you are on your Legend’s Journey.</span>
+          <span style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.7);margin-bottom:16px;">A two-minute read across your four energies and your stage of the journey — then we point you to the right first rep.</span>
+          <span style="margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;color:#E0744A;">Take the assessment <span>&rarr;</span></span>
+        </a>
+        <div style="display:flex;flex-direction:column;justify-content:center;background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:30px 32px;">
+          <span style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8C8473;margin-bottom:12px;">Already know your itch?</span>
+          <span style="font-family:'Newsreader',serif;font-size:24px;color:#FBF8F1;line-height:1.15;margin-bottom:8px;">Just follow your interest.</span>
+          <span style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.7);">Filter the library by the dimension you want to work. Start anywhere. Every rep counts toward your readiness.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- READINESS (dimension-based) -->
+    <section style="max-width:1180px;margin:44px auto 0;padding:0 32px;">
+      <div style="border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:28px 32px;background:rgba(244,240,231,0.02);">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Your readiness · three dimensions</p>
+          <p id="mw-progress" style="font-size:14.5px;color:rgba(244,240,231,0.7);">Work all three — mental, emotional, spiritual — to earn your invitation.</p>
+        </div>
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          {DIMS.map((d) => (
+            <div class="mw-dim" data-dim={d} style="background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-radius:12px;padding:16px 18px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                <span class="mw-dim-name" style="font-size:13.5px;font-weight:700;color:rgba(244,240,231,0.8);">{d}</span>
+                <span class="mw-dim-mark" style="font-size:14px;color:#E0744A;font-weight:700;"></span>
+              </div>
+              <div style="height:6px;background:rgba(244,240,231,0.1);border-radius:999px;overflow:hidden;"><div class="mw-dim-bar" style="width:0%;height:100%;background:#C04A26;"></div></div>
+              <p class="mw-dim-count" style="font-size:12px;color:#8C8473;margin-top:8px;">not yet worked</p>
+            </div>
+          ))}
+        </div>
+        <div id="mw-invite" style="display:none;margin-top:22px;padding-top:20px;border-top:1px solid rgba(244,240,231,0.14);text-align:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#C04A26;color:#fff;padding:14px 26px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;">You’ve worked all three — apply for your Shakubuku &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER CHIPS -->
+    <section style="max-width:1180px;margin:40px auto 0;padding:0 32px;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8C8473;margin-right:6px;">Filter</span>
+        {filters.map((f) => (
+          <button class="mw-chip" data-filter={f.id} style={f.id === 'all' ? chipOn : chipOff}>{f.label}</button>
+        ))}
+      </div>
+    </section>
+
+    <!-- WORKOUT GRID -->
+    <section style="max-width:1180px;margin:26px auto 0;padding:0 32px;">
+      <div id="mw-grid" class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        {workouts.map((w) => (
+          <a class="mw-card" data-id={w.id} data-dims={w.dims.map((d) => d.toLowerCase()).join(',')} href={workoutPath(w.slug)} style={cardBase}>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                {w.dims.map((d) => (
+                  <span style={`font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${DIM_COLOR[d]};border:1px solid ${DIM_COLOR[d]}66;padding:3px 8px;border-radius:999px;`}>{d}</span>
+                ))}
+              </div>
+              <span class="mw-card-badge" style="font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;"></span>
+            </div>
+            <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;line-height:1.15;margin-bottom:10px;color:#FBF8F1;">{w.title}</h3>
+            <p style="font-size:14.5px;line-height:1.55;color:rgba(244,240,231,0.72);margin-bottom:16px;">{w.blurb}</p>
+            <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;">
+              <span class="mw-card-cta" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#E0744A;">Begin workout →</span>
+              <span style="font-size:12px;color:#6E6757;">{w.time}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p id="mw-empty" style="display:none;margin-top:28px;font-size:14.5px;color:#8A7F6C;text-align:center;">No workouts in this dimension yet.</p>
+      <p style="margin-top:28px;font-size:14.5px;color:#8A7F6C;text-align:center;">More workouts join the gym regularly. <span style="color:#B4A98E;">Give your email on any workout and we’ll send you the next one that fits where you’re headed.</span></p>
+    </section>
+
+    <!-- WHY WORK OUT (manifesto) -->
+    <section style="max-width:1180px;margin:80px auto 0;padding:0 32px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(244,240,231,0.14);border-radius:18px;padding:48px 46px;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">Why work out</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin-bottom:32px;">A mindset is trained like a body. Hard reps, then real recovery.</h2>
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
+          <div style="border-top:2px solid #C04A26;padding-top:18px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">It’s a keystone habit</h3><p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.72);">One small daily rep quietly pulls everything else up with it. Start one, and the rest gets easier.</p></div>
+          <div style="border-top:2px solid #C04A26;padding-top:18px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Strength comes from recovery</h3><p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.72);">You don’t grow during the workout — you grow after it. Miss a day and get back on; that’s the rhythm, not a failure.</p></div>
+          <div style="border-top:2px solid #C04A26;padding-top:18px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Workouts must be hard</h3><p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.72);">Easy changes nothing. Increase the stress, then the recovery. The discomfort is the point — that’s where you change.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EARN YOUR SHAKUBUKU BRIDGE -->
+    <section style="max-width:1180px;margin:40px auto 0;padding:0 32px 96px;">
+      <div class="bl-grid-collapse" style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:44px 46px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;">
+        <div>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:14px;">Why the reps matter</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#1B1810;margin-bottom:14px;">The workouts are how you prepare — and how we come to know you.</h2>
+          <p style="font-size:16.5px;line-height:1.65;color:#56524A;">Shakubuku is small and curated. Work reps across all three dimensions and readiness builds until the invitation is yours. Already know you’re ready? Challenge it and apply now — we’ve never punished courage.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href={`${SLUGS.leaders}#shakubuku`} style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#C04A26;color:#fff;padding:15px 24px;border-radius:10px;font-weight:700;font-size:15.5px;text-decoration:none;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">See how you earn it &rarr;</a>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:transparent;border:1px solid rgba(27,24,16,0.28);color:#1B1810;padding:15px 24px;border-radius:10px;font-weight:600;font-size:15.5px;text-decoration:none;">Challenge it — apply now</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="leaders" variant="full" />
+
+  <script>
+    (function () {
+      const KEY = 'bl_mw_progress';
+      function read() {
+        try { return JSON.parse(localStorage.getItem(KEY)) || { done: {} }; }
+        catch (e) { return { done: {} }; }
+      }
+
+      const done = read().done || {};
+
+      // 1) Mark completed cards.
+      document.querySelectorAll('.mw-card').forEach((card) => {
+        const id = card.getAttribute('data-id');
+        if (!done[id]) return;
+        card.style.border = '1px solid rgba(192,74,38,0.5)';
+        const badge = card.querySelector('.mw-card-badge');
+        if (badge) {
+          badge.textContent = '✓ Done';
+          badge.style.background = '#C04A26';
+          badge.style.color = '#fff';
+        }
+        const cta = card.querySelector('.mw-card-cta');
+        if (cta) cta.textContent = 'Completed — revisit →';
+      });
+
+      // 2) Readiness meter — a dimension is "worked" once one covering rep is logged.
+      const DIMS = ['Mental', 'Emotional', 'Spiritual'];
+      const worked = { Mental: 0, Emotional: 0, Spiritual: 0 };
+      document.querySelectorAll('.mw-card').forEach((card) => {
+        const id = card.getAttribute('data-id');
+        if (!done[id]) return;
+        (card.getAttribute('data-dims') || '').split(',').forEach((d) => {
+          const name = d.charAt(0).toUpperCase() + d.slice(1);
+          if (worked[name] !== undefined) worked[name]++;
+        });
+      });
+      const workedCount = DIMS.filter((d) => worked[d] > 0).length;
+
+      document.querySelectorAll('.mw-dim').forEach((el) => {
+        const name = el.getAttribute('data-dim');
+        const n = worked[name] || 0;
+        const on = n > 0;
+        el.style.background = on ? 'rgba(192,74,38,0.1)' : 'rgba(244,240,231,0.03)';
+        el.style.border = '1px solid ' + (on ? 'rgba(192,74,38,0.4)' : 'rgba(244,240,231,0.12)');
+        const nm = el.querySelector('.mw-dim-name');
+        if (nm) nm.style.color = on ? '#F4F0E7' : 'rgba(244,240,231,0.8)';
+        const mk = el.querySelector('.mw-dim-mark');
+        if (mk) mk.textContent = on ? '✓' : '';
+        const bar = el.querySelector('.mw-dim-bar');
+        if (bar) bar.style.width = on ? '100%' : '0%';
+        const ct = el.querySelector('.mw-dim-count');
+        if (ct) ct.textContent = n === 0 ? 'not yet worked' : n + (n === 1 ? ' rep logged' : ' reps logged');
+      });
+
+      const prog = document.getElementById('mw-progress');
+      if (prog) {
+        prog.textContent = workedCount === 0
+          ? 'Work all three — mental, emotional, spiritual — to earn your invitation.'
+          : workedCount >= 3
+            ? 'All three dimensions worked — your invitation is unlocked.'
+            : workedCount + ' of 3 dimensions worked · keep ranging.';
+      }
+      const invite = document.getElementById('mw-invite');
+      if (invite) invite.style.display = workedCount >= 3 ? 'block' : 'none';
+
+      // 3) Filter chips.
+      const chipBase = "cursor:pointer;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:13px;padding:8px 15px;border-radius:999px;transition:all .16s;border:1px solid ";
+      const chipOff = chipBase + 'rgba(244,240,231,0.2);background:transparent;color:rgba(244,240,231,0.7);';
+      const chipOn = chipBase + '#C04A26;background:#C04A26;color:#fff;';
+      const chips = document.querySelectorAll('.mw-chip');
+      const empty = document.getElementById('mw-empty');
+      chips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          const filter = chip.getAttribute('data-filter');
+          chips.forEach((c) => { c.setAttribute('style', c === chip ? chipOn : chipOff); });
+          let shown = 0;
+          document.querySelectorAll('.mw-card').forEach((card) => {
+            const dims = (card.getAttribute('data-dims') || '').split(',');
+            const match = filter === 'all' || dims.indexOf(filter) !== -1;
+            card.style.display = match ? 'flex' : 'none';
+            if (match) shown++;
+          });
+          if (empty) empty.style.display = shown === 0 ? 'block' : 'none';
+        });
+      });
+    })();
+  </script>
+</BaseLayout>
