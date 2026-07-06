@@ -51,6 +51,11 @@ export const SLUGS = {
   alignmentConsultant: '/executive-team-alignment-consultant/',
   offsiteFacilitator: '/leadership-team-offsite-facilitator/',
   coachingCost: '/executive-team-coaching-cost/',
+  // How-to guides (bottom-funnel, mapped to the four disciplines)
+  howToAccountable: '/how-to-hold-your-leadership-team-accountable/',
+  executiveTeamMeeting: '/how-to-run-an-executive-team-meeting/',
+  decisionMaking: '/executive-team-decision-making/',
+  highPerformingTeam: '/how-to-build-a-high-performing-leadership-team/',
   // ── For Leaders universe (individual-leader development) ──────────────────
   // /leaders/ is the canonical home. The 4 concept pages migrated from /library/
   // (design intent), with 301s in public/.htaccess.

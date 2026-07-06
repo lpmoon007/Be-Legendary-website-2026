@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'How to Run an Executive Team Meeting That Decides';
+const description = "A status meeting reports; a Rhythm meeting decides and commits. Includes a copyable weekly executive team meeting agenda with time boxes.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'How to run an executive team meeting', item: 'https://www.belegendary.org/how-to-run-an-executive-team-meeting/' },
+  ] },
+  { '@type': 'Article', headline: 'How to run an executive team meeting that decides and commits (with a sample weekly agenda)', datePublished: '2026-07-06', dateModified: '2026-07-06', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-run-an-executive-team-meeting/', description: 'A weekly executive team meeting agenda built on the Rhythm — the discipline of finishing. A status meeting reports; a Rhythm meeting decides and commits.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What should be on an executive team meeting agenda?', acceptedAnswer: { '@type': 'Answer', text: "A weekly executive team meeting agenda should have five moving parts and one fixed purpose: a fast check-in (5 min), a metric scan where you only flag what is off track (10 min), progress against the two or three priorities on the Flag (15 min), one real issue worked all the way to a decision with an owner and a deadline (30 min), and a read-back of commitments (10 min). The fixed purpose is to leave with fewer open questions than you walked in with. Everything that only reports — and does not need a decision — belongs in a written update, not the room." } },
+    { '@type': 'Question', name: 'How long should an executive team meeting be?', acceptedAnswer: { '@type': 'Answer', text: "Sixty to ninety minutes, weekly, same time, protected. Longer than ninety and it turns into theater; people narrate to fill the block. Shorter than sixty and the one hard issue never gets the room it needs to actually resolve. The length is not the point — the ratio is. If more than a third of the meeting is one-way reporting, the meeting is too long no matter what the clock says." } },
+    { '@type': 'Question', name: 'What is the difference between a status meeting and a real executive team meeting?', acceptedAnswer: { '@type': 'Answer', text: "A status meeting reports; a Rhythm meeting decides and commits. In a status meeting, everyone takes a turn narrating what they did, the hardest issue gets tabled, and the team leaves with the same open questions it walked in with. In a Rhythm meeting, reporting is pre-read, the room spends its energy on the one issue that needs a decision, and every decision leaves with an owner and a deadline. Same people, same hour — completely different output." } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.executiveTeamMeeting}
+  ogType="article"
+  ogTitle="How to run an executive team meeting that decides (with agenda)"
+  ogDescription="A status meeting reports; a Rhythm meeting decides and commits. A copyable weekly agenda with time boxes — cut the theater."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">How to run an executive team meeting</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to run an executive team meeting</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Run it as a <strong>Rhythm meeting, not a status meeting</strong>. A status meeting reports; a Rhythm meeting <strong>decides and commits</strong>. Keep it to 60&ndash;90 minutes, weekly, same time: a fast check-in, a metric scan that only flags what&rsquo;s off track, quick progress against the two or three priorities on your Flag, <em>one</em> real issue worked all the way to a decision with an owner and a deadline, and a read-back of commitments before anyone leaves. The Rhythm is the discipline of finishing &mdash; and the weekly meeting is where it lives or dies. Cut the theater and the room starts producing decisions instead of updates.</p>
+    </div>
+  </header>
+
+  <!-- WHY IT'S HARD -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Why the weekly meeting quietly rots</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Almost no executive team&rsquo;s meeting fails because the agenda is wrong. It fails because the meeting has slowly become a place to <em>report</em> instead of a place to <em>decide</em>. Everyone takes their turn narrating a week of activity, heads nod, the hardest question gets a &ldquo;let&rsquo;s take that offline,&rdquo; and ninety minutes later the team leaves with exactly the open questions it walked in with. It feels productive because people were busy and prepared. It wasn&rsquo;t productive, because nothing was closed.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">That&rsquo;s not a facilitation problem you fix with a better template. It&rsquo;s a discipline gap. The reporting fills the hour precisely because it&rsquo;s safe &mdash; narrating status carries no risk, while forcing a decision in front of your peers does. So the meeting drifts toward the comfortable thing and away from the useful one. The template isn&rsquo;t the fix. Changing what the room is <em>for</em> is.</p>
+  </div>
+
+  <!-- THE FLAG MODEL LENS -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The discipline this is really about: the Rhythm</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">In the <a href={SLUGS.flagModel} style="color:#D98A5E;text-decoration:underline;">Flag Model</a>, a team&rsquo;s Flag &mdash; the two or three priorities everything serves &mdash; is held upright by four disciplines: the Decision (commitment), the Rhythm (finishing), the Standard (holding the bar), and the Learning (correcting). The weekly meeting is the beating heart of the <strong>Rhythm</strong>: the operating cadence that actually ships work. When the Rhythm is strong, the same set of priorities gets touched every single week, off-track work gets caught early, and momentum compounds. When it&rsquo;s weak, priorities go dark for a month and resurface as a fire.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">So the reframe is simple, and it&rsquo;s the whole game: <strong>a status meeting reports; a Rhythm meeting decides and commits.</strong> A Rhythm meeting still looks at the numbers &mdash; but only to find what&rsquo;s off track. It still hears about progress &mdash; but in one sentence, not a monologue. Then it spends the bulk of its energy on the single issue that most needs a call, and it doesn&rsquo;t adjourn until that call has an owner and a deadline. Reporting is what you do <em>before</em> the meeting, in writing. Deciding is what the meeting is <em>for</em>.</p>
+  </div>
+
+  <!-- THE HOW-TO / SAMPLE AGENDA -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The sample weekly agenda &mdash; copy it</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:20px;">Sixty to ninety minutes, weekly, same time, protected. Send a written update the night before so no one has to read status aloud. Then run it in this order:</p>
+      <ol style="margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:16px;">
+        <li style="display:flex;gap:16px;align-items:flex-start;">
+          <span style="flex:none;min-width:64px;font-weight:700;font-size:14px;color:#C04A26;padding-top:2px;">5 min</span>
+          <span style="font-size:16px;line-height:1.55;color:#3A372F;"><strong>Check-in.</strong> One line each &mdash; a quick read on the person and the business. Not a life update; a temperature. It gets everyone present and in the room before the work starts.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start;">
+          <span style="flex:none;min-width:64px;font-weight:700;font-size:14px;color:#C04A26;padding-top:2px;">10 min</span>
+          <span style="font-size:16px;line-height:1.55;color:#3A372F;"><strong>Metric scan.</strong> Walk the scoreboard and do only one thing: flag what&rsquo;s off track. No discussion, no explanation. Anything red becomes a candidate issue for later. If a number is green, you say &ldquo;green&rdquo; and move on.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start;">
+          <span style="flex:none;min-width:64px;font-weight:700;font-size:14px;color:#C04A26;padding-top:2px;">15 min</span>
+          <span style="font-size:16px;line-height:1.55;color:#3A372F;"><strong>Priority progress.</strong> Go priority by priority on the Flag &mdash; the two or three things that matter this quarter. Each owner gives one sentence: on track, or off track and why. Off-track priorities become candidate issues too. Still no problem-solving here.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start;">
+          <span style="flex:none;min-width:64px;font-weight:700;font-size:14px;color:#C04A26;padding-top:2px;">30 min</span>
+          <span style="font-size:16px;line-height:1.55;color:#3A372F;"><strong>One issue &mdash; decide it.</strong> This is the meeting. From the flagged candidates, pick the single most important issue and work it all the way to a decision. Discuss honestly, surface the real disagreement, and make the call. It leaves with a named <strong>owner</strong> and a <strong>deadline</strong> &mdash; not &ldquo;the team will look into it.&rdquo; Resolve one issue well; don&rsquo;t half-solve five.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start;">
+          <span style="flex:none;min-width:64px;font-weight:700;font-size:14px;color:#C04A26;padding-top:2px;">10 min</span>
+          <span style="font-size:16px;line-height:1.55;color:#3A372F;"><strong>Commitments &amp; owners.</strong> Read every decision back out loud: who does what, by when. If you can&rsquo;t say it as one clean sentence, it isn&rsquo;t a commitment yet &mdash; fix it now. Capture the list where the whole team can see it before next week.</span>
+        </li>
+        <li style="display:flex;gap:16px;align-items:flex-start;">
+          <span style="flex:none;min-width:64px;font-weight:700;font-size:14px;color:#C04A26;padding-top:2px;">5 min</span>
+          <span style="font-size:16px;line-height:1.55;color:#3A372F;"><strong>Close.</strong> One line: what does the rest of the organization need to hear from this meeting? Cascade it the same day. Optional gut-check &mdash; was this meeting worth the hour? If it wasn&rsquo;t, name why, because that&rsquo;s next week&rsquo;s first fix.</span>
+        </li>
+      </ol>
+      <p style="font-size:16px;line-height:1.6;color:#56524A;margin-top:22px;padding-top:20px;border-top:1px solid rgba(27,24,16,0.14);"><strong style="color:#1B1810;">The one rule that keeps it honest:</strong> if an agenda item only reports &mdash; if nothing about it needs a decision &mdash; it belongs in the written update, not the room. Protect the 30-minute block. That&rsquo;s where the Rhythm actually finishes work.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find out why your meeting reports instead of decides.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which discipline to rebuild so your weekly meeting starts producing decisions &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:9px;">What should be on an executive team meeting agenda?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.78);">Five moving parts and one fixed purpose: a fast check-in (5 min), a metric scan where you only flag what&rsquo;s off track (10 min), progress against the two or three priorities on your Flag (15 min), one real issue worked all the way to a decision with an owner and a deadline (30 min), and a read-back of commitments (10 min). The fixed purpose is to leave with fewer open questions than you walked in with. Anything that only reports &mdash; and needs no decision &mdash; belongs in a written update, not the room.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:9px;">How long should an executive team meeting be?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.78);">Sixty to ninety minutes, weekly, same time, protected. Longer than ninety and it turns into theater; people narrate to fill the block. Shorter than sixty and the one hard issue never gets the room it needs to actually resolve. The length isn&rsquo;t the point &mdash; the ratio is. If more than a third of the meeting is one-way reporting, it&rsquo;s too long no matter what the clock says.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:9px;">What&rsquo;s the difference between a status meeting and a real executive team meeting?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.78);">A status meeting reports; a Rhythm meeting decides and commits. In a status meeting everyone narrates what they did, the hardest issue gets tabled, and the team leaves with the same open questions it arrived with. In a Rhythm meeting, reporting is pre-read, the room spends its energy on the one issue that needs a decision, and every decision leaves with an owner and a deadline. Same people, same hour &mdash; completely different output.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:56px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+      <a href={SLUGS.highPerformingTeam} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Build a high-performing leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The four disciplines behind the meeting.</span>
+      </a>
+      <a href={SLUGS.decisionMaking} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Executive team decision-making</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Make the call the meeting is built around.</span>
+      </a>
+      <a href={SLUGS.offsiteFacilitator} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Leadership team offsite facilitator</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">When the Rhythm needs a full reset.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. The meeting is where the Rhythm lives." />
+</BaseLayout>

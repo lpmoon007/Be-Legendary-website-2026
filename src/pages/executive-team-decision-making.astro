@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Executive Team Decision-Making: A Real Framework';
+const description = "Executive team decision-making breaks when calls don't stick and route back to the CEO. The fix: a protocol — owner, data, deadline, disagree-and-commit.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Executive team decision-making', item: 'https://www.belegendary.org/executive-team-decision-making/' },
+  ] },
+  { '@type': 'Article', headline: 'Executive team decision-making: the framework that makes calls stick', datePublished: '2026-07-06', dateModified: '2026-07-06', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/executive-team-decision-making/', description: "An executive team decision-making framework built on the Decision discipline: give every call an owner, the data, a deadline, and disagree-and-commit, and log it so it sticks." },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is a good executive team decision-making framework?', acceptedAnswer: { '@type': 'Answer', text: "A working executive team decision-making framework gives every call four things: a single named owner, the data the call rests on and a bar for what counts as enough, a deadline for when it is made and when it is revisited, and disagree-and-commit so no one relitigates it afterward. Log each decision so it is a matter of record. That is the Decision discipline of the Flag Model — commitment — and it is what lets a call stick without routing back to the CEO." } },
+    { '@type': 'Question', name: 'How do you make a leadership team decision stick?', acceptedAnswer: { '@type': 'Answer', text: "A decision sticks when it has one owner, a clear deadline, and genuine commitment from everyone in the room — including the people who argued against it. That is disagree-and-commit: you argue hard before the call, then you defend the call in public after it, even if you lost. Write it in a decision log — the call, the owner, the date, the revisit date — so the meeting cannot quietly reopen it next week." } },
+    { '@type': 'Question', name: 'What is the difference between reversible and irreversible decisions?', acceptedAnswer: { '@type': 'Answer', text: "A reversible decision is one you can walk back cheaply if it is wrong, so it should be made fast and low in the org — waiting for more certainty just costs you time. An irreversible decision is expensive or impossible to undo, so it earns more data, more debate, and a higher owner. Most teams get this backwards: they agonize over reversible calls and rush the irreversible ones. Sorting a decision into the right lane is half the framework." } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.decisionMaking}
+  ogType="article"
+  ogTitle="Executive team decision-making — the framework that makes calls stick"
+  ogDescription="If every call routes back to the CEO, you don't need more meetings — you need a decision protocol. Owner, data, deadline, disagree-and-commit."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Executive team decision-making</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Executive team decision-making: a framework that sticks</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A working executive team decision-making framework gives every call four things: a single <strong>owner</strong>, the <strong>data</strong> it rests on and a bar for &ldquo;enough,&rdquo; a <strong>deadline</strong>, and <strong>disagree-and-commit</strong> so no one relitigates it later. Log the call so it&rsquo;s a matter of record, and sort it into reversible (decide fast) or irreversible (decide deliberately). That&rsquo;s the <strong>Decision</strong> discipline of the Flag Model &mdash; commitment &mdash; and it&rsquo;s what lets a call stick without routing back to the CEO.</p>
+    </div>
+  </header>
+
+  <!-- HERO-AFFIRM -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If decisions on your team feel slow, reopened, or perpetually stuck on your desk, the instinct is to add a meeting &mdash; a forum, a steering committee, another sync. That instinct is understandable and almost always wrong. A team that can&rsquo;t decide doesn&rsquo;t have a meeting problem. It has a protocol problem, and no amount of calendar can fix it.</p>
+  </div>
+
+  <!-- WHY IT'S HARD -->
+  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Why this is hard</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Most executive teams don&rsquo;t lack intelligence, data, or good intentions. What they lack is a shared, enforced answer to a deceptively simple question: <em>how do we make a call, and how do we know it&rsquo;s made?</em> Without that answer, three things quietly happen. Decisions get made by the group, which means no one owns them. They get deferred for &ldquo;more data,&rdquo; because no one agreed how much data is enough. And they get relitigated in the hallway afterward, because commitment was never actually asked for. A decision that can be reopened at will was never really a decision.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">When that&rsquo;s the environment, routing every consequential call back to the CEO isn&rsquo;t weakness &mdash; it&rsquo;s the rational move. The CEO is the one person who can end the debate. So the calls flow uphill, the CEO becomes the bottleneck, and everyone privately concludes the team &ldquo;can&rsquo;t make decisions.&rdquo; They can. They&rsquo;ve just never been given a protocol that makes a decision safe to own.</p>
+  </div>
+
+  <!-- FLAG MODEL LENS -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The Flag Model lens: this is the Decision discipline</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">In <a href={SLUGS.flagModel} style="color:#D98A5E;text-decoration:none;">the Flag Model</a>, a leadership team holds its Flag &mdash; the two or three priorities that matter &mdash; upright with four disciplines. The one that governs decision-making is <strong style="color:#FBF8F1;">the Decision: commitment</strong>. Its rule is blunt. Every call gets an owner, the data, and a deadline, and the obligation to defend it. When the Decision is strong, a call made on Tuesday is still made on Friday. When it&rsquo;s thin, decisions have the half-life of a hallway conversation.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Here&rsquo;s the reframe that changes what you do about it: <strong style="color:#FBF8F1;">a team that can&rsquo;t decide doesn&rsquo;t need more meetings &mdash; it needs a protocol.</strong> A protocol is what lets an owner make a call and know it will hold. It&rsquo;s what tells the room when arguing stops and committing starts. It&rsquo;s what keeps the CEO from having to re-bless every decision to make it real. The rest of this guide is that protocol.</p>
+  </div>
+
+  <!-- THE HOW-TO -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The decision protocol — use it this week</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">Before any consequential call closes, run it through these six moves. None of them requires a new meeting. All of them require you to stop treating &ldquo;we discussed it&rdquo; as if it means &ldquo;we decided it.&rdquo;</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:14px;font-size:16px;line-height:1.55;color:#3A372F;">
+        <li><strong>Name one owner &mdash; not a committee.</strong> Every decision gets exactly one name accountable for making it and living with it. &ldquo;The team decided&rdquo; means no one did, and shared accountability evaporates on contact. The owner isn&rsquo;t always the most senior person in the room; it&rsquo;s the person closest to the consequence.</li>
+        <li><strong>Name the data &mdash; and the bar for &ldquo;enough.&rdquo;</strong> Write down what the call actually rests on and agree, up front, how much certainty is enough to act. &ldquo;We need more data&rdquo; is the most common way a good decision dies. If you can&rsquo;t say what data would change the answer, you already have enough.</li>
+        <li><strong>Set the deadline &mdash; and the revisit date.</strong> Decide by <em>when</em>, and name when the call will be revisited, if ever. A deadline forces the choice; a scheduled revisit makes revisiting a plan instead of a constant temptation. Reopening happens on the calendar, not in the hallway.</li>
+        <li><strong>Sort reversible vs irreversible.</strong> If the call is cheap to walk back, decide it fast and low &mdash; speed beats certainty. If it&rsquo;s expensive or impossible to undo, slow down, pull more data, raise the owner. Most teams do this exactly backwards: agonizing over the reversible, rushing the irreversible.</li>
+        <li><strong>Disagree and commit.</strong> Argue hard before the call is made &mdash; that&rsquo;s the point of the room. Once it&rsquo;s made, everyone defends it in public, including the people who lost the argument. This is the gate teams skip, and the one that makes a decision hold. Private relitigation is how a made decision un-makes itself.</li>
+        <li><strong>Log it.</strong> One line in a shared decision log: the call, the owner, the date, the revisit date, the one-sentence why. A decision log is what lets you say &ldquo;that&rsquo;s already decided&rdquo; without re-arguing it, and what stops the CEO from being the team&rsquo;s only institutional memory.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See whether the Decision is your team&rsquo;s first break point.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which discipline to rebuild &mdash; whether the calls really keep routing to you, or whether the break is somewhere else &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="max-width:920px;margin:56px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;line-height:1.2;color:#FBF8F1;margin-bottom:12px;">What is a good executive team decision-making framework?</h3>
+        <p style="font-size:16.5px;line-height:1.6;color:rgba(244,240,231,0.8);">A working framework gives every call four things: a single named owner, the data the call rests on and a bar for what counts as enough, a deadline for when it&rsquo;s made and when it&rsquo;s revisited, and disagree-and-commit so no one relitigates it afterward. Log each decision so it&rsquo;s a matter of record. That&rsquo;s the Decision discipline of the Flag Model &mdash; commitment &mdash; and it&rsquo;s what lets a call stick without routing back to the CEO.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;line-height:1.2;color:#FBF8F1;margin-bottom:12px;">How do you make a leadership team decision stick?</h3>
+        <p style="font-size:16.5px;line-height:1.6;color:rgba(244,240,231,0.8);">A decision sticks when it has one owner, a clear deadline, and genuine commitment from everyone in the room &mdash; including the people who argued against it. That&rsquo;s disagree-and-commit: you argue hard before the call, then you defend the call in public after it, even if you lost. Write it in a decision log &mdash; the call, the owner, the date, the revisit date &mdash; so the meeting can&rsquo;t quietly reopen it next week.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;line-height:1.2;color:#FBF8F1;margin-bottom:12px;">What is the difference between reversible and irreversible decisions?</h3>
+        <p style="font-size:16.5px;line-height:1.6;color:rgba(244,240,231,0.8);">A reversible decision is one you can walk back cheaply if it&rsquo;s wrong, so it should be made fast and low in the org &mdash; waiting for more certainty just costs you time. An irreversible decision is expensive or impossible to undo, so it earns more data, more debate, and a higher owner. Most teams get this backwards: they agonize over reversible calls and rush the irreversible ones. Sorting a decision into the right lane is half the framework.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+      <a href={SLUGS.highPerformingTeam} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to build a high-performing leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Decision is one of the four disciplines. Here&rsquo;s the whole build.</span>
+      </a>
+      <a href={SLUGS.wontDecide} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">My leadership team won&rsquo;t decide without me</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why the calls keep routing to you &mdash; and the 4Ds that fix it.</span>
+      </a>
+      <a href={SLUGS.vsOkrs} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs OKRs</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">A scoreboard exposes the gap. It doesn&rsquo;t close it.</span>
+      </a>
+    </div>
+  </div>
+  </article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. Commitment is the Decision discipline." />
+</BaseLayout>
