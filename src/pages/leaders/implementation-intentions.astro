@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
+
+const path = SLUGS.implementationIntentions;
+const title =
+  'Implementation Intentions: The "When / Then" Trick That Doubles Follow-Through | Be Legendary';
+const description =
+  'An implementation intention is a specific if-then plan that pre-decides your behavior so you don’t have to choose in the moment. The format, the research, and how to write one that works. From Be Legendary.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + DefinedTerm + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Implementation Intentions: The When / Then Trick That Doubles Follow-Through',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['implementation intentions', 'if-then planning', 'goal setting'],
+    description:
+      'What an implementation intention is, the research behind it, and how to write one that works.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'Implementation intention',
+    description:
+      "An implementation intention is a specific if-then plan in the form 'When situation X arises, I will do behavior Y.' By deciding in advance exactly when and where you'll act, you delegate the behavior to the situation instead of relying on in-the-moment willpower. Introduced by psychologist Peter Gollwitzer.",
+    inDefinedTermSet: 'Be Legendary',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is an implementation intention?', acceptedAnswer: { '@type': 'Answer', text: "An implementation intention is a specific if-then plan: 'When [situation], I will [action].' Instead of a vague goal like 'exercise more,' you pre-decide the exact cue and response — 'When I finish my morning coffee, I will do ten push-ups.' Deciding in advance means you don't have to choose in the moment, which is where most goals die." } },
+      { '@type': 'Question', name: 'Do implementation intentions actually work?', acceptedAnswer: { '@type': 'Answer', text: "Yes. Across decades of studies led by psychologist Peter Gollwitzer, people who formed a specific if-then plan followed through substantially more often than those who only held a goal in mind. The effect shows up across exercise, healthy eating, follow-up appointments, and work tasks. The gain comes from removing the in-the-moment decision." } },
+      { '@type': 'Question', name: 'What is the difference between a goal and an implementation intention?', acceptedAnswer: { '@type': 'Answer', text: "A goal states what you want ('get fitter'). An implementation intention states exactly when, where, and how you'll act on it ('When I get home from work, I will change into gym clothes before sitting down'). The goal is the destination; the implementation intention is the pre-loaded first move." } },
+      { '@type': 'Question', name: 'How do I write a good implementation intention?', acceptedAnswer: { '@type': 'Answer', text: "Anchor it to a specific, reliable cue you already encounter, keep the action tiny, and name the autopilot you're replacing. Be Legendary's version adds that middle step: 'When I [cue], instead of [autopilot], I will [tiny action].' Naming what you're interrupting makes the new behavior far more likely to fire." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Implementation Intentions: The When / Then Trick That Doubles Follow-Through"
+  ogDescription="Pre-decide the behavior and you don't need willpower in the moment. Here's the format that works."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Implementation Intentions</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">What is an implementation intention?</h1>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p style="font-size:18px;line-height:1.6;color:#2E2A22;">An implementation intention is a specific if-then plan — <em style="font-style:italic;">"When [situation], I will [action]"</em> — that <strong style="font-weight:700;">pre-decides your behavior so you don't have to choose in the moment.</strong> Decades of research by psychologist Peter Gollwitzer show that people who write one follow through far more often than those who merely intend to.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">A goal tells you <em style="font-style:italic;">where</em> you want to go. It says nothing about the moment you'll actually act — and that moment is where almost every good intention quietly dies, because you're tired, busy, or the old autopilot is easier. An implementation intention closes that gap by deciding the moment in advance.</p>
+          <p>You hand the decision to the situation. When the cue appears, the behavior is already chosen — no negotiation, no willpower draw. That's why a plan that costs thirty seconds to write can double follow-through.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">The format we use</p>
+        <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:32px 34px;">
+          <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.78);margin-bottom:20px;">The classic form is two parts: <em style="font-style:italic;">When [cue], I will [action].</em> We add a middle line, because most plans fail from autopilot rather than forgetting — you have to name the default you're replacing:</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-style:italic;font-size:19px;color:#E0744A;width:96px;flex:none;">When</span><span style="font-size:17px;color:#FBF8F1;">I brush my teeth in the morning</span></div>
+            <div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-style:italic;font-size:19px;color:#E0744A;width:96px;flex:none;">instead of</span><span style="font-size:17px;color:#FBF8F1;">zoning out at the mirror</span></div>
+            <div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-style:italic;font-size:19px;color:#E0744A;width:96px;flex:none;">I will</span><span style="font-size:17px;color:#FBF8F1;">do one squat</span></div>
+          </div>
+          <p style="font-size:14.5px;line-height:1.6;color:rgba(244,240,231,0.6);margin-top:22px;">Specific cue. Named autopilot. Tiny action. All three matter — a vague cue never fires, and a big action invites negotiation.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">What makes one work</p>
+        <div class="bl-cards-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <div style="background:#F4F0E7;border-radius:14px;padding:22px 22px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:18px;color:#1B1810;margin-bottom:8px;">A concrete cue</h3><p style="font-size:14.5px;line-height:1.55;color:#56524A;">Tie it to a fixed moment you already hit daily, not a fuzzy window like "later" or "when I have time."</p></div>
+          <div style="background:#F4F0E7;border-radius:14px;padding:22px 22px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:18px;color:#1B1810;margin-bottom:8px;">A tiny action</h3><p style="font-size:14.5px;line-height:1.55;color:#56524A;">Small enough that it's easier to do than to argue with. One rep counts as a win.</p></div>
+          <div style="background:#F4F0E7;border-radius:14px;padding:22px 22px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:18px;color:#1B1810;margin-bottom:8px;">A named default</h3><p style="font-size:14.5px;line-height:1.55;color:#56524A;">Call out the autopilot you're interrupting so the cue triggers a switch, not a blank.</p></div>
+        </div>
+        <p style="font-size:16px;line-height:1.65;color:#56524A;margin-top:20px;">Pair an implementation intention with <a href={SLUGS.habitStacking} style="color:#C04A26;text-decoration:underline;">habit stacking</a> — the anchor is your cue — and you've got the two most reliable mechanics in behavior change working together.</p>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Write one that sticks — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:26ch;margin:0 auto 16px;">Turn your "when / then" into a 30-day rep.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The 30-Day Challenge walks you through writing a When / Instead of / I will plan, then texts you the cue every day so it actually fires.</p>
+          <a href={SLUGS.challenge} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Start your 30-day challenge <span>&rarr;</span></a>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Do implementation intentions actually work?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Yes — it's one of the most replicated findings in behavior science. People who form a specific if-then plan follow through substantially more than those who only hold a goal, across exercise, healthy eating, appointments, and work tasks. The gain comes from removing the in-the-moment decision.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">What's the difference between a goal and an implementation intention?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">A goal is the destination ("get fitter"). An implementation intention is the pre-loaded first move ("When I get home, I will change into gym clothes before sitting down"). One states what you want; the other states exactly when and how you'll start.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Where does the idea come from?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">The term was introduced by psychologist Peter Gollwitzer in the 1990s and has been tested in hundreds of studies since. The plain-language versions — habit stacking, "when/then" planning — all rest on the same mechanism.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px 20px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep going</p>
+        <div class="bl-cards-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <a href={SLUGS.habitStacking} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">What is habit stacking?</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Anchor the cue to something you already do.</span></a>
+          <a href={SLUGS.howToBuildHabit} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">How to build a habit that sticks</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The five rules, no willpower required.</span></a>
+          <a href={SLUGS.leadVsLag} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">Lead vs lag measures</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Score the input you control, not the outcome.</span></a>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

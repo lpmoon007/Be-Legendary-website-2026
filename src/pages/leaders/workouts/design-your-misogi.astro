@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('design-your-misogi');
+const title = "Design Your Misogi — one ordeal a year that resets what you're capable of | Be Legendary";
+const description =
+  "Not a daily rep — the real thing. A Misogi is one challenge a year so hard you have a genuine ~50% chance of failing it. Do it in the physical world, tell no one, and it resets your sense of what's possible for the next twelve months. Shakubuku is a Misogi. Free to design yours.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource enriched with entity @ids, a HowTo
+// (how to design the Misogi), and a DefinedTerm for the concept.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'Design Your Misogi',
+    learningResourceType: 'Mindset warmup and workout',
+    teaches: "Designing one annual ordeal that expands one's sense of capability",
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT15M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Design your Misogi',
+    description:
+      "Design one annual ordeal with a genuine ~50% chance of failure — difficult but never reckless, kept private, and done in the physical world — that resets what you believe you're capable of.",
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Pick the challenge',
+        text: "Choose a challenge you'd attempt even knowing you might fail — endurance, wilderness, skill, or fear — where falling short would be human, not embarrassing.",
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Calibrate to ~50/50',
+        text: "Make it honestly uncertain. If you're sure you'd finish, make it harder; if it might kill you, make it safer. Difficult, not dangerous.",
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Put a date on it',
+        text: 'Fix an exact date on the calendar and start preparing. A Misogi without a date is a daydream.',
+      },
+    ],
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'Misogi',
+    description:
+      "A Misogi is one challenge a year so hard you have a genuine ~50% chance of failing it — done in the physical world, difficult but never reckless, and kept private. Surviving it resets your sense of what you're capable of for the other 364 days. The word comes from an ancient Shinto purification ritual of standing under an icy waterfall.",
+    inDefinedTermSet: 'Be Legendary',
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Design Your Misogi — one ordeal a year that resets what you're capable of"
+  ogDescription="One challenge a year with a real ~50% chance of failure. It changes the other 364 days."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <header style="max-width:1000px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">Design Your Misogi</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B48AD9;">Spiritual</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Emotional</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">The real thing · once a year</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(42px,7vw,76px);line-height:0.98;letter-spacing:-0.025em;color:#1B1810;">Design Your Misogi</h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#56524A;max-width:54ch;">Every other workout ends with a small rep. This one doesn't. A <em style="font-style:italic;color:#C04A26;">Misogi</em> is one challenge a year so hard you have a <strong style="color:#1B1810;">genuine chance of failing it</strong> — and it resets what you believe you're capable of for the other 364 days. Shakubuku is a Misogi. This is how you design your own.</p>
+    </header>
+
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:19px;line-height:1.65;color:#3A362E;margin-bottom:22px;">The word comes from an ancient Shinto purification ritual — standing under an icy waterfall to cleanse the spirit. The modern practice keeps the spirit and adds a rule that changes everything: pick something so hard that you might not make it. Not "hard but I'll be fine." Hard as in <strong style="color:#1B1810;">you honestly don't know if you can.</strong></p>
+      <figure style="margin:0 0 24px;border-left:3px solid #C04A26;padding:6px 0 6px 26px;">
+        <blockquote style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(21px,2.7vw,28px);line-height:1.36;color:#1B1810;">Do one thing a year that has a real chance of ending in failure. What it does to the other 364 days is the point.</blockquote>
+      </figure>
+      <p style="font-size:19px;line-height:1.65;color:#3A362E;">Why it works: your brain quietly sets a ceiling on what's possible for you, and then you live under it. A Misogi doesn't nudge the ceiling — it blows past it, once, so undeniably that you can't go back to the old estimate of yourself. Survive something you thought might break you, and every ordinary hard thing shrinks for a year.</p>
+      <div style="margin-top:24px;background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Warmup · one reflection</p>
+        <p style="font-size:18px;line-height:1.6;color:#1B1810;">When was the last time you did something you genuinely weren't sure you could do? Sit with how long ago it was. That distance is exactly why this matters.</p>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:34px auto 0;padding:0 32px;">
+      <div id="go-deep-prompt" style="display:block;">
+        <button id="go-deep-btn" type="button" style="width:100%;cursor:pointer;background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(224,116,74,0.4);border-radius:16px;padding:26px 30px;text-align:left;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.borderColor='rgba(224,116,74,0.75)'" onmouseout="this.style.borderColor='rgba(224,116,74,0.4)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+            <div>
+              <span style="display:block;font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The workout · design it</span>
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;line-height:1.2;">Ready to design yours?</span>
+            </div>
+            <span style="flex:none;font-size:26px;color:#E0744A;">&darr;</span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <div id="go-deep-content" style="display:none;">
+      <!-- THREE RULES -->
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">The three rules of a Misogi</p>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:14px;padding:22px 26px;">
+            <p style="font-family:'Newsreader',serif;font-size:20px;color:#1B1810;margin-bottom:6px;">1 · A real ~50% chance of failure</p>
+            <p style="font-size:15.5px;line-height:1.6;color:#56524A;">If you're sure you'll finish, it's not a Misogi — it's a workout. It has to be genuinely uncertain. That uncertainty is the medicine.</p>
+          </div>
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:14px;padding:22px 26px;">
+            <p style="font-family:'Newsreader',serif;font-size:20px;color:#1B1810;margin-bottom:6px;">2 · Don't die — no recklessness</p>
+            <p style="font-size:15.5px;line-height:1.6;color:#56524A;">Difficult, not dangerous. The risk is failure and suffering, never your safety. Prepare properly; bring the expert if you need one.</p>
+          </div>
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:14px;padding:22px 26px;">
+            <p style="font-family:'Newsreader',serif;font-size:20px;color:#1B1810;margin-bottom:6px;">3 · No audience — don't broadcast it</p>
+            <p style="font-size:15.5px;line-height:1.6;color:#56524A;">This is for you, not for the feed. The moment it's content, it becomes about looking good instead of going for it. Keep it quiet, keep it real.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Design it — answer these</p>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">1</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">What's a challenge you'd attempt if you knew you might fail — and it wouldn't be embarrassing, only human? (Endurance, wilderness, skill, fear — your pick.)</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">2</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Is it honestly ~50/50? If you're certain you'd finish, make it harder. If it might kill you, make it safer.</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">3</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">When, exactly? Put a date on the calendar. A Misogi without a date is a daydream.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMMIT (not a daily rep — a one-time commitment) -->
+      <section style="max-width:760px;margin:38px auto 0;padding:0 32px;">
+        <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 36px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">The commitment</span><span style="font-size:12px;color:#8C8473;">once · this year</span></div>
+          <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.25;color:#FBF8F1;margin-bottom:14px;">Name it. Date it. Tell no one who'd talk you out of it.</p>
+          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Write your Misogi in one sentence with a date attached, and start preparing. You don't need to log this daily — you need to <em style="font-style:italic;">do it</em> once, fully. When you're ready to make it the deepest version — a curated, guided ordeal in the physical world — that's <a href={`${SLUGS.leaders}#shakubuku`} style="color:#E0744A;text-decoration:underline;">Shakubuku</a>.</p>
+        </div>
+      </section>
+
+      <MwComplete
+        workoutId="design-your-misogi"
+        dim="Spiritual"
+        dimLabel="Spiritual & Emotional"
+        notePlaceholder="My Misogi, in one sentence with a date, is…"
+        doneHead="Misogi — designed."
+        doneBody="You've named the thing that scares you and put a date on it. That's the hard part most people never do. Now go prepare."
+        nextHref={`${SLUGS.leaders}#shakubuku`}
+        nextCta="The ultimate Misogi · Shakubuku"
+      />
+
+      <MwCommitment
+        workoutId="design-your-misogi"
+        dim="Spiritual"
+        dimLabel="Spiritual & Emotional"
+        c1="When I finish my morning coffee, instead of opening my inbox, ||I will picture my Misogi done for 60 seconds."
+        c2="When I catch myself shrinking a plan, instead of playing it safe, ||I will write down the harder version."
+        c3="When I sit down at my desk, instead of the easy task, ||I will take one two-minute step toward the scary one."
+        willPh="take one small step toward it"
+      />
+    </div>
+
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+
+  <script>
+    (function () {
+      const btn = document.getElementById('go-deep-btn');
+      const prompt = document.getElementById('go-deep-prompt');
+      const content = document.getElementById('go-deep-content');
+      if (btn && prompt && content) {
+        btn.addEventListener('click', function () {
+          prompt.style.display = 'none';
+          content.style.display = 'block';
+        });
+      }
+    })();
+  </script>
+</BaseLayout>

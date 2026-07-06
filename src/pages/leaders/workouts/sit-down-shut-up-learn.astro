@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('sit-down-shut-up-learn');
+const title = 'Sit Down, Shut Up & Learn — notice the lens you never chose | Be Legendary';
+const description =
+  "A Mindset Warmup that opens into a Workout. You were taught how to see the world before you could question it. This rep is about catching your own lens — and deciding, as an adult, whether to keep it. Free.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource enriched with entity @ids, plus a
+// HowTo built from the "Time for Action" rep so the workout surfaces as a task.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'Sit Down, Shut Up & Learn',
+    learningResourceType: 'Mindset warmup and workout',
+    teaches: 'Noticing inherited assumptions and choosing consciously',
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT10M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Once a day, be the student',
+    description:
+      'A daily rep for staying a student: catch a moment where you would normally assert, get curious instead, and repeat daily to reopen the door success quietly closes.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Catch the moment',
+        text: "Each day, catch one moment where you'd normally assert.",
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Get curious instead',
+        text: "Ask the question, invite the disagreement, let someone teach you something — especially from people you'd usually discount.",
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Do it daily',
+        text: 'Repeat daily and you reopen the door that success quietly closes.',
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Sit Down, Shut Up & Learn — notice the lens you never chose"
+  ogDescription="You were taught how to see before you could question it. Catch the lens."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <header style="max-width:1000px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">Sit Down, Shut Up &amp; Learn</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B48AD9;">Spiritual</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">Warmup · ~3 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,6vw,68px);line-height:0.99;letter-spacing:-0.022em;color:#1B1810;">Sit Down, Shut Up &amp; Learn</h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#56524A;max-width:52ch;">The title is deliberately blunt, because the idea is uncomfortable: before you were old enough to question anything, you were taught <em style="font-style:italic;color:#C04A26;">how to see the world.</em> What to value, what to fear, what "success" looks like. Most people never once check whether the lens is theirs.</p>
+    </header>
+
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:19px;line-height:1.65;color:#3A362E;margin-bottom:22px;">You didn't choose your first beliefs — you absorbed them, from parents, teachers, culture, the era you grew up in. That's not an insult; it's how everyone starts. The problem is that most of those settings never get reviewed. You're running a grown company on a operating system installed by a ten-year-old's environment, and calling the output "just how I am."</p>
+      <figure style="margin:0 0 24px;border-left:3px solid #C04A26;padding:6px 0 6px 26px;">
+        <blockquote style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(21px,2.7vw,28px);line-height:1.36;color:#1B1810;">You can't take off a lens you don't know you're wearing. The whole work is learning to see the lens.</blockquote>
+      </figure>
+      <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Warmup · one reflection</p>
+        <p style="font-size:18px;line-height:1.6;color:#1B1810;">Finish this sentence honestly: "Success means ___." Now ask — who taught you that, and did you ever actually agree to it? Just noticing the source is the whole warmup.</p>
+      </div>
+    </section>
+
+    <!-- GO DEEPER -->
+    <section style="max-width:760px;margin:34px auto 0;padding:0 32px;">
+      <div id="go-deep-prompt" style="display:block;">
+        <button id="go-deep-btn" type="button" style="width:100%;cursor:pointer;background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(224,116,74,0.4);border-radius:16px;padding:26px 30px;text-align:left;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.borderColor='rgba(224,116,74,0.75)'" onmouseout="this.style.borderColor='rgba(224,116,74,0.4)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+            <div>
+              <span style="display:block;font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The workout · ~10 min + optional 30 days</span>
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;line-height:1.2;">Want to go deeper and examine the lens?</span>
+            </div>
+            <span style="flex:none;font-size:26px;color:#E0744A;">&darr;</span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <div id="go-deep-content" style="display:none;">
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">The workout · become the student again</p>
+        <div style="font-size:18px;line-height:1.72;color:#3A362E;">
+          <p style="margin-bottom:20px;">"Sit down, shut up, and learn" is what you resist most as you gain status — and it's exactly what unlocks the next level. The higher you climb, the more people agree with you and the less you get told the truth. Success quietly closes the very openness that created it. Staying a student is a deliberate act against your own momentum.</p>
+          <p style="margin-bottom:20px;">Being a student doesn't mean believing everything — it means holding your certainty loosely enough to test it. Take one belief you're sure about, and instead of defending it, get genuinely curious: where did it come from, what would change your mind, who sees it completely differently and why. You're not trying to abandon the lens. You're trying to <strong style="color:#1B1810;">choose it as an adult</strong>, on purpose, for the first time.</p>
+        </div>
+      </section>
+
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Reflect</p>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">1</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Name one belief you treat as simply "true" about work, money, or success. Whose voice is underneath it?</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">2</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Where in your life has success made you stop listening — where were you last genuinely told something you didn't want to hear?</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">3</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Pick one inherited belief and ask: if I met it fresh today, as an adult, would I choose it again?</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:760px;margin:38px auto 0;padding:0 32px;">
+        <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 36px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for Action</span><span style="font-size:12px;color:#8C8473;">one rep · daily</span></div>
+          <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.25;color:#FBF8F1;margin-bottom:14px;">Once a day, be the student. Ask instead of tell.</p>
+          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Each day, catch one moment where you'd normally assert, and get curious instead — ask the question, invite the disagreement, let someone teach you something. Especially from people you'd usually discount. Do it daily and you reopen the door that success quietly closes.</p>
+        </div>
+      </section>
+
+      <MwComplete
+        workoutId="sit-down-shut-up-learn"
+        dim="Spiritual"
+        dimLabel="Spiritual"
+        notePlaceholder="The inherited belief I'll examine is…"
+        doneHead="Student again."
+        doneBody="You've caught the lens. That's the rare part — most never do. Keep asking, keep testing, keep choosing."
+        nextHref={workoutPath('what-the-beep')}
+        nextCta="See the hidden triggers · What the Beep"
+      />
+
+      <MwCommitment
+        workoutId="sit-down-shut-up-learn"
+        dim="Spiritual"
+        dimLabel="Spiritual"
+        c1="When I'm sure I'm right, instead of pushing my point, ||I will ask one honest question first."
+        c2="When I open my laptop, instead of broadcasting, ||I will read one thing that challenges what I believe."
+        c3="When someone disagrees with me, instead of defending, ||I will say 'tell me more' once."
+        willPh="ask one honest question"
+      />
+    </div>
+
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+
+  <script>
+    (function () {
+      const btn = document.getElementById('go-deep-btn');
+      const prompt = document.getElementById('go-deep-prompt');
+      const content = document.getElementById('go-deep-content');
+      if (btn && prompt && content) {
+        btn.addEventListener('click', function () {
+          prompt.style.display = 'none';
+          content.style.display = 'block';
+        });
+      }
+    })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../lib/site';
+
+const path = SLUGS.abcsOfMindset;
+const title = 'The ABCs of a Legendary Mindset: Awareness, Beliefs, Courage | Be Legendary';
+const description =
+  'A legendary mindset does three things: Control your Awareness, Know your Beliefs, Harness your Courage. Not nouns — verbs. What each one means and how they compound. From Be Legendary.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + DefinedTerm + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'The ABCs of a Legendary Mindset: Awareness, Beliefs, Courage',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['mindset', 'awareness', 'beliefs', 'courage'],
+    description:
+      'The three verbs of a legendary mindset — Awareness, Beliefs, Courage — what each means and how they compound.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'The ABCs of a legendary mindset',
+    description:
+      "Be Legendary's model of a legendary mindset as three things you do, not have: Control your Awareness (decide what you pay attention to and why), Know your Beliefs (say what you actually believe about your capacity and act on it), and Harness your Courage (act while afraid, and tell yourself the true story afterward). Awareness sharpens beliefs, beliefs make courage cheaper, and courage produces the action that proves the belief.",
+    inDefinedTermSet: 'Be Legendary',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What are the ABCs of a legendary mindset?', acceptedAnswer: { '@type': 'Answer', text: "They are the three actions a legendary mindset is built on: A — Control your Awareness (decide what you pay attention to and why); B — Know your Beliefs (say what you actually believe about your own capacity, out loud, and act as if it's true); and C — Harness your Courage (take action while you're still afraid, and tell yourself the true story afterward). They're verbs, not nouns — things you do daily." } },
+      { '@type': 'Question', name: 'Why are the ABCs verbs and not nouns?', acceptedAnswer: { '@type': 'Answer', text: "Because a legendary mindset isn't something you have; it's something you practice. Awareness, belief, and courage decay if you don't exercise them. Framing them as actions — control, know, harness — makes them daily reps rather than fixed traits, which is the only way they actually grow." } },
+      { '@type': 'Question', name: 'How do awareness, beliefs, and courage relate to each other?', acceptedAnswer: { '@type': 'Answer', text: "They compound in order. Awareness decides what you even see. Your beliefs then drive how you act on what you see. And courage turns belief into action — with a useful rule: the stronger your beliefs, the less courage each action requires. Practice all three and the loop reinforces itself." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="The ABCs of a Legendary Mindset: Awareness, Beliefs, Courage"
+  ogDescription="Control your Awareness. Know your Beliefs. Harness your Courage. The three verbs of a legendary mindset."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">The ABCs of a Legendary Mindset</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">The ABCs of a legendary mindset</h1>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p style="font-size:18px;line-height:1.6;color:#2E2A22;">A legendary mindset does three things: <strong style="font-weight:700;">Control your Awareness, Know your Beliefs, Harness your Courage.</strong> Not nouns — <em style="font-style:italic;">verbs.</em> Awareness decides what you see; Beliefs drive what you do with it; Courage turns belief into action. Work all three and they compound.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:30px 32px;">
+            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-size:46px;color:#E0744A;line-height:0.9;">A</span><h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Control your Awareness</h2></div>
+            <p style="font-size:16.5px;line-height:1.64;color:rgba(244,240,231,0.82);">We miss an astonishing amount of what's right in front of us — and everyone from advertisers to your inbox is competing to decide what you notice. Awareness is choosing, on purpose, what you pay attention to and why. Decide what matters most to you, or someone else decides for you, and you'll spend your life counting their priorities while your real opportunities walk past.</p>
+          </div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:30px 32px;">
+            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-size:46px;color:#E0744A;line-height:0.9;">B</span><h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Know your Beliefs</h2></div>
+            <p style="font-size:16.5px;line-height:1.64;color:rgba(244,240,231,0.82);">Your beliefs drive your actions and shape what you even notice — yet most people have never once said theirs out loud. When you examine what you actually believe about your own capacity, you reach an uncomfortable, freeing truth: you're already capable of far more than your story admits. The work isn't to become something new. It's to stop denying what you already are.</p>
+          </div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:30px 32px;">
+            <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-size:46px;color:#E0744A;line-height:0.9;">C</span><h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Harness your Courage</h2></div>
+            <p style="font-size:16.5px;line-height:1.64;color:rgba(244,240,231,0.82);">Awareness and belief aren't enough — you have to act, and action takes courage. Here's the leverage: the stronger your beliefs, the less courage each act requires. There's a quieter courage too — the courage to tell yourself the true story. When you let an opportunity pass, the honest line isn't "I'm not legendary," it's "I missed a legendary one that time." Saying that holds the bar high. Set it anyway.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:8px 0;padding-left:22px;border-left:3px solid #C04A26;">The loop compounds: awareness sharpens belief, belief makes courage cheaper, and courage produces the action that proves the belief. Run it once and it starts turning on its own.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Do the reps — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:26ch;margin:0 auto 16px;">Work the ABCs, one guided rep at a time.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The Mindset of a Legend workout takes you through A, B, and C — a video, a teaching, and one real rep each — then hands you a daily version to keep it alive for thirty days.</p>
+          <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+            <a href={workoutPath('mindset-of-a-legend')} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Do the workout <span>&rarr;</span></a>
+            <a href={SLUGS.challenge} style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Make it a 30-day habit</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Why verbs and not nouns?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Because a legendary mindset isn't something you have; it's something you practice. Awareness, belief, and courage decay without exercise. Framing them as actions — control, know, harness — makes them daily reps rather than fixed traits.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Which one do I start with?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Any of them — they reinforce each other. Many people find belief the fastest unlock: say one true thing about your capacity out loud, then take one small action as if it's true. That single move touches all three.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">How does this connect to the Golden Buddha?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Naming what you actually believe is the first chip in the plaster. The <a href={SLUGS.goldenBuddhaStory} style="color:#C04A26;text-decoration:underline;">Golden Buddha</a> says the gold is already there; the ABCs are how you clear the clay.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px 20px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep going</p>
+        <div class="bl-cards-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <a href={SLUGS.goldenBuddhaStory} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">The Golden Buddha story</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The gold was always under the clay.</span></a>
+          <a href={SLUGS.whatIsShakubuku} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">What is shakubuku?</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The sudden awakening to who you are.</span></a>
+          <a href={SLUGS.leadersGlossary} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">The Leader's glossary</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Every term, defined in one place.</span></a>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>
