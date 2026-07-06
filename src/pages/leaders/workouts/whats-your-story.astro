@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('whats-your-story');
+const title =
+  "Mindset Workout: What's Your Story? — Rewrite the Story Running You | Be Legendary";
+const description =
+  "A short warmup on the stories you tell yourself. You live by the story you tell about who you are — find the one running you, test whether it's true and useful, and rewrite it. From Be Legendary.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource warmup (entity @ids added) plus a HowTo
+// built from the "Time for Action" rewrite-the-story rep.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: "What's Your Story? — Mindset Warmup",
+    learningResourceType: 'Guided mindset warmup',
+    teaches: 'The stories you tell yourself shape who you become',
+    timeRequired: 'PT5M',
+    isAccessibleForFree: true,
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+    description:
+      'A warmup on the stories running your life, adapted from The Power of Story by Jim Loehr: find the story, test it, and rewrite it.',
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Rewrite the story running you',
+    description:
+      'Write the old story in one sentence, write the new one, and live it for a week.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Name the old story',
+        text: 'Write down the old story in one sentence — the "I’m just not the kind of person who…" you catch yourself narrating.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Write the new one',
+        text: 'Write a truer, more useful version that’s equally true — and decide to live it for a week.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Catch and act',
+        text: 'The next time the old story starts narrating, name it — "that’s the old story" — and act from the new one instead, once, on purpose. Then log the rep.',
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="What's Your Story? — A Mindset Workout on Beliefs"
+  ogDescription="You live by the stories you tell yourself. Find the one running you — and rewrite it."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <article>
+    <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Workouts</a><span>/</span><span style="color:#C04A26;">What's Your Story</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;">Workout · Mental + Emotional</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#B4A98E;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8A7F6C;">~10 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,6vw,68px);line-height:1.0;letter-spacing:-0.022em;color:#1B1810;">What's your story?</h1>
+      <p style="margin-top:22px;font-size:19px;line-height:1.6;color:#2E2A22;max-width:52ch;">You are telling yourself a story right now — about who you are, what you're capable of, why things happened the way they did. You live inside that story whether you chose it or not. This workout is about finding it, testing it, and — if it's costing you — writing a truer one.</p>
+    </header>
+
+    <!-- VIDEO SLOT -->
+    <div style="max-width:820px;margin:40px auto 0;padding:0 32px;">
+      <div style="position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid rgba(27,24,16,0.12);">
+        <iframe src="https://player.vimeo.com/video/488327172" title="Significant Objects — the value of story" loading="lazy" allow="autoplay;fullscreen;picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+      </div>
+      <p style="margin-top:10px;font-size:13px;color:#8A7F6C;">The <em style="font-style:italic;">Significant Objects</em> study: thrift-store trinkets bought for pocket change, resold for hundreds — on the strength of a story alone.</p>
+    </div>
+
+    <!-- PURPOSE -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:14px;">Why this workout · Mental + Emotional</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.2;color:#1B1810;margin-bottom:14px;">The most important story you'll ever tell is the one you tell yourself.</h2>
+      <p style="font-size:17px;line-height:1.65;color:#2E2A22;">Adapted from <em style="font-style:italic;">The Power of Story</em> by Jim Loehr, this is a rep on Beliefs — the B in the ABCs — worked through your Mental and Emotional dimensions. Your body tells a story. Your face, your clothes, your calendar all tell one. And underneath them runs the private story about who you are — the one that quietly decides what you'll attempt and what you won't. Most people never notice they're the author.</p>
+    </section>
+
+    <!-- STORY / TEACHING -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+        <p style="margin-bottom:22px;">Two founders lose the same deal. One tells the story: <em style="font-style:italic;">"The market's brutal and I got unlucky."</em> The other: <em style="font-style:italic;">"I misread what they needed — here's what I'll do differently."</em> Same event. Completely different response, and within a year, completely different outcomes. Neither story was "the truth" — they were both interpretations. But one of them was useful, and one of them was a trap.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">You are the narrator, not just the character. And the narrator has more power than the plot.</p>
+        <p>Some of your stories serve you — they got you here. Others are old and expensive, written by a younger version of you who needed them to feel safe, and never revised since. The work isn't positive thinking. It's honest editing: noticing which story you're running, asking whether it's true and whether it's useful, and consciously choosing the one that gets you the outcome you actually want.</p>
+      </div>
+    </section>
+
+    <!-- REFLECT -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:40px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;">Reflect — be honest, no one's watching</p>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;flex:none;line-height:1.3;">1</span><p style="font-size:18px;line-height:1.55;color:#1B1810;">What's a story you tell about yourself that starts with "I'm just not the kind of person who…"? Where did it come from?</p></div>
+          <div style="display:flex;gap:16px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;flex:none;line-height:1.3;">2</span><p style="font-size:18px;line-height:1.55;color:#1B1810;">Is that story <em style="font-style:italic;">true</em> — or is it just familiar? And is it getting you the outcome you want?</p></div>
+          <div style="display:flex;gap:16px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;flex:none;line-height:1.3;">3</span><p style="font-size:18px;line-height:1.55;color:#1B1810;">If you rewrote that one line into a story that served you — and it were equally true — what would it say?</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIME FOR ACTION -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:36px 38px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for action</span>
+          <span style="font-size:12px;color:#8C8473;">this week · out in the real world</span>
+        </div>
+        <p style="font-family:'Newsreader',serif;font-weight:400;font-size:27px;line-height:1.25;color:#FBF8F1;margin-bottom:16px;">Write down the old story in one sentence. Then write the new one — and live it for a week.</p>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.78);">Catch yourself the next time the old story starts narrating. Name it — "that's the old story" — and act from the new one instead, once, on purpose. Notice what changes in the outcome.</p>
+      </div>
+    </section>
+
+    <!-- COMPLETE + TRACK -->
+    <MwComplete
+      workoutId="whats-your-story"
+      dim="Mental"
+      dimLabel="Mental"
+      notePlaceholder="The old story I'm rewriting is…"
+    />
+
+    <MwCommitment
+      workoutId="whats-your-story"
+      dim="Mental"
+      dimLabel="Mental"
+      c1="When I say 'I'm just not a ___ person,' instead of believing it, ||I will restate it as 'I'm learning to be.'"
+      c2="When I look in the mirror in the morning, instead of the old story, ||I will say one line of the story I'm writing now."
+      c3="When I catch a 'that's just how I am,' instead of letting it stand, ||I will name one way it's already changing."
+      willPh="rewrite one line of the story"
+    />
+
+    <!-- NEXT / BRIDGE -->
+    <section style="max-width:1000px;margin:52px auto 0;padding:0 32px 90px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <a href={workoutPath('mindset-of-a-legend')} style="display:flex;flex-direction:column;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:28px 30px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">Related · Beliefs</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#1B1810;margin-bottom:8px;">The Mindset of a Legend</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#56524A;">The full ABCs — Awareness, Beliefs, Courage — in one three-part arc.</p>
+        </a>
+        <a href={SLUGS.workouts} style="display:flex;flex-direction:column;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:28px 30px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">Keep going</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#1B1810;margin-bottom:8px;">Browse all workouts</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#56524A;">Pick your next rep by dimension — Awareness, Beliefs, Courage.</p>
+        </a>
+      </div>
+    </section>
+    </article>
+
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>
