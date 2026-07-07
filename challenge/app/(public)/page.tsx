@@ -78,6 +78,22 @@ export default function EnrollPage() {
             </h2>
           </div>
           <SignupFlow />
+
+          {/* Always-visible SMS opt-in disclosure (A2P / carrier verification). */}
+          <p className="mx-auto mt-5 max-w-xl text-center text-xs leading-relaxed text-ink-light/45">
+            By enrolling you consent to receive recurring automated SMS messages
+            from Be Legendary (approximately 30 messages over 30 days). Consent is
+            not a condition of any purchase. Msg &amp; data rates may apply. Reply
+            STOP to cancel, HELP for help. See our{" "}
+            <a href="/terms" className="text-accent-light underline">
+              SMS Terms
+            </a>{" "}
+            and{" "}
+            <a href="/privacy" className="text-accent-light underline">
+              Privacy Policy
+            </a>
+            .
+          </p>
         </div>
       </section>
 
