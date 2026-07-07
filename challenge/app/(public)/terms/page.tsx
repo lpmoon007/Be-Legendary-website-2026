@@ -86,12 +86,9 @@ export default function TermsPage() {
             sell, rent, or share your phone number with third parties for their
             marketing purposes. Mobile information is not shared with third
             parties or affiliates for marketing or promotional purposes. See our{" "}
-            <a
-              href="https://www.belegendary.org/privacy/"
-              className="text-accent-light underline"
-            >
+            <Link href="/privacy" className="text-accent-light underline">
               Privacy Policy
-            </a>{" "}
+            </Link>{" "}
             for how we handle your information.
           </Section>
 

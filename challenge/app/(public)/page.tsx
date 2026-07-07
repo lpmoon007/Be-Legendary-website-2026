@@ -138,10 +138,7 @@ export default function EnrollPage() {
                 SMS Terms
               </a>
               <span aria-hidden>·</span>
-              <a
-                href="https://www.belegendary.org/privacy/"
-                className="hover:text-ink-light"
-              >
+              <a href="/privacy" className="hover:text-ink-light">
                 Privacy
               </a>
             </nav>

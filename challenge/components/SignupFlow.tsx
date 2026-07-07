@@ -178,7 +178,7 @@ export function SignupFlow() {
                 </a>{" "}
                 and{" "}
                 <a
-                  href="https://www.belegendary.org/privacy/"
+                  href="/privacy"
                   target="_blank"
                   className="text-accent underline"
                 >
