@@ -29,11 +29,27 @@ const meta: Record<string, [string, string]> = {
 };
 const DEFAULT: [string, string] = ['0.7', 'monthly'];
 
+// Lost Disciplines of Leadership book launch site (hosted at /lost-disciplines/).
+const BOOK_PATHS = [
+  '/lost-disciplines/',
+  '/lost-disciplines/the-book/',
+  '/lost-disciplines/about-james/',
+  '/lost-disciplines/praise/',
+  '/lost-disciplines/bulk-and-speaking/',
+];
+const BOOK_META: Record<string, [string, string]> = {
+  '/lost-disciplines/': ['0.8', 'weekly'],
+  '/lost-disciplines/the-book/': ['0.7', 'monthly'],
+  '/lost-disciplines/about-james/': ['0.6', 'monthly'],
+  '/lost-disciplines/praise/': ['0.5', 'monthly'],
+  '/lost-disciplines/bulk-and-speaking/': ['0.5', 'monthly'],
+};
+
 export const GET: APIRoute = () => {
   // All SLUGS routes + the 18 workout pages, de-duplicated (SLUGS.library aliases
   // /leaders/). Sorted so the output is stable across builds.
   const paths = Array.from(
-    new Set([...Object.values(SLUGS), ...WORKOUTS.map(workoutPath)])
+    new Set([...Object.values(SLUGS), ...WORKOUTS.map(workoutPath), ...BOOK_PATHS])
   )
     // Exclude URLs that 301-redirect (not canonical 200 pages) so the sitemap
     // stays clean. /leaders/30-day-challenge/ forwards to the challenge app.
@@ -41,7 +57,7 @@ export const GET: APIRoute = () => {
     .sort();
   const urls = paths
     .map((path) => {
-      const [priority, changefreq] = meta[path] ?? DEFAULT;
+      const [priority, changefreq] = BOOK_META[path] ?? meta[path] ?? DEFAULT;
       return `  <url><loc>${SITE_URL}${path}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
     })
     .join('\n');

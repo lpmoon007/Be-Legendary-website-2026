@@ -1,0 +1,21 @@
+---
+// Lost Disciplines sticky nav. `active` highlights the current top-nav item.
+export interface Props { active?: 'the-book' | 'about-james' | null }
+const { active = null } = Astro.props;
+const link = (isActive: boolean) =>
+  `font-size:14px;font-weight:${isActive ? 600 : 500};color:${isActive ? '#f4f0e6' : '#a59a8d'};text-decoration:none;`;
+---
+<nav style="position:sticky;top:0;z-index:50;background:rgba(26,21,16,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,162,74,.14);">
+  <div style="max-width:1160px;margin:0 auto;padding:0 56px;display:flex;align-items:center;justify-content:space-between;height:72px;">
+    <a href="/lost-disciplines/" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+      <img src="/assets/ldol-b-logo.png" alt="Be Legendary" width="30" height="30" style="height:30px;width:30px;border-radius:7px;display:block;" />
+      <span style="font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:15px;letter-spacing:.14em;color:#f4f0e6;text-transform:uppercase;">Lost Disciplines</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:34px;">
+      <a href="/lost-disciplines/the-book/" style={link(active === 'the-book')}>The Book</a>
+      <a href="/lost-disciplines/#the-model" style={link(false)}>The Flag Model</a>
+      <a href="/lost-disciplines/about-james/" style={link(active === 'about-james')}>About James</a>
+      <a href="/lost-disciplines/#waitlist" style="font-size:13.5px;font-weight:600;letter-spacing:.04em;color:#1a1510;background:#c9a24a;padding:10px 20px;border-radius:3px;text-decoration:none;">Join the waitlist</a>
+    </div>
+  </div>
+</nav>

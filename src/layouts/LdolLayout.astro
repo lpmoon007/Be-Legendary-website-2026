@@ -1,0 +1,79 @@
+---
+// Dedicated layout for the Lost Disciplines of Leadership(TM) book launch site,
+// hosted at belegendary.org/lost-disciplines/. Distinct brand chrome from the
+// parent Be Legendary site, so it has its own <head> (og:type=book, own OG
+// image + favicon, book-specific JSON-LD) rather than reusing BaseLayout.
+import '@fontsource/newsreader/400.css';
+import '@fontsource/newsreader/500.css';
+import '@fontsource/newsreader/600.css';
+import '@fontsource/newsreader/400-italic.css';
+import '@fontsource/newsreader/500-italic.css';
+import '@fontsource/hanken-grotesk/400.css';
+import '@fontsource/hanken-grotesk/500.css';
+import '@fontsource/hanken-grotesk/600.css';
+import '@fontsource/hanken-grotesk/700.css';
+import { SITE_URL } from '../lib/site';
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Absolute path incl. trailing slash, e.g. '/lost-disciplines/the-book/'. */
+  path: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  /** JSON-LD nodes to emit (Book, Organization, FAQPage, etc.). */
+  schema?: object[];
+}
+const { title, description, path, ogTitle, ogDescription, schema = [] } = Astro.props;
+const canonical = new URL(path, SITE_URL).href;
+const shareCard = `${SITE_URL}/assets/ldol-share-card.png`;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/ldol-snail-terracotta.png" />
+    <meta name="theme-color" content="#1a1510" />
+
+    <meta property="og:type" content="book" />
+    <meta property="og:site_name" content="Lost Disciplines of Leadership" />
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={shareCard} />
+    <meta property="book:author" content="James Carter" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle ?? title} />
+    <meta name="twitter:description" content={ogDescription ?? description} />
+    <meta name="twitter:image" content={shareCard} />
+
+    {schema.map((node) => (
+      <script type="application/ld+json" set:html={JSON.stringify(node)} />
+    ))}
+
+    <style is:global>
+      .ldol-wrap { max-width: 1160px; margin: 0 auto; padding: 0 56px; }
+      .ldol-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+      a { color: #c9a24a; }
+      a:hover { color: #d8b566; }
+      input::placeholder { color: #8a8378; }
+      /* Responsive: collapse multi-column grids and tame the display type. */
+      @media (max-width: 860px) {
+        .ldol-wrap { padding: 0 24px; }
+        .ldol-collapse { grid-template-columns: 1fr !important; }
+        .ldol-collapse--media-first { direction: ltr; }
+        .ldol-h1 { font-size: clamp(40px, 11vw, 80px) !important; }
+        .ldol-h2 { font-size: clamp(28px, 7vw, 44px) !important; }
+        .ldol-flag-motif { display: none !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0;font-family:'Hanken Grotesk',sans-serif;-webkit-font-smoothing:antialiased;background:#1a1510;color:#f4f0e6;overflow-x:hidden;">
+    <slot />
+  </body>
+</html>

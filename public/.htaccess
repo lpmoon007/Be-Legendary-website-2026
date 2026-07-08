@@ -29,7 +29,6 @@ Redirect 301 /commitment-quotient/ /break-point-self-assessment/
 Redirect 301 /common-executive-team-challenges/ /teams/
 Redirect 301 /fractional-chief-people-officer/ /teams/
 Redirect 301 /peopleops/ /teams/
-Redirect 301 /lost-disciplines/ /flag-model/
 Redirect 301 /terms-of-use/ /privacy/
 
 # ── Text compression (biggest transfer win on an inline-styled site) ──
