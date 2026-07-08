@@ -8,7 +8,7 @@ import imgLdol from '../../assets/book-ldol.png';
 import imgDiscover from '../../assets/book-discover.jpg';
 import imgRoadmap from '../../assets/book-roadmap.png';
 import imgOneGreatIdea from '../../assets/book-onegreatidea.jpg';
-import { CTA_URL, SLUGS, SISTER, PERSON_ID } from '../../lib/site';
+import { CTA_URL, SLUGS, SISTER, PERSON_ID, ORG_ID } from '../../lib/site';
 
 const title = 'James Carter — Founder & Creator of the Flag Model';
 const description = 'James Carter, founder of Be Legendary and creator of the Flag Model, has spent 25 years inside executive teams. Author of Lost Disciplines of Leadership.';
@@ -24,6 +24,17 @@ const schema = [
   { '@type': 'Book', name: 'Discover Your Inner Strength', author: { '@id': PERSON_ID } },
   { '@type': 'Book', name: 'Roadmap to Success', author: { '@id': PERSON_ID } },
   { '@type': 'Book', name: 'One Great Idea', author: { '@id': PERSON_ID } },
+  {
+    '@type': 'VideoObject',
+    name: 'James Carter — keynote to 1,000 leaders at Siemens',
+    description: 'James Carter delivers a leadership keynote to an audience of 1,000 leaders at Siemens.',
+    thumbnailUrl: 'https://www.belegendary.org/assets/james.jpg',
+    uploadDate: '2016-10',
+    embedUrl: 'https://player.vimeo.com/video/174889009',
+    contentUrl: 'https://vimeo.com/174889009',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+  },
 ];
 ---
 <BaseLayout
