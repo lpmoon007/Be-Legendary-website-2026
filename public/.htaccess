@@ -18,6 +18,20 @@ Redirect 301 /library/ /leaders/
 # on the challenge subdomain. Send it there so the canonical URL resolves.
 Redirect 301 /leaders/30-day-challenge/ https://challenge.belegendary.org/
 
+# ── Retired pages from the previous site (301 → nearest live equivalent) ──
+# These old URLs still surface in crawlers/backlinks and were returning 404.
+# Clear mappings:
+Redirect 301 /actionable-coaching/ /leaders/actionable-coaching/
+Redirect 301 /articles/ /field-notes/
+Redirect 301 /free-leadership-tools/ /resources/
+# Judgment calls (nearest-topic hub — change target if a better page exists):
+Redirect 301 /commitment-quotient/ /break-point-self-assessment/
+Redirect 301 /common-executive-team-challenges/ /teams/
+Redirect 301 /fractional-chief-people-officer/ /teams/
+Redirect 301 /peopleops/ /teams/
+Redirect 301 /lost-disciplines/ /flag-model/
+Redirect 301 /terms-of-use/ /privacy/
+
 # ── Text compression (biggest transfer win on an inline-styled site) ──
 <IfModule mod_brotli.c>
   AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json image/svg+xml application/manifest+json

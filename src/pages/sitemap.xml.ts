@@ -34,7 +34,11 @@ export const GET: APIRoute = () => {
   // /leaders/). Sorted so the output is stable across builds.
   const paths = Array.from(
     new Set([...Object.values(SLUGS), ...WORKOUTS.map(workoutPath)])
-  ).sort();
+  )
+    // Exclude URLs that 301-redirect (not canonical 200 pages) so the sitemap
+    // stays clean. /leaders/30-day-challenge/ forwards to the challenge app.
+    .filter((p) => p !== SLUGS.challenge)
+    .sort();
   const urls = paths
     .map((path) => {
       const [priority, changefreq] = meta[path] ?? DEFAULT;

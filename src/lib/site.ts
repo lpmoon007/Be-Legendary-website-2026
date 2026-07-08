@@ -151,7 +151,10 @@ export const PERSON_ID = `${SITE_URL}/#james`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const ORG_NODE = {
-  '@type': ['Organization', 'ProfessionalService'],
+  // Plain Organization — not ProfessionalService/LocalBusiness, which would
+  // require a physical PostalAddress and flag a structured-data error on every
+  // page (we're a consulting firm, no walk-in address).
+  '@type': 'Organization',
   '@id': ORG_ID,
   name: 'Be Legendary',
   alternateName: 'Repario',
@@ -162,7 +165,7 @@ export const ORG_NODE = {
   founder: { '@id': PERSON_ID },
   foundingDate: '2010',
   areaServed: 'US',
-  sameAs: ['https://www.buildingteams.com/', 'https://www.legendary-retreats.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
+  sameAs: ['https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
 };
 
 export const PERSON_NODE = {
