@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import LdolLayout from '../../layouts/LdolLayout.astro';
 import LdolHeader from '../../components/LdolHeader.astro';
 import LdolFooter from '../../components/LdolFooter.astro';
-import { CTA_URL, SITE_URL } from '../../lib/site';
+import { CTA_URL, SITE_URL, HUBSPOT, LDOL_CHAPTER_URL } from '../../lib/site';
 import ldolCover from '../../assets/ldol-cover.png';
 import james from '../../assets/james.jpg';
 
@@ -231,8 +231,7 @@ const schema = [
           <div class="ldol-eyebrow" style="color:#C04A26;margin-bottom:18px;">Free First Chapter</div>
           <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:42px;line-height:1.1;margin:0 0 18px;">Be first to read it.</h2>
           <p style="font-size:17px;line-height:1.6;color:#5c544c;margin:0 0 32px;max-width:30em;">Join the waitlist and we&rsquo;ll send you the opening chapter of <em>Lost Disciplines of Leadership&trade;</em> the day it&rsquo;s ready &mdash; plus launch news, nothing else.</p>
-          <!-- TODO(launch): wire to HubSpot portal 20276071 + LDOL form GUID. Stub below is client-side only. -->
-          <form id="ldol-waitlist" style="display:flex;gap:10px;max-width:460px;flex-wrap:wrap;">
+          <form id="ldol-waitlist" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.ldolWaitlistFormGuid} data-chapter={LDOL_CHAPTER_URL} style="display:flex;gap:10px;max-width:460px;flex-wrap:wrap;">
             <input type="email" name="email" required placeholder="Your work email" style="flex:1;min-width:220px;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#211b16;background:#fff;border:1px solid rgba(33,27,22,.2);border-radius:3px;padding:15px 16px;outline:none;" />
             <button type="submit" data-label style="font-family:'Hanken Grotesk',sans-serif;font-size:14.5px;font-weight:600;color:#f4f0e6;background:#14203a;border:none;border-radius:3px;padding:0 26px;cursor:pointer;white-space:nowrap;">Get the chapter</button>
           </form>
@@ -277,14 +276,39 @@ const schema = [
   <LdolFooter />
 
   <script is:inline>
-    // Waitlist stub — replace with HubSpot (portal 20276071 + LDOL form GUID) at launch.
-    var f = document.getElementById('ldol-waitlist');
-    if (f) f.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = f.querySelector('[data-label]');
-      var note = f.parentElement.querySelector('[data-note]');
-      if (btn) btn.textContent = 'Check your inbox ✓';
-      if (note) note.textContent = 'Thanks — you’re on the list. We’ll send the first chapter the day it’s ready.';
-    });
+    // Waitlist → HubSpot submissions API (portal + form GUID from data-*).
+    (function () {
+      var f = document.getElementById('ldol-waitlist');
+      if (!f) return;
+      var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = f.querySelector('input[name="email"]');
+        var btn = f.querySelector('[data-label]');
+        var note = f.parentElement.querySelector('[data-note]');
+        var email = (input && input.value || '').trim();
+        if (!EMAIL.test(email)) { if (input) input.focus(); return; }
+        var portal = f.getAttribute('data-portal');
+        var guid = f.getAttribute('data-guid');
+        var chapter = f.getAttribute('data-chapter');
+        if (guid) {
+          try {
+            fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ fields: [{ name: 'email', value: email }], context: { pageUri: location.href, pageName: 'Lost Disciplines — Waitlist' } }),
+            });
+          } catch (err) { /* swallow — still confirm to the user */ }
+        }
+        if (btn) { btn.textContent = 'Check your inbox ✓'; btn.disabled = true; btn.style.opacity = '0.85'; }
+        if (note) {
+          if (chapter) {
+            note.innerHTML = 'Thanks — you’re on the list. <a href="' + chapter + '" style="color:#a87b2e;font-weight:600;">Download the first chapter →</a>';
+          } else {
+            note.textContent = 'Thanks — you’re on the list. We’ll send the first chapter the day it’s ready.';
+          }
+        }
+        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'ldol_waitlist' });
+      });
+    })();
   </script>
 </LdolLayout>

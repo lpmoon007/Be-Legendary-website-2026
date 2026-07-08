@@ -16,7 +16,22 @@ export const HUBSPOT = {
   region: 'na2',
   breakPointFormGuid: '8e01345a-ccef-43b8-8598-e3bb6d7397f1',
   newsletterFormGuid: 'f744639b-16b8-4f45-a141-1637e135cdc7',
+  // ── Lost Disciplines book launch ──
+  // Waitlist (email only): defaults to the newsletter form so it captures leads
+  // NOW. Submissions carry pageName/pageUri context ("Lost Disciplines — Waitlist"),
+  // so they're segmentable. Swap in a dedicated LDOL waitlist form GUID here to
+  // route them to their own list.
+  ldolWaitlistFormGuid: 'f744639b-16b8-4f45-a141-1637e135cdc7',
+  // Bulk/Speaking enquiry: needs a form with fields email, firstname, company,
+  // message, intent. Create it in HubSpot and paste the GUID here to go live.
+  // While empty, the form still confirms to the user but does not POST.
+  ldolEnquiryFormGuid: '',
 };
+
+// Direct-download URL for the free first chapter. Empty until the PDF is
+// uploaded (e.g. to public/assets/ldol-first-chapter.pdf → '/assets/ldol-first-chapter.pdf').
+// When set, the waitlist success state shows a "Download the first chapter" link.
+export const LDOL_CHAPTER_URL = '';
 
 // Production slug map: design-file name -> route.
 export const SLUGS = {
