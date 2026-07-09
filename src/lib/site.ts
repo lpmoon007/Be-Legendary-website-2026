@@ -17,11 +17,10 @@ export const HUBSPOT = {
   breakPointFormGuid: '8e01345a-ccef-43b8-8598-e3bb6d7397f1',
   newsletterFormGuid: 'f744639b-16b8-4f45-a141-1637e135cdc7',
   // ── Lost Disciplines book launch ──
-  // Waitlist (email only): defaults to the newsletter form so it captures leads
-  // NOW. Submissions carry pageName/pageUri context ("Lost Disciplines — Waitlist"),
-  // so they're segmentable. Swap in a dedicated LDOL waitlist form GUID here to
-  // route them to their own list.
-  ldolWaitlistFormGuid: 'f744639b-16b8-4f45-a141-1637e135cdc7',
+  // Waitlist / free first chapter (email only) → the dedicated HubSpot
+  // "Lost Disciplines Chapter Download" form. Its follow-up (chapter email /
+  // workflow) is configured in HubSpot, so a successful submit triggers delivery.
+  ldolWaitlistFormGuid: 'a74b3d8b-2e1a-48fc-95d9-712b6ae3781f',
   // Bulk/Speaking enquiry: needs a form with fields email, firstname, company,
   // message, intent. Create it in HubSpot and paste the GUID here to go live.
   // While empty, the form still confirms to the user but does not POST.
