@@ -2,6 +2,12 @@
 import '../styles/global.css';
 import Analytics from '../components/Analytics.astro';
 import { SITE_URL, ORG_NODE, PERSON_NODE, WEBSITE_NODE, WEBSITE_ID } from '../lib/site';
+// Preload only the above-the-fold fonts so the LCP text (Newsreader H1 +
+// Hanken body) isn't stuck behind the full 9-weight font download. Vite
+// resolves these to the hashed /_astro/ URLs at build.
+import fontHeadline from '@fontsource/newsreader/files/newsreader-latin-500-normal.woff2';
+import fontBody from '@fontsource/hanken-grotesk/files/hanken-grotesk-latin-400-normal.woff2';
+import fontUi from '@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff2';
 
 export interface Props {
   title: string;
@@ -128,6 +134,11 @@ const jsonLd = graphNodes.length
   <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
   <meta name="theme-color" content="#15130E" />
   <link rel="canonical" href={canonical} />
+
+  <!-- Preload critical above-the-fold fonts (LCP) -->
+  <link rel="preload" href={fontHeadline} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={fontBody} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={fontUi} as="font" type="font/woff2" crossorigin />
 
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
