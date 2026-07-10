@@ -166,9 +166,11 @@ export function SignupFlow() {
                 className="mt-1 h-4 w-4 accent-[#C04A26]"
               />
               <span className="text-xs leading-relaxed text-ink-muted">
-                By checking this box, you agree to receive ~30 SMS messages over
-                30 days from Be Legendary. Msg &amp; data rates may apply. Reply
-                STOP to cancel, HELP for help. See our{" "}
+                I agree to receive recurring automated text messages from Be
+                Legendary at the number provided — my daily challenge, about 30
+                messages over 30 days. Consent is not a condition of any
+                purchase. Msg &amp; data rates may apply. Reply STOP to cancel,
+                HELP for help. See our{" "}
                 <a
                   href="/terms"
                   target="_blank"
