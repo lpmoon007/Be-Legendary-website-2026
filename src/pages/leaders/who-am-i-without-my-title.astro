@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
 
 const path = SLUGS.whoAmIWithoutTitle;
@@ -109,7 +110,8 @@ const schema = [
           </a>
         </div>
       </section>
-    </article>
+      <ShareRow title={title} maxWidth={820} />
+</article>
   </div>
 
   <SiteFooter audience="leaders" variant="slim" />

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'The Strategy Execution Gap: Why Good Strategy Fails';
@@ -160,7 +161,8 @@ const schema = [
       </a>
     </div>
   </div>
-  </article>
+    <ShareRow title={title} maxWidth={920} />
+</article>
 
   <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. Close the gap between deciding and doing." />
 </BaseLayout>

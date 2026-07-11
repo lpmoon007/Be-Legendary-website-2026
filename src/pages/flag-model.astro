@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'The Flag Model: The Execution Framework | Be Legendary';
@@ -227,7 +228,8 @@ const schema = [
     </div>
   </section>
 
-  </article>
+    <ShareRow title={title} maxWidth={920} />
+</article>
 
   <!-- CTA -->
   <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">

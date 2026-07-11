@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'State of Executive Team Execution: 2026 Research Report';
@@ -208,7 +209,8 @@ const schema = [
       </a>
     </div>
   </section>
-  </article>
+    <ShareRow title={title} maxWidth={920} />
+</article>
 
   <SiteFooter audience="teams" variant="slim" maxWidth={1000} note="© 2026 Be Legendary · Free to cite with attribution to belegendary.org." />
 </BaseLayout>
