@@ -1,0 +1,115 @@
+---
+// Semantic, responsive comparison table for the "Flag Model vs X" pages.
+// Real <table> markup (not styled divs) so Google can lift it into a featured
+// snippet and AI answer engines can parse the head-to-head cleanly. The Flag
+// Model column is visually emphasised; the table scrolls horizontally on
+// narrow screens rather than crushing the columns.
+export interface Row {
+  /** Row-header label (the dimension being compared). */
+  attr: string;
+  /** Competitor cell (may contain inline HTML entities / <em>). */
+  a: string;
+  /** Flag Model cell (may contain inline HTML entities / <em>). */
+  b: string;
+}
+export interface Props {
+  heading: string;
+  competitor: string;
+  rows: Row[];
+  maxWidth?: number;
+  flagLabel?: string;
+}
+const { heading, competitor, rows, maxWidth = 920, flagLabel = 'The Flag Model™' } = Astro.props;
+---
+<div style={`max-width:${maxWidth}px;margin:0 auto;padding:36px 32px 8px;`}>
+  <h2 class="bl-cmp-h">{heading}</h2>
+  <div class="bl-cmp-scroll">
+    <table class="bl-cmp">
+      <caption class="bl-vh">{heading}: {competitor} compared with {flagLabel}</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="bl-cmp-corner"><span class="bl-vh">Dimension</span></th>
+          <th scope="col">{competitor}</th>
+          <th scope="col" class="bl-cmp-flag">{flagLabel}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => (
+          <tr>
+            <th scope="row" set:html={r.attr}></th>
+            <td set:html={r.a}></td>
+            <td class="bl-cmp-flag" set:html={r.b}></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .bl-cmp-h {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: clamp(24px, 3.2vw, 34px);
+    line-height: 1.1;
+    color: #FBF8F1;
+    margin-bottom: 24px;
+  }
+  .bl-cmp-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid rgba(244, 240, 231, 0.11);
+    border-radius: 16px;
+  }
+  .bl-cmp {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    background: #1B1810;
+    font-size: 15.5px;
+  }
+  .bl-vh {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0);
+    white-space: nowrap; border: 0;
+  }
+  .bl-cmp th,
+  .bl-cmp td {
+    text-align: left;
+    padding: 18px 22px;
+    vertical-align: top;
+    line-height: 1.5;
+    border-bottom: 1px solid rgba(244, 240, 231, 0.09);
+  }
+  .bl-cmp thead th {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #E0744A;
+    background: #211D15;
+  }
+  .bl-cmp tbody th[scope="row"] {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(244, 240, 231, 0.45);
+    width: 22%;
+    white-space: normal;
+  }
+  .bl-cmp td { color: rgba(244, 240, 231, 0.82); }
+  .bl-cmp thead th.bl-cmp-flag {
+    color: #F4F0E7;
+    border-left: 2px solid rgba(192, 74, 38, 0.55);
+  }
+  .bl-cmp tbody td.bl-cmp-flag {
+    background: rgba(192, 74, 38, 0.07);
+    border-left: 2px solid rgba(192, 74, 38, 0.55);
+    color: rgba(244, 240, 231, 0.92);
+  }
+  .bl-cmp tbody tr:last-child th,
+  .bl-cmp tbody tr:last-child td { border-bottom: 0; }
+</style>

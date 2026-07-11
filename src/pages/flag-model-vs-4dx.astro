@@ -4,6 +4,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Flag Model vs 4DX: When the Scoreboard Lies | Be Legendary';
@@ -55,27 +56,16 @@ const schema = [
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you brought 4DX into your company, you already did the hard, unglamorous thing most leaders avoid: you committed to execution as a discipline. That instinct is exactly right. The only thing 4DX can't supply is the leadership behavior it assumes you already have &mdash; and when that behavior is thin, even a beautiful scoreboard starts to lie.</p>
   </div>
 
-  <!-- TABLE -->
-  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
-    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Where each one lives</h2>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">What it governs</p>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">4DX</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The mechanics of execution: the goal, the measures, the scoreboard, the weekly cadence.</p></div>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">It assumes</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">That you can already pick the right goal, decide fast, and enforce a standard.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Nothing &mdash; it builds those capacities, then hands the team to a system like 4DX.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">When it's thin, you see</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">WIG meetings with soft trade-offs; green scoreboards; misses that roll forward.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Fewer, braver bets; decisions with owners; a cadence where misses trigger action.</p></div>
-      </div>
-    </div>
-  </div>
+  <!-- COMPARISON TABLE (semantic) -->
+  <ComparisonTable
+    heading="Where each one lives"
+    competitor="4DX"
+    rows={[
+      { attr: "What it governs", a: "The mechanics of execution: the goal, the measures, the scoreboard, the weekly cadence.", b: "The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns." },
+      { attr: "It assumes", a: "That you can already pick the right goal, decide fast, and enforce a standard.", b: "Nothing &mdash; it builds those capacities, then hands the team to a system like 4DX." },
+      { attr: "When it&rsquo;s thin, you see", a: "WIG meetings with soft trade-offs; green scoreboards; misses that roll forward.", b: "Fewer, braver bets; decisions with owners; a cadence where misses trigger action." },
+    ]}
+  />
 
   <!-- THE GAP -->
   <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">

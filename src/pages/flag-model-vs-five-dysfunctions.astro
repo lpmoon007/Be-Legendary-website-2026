@@ -4,6 +4,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = "Flag Model vs the Five Dysfunctions of a Team | Be Legendary";
@@ -55,27 +56,16 @@ const schema = [
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Doing Lencioni's work takes real courage. Sitting a team down to name the absence of trust, to invite conflict instead of avoiding it &mdash; most leaders never go there. You did. The honest catch nobody warns you about: team health is a <em>state</em>, not a system. Without something to hold it in place, the candor you unlocked fades back toward comfort within a quarter.</p>
   </div>
 
-  <!-- TABLE -->
-  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
-    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Social contract, meet operating contract</h2>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">What it builds</p>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Five Dysfunctions</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Trust &rarr; conflict &rarr; commitment &rarr; accountability &rarr; results. How the team relates.</p></div>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Decisions, focus, standards, learning &mdash; with owners and cadence. How the team operates.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">How it's measured</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Self-report and facilitation &mdash; largely qualitative.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Observable signals: decision latency, rework, broken commitments &mdash; tracked.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">Best at</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Unsticking a new or fractured team; an offsite reset; rebuilding candor fast.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Making that candor durable &mdash; converting norms into repeatable execution.</p></div>
-      </div>
-    </div>
-  </div>
+  <!-- COMPARISON TABLE (semantic) -->
+  <ComparisonTable
+    heading="Social contract, meet operating contract"
+    competitor="Five Dysfunctions"
+    rows={[
+      { attr: "What it builds", a: "Trust &rarr; conflict &rarr; commitment &rarr; accountability &rarr; results. How the team relates.", b: "Decisions, focus, standards, learning &mdash; with owners and cadence. How the team operates." },
+      { attr: "How it&rsquo;s measured", a: "Self-report and facilitation &mdash; largely qualitative.", b: "Observable signals: decision latency, rework, broken commitments &mdash; tracked." },
+      { attr: "Best at", a: "Unsticking a new or fractured team; an offsite reset; rebuilding candor fast.", b: "Making that candor durable &mdash; converting norms into repeatable execution." },
+    ]}
+  />
 
   <!-- THE GAP -->
   <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">

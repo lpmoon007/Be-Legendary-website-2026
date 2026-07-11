@@ -4,6 +4,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Flag Model vs OKRs: A Scoreboard Isn’t a System';
@@ -55,27 +56,16 @@ const schema = [
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you rolled out OKRs, you did something most teams dodge: you made your goals measurable and public, where everyone could see whether you hit them. That takes nerve. The one thing OKRs can&rsquo;t supply is the leadership behavior that turns a key result from red to green &mdash; and when that behavior is thin, OKRs simply document the miss with great precision.</p>
   </div>
 
-  <!-- TABLE -->
-  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
-    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Where each one lives</h2>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">What it governs</p>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">OKRs</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Direction and measurement: the objectives, the key results, the alignment and the grade.</p></div>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">It assumes</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">That the team can already commit, own the trade-offs, and hold the line week to week.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Nothing &mdash; it builds those capacities, then hands the team to a system like OKRs.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">When it's thin, you see</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Sandbagged key results; objectives forgotten by week 3; grading theater at quarter end.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Fewer, braver objectives; owned trade-offs; a weekly bar where a red KR triggers action.</p></div>
-      </div>
-    </div>
-  </div>
+  <!-- COMPARISON TABLE (semantic) -->
+  <ComparisonTable
+    heading="Where each one lives"
+    competitor="OKRs"
+    rows={[
+      { attr: "What it governs", a: "Direction and measurement: the objectives, the key results, the alignment and the grade.", b: "The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns." },
+      { attr: "It assumes", a: "That the team can already commit, own the trade-offs, and hold the line week to week.", b: "Nothing &mdash; it builds those capacities, then hands the team to a system like OKRs." },
+      { attr: "When it&rsquo;s thin, you see", a: "Sandbagged key results; objectives forgotten by week 3; grading theater at quarter end.", b: "Fewer, braver objectives; owned trade-offs; a weekly bar where a red KR triggers action." },
+    ]}
+  />
 
   <!-- THE GAP -->
   <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">

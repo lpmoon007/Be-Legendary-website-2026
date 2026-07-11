@@ -4,6 +4,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = "Flag Model vs Executive Coaching | Be Legendary";
@@ -55,27 +56,16 @@ const schema = [
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Bringing in coaching says something good about you: you invest in growth, and you're willing to be coached yourself. That's the mark of a leader worth following. The distinction worth drawing is simply one of altitude &mdash; coaching works on the individual; some problems only live at the level of the team.</p>
   </div>
 
-  <!-- TABLE -->
-  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
-    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Two different altitudes</h2>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">Who it develops</p>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Executive coaching</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">One leader at a time &mdash; their growth, judgment and blind spots.</p></div>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The team as a unit &mdash; how it decides and executes together.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">Where the problem lives</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Inside the person &mdash; a habit, a fear, a skill to build.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Between people &mdash; decision rights, standards, commitments that don't stick.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">Reach for it when</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">A specific leader needs to grow into a bigger role.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Capable leaders can't decide, finish, or hold each other accountable as a group.</p></div>
-      </div>
-    </div>
-  </div>
+  <!-- COMPARISON TABLE (semantic) -->
+  <ComparisonTable
+    heading="Two different altitudes"
+    competitor="Executive coaching"
+    rows={[
+      { attr: "Who it develops", a: "One leader at a time &mdash; their growth, judgment and blind spots.", b: "The team as a unit &mdash; how it decides and executes together." },
+      { attr: "Where the problem lives", a: "Inside the person &mdash; a habit, a fear, a skill to build.", b: "Between people &mdash; decision rights, standards, commitments that don&rsquo;t stick." },
+      { attr: "Reach for it when", a: "A specific leader needs to grow into a bigger role.", b: "Capable leaders can&rsquo;t decide, finish, or hold each other accountable as a group." },
+    ]}
+  />
 
   <!-- THE GAP -->
   <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">

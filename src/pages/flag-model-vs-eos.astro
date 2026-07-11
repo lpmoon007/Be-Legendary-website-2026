@@ -4,6 +4,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Flag Model vs EOS / Traction: Why Rocks Roll Over';
@@ -55,27 +56,16 @@ const schema = [
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you ran your company on EOS, you already did the unglamorous thing most leaders avoid: you committed to structure, cadence, and accountability on purpose. That instinct is exactly right. The one thing EOS can't hand you is the leadership behavior it assumes you already have &mdash; and when that behavior is thin, even a disciplined system produces green Scorecards and Rocks that quietly roll to next quarter.</p>
   </div>
 
-  <!-- TABLE -->
-  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
-    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Where each one lives</h2>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">What it governs</p>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">EOS</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The structure of running the business: Rocks, the weekly Level 10, the Scorecard, the V/TO, roles.</p></div>
-        <div><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Flag Model</p><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">It assumes</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">That the team can already commit to Rocks, be honest in the room, and hold each other to account.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Nothing &mdash; it builds those capacities, then hands the team to a system like EOS.</p></div>
-      </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1fr 1fr;gap:18px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(244,240,231,0.45);align-self:center;">When it's thin, you see</p>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Too many Rocks; an IDS that discusses but won't decide; Rocks that roll to next quarter.</p></div>
-        <div><p style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.82);">Fewer, braver Rocks; issues that resolve with an owner; a cadence where misses trigger action.</p></div>
-      </div>
-    </div>
-  </div>
+  <!-- COMPARISON TABLE (semantic) -->
+  <ComparisonTable
+    heading="Where each one lives"
+    competitor="EOS"
+    rows={[
+      { attr: "What it governs", a: "The structure of running the business: Rocks, the weekly Level 10, the Scorecard, the V/TO, roles.", b: "The leadership behavior beneath it: how the team aligns, decides, holds a standard, and learns." },
+      { attr: "It assumes", a: "That the team can already commit to Rocks, be honest in the room, and hold each other to account.", b: "Nothing &mdash; it builds those capacities, then hands the team to a system like EOS." },
+      { attr: "When it&rsquo;s thin, you see", a: "Too many Rocks; an IDS that discusses but won&rsquo;t decide; Rocks that roll to next quarter.", b: "Fewer, braver Rocks; issues that resolve with an owner; a cadence where misses trigger action." },
+    ]}
+  />
 
   <!-- THE GAP -->
   <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
