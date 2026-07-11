@@ -32,6 +32,13 @@ export interface Props {
   bodyBg?: string;
   /** Override the last breadcrumb crumb (defaults to the title's leading phrase). */
   breadcrumbLabel?: string;
+  /**
+   * CSS selectors for the SpeakableSpecification on the WebPage node — the
+   * passages a voice assistant should read aloud. Defaults to the H1 plus any
+   * ".bl-speakable" element (the "short answer" box carries this class), which
+   * is the most TTS-worthy summary on a page. Pass [] to omit speakable.
+   */
+  speakable?: string[];
 }
 
 const {
@@ -46,6 +53,7 @@ const {
   noindex = false,
   bodyBg = '#15130E',
   breadcrumbLabel,
+  speakable = ['h1', '.bl-speakable'],
 } = Astro.props;
 
 const canonical = new URL(path, SITE_URL).href;
@@ -116,6 +124,9 @@ const webPage = {
   isPartOf: { '@id': WEBSITE_ID },
   primaryImageOfPage: { '@type': 'ImageObject', url: shareCard },
   ...(autoCrumb ? { breadcrumb: { '@id': autoCrumb['@id'] } } : {}),
+  ...(speakable && speakable.length
+    ? { speakable: { '@type': 'SpeakableSpecification', cssSelector: speakable } }
+    : {}),
 };
 const identityNodes = siteGraph ? [ORG_NODE, PERSON_NODE, WEBSITE_NODE, webPage] : [];
 const graphNodes = [...identityNodes, ...datedNodes, ...(autoCrumb ? [autoCrumb] : [])];
