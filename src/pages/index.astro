@@ -82,11 +82,15 @@ const homeLinks = [
     }
     .bl-hero-full__bg {
       position: absolute;
-      inset: 0;
-      width: 100%;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 74%;
       height: 100%;
       object-fit: cover;
-      object-position: 70% center;
+      object-position: center;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
+              mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
       z-index: 0;
     }
     .bl-hero-full__scrim {
@@ -108,7 +112,7 @@ const homeLinks = [
     .bl-hero-full__copy { max-width: 600px; }
     @media (max-width: 860px) {
       .bl-hero-full { min-height: auto; }
-      .bl-hero-full__bg { object-position: 72% center; }
+      .bl-hero-full__bg { width: 100%; object-position: 72% center; -webkit-mask-image: none; mask-image: none; }
       .bl-hero-full__scrim {
         background: linear-gradient(180deg, rgba(16,14,10,0.93) 0%, rgba(16,14,10,0.76) 42%, rgba(16,14,10,0.52) 72%, rgba(16,14,10,0.74) 100%);
       }
