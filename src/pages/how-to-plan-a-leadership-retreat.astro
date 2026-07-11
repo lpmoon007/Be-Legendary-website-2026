@@ -51,13 +51,25 @@ const schema = [
     </div>
   </header>
 
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#the-plan" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The plan, in order</a></li>
+        <li><a href="#organizing" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">If you&rsquo;re organizing it</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
   <!-- WHY MOST GET IT BACKWARD -->
   <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Most leadership retreats are planned the wrong way round. They start with the fun, visible decisions &mdash; the resort, the dinners, the ropes course &mdash; and the actual point of the two days gets bolted on at the end as &ldquo;strategy session, 9&ndash;11am.&rdquo; That&rsquo;s why so many of them feel great in the room and change nothing back at the office. A retreat is not an event you host; it&rsquo;s an <a href={SLUGS.whyNotExecuting} style="color:#D98A5E;">intervention you design</a>. Plan it in this order and it will actually move your team.</p>
   </div>
 
   <!-- THE STEPS -->
-  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+  <div id="the-plan" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">The plan, in order</p>
       <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.6;color:#3A372F;">
@@ -73,7 +85,7 @@ const schema = [
   </div>
 
   <!-- IF YOU'RE THE ONE ORGANIZING IT (EA connection) -->
-  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+  <div id="organizing" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">If you&rsquo;re the one organizing it</h2>
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Very often, the person searching &ldquo;how to plan a leadership retreat&rdquo; isn&rsquo;t the executive &mdash; it&rsquo;s the executive assistant or chief of staff who&rsquo;s been handed the whole thing with a date and a budget. If that&rsquo;s you: your leverage isn&rsquo;t in booking the nicest venue. It&rsquo;s in protecting steps one, four, and six &mdash; making sure someone owns the <em>outcome</em>, that the agenda is built around the real conversation, and that reinforcement is planned before everyone scatters. Nail those and you&rsquo;ll be the reason the retreat actually worked.</p>
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">You also don&rsquo;t have to carry the logistics alone. We run leadership retreats end to end &mdash; design, facilitation, venue, and the 30-day reinforcement &mdash; with a single point of contact, built specifically to make an EA&rsquo;s job easy. <a href={SLUGS.forExecutiveAssistants} style="color:#D98A5E;font-weight:600;">See how we work with executive assistants &rarr;</a></p>
@@ -89,7 +101,7 @@ const schema = [
   </div>
 
   <!-- STRAIGHT ANSWERS -->
-  <div style="max-width:920px;margin:56px auto 0;padding:0 32px;">
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
     <div style="display:flex;flex-direction:column;gap:22px;">
       <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do you plan a leadership retreat?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Start with one outcome, choose a format that serves it, pick a place that removes distraction, design the agenda around the hardest real conversation the team avoids, bring a neutral facilitator, and plan the 30-day reinforcement before anyone leaves. Logistics &mdash; venue, travel, meals &mdash; come last, not first.</p></div>

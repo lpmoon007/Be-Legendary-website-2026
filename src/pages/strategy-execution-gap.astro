@@ -51,13 +51,26 @@ const schema = [
     </div>
   </header>
 
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#why-it-fails" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Why good strategy fails</a></li>
+        <li><a href="#the-lens" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">A Flag &amp; four disciplines</a></li>
+        <li><a href="#diagnose" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Find where yours breaks</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
   <!-- WHAT IT IS -->
   <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Every leadership team has felt it. The offsite was good. The strategy was clear. Everyone nodded. And a quarter later the same three priorities are still &ldquo;in progress,&rdquo; the deck is a little embarrassing to reopen, and no one can quite say where the momentum went. That distance &mdash; between the strategy on the page and the results on the ground &mdash; is the strategy execution gap. Study after study puts it in the same range: most strategies never fully land, and the failure is almost never the strategy itself.</p>
   </div>
 
   <!-- WHY IT HAPPENS -->
-  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+  <div id="why-it-fails" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Why good strategy fails</h2>
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The reflex is to blame the plan &mdash; so teams re-plan. They run another offsite, hire another strategy firm, buy another operating system. And the gap survives all of it, because the gap was never in the plan. It&rsquo;s in the space between deciding and doing, and that space is governed by behavior, not by frameworks. When you look closely at a stalled team, the same four erosions show up almost every time:</p>
     <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
@@ -82,7 +95,7 @@ const schema = [
   </div>
 
   <!-- THE FLAG MODEL LENS -->
-  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+  <div id="the-lens" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The lens: a Flag, and four disciplines</h2>
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The <a href={SLUGS.flagModel} style="color:#D98A5E;">Flag Model</a> exists to name and rebuild exactly this. Picture a flag your whole team can march toward &mdash; the two or three priorities everything serves. That flag stays upright only if four disciplines hold it, and each one maps directly to a way the execution gap opens:</p>
     <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
@@ -107,7 +120,7 @@ const schema = [
   </div>
 
   <!-- DIAGNOSTIC -->
-  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+  <div id="diagnose" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Find where yours breaks first</p>
       <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">You don&rsquo;t fix all four at once. There is one discipline that has slipped furthest, and it&rsquo;s where your gap actually opens. Ask your team these four questions and watch which one gets the uncomfortable silence:</p>
@@ -131,7 +144,7 @@ const schema = [
   </div>
 
   <!-- STRAIGHT ANSWERS -->
-  <div style="max-width:920px;margin:56px auto 0;padding:0 32px;">
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
     <div style="display:flex;flex-direction:column;gap:22px;">
       <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What is the strategy execution gap?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">It&rsquo;s the distance between the strategy a leadership team sets and the work it actually delivers. It is not a planning problem &mdash; the plan is usually sound. It&rsquo;s a behavior problem: the disciplines that turn a decision into finished work erode quietly until the plan outpaces the doing.</p></div>

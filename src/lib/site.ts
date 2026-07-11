@@ -204,6 +204,7 @@ export const PERSON_NODE = {
     'https://www.linkedin.com/in/jlcarter/',
     'https://www.buildingteams.com/about/james-carter/',
     'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG',
+    'https://www.wikidata.org/wiki/Q140514540',
   ],
 };
 

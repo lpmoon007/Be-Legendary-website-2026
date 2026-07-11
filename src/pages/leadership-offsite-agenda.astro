@@ -51,13 +51,25 @@ const schema = [
     </div>
   </header>
 
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#template" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The two-day template</a></li>
+        <li><a href="#adapt" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Adapt it to your time</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
   <!-- PRINCIPLE -->
   <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">An agenda isn&rsquo;t a schedule of activities &mdash; it&rsquo;s the path to one outcome. Before you drop times into a calendar, finish this sentence: <em style="color:#F4F0E7;">&ldquo;This offsite worked if, thirty days later, ___ is different.&rdquo;</em> Then build backward. The template below is the structure we use; if you want the thinking behind each block, start with <a href={SLUGS.howToPlanRetreat} style="color:#D98A5E;">how to plan a leadership retreat</a>.</p>
   </div>
 
   <!-- THE TEMPLATE -->
-  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+  <div id="template" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">Copy this &mdash; two-day agenda</p>
       <p style="font-size:15px;line-height:1.6;color:#5A5248;margin-bottom:26px;">For a leadership team of 5&ndash;12. Times are a guide; protect the blocks in bold.</p>
@@ -91,7 +103,7 @@ const schema = [
   </div>
 
   <!-- ADAPT -->
-  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+  <div id="adapt" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Adapt it to your time</h2>
     <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
       <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
@@ -116,7 +128,7 @@ const schema = [
   </div>
 
   <!-- STRAIGHT ANSWERS -->
-  <div style="max-width:920px;margin:56px auto 0;padding:0 32px;">
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
     <div style="display:flex;flex-direction:column;gap:22px;">
       <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What should a leadership offsite agenda include?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Five blocks: name the one outcome; reset alignment on the two or three priorities that matter; hold the honest conversation the team avoids; turn it into decisions with an owner and deadline each; and build the 30-day reinforcement before anyone leaves. Meals and logistics fill the gaps &mdash; they aren&rsquo;t the agenda.</p></div>
