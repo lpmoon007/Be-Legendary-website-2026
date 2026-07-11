@@ -69,32 +69,77 @@ const homeLinks = [
   <SiteHeader audience="teams" variant="full" maxWidth={1200} logoHref="#top" links={homeLinks} />
 
   <!-- HERO -->
-  <section id="top" class="bl-hero-pad" style="position:relative;max-width:1200px;margin:0 auto;padding:88px 32px 84px;">
-    <div style="position:absolute;top:-100px;right:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(192,74,38,0.20),transparent 62%);pointer-events:none;"></div>
-    <div class="bl-grid-collapse" style="position:relative;z-index:1;display:grid;grid-template-columns:1.02fr 0.98fr;gap:52px;align-items:center;">
-      <div>
+  <style>
+    .bl-hero-full {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      min-height: min(90vh, 880px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #100E0A;
+    }
+    .bl-hero-full__bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 70% center;
+      z-index: 0;
+    }
+    .bl-hero-full__scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(16,14,10,0.96) 0%, rgba(16,14,10,0.90) 26%, rgba(16,14,10,0.48) 54%, rgba(16,14,10,0.04) 76%),
+        linear-gradient(0deg, rgba(16,14,10,0.5) 0%, rgba(16,14,10,0) 42%);
+    }
+    .bl-hero-full__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 104px 32px;
+    }
+    .bl-hero-full__copy { max-width: 600px; }
+    @media (max-width: 860px) {
+      .bl-hero-full { min-height: auto; }
+      .bl-hero-full__bg { object-position: 72% center; }
+      .bl-hero-full__scrim {
+        background: linear-gradient(180deg, rgba(16,14,10,0.93) 0%, rgba(16,14,10,0.76) 42%, rgba(16,14,10,0.52) 72%, rgba(16,14,10,0.74) 100%);
+      }
+      .bl-hero-full__inner { padding: 72px 24px 84px; }
+      .bl-hero-full__copy { max-width: 100%; }
+    }
+  </style>
+  <section id="top" class="bl-hero-full">
+    <img
+      class="bl-hero-full__bg"
+      src="/assets/the-flag-model-hero.webp"
+      alt="The Flag Model — a rust-red flag held upright by four taut cables anchored into bedrock engraved Truth Over Comfort. The flag is a leadership team's two or three priorities; the four cables are the disciplines that hold them up."
+      width="1600" height="900" loading="eager" fetchpriority="high" decoding="async"
+    />
+    <div class="bl-hero-full__scrim"></div>
+    <div class="bl-hero-full__inner">
+      <div class="bl-hero-full__copy">
         <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:28px;">
           <span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive team performance
         </p>
-        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(40px,5.4vw,72px);line-height:1.02;letter-spacing:-0.025em;max-width:14ch;color:#FBF8F1;">
+        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(42px,5.8vw,80px);line-height:1.01;letter-spacing:-0.025em;max-width:15ch;color:#FBF8F1;text-shadow:0 2px 30px rgba(0,0,0,0.35);">
           Where is your executive team going to <span style="font-style:italic;color:#E0744A;">break first?</span>
         </h1>
-        <p style="margin-top:28px;font-size:clamp(17px,1.9vw,21px);line-height:1.55;max-width:46ch;color:rgba(244,240,231,0.80);font-weight:400;">
+        <p style="margin-top:30px;font-size:clamp(17px,1.95vw,22px);line-height:1.55;max-width:48ch;color:rgba(244,240,231,0.86);font-weight:400;">
           You've already bought the offsite, the framework, the coach. Behavior didn't change. Here's the part no one will tell you: there is no single fix &mdash; but there <em style="font-style:italic;color:#F4F0E7;">is</em> a place your team breaks first, and it's findable.
         </p>
-        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+        <div style="margin-top:38px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
           <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
-          <a href="#model" style="border:1px solid rgba(244,240,231,0.26);color:#F4F0E7;text-decoration:none;padding:17px 28px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.26)'">See where teams break</a>
+          <a href="#model" style="border:1px solid rgba(244,240,231,0.32);color:#F4F0E7;text-decoration:none;padding:17px 28px;border-radius:11px;font-weight:600;font-size:16px;backdrop-filter:blur(2px);" onmouseover="this.style.borderColor='rgba(244,240,231,0.65)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.32)'">See where teams break</a>
         </div>
-        <p style="margin-top:18px;font-size:13.5px;color:rgba(244,240,231,0.55);max-width:34ch;line-height:1.4;">15 minutes. You leave with a concrete read on your team &mdash; work with us or not.</p>
-      </div>
-      <div style="position:relative;">
-        <img
-          src="/assets/the-flag-model-hero.webp"
-          alt="The Flag Model — a rust-red flag held upright by four taut cables anchored into bedrock engraved Truth Over Comfort. The flag is a leadership team's two or three priorities; the four cables are the disciplines that hold them up."
-          width="1600" height="900" loading="eager" fetchpriority="high" decoding="async"
-          style="width:100%;height:auto;display:block;border-radius:20px;border:1px solid rgba(244,240,231,0.12);box-shadow:0 34px 90px -34px rgba(0,0,0,0.75);"
-        />
+        <p style="margin-top:18px;font-size:13.5px;color:rgba(244,240,231,0.6);max-width:34ch;line-height:1.4;">15 minutes. You leave with a concrete read on your team &mdash; work with us or not.</p>
       </div>
     </div>
   </section>
