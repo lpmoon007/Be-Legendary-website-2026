@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../lib/site';
 
 const path = SLUGS.whatIsMisogi;
@@ -115,6 +116,7 @@ const schema = [
           <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">How is a misogi different from a New Year's resolution?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">A resolution is a habit you hope to sustain. A misogi is a single, defining ordeal with a real chance of failure. One reshapes your routine; the other reshapes your self-image in a day.</p></div>
         </div>
       </section>
+      <ArticleEndCTA maxWidth={820} />
       <ShareRow title={title} maxWidth={820} />
 </article>
   </div>

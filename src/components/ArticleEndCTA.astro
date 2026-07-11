@@ -1,0 +1,29 @@
+---
+// End-of-article block: an "About the author" box (E-E-A-T + human trust) plus
+// the Field Notes email capture (HubSpot newsletter form). Dropped in just above
+// the ShareRow on article/guide pages.
+import { Image } from 'astro:assets';
+import NewsletterSignup from './NewsletterSignup.astro';
+import { SLUGS } from '../lib/site';
+import james from '../assets/james.jpg';
+export interface Props {
+  /** Match the article body width (920 default; 820 for the For-Leaders pages). */
+  maxWidth?: number;
+}
+const { maxWidth = 920 } = Astro.props;
+---
+<div style={`max-width:${maxWidth}px;margin:56px auto 0;padding:0 32px;`}>
+  <!-- About the author -->
+  <div style="display:flex;gap:22px;align-items:center;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:24px 26px;flex-wrap:wrap;">
+    <Image src={james} alt="James Carter, founder of Be Legendary" width={160} height={160} format="webp" quality={80} loading="lazy" style="width:74px;height:74px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none;" />
+    <div style="flex:1;min-width:250px;">
+      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;margin-bottom:6px;">About the author</p>
+      <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;margin-bottom:7px;">James Carter</p>
+      <p style="font-size:14.5px;line-height:1.62;color:rgba(244,240,231,0.74);">Founder of Be Legendary and creator of the Flag Model&trade;. Twenty-five years inside executive teams; co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra &amp; Brian Tracy, and featured on CNN and in Business Insider. <a href={SLUGS.about} style="color:#D98A5E;font-weight:600;white-space:nowrap;">More about James &rarr;</a></p>
+    </div>
+  </div>
+  <!-- Field Notes email capture -->
+  <div style="margin-top:18px;">
+    <NewsletterSignup />
+  </div>
+</div>

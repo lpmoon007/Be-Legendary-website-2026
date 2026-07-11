@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
 import { SLUGS, PERSON_ID, ORG_ID } from '../../lib/site';
 
 const title = 'The Golden Buddha: The Clay We Let Cover Our Gold';
@@ -94,6 +95,7 @@ const schema = [
       </a>
     </div>
   </div>
+    <ArticleEndCTA maxWidth={820} />
     <ShareRow title={title} maxWidth={820} />
 </article>
 

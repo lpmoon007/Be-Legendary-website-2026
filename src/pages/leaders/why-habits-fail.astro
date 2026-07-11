@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
 
 const path = SLUGS.whyHabitsFail;
@@ -118,6 +119,7 @@ const schema = [
           <a href={SLUGS.implementationIntentions} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">Implementation intentions</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Pre-decide the moment you'll act.</span></a>
         </div>
       </section>
+      <ArticleEndCTA maxWidth={820} />
       <ShareRow title={title} maxWidth={820} />
 </article>
   </div>
