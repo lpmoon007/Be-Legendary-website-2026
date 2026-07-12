@@ -73,6 +73,7 @@ export const SLUGS = {
   strategyExecutionGap: '/strategy-execution-gap/',
   howToPlanRetreat: '/how-to-plan-a-leadership-retreat/',
   offsiteAgenda: '/leadership-offsite-agenda/',
+  executiveOffsite: '/how-to-plan-an-executive-offsite/',
   // ── For Leaders universe (individual-leader development) ──────────────────
   // /leaders/ is the canonical home. The 4 concept pages migrated from /library/
   // (design intent), with 301s in public/.htaccess.
