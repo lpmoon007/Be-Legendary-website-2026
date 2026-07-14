@@ -22,6 +22,8 @@ export function SignupFlow() {
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Outcome of step 2: did they opt in to texts or decline?
+  const [outcome, setOutcome] = useState<"enrolled" | "declined" | null>(null);
 
   const commitment =
     choice === CUSTOM ? custom.trim() : choice ?? "";
@@ -30,8 +32,10 @@ export function SignupFlow() {
     (choice !== null && choice !== CUSTOM) ||
     (choice === CUSTOM && custom.trim().length > 3);
 
+  // Consent is NOT required to submit — SMS opt-in is optional (A2P compliance).
+  // You can complete the form and use Be Legendary without agreeing to texts.
   const step2Valid =
-    firstName.trim().length > 0 && digitCount(phone) >= 10 && consent;
+    firstName.trim().length > 0 && digitCount(phone) >= 10;
 
   function reset() {
     setStep(1);
@@ -41,10 +45,20 @@ export function SignupFlow() {
     setPhone("");
     setConsent(false);
     setError(null);
+    setOutcome(null);
   }
 
   async function submit() {
     setError(null);
+
+    // Declined texts → complete the form without enrolling in SMS. No number is
+    // stored for messaging; they can still use Be Legendary's other services.
+    if (!consent) {
+      setOutcome("declined");
+      setStep(3);
+      return;
+    }
+
     setSubmitting(true);
     try {
       const timezone =
@@ -65,6 +79,7 @@ export function SignupFlow() {
         setError(data.error ?? "Something went wrong. Please try again.");
         return;
       }
+      setOutcome("enrolled");
       setStep(3);
     } catch {
       setError("Network error. Please try again.");
@@ -158,7 +173,7 @@ export function SignupFlow() {
               />
             </label>
 
-            <label className="flex cursor-pointer items-start gap-3">
+            <label className="flex cursor-pointer items-start gap-3 rounded-btn border border-ink-muted/25 bg-white/60 p-3">
               <input
                 type="checkbox"
                 checked={consent}
@@ -166,11 +181,14 @@ export function SignupFlow() {
                 className="mt-1 h-4 w-4 accent-[#C04A26]"
               />
               <span className="text-xs leading-relaxed text-ink-muted">
+                <span className="font-700 text-ink-body">
+                  Optional — text me my daily challenge.
+                </span>{" "}
                 I agree to receive recurring automated text messages from Be
-                Legendary at the number provided — my daily challenge, about 30
-                messages over 30 days. Consent is not a condition of any
-                purchase. Msg &amp; data rates may apply. Reply STOP to cancel,
-                HELP for help. See our{" "}
+                Legendary at the number provided (my daily challenge, about 30
+                messages over 30 days). This is optional and not required to use
+                Be Legendary or to complete this form. Msg &amp; data rates may
+                apply. Reply STOP to cancel, HELP for help. See our{" "}
                 <a
                   href="/terms"
                   target="_blank"
@@ -189,6 +207,10 @@ export function SignupFlow() {
                 .
               </span>
             </label>
+            <p className="text-xs text-ink-muted">
+              The challenge is delivered by text, so check the box above if
+              you&apos;d like to receive it. You can continue either way.
+            </p>
           </div>
 
           {error && (
@@ -204,13 +226,13 @@ export function SignupFlow() {
               disabled={!step2Valid || submitting}
               onClick={submit}
             >
-              {submitting ? "Enrolling…" : "Begin →"}
+              {submitting ? "Enrolling…" : consent ? "Begin →" : "Continue →"}
             </button>
           </div>
         </div>
       )}
 
-      {step === 3 && (
+      {step === 3 && outcome === "enrolled" && (
         <div className="mt-6 text-center">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent/10 text-2xl">
             ✦
@@ -235,6 +257,40 @@ export function SignupFlow() {
           >
             Start a different challenge
           </button>
+        </div>
+      )}
+
+      {step === 3 && outcome === "declined" && (
+        <div className="mt-6 text-center">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-ink-muted/15 text-2xl">
+            ✦
+          </div>
+          <h3 className="mt-4 font-serif text-3xl font-500 text-ink-heading">
+            No texts — all good.
+          </h3>
+          <p className="mt-2 text-ink-body">
+            You didn&apos;t opt in to messages, so we won&apos;t text you and
+            haven&apos;t saved your number. The challenge is delivered by text —
+            if you&apos;d like it, just opt in.
+          </p>
+
+          <div className="mt-6 flex flex-col items-center gap-3">
+            <button
+              onClick={() => {
+                setOutcome(null);
+                setStep(2);
+              }}
+              className="btn-cta"
+            >
+              ← Opt in and start
+            </button>
+            <a
+              href="https://www.belegendary.org/"
+              className="text-sm font-600 text-accent underline-offset-4 hover:underline"
+            >
+              Explore Be Legendary instead →
+            </a>
+          </div>
         </div>
       )}
     </div>
