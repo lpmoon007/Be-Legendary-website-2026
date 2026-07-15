@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Leadership Team Meeting Agenda Template (Copy-Ready)';
+const description =
+  'A leadership team meeting agenda template you can copy — a proven weekly 90-minute structure that reviews the priorities, holds accountability, and ends every meeting with owned decisions instead of status updates.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Leadership Team Meeting Agenda Template', item: 'https://www.belegendary.org/leadership-team-meeting-agenda/' },
+  ] },
+  { '@type': 'Article', headline: 'Leadership team meeting agenda template (with a weekly 90-minute example)', datePublished: '2026-07-12', dateModified: '2026-07-12', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/leadership-team-meeting-agenda/', description: 'A copy-ready weekly leadership team meeting agenda: check-in, the Flag and metrics, accountability review, one hard issue solved to a decision, new commitments, and a close.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What should be on a leadership team meeting agenda?', acceptedAnswer: { '@type': 'Answer', text: 'A strong weekly leadership team meeting agenda has six blocks: a fast check-in; a review of the Flag (the 2–3 priorities) and the key metrics; an accountability review of last week’s commitments; the core block — surface and actually decide the one hardest issue; assign new commitments with an owner and deadline; and a short close. The bulk of the time goes to deciding one hard thing, not reporting status.' } },
+    { '@type': 'Question', name: 'How long should a leadership team meeting be?', acceptedAnswer: { '@type': 'Answer', text: 'About 90 minutes for a weekly leadership team meeting. That is enough to review the metrics, hold accountability, and solve one real issue to a decision — without turning into a status marathon. If you need more than 90 minutes every week, the meeting has usually absorbed work that belongs in a decision or a smaller group.' } },
+    { '@type': 'Question', name: 'How often should a leadership team meet?', acceptedAnswer: { '@type': 'Answer', text: 'Weekly for the operating rhythm, plus a longer monthly or quarterly session for strategy and review. A consistent weekly cadence is what turns decisions into finished work; skipping it is how priorities drift and commitments quietly lapse.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.meetingAgenda}
+  ogType="article"
+  ogTitle="Leadership Team Meeting Agenda Template (Copy-Ready)"
+  ogDescription="A proven weekly 90-minute agenda that reviews priorities, holds accountability, and ends in owned decisions — not status updates."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Leadership Team Meeting Agenda Template</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Template</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Leadership team meeting agenda template</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A weekly leadership team meeting agenda should run six blocks, in order: a fast <strong>check-in</strong>, a review of the <strong>Flag and metrics</strong>, an <strong>accountability review</strong> of last week&rsquo;s commitments, the core block &mdash; <strong>solve one hard issue to a real decision</strong> &mdash; <strong>new commitments</strong> (owner + deadline), and a short <strong>close</strong>. Most of the 90 minutes goes to deciding one thing, not reporting status. Below is a copy-ready version &mdash; adapt the blocks, not the order.</p>
+    </div>
+  </header>
+
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#template" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The weekly template</a></li>
+        <li><a href="#adapt" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Adapt it to your time</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- PRINCIPLE -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Most leadership team meetings are status meetings in disguise &mdash; everyone reports, nobody decides, and the real issue gets &ldquo;taken offline&rdquo; every week until it&rsquo;s a crisis. A good agenda fixes that by design: it protects the time for the one conversation that actually moves the business and forces it to end in a decision. The template below is the weekly operating rhythm we install; if you want the reasoning behind running it, start with <a href={SLUGS.executiveTeamMeeting} style="color:#D98A5E;">how to run an executive team meeting</a>.</p>
+  </div>
+
+  <!-- THE TEMPLATE -->
+  <div id="template" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">Copy this &mdash; weekly 90-minute agenda</p>
+      <p style="font-size:15px;line-height:1.6;color:#5A5248;margin-bottom:26px;">For a leadership team of 5&ndash;12. Times are a guide; protect the blocks in bold &mdash; especially the issue.</p>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+        <li style="display:flex;gap:16px;"><span style="flex:none;width:64px;font-weight:700;color:#C04A26;font-size:14.5px;">5 min</span><span style="font-size:15.5px;line-height:1.55;color:#3A372F;"><strong>Check-in &amp; headlines.</strong> One sentence each: the single most important thing on your plate, and any headline the team must hear. No discussion &mdash; just get it in the room.</span></li>
+        <li style="display:flex;gap:16px;"><span style="flex:none;width:64px;font-weight:700;color:#C04A26;font-size:14.5px;">15 min</span><span style="font-size:15.5px;line-height:1.55;color:#3A372F;"><strong>The Flag &amp; the metrics.</strong> Are we still on the 2&ndash;3 priorities that matter? Walk the handful of numbers that show whether the priorities are moving. Off-track numbers become issues below &mdash; don&rsquo;t solve them here.</span></li>
+        <li style="display:flex;gap:16px;"><span style="flex:none;width:64px;font-weight:700;color:#C04A26;font-size:14.5px;">10 min</span><span style="font-size:15.5px;line-height:1.55;color:#3A372F;"><strong>Accountability review.</strong> Every commitment from last week: done or not done &mdash; binary, no essays. A miss isn&rsquo;t a crime; a miss with no follow-up is. Anything unresolved becomes a new commitment or an issue.</span></li>
+        <li style="display:flex;gap:16px;"><span style="flex:none;width:64px;font-weight:700;color:#C04A26;font-size:14.5px;">45 min</span><span style="font-size:15.5px;line-height:1.55;color:#3A372F;"><strong>The issue &mdash; solve one thing to a decision.</strong> This is the meeting. Pick the single most important issue, surface the real disagreement, and drive it to a decision with an owner &mdash; not a &ldquo;let&rsquo;s discuss more.&rdquo; One issue truly closed beats five discussed.</span></li>
+        <li style="display:flex;gap:16px;"><span style="flex:none;width:64px;font-weight:700;color:#C04A26;font-size:14.5px;">10 min</span><span style="font-size:15.5px;line-height:1.55;color:#3A372F;"><strong>New commitments &amp; cascade.</strong> Read back every decision made. Each gets one owner and a deadline. Agree what the team communicates out, and to whom, before anyone leaves.</span></li>
+        <li style="display:flex;gap:16px;"><span style="flex:none;width:64px;font-weight:700;color:#C04A26;font-size:14.5px;">5 min</span><span style="font-size:15.5px;line-height:1.55;color:#3A372F;"><strong>Close.</strong> One word or one sentence each on the meeting itself &mdash; useful or not, and why. It keeps the meeting honest and improving.</span></li>
+      </ul>
+      <p style="font-size:15px;line-height:1.6;color:#5A5248;margin-top:22px;font-style:italic;">The ratio is the whole point: half the meeting on deciding one issue, not on going around the table.</p>
+    </div>
+  </div>
+
+  <!-- ADAPT -->
+  <div id="adapt" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Adapt it to your time</h2>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">60 minutes</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">Trim the check-in and metrics to five minutes each and keep the issue block at 35&ndash;40. Protect the decision time above all else; compress everything around it.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Monthly / quarterly</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">Keep the weekly running, and add a longer session for strategy and review. For the offsite version of that, use the <a href={SLUGS.offsiteAgenda} style="color:#D98A5E;">leadership offsite agenda template</a>.</p>
+      </div>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-top:24px;">Whatever the length, the block to defend is the issue. A leadership team meeting that never reaches a decision is why the same problems <a href={SLUGS.noAccountability} style="color:#D98A5E;">keep coming back</a> &mdash; and why a smart team can feel busy without moving.</p>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Want your weekly meeting to actually move the business?</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. Tell us what your leadership meeting looks like now and we&rsquo;ll show you where it&rsquo;s leaking &mdash; and the one change that turns status into decisions &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What should be on a leadership team meeting agenda?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Six blocks: a fast check-in; a review of the Flag (the 2&ndash;3 priorities) and the key metrics; an accountability review of last week&rsquo;s commitments; the core block &mdash; surface and decide the one hardest issue; new commitments with an owner and deadline; and a short close. Most of the time goes to deciding one thing, not reporting status.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How long should a leadership team meeting be?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">About 90 minutes weekly &mdash; enough to review the metrics, hold accountability, and solve one real issue to a decision without becoming a status marathon. If you need more than 90 minutes every week, the meeting has usually absorbed work that belongs in a decision or a smaller group.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How often should a leadership team meet?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Weekly for the operating rhythm, plus a longer monthly or quarterly session for strategy and review. A consistent weekly cadence is what turns decisions into finished work; skipping it is how priorities drift and commitments quietly lapse.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.executiveTeamMeeting} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to run an executive team meeting</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The reasoning behind every block of this agenda.</span>
+      </a>
+      <a href={SLUGS.offsiteAgenda} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Leadership offsite agenda template</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The longer session for strategy and reset.</span>
+      </a>
+      <a href={SLUGS.decisionMaking} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Executive team decision-making</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">How to drive the issue block to a real decision.</span>
+      </a>
+      <a href={SLUGS.noAccountability} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Why there&rsquo;s no accountability</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">What the accountability-review block is built to fix.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. A meeting is where decisions get made, not reported." />
+</BaseLayout>
