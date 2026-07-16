@@ -97,6 +97,10 @@ const schema = [
   <!-- USE IT -->
   <div style="max-width:920px;margin:0 auto;padding:14px 32px 8px;">
     <p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">How to use it: pick the trait you want to build in someone, ask one question, then <em style="color:#F4F0E7;">stay quiet</em>. The power isn&rsquo;t in the question &mdash; it&rsquo;s in resisting the urge to answer it for them. Hand the problem back and let them carry it.</p>
+    <div style="margin-top:18px;">
+      <button id="cq-download" class="bl-tap" style="display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 26px;border-radius:11px;font-weight:700;font-size:15.5px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Download the cheat sheet (PDF) <span style="font-size:17px;">&darr;</span></button>
+      <p style="margin-top:10px;font-size:13px;color:rgba(244,240,231,0.45);">Free &middot; no email required &middot; print it and keep it where you have your 1-on-1s.</p>
+    </div>
   </div>
 
   <!-- THE THREE TRAITS -->
@@ -208,4 +212,124 @@ const schema = [
       }
     });
   });
+
+  // ── Branded, copyrighted PDF cheat sheet (jsPDF, drawn directly) ──
+  const PDF_TRAITS = [
+    { name: 'Initiative', sub: 'Push them to act without permission.',
+      tell: 'Do they see the work that needs doing — or wait to be told?',
+      qs: [
+        'What’s your next step?',
+        'If you weren’t waiting on me, what would you do first?',
+        'What’s one decision you can make right now without me?',
+        'If this were yours alone, how would you handle it?',
+        'What’s the first thing you can do today to move this forward?',
+      ] },
+    { name: 'Applied Grit', sub: 'Build resilience and follow-through.',
+      tell: 'Do they push through when it gets tough — or stall out?',
+      qs: [
+        'What’s one piece you can finish today that moves this forward?',
+        'If this feels heavy, what can you break off and tackle first?',
+        'What’s the next hard part you’re willing to stick with?',
+        'What’s slowing you down most right now — and how will you push through it?',
+        'What would finishing this look like if you had half the time?',
+      ] },
+    { name: 'Learnability', sub: 'Turn every step into growth.',
+      tell: 'Do they grow from each challenge — or just repeat mistakes?',
+      qs: [
+        'What did you learn that you’ll do differently next time?',
+        'What feedback have you acted on recently — and what changed because of it?',
+        'What’s one thing you tried this month that didn’t work — and what did it teach you?',
+        'Whose perspective could you ask for on this to sharpen your approach?',
+        'What skill are you picking up now that will matter most six months from today?',
+      ] },
+  ];
+
+  async function downloadCheatSheet() {
+    const { jsPDF } = await import('jspdf');
+    const SITE = 'https://www.belegendary.org';
+    const INK: [number, number, number] = [27, 24, 16];
+    const TERRA: [number, number, number] = [192, 74, 38];
+    const DEEP: [number, number, number] = [158, 58, 28];
+    const MUTED: [number, number, number] = [86, 82, 71];
+    const FAINT: [number, number, number] = [138, 133, 120];
+
+    const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+    const W = doc.internal.pageSize.getWidth();
+    const PH = doc.internal.pageSize.getHeight();
+    const M = 56, CW = W - M * 2, BOTTOM = PH - 56;
+    let y = M;
+
+    const ensure = (h: number) => { if (y + h > BOTTOM) { doc.addPage(); y = M; } };
+    const para = (text: string, o: { size?: number; color?: [number, number, number]; style?: string; gap?: number; lh?: number; x?: number; width?: number } = {}) => {
+      const size = o.size ?? 10.5, lh = o.lh ?? size * 1.45, x = o.x ?? M, width = o.width ?? CW;
+      doc.setFont('helvetica', o.style ?? 'normal'); doc.setFontSize(size);
+      doc.setTextColor(...(o.color ?? MUTED));
+      (doc.splitTextToSize(text, width) as string[]).forEach((ln) => { ensure(lh); doc.text(ln, x, y); y += lh; });
+      y += o.gap ?? 9;
+    };
+    const eyebrow = (label: string) => { ensure(16); doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT); doc.text(label, M, y); y += 16; };
+    const heading = (label: string) => { ensure(46); y += 8; doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 19; doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor(...INK); doc.text(label, M, y); y += 18; };
+    const linkCTA = (label: string, url: string) => { ensure(18); doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...TERRA); doc.textWithLink(label, M, y, { url }); y += 20; };
+
+    // Header — logo mark + wordmark (left), sheet label + date (right)
+    const boxSize = 24, cy = y + boxSize / 2;
+    doc.setFillColor(...TERRA); doc.roundedRect(M, y, boxSize, boxSize, 5, 5, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.setTextColor(255, 255, 255); doc.text('B', M + boxSize / 2, cy + 5.2, { align: 'center' });
+    doc.setFontSize(12); doc.setTextColor(...INK); doc.text('BE LEGENDARY', M + boxSize + 11, cy + 4);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...TERRA); doc.text('LEADERSHIP COACHING CHEAT SHEET', W - M, cy - 1.5, { align: 'right' });
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(...FAINT);
+    doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), W - M, cy + 10, { align: 'right' });
+    y += boxSize + 18;
+    doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 26;
+
+    // Title + intro
+    eyebrow('THE TRAITS THAT ACTUALLY PREDICT LEADERSHIP');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(23); doc.setTextColor(...INK); doc.text('Stop guessing. Start coaching.', M, y); y += 22;
+    para('Most leaders coach skills and ignore the behaviors that make or break a person under pressure. These 15 questions coach the three traits that separate future leaders from future headaches. Each takes under a minute — in a 1-on-1, a check-in, or a hallway conversation. Ask one, then stay quiet: the power is in resisting the urge to answer it for them.', { size: 11, lh: 15.5, gap: 10 });
+
+    // Three traits
+    PDF_TRAITS.forEach((t) => {
+      heading(t.name);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...DEEP);
+      (doc.splitTextToSize(`${t.sub}  ${t.tell}`, CW) as string[]).forEach((ln) => { ensure(14); doc.text(ln, M, y); y += 14; });
+      y += 8;
+      t.qs.forEach((q) => {
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...TERRA);
+        const lines = doc.splitTextToSize(`"${q}"`, CW - 16) as string[];
+        ensure(lines.length * 14 + 4);
+        doc.text('•', M, y); doc.setTextColor(...INK);
+        lines.forEach((ln, li) => { doc.text(ln, M + 14, y); if (li < lines.length - 1) y += 14; });
+        y += 16;
+      });
+      y += 4;
+    });
+
+    // Next steps
+    heading('Take it further');
+    para('See these three traits scored across your whole team — a color-coded view of who’s ready to lead, before you have to guess:', { size: 10.5, lh: 14.5, gap: 4 });
+    linkCTA('See what Prove measures — provecq.com', 'https://provecq.com');
+    para('Not sure your own leadership is building the team or bottlenecking it? Take the free Leadership Scorecard:', { size: 10.5, lh: 14.5, gap: 4 });
+    linkCTA('Take the Leadership Scorecard — belegendary.org/leadership-scorecard/', `${SITE}/leadership-scorecard/`);
+    para('Want a second set of eyes on the person you’re developing? A free 15-minute Calibration Call:', { size: 10.5, lh: 14.5, gap: 4 });
+    linkCTA('Book a Calibration Call — meetings.hubspot.com/jcarter28', 'https://meetings.hubspot.com/jcarter28');
+
+    // Footer + copyright on every page
+    const year = new Date().getFullYear();
+    const pages = doc.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+      doc.setPage(i);
+      const fy = PH - 34;
+      doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, fy, W - M, fy);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
+      doc.text(`© ${year} Be Legendary. All rights reserved.  ·  belegendary.org  ·  800-513-8759`, M, fy + 13);
+      doc.text(`${i} / ${pages}`, W - M, fy + 13, { align: 'right' });
+    }
+
+    doc.save('Be-Legendary-Leadership-Coaching-Cheat-Sheet.pdf');
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'download_cheat_sheet', { asset: 'leadership_coaching' });
+    }
+  }
+
+  document.getElementById('cq-download')!.addEventListener('click', () => { downloadCheatSheet(); });
 </script>
