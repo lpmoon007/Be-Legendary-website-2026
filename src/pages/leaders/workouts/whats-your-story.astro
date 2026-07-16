@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
 import MwComplete from '../../../components/MwComplete.astro';
 import MwCommitment from '../../../components/MwCommitment.astro';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
@@ -179,6 +180,8 @@ const schema = [
     </article>
 
   </div>
+
+  <MwRelated current="whats-your-story" />
 
   <SiteFooter audience="leaders" variant="slim" />
 </BaseLayout>

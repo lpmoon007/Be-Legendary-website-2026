@@ -1,0 +1,33 @@
+---
+// "More workouts" cross-link rail. Deterministically shows the next few
+// workouts after `current` (wrapping), so every workout links to its siblings
+// — giving each page multiple internal links instead of just one from the gym.
+import { WORKOUT_META } from '../lib/workouts';
+import { workoutPath, SLUGS } from '../lib/site';
+
+export interface Props {
+  current: string;
+  count?: number;
+}
+const { current, count = 3 } = Astro.props;
+
+const idx = WORKOUT_META.findIndex((w) => w.slug === current);
+const start = idx < 0 ? 0 : idx;
+const picks = Array.from({ length: count }, (_, k) =>
+  WORKOUT_META[(start + k + 1) % WORKOUT_META.length]
+).filter((w) => w.slug !== current);
+---
+<section style="max-width:900px;margin:0 auto;padding:56px 32px 12px;">
+  <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">More workouts</p>
+  <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+    {picks.map((w) => (
+      <a href={workoutPath(w.slug)} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:19px;line-height:1.2;color:#FBF8F1;display:block;">{w.title}</span>
+        <span style="display:block;margin-top:8px;font-size:14px;color:rgba(244,240,231,0.66);line-height:1.5;">{w.blurb}</span>
+      </a>
+    ))}
+  </div>
+  <div style="margin-top:18px;">
+    <a href={SLUGS.workouts} style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;text-decoration:none;font-weight:700;font-size:15px;">Back to the gym — browse all workouts &rarr;</a>
+  </div>
+</section>
