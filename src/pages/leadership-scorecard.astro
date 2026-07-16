@@ -14,7 +14,6 @@ const schema = [
     { '@type': 'ListItem', position: 2, name: 'For Leaders', item: 'https://www.belegendary.org/leaders/' },
     { '@type': 'ListItem', position: 3, name: 'Leadership Scorecard', item: 'https://www.belegendary.org/leadership-scorecard/' },
   ] },
-  { '@type': 'WebApplication', name: 'Leadership Scorecard', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, description: 'A free 10-question leadership self-assessment that produces an on-screen Leadership Health Score across five categories, plus the leader’s top three growth areas.', publisher: { '@id': 'https://www.belegendary.org/#org' } },
   { '@type': 'FAQPage', mainEntity: [
     { '@type': 'Question', name: 'How do I know if my leadership is building my team or holding it back?', acceptedAnswer: { '@type': 'Answer', text: 'Assess yourself honestly across five categories: are you developing your top talent, building systems instead of relying on heroic effort, coaching rather than commanding, leading sustainably, and keeping and growing the right people? Where you score lowest is where your leadership most likely bottlenecks the team. This free ten-question scorecard produces that read in about four minutes.' } },
     { '@type': 'Question', name: 'What is a good Leadership Health Score?', acceptedAnswer: { '@type': 'Answer', text: 'On this 10-to-50 scorecard, 40–50 is a High-Performing Leader (strong systems, culture, and talent development), 30–39 is Growth-Ready (on track with real gaps), 20–29 is a Bottleneck Leader (the business leans too heavily on you), and 10–19 is At Risk (the current pace is not sustainable). The number matters less than the lowest category — that is where to start.' } },
@@ -32,6 +31,7 @@ const schema = [
     <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Free &middot; 4 minutes &middot; no email to see your result</p>
     <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,62px);line-height:1.02;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">Is your leadership building your team &mdash; or bottlenecking it?</h1>
     <p style="margin-top:24px;font-size:clamp(17px,2vw,21px);line-height:1.54;max-width:62ch;color:rgba(244,240,231,0.82);">Ten honest questions across five categories &mdash; developing talent, systems vs. heroic effort, coaching culture, work-life integrity, and retention. Answer for how you actually lead, not how you hope to. You&rsquo;ll get your Leadership Health Score and your top three growth areas on screen, immediately.</p>
+    <p style="margin-top:16px;font-size:14.5px;color:rgba(244,240,231,0.6);">Coaching your people, not just yourself? Grab the free <a href={SLUGS.coachingQuestions} style="color:#D98A5E;font-weight:600;">leadership coaching questions</a> &mdash; 15 copy-ready prompts for your next 1-on-1.</p>
   </header>
 
   <LeadershipScorecard />
