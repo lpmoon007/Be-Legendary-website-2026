@@ -77,6 +77,7 @@ export const SLUGS = {
   measureTeamPerformance: '/how-to-measure-leadership-team-performance/',
   signsDysfunction: '/signs-of-a-dysfunctional-leadership-team/',
   meetingAgenda: '/leadership-team-meeting-agenda/',
+  leadershipScorecard: '/leadership-scorecard/',
   // ── For Leaders universe (individual-leader development) ──────────────────
   // /leaders/ is the canonical home. The 4 concept pages migrated from /library/
   // (design intent), with 301s in public/.htaccess.
