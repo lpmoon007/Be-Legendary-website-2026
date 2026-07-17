@@ -89,3 +89,29 @@ input[type=range]::-moz-range-thumb {
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ---- Keyboard focus visibility (a11y: WCAG 2.4.7) ----
+   Inline-styled elements had no visible focus ring, leaving keyboard and
+   screen-reader users unable to see where they are. A rust ring shows on both
+   the ink and cream sections; mouse users keep clean (no ring on :focus). */
+:focus-visible {
+  outline: 2px solid #E0744A;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+/* On the cream (#F4F0E7) sections, use the darker rust for adequate contrast. */
+.bl-section-light :focus-visible,
+section[style*="F4F0E7"] :focus-visible,
+section[style*="EFE8DA"] :focus-visible {
+  outline-color: #9E3A1C;
+}
+
+/* ---- Visually-hidden utility (screen-reader-only text) ---- */
+.bl-vh {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
