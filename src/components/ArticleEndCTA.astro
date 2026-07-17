@@ -4,15 +4,19 @@
 // the ShareRow on article/guide pages.
 import { Image } from 'astro:assets';
 import NewsletterSignup from './NewsletterSignup.astro';
+import ProofStrip from './ProofStrip.astro';
 import { SLUGS } from '../lib/site';
 import james from '../assets/james.jpg';
 export interface Props {
   /** Match the article body width (920 default; 820 for the For-Leaders pages). */
   maxWidth?: number;
+  /** Which testimonial the proof strip features (index into TESTIMONIALS). */
+  proof?: number;
 }
-const { maxWidth = 920 } = Astro.props;
+const { maxWidth = 920, proof = 0 } = Astro.props;
 ---
-<div style={`max-width:${maxWidth}px;margin:56px auto 0;padding:0 32px;`}>
+<ProofStrip maxWidth={maxWidth} featured={proof} />
+<div style={`max-width:${maxWidth}px;margin:32px auto 0;padding:0 32px;`}>
   <!-- About the author -->
   <div style="display:flex;gap:22px;align-items:center;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:24px 26px;flex-wrap:wrap;">
     <Image src={james} alt="James Carter, founder of Be Legendary" width={160} height={160} format="webp" quality={80} loading="lazy" style="width:74px;height:74px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none;" />

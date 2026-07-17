@@ -1,0 +1,45 @@
+---
+// Compact social-proof block for decision points (end-of-article CTAs).
+// Credibility stats + one featured testimonial + press wordmarks. Visual only —
+// the homepage carries the Review JSON-LD, so we don't repeat review markup on
+// every page (which would read as manipulative).
+import { TESTIMONIALS } from '../lib/testimonials';
+import { SLUGS } from '../lib/site';
+export interface Props {
+  maxWidth?: number;
+  /** Which testimonial to feature (index into TESTIMONIALS). */
+  featured?: number;
+}
+const { maxWidth = 920, featured = 0 } = Astro.props;
+const t = TESTIMONIALS[((featured % TESTIMONIALS.length) + TESTIMONIALS.length) % TESTIMONIALS.length];
+---
+<div style={`max-width:${maxWidth}px;margin:56px auto 0;padding:0 32px;`}>
+  <div style="background:#211D15;border:1px solid rgba(192,74,38,0.28);border-radius:16px;padding:26px 30px;">
+    <!-- credibility stats -->
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;padding-bottom:22px;border-bottom:1px solid rgba(244,240,231,0.1);">
+      <div style="text-align:center;">
+        <div style="font-family:'Newsreader',serif;font-size:26px;color:#FBF8F1;line-height:1;">500,000+</div>
+        <div style="margin-top:5px;font-size:11.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,240,231,0.55);">Participants</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Newsreader',serif;font-size:26px;color:#FBF8F1;line-height:1;">1,500+</div>
+        <div style="margin-top:5px;font-size:11.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,240,231,0.55);">Companies</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Newsreader',serif;font-size:26px;color:#FBF8F1;line-height:1;">Fortune 100</div>
+        <div style="margin-top:5px;font-size:11.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,240,231,0.55);">Most of the</div>
+      </div>
+    </div>
+    <!-- featured testimonial -->
+    <blockquote style="margin:22px 0 0;font-family:'Newsreader',serif;font-style:italic;font-size:clamp(17px,2vw,20px);line-height:1.5;color:rgba(244,240,231,0.9);text-align:center;">&ldquo;{t.quote}&rdquo;</blockquote>
+    <p style="margin-top:12px;text-align:center;font-size:13.5px;color:rgba(244,240,231,0.6);"><strong style="color:#E0744A;">{t.name}</strong> &middot; {t.role}</p>
+    <!-- press -->
+    <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(244,240,231,0.1);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 22px;">
+      <span style="font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.4);">As featured in</span>
+      <span style="font-family:'Newsreader',serif;font-size:17px;color:rgba(244,240,231,0.78);">CNN</span>
+      <span style="font-family:'Newsreader',serif;font-size:17px;color:rgba(244,240,231,0.78);">CNN Money</span>
+      <span style="font-family:'Newsreader',serif;font-size:17px;color:rgba(244,240,231,0.78);">Business Insider</span>
+      <a href={SLUGS.caseStudies} style="font-size:13.5px;font-weight:700;color:#E0744A;text-decoration:none;">Client results &rarr;</a>
+    </div>
+  </div>
+</div>
