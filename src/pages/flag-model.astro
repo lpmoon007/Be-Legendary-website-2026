@@ -183,6 +183,33 @@ const schema = [
     </div>
   </section>
 
+  <!-- PUT IT INTO PRACTICE (hub → how-to guides) -->
+  <section style="background:#15130E;color:#F4F0E7;padding:84px 32px;border-top:1px solid rgba(244,240,231,0.08);">
+    <div style="max-width:1140px;margin:0 auto;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:16px;">Put the Flag Model to work</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.05;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">From framework to practice</h2>
+      <p style="margin-top:18px;font-size:18px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:60ch;">Every part of the model has a hands-on guide. Start with the discipline that&rsquo;s slipped furthest &mdash; not all of them at once.</p>
+      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;">
+        {[
+          { ey: 'The Flag', href: SLUGS.alignLeadershipTeam, t: 'How to align a leadership team', d: 'Alignment on the 2–3 priorities — the difference from agreement.' },
+          { ey: 'The Decision', href: SLUGS.decisionMaking, t: 'Executive team decision-making', d: 'Make a call that sticks and doesn’t route back to you.' },
+          { ey: 'The Rhythm', href: SLUGS.executiveTeamMeeting, t: 'Run an executive team meeting', d: 'The operating cadence that ships work, not status.' },
+          { ey: 'The Standard', href: SLUGS.howToAccountable, t: 'Hold your team accountable', d: 'A missed commitment that actually costs something.' },
+          { ey: 'The Learning', href: SLUGS.signsDysfunction, t: 'Signs of a dysfunctional team', d: 'Spot the breakdown before it repeats.' },
+          { ey: 'Measure it', href: SLUGS.measureTeamPerformance, t: 'Measure team performance', d: 'Turn the five components into a FlagScore you can track.' },
+          { ey: 'The gap', href: SLUGS.strategyExecutionGap, t: 'The strategy execution gap', d: 'Why sound strategy still fails to get done.' },
+          { ey: 'The goal', href: SLUGS.highPerformingTeam, t: 'Build a high-performing team', d: 'What all five components look like, working.' },
+        ].map((g) => (
+          <a href={g.href} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;display:flex;flex-direction:column;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">{g.ey}</span>
+            <span style="font-family:'Newsreader',serif;font-size:19px;line-height:1.2;color:#FBF8F1;">{g.t}</span>
+            <span style="margin-top:8px;font-size:14px;line-height:1.5;color:rgba(244,240,231,0.62);">{g.d}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- FLAGSCORE / MEASURE -->
   <section id="measure" style="background:#F4F0E7;color:#1B1810;padding:96px 32px;">
     <div class="bl-grid-collapse" style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
