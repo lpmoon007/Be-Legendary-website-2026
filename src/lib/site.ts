@@ -71,6 +71,7 @@ export const SLUGS = {
   decisionMaking: '/executive-team-decision-making/',
   highPerformingTeam: '/how-to-build-a-high-performing-leadership-team/',
   strategyExecutionGap: '/strategy-execution-gap/',
+  alignLeadershipTeam: '/how-to-align-a-leadership-team/',
   howToPlanRetreat: '/how-to-plan-a-leadership-retreat/',
   offsiteAgenda: '/leadership-offsite-agenda/',
   executiveOffsite: '/how-to-plan-an-executive-offsite/',

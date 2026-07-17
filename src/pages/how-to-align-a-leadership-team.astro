@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'How to Align a Leadership Team (Alignment ≠ Agreement)';
+const description =
+  'Leadership team alignment isn’t agreement — it’s a shared, tested set of priorities everyone will act on. Here’s how to align a leadership team, and keep it aligned.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'How to Align a Leadership Team', item: 'https://www.belegendary.org/how-to-align-a-leadership-team/' },
+  ] },
+  { '@type': 'Article', headline: 'How to align a leadership team — and keep it aligned', datePublished: '2026-07-12', dateModified: '2026-07-12', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-align-a-leadership-team/', description: 'Leadership team alignment is a shared, tested set of 2–3 priorities the whole team will act on — not consensus. A five-step method to build it and keep it.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'How do you align a leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'Agree on the two or three priorities everything serves (the Flag); make the real disagreement surface before you decide, not after; write the priorities down where the whole team sees them weekly; test every significant decision against them; and reinforce them in the operating rhythm so alignment is maintained, not assumed. Alignment is a practice you keep, not a state you reach once.' } },
+    { '@type': 'Question', name: 'What is leadership team alignment?', acceptedAnswer: { '@type': 'Answer', text: 'Leadership team alignment is a shared, explicit understanding of the few priorities that matter most and a genuine commitment to act on them together — even by the people who argued for something else. It is not agreement or consensus. A team can disagree in the room and still be fully aligned once the call is made, because alignment is about committed action, not identical opinions.' } },
+    { '@type': 'Question', name: 'Is alignment the same as agreement?', acceptedAnswer: { '@type': 'Answer', text: 'No — and confusing the two is why most alignment efforts fail. Agreement is everyone holding the same opinion; alignment is everyone committing to the same action after the debate. Teams that chase agreement suppress the disagreement that needs to be heard, then execute half-heartedly. Teams that align surface the disagreement, decide, and then row together. Disagree and commit.' } },
+    { '@type': 'Question', name: 'Why do leadership teams fall out of alignment?', acceptedAnswer: { '@type': 'Answer', text: 'Usually because alignment was treated as a one-time event, not a discipline. Priorities multiply until everything is a priority and nothing is; decisions get reopened in hallways; and the priorities live in a deck no one reopens. Alignment decays quietly the moment it stops being maintained — which is why it has to be built into the operating rhythm, not achieved at an offsite and forgotten.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.alignLeadershipTeam}
+  ogType="article"
+  ogTitle="How to Align a Leadership Team"
+  ogDescription="Alignment isn’t agreement — it’s a shared, tested set of priorities the whole team will act on. A five-step method to build it and keep it."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">How to Align a Leadership Team</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to align a leadership team</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Leadership team alignment is <strong>not agreement</strong> &mdash; it&rsquo;s a shared, tested set of <strong>two or three priorities</strong> the whole team will act on, even the people who argued for something else. You build it by naming those priorities (the Flag), making the real disagreement surface <em>before</em> the decision, writing them where everyone sees them weekly, testing every decision against them, and reinforcing them in the operating rhythm. Alignment isn&rsquo;t a state you reach at an offsite &mdash; it&rsquo;s a discipline you keep.</p>
+    </div>
+  </header>
+
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#what" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Alignment ≠ agreement</a></li>
+        <li><a href="#steps" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The five steps</a></li>
+        <li><a href="#keep" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Keeping it aligned</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ALIGNMENT VS AGREEMENT -->
+  <div id="what" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">First, alignment is not agreement</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Almost every failed alignment effort dies on the same misunderstanding: leaders chase <em>agreement</em> &mdash; everyone holding the same opinion &mdash; when what they need is <em>alignment</em>: everyone committing to the same action after the debate. Chasing agreement makes teams suppress the disagreement that actually needs airing, nod along in the room, and then execute half-heartedly because they never truly bought in. Real alignment does the opposite: it drags the disagreement into the open, resolves it, and then everyone rows in the same direction &mdash; including the people who lost the argument.</p>
+    <div style="background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:16px;padding:26px 28px;">
+      <p style="font-size:17px;line-height:1.6;color:#FBF8F1;"><strong style="color:#E0744A;">Disagree and commit.</strong> A leadership team can argue hard in the room and be perfectly aligned the moment the call is made. A team can also agree on everything and be completely misaligned &mdash; because no one said what they really thought. Alignment is measured in <strong>committed action</strong>, not identical opinions.</p>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-top:22px;">This is exactly what the <a href={SLUGS.flagModel} style="color:#D98A5E;">Flag Model</a> means by the Flag: the two or three priorities everything serves. When a team <a href={SLUGS.notAligned} style="color:#D98A5E;">isn&rsquo;t aligned</a>, it&rsquo;s almost never a values problem &mdash; it&rsquo;s that the Flag has gone fuzzy, so everyone is optimizing for a slightly different thing and calling it disagreement.</p>
+  </div>
+
+  <!-- THE FIVE STEPS -->
+  <div id="steps" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">How to align a leadership team, in five steps</p>
+      <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.6;color:#3A372F;">
+        <li><strong>Name the Flag &mdash; 2 to 3 priorities, no more.</strong> Alignment is impossible against a list of nine. Force the team to choose the two or three things everything else serves this quarter. The fight over what to cut <em>is</em> the alignment work; don&rsquo;t skip it to keep the peace.</li>
+        <li><strong>Surface the real disagreement before you decide.</strong> Go looking for the objection no one is saying out loud. A neutral voice asking &ldquo;what are we not saying?&rdquo; is worth more than another hour of presentation. Alignment you didn&rsquo;t stress-test isn&rsquo;t alignment &mdash; it&rsquo;s politeness.</li>
+        <li><strong>Decide, then ask for commitment out loud.</strong> Once the call is made, go around the room: can you commit to this, even if it wasn&rsquo;t your pick? Said aloud, to peers, disagree-and-commit becomes real. Silence is not commitment.</li>
+        <li><strong>Make the priorities visible &mdash; and testable.</strong> Write them somewhere the whole team sees them weekly, phrased precisely enough that any decision can be tested against them: <em>does this serve the Flag, or not?</em> Priorities that live in a deck no one reopens quietly stop aligning anyone.</li>
+        <li><strong>Reinforce it in the operating rhythm.</strong> Alignment decays. Build a standing check into the weekly leadership meeting: are we still on the Flag, and did this week&rsquo;s decisions serve it? Alignment maintained on a cadence holds; alignment assumed drifts within a month.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- KEEP IT ALIGNED -->
+  <div id="keep" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Alignment is a discipline, not an event</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The reason teams keep &ldquo;realigning&rdquo; at every offsite is that they treat alignment as a destination &mdash; reach it once, check the box, move on. But the same forces that pulled the team apart the first time never stopped: new priorities appear, quarters change, people join. Alignment isn&rsquo;t something you <em>have</em>; it&rsquo;s something you <em>keep</em>. That&rsquo;s why it has to live in the rhythm, not the offsite &mdash; and why a clear Flag beats a long strategy document every time.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">When alignment holds, the <a href={SLUGS.strategyExecutionGap} style="color:#D98A5E;">gap between deciding and doing</a> shrinks, decisions stop getting reopened, and the team stops <a href={SLUGS.highPerformingTeam} style="color:#D98A5E;">relitigating settled questions</a>. Want a read on where your team actually stands? The <a href={SLUGS.teamDiagnostic} style="color:#D98A5E;">team diagnostic</a> measures alignment (and the four disciplines that carry it) so you can see it, not guess.</p>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See where your team&rsquo;s alignment actually breaks.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll run a short exercise that surfaces priority misalignment in real time &mdash; and leave knowing the first move to close it &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do you align a leadership team?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Agree on the 2&ndash;3 priorities everything serves (the Flag); surface the real disagreement before you decide; ask for commitment out loud; write the priorities where everyone sees them weekly and test decisions against them; and reinforce it in the operating rhythm. Alignment is a practice you keep, not a state you reach once.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What is leadership team alignment?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">A shared, explicit understanding of the few priorities that matter most, and a genuine commitment to act on them together &mdash; even by the people who argued for something else. It&rsquo;s not agreement: a team can disagree in the room and still be fully aligned once the call is made, because alignment is committed action, not identical opinions.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Is alignment the same as agreement?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">No &mdash; confusing them is why most alignment efforts fail. Agreement is everyone holding the same opinion; alignment is everyone committing to the same action after the debate. Chase agreement and you suppress the disagreement that needs airing; build alignment and you surface it, decide, and row together. Disagree and commit.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Why do leadership teams fall out of alignment?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Because alignment was treated as a one-time event, not a discipline. Priorities multiply until nothing is a priority, decisions get reopened in hallways, and the Flag lives in a deck no one reopens. Alignment decays the moment it stops being maintained &mdash; so it has to be built into the operating rhythm.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.notAligned} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Our executive team isn&rsquo;t aligned</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The symptom, and how to read it honestly.</span>
+      </a>
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Flag is alignment on the 2&ndash;3 priorities that matter.</span>
+      </a>
+      <a href={SLUGS.alignmentConsultant} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Executive team alignment consultant</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">When to bring in outside help &mdash; and what to look for.</span>
+      </a>
+      <a href={SLUGS.strategyExecutionGap} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The strategy execution gap</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">What alignment is worth: closing the deciding-to-doing gap.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. Alignment is committed action, not identical opinions." />
+</BaseLayout>
