@@ -12,8 +12,13 @@ export interface Props {
   maxWidth?: number;
   /** Which testimonial the proof strip features (index into TESTIMONIALS). */
   proof?: number;
+  /** Which free assessment to offer as the low-commitment first step. */
+  assess?: 'teams' | 'leaders';
 }
-const { maxWidth = 920, proof = 0 } = Astro.props;
+const { maxWidth = 920, proof = 0, assess = 'teams' } = Astro.props;
+const ladder = assess === 'leaders'
+  ? { href: SLUGS.leadershipScorecard, label: 'Take the free Leadership Scorecard', sub: 'Is your leadership building your team or bottlenecking it? A real read in ~4 minutes.' }
+  : { href: SLUGS.breakPointAssessment, label: 'Take the free Break-Point Self-Assessment', sub: 'See which of the five components your team is most likely to lose first — in ~4 minutes.' };
 ---
 <ProofStrip maxWidth={maxWidth} featured={proof} />
 <div style={`max-width:${maxWidth}px;margin:32px auto 0;padding:0 32px;`}>
@@ -26,6 +31,15 @@ const { maxWidth = 920, proof = 0 } = Astro.props;
       <p style="font-size:14.5px;line-height:1.62;color:rgba(244,240,231,0.74);">Founder of Be Legendary and creator of the Flag Model&trade;. Twenty-five years inside executive teams; co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra &amp; Brian Tracy, and featured on CNN and in Business Insider. <a href={SLUGS.about} style="color:#D98A5E;font-weight:600;white-space:nowrap;">More about James &rarr;</a></p>
     </div>
   </div>
+  <!-- Commitment ladder: a lower-commitment first step than booking a call -->
+  <a href={ladder.href} style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-radius:16px;padding:22px 26px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.7)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.35)'">
+    <div style="flex:1;min-width:260px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">Not ready to talk? Start free</p>
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;line-height:1.15;">{ladder.label}</p>
+      <p style="margin-top:6px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">{ladder.sub} <strong style="color:rgba(244,240,231,0.82);">No email required to see your result.</strong></p>
+    </div>
+    <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Start the assessment &rarr;</span>
+  </a>
   <!-- Field Notes email capture -->
   <div style="margin-top:18px;">
     <NewsletterSignup />

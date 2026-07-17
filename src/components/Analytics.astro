@@ -7,7 +7,7 @@
 //   - newsletter_signup     : newsletter form submit
 //   - assessment_completed  : the assessment result is revealed
 // (Mark the relevant ones as "key events" in the GA4 UI to count them as conversions.)
-import { GA_MEASUREMENT_ID as GA_ID } from '../lib/site';
+import { GA_MEASUREMENT_ID as GA_ID, CLARITY_ID } from '../lib/site';
 ---
 {GA_ID && (
   <script is:inline define:vars={{ GA_ID }}>
@@ -45,5 +45,27 @@ import { GA_MEASUREMENT_ID as GA_ID } from '../lib/site';
         page_path: location.pathname,
       });
     }, true);
+  </script>
+)}
+{CLARITY_ID && (
+  <script is:inline define:vars={{ CLARITY_ID }}>
+    // Microsoft Clarity — heatmaps + session recordings. Lazy-loaded on first
+    // interaction (or idle) so it stays off the LCP/TBT critical path, matching GA.
+    (function () {
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      var loaded = false;
+      function loadClarity() {
+        if (loaded) return; loaded = true;
+        var t = document.createElement('script');
+        t.async = true;
+        t.src = 'https://www.clarity.ms/tag/' + CLARITY_ID;
+        document.head.appendChild(t);
+      }
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
+        window.addEventListener(ev, loadClarity, { once: true, passive: true });
+      });
+      if ('requestIdleCallback' in window) requestIdleCallback(loadClarity, { timeout: 5000 });
+      else setTimeout(loadClarity, 4500);
+    })();
   </script>
 )}

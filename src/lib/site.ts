@@ -10,6 +10,11 @@ export const CTA_LABEL = 'Book a Calibration Call';
 // with the PUBLIC_GA_ID env var if needed; otherwise this baked-in value is used.
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID || 'G-M0Q17HCKMM';
 
+// Microsoft Clarity project ID (free heatmaps + session recordings). Not a
+// secret (ships client-side). Inert until PUBLIC_CLARITY_ID is set at build:
+// create a project at clarity.microsoft.com and paste its ID.
+export const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID || '';
+
 // HubSpot forms (region na2, portal 20276071)
 export const HUBSPOT = {
   portalId: '20276071',
