@@ -145,6 +145,7 @@ export const SLUGS = {
 
   // Legacy Library alias → the For Leaders home (old /library/ 301s here).
   library: '/leaders/',
+  search: '/search/',
   // Legal
   privacy: '/privacy/',
 } as const;
