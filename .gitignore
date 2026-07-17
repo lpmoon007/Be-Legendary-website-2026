@@ -8,3 +8,6 @@ dist/
 
 # Build artifact (generated for manual deploys)
 belegendary-site.zip
+
+# Freshness report (regenerated each build)
+reports/
