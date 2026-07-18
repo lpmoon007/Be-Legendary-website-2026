@@ -145,6 +145,7 @@ const jsonLd = graphNodes.length
   <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
   <meta name="theme-color" content="#15130E" />
   <link rel="canonical" href={canonical} />
+  <link rel="alternate" type="application/rss+xml" title="Be Legendary — Executive-team performance" href={`${SITE_URL}/rss.xml`} />
 
   <!-- Preload critical above-the-fold fonts (LCP) -->
   <link rel="preload" href={fontHeadline} as="font" type="font/woff2" crossorigin />
@@ -182,6 +183,7 @@ const jsonLd = graphNodes.length
   <Analytics />
 </head>
 <body style={`background:${bodyBg};color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow-x:hidden;`}>
+  <a class="bl-skip" href="#bl-main" onclick="var m=document.querySelector('main,article');if(m){m.id='bl-main';m.tabIndex=-1;m.focus();}">Skip to content</a>
   <slot />
 </body>
 </html>

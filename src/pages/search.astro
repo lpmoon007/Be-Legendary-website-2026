@@ -78,15 +78,29 @@ const description = 'Search Be Legendary — the Flag Model, executive-team guid
     }
   }
 
+  // GA4 `search` event — fires once typing settles (not per keystroke) so we can
+  // see what people look for, and how many results they got. gtag() queues to
+  // dataLayer even before gtag.js finishes loading, so this is always safe.
+  let lastTracked = '';
+  function trackSearch(q: string) {
+    q = q.trim().toLowerCase();
+    if (q.length < 2 || q === lastTracked) return;
+    lastTracked = q;
+    const terms = q.split(/\s+/).filter(Boolean);
+    const count = index.filter((item) => score(item, terms, q) > 0).length;
+    (window as any).gtag?.('event', 'search', { search_term: q, results_count: count });
+  }
+
   function boot() {
     const params = new URLSearchParams(location.search);
     const initial = params.get('q') || '';
     if (initial) input.value = initial;
     fetch('/search-index.json')
       .then((r) => r.json())
-      .then((data) => { index = data; render(input.value); if (!input.value) input.focus(); })
+      .then((data) => { index = data; render(input.value); if (input.value) trackSearch(input.value); else input.focus(); })
       .catch(() => { status.textContent = 'Search is unavailable right now. Please browse Resources.'; });
     let timer: number | undefined;
+    let trackTimer: number | undefined;
     input.addEventListener('input', () => {
       window.clearTimeout(timer);
       timer = window.setTimeout(() => {
@@ -95,6 +109,8 @@ const description = 'Search Be Legendary — the Flag Model, executive-team guid
         if (input.value) u.searchParams.set('q', input.value); else u.searchParams.delete('q');
         history.replaceState(null, '', u);
       }, 120);
+      window.clearTimeout(trackTimer);
+      trackTimer = window.setTimeout(() => trackSearch(input.value), 900);
     });
   }
   boot();
