@@ -2,7 +2,7 @@
 import LdolLayout from '../../layouts/LdolLayout.astro';
 import LdolHeader from '../../components/LdolHeader.astro';
 import LdolFooter from '../../components/LdolFooter.astro';
-import { CTA_URL, SITE_URL, HUBSPOT } from '../../lib/site';
+import { CTA_URL, SITE_URL, HUBSPOT, CONTACT_EMAIL } from '../../lib/site';
 
 const title = 'Bulk orders & speaking — Lost Disciplines of Leadership™';
 const description =
@@ -110,7 +110,7 @@ const schema = [
           <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:38px;line-height:1.1;margin:0 0 12px;">Tell us what you need.</h2>
           <p style="font-size:16px;color:#5c544c;margin:0;">Bulk order, speaking engagement, or both &mdash; we&rsquo;ll route it to the right person.</p>
         </div>
-        <form id="ldol-enquiry" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.ldolEnquiryFormGuid} style="display:flex;flex-direction:column;gap:14px;">
+        <form id="ldol-enquiry" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.ldolEnquiryFormGuid} data-contact={CONTACT_EMAIL} style="display:flex;flex-direction:column;gap:14px;">
           <input type="hidden" name="intent" value="bulk" />
           <div class="ldol-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
             <input type="text" name="name" required placeholder="Name" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#211b16;background:#fff;border:1px solid rgba(33,27,22,.2);border-radius:3px;padding:14px 16px;outline:none;" />
@@ -173,28 +173,42 @@ const schema = [
         var email = val('email');
         if (!EMAIL.test(email)) { var ei = f.querySelector('[name="email"]'); if (ei) ei.focus(); return; }
         var intent = val('intent') || 'bulk';
-        var msg = 'Interest: ' + (intent === 'speaking' ? 'Speaking' : 'Bulk order') + '\n\n' + val('message');
+        var intentLabel = intent === 'speaking' ? 'Speaking' : 'Bulk order';
+        var msg = 'Interest: ' + intentLabel + '\n\n' + val('message');
         var portal = f.getAttribute('data-portal');
         var guid = f.getAttribute('data-guid');
-        if (guid) {
-          try {
-            fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
-              method: 'POST', headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                fields: [
-                  { name: 'firstname', value: val('name') },
-                  { name: 'email', value: email },
-                  { name: 'company', value: val('organization') },
-                  { name: 'message', value: msg },
-                ],
-                context: { pageUri: location.href, pageName: 'Lost Disciplines — ' + (intent === 'speaking' ? 'Speaking' : 'Bulk') + ' enquiry' },
-              }),
-            });
-          } catch (err) { /* swallow — still confirm to the user */ }
+        var contact = f.getAttribute('data-contact');
+
+        // mailto fallback so an enquiry is NEVER silently lost — used when the
+        // HubSpot form GUID isn't wired yet, or when the POST fails.
+        function mailtoFallback() {
+          var subject = 'Lost Disciplines — ' + intentLabel + ' enquiry';
+          var body = 'Name: ' + val('name') + '\nEmail: ' + email + '\nOrganization: ' + val('organization') + '\nInterest: ' + intentLabel + '\n\n' + val('message');
+          var href = 'mailto:' + contact + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+          if (btn) { btn.textContent = 'Almost there — send your enquiry'; btn.disabled = false; btn.style.opacity = '1'; }
+          if (note) note.innerHTML = 'One quick step — <a href="' + href + '" style="color:#a87b2e;font-weight:600;text-decoration:underline;">click to send your enquiry</a> and we’ll be right back to you.';
+          if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'ldol_enquiry', intent: intent, method: 'mailto' });
         }
-        if (btn) { btn.textContent = 'Sent ✓ we’ll be in touch'; btn.disabled = true; btn.style.opacity = '0.85'; }
-        if (note) note.textContent = 'Thanks — your enquiry is in. We’ll route it to the right person and be in touch shortly.';
-        if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'ldol_enquiry', intent: intent });
+        function confirmSent() {
+          if (btn) { btn.textContent = 'Sent ✓ we’ll be in touch'; btn.disabled = true; btn.style.opacity = '0.85'; }
+          if (note) note.textContent = 'Thanks — your enquiry is in. We’ll route it to the right person and be in touch shortly.';
+          if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'ldol_enquiry', intent: intent, method: 'hubspot' });
+        }
+
+        if (!guid) { mailtoFallback(); return; }
+        fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: [
+              { name: 'firstname', value: val('name') },
+              { name: 'email', value: email },
+              { name: 'company', value: val('organization') },
+              { name: 'message', value: msg },
+            ],
+            context: { pageUri: location.href, pageName: 'Lost Disciplines — ' + intentLabel + ' enquiry' },
+          }),
+        }).then(function (res) { if (res && res.ok) { confirmSent(); } else { mailtoFallback(); } })
+          .catch(function () { mailtoFallback(); });
       });
     }
   </script>

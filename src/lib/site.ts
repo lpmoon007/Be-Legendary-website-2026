@@ -6,6 +6,11 @@ export const SITE_URL = 'https://www.belegendary.org';
 export const CTA_URL = 'https://meetings.hubspot.com/jcarter28';
 export const CTA_LABEL = 'Book a Calibration Call';
 
+// Public contact address — used for the footer/privacy contact path and as the
+// mailto fallback when a form's HubSpot POST fails or a GUID isn't wired yet, so
+// a lead is never silently lost. Swap for a shared alias (e.g. hello@) if preferred.
+export const CONTACT_EMAIL = 'jcarter@belegendary.org';
+
 // GA4 Measurement ID. Not a secret (it ships in the client). Override per-build
 // with the PUBLIC_GA_ID env var if needed; otherwise this baked-in value is used.
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID || 'G-M0Q17HCKMM';

@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
-import { SITE_URL, ORG_ID, SLUGS, workoutPath } from '../../lib/site';
+import { SITE_URL, ORG_ID, SLUGS, workoutPath, HUBSPOT, CONTACT_EMAIL } from '../../lib/site';
 
 const path = SLUGS.gratitude;
 const title = "Level Up Your Gratitude — the course that really levels you";
@@ -156,15 +156,15 @@ const practices = [
     <!-- ENROLL -->
     <section id="enroll" style="max-width:720px;margin:72px auto 0;padding:0 32px;">
       <div style="background:#F4F0E7;color:#1B1810;border-radius:20px;padding:44px 46px;box-shadow:0 40px 90px -36px rgba(0,0,0,0.6);">
-        <div id="gr-form" style="display:block;">
+        <div id="gr-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.newsletterFormGuid} data-contact={CONTACT_EMAIL} style="display:block;">
           <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Begin the course</p>
           <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.14;margin-bottom:10px;">Yours to keep.</h2>
-          <p style="font-size:15.5px;line-height:1.6;color:#56524A;margin-bottom:24px;">Drop your email and we'll open Module 1 and send each session as you're ready for it — no pressure, no spam, unsubscribe anytime.</p>
+          <p style="font-size:15.5px;line-height:1.6;color:#56524A;margin-bottom:24px;">Drop your email to open Module 1 now — and we'll let you know as new sessions go live. No pressure, no spam, unsubscribe anytime.</p>
           <div style="display:flex;flex-direction:column;gap:14px;">
             <input id="gr-email" type="email" placeholder="you@company.com" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:16px;padding:15px 16px;border-radius:10px;border:1px solid rgba(27,24,16,0.2);background:#FBF8F1;color:#1B1810;outline:none;">
             <p id="gr-err" style="display:none;font-size:14px;color:#C04A26;font-weight:600;">Enter a valid email to begin.</p>
             <button id="gr-btn" type="button" style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:16px 26px;border-radius:10px;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:16px;display:inline-flex;align-items:center;justify-content:center;gap:9px;">Open Module 1 <span>&rarr;</span></button>
-            <p style="font-size:12px;color:#B4A98E;">Free at launch · HubSpot form placeholder, GUID TBD.</p>
+            <p style="font-size:12px;color:#B4A98E;">Free · no spam · unsubscribe anytime.</p>
           </div>
         </div>
         <div id="gr-done" style="display:none;text-align:center;">
@@ -188,7 +188,7 @@ const practices = [
       const btn = document.getElementById('gr-btn');
       const email = document.getElementById('gr-email');
       if (!form || !done || !btn || !email) return;
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', async function () {
         const val = (email.value || '').trim();
         if (!val || !/.+@.+\..+/.test(val)) {
           if (err) err.style.display = 'block';
@@ -198,8 +198,29 @@ const practices = [
           window.localStorage.setItem('bl_gratitude_course', JSON.stringify({ email: val, enrolledAt: Date.now() }));
         } catch (e) {}
         if (err) err.style.display = 'none';
+        // Module 1 is on this page, so open the "done" state regardless. Also
+        // capture the email as a real lead via the working newsletter form
+        // (this used to be localStorage-only, so enrolments were never captured).
         form.style.display = 'none';
         done.style.display = 'block';
+        var portal = form.getAttribute('data-portal'), guid = form.getAttribute('data-guid'), contact = form.getAttribute('data-contact');
+        if (guid) {
+          var ok = false;
+          try {
+            var res = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ fields: [{ name: 'email', value: val }], context: { pageUri: location.href, pageName: 'Gratitude course — enroll' } }),
+            });
+            ok = res.ok;
+          } catch (e) { ok = false; }
+          if (!ok && contact && !done.querySelector('[data-fallback]')) {
+            var p = document.createElement('p');
+            p.setAttribute('data-fallback', '');
+            p.style.cssText = 'margin-top:12px;font-size:13px;color:#6E6757;';
+            p.innerHTML = 'Want the new sessions by email? <a href="mailto:' + contact + '?subject=' + encodeURIComponent('Gratitude course') + '&body=' + encodeURIComponent('Please keep me posted on new sessions. Email: ' + val) + '" style="color:#B48AD9;text-decoration:underline;font-weight:600;">Email us</a>.';
+            done.appendChild(p);
+          }
+        }
       });
     })();
   </script>

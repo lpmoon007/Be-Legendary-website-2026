@@ -1,5 +1,5 @@
 ---
-import { CTA_URL, HUBSPOT, SLUGS } from '../lib/site';
+import { CTA_URL, HUBSPOT, SLUGS, CONTACT_EMAIL } from '../lib/site';
 
 // Break-Point Self-Assessment: 10 Likert questions across 5 components.
 // Lowest-scoring discipline = the first break point. Free on-screen result
@@ -76,7 +76,7 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
           <p style="margin-top:14px;font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);max-width:46ch;">Get James's field notes by email &mdash; one short note, roughly monthly, on the disciplines that decide whether a leadership team executes. No fluff, no pitch. Unsubscribe anytime. <strong style="color:#F4F0E7;">Your report is the download above.</strong></p>
         </div>
         <div>
-          <div id="bp-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.breakPointFormGuid}>
+          <div id="bp-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.breakPointFormGuid} data-contact={CONTACT_EMAIL}>
             <input id="bp-email" type="email" placeholder="you@company.com" aria-label="Work email" style="width:100%;padding:15px 18px;border-radius:11px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
             <button id="bp-submit" class="bl-tap" style="margin-top:12px;width:100%;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 18px;border-radius:11px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Subscribe to field notes</button>
             <p id="bp-err" style="margin-top:10px;font-size:13px;color:#E0744A;min-height:18px;visibility:hidden;"></p>
@@ -358,8 +358,11 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     if (!EMAIL_RE.test(value)) { err.textContent = 'Please enter a valid work email.'; err.style.visibility = 'visible'; return; }
     const pcts = scores();
     const breakpoint = comps[computeBreakIndex()].name;
+    // Confirm only if HubSpot accepted the submission (res.ok) — otherwise the
+    // lead is lost and we must say so, not fake success.
+    let ok = false;
     try {
-      await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${form.dataset.portal}/${form.dataset.guid}`, {
+      const res = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${form.dataset.portal}/${form.dataset.guid}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -375,7 +378,14 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
           context: { pageUri: location.href, pageName: document.title },
         }),
       });
-    } catch (e) { /* swallow — still confirm to the user */ }
+      ok = res.ok;
+    } catch (e) { ok = false; }
+    if (!ok) {
+      const contact = form.dataset.contact;
+      err.innerHTML = `Couldn't send your report just now. <a href="mailto:${contact}?subject=My%20Break-Point%20report&body=${encodeURIComponent('Please send my Break-Point report. Email: ' + value)}" style="color:#E0744A;text-decoration:underline;">Email us</a> and we'll send it.`;
+      err.style.visibility = 'visible';
+      return;
+    }
     form.style.display = 'none';
     sent.style.display = 'block';
     if (typeof (window as any).gtag === 'function') {
