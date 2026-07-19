@@ -29,6 +29,13 @@ time. Check items off as they ship.
 - [x] **Cost calculator** — "email me my results" capture at peak intent.
 - [x] **Leaders glossary** — added the `ArticleEndCTA` trust block (was a dead-end).
 
+### Batch 3 — CTA name standardization
+- [x] **One name, one duration, sitewide: "Book a Calibration Call · 15 min."**
+  Replaced "Strategy Call" (10 retreat/teams pages) and "Legendary Intent Call"
+  (2 leaders pages) — all pointed to the same booking link — and unified the
+  "20 minutes / twenty minutes" call copy to 15. (Left untouched: the 90–120-min
+  diagnostic simulation and the "Legendary Intent" concept page/link.)
+
 ---
 
 ## ⏳ Pending — needs a decision or an asset from James
@@ -46,12 +53,10 @@ The interim fixes above stop the bleeding, but these capture more once real form
   those leads land in the right lists (not the general newsletter), with real
   nurture sequences.
 
-### 2. Standardize the CTA name  ·  *needs: your decision*
-One offer currently has two names: **"Calibration Call" (15 min)** on 46 pages vs
-**"Strategy Call" (20 min)** across the teams/retreats cluster (~10 pages) — same
-HubSpot link. Decide: unify to "Calibration Call" everywhere, or is the retreat
-"Strategy Call" a deliberately different intent? Once decided, it's a one-pass fix
-driven from `site.ts`. (Also unify the HubSpot meeting title to match.)
+### 2. ~~Standardize the CTA name~~  ·  ✅ DONE (Batch 3)
+Unified to "Book a Calibration Call · 15 min" sitewide.
+**One follow-up on your side:** rename the HubSpot meeting itself to "Calibration
+Call · 15 minutes" so the scheduler page matches what the buttons promise.
 
 ### 3. Embed the scheduler on-domain  ·  *needs: HubSpot embed code*
 Every CTA currently opens `meetings.hubspot.com` in a new tab — the visitor leaves
