@@ -51,8 +51,8 @@ export const GET: APIRoute = () => {
   const paths = Array.from(
     new Set([...Object.values(SLUGS), ...WORKOUTS.map(workoutPath), ...BOOK_PATHS])
   )
-    // Exclude URLs that 301-redirect (not canonical 200 pages) so the sitemap
-    // stays clean. /leaders/30-day-challenge/ forwards to the challenge app.
+    // Exclude the challenge app (SLUGS.challenge is the absolute app URL, not a
+    // canonical 200 page on this host) so the sitemap stays clean.
     .filter((p) => p !== SLUGS.challenge)
     .sort();
   const urls = paths

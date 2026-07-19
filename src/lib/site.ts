@@ -95,7 +95,11 @@ export const SLUGS = {
   legendaryIntent: '/leaders/legendary-intent/',
   // The Mindset Workouts "gym"
   workouts: '/leaders/workouts/',
-  challenge: '/leaders/30-day-challenge/',
+  // Links straight to the challenge app so no page takes a 301 hop through the
+  // branded /leaders/30-day-challenge/ path (which still 301s to this URL via
+  // .htaccess for any legacy/shared inbound links). Absolute-by-design: the
+  // sitemap builder filters this value out (it's not a canonical 200 page).
+  challenge: 'https://challenge.belegendary.org/',
   leadersGlossary: '/leaders/glossary/',
   // SEO/GEO clusters under /leaders/
   habitStacking: '/leaders/what-is-habit-stacking/',
