@@ -36,6 +36,15 @@ time. Check items off as they ship.
   "20 minutes / twenty minutes" call copy to 15. (Left untouched: the 90–120-min
   diagnostic simulation and the "Legendary Intent" concept page/link.)
 
+### Batch 4 — on-domain booking page
+- [x] **`/book/` page embeds the scheduler** (`meetings-na2.hubspot.com/jcarter28`)
+  with the "15 min · no pitch · whether or not we work together" copy + a
+  "what to expect" bridge. All 98 sitewide CTAs now point to `/book/` instead of
+  throwing visitors to a raw HubSpot tab. `CTA_URL='/book/'`, `BOOKING_URL` = the
+  real scheduler (used by the embed, PDFs, and Organization schema). GA
+  `book_calibration_call` conversion re-wired to fire on `/book/` clicks. Page is
+  noindex + out of the sitemap (thin embed content).
+
 ---
 
 ## ⏳ Pending — needs a decision or an asset from James
@@ -58,11 +67,11 @@ Unified to "Book a Calibration Call · 15 min" sitewide.
 **One follow-up on your side:** rename the HubSpot meeting itself to "Calibration
 Call · 15 minutes" so the scheduler page matches what the buttons promise.
 
-### 3. Embed the scheduler on-domain  ·  *needs: HubSpot embed code*
-Every CTA currently opens `meetings.hubspot.com` in a new tab — the visitor leaves
-the site at peak intent and the reassurance copy doesn't travel. Build a `/book/`
-page with the HubSpot Meetings embed so booking completes on belegendary.org, with
-the "15 min · no pitch · whether or not we work together" copy beside the calendar.
+### 3. ~~Embed the scheduler on-domain~~  ·  ✅ DONE (Batch 4)
+`/book/` embeds the calendar with reassurance + "what to expect"; all CTAs route
+there. **Verify on the live site** that the embedded calendar renders (if a server
+CSP `frame-src` blocks it, allow `https://meetings-na2.hubspot.com`). The page has
+a built-in "open in a new tab" fallback if the embed ever fails.
 
 ### 4. One named C-suite testimonial  ·  *needs: permission/asset*
 The exec-team money pages show anonymized case studies + team-building testimonials

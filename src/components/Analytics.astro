@@ -34,10 +34,16 @@ import { GA_MEASUREMENT_ID as GA_ID, CLARITY_ID } from '../lib/site';
     if ('requestIdleCallback' in window) requestIdleCallback(loadGA, { timeout: 4000 });
     else setTimeout(loadGA, 3500);
 
-    // Conversion: any click on the single booking CTA, anywhere on the site.
+    // Conversion: any click on a booking CTA, anywhere on the site. CTAs point at
+    // the on-domain /book/ page; PDFs + the /book/ scheduler link go straight to
+    // HubSpot Meetings. Catch both, but not the /book/ page's own "open in new tab".
     document.addEventListener('click', function (e) {
-      var a = e.target && e.target.closest ? e.target.closest('a[href*="meetings.hubspot.com/jcarter28"]') : null;
+      var a = e.target && e.target.closest ? e.target.closest('a') : null;
       if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var isBooking = /\/book\/?($|[?#])/.test(href) || href.indexOf('meetings-na2.hubspot.com/jcarter28') !== -1 || href.indexOf('meetings.hubspot.com/jcarter28') !== -1;
+      if (!isBooking) return;
+      if (location.pathname.replace(/\/+$/, '') === '/book') return; // already on /book/
       loadGA();
       gtag('event', 'book_calibration_call', {
         link_url: a.href,

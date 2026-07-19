@@ -3,8 +3,15 @@
 // every internal link resolves through (design files used flat .dc.html names).
 
 export const SITE_URL = 'https://www.belegendary.org';
-export const CTA_URL = 'https://meetings.hubspot.com/jcarter28';
+// Site CTAs point at the on-domain /book/ page (which embeds the scheduler with
+// our reassurance copy) instead of throwing visitors straight to HubSpot.
+export const CTA_URL = '/book/';
 export const CTA_LABEL = 'Book a Calibration Call';
+
+// The real HubSpot Meetings scheduler (region na2). Embedded on /book/, and used
+// where an off-domain booking link is genuinely needed (generated PDFs, the
+// Organization contactPoint in schema).
+export const BOOKING_URL = 'https://meetings-na2.hubspot.com/jcarter28';
 
 // Public contact address — used for the footer/privacy contact path and as the
 // mailto fallback when a form's HubSpot POST fails or a GUID isn't wired yet, so
