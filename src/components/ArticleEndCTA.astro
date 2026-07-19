@@ -5,7 +5,7 @@
 import { Image } from 'astro:assets';
 import NewsletterSignup from './NewsletterSignup.astro';
 import ProofStrip from './ProofStrip.astro';
-import { SLUGS } from '../lib/site';
+import { SLUGS, CTA_URL } from '../lib/site';
 import james from '../assets/james.jpg';
 export interface Props {
   /** Match the article body width (920 default; 820 for the For-Leaders pages). */
@@ -31,8 +31,16 @@ const ladder = assess === 'leaders'
       <p style="font-size:14.5px;line-height:1.62;color:rgba(244,240,231,0.74);">Founder of Be Legendary and creator of the Flag Model&trade;. Twenty-five years inside executive teams; co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra &amp; Brian Tracy, and featured on CNN and in Business Insider. <a href={SLUGS.about} style="color:#D98A5E;font-weight:600;white-space:nowrap;">More about James &rarr;</a></p>
     </div>
   </div>
+  <!-- Primary action: book the call. -->
+  <div style="margin-top:18px;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:260px;">
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;line-height:1.15;">See where your team breaks first.</p>
+      <p style="margin-top:6px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.7);">A Calibration Call is 15 minutes — you leave with a concrete read on your team, whether or not we work together. It's a calibration, not a pitch.</p>
+    </div>
+    <a href={CTA_URL} target="_blank" rel="noopener" style="flex:none;background:#C04A26;color:#fff;text-decoration:none;padding:15px 26px;border-radius:11px;font-weight:700;font-size:15.5px;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+  </div>
   <!-- Commitment ladder: a lower-commitment first step than booking a call -->
-  <a href={ladder.href} style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-radius:16px;padding:22px 26px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.7)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.35)'">
+  <a href={ladder.href} style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-radius:16px;padding:22px 26px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.7)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.35)'">
     <div style="flex:1;min-width:260px;">
       <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">Not ready to talk? Start free</p>
       <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;line-height:1.15;">{ladder.label}</p>

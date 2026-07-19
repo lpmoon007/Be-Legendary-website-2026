@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import { SITE_URL, SLUGS, workoutPath } from '../../lib/site';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
 
 const path = SLUGS.leadersGlossary;
 const title = "The Leader's Glossary — Vocabulary of a Legendary Mindset";
@@ -120,6 +121,9 @@ const schema = [
         </div>
       </div>
     </section>
+    <div style="margin-top:56px;">
+      <ArticleEndCTA maxWidth={900} assess="leaders" />
+    </div>
   </div>
 
   <SiteFooter audience="leaders" variant="slim" />
