@@ -66,15 +66,26 @@ const slim = variant === 'slim';
       </a>
     </div>
     {slim ? (
-      contextLink && (
-        <a
-          href={contextLink.href}
-          {...(contextLink.external ? { target: '_blank', rel: 'noopener' } : {})}
-          style="color:rgba(244,240,231,0.72);text-decoration:none;font-size:14.5px;font-weight:500;"
-          onmouseover="this.style.color='#F4F0E7'"
-          onmouseout="this.style.color='rgba(244,240,231,0.72)'"
-        >{contextLink.label}</a>
-      )
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+        {contextLink && (
+          <a
+            href={contextLink.href}
+            {...(contextLink.external ? { target: '_blank', rel: 'noopener' } : {})}
+            style="color:rgba(244,240,231,0.72);text-decoration:none;font-size:14.5px;font-weight:500;"
+            onmouseover="this.style.color='#F4F0E7'"
+            onmouseout="this.style.color='rgba(244,240,231,0.72)'"
+          >{contextLink.label}</a>
+        )}
+        {cta && (
+          <a
+            href={cta.href}
+            {...(cta.external ? { target: '_blank', rel: 'noopener' } : {})}
+            style="background:#C04A26;color:#fff;text-decoration:none;padding:9px 17px;border-radius:9px;font-weight:700;font-size:13.5px;white-space:nowrap;"
+            onmouseover="this.style.background='#9E3A1C'"
+            onmouseout="this.style.background='#C04A26'"
+          >Book a call</a>
+        )}
+      </div>
     ) : (
       <div class="bl-nav-links" style="display:flex;align-items:center;gap:26px;font-size:14.5px;font-weight:500;color:rgba(244,240,231,0.72);">
         {links.map((l) => (

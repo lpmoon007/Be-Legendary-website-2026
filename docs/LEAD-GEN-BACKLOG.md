@@ -51,16 +51,14 @@ time. Check items off as they ship.
 
 Ordered by leverage. Each notes what's blocking it.
 
-### 1. Wire the real HubSpot forms  ·  *needs: HubSpot setup*
-The interim fixes above stop the bleeding, but these capture more once real forms exist:
-- [ ] **Enquiry form** — create the Bulk/Speaking form (fields: email, firstname,
-  company, message, intent), paste GUID into `HUBSPOT.ldolEnquiryFormGuid`. Then
-  the mailto fallback is replaced by a real capture automatically.
-- [ ] **Scorecard form** — create a form with the 8 score properties so the score
-  data is captured (not just the email), then point the scorecard at it.
-- [ ] **Workout completion + Gratitude course** — dedicated forms/workflows so
-  those leads land in the right lists (not the general newsletter), with real
-  nurture sequences.
+### 1. ~~Wire the real HubSpot forms~~  ·  ✅ CLOSED — no new forms (by decision)
+We are **not** building new HubSpot forms for these. Current, intentional setup:
+- **Scorecard / workout / gratitude** → capture email to the existing **newsletter
+  form** (email only). The scorecard score still shows on-screen + goes to GA.
+- **Bulk & Speaking enquiry** → **mailto** to `CONTACT_EMAIL` (no form).
+
+No action needed. (If a future need arises — e.g. wanting the scorecard's score
+data inside HubSpot, or the enquiry as a form — revisit then; the code slots exist.)
 
 ### 2. ~~Standardize the CTA name~~  ·  ✅ DONE (Batch 3)
 Unified to "Book a Calibration Call · 15 min" sitewide.
@@ -97,11 +95,11 @@ price and no standalone buy path — a black box next to pages that name real nu
 Decide: bundled into the retreat, or standalone "from $X"? If standalone, it's your best
 low-risk first sale — give it its own CTA.
 
-### 8. Persistent CTA on slim pages + `/leaders/` byline  ·  *needs: design nod*
-The slim header/footer strip the Book button on deep `/leaders/*` pages, and those pages
-have no "who is James" byline above the fold (cold AI-referred landers get no trust + no
-next step). Adding a compact CTA to the slim header and a top-of-page byline is a broad
-visual change — worth doing, but review the look before shipping.
+### 8. ~~Persistent CTA on slim pages + `/leaders/` byline~~  ·  ✅ DONE
+- Slim header now carries a compact "Book a call" button sitewide (verified
+  desktop + mobile) — every content/`/leaders/` page has a persistent booking path.
+- Added a "By James Carter · Founder, Be Legendary" byline under the H1 on the 24
+  cold-landing `/leaders/` content pages that lacked one (E-E-A-T for AI/search landers).
 
 ### 9. Smaller items
 - [ ] Teams glossary — adopt `ArticleEndCTA` for author/proof consistency (already has a
