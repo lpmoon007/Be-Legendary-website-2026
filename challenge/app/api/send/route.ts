@@ -12,6 +12,7 @@ interface DueRow {
   name: string;
   commitment: string;
   timezone: string;
+  is_private: boolean;
   message_type: "morning" | "afternoon";
   local_date: string;
 }
@@ -49,7 +50,9 @@ export async function POST(req: NextRequest) {
   for (const row of due) {
     const body =
       row.message_type === "morning"
-        ? messages.morning(row.commitment)
+        ? row.is_private
+          ? messages.morningPrivate()
+          : messages.morning(row.commitment)
         : messages.afternoon();
 
     try {

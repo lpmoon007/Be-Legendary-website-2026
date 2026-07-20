@@ -28,6 +28,7 @@ interface UserDetail {
   morning_time: string;
   afternoon_time: string;
   active: boolean;
+  is_private: boolean;
 }
 
 export default async function UserDetailPage({
@@ -40,7 +41,7 @@ export default async function UserDetailPage({
   const { data: user } = await supabase
     .from("users")
     .select(
-      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active"
+      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private"
     )
     .eq("id", params.id)
     .maybeSingle();
@@ -89,18 +90,36 @@ export default async function UserDetailPage({
         <ActiveToggle userId={u.id} active={u.active} />
       </div>
 
-      <div className="mt-2 flex flex-wrap gap-x-6 gap-y-1 text-sm text-ink-light/50">
+      <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-1 text-sm text-ink-light/50">
         <span>{u.phone}</span>
         <span>{u.timezone}</span>
+        {u.is_private && (
+          <span className="pill bg-accent/15 text-accent-light">
+            🔒 Private participant
+          </span>
+        )}
       </div>
 
-      {/* Commitment (inline editable) */}
+      {/* Commitment (inline editable, or private) */}
       <div className="surface mt-6 bg-card-light p-5 shadow-card">
         <span className="text-xs font-700 uppercase tracking-wide text-ink-muted">
           Lead measure
         </span>
         <div className="mt-2">
-          <CommitmentEditor userId={u.id} initial={u.commitment} />
+          {u.is_private ? (
+            <div>
+              <p className="font-serif text-lg text-ink-heading">
+                🔒 Private commitment
+              </p>
+              <p className="mt-1 text-sm text-ink-muted">
+                This participant chose to keep their behavior and reflections
+                private. You support their effort (the daily 1–10) without seeing
+                the details.
+              </p>
+            </div>
+          ) : (
+            <CommitmentEditor userId={u.id} initial={u.commitment} />
+          )}
         </div>
       </div>
 
@@ -200,8 +219,14 @@ export default async function UserDetailPage({
                     )}
                   </td>
                   <td className="px-5 py-3 text-ink-body/80">
-                    {c.journal_entry || (
-                      <span className="text-ink-muted">—</span>
+                    {u.is_private ? (
+                      <span className="text-ink-muted" title="Private">
+                        🔒 private
+                      </span>
+                    ) : (
+                      c.journal_entry || (
+                        <span className="text-ink-muted">—</span>
+                      )
                     )}
                   </td>
                 </tr>

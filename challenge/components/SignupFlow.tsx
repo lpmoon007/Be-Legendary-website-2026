@@ -19,6 +19,7 @@ export function SignupFlow() {
   const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
+  const [isPrivate, setIsPrivate] = useState(false);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,6 +45,7 @@ export function SignupFlow() {
     setFirstName("");
     setPhone("");
     setConsent(false);
+    setIsPrivate(false);
     setError(null);
     setOutcome(null);
   }
@@ -69,8 +71,10 @@ export function SignupFlow() {
         body: JSON.stringify({
           name: firstName.trim(),
           phone: phone.trim(),
-          commitment,
+          // In private mode the real behavior never leaves the browser.
+          commitment: isPrivate ? "(private)" : commitment,
           consent,
+          private: isPrivate,
           timezone,
         }),
       });
@@ -147,8 +151,29 @@ export function SignupFlow() {
             <span className="text-xs font-700 uppercase tracking-wide text-accent">
               Your rep
             </span>
-            <p className="mt-1 text-ink-body">{commitment}</p>
+            <p className="mt-1 text-ink-body">
+              {isPrivate ? "🔒 Private — only you will see this" : commitment}
+            </p>
           </div>
+
+          {/* Private mode */}
+          <label className="mt-4 flex cursor-pointer items-start gap-3 rounded-btn border border-ink-muted/25 bg-white/60 p-3">
+            <input
+              type="checkbox"
+              checked={isPrivate}
+              onChange={(e) => setIsPrivate(e.target.checked)}
+              className="mt-1 h-4 w-4 accent-[#C04A26]"
+            />
+            <span className="text-xs leading-relaxed text-ink-muted">
+              <span className="font-700 text-ink-body">
+                Keep this private.
+              </span>{" "}
+              Some reps are personal — a prayer, a private practice. Check this
+              and your coach supports your effort (your daily 1–10) without ever
+              seeing the behavior or what you write. We won&apos;t store your
+              commitment or your reflections.
+            </span>
+          </label>
 
           <div className="mt-5 space-y-4">
             <label className="block">
@@ -248,7 +273,9 @@ export function SignupFlow() {
             <span className="text-xs font-700 uppercase tracking-wide text-accent">
               Your rep
             </span>
-            <p className="mt-1 text-ink-body">{commitment}</p>
+            <p className="mt-1 text-ink-body">
+              {isPrivate ? "🔒 Private — kept between you and you" : commitment}
+            </p>
           </div>
 
           <button

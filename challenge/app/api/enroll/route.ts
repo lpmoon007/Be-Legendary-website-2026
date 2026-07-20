@@ -13,7 +13,8 @@ const ALLOWED_ORIGINS = new Set([
   "https://belegendary.org",
 ]);
 function corsHeaders(origin: string | null): Record<string, string> {
-  const allow = origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://www.belegendary.org";
+  const allow =
+    origin && ALLOWED_ORIGINS.has(origin) ? origin : "https://www.belegendary.org";
   return {
     "Access-Control-Allow-Origin": allow,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
@@ -23,7 +24,10 @@ function corsHeaders(origin: string | null): Record<string, string> {
 }
 
 export function OPTIONS(req: NextRequest) {
-  return new NextResponse(null, { status: 204, headers: corsHeaders(req.headers.get("origin")) });
+  return new NextResponse(null, {
+    status: 204,
+    headers: corsHeaders(req.headers.get("origin")),
+  });
 }
 
 interface EnrollBody {
@@ -34,7 +38,9 @@ interface EnrollBody {
   lead_measure?: string;
   timezone?: string;
   consent?: boolean;
-  // Workout-block extras (additive; require migration 004).
+  // Private mode (challenge landing page): keep the behavior + reflections private.
+  private?: boolean;
+  // Workout-block extras (additive; require the workout-enroll migration).
   workout_id?: string;
   email?: string;
   // The chosen daily nudge time (HH:MM). Replaces the fixed 8 a.m. morning nudge.
@@ -57,8 +63,13 @@ export async function POST(req: NextRequest) {
 
   const name = payload.name?.trim() || null;
   const rawPhone = payload.phone?.trim() ?? "";
+  const isPrivate = payload.private === true;
   // Accept either field name; the two flows use different keys for the same thing.
-  const commitment = (payload.commitment ?? payload.lead_measure)?.trim();
+  // In private mode the real behavior never leaves the browser — store a
+  // placeholder so the coach (and the DB) never sees it; the morning nudge is generic.
+  const commitment = isPrivate
+    ? "(private)"
+    : (payload.commitment ?? payload.lead_measure)?.trim();
   const consent = payload.consent === true;
   const timezone =
     payload.timezone && isValidTimezone(payload.timezone)
@@ -107,6 +118,9 @@ export async function POST(req: NextRequest) {
     if (name) update.name = name;
     if (workoutId) update.workout_id = workoutId;
     if (email) update.email = email;
+    // Only reference the private column when it's set (works pre-migration for
+    // the common non-private flows).
+    if (isPrivate) update.is_private = true;
     await supabase.from("users").update(update).eq("id", existing.id);
     await supabase
       .from("conversation_state")
@@ -117,8 +131,8 @@ export async function POST(req: NextRequest) {
     return json({ ok: true, id: existing.id, reactivated: true });
   }
 
-  // Build the insert conditionally so the landing-page flow never references the
-  // workout-only columns (keeps it working even before migration 004 is applied).
+  // Build the insert conditionally so a flow never references a column that its
+  // migration hasn't added yet (workout columns, private flag).
   const insert: Record<string, unknown> = {
     name,
     phone,
@@ -129,6 +143,7 @@ export async function POST(req: NextRequest) {
   };
   if (workoutId) insert.workout_id = workoutId;
   if (email) insert.email = email;
+  if (isPrivate) insert.is_private = true;
 
   const { data: user, error } = await supabase
     .from("users")

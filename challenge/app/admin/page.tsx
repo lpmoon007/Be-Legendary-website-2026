@@ -20,6 +20,7 @@ interface UserRow {
   timezone: string;
   commitment: string;
   active: boolean;
+  is_private: boolean;
   created_at: string;
 }
 
@@ -28,7 +29,7 @@ export default async function RosterPage() {
 
   const { data: users } = await supabase
     .from("users")
-    .select("id, name, timezone, commitment, active, created_at")
+    .select("id, name, timezone, commitment, active, is_private, created_at")
     .order("created_at", { ascending: true });
 
   const roster = (users ?? []) as UserRow[];
@@ -113,7 +114,7 @@ export default async function RosterPage() {
                     )}
                   </div>
                   <p className="mt-0.5 truncate text-sm text-ink-muted">
-                    {u.commitment}
+                    {u.is_private ? "🔒 Private commitment" : u.commitment}
                   </p>
                 </div>
 

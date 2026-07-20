@@ -31,7 +31,9 @@ export function PhoneMock() {
           Morning. Today&apos;s rep: say the risky thing you&apos;d normally
           soften. You&apos;ve got this.
         </AgentBubble>
-        <AgentBubble>It&apos;s 4 p.m. — how&apos;d today go, 1–10?</AgentBubble>
+        <AgentBubble>
+          It&apos;s 4 p.m. — how&apos;d your effort go today? Rate it 1–10.
+        </AgentBubble>
         <UserBubble>8</UserBubble>
         <AgentBubble>An 8 — strong. What made it land today?</AgentBubble>
         <UserBubble>
