@@ -23,9 +23,9 @@ export const CONTACT_EMAIL = 'jcarter@belegendary.org';
 export const GA_MEASUREMENT_ID = import.meta.env.PUBLIC_GA_ID || 'G-M0Q17HCKMM';
 
 // Microsoft Clarity project ID (free heatmaps + session recordings). Not a
-// secret (ships client-side). Inert until PUBLIC_CLARITY_ID is set at build:
-// create a project at clarity.microsoft.com and paste its ID.
-export const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID || '';
+// secret (ships client-side). Loaded lazily by Analytics.astro on first
+// interaction/idle. Override per-build with PUBLIC_CLARITY_ID if needed.
+export const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_ID || 'xp6res7ssv';
 
 // HubSpot forms (region na2, portal 20276071)
 export const HUBSPOT = {
