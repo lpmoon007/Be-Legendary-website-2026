@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'How to Hold Your Leadership Team Accountable — 5 Steps';
+const description = 'How to hold your leadership team accountable: make commitments explicit, surface misses in the open, and attach real consequences this week.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'How to hold your leadership team accountable', item: 'https://www.belegendary.org/how-to-hold-your-leadership-team-accountable/' },
+  ] },
+  { '@type': 'Article', headline: 'How to hold your leadership team accountable', datePublished: '2026-07-06', dateModified: '2026-07-06', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-hold-your-leadership-team-accountable/', description: 'A concrete, usable-this-week method for holding a leadership team accountable: explicit commitments with an owner and a deadline, misses surfaced in the open, real consequences, peer-to-peer ownership, and a weekly ritual that enforces the bar.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'How do you hold a leadership team accountable?', acceptedAnswer: { '@type': 'Answer', text: "You install accountability as a discipline instead of hoping for it as a trait. Every commitment gets one owner and a real deadline. Misses are surfaced in the open at a standing weekly ritual, not raised privately or let slide. A missed commitment carries a consequence you actually enforce. And the team holds each other to the bar — peer to peer — so accountability isn't one more thing routed through you. That set of behaviors is the Standard: holding the bar, out loud, every week." } },
+    { '@type': 'Question', name: 'Why is my leadership team not accountable?', acceptedAnswer: { '@type': 'Answer', text: "Almost always because accountability was never made concrete. Commitments were vague, ownership was shared (so it was nobody's), misses were absorbed quietly, and the only person applying pressure was you. Under those conditions even good people drift — not from bad character, but because the team never installed a bar and a ritual that hold it. It's a discipline gap, not a personality problem." } },
+    { '@type': 'Question', name: 'What is peer-to-peer accountability on a leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'Peer-to-peer accountability means executives hold each other to their commitments directly, rather than every miss traveling up to the CEO and back down. It is the difference between a team with a shared standard and a team of individuals each managed separately. You build it by making commitments public to the whole team, letting peers name the miss in the room, and refusing to be the sole enforcer.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.howToAccountable}
+  ogType="article"
+  ogTitle="How to hold your leadership team accountable — install the Standard"
+  ogDescription="Accountability isn't a personality trait or a harder manager. It's a discipline the team installs: explicit commitments, misses in the open, real consequences."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">How to hold your team accountable</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to hold your leadership team accountable</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">You don&rsquo;t hold a leadership team accountable by nagging harder or becoming a tougher boss. You install accountability as a <strong>discipline the team runs on itself</strong>: every commitment gets one owner and a real deadline, misses are surfaced in the open at a standing weekly ritual, and a miss carries a consequence you actually enforce. Done right, the team holds <em>each other</em> to the bar &mdash; peer to peer &mdash; not just you holding everyone. That&rsquo;s the <strong>Standard</strong>: holding the bar, out loud, every week.</p>
+    </div>
+  </header>
+
+  <!-- WHY IT'S HARD -->
+  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Why this is so hard for good teams</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Most leaders reach for accountability like it&rsquo;s a character setting &mdash; either your people have it or they don&rsquo;t &mdash; or like it&rsquo;s a management skill you personally have to get better at. Both are wrong, and both keep you stuck. The reason a talented team keeps missing isn&rsquo;t weak people or a soft CEO. It&rsquo;s that accountability was never made <em>concrete</em>. Commitments were fuzzy (&ldquo;we&rsquo;ll get to the hiring plan&rdquo;). Ownership was shared, which means it belonged to no one. Misses got absorbed quietly &mdash; a private nudge here, a quiet re-plan there &mdash; so nothing ever landed in the open. And the only source of pressure in the whole system was you.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">When that&rsquo;s the setup, even conscientious executives drift. Not because they stopped caring, but because there&rsquo;s no bar to hit and no ritual that checks it. Accountability that lives only in the CEO&rsquo;s head is fragile: the moment you&rsquo;re heads-down on a deal, it evaporates. The gap is a discipline gap, and disciplines can be installed.</p>
+  </div>
+
+  <!-- THE FLAG MODEL LENS -->
+  <div style="max-width:920px;margin:0 auto;padding:40px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The Flag Model lens: this is the Standard</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">In the <a href={SLUGS.flagModel} style="color:#D98A5E;text-decoration:none;">Flag Model</a>, a team&rsquo;s Flag &mdash; its two or three priorities &mdash; is held upright by four disciplines: the <strong>Decision</strong> (every call gets an owner and a deadline), the <strong>Rhythm</strong> (the cadence that finishes work), the <strong>Standard</strong> (holding the bar, with consequences), and the <strong>Learning</strong> (turning misses into change). Accountability is the <strong>Standard</strong>. And the reframe is the whole game: the Standard is not a person&rsquo;s toughness and it&rsquo;s not a top-down system of nagging. It&rsquo;s a <em>team-wide bar</em> the group agrees to and enforces together.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">That distinction matters because it changes who does the holding. When accountability is a trait, you wait and hope. When it&rsquo;s a manager&rsquo;s job, every miss routes through you and you become the bottleneck &mdash; and the resented enforcer. When it&rsquo;s the Standard, the bar belongs to the team, the ritual surfaces the misses, and your peers hold the line alongside you. You&rsquo;re not softer or harder. You&rsquo;re running a discipline. Governing it all is <strong>Truth Over Comfort</strong>: the willingness to name the miss in the room instead of smoothing it over in the hallway.</p>
+  </div>
+
+  <!-- FIRST, TURN THE FINGER AROUND -->
+  <div style="max-width:920px;margin:0 auto;padding:40px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">First, turn the finger around</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">There&rsquo;s a popular line: <em>&ldquo;Accountability starts with you.&rdquo;</em> It&rsquo;s almost right &mdash; but it points the finger the wrong way. The honest version is <strong>&ldquo;Accountability starts with me.&rdquo;</strong> Before a team can hold a shared bar, every person on it &mdash; starting with the leader &mdash; has to own their own piece first. And under pressure, the instinct runs the other way. We reach for victim thinking: <em>&ldquo;It was the other department.&rdquo; &ldquo;It wasn&rsquo;t my idea.&rdquo; &ldquo;It&rsquo;s not my job.&rdquo;</em> Those feel true in the moment and solve exactly nothing. Blame is easier than working out a solution &mdash; which is precisely why it&rsquo;s a habit worth breaking.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">This isn&rsquo;t soft. It&rsquo;s the thing that makes the rest of this article work. You cannot install a Standard you won&rsquo;t hold yourself to. If the CEO&rsquo;s misses get quietly excused while everyone else&rsquo;s get named, the bar is a fiction and the team knows it within a week. So you model it: name your <em>own</em> miss first, in the room, before you ever name someone else&rsquo;s. The fastest way to make accountability real for a team is for its most senior person to demonstrate it on themselves.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Personal accountability takes three things &mdash; and they&rsquo;re a choice, not a personality type. Be <strong>aware</strong> enough to catch yourself pointing outward. Be <strong>wise</strong> enough to take the feedback without defending. And be <strong>brave</strong> enough to say, &ldquo;Okay &mdash; I&rsquo;ll do what it takes to change.&rdquo; Aware, wise, brave. That&rsquo;s the ground the team&rsquo;s Standard is built on. Now build it.</p>
+  </div>
+
+  <!-- THE HOW-TO -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Install it this week</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">Five moves. None require a new tool or a consultant. You can start the next time your leadership team is in a room together.</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:16px;font-size:16px;line-height:1.6;color:#3A372F;">
+        <li><strong>Make every commitment explicit &mdash; owner and deadline, out loud.</strong> No commitment leaves the room without one named person and a real date. Not &ldquo;marketing will look at it&rdquo; &mdash; &ldquo;Dana owns the pricing test, live by Friday the 18th.&rdquo; Write it where the whole team can see it (a shared doc, a board, a pinned message). Vague plus shared equals unaccountable; specific plus single-owner is the fix.</li>
+        <li><strong>Make commitments public to the whole team, not just to you.</strong> Ownership is declared <em>to peers</em>, in front of everyone. This is what converts CEO&rarr;exec accountability into peer-to-peer accountability. When Dana commits in front of the group, the group holds it &mdash; not just you. That&rsquo;s the difference between a team with a shared standard and seven people you manage one at a time.</li>
+        <li><strong>Surface every miss in the open &mdash; no quiet absorption.</strong> The default failure is a missed date handled privately: a side-DM, a soft re-plan, a &ldquo;let&rsquo;s not embarrass anyone.&rdquo; Kill it. A miss gets named in the room, calmly and without drama: what was committed, what happened, what&rsquo;s the new commitment. Naming a miss is not an attack; refusing to name it is the real disrespect, because it tells the team the bar isn&rsquo;t real.</li>
+        <li><strong>Attach a real consequence &mdash; and actually enforce it.</strong> A bar with no teeth is a suggestion. Consequences don&rsquo;t mean punishment; they mean the miss <em>costs</em> something visible: the owner re-commits in front of the team, reports back first next week, gives up a competing priority, or loses the &ldquo;green&rdquo; on the board. The point is that missing is not free. The first time you let a miss slide with no cost, you&rsquo;ve taught the room the Standard is optional.</li>
+        <li><strong>Build peer enforcement &mdash; get out of the middle.</strong> Explicitly hand the holding to the team. When a peer notices another&rsquo;s miss, they name it &mdash; that&rsquo;s the norm, not tattling. Your job shifts from enforcer to the person who protects the ritual and refuses to let it go soft. If every miss still travels through you, you don&rsquo;t have a standard; you have a queue.</li>
+      </ol>
+      <div style="margin-top:24px;padding-top:22px;border-top:1px solid rgba(27,24,16,0.14);">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The weekly ritual that enforces it</p>
+        <p style="font-size:16px;line-height:1.6;color:#3A372F;margin-bottom:14px;">Accountability that isn&rsquo;t on a cadence isn&rsquo;t real. One standing 30-minute block, same time every week, run in this order:</p>
+        <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:9px;font-size:16px;line-height:1.55;color:#3A372F;">
+          <li><strong>Last week&rsquo;s commitments (10 min).</strong> Go down the list. Each owner says done or not done &mdash; binary, no essays. Misses get named here, in the open.</li>
+          <li><strong>Consequences and re-commits (7 min).</strong> Every miss gets a cost and a fresh owner-plus-deadline. No miss leaves unowned.</li>
+          <li><strong>This week&rsquo;s commitments (10 min).</strong> New commitments declared to the whole team, each with a single owner and a date, captured on the shared board.</li>
+          <li><strong>The one honest question (3 min).</strong> &ldquo;Is anyone protecting someone from a miss right now?&rdquo; This is where Truth Over Comfort lives, and where peer accountability gets its teeth.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find out why the bar keeps slipping.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which discipline to rebuild &mdash; whether the gap is really the Standard or something upstream of it &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="max-width:920px;margin:56px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:10px;">How do you hold a leadership team accountable?</p>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);">You install accountability as a discipline instead of hoping for it as a trait. Every commitment gets one owner and a real deadline. Misses are surfaced in the open at a standing weekly ritual, not raised privately or let slide. A missed commitment carries a consequence you actually enforce. And the team holds each other to the bar &mdash; peer to peer &mdash; so accountability isn&rsquo;t one more thing routed through you. That set of behaviors is the Standard: holding the bar, out loud, every week.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:10px;">Why is my leadership team not accountable?</p>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);">Almost always because accountability was never made concrete. Commitments were vague, ownership was shared (so it was nobody&rsquo;s), misses were absorbed quietly, and the only person applying pressure was you. Under those conditions even good people drift &mdash; not from bad character, but because the team never installed a bar and a ritual that hold it. It&rsquo;s a discipline gap, not a personality problem.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:10px;">What is peer-to-peer accountability on a leadership team?</p>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);">Peer-to-peer accountability means executives hold each other to their commitments directly, rather than every miss traveling up to the CEO and back down. It is the difference between a team with a shared standard and a team of individuals each managed separately. You build it by making commitments public to the whole team, letting peers name the miss in the room, and refusing to be the sole enforcer.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.highPerformingTeam} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to build a high-performing leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The pillar: all four disciplines, and where the Standard fits.</span>
+      </a>
+      <a href={SLUGS.noAccountability} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Nobody on my team holds anyone accountable</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The problem behind the how-to &mdash; and why it isn&rsquo;t a people problem.</span>
+      </a>
+      <a href={SLUGS.vsEos} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs EOS &amp; Traction</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why the Level 10 needs a real standard, not just a rolling issues list.</span>
+      </a>
+      <a href={SLUGS.teams} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">For Teams &mdash; the executive-team hub</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Diagnostics, retreats, and the rest of the discipline library.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. Accountability is the Standard." />
+</BaseLayout>

@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = "We Did EOS and OKRs and Behavior Didn't Change. Why? | Be Legendary";
-const description = "EOS, OKRs and Scaling Up are operating systems you run — they assume a team that can already commit, complete, and hold each other accountable. If those disciplines are missing, the framework lives on a poster. Here's why, and what to fix instead.";
+const title = "EOS and OKRs Didn't Change Behavior. Why? | Be Legendary";
+const description = "EOS, OKRs and Scaling Up assume a team that can already commit, complete, and hold each other accountable. Missing those, the framework lives on a poster.";
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -23,7 +25,7 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.eosOkrs} ogType="article" ogTitle="We did EOS and OKRs and behavior didn't change. Why?" ogDescription="Frameworks assume a team that can already execute. The Flag Model rebuilds the disciplines underneath them." schema={schema}>
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <!-- HERO + ANSWER-FIRST -->
@@ -36,7 +38,7 @@ const schema = [
     <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
     <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
-      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">EOS and OKRs are operating systems you <em>run</em> &mdash; not the disciplines that make a team able to run them. They quietly assume a team that can already commit to a decision, finish what it starts, and hold each other to a standard. When those disciplines are missing, the framework lives on a poster and behavior stays exactly the same. The fix isn't a different framework. It's <strong>rebuilding the disciplines underneath</strong> the one you already have.</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">EOS and OKRs are operating systems you <em>run</em> &mdash; not the disciplines that make a team able to run them. They quietly assume a team that can already commit to a decision, finish what it starts, and hold each other to a standard. When those disciplines are missing, the framework lives on a poster and behavior stays exactly the same. The fix isn't a different framework. It's <strong>rebuilding the disciplines underneath</strong> the one you already have.</p>
     </div>
   </header>
 
@@ -130,7 +132,9 @@ const schema = [
       </a>
     </div>
   </div>
-  </article>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
 </BaseLayout>

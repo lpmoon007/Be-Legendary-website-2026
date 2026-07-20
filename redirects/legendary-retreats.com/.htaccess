@@ -1,0 +1,49 @@
+# 301 redirects: legendary-retreats.com -> belegendary.org  (Apache / Plesk)
+# Deploy at the web root of the legendary-retreats.com host if that domain is
+# served by Apache (e.g. attached to the same Plesk server as belegendary.org).
+# Every rule is a permanent (301) cross-domain redirect. Order matters: the
+# specific /field-notes/* rules must precede the /field-notes catch-all.
+
+RewriteEngine On
+
+# ── Home & core ──
+RewriteRule ^about/?$                     https://www.belegendary.org/about/james-carter/ [R=301,L]
+RewriteRule ^contact/?$                    https://www.belegendary.org/teams/retreats/ways-to-work-together/ [R=301,L]
+RewriteRule ^ways-to-work-together/?$      https://www.belegendary.org/teams/retreats/ways-to-work-together/ [R=301,L]
+RewriteRule ^framework/?$                  https://www.belegendary.org/flag-model/ [R=301,L]
+RewriteRule ^for-executive-assistants/?$   https://www.belegendary.org/teams/retreats/for-executive-assistants/ [R=301,L]
+
+# ── Retreats, formats & experience ──
+RewriteRule ^leadership-retreats/?$        https://www.belegendary.org/teams/retreats/ [R=301,L]
+RewriteRule ^executive-offsites/?$         https://www.belegendary.org/teams/retreats/ [R=301,L]
+RewriteRule ^experience/?$                 https://www.belegendary.org/teams/retreats/ [R=301,L]
+RewriteRule ^is-this-your-team/?$          https://www.belegendary.org/teams/retreats/ [R=301,L]
+RewriteRule ^formats(/.*)?$                https://www.belegendary.org/teams/retreats/formats/ [R=301,L]
+RewriteRule ^sailing-offsites/?$           https://www.belegendary.org/teams/retreats/formats/ [R=301,L]
+
+# ── Destinations (fold into the destinations hub) ──
+RewriteRule ^destinations(/.*)?$           https://www.belegendary.org/teams/retreats/destinations/ [R=301,L]
+
+# ── Offsite SEO cluster ──
+RewriteRule ^offsite-vs-executive-retreat/?$   https://www.belegendary.org/teams/executive-offsite-ideas/ [R=301,L]
+RewriteRule ^offsite-vs-team-building/?$        https://www.belegendary.org/teams/executive-offsite-ideas/ [R=301,L]
+RewriteRule ^team-offsite-ideas/?$             https://www.belegendary.org/teams/executive-offsite-ideas/ [R=301,L]
+RewriteRule ^executive-offsite-agenda/?$       https://www.belegendary.org/teams/executive-offsite-ideas/ [R=301,L]
+RewriteRule ^executive-offsite-facilitator/?$  https://www.belegendary.org/leadership-team-offsite-facilitator/ [R=301,L]
+
+# ── Case studies (fold into the case-studies hub) ──
+RewriteRule ^case-studies(/.*)?$           https://www.belegendary.org/case-studies/ [R=301,L]
+
+# ── Field notes — specific mappings BEFORE the /field-notes catch-all ──
+RewriteRule ^field-notes/do-leadership-retreats-work/?$                https://www.belegendary.org/teams/leadership-retreat-ideas/ [R=301,L]
+RewriteRule ^field-notes/what-is-an-experiential-leadership-retreat/?$ https://www.belegendary.org/teams/leadership-retreat-ideas/ [R=301,L]
+RewriteRule ^field-notes/signature-vs-bespoke-retreat/?$              https://www.belegendary.org/teams/retreats/formats/ [R=301,L]
+RewriteRule ^field-notes/align-leadership-team/?$                     https://www.belegendary.org/executive-team-not-aligned/ [R=301,L]
+RewriteRule ^field-notes/newly-formed-post-merger-leadership-team/?$  https://www.belegendary.org/executive-team-not-aligned/ [R=301,L]
+RewriteRule ^field-notes/30-day-reinforcement/?$                      https://www.belegendary.org/leaders/30-day-challenge/ [R=301,L]
+RewriteRule ^field-notes/executive-retreat-cost/?$                    https://www.belegendary.org/executive-team-coaching-cost/ [R=301,L]
+RewriteRule ^field-notes(/.*)?$                                       https://www.belegendary.org/field-notes/ [R=301,L]
+RewriteRule ^the-connection-deficit/?$                               https://www.belegendary.org/field-notes/ [R=301,L]
+
+# ── Catch-all: anything else (including bare "/") -> retreats hub ──
+RewriteRule ^ https://www.belegendary.org/teams/retreats/ [R=301,L]

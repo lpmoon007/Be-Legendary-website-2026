@@ -1,5 +1,5 @@
 ---
-import { CTA_URL } from '../lib/site';
+import { CTA_URL, HUBSPOT, CONTACT_EMAIL } from '../lib/site';
 
 // Cost of Lost Disciplines Calculator. Five sliders; outputs recompute on input.
 // Server-renders the default state so the tool is meaningful without JS.
@@ -85,6 +85,17 @@ const sliders = [
         <p style="font-size:13.5px;line-height:1.6;color:rgba(244,240,231,0.66);"><strong style="color:#F4F0E7;">An honest note on this estimate.</strong> These are conservative ranges from third-party research applied to your inputs &mdash; not a precise audit. The meeting-waste figure is exact from your numbers; the revenue figure is a research-based estimate. We'd rather show you a defensible range than false precision. The direction is what matters: the cost is real, and most of it is recoverable.</p>
       </div>
 
+      <!-- Peak-intent email capture: they've just seen the $ figure. -->
+      <div id="cc-cap" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.newsletterFormGuid} data-contact={CONTACT_EMAIL} style="background:#211D15;border:1px solid rgba(192,74,38,0.35);border-radius:16px;padding:22px 24px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Not ready to talk?</p>
+        <p style="font-size:15px;line-height:1.5;color:rgba(244,240,231,0.82);margin-bottom:14px;">Get this breakdown and our field notes on closing the gap — one short email, roughly monthly.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <input id="cc-email" type="email" placeholder="you@company.com" aria-label="Work email" style="flex:1;min-width:200px;padding:14px 16px;border-radius:10px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:15px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+          <button id="cc-send" style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:14px 22px;border-radius:10px;font-weight:700;font-size:15px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Email me my results</button>
+        </div>
+        <p id="cc-cap-msg" aria-live="polite" style="margin-top:10px;font-size:13px;color:rgba(244,240,231,0.7);min-height:17px;"></p>
+      </div>
+
       <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 30px;border-radius:13px;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">See where your team breaks first &mdash; book a Calibration Call <span style="font-size:19px;">&rarr;</span></a>
     </div>
   </div>
@@ -143,5 +154,36 @@ const sliders = [
         ($('cc-banner') as HTMLElement).style.display = 'flex';
       }
     } catch (e) { /* no-op */ }
+  })();
+
+  // Peak-intent email capture — posts email-only to the working newsletter form,
+  // gated on res.ok with a mailto fallback so a high-intent lead is never lost.
+  (function () {
+    const box = document.getElementById('cc-cap');
+    const email = document.getElementById('cc-email') as HTMLInputElement;
+    const send = document.getElementById('cc-send');
+    const msg = document.getElementById('cc-cap-msg');
+    if (!box || !email || !send || !msg) return;
+    const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const portal = box.dataset.portal!, guid = box.dataset.guid!, contact = box.dataset.contact!;
+    send.addEventListener('click', async () => {
+      const value = email.value.trim();
+      if (!EMAIL_RE.test(value)) { msg.textContent = 'Please enter a valid email.'; return; }
+      msg.textContent = 'Sending…';
+      let ok = false;
+      try {
+        const res = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portal}/${guid}`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: [{ name: 'email', value }], context: { pageUri: location.href, pageName: 'Cost of Lost Disciplines Calculator' } }),
+        });
+        ok = res.ok;
+      } catch (e) { ok = false; }
+      if (!ok) {
+        msg.innerHTML = `Couldn't send it just now. <a href="mailto:${contact}?subject=${encodeURIComponent('My cost-of-dysfunction results')}&body=${encodeURIComponent('Please send my results and field notes. Email: ' + value)}" style="color:#E0744A;text-decoration:underline;">Email us</a>.`;
+        return;
+      }
+      box.innerHTML = '<p style="font-family:\'Newsreader\',serif;font-size:19px;color:#FBF8F1;">On its way — check your inbox.</p>';
+      if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'generate_lead', { form: 'cost_calculator' });
+    });
   })();
 </script>

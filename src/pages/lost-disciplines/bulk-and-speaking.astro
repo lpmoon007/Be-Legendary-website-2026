@@ -1,0 +1,215 @@
+---
+import LdolLayout from '../../layouts/LdolLayout.astro';
+import LdolHeader from '../../components/LdolHeader.astro';
+import LdolFooter from '../../components/LdolFooter.astro';
+import { CTA_URL, SITE_URL, HUBSPOT, CONTACT_EMAIL } from '../../lib/site';
+
+const title = 'Bulk orders & speaking — Lost Disciplines of Leadership™';
+const description =
+  'Volume orders for cohorts and offsites, and keynote sessions that bring the Flag Model™ to your stage. Enquire about bulk copies and speaking with James Carter. A Be Legendary book.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Book',
+    name: 'Lost Disciplines of Leadership',
+    alternateName: 'Lost Disciplines of Leadership™',
+    url: `${SITE_URL}/lost-disciplines/`,
+    image: `${SITE_URL}/assets/ldol-cover.png`,
+    bookFormat: 'https://schema.org/Hardcover',
+    inLanguage: 'en',
+    abstract:
+      'Why capable leadership teams know what to do and still fail to do it — the execution gap — and how the Flag Model™ rebuilds the disciplines that stalled teams quietly lose: the Flag (alignment), the Decision, the Rhythm, the Standard, and the Learning, governed by Truth Over Comfort.',
+    author: {
+      '@type': 'Person',
+      name: 'James Carter',
+      url: `${SITE_URL}/lost-disciplines/about-james/`,
+      jobTitle: 'Author & executive-team advisor',
+      description:
+        'Executive-team advisor of 25 years; co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra, and Brian Tracy; featured on CNN and in Business Insider.',
+    },
+    publisher: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' },
+    about: ['Leadership', 'Team execution', 'Accountability', 'Organizational alignment'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Lost Disciplines of Leadership',
+    url: `${SITE_URL}/lost-disciplines/`,
+    logo: `${SITE_URL}/assets/ldol-b-logo.png`,
+    parentOrganization: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' },
+  },
+];
+---
+<LdolLayout title={title} description={description} path="/lost-disciplines/bulk-and-speaking/" schema={schema}>
+  <LdolHeader active={null} />
+
+  <!-- HERO -->
+  <header style="background:radial-gradient(120% 120% at 80% 30%, rgba(192,74,38,.13), transparent 55%);">
+    <div class="ldol-wrap" style="padding-top:96px;padding-bottom:64px;max-width:760px;">
+      <div class="ldol-eyebrow" style="color:#C04A26;margin-bottom:26px;">Bulk &amp; Speaking</div>
+      <h1 class="ldol-h1" style="font-family:'Newsreader',serif;font-weight:500;font-size:60px;line-height:1.05;letter-spacing:-.015em;color:#f4f0e6;margin:0 0 22px;">Put the disciplines in front of your whole team.</h1>
+      <p style="font-size:19px;line-height:1.6;color:#b3a899;margin:0;max-width:32em;">Volume orders for cohorts and offsites, and keynote sessions that bring the Flag Model&trade; to your stage.</p>
+    </div>
+  </header>
+
+  <!-- TWO OFFERS -->
+  <section style="background:#14203a;">
+    <div class="ldol-wrap" style="padding-top:80px;padding-bottom:80px;">
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div style="background:#0f1830;border:1px solid rgba(201,162,74,.2);border-radius:8px;padding:44px;">
+          <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:18px;">Bulk &amp; Corporate</div>
+          <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;line-height:1.2;margin:0 0 16px;color:#f4f0e6;">Every leader, same language.</h2>
+          <p style="font-size:16px;line-height:1.65;color:#aeb8cf;margin:0 0 24px;">Give your leadership team, cohort, or reading group a shared model for execution. Volume pricing, custom runs, and facilitation guides available.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+            <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:15px;color:#cdc4b6;">Tiered volume pricing from 10 copies</span></li>
+            <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:15px;color:#cdc4b6;">Optional discussion &amp; facilitation guide</span></li>
+            <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:15px;color:#cdc4b6;">Custom foreword or branded insert for large orders</span></li>
+          </ul>
+        </div>
+        <div style="background:#0f1830;border:1px solid rgba(201,162,74,.2);border-radius:8px;padding:44px;">
+          <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:18px;">Speaking</div>
+          <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;line-height:1.2;margin:0 0 16px;color:#f4f0e6;">The Flag Model&trade;, live.</h2>
+          <p style="font-size:16px;line-height:1.65;color:#aeb8cf;margin:0 0 24px;">James speaks to executive audiences on alignment, accountability, and the disciplines that separate teams that ship from teams that stall.</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;">
+            <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:15px;color:#cdc4b6;">Keynotes, half-day workshops, and leadership offsites</span></li>
+            <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:15px;color:#cdc4b6;">Tailored to your team&rsquo;s specific execution gap</span></li>
+            <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:15px;color:#cdc4b6;">Pairs with the Be Legendary Calibration process</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IT LANDS AT SCALE -->
+  <section style="background:#1a1510;">
+    <div class="ldol-wrap" style="padding-top:78px;padding-bottom:78px;max-width:760px;margin:0 auto;">
+      <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:20px;">Why the whole team</div>
+      <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.45;color:#f4f0e6;margin:0 0 26px;">A framework only works when everyone in the room is speaking it.</p>
+      <p style="font-size:17px;line-height:1.75;color:#b3a899;margin:0 0 22px;">Most execution problems aren&rsquo;t solved by the leader who read the book &mdash; they&rsquo;re solved when the whole team shares one honest vocabulary for what&rsquo;s going wrong. When everyone can say &ldquo;this is a Decision problem&rdquo; or &ldquo;our Rhythm has slipped,&rdquo; the conversation stops being about blame and starts being about the fix. That&rsquo;s why the book travels best in bulk: put it in every leader&rsquo;s hands and you give the team a common language before the next offsite, not after.</p>
+      <p style="font-size:17px;line-height:1.75;color:#b3a899;margin:0 0 30px;">A keynote does the same thing, faster and in the same room. James takes an executive audience through the execution gap, the four disciplines, and Truth Over Comfort &mdash; then leaves them able to name where their own team breaks first. It works as a conference keynote, a leadership-summit session, or the opening act of an internal offsite, and it pairs naturally with the Be Legendary Calibration process when a team wants to keep going.</p>
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+        <div style="border-top:2px solid #c9a24a;padding-top:18px;">
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#f4f0e6;margin:0 0 8px;">Best for a bulk order</h3>
+          <p style="font-size:15px;line-height:1.6;color:#a59a8d;margin:0;">Leadership teams and cohorts, book clubs and reading groups, all-hands reads, and conference or client gifting.</p>
+        </div>
+        <div style="border-top:2px solid #c9a24a;padding-top:18px;">
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#f4f0e6;margin:0 0 8px;">Best for a keynote</h3>
+          <p style="font-size:15px;line-height:1.6;color:#a59a8d;margin:0;">Executive summits, leadership offsites, industry conferences, and internal leadership programs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRY FORM -->
+  <section id="enquire" style="background:#f4f0e6;color:#211b16;">
+    <div class="ldol-wrap" style="padding-top:88px;padding-bottom:88px;">
+      <div style="max-width:640px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:36px;">
+          <div class="ldol-eyebrow" style="color:#C04A26;margin-bottom:16px;">Enquire</div>
+          <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:38px;line-height:1.1;margin:0 0 12px;">Tell us what you need.</h2>
+          <p style="font-size:16px;color:#5c544c;margin:0;">Bulk order, speaking engagement, or both &mdash; we&rsquo;ll route it to the right person.</p>
+        </div>
+        <form id="ldol-enquiry" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.ldolEnquiryFormGuid} data-contact={CONTACT_EMAIL} style="display:flex;flex-direction:column;gap:14px;">
+          <input type="hidden" name="intent" value="bulk" />
+          <div class="ldol-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <input type="text" name="name" required placeholder="Name" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#211b16;background:#fff;border:1px solid rgba(33,27,22,.2);border-radius:3px;padding:14px 16px;outline:none;" />
+            <input type="email" name="email" required placeholder="Work email" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#211b16;background:#fff;border:1px solid rgba(33,27,22,.2);border-radius:3px;padding:14px 16px;outline:none;" />
+          </div>
+          <input type="text" name="organization" placeholder="Organization" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#211b16;background:#fff;border:1px solid rgba(33,27,22,.2);border-radius:3px;padding:14px 16px;outline:none;" />
+          <div style="display:flex;gap:10px;">
+            <button type="button" data-intent="bulk" style="flex:1;font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border-radius:3px;padding:12px;border-color:#14203a;background:#14203a;color:#f4f0e6;">Bulk order</button>
+            <button type="button" data-intent="speaking" style="flex:1;font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border-radius:3px;padding:12px;border:1px solid rgba(33,27,22,.2);background:#fff;color:#5c544c;">Speaking</button>
+          </div>
+          <textarea name="message" placeholder="Tell us a little about your team, timing, and rough numbers." rows="4" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#211b16;background:#fff;border:1px solid rgba(33,27,22,.2);border-radius:3px;padding:14px 16px;outline:none;resize:vertical;"></textarea>
+          <button type="submit" data-label style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:600;color:#f4f0e6;background:#14203a;border:none;border-radius:3px;padding:15px;cursor:pointer;">Send enquiry</button>
+        </form>
+        <p data-note style="font-size:13px;color:#8a8378;text-align:center;margin:16px 0 0;">Goes straight to the team. A Be Legendary book.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUITE ROUTING -->
+  <section style="background:#0f1830;">
+    <div class="ldol-wrap" style="padding-top:60px;padding-bottom:60px;text-align:center;">
+      <img src="/assets/ldol-snail-cream.png" alt="Be Legendary" width="32" height="32" style="height:32px;width:auto;margin-bottom:20px;opacity:.9;" />
+      <p style="font-family:'Newsreader',serif;font-size:23px;line-height:1.45;color:#e7e0d2;margin:0 auto 22px;max-width:30em;">Ready to go beyond the book with your team?</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:600;color:#1a1510;background:#c9a24a;border-radius:3px;padding:14px 30px;display:inline-block;text-decoration:none;">Book a Calibration Call at Be Legendary &rarr;</a>
+    </div>
+  </section>
+
+  <LdolFooter />
+
+  <script is:inline>
+    // Enquiry stub — replace with HubSpot (portal 20276071 + LDOL form GUID) at launch; pass selected intent (bulk|speaking).
+    var f = document.getElementById('ldol-enquiry');
+    if (f) {
+      var hidden = f.querySelector('input[name="intent"]');
+      var toggles = f.querySelectorAll('[data-intent]');
+      var selOn = function (b) {
+        b.style.background = '#14203a';
+        b.style.color = '#f4f0e6';
+        b.style.border = '1px solid #14203a';
+      };
+      var selOff = function (b) {
+        b.style.background = '#fff';
+        b.style.color = '#5c544c';
+        b.style.border = '1px solid rgba(33,27,22,.2)';
+      };
+      toggles.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          toggles.forEach(function (b) {
+            b === btn ? selOn(b) : selOff(b);
+          });
+          if (hidden) hidden.value = btn.getAttribute('data-intent');
+        });
+      });
+      var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = f.querySelector('[data-label]');
+        var note = f.parentElement.querySelector('[data-note]');
+        var val = function (n) { var el = f.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+        var email = val('email');
+        if (!EMAIL.test(email)) { var ei = f.querySelector('[name="email"]'); if (ei) ei.focus(); return; }
+        var intent = val('intent') || 'bulk';
+        var intentLabel = intent === 'speaking' ? 'Speaking' : 'Bulk order';
+        var msg = 'Interest: ' + intentLabel + '\n\n' + val('message');
+        var portal = f.getAttribute('data-portal');
+        var guid = f.getAttribute('data-guid');
+        var contact = f.getAttribute('data-contact');
+
+        // mailto fallback so an enquiry is NEVER silently lost — used when the
+        // HubSpot form GUID isn't wired yet, or when the POST fails.
+        function mailtoFallback() {
+          var subject = 'Lost Disciplines — ' + intentLabel + ' enquiry';
+          var body = 'Name: ' + val('name') + '\nEmail: ' + email + '\nOrganization: ' + val('organization') + '\nInterest: ' + intentLabel + '\n\n' + val('message');
+          var href = 'mailto:' + contact + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+          if (btn) { btn.textContent = 'Almost there — send your enquiry'; btn.disabled = false; btn.style.opacity = '1'; }
+          if (note) note.innerHTML = 'One quick step — <a href="' + href + '" style="color:#a87b2e;font-weight:600;text-decoration:underline;">click to send your enquiry</a> and we’ll be right back to you.';
+          if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'ldol_enquiry', intent: intent, method: 'mailto' });
+        }
+        function confirmSent() {
+          if (btn) { btn.textContent = 'Sent ✓ we’ll be in touch'; btn.disabled = true; btn.style.opacity = '0.85'; }
+          if (note) note.textContent = 'Thanks — your enquiry is in. We’ll route it to the right person and be in touch shortly.';
+          if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'ldol_enquiry', intent: intent, method: 'hubspot' });
+        }
+
+        if (!guid) { mailtoFallback(); return; }
+        fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: [
+              { name: 'firstname', value: val('name') },
+              { name: 'email', value: email },
+              { name: 'company', value: val('organization') },
+              { name: 'message', value: msg },
+            ],
+            context: { pageUri: location.href, pageName: 'Lost Disciplines — ' + intentLabel + ' enquiry' },
+          }),
+        }).then(function (res) { if (res && res.ok) { confirmSent(); } else { mailtoFallback(); } })
+          .catch(function () { mailtoFallback(); });
+      });
+    }
+  </script>
+</LdolLayout>

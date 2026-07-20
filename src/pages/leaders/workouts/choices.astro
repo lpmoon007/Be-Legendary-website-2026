@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('choices');
+const title = 'Choices — a Mindset Workout on purpose and decisions';
+const description =
+  "Most hard decisions aren't hard because the options are close — they're hard until you connect them to your purpose. Wire the two and choosing gets easy.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource (enriched with entity @ids) + a HowTo
+// built from the "Time for Action" daily rep.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'Choices — when purpose is clear, the hard decisions get easy',
+    learningResourceType: 'Mindset warmup and workout',
+    teaches: 'Connecting decisions to purpose so choices become clear',
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT10M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Make one decision through the filter — out loud',
+    description:
+      'Each day, take one real choice and say the quiet part aloud — whether it serves your priorities and why — so the purpose behind the decision is explicit.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Name your priorities',
+        text: 'Name your two or three real priorities — the things any big decision is meant to serve.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Run the choice through the filter',
+        text: 'Take one real choice and test it: does it serve at least two of your priorities? Two yes is likely a yes; two violations is a no.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Say the quiet part out loud',
+        text: 'Say it aloud: "This serves — or doesn’t serve — my priorities, because ___." Naming the purpose forces the calculation into the open. Do it daily.',
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Choices — when purpose is clear, the hard decisions get easy"
+  ogDescription="Decisions feel hard when they're unhooked from purpose. Wire them together."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <header style="max-width:1000px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">Choices</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0A34A;">Mental</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">Warmup · ~3 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(44px,7.5vw,80px);line-height:0.98;letter-spacing:-0.025em;color:#1B1810;">Nobody is making you feel this way.</h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#56524A;max-width:52ch;">For the analytical mind that wants to reason its way to the right answer: most hard decisions aren't hard because the options are close. They're hard because they've come <em style="font-style:italic;color:#C04A26;">unhooked from your purpose.</em> Reconnect them, and the calculation gets simple.</p>
+    </header>
+
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:19px;line-height:1.65;color:#3A362E;margin-bottom:22px;">You've felt it: two good options, endless pro/con lists, and no clarity — just spin. The spin isn't a data problem, it's a <em style="font-style:italic;">purpose</em> problem. When you don't know which outcome you're actually optimizing for, every factor looks equally weighted, so nothing wins. Add the missing variable — <strong style="color:#1B1810;">what is this in service of?</strong> — and the same options suddenly sort themselves.</p>
+      <figure style="margin:0 0 24px;border-left:3px solid #C04A26;padding:6px 0 6px 26px;">
+        <blockquote style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(21px,2.7vw,28px);line-height:1.36;color:#1B1810;">A hard choice is usually a clear purpose you haven't stated yet.</blockquote>
+      </figure>
+      <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Warmup · one reflection</p>
+        <p style="font-size:18px;line-height:1.6;color:#1B1810;">Bring to mind a decision you've been stuck on. Now ask the one question you probably skipped: <em style="font-style:italic;">what am I actually trying to serve here?</em> Watch how fast the options re-rank.</p>
+      </div>
+    </section>
+
+    <!-- GO DEEPER -->
+    <section style="max-width:760px;margin:34px auto 0;padding:0 32px;">
+      <div id="go-deep-prompt" style="display:block;">
+        <button id="go-deep-btn" type="button" style="width:100%;cursor:pointer;background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(224,116,74,0.4);border-radius:16px;padding:26px 30px;text-align:left;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.borderColor='rgba(224,116,74,0.75)'" onmouseout="this.style.borderColor='rgba(224,116,74,0.4)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+            <div>
+              <span style="display:block;font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The workout · ~10 min + optional 30 days</span>
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;line-height:1.2;">Want to go deeper and build the filter?</span>
+            </div>
+            <span style="flex:none;font-size:26px;color:#E0744A;">&darr;</span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <div id="go-deep-content" style="display:none;">
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">The workout · connect head to purpose</p>
+        <div style="font-size:18px;line-height:1.72;color:#3A362E;">
+          <p style="margin-bottom:20px;">Your calculating mind is a superpower — it just needs to be pointed. Give it a purpose to optimize toward and it will out-reason anyone. Leave the purpose vague and it will happily optimize the wrong thing with tremendous precision. The fix is to make purpose an explicit input, not a background hope.</p>
+          <p style="margin-bottom:20px;">Name your two or three real priorities — the ones a decision actually serves. Then the test is simple: <strong style="color:#1B1810;">does this choice serve at least two of them?</strong> If yes, it's likely a yes. If it violates two, it's a no. One of three — that's the genuinely close call worth deliberating. Most "hard" decisions were never actually close; they only felt that way without the filter.</p>
+        </div>
+      </section>
+
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Reflect</p>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">1</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Write your two or three real priorities — the things any big decision is meant to serve. Be honest, not aspirational.</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">2</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Run your stuck decision through the "serves two of three?" test. What answer does it give — and does the answer feel true?</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">3</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">If the honest answer scares you, that's information. What is the calculation actually telling you that you've been avoiding?</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:760px;margin:38px auto 0;padding:0 32px;">
+        <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 36px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for Action</span><span style="font-size:12px;color:#8C8473;">one rep · daily</span></div>
+          <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.25;color:#FBF8F1;margin-bottom:14px;">Make one decision through the filter — out loud.</p>
+          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Each day, take one real choice and say the quiet part aloud: "This serves — or doesn't serve — my priorities, because ___." Naming the purpose forces the calculation into the open. Do it daily and clear decisions stop being rare events and become how you operate.</p>
+        </div>
+      </section>
+
+      <MwComplete
+        workoutId="choices"
+        dim="Mental"
+        dimLabel="Mental"
+        notePlaceholder="My two or three real priorities are…"
+        doneHead="Filter — built."
+        doneBody="Hard choices get easy when purpose is explicit. Point the calculating mind and let it work."
+        nextHref={workoutPath('legendary-intent')}
+        nextCta="Sharpen the purpose · Legendary Intent"
+      />
+
+      <MwCommitment
+        workoutId="choices"
+        dim="Mental"
+        dimLabel="Mental"
+        c1="When I open my to-do list, instead of doing the easiest thing, ||I will circle the one that actually matters."
+        c2="When someone asks for my time, instead of an automatic yes, ||I will check it against my top three first."
+        c3="When I sit down at my desk, instead of reacting to the inbox, ||I will name the one thing today is really for."
+        willPh="pick the one that matters"
+      />
+    </div>
+
+  </div>
+
+  <MwRelated current="choices" />
+
+  <SiteFooter audience="leaders" variant="slim" />
+
+  <script>
+    (function () {
+      const btn = document.getElementById('go-deep-btn');
+      const prompt = document.getElementById('go-deep-prompt');
+      const content = document.getElementById('go-deep-content');
+      if (btn && prompt && content) {
+        btn.addEventListener('click', function () {
+          prompt.style.display = 'none';
+          content.style.display = 'block';
+        });
+      }
+    })();
+  </script>
+</BaseLayout>

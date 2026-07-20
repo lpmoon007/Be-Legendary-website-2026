@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, CTA_URL, ORG_ID, SLUGS } from '../../lib/site';
+
+const path = SLUGS.actionableCoaching;
+const title = 'Actionable Coaching — Get Held to What You Said You Wanted';
+const description =
+  "Actionable Coaching is a real person who holds you — ruthlessly, kindly — to the change you said you wanted. The human version of the 30-day challenge.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's Service + FAQPage, enriched so provider resolves by @id.
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': `${canonical}#service`,
+    name: 'Actionable Coaching',
+    provider: { '@id': ORG_ID },
+    serviceType: 'Executive accountability coaching',
+    description:
+      'One-on-one accountability coaching for leaders who have done the inner work and want a real person to hold them, ruthlessly, to the change they committed to.',
+    offers: { '@type': 'Offer', price: '25000', priceCurrency: 'USD' },
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How is Actionable Coaching different from regular executive coaching?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Most coaching is reflective — a space to think out loud. Actionable Coaching is accountability-first. You define the change you want, and your coach holds you to it, ruthlessly and without flattery, until it's done. It's for leaders who don't need more insight; they need to be held to the insight they already have.",
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Who is Actionable Coaching for?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: "Leaders who have done the reps — the Mindset Workouts, a 30-day challenge, real self-examination — and are ready to stop drifting on the change they keep saying they'll make. It's the human, higher-intensity version of the daily accountability the 30-day challenge provides.",
+        },
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Actionable Coaching — Get Held to What You Said You Wanted"
+  ogDescription="Not advice. Accountability. A real person, ruthless about the change you said you wanted."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="full"
+    logoHref={SLUGS.leaders}
+    cta={{ label: 'Book a Calibration Call', href: CTA_URL, external: true }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1080px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Actionable Coaching</span>
+      </nav>
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Individual accountability · by application</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.4vw,66px);line-height:1.0;letter-spacing:-0.022em;color:#1B1810;max-width:16ch;">You know what to do. This is about <span style="font-style:italic;color:#C04A26;">actually doing it.</span></h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#2E2A22;max-width:52ch;">Actionable Coaching isn't a place to think out loud. It's a real person who holds you — ruthlessly, without flattery — to the change you said you wanted. You bring the commitment. We make sure you keep it.</p>
+      <div style="margin-top:32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Apply for coaching <span>&rarr;</span></a>
+        <a href="#how" style="color:#C04A26;text-decoration:none;font-weight:700;font-size:15px;">How it works &darr;</a>
+      </div>
+    </section>
+
+    <!-- NOT / IS -->
+    <section style="max-width:1080px;margin:64px auto 0;padding:0 32px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:30px 32px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;margin-bottom:16px;">What it isn't</p>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.5;color:#56524A;">
+            <p>A comfortable hour to process your feelings.</p>
+            <p>Advice you'll nod at and never use.</p>
+            <p>A cheerleader who tells you you're doing great.</p>
+            <p>More insight you don't need.</p>
+          </div>
+        </div>
+        <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:30px 32px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">What it is</p>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.5;color:#E7E0D2;">
+            <p>A standing appointment with your own word.</p>
+            <p>Someone who remembers what you committed to — and asks.</p>
+            <p>Honest to the point of uncomfortable, because you asked for it.</p>
+            <p>The gap between knowing and doing, closed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE LADDER OF ACCOUNTABILITY -->
+    <section id="how" style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Where this fits</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#1B1810;max-width:20ch;">The next rung on the accountability ladder.</h2>
+      <p style="margin-top:18px;font-size:17.5px;line-height:1.65;color:#2E2A22;max-width:56ch;">You don't start here. You earn your way to it — because ruthless accountability only works on someone who's already done the inner work and knows what they're reaching for.</p>
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <a href={SLUGS.workouts} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.11);border-radius:16px;padding:28px 26px;display:block;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;">Step 1 · Free</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;margin:10px 0;color:#1B1810;">The Workouts</h3>
+          <p style="font-size:15px;line-height:1.55;color:#56524A;">You do the reps and learn what you actually want to change.</p>
+        </a>
+        <a href={SLUGS.challenge} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.11);border-radius:16px;padding:28px 26px;display:block;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;">Step 2 · Self-accountability</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;margin:10px 0;color:#1B1810;">The 30-Day Challenge</h3>
+          <p style="font-size:15px;line-height:1.55;color:#56524A;">One text a day holds you to one behavior. You prove you'll show up.</p>
+        </a>
+        <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:28px 26px;box-shadow:0 24px 50px -24px rgba(26,23,18,0.55);">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;">Step 3 · Human accountability</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;margin:10px 0;color:#FBF8F1;">Actionable Coaching</h3>
+          <p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.75);">A real person, higher intensity, ruthless — for the change that matters most.</p>
+        </div>
+      </div>
+      <p style="margin-top:22px;font-size:15px;line-height:1.6;color:#8A7F6C;max-width:56ch;">Think of it as the 30-day challenge with a human on the other end — one who won't accept the excuse the app can't hear.</p>
+    </section>
+
+    <!-- THE DEAL -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border-radius:20px;padding:48px 46px;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">The deal</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.12;color:#FBF8F1;max-width:22ch;margin-bottom:28px;">We've never once punished courage. We're also not here to be nice.</h2>
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
+          <div style="border-top:2px solid #C04A26;padding-top:18px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">You name it</h3><p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.75);">The one change worth the intensity — said out loud, specific, no hedging.</p></div>
+          <div style="border-top:2px solid #C04A26;padding-top:18px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">We hold it</h3><p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.75);">Regular, direct, unflinching. We remember what you said and we ask about it every time.</p></div>
+          <div style="border-top:2px solid #C04A26;padding-top:18px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">You change</h3><p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.75);">Not because you found more motivation, but because you stopped being able to quietly let it slide.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTMENT + CTA -->
+    <section style="max-width:1080px;margin:64px auto 0;padding:0 32px;">
+      <div class="bl-grid-collapse" style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:20px;padding:44px 46px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;">
+        <div>
+          <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A7F6C;margin-bottom:6px;">Investment</p>
+          <p style="font-family:'Newsreader',serif;font-size:40px;color:#1B1810;line-height:1;">$25,000</p>
+          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#56524A;max-width:36ch;">By application. Because it only works if you're genuinely ready to be held — and we'll tell you honestly if you're not there yet.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:700;font-size:16px;text-align:center;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Apply for coaching</a>
+          <a href={SLUGS.workouts} style="border:1px solid rgba(27,24,16,0.26);color:#1B1810;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;text-align:center;">Not ready? Start with the workouts</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="max-width:760px;margin:72px auto 0;padding:0 32px 90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">How is this different from normal executive coaching?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Most coaching is reflective — a space to think. This is accountability-first: you define the change, and we hold you to it, ruthlessly and without flattery, until it's done. For leaders who don't need more insight, they need to be held to the insight they already have.</p></div>
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Who is it for?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Leaders who've done the reps — the workouts, a 30-day challenge, real self-examination — and are done drifting on the change they keep saying they'll make. It's the human, higher-intensity version of the 30-day challenge.</p></div>
+      </div>
+    </section>
+
+      <!-- internal-linking: keep-reading rail -->
+      <section style="max-width:860px;margin:8px auto 0;padding:0 32px 76px;">
+        <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep reading</p>
+        <div style="display:grid;gap:12px;">
+          <a href="/leaders/what-is-executive-coaching/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">What is executive coaching?</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/leaders/executive-imposter-syndrome/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">Executive imposter syndrome</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/leaders/whats-next-after-success/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">What's next after you've already made it</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+        </div>
+      </section>
+
+  </div>
+
+  <SiteFooter audience="leaders" variant="full" />
+</BaseLayout>

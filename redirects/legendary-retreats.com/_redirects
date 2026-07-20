@@ -1,0 +1,35 @@
+# 301 redirects: legendary-retreats.com -> belegendary.org  (Netlify / Vercel _redirects)
+# Use only if legendary-retreats.com is attached to a Netlify/Vercel project.
+# 301! forces a permanent redirect. Specific rules precede wildcards.
+/                                          https://www.belegendary.org/teams/retreats/                       301!
+/about                                     https://www.belegendary.org/about/james-carter/                   301!
+/contact                                   https://www.belegendary.org/teams/retreats/ways-to-work-together/ 301!
+/ways-to-work-together                     https://www.belegendary.org/teams/retreats/ways-to-work-together/ 301!
+/framework                                 https://www.belegendary.org/flag-model/                           301!
+/for-executive-assistants                  https://www.belegendary.org/teams/retreats/for-executive-assistants/ 301!
+/leadership-retreats                       https://www.belegendary.org/teams/retreats/                       301!
+/executive-offsites                        https://www.belegendary.org/teams/retreats/                       301!
+/experience                                https://www.belegendary.org/teams/retreats/                       301!
+/is-this-your-team                         https://www.belegendary.org/teams/retreats/                       301!
+/formats/*                                 https://www.belegendary.org/teams/retreats/formats/               301!
+/sailing-offsites                          https://www.belegendary.org/teams/retreats/formats/               301!
+/destinations                              https://www.belegendary.org/teams/retreats/destinations/          301!
+/destinations/*                            https://www.belegendary.org/teams/retreats/destinations/          301!
+/offsite-vs-executive-retreat              https://www.belegendary.org/teams/executive-offsite-ideas/        301!
+/offsite-vs-team-building                  https://www.belegendary.org/teams/executive-offsite-ideas/        301!
+/team-offsite-ideas                        https://www.belegendary.org/teams/executive-offsite-ideas/        301!
+/executive-offsite-agenda                  https://www.belegendary.org/teams/executive-offsite-ideas/        301!
+/executive-offsite-facilitator             https://www.belegendary.org/leadership-team-offsite-facilitator/  301!
+/case-studies                              https://www.belegendary.org/case-studies/                         301!
+/case-studies/*                            https://www.belegendary.org/case-studies/                         301!
+/field-notes/do-leadership-retreats-work            https://www.belegendary.org/teams/leadership-retreat-ideas/ 301!
+/field-notes/what-is-an-experiential-leadership-retreat https://www.belegendary.org/teams/leadership-retreat-ideas/ 301!
+/field-notes/signature-vs-bespoke-retreat  https://www.belegendary.org/teams/retreats/formats/              301!
+/field-notes/align-leadership-team         https://www.belegendary.org/executive-team-not-aligned/           301!
+/field-notes/newly-formed-post-merger-leadership-team https://www.belegendary.org/executive-team-not-aligned/ 301!
+/field-notes/30-day-reinforcement          https://www.belegendary.org/leaders/30-day-challenge/             301!
+/field-notes/executive-retreat-cost        https://www.belegendary.org/executive-team-coaching-cost/         301!
+/field-notes                               https://www.belegendary.org/field-notes/                          301!
+/field-notes/*                             https://www.belegendary.org/field-notes/                          301!
+/the-connection-deficit                    https://www.belegendary.org/field-notes/                          301!
+/*                                         https://www.belegendary.org/teams/retreats/                       301!

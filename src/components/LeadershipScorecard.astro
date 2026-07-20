@@ -1,0 +1,346 @@
+---
+import { CTA_URL, CHALLENGE_URL, HUBSPOT, CONTACT_EMAIL } from '../lib/site';
+
+// Leadership Scorecard: 10 questions across 5 categories (2 each), 1–5 scale.
+// Ungated — the full Leadership Health Score + Top 3 Growth Areas render on
+// screen. Optional email capture posts the score to HubSpot (newsletter form).
+// A reflective self-assessment (signal, not verdict), not a validated instrument.
+const categories = [
+  {
+    name: 'High-Potential → High-Performer',
+    prompt: 'Are you developing your top talent, or just hoping they stay?',
+    questions: [
+      'My best employees are actively growing, taking on more responsibility, and being challenged at work.',
+      'I have a clear system to identify, coach, and retain my high-potential team members.',
+    ],
+  },
+  {
+    name: 'Leadership Systems vs. Heroic Effort',
+    prompt: 'Would your business thrive if you stepped away for three months?',
+    questions: [
+      'My team makes decisions and solves problems without needing me for every step.',
+      'My leadership approach is systemized, repeatable, and not dependent on my daily presence.',
+    ],
+  },
+  {
+    name: 'Coaching Culture vs. Command & Control',
+    prompt: 'Do you build real leaders, or just create followers?',
+    questions: [
+      'I regularly coach my team instead of just giving instructions.',
+      'My team proactively seeks feedback and applies it without resistance.',
+    ],
+  },
+  {
+    name: 'Work-Life Integrity',
+    prompt: 'Are you leading in a way that is actually sustainable?',
+    questions: [
+      'My leadership aligns with my values, and I don’t feel drained or burned out.',
+      'I’ve designed a business and a leadership role that give me the freedom I want.',
+    ],
+  },
+  {
+    name: 'Retention & Growth Strategy',
+    prompt: 'Are you keeping and growing the right people?',
+    questions: [
+      'My best employees feel seen, valued, and challenged in meaningful ways.',
+      'We have clear leadership development opportunities that keep top talent engaged.',
+    ],
+  },
+];
+const scaleLabels = ['Not at all', 'Rarely', 'Sometimes', 'Mostly', 'Absolutely'];
+// Flat question list with a running index for data attributes.
+let idx = -1;
+const flat = categories.flatMap((cat, ci) =>
+  cat.questions.map((text) => { idx += 1; return { text, ci, i: idx }; })
+);
+---
+<section style="max-width:820px;margin:0 auto;padding:24px 32px 8px;">
+  <div style="display:flex;flex-direction:column;gap:26px;">
+    {categories.map((cat, ci) => (
+      <div>
+        <div style="margin-bottom:14px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;">Category {ci + 1} · {cat.name}</p>
+          <p style="margin-top:5px;font-size:14.5px;color:rgba(244,240,231,0.6);font-style:italic;">{cat.prompt}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          {flat.filter((q) => q.ci === ci).map((q) => (
+            <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <span style="flex:none;font-family:'Newsreader',serif;font-size:18px;color:#E0744A;line-height:1.4;">{q.i + 1}.</span>
+                <p style="font-size:16.5px;line-height:1.5;color:#FBF8F1;font-weight:500;">{q.text}</p>
+              </div>
+              <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+                {scaleLabels.map((label, si) => (
+                  <button class="ls-opt bl-tap" data-q={q.i} data-v={si + 1} style="flex:1;min-width:88px;padding:11px 6px;border-radius:10px;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;font-size:13px;font-weight:600;transition:all .15s;border:1px solid rgba(244,240,231,0.16);background:transparent;color:rgba(244,240,231,0.7);">{label}</button>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div style="margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:18px;">
+    <button id="ls-reveal" disabled style="padding:15px 30px;border-radius:12px;border:none;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:16px;transition:all .15s;cursor:not-allowed;background:#3A352B;color:rgba(244,240,231,0.4);">Show my Leadership Health Score</button>
+    <span id="ls-answered" style="font-size:14px;color:rgba(244,240,231,0.55);">0 of 10 answered</span>
+  </div>
+  <p style="margin-top:16px;font-size:13px;color:rgba(244,240,231,0.4);max-width:60ch;">A reflective self-assessment — a signal to act on, not a verdict. Your answers stay in your browser unless you choose to send them.</p>
+</section>
+
+<!-- RESULT -->
+<section id="ls-result" style="background:linear-gradient(180deg,#15130E,#1B1810);border-top:1px solid rgba(244,240,231,0.1);overflow:hidden;display:none;">
+  <div style="max-width:980px;margin:0 auto;padding:76px 32px 40px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Your result</p>
+    <div class="bl-result-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;">
+      <div>
+        <p style="font-size:15px;color:rgba(244,240,231,0.7);">Your Leadership Health Score</p>
+        <p style="margin-top:8px;display:flex;align-items:baseline;gap:6px;"><span id="ls-score" style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(52px,9vw,84px);line-height:1;color:#FBF8F1;">0</span><span style="font-family:'Newsreader',serif;font-size:26px;color:rgba(244,240,231,0.5);">/ 50</span></p>
+        <p id="ls-band" style="margin-top:10px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;"></p>
+        <p id="ls-band-line" style="margin-top:16px;font-size:17px;line-height:1.62;color:rgba(244,240,231,0.82);"></p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:30px;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,231,0.5);margin-bottom:18px;">Your five categories</p>
+        <div id="ls-bars" style="display:flex;flex-direction:column;gap:15px;"></div>
+      </div>
+    </div>
+
+    <!-- TOP 3 GROWTH AREAS -->
+    <div style="margin-top:44px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Your top 3 growth areas</p>
+      <p style="font-size:15px;color:rgba(244,240,231,0.66);margin-bottom:20px;max-width:60ch;">The three categories where you scored lowest — start here. A few concrete moves for each:</p>
+      <div id="ls-growth" style="display:flex;flex-direction:column;gap:14px;"></div>
+    </div>
+
+    <!-- PROVECQ CROSS-SELL (conditional) -->
+    <div id="ls-prove" style="margin-top:20px;display:none;">
+      <a href="https://provecq.com" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#211D15;border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:24px 28px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.8)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.4)'">
+        <div style="flex:1;min-width:280px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Struggling to know who your real high-potentials are?</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.7);">Be Legendary diagnoses your leadership. <strong style="color:#F4F0E7;">Prove</strong> measures your people — who’s actually ready to lead, before you have to guess.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">See what Prove measures &rarr;</span>
+      </a>
+    </div>
+
+    <!-- 30-DAY CHALLENGE -->
+    <div style="margin-top:20px;">
+      <a href={CHALLENGE_URL} target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:24px 28px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+        <div style="flex:1;min-width:280px;">
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Move your score with a 30-Day Challenge.</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">Small daily reps that rebuild the leadership habits underneath your lowest categories. Free, and it starts whenever you do.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Start the 30-Day Challenge &rarr;</span>
+      </a>
+    </div>
+
+    <!-- OPTIONAL EMAIL CAPTURE -->
+    <div style="margin-top:40px;background:linear-gradient(150deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:20px;padding:38px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;">
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.1;color:#FBF8F1;">Want your plan in your inbox?</h3>
+          <p style="margin-top:14px;font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);max-width:46ch;">Optional. Add your email and we’ll send your score, your top growth areas, and a tailored 30-day plan — plus James’s field notes, roughly monthly. No pitch, unsubscribe anytime. <strong style="color:#F4F0E7;">Your full result is already on this page.</strong></p>
+        </div>
+        <div>
+          <div id="ls-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.newsletterFormGuid} data-contact={CONTACT_EMAIL}>
+            <input id="ls-email" type="email" placeholder="you@company.com" aria-label="Work email" style="width:100%;padding:15px 18px;border-radius:11px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+            <button id="ls-submit" class="bl-tap" style="margin-top:12px;width:100%;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 18px;border-radius:11px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Email me my plan</button>
+            <p id="ls-err" style="margin-top:10px;font-size:13px;color:#E0744A;min-height:18px;visibility:hidden;"></p>
+          </div>
+          <div id="ls-sent" style="display:none;">
+            <p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">On its way.</p>
+            <p style="margin-top:8px;font-size:15px;line-height:1.5;color:rgba(244,240,231,0.75);">Check your inbox — and your result is right here whenever you want it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALIBRATION CALL -->
+    <div style="margin-top:30px;text-align:center;">
+      <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:52ch;margin:0 auto 18px;">Want a second set of eyes on your result? Spend 15 minutes with James and leave with a sharper read on where to start.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:17px 34px;border-radius:12px;font-weight:700;font-size:17px;box-shadow:0 14px 40px -14px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:19px;">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const cats = [
+    { name: 'High-Potential → High-Performer', talent: true,
+      steps: [
+        'Name your top three high-potentials explicitly — then write one real stretch assignment for each this quarter.',
+        'Put a recurring monthly growth conversation on the calendar with each one. Development, not status.',
+        'Hand one of them a decision you’d normally make yourself. People grow through responsibility, not praise.',
+      ] },
+    { name: 'Leadership Systems vs. Heroic Effort', talent: false,
+      steps: [
+        'List the five decisions that currently require you. Delegate one this week with a clear decision-right and guardrails.',
+        'Document one repeatable process that only lives in your head, so it can run without you.',
+        'Run a “what breaks if I’m out for two weeks” audit — then fix the single biggest item.',
+      ] },
+    { name: 'Coaching Culture vs. Command & Control', talent: false,
+      steps: [
+        'In your next 1-on-1, ask more than you tell — swap “here’s what to do” for “what’s your read, and your next step?”',
+        'When someone brings you a problem, hand it back with a question instead of an answer.',
+        'Ask your team for feedback on you — then act on one piece of it visibly.',
+        'Steal the questions: <a href="/leadership-coaching-questions/" style="color:#E0744A;font-weight:600;">15 leadership coaching prompts &rarr;</a>',
+      ] },
+    { name: 'Work-Life Integrity', talent: false,
+      steps: [
+        'Name the one commitment you keep breaking to yourself — and protect it on the calendar this week.',
+        'Identify your single biggest weekly energy drain, and delegate, redesign, or drop it.',
+        'Define what “enough” looks like this quarter — a finish line you can actually reach.',
+      ] },
+    { name: 'Retention & Growth Strategy', talent: true,
+      steps: [
+        'Ask your best person directly: “What would make you leave — and what would make you stay?”',
+        'Map a visible next step for each key player. People leave when they can’t see where they’re going.',
+        'Catch one top performer doing something excellent this week, and tell them specifically why it mattered.',
+      ] },
+  ];
+  const bands = [
+    { min: 40, name: 'High-Performing Leader', col: '#3E9B6B',
+      line: 'You’ve built strong systems, culture, and talent development. Your job now is to protect it as you scale — and keep sharpening the one category below that scored lowest.' },
+    { min: 30, name: 'Growth-Ready Leader', col: '#D98A5E',
+      line: 'You’re on the right track, with real gaps in talent, systems, or sustainability. Fix your lowest category first — that’s your fastest win.' },
+    { min: 20, name: 'Bottleneck Leader', col: '#E0744A',
+      line: 'The business leans too heavily on you. The way out is systems and delegation — start with your lowest category below.' },
+    { min: 0, name: 'At Risk', col: '#C6482C',
+      line: 'This pace isn’t sustainable — burnout or losing top talent is the likely outcome without change. Pick one category below and start this week.' },
+  ];
+  const qCat = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4];
+
+  const answers = new Array(10).fill(0);
+  let revealed = false;
+  const revealBtn = document.getElementById('ls-reveal') as HTMLButtonElement;
+  const answeredLabel = document.getElementById('ls-answered')!;
+  const result = document.getElementById('ls-result')!;
+
+  const total = () => answers.reduce((a, b) => a + b, 0);
+  const catPct = () => {
+    const sums = [0, 0, 0, 0, 0];
+    qCat.forEach((c, i) => { sums[c] += answers[i]; });
+    return sums.map((s) => Math.round((s / 10) * 100)); // 2 questions × max 5 = 10
+  };
+  const bandFor = (t: number) => bands.find((b) => t >= b.min)!;
+
+  document.querySelectorAll<HTMLButtonElement>('.ls-opt').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const qi = +btn.dataset.q!; const v = +btn.dataset.v!;
+      answers[qi] = v;
+      document.querySelectorAll<HTMLButtonElement>(`.ls-opt[data-q="${qi}"]`).forEach((b) => {
+        const on = +b.dataset.v! === v;
+        b.style.border = '1px solid ' + (on ? '#C04A26' : 'rgba(244,240,231,0.16)');
+        b.style.background = on ? '#C04A26' : 'transparent';
+        b.style.color = on ? '#fff' : 'rgba(244,240,231,0.7)';
+      });
+      const answered = answers.filter((a) => a > 0).length;
+      const ready = answered === 10;
+      answeredLabel.textContent = ready ? 'All ten answered — see your score.' : `${answered} of 10 answered`;
+      revealBtn.disabled = !ready;
+      revealBtn.style.cursor = ready ? 'pointer' : 'not-allowed';
+      revealBtn.style.background = ready ? '#C04A26' : '#3A352B';
+      revealBtn.style.color = ready ? '#fff' : 'rgba(244,240,231,0.4)';
+      if (revealed) renderResult();
+    });
+  });
+
+  function renderResult() {
+    const t = total();
+    const pcts = catPct();
+    const band = bandFor(t);
+
+    const scoreEl = document.getElementById('ls-score')!;
+    scoreEl.textContent = String(t);
+    const bandEl = document.getElementById('ls-band')!;
+    bandEl.textContent = band.name;
+    bandEl.style.color = band.col;
+    document.getElementById('ls-band-line')!.textContent = band.line;
+
+    // Category bars
+    const barsWrap = document.getElementById('ls-bars')!;
+    barsWrap.innerHTML = '';
+    cats.forEach((c, i) => {
+      const p = pcts[i];
+      const status = p >= 70 ? 'Strong' : p >= 45 ? 'Developing' : 'Needs work';
+      const col = p >= 70 ? '#3E9B6B' : p >= 45 ? '#D98A5E' : '#C04A26';
+      const row = document.createElement('div');
+      row.innerHTML = `<div style="display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-bottom:7px;color:#F4F0E7;gap:12px;"><span>${c.name}</span><span style="font-size:12px;font-weight:700;color:${col};white-space:nowrap;">${status}</span></div><div style="height:9px;border-radius:99px;background:#2A2419;overflow:hidden;"><div style="height:100%;width:0%;background:${col};border-radius:99px;transition:width .8s cubic-bezier(.4,0,.2,1);"></div></div>`;
+      barsWrap.appendChild(row);
+      requestAnimationFrame(() => { (row.querySelector('div > div') as HTMLElement).style.width = p + '%'; });
+    });
+
+    // Top 3 growth areas = 3 lowest categories (ties broken by order)
+    const ranked = cats.map((c, i) => ({ i, p: pcts[i] })).sort((a, b) => a.p - b.p || a.i - b.i);
+    const bottom3 = ranked.slice(0, 3);
+    const growthWrap = document.getElementById('ls-growth')!;
+    growthWrap.innerHTML = '';
+    bottom3.forEach((g, n) => {
+      const c = cats[g.i];
+      const card = document.createElement('div');
+      card.style.cssText = 'background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-left:3px solid #C04A26;border-radius:16px;padding:24px 26px;';
+      card.innerHTML =
+        `<div style="display:flex;gap:14px;align-items:baseline;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;">${n + 1}</span><p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">${c.name} <span style="font-size:14px;color:rgba(244,240,231,0.5);">· ${g.p}%</span></p></div>` +
+        '<ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;">' +
+        c.steps.map((s) => `<li style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">${s}</li>`).join('') +
+        '</ul>';
+      growthWrap.appendChild(card);
+    });
+
+    // ProveCQ cross-sell if a talent category (High-Potential or Retention) is a growth area
+    const showProve = bottom3.some((g) => cats[g.i].talent);
+    document.getElementById('ls-prove')!.style.display = showProve ? 'block' : 'none';
+  }
+
+  revealBtn.addEventListener('click', () => {
+    if (answers.some((a) => a === 0)) return;
+    revealed = true;
+    result.style.display = 'block';
+    revealBtn.textContent = 'Updated below ↓';
+    renderResult();
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'assessment_completed', { assessment: 'leadership_scorecard', score: total() });
+    }
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Optional lead capture — posts the score to HubSpot (newsletter form)
+  const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  const form = document.getElementById('ls-form')!;
+  const email = document.getElementById('ls-email') as HTMLInputElement;
+  const err = document.getElementById('ls-err')!;
+  const sent = document.getElementById('ls-sent')!;
+  email.addEventListener('input', () => { err.style.visibility = 'hidden'; });
+  document.getElementById('ls-submit')!.addEventListener('click', async () => {
+    const value = email.value.trim();
+    if (!EMAIL_RE.test(value)) { err.textContent = 'Please enter a valid email.'; err.style.visibility = 'visible'; return; }
+    const t = total();
+    // Interim: post EMAIL ONLY to the working newsletter form. The previous code
+    // sent 8 custom score fields to this form, which HubSpot rejects wholesale
+    // (400) when those properties aren't defined on it — so every lead was lost
+    // while the user saw success. The score is already on-screen and still goes
+    // to GA below; a dedicated Scorecard form (backlog) can capture the 8 fields.
+    let ok = false;
+    try {
+      const res = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${form.dataset.portal}/${form.dataset.guid}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fields: [{ name: 'email', value }],
+          context: { pageUri: location.href, pageName: document.title },
+        }),
+      });
+      ok = res.ok;
+    } catch (e) { ok = false; }
+    if (!ok) {
+      const contact = form.dataset.contact;
+      err.innerHTML = `Couldn't send it just now. <a href="mailto:${contact}?subject=My%20Leadership%20Scorecard&body=${encodeURIComponent('Please send my Leadership Scorecard plan. Email: ' + value)}" style="color:#E0744A;text-decoration:underline;">Email us</a> and we'll follow up.`;
+      err.style.visibility = 'visible';
+      return;
+    }
+    form.style.display = 'none';
+    sent.style.display = 'block';
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'generate_lead', { form: 'leadership_scorecard', score: t });
+    }
+  });
+</script>

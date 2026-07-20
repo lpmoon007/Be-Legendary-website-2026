@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'How to Build a High-Performing Leadership Team: A Guide';
+const description = "How to build a high-performing leadership team: not better hires or more offsites — a clear Flag plus four disciplines that make a good team execute.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Build a High-Performing Team', item: 'https://www.belegendary.org/how-to-build-a-high-performing-leadership-team/' },
+  ] },
+  { '@type': 'Article', headline: 'How to build a high-performing leadership team: the Flag plus four disciplines', datePublished: '2026-07-06', dateModified: '2026-07-06', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-build-a-high-performing-leadership-team/', description: 'The build order for a high-performing leadership team: set the Flag, then install the four disciplines — the Decision, the Rhythm, the Standard, and the Learning.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'How do you build a high-performing leadership team?', acceptedAnswer: { '@type': 'Answer', text: "You build it in a fixed order, not all at once. First set the Flag: the two or three priorities everything on the team now serves. Then install four disciplines in sequence — the Decision (every call gets an owner and a deadline), the Rhythm (a weekly cadence that finishes work), the Standard (a bar with real consequences), and the Learning (misses become corrections). A high-performing team isn't a collection of talented people; it's a Flag held upright by those four disciplines, governed by telling the truth over keeping things comfortable." } },
+    { '@type': 'Question', name: 'What makes a leadership team high-performing rather than just talented?', acceptedAnswer: { '@type': 'Answer', text: 'Talent decides how good the team could be; discipline decides whether that potential ever ships. A high-performing team has a small, shared Flag so effort points the same direction, decisions that close with an owner, a rhythm that finishes what it starts, a standard that costs something to miss, and a habit of turning failures into changed behavior. Most stalled leadership teams are not short on talent. They are short on one of those four disciplines, and the missing one quietly caps the whole team.' } },
+    { '@type': 'Question', name: 'Do you have to replace people to build a high-performing leadership team?', acceptedAnswer: { '@type': 'Answer', text: "Rarely. The instinct to hire your way out is usually a way to avoid the harder work — installing the disciplines the current team is missing. A good team with a clear Flag and four working disciplines will out-execute a more talented team without them. Fix the disciplines first. If a genuine seat problem remains after that, it will be obvious, specific, and much easier to make than a guess made in frustration." } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.highPerformingTeam}
+  ogType="article"
+  ogTitle="How to Build a High-Performing Leadership Team — the Flag plus four disciplines"
+  ogDescription="It isn't better hires or more offsites. It's a clear Flag held upright by four disciplines: the Decision, the Rhythm, the Standard, and the Learning."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Build a High-Performing Team</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to build a high-performing leadership team</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A high-performing leadership team isn&rsquo;t built by hiring better people or booking another offsite. It&rsquo;s built in a fixed order: first you set the <strong>Flag</strong> &mdash; the two or three priorities everything now serves &mdash; then you install <strong>four disciplines</strong> that hold it upright: the <strong>Decision</strong> (every call gets an owner and a deadline), the <strong>Rhythm</strong> (a cadence that finishes work), the <strong>Standard</strong> (a bar with consequences), and the <strong>Learning</strong> (misses become corrections). All of it governed by one principle: <em>Truth Over Comfort</em>. That&rsquo;s the whole build. This page is the map; each discipline links to its own deep-dive.</p>
+    </div>
+  </header>
+
+  <!-- HERO-AFFIRM -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you&rsquo;re asking how to build a high-performing leadership team, you&rsquo;ve already done the honest thing: you&rsquo;ve admitted the current team isn&rsquo;t operating at the level the business needs. Good. But the answer almost everyone reaches for &mdash; upgrade the roster, run a better offsite, buy a new framework &mdash; treats a discipline problem as a talent problem. It isn&rsquo;t. The best leadership teams and the stalled ones are rarely separated by who&rsquo;s in the room. They&rsquo;re separated by what the room does once the door closes.</p>
+  </div>
+
+  <!-- WHY IT'S HARD -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Why this is hard to get right</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The reason building one is hard is that &ldquo;high-performing&rdquo; sounds like a quality of people, so leaders go shopping for people. They add a sharp new VP, run a two-day retreat with a facilitator and a rope course, adopt the operating system everyone&rsquo;s talking about &mdash; and three months later the team behaves exactly as it did before. Nothing was wrong with the people or the framework. What was missing was the leadership behavior that turns a capable group into a team that executes: the ability to commit to a few priorities, close decisions, finish work on a cadence, hold a real bar, and correct out loud when they miss.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Those behaviors are invisible on a résumé and they don&rsquo;t survive an offsite. They&rsquo;re disciplines &mdash; they get installed on purpose and practiced weekly, or they don&rsquo;t exist. That&rsquo;s the work most leaders skip, because it&rsquo;s slower and less flattering than hiring. It&rsquo;s also the only thing that actually builds the team.</p>
+  </div>
+
+  <!-- THE LENS -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The reframe: a Flag held up by four disciplines</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Picture a flag standing in open ground. The cloth at the top is the team&rsquo;s <strong>Flag</strong> &mdash; the two or three priorities that everything serves this quarter. A flag with nothing holding it up falls over; priorities with no disciplines behind them become a poster no one lives by. What keeps it upright are four disciplines, and a high-performing team is exactly the sum of them working together:</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;"><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Decision</p><p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Commitment. Every call that matters leaves the room with an owner and a deadline &mdash; not a discussion to revisit.</p></div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;"><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Rhythm</p><p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Finishing. An operating cadence &mdash; the weekly meeting &mdash; that ships work instead of narrating status.</p></div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;"><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Standard</p><p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Holding the bar. Accountability with teeth &mdash; a missed commitment costs something, so the bar is real.</p></div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;"><p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Learning</p><p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Correcting. Misses turn into changed behavior instead of the same mistake next quarter.</p></div>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-top:20px;">Under all four sits <strong>Truth Over Comfort</strong> &mdash; the willingness to say the hard true thing in the room instead of the easy quiet one afterward. Take that away and the disciplines rot from the inside. So &ldquo;how do I build a high-performing team&rdquo; has a precise answer: set the Flag, then install these four, in order. The rest of this page is that build.</p>
+  </div>
+
+  <!-- THE HOW-TO -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The build order</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:22px;">Don&rsquo;t try to fix everything at once &mdash; that&rsquo;s how offsites fail. Build in sequence. Set the Flag first; each discipline you add gives the next one something to hold.</p>
+      <ol style="margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:20px;counter-reset:step;">
+        <li style="border-top:1px solid rgba(27,24,16,0.14);padding-top:18px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">Step 1 &middot; Set the Flag</p>
+          <p style="font-size:16.5px;line-height:1.58;color:#3A372F;">Before any discipline, name the two or three priorities the team will actually serve this quarter &mdash; and say out loud what you&rsquo;re <em>not</em> doing to protect them. <strong>The move:</strong> in your next leadership meeting, write the current priority list on the board, then force it down to three. The argument about what gets cut is the point; a Flag no one had to fight for isn&rsquo;t a Flag.</p>
+        </li>
+        <li style="border-top:1px solid rgba(27,24,16,0.14);padding-top:18px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">Step 2 &middot; Install the Decision</p>
+          <p style="font-size:16.5px;line-height:1.58;color:#3A372F;"><strong>The move:</strong> adopt one rule &mdash; no issue leaves a meeting without a named owner and a date. If the team can&rsquo;t decide today, you decide <em>when</em> and <em>who</em> decides. That single rule ends the loop of items that get discussed every week and closed none of them. <a href={SLUGS.decisionMaking} style="color:#C04A26;text-decoration:underline;font-weight:600;">Full guide: executive-team decision-making &rarr;</a></p>
+        </li>
+        <li style="border-top:1px solid rgba(27,24,16,0.14);padding-top:18px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">Step 3 &middot; Install the Rhythm</p>
+          <p style="font-size:16.5px;line-height:1.58;color:#3A372F;"><strong>The move:</strong> rebuild the weekly leadership meeting around finishing, not reporting. Open with the Flag, walk the commitments due, decide the open issues, assign the next ones. If an agenda item isn&rsquo;t tied to the Flag or a decision, it doesn&rsquo;t make the meeting. <a href={SLUGS.executiveTeamMeeting} style="color:#C04A26;text-decoration:underline;font-weight:600;">Full guide: how to run an executive team meeting &rarr;</a></p>
+        </li>
+        <li style="border-top:1px solid rgba(27,24,16,0.14);padding-top:18px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">Step 4 &middot; Install the Standard</p>
+          <p style="font-size:16.5px;line-height:1.58;color:#3A372F;"><strong>The move:</strong> the first time a commitment is missed with no reason, name it in the room &mdash; calmly, specifically, in front of peers. A bar only exists at the moment someone is held to it. Do it once, well, and the whole team recalibrates what &ldquo;done&rdquo; means. <a href={SLUGS.howToAccountable} style="color:#C04A26;text-decoration:underline;font-weight:600;">Full guide: how to hold your leadership team accountable &rarr;</a></p>
+        </li>
+        <li style="border-top:1px solid rgba(27,24,16,0.14);padding-top:18px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">Step 5 &middot; Install the Learning</p>
+          <p style="font-size:16.5px;line-height:1.58;color:#3A372F;"><strong>The move:</strong> when something misses, spend ten minutes on one question &mdash; what will we do differently &mdash; and write down the change, not the excuse. A team that corrects out loud stops repeating the same mistake, which is what separates a good team from a legendary one. <a href={SLUGS.flagModel} style="color:#C04A26;text-decoration:underline;font-weight:600;">See the full Flag Model &rarr;</a></p>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CLOSING NOTE -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Work the order and something changes that no hire delivers: the team you already have starts executing like the team you wished you had. That&rsquo;s the whole premise of a high-performing leadership team &mdash; it&rsquo;s the Flag plus four disciplines, not a better roster. Build the disciplines, and the talent already in the room finally shows up on the scoreboard.</p>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find out which discipline your team is missing first.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which discipline to rebuild first to make your leadership team high-performing &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">How do you build a high-performing leadership team?</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">You build it in a fixed order, not all at once. First set the Flag: the two or three priorities everything on the team now serves. Then install four disciplines in sequence &mdash; the Decision (every call gets an owner and a deadline), the Rhythm (a weekly cadence that finishes work), the Standard (a bar with real consequences), and the Learning (misses become corrections). A high-performing team isn&rsquo;t a collection of talented people; it&rsquo;s a Flag held upright by those four disciplines, governed by telling the truth over keeping things comfortable.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">What makes a leadership team high-performing rather than just talented?</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">Talent decides how good the team could be; discipline decides whether that potential ever ships. A high-performing team has a small, shared Flag so effort points the same direction, decisions that close with an owner, a rhythm that finishes what it starts, a standard that costs something to miss, and a habit of turning failures into changed behavior. Most stalled leadership teams are not short on talent. They are short on one of those four disciplines, and the missing one quietly caps the whole team.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">Do you have to replace people to build a high-performing leadership team?</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">Rarely. The instinct to hire your way out is usually a way to avoid the harder work &mdash; installing the disciplines the current team is missing. A good team with a clear Flag and four working disciplines will out-execute a more talented team without them. Fix the disciplines first. If a genuine seat problem remains after that, it will be obvious, specific, and much easier to make than a guess made in frustration.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Flag and the four disciplines in full.</span>
+      </a>
+      <a href={SLUGS.breakPointAssessment} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Break-Point Self-Assessment</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Find where your team breaks first.</span>
+      </a>
+      <a href={SLUGS.teams} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">For Teams</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">How we rebuild executive teams that execute.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. A high-performing team is the Flag plus four disciplines." />
+</BaseLayout>

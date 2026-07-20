@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { SITE_URL, SLUGS } from '../lib/site';
+import { SITE_URL, SLUGS, WORKOUTS, workoutPath } from '../lib/site';
 
 // Build-time sitemap so <lastmod> is always the build date (never drifts), while
 // keeping curated priorities. Served at /sitemap.xml; robots.txt + JSON-LD point here.
@@ -19,13 +19,45 @@ const meta: Record<string, [string, string]> = {
   [SLUGS.caseStudies]: ['0.7', 'monthly'],
   [SLUGS.glossary]: ['0.7', 'monthly'],
   [SLUGS.privacy]: ['0.3', 'yearly'],
+  // For Leaders hubs + flagship
+  [SLUGS.leaders]: ['0.9', 'weekly'],
+  [SLUGS.workouts]: ['0.9', 'weekly'],
+  [SLUGS.challenge]: ['0.8', 'monthly'],
+  [SLUGS.leadersGlossary]: ['0.7', 'monthly'],
+  [SLUGS.legendaryLeader]: ['0.8', 'monthly'],
+  [SLUGS.teamRetreats]: ['0.8', 'monthly'],
 };
 const DEFAULT: [string, string] = ['0.7', 'monthly'];
 
+// Lost Disciplines of Leadership book launch site (hosted at /lost-disciplines/).
+const BOOK_PATHS = [
+  '/lost-disciplines/',
+  '/lost-disciplines/the-book/',
+  '/lost-disciplines/about-james/',
+  '/lost-disciplines/praise/',
+  '/lost-disciplines/bulk-and-speaking/',
+];
+const BOOK_META: Record<string, [string, string]> = {
+  '/lost-disciplines/': ['0.8', 'weekly'],
+  '/lost-disciplines/the-book/': ['0.7', 'monthly'],
+  '/lost-disciplines/about-james/': ['0.6', 'monthly'],
+  '/lost-disciplines/praise/': ['0.5', 'monthly'],
+  '/lost-disciplines/bulk-and-speaking/': ['0.5', 'monthly'],
+};
+
 export const GET: APIRoute = () => {
-  const urls = Object.values(SLUGS)
+  // All SLUGS routes + the 18 workout pages, de-duplicated (SLUGS.library aliases
+  // /leaders/). Sorted so the output is stable across builds.
+  const paths = Array.from(
+    new Set([...Object.values(SLUGS), ...WORKOUTS.map(workoutPath), ...BOOK_PATHS])
+  )
+    // Exclude the challenge app (SLUGS.challenge is the absolute app URL, not a
+    // canonical 200 page on this host) so the sitemap stays clean.
+    .filter((p) => p !== SLUGS.challenge)
+    .sort();
+  const urls = paths
     .map((path) => {
-      const [priority, changefreq] = meta[path] ?? DEFAULT;
+      const [priority, changefreq] = BOOK_META[path] ?? meta[path] ?? DEFAULT;
       return `  <url><loc>${SITE_URL}${path}</loc><lastmod>${lastmod}</lastmod><changefreq>${changefreq}</changefreq><priority>${priority}</priority></url>`;
     })
     .join('\n');

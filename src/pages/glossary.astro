@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
 
-const title = 'Glossary: The Flag Model, FlagScore, Calibration Call & More | Be Legendary';
-const description = 'Plain definitions of the Be Legendary vocabulary — the Flag Model, the five components (the Flag, the Decision, the Rhythm, the Standard, the Learning), FlagScore, the Calibration Call, ELFS, and Truth Over Comfort.';
+const title = 'Glossary: The Flag Model & FlagScore Terms | Be Legendary';
+const description = 'Plain definitions of the Be Legendary vocabulary: the Flag Model, its five components, FlagScore, the Calibration Call, ELFS and Truth Over Comfort.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -26,11 +27,19 @@ const schema = [
     { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#performance-partnership', name: 'Performance Partnership', description: 'The ongoing engagement through which the Flag Model is installed over time, with progress measured by FlagScore movement across quarters. A relationship, not a workshop.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
     { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#break-point', name: 'Break point', description: 'The single discipline an executive team is most likely to lose first under pressure. Teams rarely fail at all five components at once — they fail at one first, and that one pulls the others down.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
     { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#4ds', name: 'The 4Ds', description: "The decision protocol that rebuilds the Decision discipline: every decision gets an Owner, the Data it rests on, a Deadline, and the duty to Defend it — so a call sticks without the CEO's sign-off.", inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#alignment', name: 'Leadership team alignment', description: 'A shared, tested commitment to the same few priorities and the same action — not agreement. A team can disagree in the room and still be aligned once the call is made, because alignment is committed action, not identical opinions.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#disagree-and-commit', name: 'Disagree and commit', description: 'The practice that makes alignment possible: surface the real disagreement, decide, then commit to the decision fully — even the people who argued against it. It is what separates alignment (committed action) from agreement (identical opinion).', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#strategy-execution-gap', name: 'Strategy execution gap', description: 'The distance between the strategy a leadership team sets and the work it actually delivers. It is a behavior problem, not a planning one: the disciplines that turn a decision into finished work erode until the plan outpaces the doing.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#accountability', name: 'Leadership team accountability', description: 'A leadership team holding itself to its own commitments, where a miss is named in the room and carries a real consequence. Without it, the bar quietly drops to the level of the most tolerated behavior.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#operating-cadence', name: 'Operating cadence', description: 'The regular rhythm — usually a weekly leadership meeting — where priorities are reviewed, commitments are checked, and one hard issue is decided. It is how the Rhythm discipline turns decisions into finished work.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#executive-offsite', name: 'Executive offsite', description: 'A focused working session, usually one to two days, built to make a specific set of decisions and align the leadership team. Distinct from a leadership retreat, which is longer and more immersive, optimizing for reset as well as decisions.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#high-performing-team', name: 'High-performing leadership team', description: 'A leadership team in which all five components of the Flag Model hold: it is aligned on a few priorities, decides and commits, finishes on a cadence, holds a real standard, and learns from its misses.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
+    { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/glossary/#followership', name: 'Followership', description: 'The counterpart to leadership: how team members choose to follow — with commitment and candor, or with compliance and quiet resistance. Execution depends on followership as much as on leadership.', inDefinedTermSet: 'https://www.belegendary.org/glossary/#set' },
   ] },
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.glossary} ogType="website" ogTitle="Be Legendary Glossary — the Flag Model vocabulary, defined" ogDescription="Plain definitions of the Flag Model, the five components, FlagScore, the Calibration Call, ELFS, and Truth Over Comfort." schema={schema}>
-  <Header maxWidth={1040} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1040} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
 
   <header style="position:relative;max-width:1040px;margin:0 auto;padding:80px 32px 44px;">
     <div style="position:absolute;top:-100px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
@@ -56,6 +65,14 @@ const schema = [
       <a href="#performance-partnership" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Performance Partnership</a>
       <a href="#break-point" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Break point</a>
       <a href="#the-4ds" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">The 4Ds</a>
+      <a href="#alignment" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Alignment</a>
+      <a href="#disagree-and-commit" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Disagree &amp; commit</a>
+      <a href="#strategy-execution-gap" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Strategy execution gap</a>
+      <a href="#accountability" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Accountability</a>
+      <a href="#operating-cadence" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Operating cadence</a>
+      <a href="#executive-offsite" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Executive offsite</a>
+      <a href="#high-performing-team" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">High-performing team</a>
+      <a href="#followership" style="font-size:13.5px;font-weight:600;color:#E0744A;text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.12);padding:8px 14px;border-radius:999px;">Followership</a>
     </div>
   </nav>
 
@@ -126,6 +143,46 @@ const schema = [
       <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The decision protocol that rebuilds the Decision discipline: every decision gets an <strong>Owner</strong>, the <strong>Data</strong> it rests on, a <strong>Deadline</strong>, and the duty to <strong>Defend</strong> it &mdash; so a call sticks without the CEO's sign-off.</p>
     </article>
 
+    <article id="alignment" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Leadership team alignment</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">A shared, tested commitment to the same few priorities and the same action &mdash; <em>not</em> agreement. A team can disagree in the room and still be aligned once the call is made, because alignment is committed action, not identical opinions. <a href={SLUGS.alignLeadershipTeam} style="color:#E0744A;text-decoration:underline;">How to align a leadership team &rarr;</a></p>
+    </article>
+
+    <article id="disagree-and-commit" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Disagree and commit</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The practice that makes alignment possible: surface the real disagreement, decide, then commit to the decision fully &mdash; even the people who argued against it. It&rsquo;s what separates alignment (committed action) from agreement (identical opinion). <a href={SLUGS.alignLeadershipTeam} style="color:#E0744A;text-decoration:underline;">More on alignment &rarr;</a></p>
+    </article>
+
+    <article id="strategy-execution-gap" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Strategy execution gap</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The distance between the strategy a leadership team sets and the work it actually delivers. It&rsquo;s a behavior problem, not a planning one: the disciplines that turn a decision into finished work erode until the plan outpaces the doing. <a href={SLUGS.strategyExecutionGap} style="color:#E0744A;text-decoration:underline;">Read the full guide &rarr;</a></p>
+    </article>
+
+    <article id="accountability" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Leadership team accountability</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">A leadership team holding itself to its own commitments, where a miss is named in the room and carries a real consequence. Without it, the bar quietly drops to the level of the most tolerated behavior. <a href={SLUGS.howToAccountable} style="color:#E0744A;text-decoration:underline;">How to hold your team accountable &rarr;</a></p>
+    </article>
+
+    <article id="operating-cadence" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Operating cadence</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The regular rhythm &mdash; usually a weekly leadership meeting &mdash; where priorities are reviewed, commitments are checked, and one hard issue is decided. It&rsquo;s how the Rhythm discipline turns decisions into finished work. <a href={SLUGS.executiveTeamMeeting} style="color:#E0744A;text-decoration:underline;">How to run the meeting &rarr;</a></p>
+    </article>
+
+    <article id="executive-offsite" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Executive offsite</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">A focused working session, usually one to two days, built to make a specific set of decisions and align the leadership team. Distinct from a leadership retreat, which is longer and more immersive &mdash; optimizing for reset as well as decisions. <a href={SLUGS.executiveOffsite} style="color:#E0744A;text-decoration:underline;">How to plan one &rarr;</a></p>
+    </article>
+
+    <article id="high-performing-team" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">High-performing leadership team</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">A leadership team in which all five components of the Flag Model hold: it&rsquo;s aligned on a few priorities, decides and commits, finishes on a cadence, holds a real standard, and learns from its misses. <a href={SLUGS.highPerformingTeam} style="color:#E0744A;text-decoration:underline;">How to build one &rarr;</a></p>
+    </article>
+
+    <article id="followership" style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:30px 34px;scroll-margin-top:90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:26px;color:#FBF8F1;">Followership</h2>
+      <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:72ch;">The counterpart to leadership: how team members choose to follow &mdash; with commitment and candor, or with compliance and quiet resistance. Execution depends on followership as much as on leadership. <a href={SLUGS.followership} style="color:#E0744A;text-decoration:underline;">More on followership &rarr;</a></p>
+    </article>
+
   </main>
 
   <section style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:90px 32px;text-align:center;position:relative;margin-top:40px;">
@@ -137,5 +194,9 @@ const schema = [
     </div>
   </section>
 
-  <Footer variant="slim" maxWidth={1040} note="© 2026 Be Legendary · The vocabulary of the Flag Model." />
+  <div style="margin-top:64px;">
+    <ArticleEndCTA maxWidth={1040} />
+  </div>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={1040} note="© 2026 Be Legendary · The vocabulary of the Flag Model." />
 </BaseLayout>

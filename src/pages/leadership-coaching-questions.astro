@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Leadership Coaching Questions: 15 Prompts for Better 1-on-1s';
+const description =
+  'A leadership coaching cheat sheet — 15 ready-to-use questions that coach the three traits that actually predict leadership: Initiative, Applied Grit, and Learnability. Copy them into your next 1-on-1.';
+
+const traits = [
+  {
+    key: 'initiative',
+    name: 'Initiative',
+    tell: 'Do they see the work that needs doing — or wait to be told?',
+    sub: 'Push them to act without permission.',
+    qs: [
+      'What’s your next step?',
+      'If you weren’t waiting on me, what would you do first?',
+      'What’s one decision you can make right now without me?',
+      'If this were yours alone, how would you handle it?',
+      'What’s the first thing you can do today to move this forward?',
+    ],
+  },
+  {
+    key: 'grit',
+    name: 'Applied Grit',
+    tell: 'Do they push through when it gets tough — or stall out?',
+    sub: 'Build resilience and follow-through.',
+    qs: [
+      'What’s one piece you can finish today that moves this forward?',
+      'If this feels heavy, what can you break off and tackle first?',
+      'What’s the next hard part you’re willing to stick with?',
+      'What’s slowing you down most right now — and how will you push through it?',
+      'What would finishing this look like if you had half the time?',
+    ],
+  },
+  {
+    key: 'learnability',
+    name: 'Learnability',
+    tell: 'Do they grow from each challenge — or just repeat mistakes?',
+    sub: 'Turn every step into growth.',
+    qs: [
+      'What did you learn that you’ll do differently next time?',
+      'What feedback have you acted on recently — and what changed because of it?',
+      'What’s one thing you tried this month that didn’t work — and what did it teach you?',
+      'Whose perspective could you ask for on this to sharpen your approach?',
+      'What skill are you picking up now that will matter most six months from today?',
+    ],
+  },
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'For Leaders', item: 'https://www.belegendary.org/leaders/' },
+    { '@type': 'ListItem', position: 3, name: 'Leadership Coaching Questions', item: 'https://www.belegendary.org/leadership-coaching-questions/' },
+  ] },
+  { '@type': 'Article', headline: 'Leadership coaching questions: 15 prompts that coach the traits that predict leadership', datePublished: '2026-07-12', dateModified: '2026-07-12', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/leadership-coaching-questions/', description: 'Fifteen ready-to-use coaching questions organized around three traits — Initiative, Applied Grit, and Learnability — for use in one-on-ones, check-ins, and hallway conversations.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What are good leadership coaching questions?', acceptedAnswer: { '@type': 'Answer', text: 'The best coaching questions push a person to think and act rather than wait for an answer. Organize them around three traits that predict leadership: Initiative ("If you weren’t waiting on me, what would you do first?"), Applied Grit ("What’s the next hard part you’re willing to stick with?"), and Learnability ("What did you learn that you’ll do differently next time?"). Each takes under a minute and changes how your people show up.' } },
+    { '@type': 'Question', name: 'What questions should I ask in a one-on-one?', acceptedAnswer: { '@type': 'Answer', text: 'Skip the status update — they can send that in writing. Use the one-on-one to coach: ask what their next step is, what decision they can make without you, what hard part they’re willing to stick with, and what they learned from something that didn’t work. Questions that hand the problem back build leaders; questions that gather status build followers.' } },
+    { '@type': 'Question', name: 'How do you coach an employee to take more initiative?', acceptedAnswer: { '@type': 'Answer', text: 'Stop giving the answer. When they bring you a problem, hand it back with a question: "What’s one decision you can make right now without me?" or "If this were yours alone, how would you handle it?" Do this consistently and they learn that you expect them to move — which is how initiative is built, not instructed.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.coachingQuestions}
+  ogType="article"
+  ogTitle="Leadership Coaching Questions — the 1-on-1 cheat sheet"
+  ogDescription="15 copy-ready prompts that coach the three traits that predict leadership: Initiative, Applied Grit, Learnability."
+  schema={schema}
+>
+  <SiteHeader audience="leaders" logoHref="/" maxWidth={920} links={[{ label: 'For Leaders', href: SLUGS.leaders }, { label: 'Leadership Scorecard', href: SLUGS.leadershipScorecard }, { label: 'Mindset Gym', href: SLUGS.workouts }]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 34px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#D98A5E;">Leadership Coaching Questions</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The leadership hack &middot; a 1-on-1 cheat sheet</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Leadership coaching questions</h1>
+    <p style="margin-top:16px;font-size:clamp(17px,2vw,21px);line-height:1.5;max-width:60ch;color:rgba(244,240,231,0.8);">15 copy-ready prompts that coach the three traits that actually predict leadership. Tap any question to copy it into your next one-on-one.</p>
+    <p style="margin-top:16px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:26px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Most leaders coach <em>skills</em> and ignore the <strong>behaviors</strong> that make or break a person under pressure. Coach these three instead: <strong>Initiative</strong> (do they act, or wait to be told?), <strong>Applied Grit</strong> (do they push through, or stall?), and <strong>Learnability</strong> (do they grow, or repeat mistakes?). Below are 15 ready-to-use questions &mdash; five per trait. Each takes under a minute in a 1-on-1, check-in, or hallway conversation, and it changes how your people show up.</p>
+    </div>
+  </header>
+
+  <!-- USE IT -->
+  <div style="max-width:920px;margin:0 auto;padding:14px 32px 8px;">
+    <p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">How to use it: pick the trait you want to build in someone, ask one question, then <em style="color:#F4F0E7;">stay quiet</em>. The power isn&rsquo;t in the question &mdash; it&rsquo;s in resisting the urge to answer it for them. Hand the problem back and let them carry it.</p>
+    <div style="margin-top:18px;">
+      <button id="cq-download" class="bl-tap" style="display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 26px;border-radius:11px;font-weight:700;font-size:15.5px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Download the cheat sheet (PDF) <span style="font-size:17px;">&darr;</span></button>
+      <p style="margin-top:10px;font-size:13px;color:rgba(244,240,231,0.45);">Free &middot; no email required &middot; print it and keep it where you have your 1-on-1s.</p>
+    </div>
+  </div>
+
+  <!-- THE THREE TRAITS -->
+  {traits.map((t, ti) => (
+    <div id={t.key} style="max-width:920px;margin:0 auto;padding:40px 32px 8px;scroll-margin-top:90px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:6px;">Trait {ti + 1} of 3</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;">{t.name}</h2>
+      <p style="margin-top:8px;font-size:17px;line-height:1.5;color:rgba(244,240,231,0.72);"><strong style="color:#F4F0E7;">{t.sub}</strong> {t.tell}</p>
+      <div style="margin-top:18px;display:flex;flex-direction:column;gap:10px;">
+        {t.qs.map((q) => (
+          <button type="button" class="cq-copy bl-tap" data-q={q} style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;width:100%;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:18px 22px;cursor:pointer;font-family:'Hanken Grotesk',sans-serif;transition:border-color .15s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+            <span style="font-family:'Newsreader',serif;font-size:19px;line-height:1.4;color:#FBF8F1;">&ldquo;{q}&rdquo;</span>
+            <span class="cq-ico" style="flex:none;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#E0744A;white-space:nowrap;">Copy</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <!-- SCORECARD BRIDGE -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <a href={SLUGS.leadershipScorecard} style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:24px 28px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+      <div style="flex:1;min-width:280px;">
+        <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Coaching your people starts with coaching yourself.</p>
+        <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">Take the free Leadership Scorecard &mdash; it shows whether your leadership is building your team or bottlenecking it, in about four minutes.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Take the Leadership Scorecard &rarr;</span>
+    </a>
+  </div>
+
+  <!-- PROVECQ CROSS-SELL -->
+  <div style="max-width:920px;margin:20px auto 0;padding:0 32px;">
+    <a href="https://provecq.com" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#211D15;border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:24px 28px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.8)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.4)'">
+      <div style="flex:1;min-width:280px;">
+        <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Want these three traits scored across your whole team?</p>
+        <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.7);">These prompts help you spot Initiative, Grit, and Learnability one conversation at a time. <strong style="color:#F4F0E7;">Prove</strong> measures them across everyone &mdash; a color-coded view of who&rsquo;s ready to lead, before you have to guess.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">See what Prove measures &rarr;</span>
+    </a>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Turn better questions into better leaders.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. Bring the one person you&rsquo;re trying to develop and we&rsquo;ll show you exactly how to coach the trait that&rsquo;s holding them back &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div style="max-width:920px;margin:56px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What are good leadership coaching questions?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">The best ones push a person to think and act instead of waiting for the answer. Organize them around three traits that predict leadership: Initiative (&ldquo;If you weren&rsquo;t waiting on me, what would you do first?&rdquo;), Applied Grit (&ldquo;What&rsquo;s the next hard part you&rsquo;re willing to stick with?&rdquo;), and Learnability (&ldquo;What did you learn that you&rsquo;ll do differently next time?&rdquo;). Each takes under a minute.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What questions should I ask in a one-on-one?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Skip the status update &mdash; that can be written down. Use the time to coach: ask what their next step is, what decision they can make without you, what hard part they&rsquo;re willing to stick with, and what they learned from something that didn&rsquo;t work. Questions that hand the problem back build leaders; questions that gather status build followers.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do you coach someone to take more initiative?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Stop giving the answer. When they bring you a problem, hand it back: &ldquo;What&rsquo;s one decision you can make right now without me?&rdquo; Do it consistently and they learn you expect them to move &mdash; which is how initiative is built, not instructed.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.leadershipScorecard} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Leadership Scorecard</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Are you building your team, or bottlenecking it? Find out in 4 minutes.</span>
+      </a>
+      <a href={SLUGS.workouts} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Mindset Gym</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Short workouts that build the mindset behind the coaching.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} assess="leaders" />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="leaders" variant="slim" maxWidth={920} note="© 2026 Be Legendary · Coach the behaviors, not just the skills." />
+</BaseLayout>
+
+<script>
+  // Tap any prompt to copy it. Progressive enhancement — falls back gracefully.
+  document.querySelectorAll<HTMLButtonElement>('.cq-copy').forEach((btn) => {
+    const ico = btn.querySelector('.cq-ico') as HTMLElement;
+    const original = ico.textContent;
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.q || '';
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (e) {
+        // Fallback for browsers without clipboard API
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        document.body.removeChild(ta);
+      }
+      ico.textContent = 'Copied ✓';
+      ico.style.color = '#3E9B6B';
+      btn.style.borderColor = 'rgba(62,155,107,0.6)';
+      window.setTimeout(() => {
+        ico.textContent = original;
+        ico.style.color = '#E0744A';
+        btn.style.borderColor = 'rgba(244,240,231,0.11)';
+      }, 1500);
+      if (typeof (window as any).gtag === 'function') {
+        (window as any).gtag('event', 'copy_coaching_question', { question: text });
+      }
+    });
+  });
+
+  // ── Branded, copyrighted PDF cheat sheet (jsPDF, drawn directly) ──
+  const PDF_TRAITS = [
+    { name: 'Initiative', sub: 'Push them to act without permission.',
+      tell: 'Do they see the work that needs doing — or wait to be told?',
+      qs: [
+        'What’s your next step?',
+        'If you weren’t waiting on me, what would you do first?',
+        'What’s one decision you can make right now without me?',
+        'If this were yours alone, how would you handle it?',
+        'What’s the first thing you can do today to move this forward?',
+      ] },
+    { name: 'Applied Grit', sub: 'Build resilience and follow-through.',
+      tell: 'Do they push through when it gets tough — or stall out?',
+      qs: [
+        'What’s one piece you can finish today that moves this forward?',
+        'If this feels heavy, what can you break off and tackle first?',
+        'What’s the next hard part you’re willing to stick with?',
+        'What’s slowing you down most right now — and how will you push through it?',
+        'What would finishing this look like if you had half the time?',
+      ] },
+    { name: 'Learnability', sub: 'Turn every step into growth.',
+      tell: 'Do they grow from each challenge — or just repeat mistakes?',
+      qs: [
+        'What did you learn that you’ll do differently next time?',
+        'What feedback have you acted on recently — and what changed because of it?',
+        'What’s one thing you tried this month that didn’t work — and what did it teach you?',
+        'Whose perspective could you ask for on this to sharpen your approach?',
+        'What skill are you picking up now that will matter most six months from today?',
+      ] },
+  ];
+
+  async function downloadCheatSheet() {
+    const { jsPDF } = await import('jspdf');
+    const SITE = 'https://www.belegendary.org';
+    const INK: [number, number, number] = [27, 24, 16];
+    const TERRA: [number, number, number] = [192, 74, 38];
+    const DEEP: [number, number, number] = [158, 58, 28];
+    const MUTED: [number, number, number] = [86, 82, 71];
+    const FAINT: [number, number, number] = [138, 133, 120];
+
+    const doc = new jsPDF({ unit: 'pt', format: 'letter' });
+    const W = doc.internal.pageSize.getWidth();
+    const PH = doc.internal.pageSize.getHeight();
+    const M = 56, CW = W - M * 2, BOTTOM = PH - 56;
+    let y = M;
+
+    const ensure = (h: number) => { if (y + h > BOTTOM) { doc.addPage(); y = M; } };
+    const para = (text: string, o: { size?: number; color?: [number, number, number]; style?: string; gap?: number; lh?: number; x?: number; width?: number } = {}) => {
+      const size = o.size ?? 10.5, lh = o.lh ?? size * 1.45, x = o.x ?? M, width = o.width ?? CW;
+      doc.setFont('helvetica', o.style ?? 'normal'); doc.setFontSize(size);
+      doc.setTextColor(...(o.color ?? MUTED));
+      (doc.splitTextToSize(text, width) as string[]).forEach((ln) => { ensure(lh); doc.text(ln, x, y); y += lh; });
+      y += o.gap ?? 9;
+    };
+    const eyebrow = (label: string) => { ensure(16); doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT); doc.text(label, M, y); y += 16; };
+    const heading = (label: string) => { ensure(46); y += 8; doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 19; doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor(...INK); doc.text(label, M, y); y += 18; };
+    const linkCTA = (label: string, url: string) => { ensure(18); doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...TERRA); doc.textWithLink(label, M, y, { url }); y += 20; };
+
+    // Header — logo mark + wordmark (left), sheet label + date (right)
+    const boxSize = 24, cy = y + boxSize / 2;
+    doc.setFillColor(...TERRA); doc.roundedRect(M, y, boxSize, boxSize, 5, 5, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.setTextColor(255, 255, 255); doc.text('B', M + boxSize / 2, cy + 5.2, { align: 'center' });
+    doc.setFontSize(12); doc.setTextColor(...INK); doc.text('BE LEGENDARY', M + boxSize + 11, cy + 4);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...TERRA); doc.text('LEADERSHIP COACHING CHEAT SHEET', W - M, cy - 1.5, { align: 'right' });
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(...FAINT);
+    doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), W - M, cy + 10, { align: 'right' });
+    y += boxSize + 18;
+    doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 26;
+
+    // Title + intro
+    eyebrow('THE TRAITS THAT ACTUALLY PREDICT LEADERSHIP');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(23); doc.setTextColor(...INK); doc.text('Stop guessing. Start coaching.', M, y); y += 22;
+    para('Most leaders coach skills and ignore the behaviors that make or break a person under pressure. These 15 questions coach the three traits that separate future leaders from future headaches. Each takes under a minute — in a 1-on-1, a check-in, or a hallway conversation. Ask one, then stay quiet: the power is in resisting the urge to answer it for them.', { size: 11, lh: 15.5, gap: 10 });
+
+    // Three traits
+    PDF_TRAITS.forEach((t) => {
+      heading(t.name);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...DEEP);
+      (doc.splitTextToSize(`${t.sub}  ${t.tell}`, CW) as string[]).forEach((ln) => { ensure(14); doc.text(ln, M, y); y += 14; });
+      y += 8;
+      t.qs.forEach((q) => {
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...TERRA);
+        const lines = doc.splitTextToSize(`"${q}"`, CW - 16) as string[];
+        ensure(lines.length * 14 + 4);
+        doc.text('•', M, y); doc.setTextColor(...INK);
+        lines.forEach((ln, li) => { doc.text(ln, M + 14, y); if (li < lines.length - 1) y += 14; });
+        y += 16;
+      });
+      y += 4;
+    });
+
+    // Next steps
+    heading('Take it further');
+    para('See these three traits scored across your whole team — a color-coded view of who’s ready to lead, before you have to guess:', { size: 10.5, lh: 14.5, gap: 4 });
+    linkCTA('See what Prove measures — provecq.com', 'https://provecq.com');
+    para('Not sure your own leadership is building the team or bottlenecking it? Take the free Leadership Scorecard:', { size: 10.5, lh: 14.5, gap: 4 });
+    linkCTA('Take the Leadership Scorecard — belegendary.org/leadership-scorecard/', `${SITE}/leadership-scorecard/`);
+    para('Want a second set of eyes on the person you’re developing? A free 15-minute Calibration Call:', { size: 10.5, lh: 14.5, gap: 4 });
+    linkCTA('Book a Calibration Call — meetings-na2.hubspot.com/jcarter28', 'https://meetings-na2.hubspot.com/jcarter28');
+
+    // Footer + copyright on every page
+    const year = new Date().getFullYear();
+    const pages = doc.getNumberOfPages();
+    for (let i = 1; i <= pages; i++) {
+      doc.setPage(i);
+      const fy = PH - 34;
+      doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, fy, W - M, fy);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
+      doc.text(`© ${year} Be Legendary. All rights reserved.  ·  belegendary.org  ·  800-513-8759`, M, fy + 13);
+      doc.text(`${i} / ${pages}`, W - M, fy + 13, { align: 'right' });
+    }
+
+    doc.save('Be-Legendary-Leadership-Coaching-Cheat-Sheet.pdf');
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'download_cheat_sheet', { asset: 'leadership_coaching' });
+    }
+  }
+
+  document.getElementById('cq-download')!.addEventListener('click', () => { downloadCheatSheet(); });
+</script>

@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, SLUGS, workoutPath, HUBSPOT, CONTACT_EMAIL } from '../../lib/site';
+
+const path = SLUGS.gratitude;
+const title = "Level Up Your Gratitude — the course that really levels you";
+const description =
+  'Level Up Your Gratitude is a self-paced course using gratitude to level up your whole life, grounded in the science of Robert Emmons. Free to begin.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's Course node, enriched so provider resolves by @id.
+const schema = [
+  {
+    '@type': 'Course',
+    '@id': `${canonical}#course`,
+    name: 'Level Up Your Gratitude',
+    description:
+      'A self-paced course using gratitude as a lever for whole-life growth, grounded in the science of Robert Emmons.',
+    provider: { '@id': ORG_ID },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', category: 'free to begin' },
+    hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'PT2H' },
+  },
+];
+
+// Curriculum data (ported from the design's sc-for lists).
+const modules = [
+  {
+    tag: 'Module one · the foundation',
+    title: 'Understand what you’re working with',
+    blurb:
+      'Before the practice, the ground: what gratitude actually is, why it’s the most reliable antidote you own, and the maturity to know its limits.',
+    sessions: [
+      { n: '1', title: 'What Is Gratitude?', desc: 'Emmons’ two-step definition — noticing a good outcome, and its source. Trait, mood, and emotion: three ways it shows up.' },
+      { n: '2', title: 'Gratitude Is an Antidote', desc: 'It is impossible to be angry, fearful, or resentful and grateful at once. Build the antidote you can reach for at any moment — your patronus against the poison.' },
+      { n: '3', title: 'It’s Not One-Size-Fits-All', desc: 'Gratitude is personal. Find the expression of it that’s actually yours — not mine, not anyone else’s.' },
+      { n: '4', title: 'When Gratitude Is a BAD Choice', desc: 'The session no one else teaches: in grief and loss, forced gratitude is self-manipulation. Feel it fully first. Then the practice is there.' },
+    ],
+  },
+  {
+    tag: 'Module two · why & how to practice',
+    title: 'Turn it into a way of living',
+    blurb:
+      'The science that proves it works, the trap that stops most people, and four practices you’ll keep for the rest of your life.',
+    sessions: [
+      { n: '1', title: 'The Science of Gratitude', desc: 'Emmons studied 1,000+ people, 8 to 80. Stronger immunity, lower blood pressure, better sleep, more joy — and more generous, forgiving, less lonely.' },
+      { n: '2', title: 'Attitude of Gratitude Will NOT Cut It', desc: 'Why a vague “positive attitude” fails, and what deliberate practice does instead. Feeling grateful is a skill you build with reps.' },
+      { n: '3', title: 'Ways to Practice', desc: 'The toolkit: Three Good Things, Mental Subtraction, the Savoring Walk, and Give It Up. Pick what fits and run it.' },
+      { n: '4', title: 'Level Up Your Gratitude', desc: 'Put it together and aim it at your life — relationships, leadership, resilience. Gratitude as the lever, you as what gets lifted.' },
+    ],
+  },
+];
+
+const practices = [
+  { name: 'Three Good Things', desc: 'Each day, name three good things that happened — tuning your attention to the positive events you’d otherwise miss.' },
+  { name: 'Mental Subtraction', desc: 'Imagine your life without something you love. Removing it in your mind is the fastest way to feel its value return.' },
+  { name: 'The Savoring Walk', desc: 'A stroll outside where you deliberately notice what’s good around you — building lasting happiness on foot.' },
+  { name: 'Give It Up', desc: 'Take a real break from something you enjoy, so you savor it far more when it returns. Absence sharpens appreciation.' },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Level Up Your Gratitude — a course that's really about leveling you"
+  ogDescription="Gratitude is the lever. You are the thing being lifted."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader audience="leaders" variant="full" logoHref={SLUGS.leaders} />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1080px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#D98A5E;">Level Up Your Gratitude</span>
+      </nav>
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#B48AD9;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#B48AD9;"></span>A course · self-paced</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,6.4vw,74px);line-height:1.0;letter-spacing:-0.022em;color:#1B1810;max-width:15ch;">Level Up Your Gratitude</h1>
+      <p style="margin-top:24px;font-size:20px;line-height:1.6;color:#56524A;max-width:52ch;">The title undersells it. This is a course about gratitude the way a lever is about the fulcrum — <em style="font-style:italic;color:#C04A26;">gratitude is the lever; you are the thing being lifted.</em> Two modules, grounded in real science, and honest about when gratitude is exactly the wrong move.</p>
+      <div style="margin-top:32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <a href="#enroll" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -14px rgba(192,74,38,0.7);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Begin the course <span>&rarr;</span></a>
+        <a href="#curriculum" style="color:#B48AD9;text-decoration:none;font-weight:700;font-size:15px;">See the curriculum &darr;</a>
+      </div>
+    </section>
+
+    <!-- PREMISE -->
+    <section style="max-width:1080px;margin:56px auto 0;padding:0 32px;">
+      <div class="bl-grid-collapse" style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:20px;padding:44px 46px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;">
+        <div>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Why this, why now</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3.2vw,34px);line-height:1.12;color:#1B1810;margin-bottom:16px;">You already did the warmup. This is the room it opens into.</h2>
+          <p style="font-size:16.5px;line-height:1.65;color:#56524A;">The <a href={workoutPath('count-your-blessings')} style="color:#E0744A;text-decoration:underline;">Count Your Blessings</a> workout gives you the first rep. This course makes it a way of living — the science behind why it works, the practices that make it stick, and the maturity to know when to put it down. "The quality of your life is the quality of your habitual emotions." You're about to take control of that dial.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#B48AD9;">2</span><span style="font-size:15px;color:#56524A;">modules · foundation &amp; practice</span></div>
+          <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#B48AD9;">9</span><span style="font-size:15px;color:#56524A;">short sessions, self-paced</span></div>
+          <div style="display:flex;gap:12px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#B48AD9;">4</span><span style="font-size:15px;color:#56524A;">practices you keep for life</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section id="curriculum" style="max-width:1080px;margin:72px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">The curriculum</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#1B1810;max-width:20ch;margin-bottom:40px;">Two modules. Nine sessions. One shift.</h2>
+      <div style="display:flex;flex-direction:column;gap:26px;">
+        {modules.map((m) => (
+          <div style="border:1px solid rgba(27,24,16,0.14);border-radius:18px;overflow:hidden;">
+            <div style="background:#FBF8F1;padding:26px 32px;border-bottom:1px solid rgba(27,24,16,0.1);">
+              <span style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#B48AD9;">{m.tag}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;color:#1B1810;margin-top:6px;">{m.title}</h3>
+              <p style="font-size:15px;line-height:1.55;color:#6B6358;margin-top:6px;max-width:60ch;">{m.blurb}</p>
+            </div>
+            <div style="display:flex;flex-direction:column;">
+              {m.sessions.map((s) => (
+                <div style="display:flex;gap:18px;align-items:flex-start;padding:20px 32px;border-bottom:1px solid rgba(27,24,16,0.08);">
+                  <span style="font-family:'Newsreader',serif;font-size:18px;color:#8C8473;flex:none;width:28px;">{s.n}</span>
+                  <div>
+                    <p style="font-size:17px;font-weight:600;color:#1B1810;margin-bottom:3px;">{s.title}</p>
+                    <p style="font-size:14.5px;line-height:1.55;color:#6B6358;">{s.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- THE FOUR PRACTICES -->
+    <section style="max-width:1080px;margin:72px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">The toolkit · four practices you keep</p>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;">
+        {practices.map((p) => (
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:28px 30px;">
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#1B1810;margin-bottom:8px;">{p.name}</h3>
+            <p style="font-size:15px;line-height:1.6;color:#56524A;">{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- HONEST NOTE -->
+    <section style="max-width:1080px;margin:40px auto 0;padding:0 32px;">
+      <div style="background:#F4EFE5;border:1px solid rgba(180,138,217,0.4);border-left:3px solid #B48AD9;border-radius:16px;padding:30px 34px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#B48AD9;margin-bottom:12px;">What makes this different</p>
+        <p style="font-size:17px;line-height:1.68;color:#3A362E;max-width:74ch;">Most gratitude content tells you to feel a certain way. This course does the opposite: a whole session on <em style="font-style:italic;">when gratitude is a bad choice</em> — because forcing an "attitude of gratitude" through real grief is manipulating your own honest feelings. You need your anger, your fear, your sorrow. There are no peaks without valleys. We teach you to feel them fully first — then hand you the practice for when you're ready, on your terms.</p>
+      </div>
+    </section>
+
+    <!-- ENROLL -->
+    <section id="enroll" style="max-width:720px;margin:72px auto 0;padding:0 32px;">
+      <div style="background:#F4F0E7;color:#1B1810;border-radius:20px;padding:44px 46px;box-shadow:0 40px 90px -36px rgba(0,0,0,0.6);">
+        <div id="gr-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.newsletterFormGuid} data-contact={CONTACT_EMAIL} style="display:block;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Begin the course</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.14;margin-bottom:10px;">Yours to keep.</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:#56524A;margin-bottom:24px;">Drop your email to open Module 1 now — and we'll let you know as new sessions go live. No pressure, no spam, unsubscribe anytime.</p>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <input id="gr-email" type="email" placeholder="you@company.com" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:16px;padding:15px 16px;border-radius:10px;border:1px solid rgba(27,24,16,0.2);background:#FBF8F1;color:#1B1810;outline:none;">
+            <p id="gr-err" style="display:none;font-size:14px;color:#C04A26;font-weight:600;">Enter a valid email to begin.</p>
+            <button id="gr-btn" type="button" style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:16px 26px;border-radius:10px;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:16px;display:inline-flex;align-items:center;justify-content:center;gap:9px;">Open Module 1 <span>&rarr;</span></button>
+            <p style="font-size:12px;color:#B4A98E;">Free · no spam · unsubscribe anytime.</p>
+          </div>
+        </div>
+        <div id="gr-done" style="display:none;text-align:center;">
+          <div style="width:60px;height:60px;border-radius:999px;background:#C04A26;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px;">&#10003;</div>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:30px;line-height:1.12;margin-bottom:10px;">You're enrolled. Module 1 is open.</h2>
+          <p style="font-size:16px;line-height:1.6;color:#56524A;max-width:44ch;margin:0 auto 8px;">Start with "What Is Gratitude?" — then move at whatever pace fits your life. The struggle ends when the gratitude begins.</p>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:13px;color:#6E6757;margin-top:16px;">Prefer a single rep first? <a href={workoutPath('count-your-blessings')} style="color:#B48AD9;text-decoration:none;font-weight:600;">Do the Count Your Blessings warmup &rarr;</a></p>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="leaders" variant="full" />
+
+  <script>
+    (function () {
+      const form = document.getElementById('gr-form');
+      const done = document.getElementById('gr-done');
+      const err = document.getElementById('gr-err');
+      const btn = document.getElementById('gr-btn');
+      const email = document.getElementById('gr-email');
+      if (!form || !done || !btn || !email) return;
+      btn.addEventListener('click', async function () {
+        const val = (email.value || '').trim();
+        if (!val || !/.+@.+\..+/.test(val)) {
+          if (err) err.style.display = 'block';
+          return;
+        }
+        try {
+          window.localStorage.setItem('bl_gratitude_course', JSON.stringify({ email: val, enrolledAt: Date.now() }));
+        } catch (e) {}
+        if (err) err.style.display = 'none';
+        // Module 1 is on this page, so open the "done" state regardless. Also
+        // capture the email as a real lead via the working newsletter form
+        // (this used to be localStorage-only, so enrolments were never captured).
+        form.style.display = 'none';
+        done.style.display = 'block';
+        var portal = form.getAttribute('data-portal'), guid = form.getAttribute('data-guid'), contact = form.getAttribute('data-contact');
+        if (guid) {
+          var ok = false;
+          try {
+            var res = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
+              method: 'POST', headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ fields: [{ name: 'email', value: val }], context: { pageUri: location.href, pageName: 'Gratitude course — enroll' } }),
+            });
+            ok = res.ok;
+          } catch (e) { ok = false; }
+          if (!ok && contact && !done.querySelector('[data-fallback]')) {
+            var p = document.createElement('p');
+            p.setAttribute('data-fallback', '');
+            p.style.cssText = 'margin-top:12px;font-size:13px;color:#6E6757;';
+            p.innerHTML = 'Want the new sessions by email? <a href="mailto:' + contact + '?subject=' + encodeURIComponent('Gratitude course') + '&body=' + encodeURIComponent('Please keep me posted on new sessions. Email: ' + val) + '" style="color:#B48AD9;text-decoration:underline;font-weight:600;">Email us</a>.';
+            done.appendChild(p);
+          }
+        }
+      });
+    })();
+  </script>
+</BaseLayout>

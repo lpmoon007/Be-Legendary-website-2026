@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../lib/site';
+
+const path = SLUGS.whatMakesGoodLeader;
+const title = "What Makes a Good Leader? It's Not the Skills You'd Expect";
+const description =
+  "What makes a good leader? Not charisma or competencies — it's the mindset underneath: self-awareness, chosen beliefs, and the courage to act.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: "What Makes a Good Leader? It's Not the Skills You'd Expect",
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['what makes a good leader', 'leadership qualities', 'good leadership'],
+    description:
+      'Why good leadership starts with mindset rather than competencies, and the qualities that actually separate strong leaders.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What makes a good leader?', acceptedAnswer: { '@type': 'Answer', text: "A good leader is defined less by a checklist of skills than by the mindset underneath them: self-awareness to see their own reactions, the willingness to examine and choose their beliefs, and the courage to act on their values under pressure. Communication, vision and decisiveness are outputs of that inner foundation. You can't lead others past where your own mindset stops — so the deepest driver of good leadership is who the leader is being, not just what they do." } },
+      { '@type': 'Question', name: 'What are the most important qualities of a good leader?', acceptedAnswer: { '@type': 'Answer', text: "Self-awareness, integrity, the courage to make hard calls, the humility to keep learning, and the ability to make others feel both challenged and safe. Underneath all of them is a settled sense of self that doesn't need constant validation — which is what lets a leader stay steady, honest and generous under pressure." } },
+      { '@type': 'Question', name: 'Are good leaders born or made?', acceptedAnswer: { '@type': 'Answer', text: "Made, mostly. Some traits come more naturally to some people, but the core of good leadership — awareness, chosen beliefs, courage — is trainable, the way strength is: deliberate reps, real recovery, done consistently. Nobody is born steady under fire; they build it." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="What Makes a Good Leader? It's Not the Skills You'd Expect"
+  ogDescription="Good leadership is a mindset before it's a skill set. Here's what actually matters."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">What Makes a Good Leader</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:18ch;">What makes a good leader?</h1>
+    <p style="margin-top:16px;font-size:14px;color:#6E6757;">By <a href={SLUGS.about} style="color:#C04A26;text-decoration:none;">James Carter</a> &middot; Founder, Be Legendary</p>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p class="bl-speakable" style="font-size:18px;line-height:1.6;color:#2E2A22;">A good leader is defined less by a checklist of skills than by the mindset beneath them: <strong style="font-weight:700;">self-awareness</strong> to see their own reactions, the willingness to <strong style="font-weight:700;">choose their beliefs</strong>, and the <strong style="font-weight:700;">courage</strong> to act on their values under pressure. Communication and vision are outputs of that foundation — you can't lead others past where your own mindset stops.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">Ask most people what makes a good leader and you'll get a list of skills — communication, vision, decisiveness, charisma. All real, all trainable, and all <em style="font-style:italic;">downstream.</em> Two leaders can have the exact same skills and land completely differently, because skill sits on top of something deeper: who the person is being when it's hard.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">Skills are what a leader does. Character is who a leader is. Under pressure, people follow the second.</p>
+          <p>The leaders people actually trust share an inner foundation: they see their own reactions instead of being run by them, they've examined the beliefs driving them, and they can do the hard, right thing when it costs something. That's not charisma — it's a settled self that doesn't need constant validation. And it's buildable.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.12;color:#1B1810;margin-bottom:20px;">The foundation, in three parts.</h2>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div style="background:#15130E;color:#F4F0E7;border-radius:14px;padding:24px 24px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#E0744A;">A</span><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;margin:8px 0;color:#FBF8F1;">Awareness</h3><p style="font-size:14.5px;line-height:1.55;color:rgba(244,240,231,0.75);">See your own reactions clearly, so they stop running you.</p></div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:14px;padding:24px 24px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#E0744A;">B</span><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;margin:8px 0;color:#FBF8F1;">Beliefs</h3><p style="font-size:14.5px;line-height:1.55;color:rgba(244,240,231,0.75);">Examine and choose the beliefs you lead from, instead of inheriting them.</p></div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:14px;padding:24px 24px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#E0744A;">C</span><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;margin:8px 0;color:#FBF8F1;">Courage</h3><p style="font-size:14.5px;line-height:1.55;color:rgba(244,240,231,0.75);">Act on your values when it costs something. That's when people watch.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Build the foundation — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">Good leadership is trained, not born.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The free Mindset Workouts train the ABCs a few minutes at a time — the foundation under every leadership skill. Start with one today.</p>
+          <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+            <a href={SLUGS.workouts} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Enter the gym — free <span>&rarr;</span></a>
+            <a href={workoutPath('mindset-of-a-legend')} style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Start with the ABCs</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px 20px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">What are the most important qualities of a good leader?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Self-awareness, integrity, courage to make hard calls, humility to keep learning, and the ability to make people feel both challenged and safe. Underneath them all is a settled sense of self that doesn't need constant validation.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Are good leaders born or made?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Made, mostly. Some traits come more naturally to some people, but the core — awareness, chosen beliefs, courage — is trainable the way strength is: deliberate reps, real recovery, done consistently.</p></div>
+        </div>
+      </section>
+      <!-- internal-linking: keep-reading rail -->
+      <section style="max-width:860px;margin:8px auto 0;padding:0 32px 76px;">
+        <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep reading</p>
+        <div style="display:grid;gap:12px;">
+          <a href="/leaders/what-is-leadership/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">What is leadership, really?</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/leaders/leadership-qualities/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">The qualities that define strong leaders</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/leaders/improve-leadership-skills/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">How to improve your leadership skills</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+        </div>
+      </section>
+      <ArticleEndCTA maxWidth={820} />
+      <ShareRow title={title} maxWidth={820} />
+</article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SLUGS } from '../lib/site';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SLUGS, CONTACT_EMAIL } from '../lib/site';
 
 const title = 'Privacy Policy | Be Legendary';
 const description = 'How Be Legendary collects, uses, and protects the information you share — including email addresses submitted through our forms and assessment tools.';
 ---
 <BaseLayout title={title} description={description} path={SLUGS.privacy}>
-  <Header maxWidth={820} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={820} links={[]} />
 
   <article style="max-width:820px;margin:0 auto;padding:72px 32px 40px;">
     <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
@@ -42,7 +42,7 @@ const description = 'How Be Legendary collects, uses, and protects the informati
       </section>
       <section>
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">Your choices</h2>
-        <p>Every email we send includes an unsubscribe link, and you can opt out at any time. You may request a copy of the information we hold about you, or ask us to delete it, by contacting us. We honor applicable privacy rights, including those under GDPR and CCPA where they apply to you.</p>
+        <p>Every email we send includes an unsubscribe link, and you can opt out at any time. You may request a copy of the information we hold about you, or ask us to delete it, by emailing <a href={`mailto:${CONTACT_EMAIL}`} style="color:#E0744A;">{CONTACT_EMAIL}</a>. We honor applicable privacy rights, including those under GDPR and CCPA where they apply to you.</p>
       </section>
       <section>
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:12px;">Cookies</h2>
@@ -55,5 +55,5 @@ const description = 'How Be Legendary collects, uses, and protects the informati
     </div>
   </article>
 
-  <Footer variant="slim" maxWidth={820} note="© 2026 Be Legendary." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={820} note="© 2026 Be Legendary." />
 </BaseLayout>

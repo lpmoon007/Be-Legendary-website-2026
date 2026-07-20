@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'The Strategy Execution Gap: Why Good Strategy Fails';
+const description =
+  'Why capable teams with sound strategy still fail to execute — the real causes of the strategy execution gap, and the four disciplines that close it.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'The Strategy Execution Gap', item: 'https://www.belegendary.org/strategy-execution-gap/' },
+  ] },
+  { '@type': 'Article', headline: 'The Strategy Execution Gap: why good strategy still fails, and how to close it', datePublished: '2026-07-09', dateModified: '2026-07-09', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/strategy-execution-gap/', description: 'The strategy execution gap is the distance between what a leadership team decides and what it actually does. It closes through four disciplines, not a better plan.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is the strategy execution gap?', acceptedAnswer: { '@type': 'Answer', text: 'The strategy execution gap is the distance between the strategy a leadership team sets and the work it actually delivers. It is not a planning problem — the plan is usually sound. It is a behavior problem: the disciplines that turn a decision into finished work erode quietly until the plan outpaces the doing.' } },
+    { '@type': 'Question', name: 'Why do good strategies fail to execute?', acceptedAnswer: { '@type': 'Answer', text: 'Good strategies fail when the leadership behaviors underneath them are thin: the team commits to too many priorities, decisions get reopened, there is no consistent operating rhythm, misses carry no consequence, and failures turn into blame instead of correction. The strategy is fine — the disciplines that would carry it are missing.' } },
+    { '@type': 'Question', name: 'How do you close the strategy execution gap?', acceptedAnswer: { '@type': 'Answer', text: 'You close it by rebuilding four disciplines rather than rewriting the plan: the Decision (every call gets one owner and a deadline), the Rhythm (a cadence that ships work), the Standard (a bar with real consequences), and the Learning (misses become change). Find the one that has slipped furthest and rebuild it first.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.strategyExecutionGap}
+  ogType="article"
+  ogTitle="The Strategy Execution Gap — why good strategy fails"
+  ogDescription="The gap between deciding and doing isn't a planning problem. It's four leadership disciplines that quietly erode. Here's how to close it."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">The Strategy Execution Gap</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">The strategy execution gap</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">The strategy execution gap is the distance between what your leadership team <em>decides</em> and what it actually <em>does</em>. It is rarely a planning problem &mdash; the strategy is usually sound. It&rsquo;s a behavior problem: the disciplines that carry a decision into finished work erode quietly, one reasonable compromise at a time, until the plan outpaces the doing. You don&rsquo;t close it with a better deck. You close it by rebuilding <strong>four disciplines</strong>: the Decision, the Rhythm, the Standard, and the Learning.</p>
+    </div>
+  </header>
+
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#why-it-fails" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Why good strategy fails</a></li>
+        <li><a href="#the-lens" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">A Flag &amp; four disciplines</a></li>
+        <li><a href="#diagnose" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Find where yours breaks</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- WHAT IT IS -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Every leadership team has felt it. The offsite was good. The strategy was clear. Everyone nodded. And a quarter later the same three priorities are still &ldquo;in progress,&rdquo; the deck is a little embarrassing to reopen, and no one can quite say where the momentum went. That distance &mdash; between the strategy on the page and the results on the ground &mdash; is the strategy execution gap. <a href={SLUGS.research} style="color:#D98A5E;">Study after study</a> puts it in the same range: most strategies never fully land, and the failure is almost never the strategy itself.</p>
+  </div>
+
+  <!-- WHY IT HAPPENS -->
+  <div id="why-it-fails" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Why good strategy fails</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The reflex is to blame the plan &mdash; so teams re-plan. They run another offsite, hire another strategy firm, buy another operating system. And the gap survives all of it, because the gap was never in the plan. It&rsquo;s in the space between deciding and doing, and that space is governed by behavior, not by frameworks. When you look closely at a stalled team, the same four erosions show up almost every time:</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-top:8px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Too many priorities, none owned.</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">The team commits to nine things because no one will veto the tenth. Everything is a priority, so nothing is. Decisions get reopened in hallways because they were never truly closed in the room.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">No rhythm that ships.</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">Meetings happen, but they report status instead of moving work. There&rsquo;s no cadence where the important thing is pushed forward on a beat &mdash; so it drifts to whoever shouts loudest that week.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">A standard no one enforces.</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">A commitment is missed and nothing happens. The bar quietly lowers to the level of the most tolerated behavior, and everyone recalibrates what &ldquo;done&rdquo; means downward.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Failure becomes blame, not learning.</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">When something misses, the energy goes to who&rsquo;s at fault instead of what to change. So the team never metabolizes the miss into a correction, and the same failure returns next quarter wearing a new name.</p>
+      </div>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-top:22px;">Notice what all four have in common: none of them is a strategy problem. They&rsquo;re disciplines a capable team quietly stopped keeping. That&rsquo;s the real anatomy of the execution gap &mdash; and it&rsquo;s the reason <a href={SLUGS.eosOkrs} style="color:#D98A5E;">adopting a new framework rarely changes behavior</a>. The tools sit on a layer of leadership discipline that has to actually be there.</p>
+  </div>
+
+  <!-- THE FLAG MODEL LENS -->
+  <div id="the-lens" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The lens: a Flag, and four disciplines</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The <a href={SLUGS.flagModel} style="color:#D98A5E;">Flag Model</a> exists to name and rebuild exactly this. Picture a flag your whole team can march toward &mdash; the two or three priorities everything serves. That flag stays upright only if four disciplines hold it, and each one maps directly to a way the execution gap opens:</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:#211D15;border:1px solid rgba(192,74,38,0.28);border-radius:16px;padding:26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Decision</p>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.85);">Commitment. Every call gets one owner and a deadline, and it stays closed. Kills the &ldquo;too many priorities, none owned&rdquo; erosion.</p>
+      </div>
+      <div style="background:#211D15;border:1px solid rgba(192,74,38,0.28);border-radius:16px;padding:26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Rhythm</p>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.85);">Finishing. The operating cadence that pushes the important work forward on a beat, so it ships instead of drifts.</p>
+      </div>
+      <div style="background:#211D15;border:1px solid rgba(192,74,38,0.28);border-radius:16px;padding:26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Standard</p>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.85);">Holding the bar. Accountability with real consequences, so a missed commitment costs something and &ldquo;done&rdquo; keeps its meaning.</p>
+      </div>
+      <div style="background:#211D15;border:1px solid rgba(192,74,38,0.28);border-radius:16px;padding:26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The Learning</p>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.85);">Correcting. Turning a miss into a change instead of a search for fault, so the same failure doesn&rsquo;t return next quarter.</p>
+      </div>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-top:22px;">Governing all four is one principle: <strong style="color:#F4F0E7;">Truth Over Comfort</strong>. The execution gap is, underneath everything, a series of small choices to keep the peace instead of tell the truth &mdash; to not veto the tenth priority, to not name the missed commitment, to not reopen the decision that everyone privately disagrees with. Close those, and the gap closes with them.</p>
+  </div>
+
+  <!-- DIAGNOSTIC -->
+  <div id="diagnose" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Find where yours breaks first</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">You don&rsquo;t fix all four at once. There is one discipline that has slipped furthest, and it&rsquo;s where your gap actually opens. Ask your team these four questions and watch which one gets the uncomfortable silence:</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.55;color:#3A372F;">
+        <li><strong>Decision</strong> &rarr; Could every person name our top three priorities &mdash; and the owner and deadline for each &mdash; without looking them up?</li>
+        <li><strong>Rhythm</strong> &rarr; Is there a cadence where our most important work is actually moved forward, or do our meetings just report status?</li>
+        <li><strong>Standard</strong> &rarr; The last time a real commitment was missed &mdash; what happened? If the honest answer is &ldquo;nothing,&rdquo; that&rsquo;s your gap.</li>
+        <li><strong>Learning</strong> &rarr; When something fails here, do we change how we work, or do we quietly look for who to blame?</li>
+      </ol>
+      <p style="font-size:16px;line-height:1.6;color:#3A372F;margin-top:18px;">Whichever question lands hardest is where to start. Rebuild that one discipline and the others get easier &mdash; because they were never really independent problems. They were one team, avoiding one kind of truth.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See exactly where your execution gap opens.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which of the four disciplines has slipped furthest on your team &mdash; and the first move to rebuild it &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What is the strategy execution gap?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">It&rsquo;s the distance between the strategy a leadership team sets and the work it actually delivers. It is not a planning problem &mdash; the plan is usually sound. It&rsquo;s a behavior problem: the disciplines that turn a decision into finished work erode quietly until the plan outpaces the doing.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Why do good strategies fail to execute?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Because the leadership behaviors underneath them are thin: the team commits to too many priorities, decisions get reopened, there&rsquo;s no operating rhythm, misses carry no consequence, and failures turn into blame instead of correction. The strategy is fine &mdash; the disciplines that would carry it are missing.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do you close the strategy execution gap?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Rebuild four disciplines rather than rewriting the plan: the Decision (one owner and a deadline per call), the Rhythm (a cadence that ships work), the Standard (a bar with real consequences), and the Learning (misses become change). Find the one that has slipped furthest and rebuild it first.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The one Flag and four disciplines that close the gap.</span>
+      </a>
+      <a href={SLUGS.whyNotExecuting} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Why isn&rsquo;t my executive team executing?</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The same gap, from the CEO&rsquo;s chair.</span>
+      </a>
+      <a href={SLUGS.howToAccountable} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to hold your team accountable</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Rebuilding the Standard, in practice.</span>
+      </a>
+      <a href={SLUGS.lostDisciplines ?? '/lost-disciplines/'} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The book: Lost Disciplines of Leadership&trade;</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The whole argument, as a fable and a field guide.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. Close the gap between deciding and doing." />
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+// Lightweight, native share row for articles & guides. No third-party scripts,
+// no trackers. LinkedIn + Email work without JS (progressive enhancement);
+// Copy link and the mobile native share sheet are added by a tiny inline script.
+import { SITE_URL } from '../lib/site';
+export interface Props {
+  title: string;
+  /** Container max-width to match the article body. */
+  maxWidth?: number;
+}
+const { title, maxWidth = 920 } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE_URL).href;
+const linkedin = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonical)}`;
+const mailto = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(title + '\n\n' + canonical)}`;
+const pill =
+  "display:inline-flex;align-items:center;gap:7px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#F4F0E7;background:#1B1810;border:1px solid rgba(244,240,231,0.16);border-radius:10px;padding:10px 15px;text-decoration:none;cursor:pointer;line-height:1;";
+const hoverOn = "this.style.borderColor='rgba(192,74,38,0.6)'";
+const hoverOff = "this.style.borderColor='rgba(244,240,231,0.16)'";
+---
+<div data-share style={`max-width:${maxWidth}px;margin:56px auto 0;padding:0 32px;`}>
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(244,240,231,0.12);padding-top:26px;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;">Share this</span>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button type="button" data-copy style={pill} onmouseover={hoverOn} onmouseout={hoverOff}>Copy link</button>
+      <a href={linkedin} target="_blank" rel="noopener" data-net="linkedin" style={pill} onmouseover={hoverOn} onmouseout={hoverOff}>LinkedIn</a>
+      <a href={mailto} data-net="email" style={pill} onmouseover={hoverOn} onmouseout={hoverOff}>Email</a>
+      <button type="button" data-native hidden style={pill} onmouseover={hoverOn} onmouseout={hoverOff}>Share&hellip;</button>
+    </div>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    var root = document.querySelector('[data-share]');
+    if (!root) return;
+    var url = location.href;
+    var title = document.title;
+    function track(method) { if (typeof window.gtag === 'function') window.gtag('event', 'share', { method: method, page_path: location.pathname }); }
+
+    var copy = root.querySelector('[data-copy]');
+    if (copy) copy.addEventListener('click', function () {
+      var done = function () { var o = copy.textContent; copy.textContent = 'Copied ✓'; setTimeout(function () { copy.textContent = o; }, 2000); track('copy_link'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done).catch(function () { window.prompt('Copy this link:', url); });
+      else window.prompt('Copy this link:', url);
+    });
+
+    var nativeBtn = root.querySelector('[data-native]');
+    if (nativeBtn && navigator.share) {
+      nativeBtn.hidden = false;
+      nativeBtn.addEventListener('click', function () { navigator.share({ title: title, url: url }).then(function () { track('native'); }).catch(function () {}); });
+    }
+
+    root.querySelectorAll('a[data-net]').forEach(function (a) { a.addEventListener('click', function () { track(a.getAttribute('data-net')); }); });
+  })();
+</script>

@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SLUGS } from '../lib/site';
+
+const title = 'Search | Be Legendary';
+const description = 'Search Be Legendary — the Flag Model, executive-team guides, tools, and resources.';
+---
+<BaseLayout title={title} description={description} path={SLUGS.search} noindex={true}>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Resources', href: SLUGS.resources }]} />
+
+  <main style="max-width:880px;margin:0 auto;padding:72px 32px 40px;min-height:60vh;">
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,52px);line-height:1.02;letter-spacing:-0.02em;color:#FBF8F1;">Search</h1>
+    <form id="bl-search-form" role="search" style="margin-top:26px;position:relative;" onsubmit="return false;">
+      <label for="bl-search-input" class="bl-vh">Search the site</label>
+      <input
+        id="bl-search-input"
+        type="search"
+        autocomplete="off"
+        placeholder="Try “alignment”, “offsite agenda”, “FlagScore”…"
+        style="width:100%;padding:18px 20px;border-radius:14px;border:1px solid rgba(244,240,231,0.2);background:#1B1810;color:#F4F0E7;font-size:18px;font-family:'Hanken Grotesk',sans-serif;outline-offset:2px;"
+      />
+    </form>
+    <p id="bl-search-status" aria-live="polite" style="margin-top:16px;font-size:14px;color:rgba(244,240,231,0.55);">Loading the index…</p>
+    <div id="bl-search-results" style="margin-top:20px;display:flex;flex-direction:column;gap:12px;"></div>
+  </main>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary." />
+</BaseLayout>
+
+<script>
+  const input = document.getElementById('bl-search-input') as HTMLInputElement;
+  const results = document.getElementById('bl-search-results')!;
+  const status = document.getElementById('bl-search-status')!;
+  let index: Array<{ url: string; title: string; description: string; section: string }> = [];
+
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
+
+  function score(item: { title: string; description: string; section: string }, terms: string[], q: string) {
+    const t = item.title.toLowerCase(), d = item.description.toLowerCase();
+    let s = 0;
+    if (t.includes(q)) s += 40;                 // whole-query phrase in title
+    if (d.includes(q)) s += 12;                 // whole-query phrase in description
+    for (const w of terms) {
+      if (t.includes(w)) s += 10;
+      if (d.includes(w)) s += 3;
+      if (item.section.toLowerCase().includes(w)) s += 1;
+      if (t.startsWith(w)) s += 4;              // prefix boost
+    }
+    return s;
+  }
+
+  function render(q: string) {
+    q = q.trim().toLowerCase();
+    results.innerHTML = '';
+    if (!q) { status.textContent = `Search ${index.length} pages.`; return; }
+    const terms = q.split(/\s+/).filter(Boolean);
+    const hits = index
+      .map((item) => ({ item, s: score(item, terms, q) }))
+      .filter((x) => x.s > 0)
+      .sort((a, b) => b.s - a.s || a.item.title.localeCompare(b.item.title))
+      .slice(0, 25);
+    status.textContent = hits.length
+      ? `${hits.length} result${hits.length === 1 ? '' : 's'} for “${q}”`
+      : `No results for “${q}”. Try a broader term, or browse Resources.`;
+    for (const { item } of hits) {
+      const a = document.createElement('a');
+      a.href = item.url;
+      a.style.cssText = 'text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;display:block;';
+      a.onmouseover = () => (a.style.borderColor = 'rgba(192,74,38,0.5)');
+      a.onmouseout = () => (a.style.borderColor = 'rgba(244,240,231,0.11)');
+      a.innerHTML =
+        `<span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">${esc(item.section)}</span>` +
+        `<span style="display:block;margin-top:6px;font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;line-height:1.2;">${esc(item.title)}</span>` +
+        (item.description ? `<span style="display:block;margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">${esc(item.description)}</span>` : '');
+      results.appendChild(a);
+    }
+  }
+
+  // GA4 `search` event — fires once typing settles (not per keystroke) so we can
+  // see what people look for, and how many results they got. gtag() queues to
+  // dataLayer even before gtag.js finishes loading, so this is always safe.
+  let lastTracked = '';
+  function trackSearch(q: string) {
+    q = q.trim().toLowerCase();
+    if (q.length < 2 || q === lastTracked) return;
+    lastTracked = q;
+    const terms = q.split(/\s+/).filter(Boolean);
+    const count = index.filter((item) => score(item, terms, q) > 0).length;
+    (window as any).gtag?.('event', 'search', { search_term: q, results_count: count });
+  }
+
+  function boot() {
+    const params = new URLSearchParams(location.search);
+    const initial = params.get('q') || '';
+    if (initial) input.value = initial;
+    fetch('/search-index.json')
+      .then((r) => r.json())
+      .then((data) => { index = data; render(input.value); if (input.value) trackSearch(input.value); else input.focus(); })
+      .catch(() => { status.textContent = 'Search is unavailable right now. Please browse Resources.'; });
+    let timer: number | undefined;
+    let trackTimer: number | undefined;
+    input.addEventListener('input', () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        render(input.value);
+        const u = new URL(location.href);
+        if (input.value) u.searchParams.set('q', input.value); else u.searchParams.delete('q');
+        history.replaceState(null, '', u);
+      }, 120);
+      window.clearTimeout(trackTimer);
+      trackTimer = window.setTimeout(() => trackSearch(input.value), 900);
+    });
+  }
+  boot();
+</script>

@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'Resources: Executive Team Tools, Framework Comparisons & Research | Be Legendary';
-const description = 'Free tools and straight answers for executive teams: the Cost of Dysfunction Calculator, the Flag Model framework, comparisons with EOS, OKRs, 4DX and the Five Dysfunctions, and research on what misalignment really costs.';
+const title = 'Resources: Executive Team Tools & Research | Be Legendary';
+const description = 'Free tools and straight answers for executive teams: the Cost of Lost Disciplines Calculator, the Flag Model, and comparisons with EOS, OKRs and 4DX.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -28,7 +28,7 @@ const schema = [
 
 <div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
 
-  <Header maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }, { label: 'James', href: SLUGS.about }]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }, { label: 'James', href: SLUGS.about }]} />
 
   <!-- HERO -->
   <header style="position:relative;max-width:1140px;margin:0 auto;padding:88px 32px 56px;">
@@ -69,6 +69,30 @@ const schema = [
         <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:54ch;">Ten honest questions reveal which of the five components your team is most likely to lose first. Instant on-screen read.</p>
       </div>
       <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Take the assessment &rarr;</span>
+    </a>
+  </section>
+
+  <!-- TOOL: LEADERSHIP SCORECARD (individual leader) -->
+  <section style="max-width:1140px;margin:0 auto;padding:18px 32px 8px;">
+    <a href={SLUGS.leadershipScorecard} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px 38px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+      <div style="flex:1;min-width:280px;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Free tool &middot; 4 minutes</span>
+        <p style="margin-top:12px;font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;color:#FBF8F1;">Leadership Scorecard</p>
+        <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:54ch;">Ten questions on your own leadership &mdash; are you building your team and business, or bottlenecking them? Instant Leadership Health Score and your top three growth areas.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Take the scorecard &rarr;</span>
+    </a>
+  </section>
+
+  <!-- TOOL: LEADERSHIP COACHING QUESTIONS -->
+  <section style="max-width:1140px;margin:0 auto;padding:18px 32px 8px;">
+    <a href={SLUGS.coachingQuestions} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px 38px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+      <div style="flex:1;min-width:280px;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Free cheat sheet &middot; copy-ready</span>
+        <p style="margin-top:12px;font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;color:#FBF8F1;">Leadership Coaching Questions</p>
+        <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:54ch;">15 tap-to-copy prompts that coach the three traits that predict leadership &mdash; Initiative, Applied Grit, Learnability. For your next one-on-one.</p>
+      </div>
+      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Get the questions &rarr;</span>
     </a>
   </section>
 
@@ -113,6 +137,10 @@ const schema = [
         <span style="margin-top:auto;padding-top:16px;font-weight:700;font-size:14.5px;color:#E0744A;">Browse the library &rarr;</span>
       </a>
     </div>
+    <a href={SLUGS.strategyExecutionGap} style="margin-top:14px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+      <span><span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Strategy Execution Gap</span><span style="display:block;margin-top:6px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why capable teams with a sound plan still fail to execute &mdash; and the four disciplines that close it.</span></span>
+      <span style="font-weight:700;font-size:14.5px;color:#E0744A;white-space:nowrap;">Read the guide &rarr;</span>
+    </a>
     <a href={SLUGS.glossary} style="margin-top:14px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
       <div>
         <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Glossary</p>
@@ -131,6 +159,27 @@ const schema = [
         <div>
           <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs EOS &amp; OKRs</p>
           <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">Why the framework didn't change behavior.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.vsEos} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div>
+          <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs EOS &amp; Traction</p>
+          <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">The operating system vs. the disciplines that make it stick.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.vsOkrs} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div>
+          <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs OKRs</p>
+          <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">A scoreboard exposes the gap; the disciplines close it.</p>
+        </div>
+        <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
+      </a>
+      <a href={SLUGS.vsScalingUp} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <div>
+          <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs Scaling Up</p>
+          <p style="margin-top:5px;font-size:14px;color:rgba(244,240,231,0.62);">The full growth playbook vs. the team behavior under Execution.</p>
         </div>
         <span style="font-weight:700;color:#E0744A;font-size:14px;white-space:nowrap;">Read &rarr;</span>
       </a>
@@ -208,7 +257,7 @@ const schema = [
     </div>
   </section>
 
-  <Footer variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Free resources for executive teams." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Free resources for executive teams." />
 
 </div>
 

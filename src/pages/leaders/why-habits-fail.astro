@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
+
+const path = SLUGS.whyHabitsFail;
+const title = 'Why Do My Habits Keep Failing? The Three Real Reasons';
+const description =
+  'Habits fail for three fixable reasons: too big, a vague cue, or one missed day that became a story about failing. The diagnosis and the fix for each.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Why Do My Habits Keep Failing? The Three Real Reasons',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['habit failure', 'behavior change', 'habit formation'],
+    description:
+      'The three reasons habits fail — too big, vague cue, the two-day slip — and the fix for each.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'Why do my habits keep failing?', acceptedAnswer: { '@type': 'Answer', text: "Almost always one of three reasons: the habit is too big to do on a bad day, the cue is too vague to reliably trigger it, or a single missed day turned into a story about failing and you quit. None of these is a discipline problem — each has a specific, mechanical fix: shrink it, anchor it to a concrete moment, and never miss twice." } },
+      { '@type': 'Question', name: 'Is failing to keep habits a willpower problem?', acceptedAnswer: { '@type': 'Answer', text: "No. Relying on willpower is itself the problem. Willpower is finite and unreliable, so any habit that depends on you feeling disciplined every day will eventually break. Durable habits are engineered to need almost no willpower — tiny actions attached to reliable cues." } },
+      { '@type': 'Question', name: 'What should I do after I break a habit?', acceptedAnswer: { '@type': 'Answer', text: "Restart the very next day, and make the restart smaller than the version that broke. Don't try to make up missed reps and don't narrate it as failure. The rule that protects habits is 'never miss twice' — one miss is recovery, two in a row is a new habit forming." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Why Do My Habits Keep Failing? The Three Real Reasons"
+  ogDescription="It isn't discipline. Habits fail from size, vague cues, and the two-day slip. Here's the fix."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Why Habits Fail</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">Why do my habits keep failing?</h1>
+    <p style="margin-top:16px;font-size:14px;color:#6E6757;">By <a href={SLUGS.about} style="color:#C04A26;text-decoration:none;">James Carter</a> &middot; Founder, Be Legendary</p>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p class="bl-speakable" style="font-size:18px;line-height:1.6;color:#2E2A22;">Not because you lack discipline. Habits fail for three fixable reasons: <strong style="font-weight:700;">the habit is too big</strong> to do on a bad day, <strong style="font-weight:700;">the cue is too vague</strong> to reliably trigger it, or <strong style="font-weight:700;">one missed day became a story about failing</strong> and you quit. Each has a mechanical fix — none of them is "try harder."</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:28px 30px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">Reason 1 · It's too big</p>
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:10px;">You designed it for your best day</h3>
+            <p style="font-size:16px;line-height:1.64;color:rgba(244,240,231,0.8);">"Meditate 20 minutes." "Write 1,000 words." Fine on a good day — impossible on a hard one, and the hard days are where habits are made or lost. <strong style="color:#FBF8F1;">The fix:</strong> shrink it until it's laughable. One minute. One sentence. One squat. You can always do more; you can rarely do more every single day. Design for your <em style="font-style:italic;">worst</em> day, not your best.</p>
+          </div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:28px 30px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">Reason 2 · The cue is vague</p>
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:10px;">"Later" is not a trigger</h3>
+            <p style="font-size:16px;line-height:1.64;color:rgba(244,240,231,0.8);">"I'll do it sometime today" gives your brain nothing to fire on, so it never fires. <strong style="color:#FBF8F1;">The fix:</strong> anchor the habit to a specific moment you already hit every day — <em style="font-style:italic;">when I pour my coffee, when I sit at my desk, when I brush my teeth.</em> That's <a href={SLUGS.habitStacking} style="color:#E0744A;text-decoration:underline;">habit stacking</a>: borrow the reliability of a routine you never skip.</p>
+          </div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:16px;padding:28px 30px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">Reason 3 · One miss became a collapse</p>
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:10px;">You told yourself the wrong story</h3>
+            <p style="font-size:16px;line-height:1.64;color:rgba(244,240,231,0.8);">You miss one day, decide you've "blown it," and quit. But one skip changes nothing — it's the <em style="font-style:italic;">second</em> skip that starts a new habit. <strong style="color:#FBF8F1;">The fix:</strong> the never-miss-twice rule. A missed day is recovery, not failure. Restart the next morning, smaller if you have to, and drop the story entirely.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:8px 0;padding-left:22px;border-left:3px solid #C04A26;">Notice what all three fixes have in common: none of them ask you to want it more. They just remove the friction between you and the rep.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Fix all three at once — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:26ch;margin:0 auto 16px;">A rep small enough to keep. A cue you can't miss.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The 30-Day Challenge builds the fix in: a tiny anchored rep, a daily nudge so the cue always fires, and a check-in that treats a miss as recovery — not a reason to quit.</p>
+          <a href={SLUGS.challenge} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Start your 30-day challenge <span>&rarr;</span></a>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Is failing to keep habits a willpower problem?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">No — relying on willpower is the problem. It's finite and unreliable, so any habit that needs you to feel disciplined every day will eventually break. Durable habits are engineered to need almost none: tiny actions on reliable cues.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">What should I do right after I break a habit?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Restart the next day, and make the restart smaller than the version that broke. Don't try to "make up" missed reps and don't narrate it as failure. One miss is recovery; two in a row is a new habit forming.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">How small is small enough?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Smaller than feels worth doing. If part of you thinks "that's too easy to matter," you've found the right size. The point at the start isn't the result — it's proving daily that you're someone who shows up.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px 20px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep going</p>
+        <div class="bl-cards-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <a href={SLUGS.howToBuildHabit} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">How to build a habit that sticks</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The five rules that replace willpower.</span></a>
+          <a href={SLUGS.habitStacking} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">What is habit stacking?</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Fix the vague-cue problem for good.</span></a>
+          <a href={SLUGS.implementationIntentions} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">Implementation intentions</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Pre-decide the moment you'll act.</span></a>
+        </div>
+      </section>
+      <ArticleEndCTA maxWidth={820} />
+      <ShareRow title={title} maxWidth={820} />
+</article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

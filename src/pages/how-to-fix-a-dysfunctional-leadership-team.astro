@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'How to Fix a Dysfunctional Leadership Team (Without a Reorg)';
+const description =
+  'Dysfunction is almost never a people problem — it’s one broken discipline wearing a personality mask. Find the one that broke first, rebuild it to a standard, and reinforce it in the weekly rhythm. A discipline-by-discipline playbook.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'How to Fix a Dysfunctional Leadership Team', item: 'https://www.belegendary.org/how-to-fix-a-dysfunctional-leadership-team/' },
+  ] },
+  { '@type': 'Article', headline: 'How to fix a dysfunctional leadership team — without a reorg', datePublished: '2026-07-20', dateModified: '2026-07-20', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-fix-a-dysfunctional-leadership-team/', description: 'You fix a dysfunctional leadership team by locating the one discipline that broke first and rebuilding it — not by reorganizing, hiring, or running another offsite.' },
+  { '@type': 'HowTo', name: 'How to fix a dysfunctional leadership team', description: 'A five-step method to repair a dysfunctional executive team by rebuilding the specific discipline that broke, instead of treating the symptoms.', totalTime: 'P90D', step: [
+    { '@type': 'HowToStep', position: 1, name: 'Diagnose the one discipline that broke first', url: 'https://www.belegendary.org/how-to-fix-a-dysfunctional-leadership-team/#diagnose', text: 'A team almost never fails in all areas at once — it fails in one place first, and the rest cascade. Locate whether the break is in alignment, decisions, follow-through, accountability, or learning before you fix anything.' },
+    { '@type': 'HowToStep', position: 2, name: 'Realign on the Flag first', url: 'https://www.belegendary.org/how-to-fix-a-dysfunctional-leadership-team/#sequence', text: 'You can’t rebuild accountability or follow-through on a team that doesn’t agree on what matters. Re-establish the two or three priorities everything serves before repairing anything downstream.' },
+    { '@type': 'HowToStep', position: 3, name: 'Rebuild the broken discipline to a standard', url: 'https://www.belegendary.org/how-to-fix-a-dysfunctional-leadership-team/#rebuild', text: 'Install the specific mechanism the broken discipline is missing — a decision protocol, an operating cadence, a named standard, or a blameless review — not a general “let’s communicate better.”' },
+    { '@type': 'HowToStep', position: 4, name: 'Reinforce it in the weekly rhythm', url: 'https://www.belegendary.org/how-to-fix-a-dysfunctional-leadership-team/#stick', text: 'A fix that lives in an offsite deck decays within a month. Build the new discipline into the standing weekly meeting so it’s practiced, not remembered.' },
+    { '@type': 'HowToStep', position: 5, name: 'Measure it and adjust', url: 'https://www.belegendary.org/how-to-fix-a-dysfunctional-leadership-team/#stick', text: 'Track whether the discipline is actually holding — commitments kept, decisions that stick, the same problem not returning — and adjust. What you don’t measure quietly reverts.' },
+  ] },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'How do you fix a dysfunctional leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'You don’t fix “dysfunction” wholesale, and you rarely fix it with people moves. Dysfunction is almost always one broken discipline — alignment, decisions, follow-through, accountability, or learning — wearing a personality mask. Find the one that broke first, realign the team on its two or three priorities, rebuild the broken discipline with a specific mechanism, and reinforce it in the weekly operating rhythm so it holds. Fixing the wrong thing — a reorg, a new hire, another offsite — is why most attempts fail.' } },
+    { '@type': 'Question', name: 'Can you fix a dysfunctional team without firing anyone?', acceptedAnswer: { '@type': 'Answer', text: 'Usually, yes. Most dysfunction is structural, not personal — good people behaving badly inside a system with no clear priorities, no decision protocol, and no accountability. Change the system and most of the “problem people” stop being a problem. Replacing a person before you’ve fixed the discipline just installs someone new into the same broken machine. A genuine values or capability mismatch is real and sometimes requires a change — but it’s the exception, not the first move.' } },
+    { '@type': 'Question', name: 'How long does it take to fix a dysfunctional leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'You can re-establish alignment and install a decision protocol in weeks, but rebuilding a discipline so it holds under pressure takes a quarter or two of deliberate practice. Behavior change is paced by the operating rhythm, not by the offsite — a new standard has to be repeated in the weekly meeting until it becomes how the team works, not a resolution it remembers.' } },
+    { '@type': 'Question', name: 'Should we bring in a consultant to fix our leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'It helps most with the parts an insider can’t do: surfacing the disagreement the team politely avoids, and being a neutral party the CEO can also be a participant in front of. But a consultant who hands you a framework and leaves has changed nothing — the value is in rebuilding a specific discipline and reinforcing it over time, measured, not in a two-day event.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.fixDysfunctionalTeam}
+  ogType="article"
+  ogTitle="How to Fix a Dysfunctional Leadership Team"
+  ogDescription="Dysfunction is one broken discipline wearing a personality mask. Find the one that broke first, rebuild it, reinforce it. A discipline-by-discipline playbook — no reorg required."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">How to Fix a Dysfunctional Leadership Team</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to fix a dysfunctional leadership team</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">You don&rsquo;t fix a dysfunctional leadership team by fixing the people or buying another framework. Dysfunction is almost always <strong>one broken discipline wearing a personality mask</strong>. Find the discipline that broke first &mdash; alignment, decisions, follow-through, accountability, or learning &mdash; <strong>realign the team on its 2&ndash;3 priorities</strong>, rebuild that one discipline with a specific mechanism, and reinforce it in the weekly rhythm until it holds. The reorg, the new hire, and the annual offsite fail because they treat the symptom, not the discipline.</p>
+    </div>
+  </header>
+
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#wrong" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Stop fixing the wrong thing</a></li>
+        <li><a href="#diagnose" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Find the one that broke first</a></li>
+        <li><a href="#rebuild" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The fix, discipline by discipline</a></li>
+        <li><a href="#sequence" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The order to fix them in</a></li>
+        <li><a href="#stick" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Making it stick</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- STOP FIXING THE WRONG THING -->
+  <div id="wrong" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">First, stop fixing the wrong thing</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">&ldquo;Dysfunctional&rdquo; sounds like a people problem, so leaders reach for people solutions. Three expensive wrong turns show up again and again &mdash; and each one leaves the actual dysfunction untouched:</p>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:17px;color:#FBF8F1;font-weight:600;margin-bottom:6px;">The reorg</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">Redrawing the boxes feels like progress and buys six months of everyone learning new seats. But if the team couldn&rsquo;t align, decide, and hold each other accountable in the old structure, it won&rsquo;t in the new one. You&rsquo;ve moved the furniture, not fixed the foundation.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:17px;color:#FBF8F1;font-weight:600;margin-bottom:6px;">The new hire</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">Swapping the &ldquo;difficult&rdquo; executive installs a new person into the same broken machine. Within two quarters they&rsquo;re behaving like the last one &mdash; because the behavior was the system&rsquo;s output, not the individual&rsquo;s character. Change the person before the discipline and you&rsquo;ll do it again.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:17px;color:#FBF8F1;font-weight:600;margin-bottom:6px;">The annual offsite</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">Two days of good conversation and real energy &mdash; and by the second Monday, nothing in the operating rhythm has changed, so behavior snaps back. An offsite can start a fix; it can&rsquo;t <em>be</em> one. That&rsquo;s <a href={SLUGS.offsitesDontStick} style="color:#D98A5E;">why offsites don&rsquo;t stick</a>.</p>
+      </div>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-top:22px;">The reframe that changes everything you do next: <strong style="color:#F4F0E7;">dysfunction is a discipline problem wearing a personality mask.</strong> The shouting, the silence, the missed commitments, the politics &mdash; those are symptoms. Underneath, one of the disciplines that lets a team execute has quietly eroded, and everything else is the team adapting to the gap. Fix the discipline and the &ldquo;personalities&rdquo; tend to sort themselves out. (For the full diagnosis of what dysfunction looks like from the outside, start with the <a href={SLUGS.signsDysfunction} style="color:#D98A5E;">signs of a dysfunctional leadership team</a>.)</p>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <div id="diagnose" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Find the one that broke first</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">You cannot rebuild five things at once, and you don&rsquo;t have to. A leadership team almost never fails in every dimension simultaneously &mdash; it fails in <strong style="color:#F4F0E7;">one specific place first</strong>, and the rest cascade from there. A team that can&rsquo;t decide starts missing commitments; a team that misses commitments stops trusting; a team that doesn&rsquo;t trust stops telling the truth. Chase the trust problem and you&rsquo;ll spend a year on team-building while the decision protocol that caused it goes unbuilt.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The <a href={SLUGS.flagModel} style="color:#D98A5E;">Flag Model</a> exists to name the break point. The Flag is the 2&ndash;3 priorities everything serves; four disciplines hold it upright &mdash; the <strong>Decision</strong>, the <strong>Rhythm</strong>, the <strong>Standard</strong>, and the <strong>Learning</strong>. Map your team&rsquo;s loudest symptom to the discipline underneath it:</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.notAligned} style="text-decoration:none;background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:14px;padding:22px 24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.3)'">
+        <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">The Flag &mdash; alignment</span>
+        <span style="display:block;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Everyone agrees in the room, then executes something different. People optimize for slightly different goals and call it disagreement.</span>
+      </a>
+      <a href={SLUGS.wontDecide} style="text-decoration:none;background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:14px;padding:22px 24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.3)'">
+        <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">The Decision</span>
+        <span style="display:block;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Every call routes back to the boss. Decisions get deferred, reopened, or quietly reversed in the hallway a week later.</span>
+      </a>
+      <a href={SLUGS.initiativesNeverFinish} style="text-decoration:none;background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:14px;padding:22px 24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.3)'">
+        <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">The Rhythm &mdash; follow-through</span>
+        <span style="display:block;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Lots of kickoffs, few finishes. Work sprawls, momentum leaks, and last quarter&rsquo;s priorities are still &ldquo;in progress.&rdquo;</span>
+      </a>
+      <a href={SLUGS.noAccountability} style="text-decoration:none;background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:14px;padding:22px 24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.3)'">
+        <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">The Standard &mdash; accountability</span>
+        <span style="display:block;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">Someone misses and nothing happens. The bar quietly lowers to the most-tolerated behavior, and &ldquo;done&rdquo; keeps sliding.</span>
+      </a>
+      <a href={SLUGS.sameMistakes} style="text-decoration:none;background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:14px;padding:22px 24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.3)'">
+        <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">The Learning</span>
+        <span style="display:block;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.82);">The same problems resurface every quarter. A miss becomes a hunt for who&rsquo;s at fault instead of what to change.</span>
+      </a>
+      <div style="background:#1B1810;border:1px dashed rgba(244,240,231,0.2);border-radius:14px;padding:22px 24px;">
+        <span style="display:block;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);">Not sure which one? The <a href={SLUGS.breakPointAssessment} style="color:#D98A5E;">Break-Point self-assessment</a> gives a first read in ~4 minutes; the <a href={SLUGS.teamDiagnostic} style="color:#D98A5E;">team diagnostic</a> turns it into a full read for the whole team.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE FIX, DISCIPLINE BY DISCIPLINE -->
+  <div id="rebuild" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:8px;">The fix, discipline by discipline</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:26px;">Each broken discipline has a specific mechanism it&rsquo;s missing &mdash; not &ldquo;communicate better,&rdquo; but an actual rule the team installs and runs. Here is what to rebuild, depending on where you broke.</p>
+    <div style="display:flex;flex-direction:column;gap:18px;">
+
+      <div style="background:#F4F0E7;color:#1B1810;border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">If alignment broke</p>
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.12;margin-bottom:12px;">Rebuild the Flag: 2&ndash;3 priorities, and the fight over what to cut.</h3>
+        <p style="font-size:16px;line-height:1.62;color:#3A372F;">Force the team to name the two or three priorities everything serves this quarter &mdash; and, harder, what you&rsquo;ll stop doing to protect them. Then surface the disagreement people are swallowing <em>before</em> you decide, and get real commitment out loud. Alignment isn&rsquo;t agreement; it&rsquo;s committed action after the debate. <a href={SLUGS.setPriorities} style="color:#C04A26;font-weight:600;">How to set priorities &rarr;</a> &middot; <a href={SLUGS.alignLeadershipTeam} style="color:#C04A26;font-weight:600;">How to align the team &rarr;</a></p>
+      </div>
+
+      <div style="background:#F4F0E7;color:#1B1810;border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">If the Decision broke</p>
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.12;margin-bottom:12px;">Install a decision protocol so calls stick without you.</h3>
+        <p style="font-size:16px;line-height:1.62;color:#3A372F;">The fix for &ldquo;my team can&rsquo;t decide without me&rdquo; is a rule everyone knows: for each decision, name the <strong>owner</strong>, the <strong>data</strong> that would change the answer, the <strong>deadline</strong>, and the <strong>obligation to defend it</strong> once made. Decisions that leave the room with an owner and a &ldquo;disagree and commit&rdquo; don&rsquo;t get quietly reopened. <a href={SLUGS.decisionMaking} style="color:#C04A26;font-weight:600;">Executive-team decision-making &rarr;</a> &middot; <a href={SLUGS.disagreeAndCommit} style="color:#C04A26;font-weight:600;">Disagree and commit &rarr;</a></p>
+      </div>
+
+      <div style="background:#F4F0E7;color:#1B1810;border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">If the Rhythm broke</p>
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.12;margin-bottom:12px;">Build a weekly cadence that ends in owned commitments.</h3>
+        <p style="font-size:16px;line-height:1.62;color:#3A372F;">Follow-through doesn&rsquo;t fail from bad intentions; it fails because nothing catches the drop. Install a weekly leadership meeting whose center of gravity is an <strong>accountability review</strong> (every commitment: done or not, binary) and one hard issue solved to a decision &mdash; not a status parade. What gets checked weekly gets finished. <a href={SLUGS.executiveTeamMeeting} style="color:#C04A26;font-weight:600;">How to run the meeting &rarr;</a> &middot; <a href={SLUGS.meetingAgenda} style="color:#C04A26;font-weight:600;">A copy-ready agenda &rarr;</a></p>
+      </div>
+
+      <div style="background:#F4F0E7;color:#1B1810;border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">If the Standard broke</p>
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.12;margin-bottom:12px;">Name the bar &mdash; and make a miss visible in the room.</h3>
+        <p style="font-size:16px;line-height:1.62;color:#3A372F;">Accountability collapses when a missed commitment carries no consequence, so the standard quietly falls to the most-tolerated behavior. The fix is to name the bar explicitly, and to make a miss <em>get named in the room</em> &mdash; by peers, not just the boss. Peer accountability is the only kind that scales; when only the CEO enforces, everything routes back to the CEO. <a href={SLUGS.howToAccountable} style="color:#C04A26;font-weight:600;">How to hold the team accountable &rarr;</a></p>
+      </div>
+
+      <div style="background:#F4F0E7;color:#1B1810;border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">If the Learning broke</p>
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.12;margin-bottom:12px;">Run a blameless review, then change exactly one thing.</h3>
+        <p style="font-size:16px;line-height:1.62;color:#3A372F;">When the same problem returns every quarter, the team is searching for who&rsquo;s at fault instead of what to change &mdash; so the miss is never metabolized. Install a short, blameless review after anything significant: what did we expect, what happened, what will we do differently &mdash; and change one concrete thing in how you operate. Blame ends learning; curiosity restarts it. <a href={SLUGS.sameMistakes} style="color:#C04A26;font-weight:600;">Why the team repeats mistakes &rarr;</a></p>
+      </div>
+
+    </div>
+    <div style="margin-top:22px;background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:16px;padding:24px 26px;">
+      <p style="font-size:17px;line-height:1.62;color:#FBF8F1;">Under all four disciplines is one governing principle: <strong style="color:#E0744A;">Truth Over Comfort</strong>. Every fix above is really an agreement to choose the harder, more honest thing in the moment &mdash; to name the miss, surface the disagreement, defend the decision, examine the failure &mdash; when staying comfortable would be easier. A team that won&rsquo;t pay that price daily can install every mechanism here and still drift back. The mechanisms make the truth <em>routine</em>; the willingness to tell it is what you&rsquo;re actually rebuilding.</p>
+    </div>
+  </div>
+
+  <!-- THE SEQUENCE -->
+  <div id="sequence" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The order to fix them in</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Sequence matters, because the disciplines depend on each other. You can&rsquo;t hold a team accountable for priorities it never agreed on; you can&rsquo;t build a rhythm around decisions that never actually get made. Rebuild in this order:</p>
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:32px 34px;">
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:15px;font-size:16px;line-height:1.6;color:#3A372F;">
+        <li><strong>Realign on the Flag first.</strong> Even if alignment isn&rsquo;t your break point, re-establish the 2&ndash;3 priorities before anything else. Every downstream discipline needs something to be accountable <em>to</em>.</li>
+        <li><strong>Then repair the discipline that broke.</strong> Install its specific mechanism &mdash; the decision protocol, the cadence, the standard, or the review &mdash; and only that one. Don&rsquo;t try to fix all four at once; you&rsquo;ll do none of them well.</li>
+        <li><strong>Then let the cadence carry the rest.</strong> Once the Flag is clear and the broken discipline has a mechanism, the weekly rhythm starts repairing the cascade on its own &mdash; trust returns when commitments start being kept, not before.</li>
+      </ol>
+      <p style="font-size:15px;line-height:1.6;color:#5A5248;margin-top:20px;font-style:italic;">Trust is the output, not the input. Teams try to rebuild trust directly with retreats and exercises; trust actually rebuilds when people watch each other say a hard thing, make a decision, and keep the commitment &mdash; week after week.</p>
+    </div>
+  </div>
+
+  <!-- MAKE IT STICK -->
+  <div id="stick" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Making it stick</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">A fix that lives in an offsite deck decays within a month. A fix that lives in the weekly meeting becomes how the team works. Two things turn a repair into a permanent change:</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;"><strong style="color:#F4F0E7;">Reinforce it in the rhythm.</strong> The new discipline has to be practiced, not remembered. If you installed a decision protocol, use it out loud in every meeting until no one thinks about it. If you installed an accountability review, run it every week even when everything&rsquo;s green. Behavior change is paced by the cadence, which is why a single offsite can&rsquo;t deliver it and a disciplined quarter can.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);"><strong style="color:#F4F0E7;">Measure whether it&rsquo;s holding.</strong> What you don&rsquo;t measure quietly reverts. Track the leading signals &mdash; commitments kept, decisions that stay decided, the same problem not returning, the disagreement actually surfacing &mdash; so you can see the discipline holding or slipping before it becomes dysfunction again. That&rsquo;s exactly what a <a href={SLUGS.measureTeamPerformance} style="color:#D98A5E;">performance measure</a> is for, and where a <a href={SLUGS.teamDiagnostic} style="color:#D98A5E;">team diagnostic</a> earns its keep: it turns &ldquo;we feel better&rdquo; into a tracked read that moves quarter over quarter.</p>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find out which discipline broke first.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll run a short exercise that surfaces where your team actually breaks &mdash; and leave knowing the first discipline to rebuild &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do you fix a dysfunctional leadership team?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Find the one broken discipline underneath the symptoms &mdash; alignment, decisions, follow-through, accountability, or learning &mdash; realign the team on its 2&ndash;3 priorities, rebuild that discipline with a specific mechanism, and reinforce it in the weekly rhythm until it holds. Reorgs, new hires, and offsites fail because they treat the symptom, not the discipline.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Can you fix it without firing anyone?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Usually. Most dysfunction is structural &mdash; good people behaving badly inside a system with no clear priorities, no decision protocol, and no accountability. Fix the system and most &ldquo;problem people&rdquo; stop being a problem. Replacing someone before you&rsquo;ve fixed the discipline just installs a new person into the same broken machine.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How long does it take?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">You can re-align and install a protocol in weeks, but rebuilding a discipline so it holds under pressure takes a quarter or two of deliberate practice. Behavior change is paced by the operating rhythm, not the offsite &mdash; the new standard has to be repeated weekly until it&rsquo;s how the team works.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Should we bring in outside help?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">It helps most with what an insider can&rsquo;t do: surfacing the disagreement the team politely avoids, and being a neutral party the CEO can also participate in front of. But a consultant who hands you a framework and leaves has changed nothing &mdash; the value is rebuilding a specific discipline and reinforcing it over time, measured, not in a two-day event.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.signsDysfunction} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Signs of a dysfunctional leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The diagnosis this fix responds to &mdash; and the root cause underneath.</span>
+      </a>
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Flag and four disciplines you&rsquo;re rebuilding, explained.</span>
+      </a>
+      <a href={SLUGS.setPriorities} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to set leadership team priorities</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Rebuilding the Flag: choosing the 2&ndash;3 that matter.</span>
+      </a>
+      <a href={SLUGS.strategyExecutionGap} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The strategy execution gap</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">What broken disciplines cost: the gap between deciding and doing.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. Dysfunction is a discipline problem wearing a personality mask." />
+</BaseLayout>

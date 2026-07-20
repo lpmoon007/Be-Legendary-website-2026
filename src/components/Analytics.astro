@@ -7,28 +7,71 @@
 //   - newsletter_signup     : newsletter form submit
 //   - assessment_completed  : the assessment result is revealed
 // (Mark the relevant ones as "key events" in the GA4 UI to count them as conversions.)
-import { GA_MEASUREMENT_ID as GA_ID } from '../lib/site';
+import { GA_MEASUREMENT_ID as GA_ID, CLARITY_ID } from '../lib/site';
 ---
 {GA_ID && (
-  <>
-    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-    <script is:inline define:vars={{ GA_ID }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', GA_ID, { anonymize_ip: true });
+  <script is:inline define:vars={{ GA_ID }}>
+    // gtag() queues to dataLayer immediately; the heavy gtag.js library loads
+    // lazily (first interaction or idle) so it stays off the LCP/TBT critical path.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
 
-      // Conversion: any click on the single booking CTA, anywhere on the site.
-      document.addEventListener('click', function (e) {
-        var a = e.target && e.target.closest ? e.target.closest('a[href*="meetings.hubspot.com/jcarter28"]') : null;
-        if (!a || typeof window.gtag !== 'function') return;
-        window.gtag('event', 'book_calibration_call', {
-          link_url: a.href,
-          link_text: (a.textContent || '').trim().slice(0, 80),
-          page_path: location.pathname,
-        });
-      }, true);
-    </script>
-  </>
+    var gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return; gaLoaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+    }
+    ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
+      window.addEventListener(ev, loadGA, { once: true, passive: true });
+    });
+    // Fallback so pageviews still register for users who never interact.
+    if ('requestIdleCallback' in window) requestIdleCallback(loadGA, { timeout: 4000 });
+    else setTimeout(loadGA, 3500);
+
+    // Conversion: any click on a booking CTA, anywhere on the site. CTAs point at
+    // the on-domain /book/ page; PDFs + the /book/ scheduler link go straight to
+    // HubSpot Meetings. Catch both, but not the /book/ page's own "open in new tab".
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var isBooking = /\/book\/?($|[?#])/.test(href) || href.indexOf('meetings-na2.hubspot.com/jcarter28') !== -1 || href.indexOf('meetings.hubspot.com/jcarter28') !== -1;
+      if (!isBooking) return;
+      if (location.pathname.replace(/\/+$/, '') === '/book') return; // already on /book/
+      loadGA();
+      gtag('event', 'book_calibration_call', {
+        link_url: a.href,
+        link_text: (a.textContent || '').trim().slice(0, 80),
+        page_path: location.pathname,
+      });
+    }, true);
+  </script>
+)}
+{CLARITY_ID && (
+  <script is:inline define:vars={{ CLARITY_ID }}>
+    // Microsoft Clarity — heatmaps + session recordings. Lazy-loaded on first
+    // interaction (or idle) so it stays off the LCP/TBT critical path, matching GA.
+    (function () {
+      window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+      var loaded = false;
+      function loadClarity() {
+        if (loaded) return; loaded = true;
+        var t = document.createElement('script');
+        t.async = true;
+        t.src = 'https://www.clarity.ms/tag/' + CLARITY_ID;
+        document.head.appendChild(t);
+      }
+      ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function (ev) {
+        window.addEventListener(ev, loadClarity, { once: true, passive: true });
+      });
+      if ('requestIdleCallback' in window) requestIdleCallback(loadClarity, { timeout: 5000 });
+      else setTimeout(loadClarity, 4500);
+    })();
+  </script>
 )}

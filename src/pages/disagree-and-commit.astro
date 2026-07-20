@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Disagree and Commit: What It Means and How to Do It';
+const description =
+  'Disagree and commit means you argue your position fully, and once the call is made — even against you — you back it completely. The discipline that lets a team move fast without fake consensus: what it means, where it came from, how to run it, and how it gets misused.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Disagree and Commit', item: 'https://www.belegendary.org/disagree-and-commit/' },
+  ] },
+  { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/disagree-and-commit/#term', name: 'Disagree and commit', inDefinedTermSet: 'Be Legendary', description: 'A decision-making discipline in which team members argue their position fully during debate, and once a decision is made — even one they argued against — commit to it completely and support it as if it were their own. It separates the right to be heard from the right to prevail, letting a team act decisively without requiring unanimous agreement.' },
+  { '@type': 'Article', headline: 'Disagree and commit: what it means and how to actually do it', datePublished: '2026-07-20', dateModified: '2026-07-20', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/disagree-and-commit/', description: 'Disagree and commit is the discipline of arguing fully, then backing the decision completely once it is made — even against you. What it means, its origin, how to run it, and how it fails.' },
+  { '@type': 'HowTo', name: 'How to run disagree and commit', description: 'A five-step method for practicing disagree and commit on a leadership team so decisions are both fully debated and fully backed.', step: [
+    { '@type': 'HowToStep', position: 1, name: 'Make the disagreement real first', url: 'https://www.belegendary.org/disagree-and-commit/#run', text: 'You can’t commit to a decision you were never allowed to challenge. Actively pull the objection into the room — “what are we not saying?” — before anyone is asked to commit. Silence is not agreement.' },
+    { '@type': 'HowToStep', position: 2, name: 'Draw a clear line between debate and decision', url: 'https://www.belegendary.org/disagree-and-commit/#run', text: 'Name the moment the arguing stops and the call is made, so everyone knows the difference between “we’re still deciding” and “it’s decided.” Ambiguity here is what lets people relitigate later.' },
+    { '@type': 'HowToStep', position: 3, name: 'Ask for commitment out loud, by name', url: 'https://www.belegendary.org/disagree-and-commit/#run', text: 'Go around the room: “Can you commit to this, even though it wasn’t your pick?” Said aloud, to peers, commitment becomes real and defection becomes visible. A nod is not a commitment.' },
+    { '@type': 'HowToStep', position: 4, name: 'Define what commitment actually requires', url: 'https://www.belegendary.org/disagree-and-commit/#run', text: 'Commitment means you defend the decision externally, you don’t reopen it in hallways, and you don’t quietly sandbag it. State that standard so “I committed” can’t later mean “I stopped objecting out loud.”' },
+    { '@type': 'HowToStep', position: 5, name: 'Hold the line when someone defects', url: 'https://www.belegendary.org/disagree-and-commit/#run', text: 'The discipline dies the first time a quiet reversal goes unnamed. When someone re-litigates a committed decision, name it in the room — that enforcement is what makes the commitment worth anything.' },
+  ] },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What does "disagree and commit" mean?', acceptedAnswer: { '@type': 'Answer', text: 'It means you argue your position fully while the decision is open, and once the call is made — even against you — you back it completely and act as if it were your own. It separates the right to be heard from the right to win. You don’t need everyone to agree; you need everyone to commit. The alternative is either fake harmony (people agree in the room and resist afterward) or paralysis (nothing gets decided because someone still objects).' } },
+    { '@type': 'Question', name: 'Where did "disagree and commit" come from?', acceptedAnswer: { '@type': 'Answer', text: 'The phrase is often traced to Intel in the 1980s under Andy Grove, and was used at Sun Microsystems and other Silicon Valley firms. It was later codified in Amazon’s leadership principles as “Have Backbone; Disagree and Commit.” Jeff Bezos gave the best-known illustration in his 2016 letter to shareholders, describing how he committed energetically to a project he was personally skeptical about, precisely so the team could move without his lingering doubt slowing it down.' } },
+    { '@type': 'Question', name: 'Is disagree and commit the same as consensus?', acceptedAnswer: { '@type': 'Answer', text: 'No — it’s almost the opposite. Consensus seeks agreement: everyone has to be persuaded before you move, which is slow and often produces watered-down decisions. Disagree and commit seeks committed action without agreement: you debate hard, someone decides, and everyone backs it — including the people who lost the argument. It’s closer to “consent” than consensus: the question isn’t “do you agree?” but “can you live with it and fully support it?”' } },
+    { '@type': 'Question', name: 'What if you genuinely can’t commit to a decision?', acceptedAnswer: { '@type': 'Answer', text: 'Disagree and commit has a floor: it doesn’t apply to decisions that cross an ethical line or that you believe will seriously harm the company. For those, the honest move is to escalate, not to silently comply or quietly undermine. But those cases are rare. Most of the time “I can’t commit” actually means “I didn’t get my way,” and the discipline is precisely the muscle of backing a good decision that wasn’t yours.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.disagreeAndCommit}
+  ogType="article"
+  ogTitle="Disagree and Commit: What It Means and How to Do It"
+  ogDescription="Argue fully, then back the decision completely once it’s made — even against you. The discipline that lets a team move fast without fake consensus."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Disagree and Commit</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Concept</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Disagree and commit</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;"><strong>Disagree and commit</strong> means you argue your position fully, and once the decision is made &mdash; even against you &mdash; you back it completely, as if it were your own. It&rsquo;s the discipline that lets a team move fast without fake consensus: you don&rsquo;t need everyone to <em>agree</em>, only to <em>commit</em>. It fails in two ways &mdash; when the disagreement never actually happens (people stay quiet, then resist), or when &ldquo;commit&rdquo; is used to shut down debate before it&rsquo;s been had. Both halves are required: real disagreement, then real commitment.</p>
+    </div>
+  </header>
+
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#means" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">What it means</a></li>
+        <li><a href="#origin" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Where it comes from</a></li>
+        <li><a href="#why" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Why teams need it</a></li>
+        <li><a href="#run" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">How to run it</a></li>
+        <li><a href="#misuse" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">How it gets misused</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- WHAT IT MEANS -->
+  <div id="means" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">What it actually means</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Disagree and commit has two halves, and dropping either one breaks it. The first half is the <strong style="color:#F4F0E7;">disagree</strong>: while a decision is still open, you say what you actually think &mdash; the objection, the risk, the better idea &mdash; as hard as you honestly hold it. The second half is the <strong style="color:#F4F0E7;">commit</strong>: the moment the call is made, you stop arguing and throw your full weight behind it, even if it went against you, even if you still privately think it&rsquo;s wrong.</p>
+    <div style="background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:16px;padding:26px 28px;margin-bottom:22px;">
+      <p style="font-size:17px;line-height:1.6;color:#FBF8F1;">It separates <strong style="color:#E0744A;">the right to be heard</strong> from <strong style="color:#E0744A;">the right to prevail</strong>. Everyone gets the first. No one is owed the second. That single distinction is what lets a team be both candid and decisive &mdash; two things most teams treat as a trade-off.</p>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Commit is not &ldquo;go along quietly.&rdquo; It&rsquo;s active: you defend the decision to your own team, you resource it as if you&rsquo;d chosen it, and you don&rsquo;t leave a back door open to say &ldquo;I told you so&rdquo; later. Anything less &mdash; the shrug, the &ldquo;fine,&rdquo; the compliance without conviction &mdash; is the thing disagree and commit exists to kill.</p>
+  </div>
+
+  <!-- ORIGIN -->
+  <div id="origin" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Where it comes from</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The phrase is usually traced to <strong style="color:#F4F0E7;">Intel in the 1980s</strong>, in the decision culture Andy Grove built, and it circulated through Silicon Valley companies like Sun Microsystems as a way to keep hard debate from curdling into either gridlock or grudges. It reached a wider audience when <strong style="color:#F4F0E7;">Amazon</strong> made it a formal leadership principle &mdash; &ldquo;Have Backbone; Disagree and Commit&rdquo; &mdash; pairing the courage to object with the discipline to get behind the call.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Jeff Bezos gave the cleanest illustration in his 2016 letter to shareholders: faced with a project he personally doubted, he wrote something close to &ldquo;I disagree and commit&rdquo; &mdash; greenlighting it with real energy rather than a reluctant maybe, precisely so his lingering skepticism wouldn&rsquo;t quietly slow the team down. That&rsquo;s the whole idea in one move: the leader who lost the argument became the decision&rsquo;s most useful backer, not its quiet drag.</p>
+  </div>
+
+  <!-- WHY -->
+  <div id="why" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Why leadership teams need it</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Without disagree and commit, a leadership team gets pushed toward one of two failure modes, and most oscillate between them:</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Fake harmony</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">The team values getting along over getting it right. Everyone nods in the meeting, the real objection never surfaces, and the disagreement gets executed in the hallway afterward &mdash; as slow-walking, quiet resistance, and &ldquo;that&rsquo;s not what I would have done.&rdquo;</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+        <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Endless debate</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">The team treats agreement as the bar for action, so any unresolved objection stalls the call. Decisions get reopened, meetings repeat, and the org waits on a leadership team that mistakes discussion for progress.</p>
+      </div>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Disagree and commit is the exit from both. It gives candor a home (so the objection is heard, not buried) and gives decisions a clean end (so the team acts without waiting for unanimity). This is exactly the distinction between <a href={SLUGS.alignLeadershipTeam} style="color:#D98A5E;">alignment and agreement</a>: a team can argue hard and be perfectly aligned the moment the call is made, and a team can agree on everything and be completely misaligned because no one said what they really thought. Alignment is measured in committed action, not identical opinions &mdash; which is why disagree and commit sits at the center of <a href={SLUGS.highPerformingTeam} style="color:#D98A5E;">how a high-performing team</a> actually operates.</p>
+  </div>
+
+  <!-- HOW TO RUN IT -->
+  <div id="run" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">How to run disagree and commit</p>
+      <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.6;color:#3A372F;">
+        <li><strong>Make the disagreement real first.</strong> You cannot commit to a decision you were never allowed to challenge. Go looking for the objection no one is saying out loud &mdash; &ldquo;what are we not saying?&rdquo; A team that skips this doesn&rsquo;t get commitment; it gets compliance that quietly rots. Silence is not agreement.</li>
+        <li><strong>Draw a clear line between debate and decision.</strong> Name the moment the arguing stops. Most relitigation happens because no one could tell whether the room was still deciding or already decided. &ldquo;We&rsquo;ve heard it &mdash; here&rsquo;s the call&rdquo; is a sentence worth saying out loud.</li>
+        <li><strong>Ask for commitment out loud, by name.</strong> Go around the room: &ldquo;Can you commit to this, even though it wasn&rsquo;t your pick?&rdquo; Said aloud, to peers, commitment becomes real and defection becomes visible. A nod across a conference table is not a commitment.</li>
+        <li><strong>Define what commitment requires.</strong> Spell it out so &ldquo;I committed&rdquo; can&rsquo;t later shrink to &ldquo;I stopped objecting.&rdquo; To commit is to defend the decision to your own team, not reopen it in hallways, and not sandbag it with half-effort. Name that standard before you need it.</li>
+        <li><strong>Hold the line when someone defects.</strong> The discipline dies the first time a quiet reversal goes unnamed. When a committed decision gets relitigated in a side channel, name it &mdash; kindly, but in the room. That enforcement is the entire reason the commitment is worth anything.</li>
+      </ol>
+      <p style="font-size:15px;line-height:1.6;color:#5A5248;margin-top:22px;font-style:italic;">The order is the point: disagreement has to come <em>before</em> the ask to commit, never after. &ldquo;Commit&rdquo; used to end a debate that never happened isn&rsquo;t discipline &mdash; it&rsquo;s a gag.</p>
+    </div>
+  </div>
+
+  <!-- HOW IT GETS MISUSED -->
+  <div id="misuse" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">How it gets misused</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Disagree and commit is one of the most-quoted and least-practiced ideas in leadership, because it&rsquo;s easy to invoke the second half while skipping the first. Watch for these:</p>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">&ldquo;Commit&rdquo; as a gag order</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">A leader cuts off debate before the real objection surfaces and calls it disagree and commit. That&rsquo;s not the discipline &mdash; it&rsquo;s authority wearing its clothes. No genuine disagreement means there was nothing to commit past.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Fake disagreement</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">The team treats silence as consent and moves on. Later the &ldquo;committed&rdquo; decision unravels, because the people who never spoke never actually bought in. If getting the objection out took no effort, you probably didn&rsquo;t get it.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Commit-then-undermine</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">The nod in the room, the resistance in the hallway. This is the most common failure, and the one enforcement is built to catch: a commitment you can walk back privately was never a commitment.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Using it where it doesn&rsquo;t belong</p>
+        <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">Disagree and commit is for judgment calls under uncertainty &mdash; not for decisions that cross an ethical line or that a clear fact should settle. For those, the honest move is to escalate or bring the data, not to &ldquo;commit&rdquo; past a real problem.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Does your team disagree &mdash; or just go quiet?</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll run a short exercise that shows, in real time, whether your team is surfacing the real disagreement or performing agreement &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What does &ldquo;disagree and commit&rdquo; mean?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">You argue your position fully while the decision is open, and once the call is made &mdash; even against you &mdash; you back it completely and act as if it were your own. It separates the right to be heard from the right to win. You don&rsquo;t need everyone to agree; you need everyone to commit.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Where did it come from?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">It&rsquo;s often traced to Intel under Andy Grove in the 1980s and used across Silicon Valley, then codified in Amazon&rsquo;s leadership principles as &ldquo;Have Backbone; Disagree and Commit.&rdquo; Bezos&rsquo;s 2016 shareholder letter gave the classic example: committing energetically to a project he personally doubted, so his skepticism wouldn&rsquo;t slow the team.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Is it the same as consensus?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">No &mdash; nearly the opposite. Consensus needs everyone persuaded before you move; disagree and commit needs everyone to back the call without needing to agree. It&rsquo;s closer to &ldquo;consent&rdquo;: not &ldquo;do you agree?&rdquo; but &ldquo;can you fully support it?&rdquo;</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What if you genuinely can&rsquo;t commit?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">There&rsquo;s a floor: it doesn&rsquo;t apply to decisions that cross an ethical line or that you believe will seriously harm the company. For those, escalate &mdash; don&rsquo;t silently comply or quietly undermine. But those cases are rare; most &ldquo;I can&rsquo;t commit&rdquo; really means &ldquo;I didn&rsquo;t get my way,&rdquo; and backing a good decision that wasn&rsquo;t yours is exactly the muscle.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.alignLeadershipTeam} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to align a leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Alignment is committed action, not agreement &mdash; where this lives.</span>
+      </a>
+      <a href={SLUGS.decisionMaking} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Executive team decision-making</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The protocol that gives &ldquo;commit&rdquo; something to attach to.</span>
+      </a>
+      <a href={SLUGS.notAligned} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Our executive team isn&rsquo;t aligned</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">What fake harmony looks like &mdash; and how to read it.</span>
+      </a>
+      <a href={SLUGS.vsFiveDysfunctions} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model vs. the Five Dysfunctions</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Where conflict, commitment, and accountability fit together.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. The right to be heard is not the right to prevail." />
+</BaseLayout>

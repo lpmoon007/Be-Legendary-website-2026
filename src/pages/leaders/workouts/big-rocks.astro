@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('big-rocks');
+const title = 'Mindset Workout: Big Rocks — Put What Matters First';
+const description =
+  "Put your big rocks in first, or the gravel and sand fill the jar and they never fit. Name your priorities and schedule them before the day fills up. Free.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource (enriched with entity @ids) + a HowTo
+// built from the "Time for action" rep, plus the design's FAQPage Q&A.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'Big Rocks — Mindset Workout',
+    learningResourceType: 'Guided mindset workout',
+    teaches:
+      'Priorities: schedule what matters most before the day fills with everything else',
+    timeRequired: 'PT10M',
+    isAccessibleForFree: true,
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+    description:
+      'A workout on priorities, built on Stephen Covey’s big-rocks demonstration: name your big rocks and place them first.',
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Put next week’s big rocks on the calendar first',
+    description:
+      'Open next week while it is still empty, block time for your three big rocks before anything else gets scheduled, and let the sand fill in around them.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Open next week while it is empty',
+        text: 'Open next week now, while it is still empty and unclaimed by other people’s urgency.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Block the big rocks first',
+        text: 'Block time for your three big rocks first — actual calendar events, not a to-do list.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Let the sand fill in',
+        text: 'Then let the sand — email, meetings, other people’s urgencies — fill in around the rocks.',
+      },
+    ],
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${canonical}#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is the big rocks metaphor?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'It comes from Stephen Covey. If you fill a jar with sand and gravel first, the big rocks won’t fit. But if you put the big rocks in first, the gravel and sand settle around them. The big rocks are your most important priorities; the sand is everything urgent-but-trivial. Place the big rocks first — schedule your priorities rather than prioritizing your schedule — or they never make it into the jar.',
+        },
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Big Rocks — A Mindset Workout on Priorities"
+  ogDescription="Schedule your priorities. Don't prioritize your schedule. Put the big rocks in first."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <article>
+    <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Workouts</a><span>/</span><span style="color:#C04A26;">Big Rocks</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;">Workout · Mental + Spiritual</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#B4A98E;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8A7F6C;">~10 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,7vw,76px);line-height:1.0;letter-spacing:-0.022em;color:#1B1810;">Big Rocks</h1>
+      <p style="margin-top:22px;font-size:19px;line-height:1.6;color:#2E2A22;max-width:52ch;">If you fill the jar with sand first, the rocks that matter never fit. Your life is the jar. This workout is about naming your big rocks — and putting them in <em style="font-style:italic;">first</em>, before the day fills with everyone else's.</p>
+      <div style="margin-top:26px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:18px 22px;max-width:52ch;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:6px;">What this protects</p>
+        <p style="font-size:16px;line-height:1.6;color:#2E2A22;">Control of your time, energy and attention — before everyone else's urgency spends it for you. Do this rep often enough and your calendar starts to reflect your values instead of your inbox.</p>
+      </div>
+    </header>
+
+    <!-- VIDEO SLOT -->
+    <div style="max-width:820px;margin:40px auto 0;padding:0 32px;">
+      <div style="position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(135deg,#211D15,#211D15 13px,#262116 13px,#262116 26px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:1px solid rgba(27,24,16,0.12);">
+        <span style="width:66px;height:66px;border-radius:999px;background:rgba(192,74,38,0.94);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;padding-left:5px;">&#9658;</span>
+        <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#8A7F6C;background:rgba(244,240,231,0.85);padding:7px 12px;border-radius:8px;text-align:center;max-width:80%;">video slot — the Big Rocks demonstration (drop in your hosted embed)</span>
+      </div>
+    </div>
+
+    <!-- THE DEMONSTRATION -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:14px;">The demonstration</p>
+      <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+        <p style="margin-bottom:22px;">Stephen Covey used to fill a glass jar with fist-sized rocks and ask, "Is it full?" Yes, everyone said. Then he poured in gravel, shook it down between the rocks. "Full now?" Then sand. Then water. The point wasn't that you can always fit more in. It was the opposite.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">If you don't put the big rocks in first, you'll never get them in at all.</p>
+        <p>Fill the jar with sand and gravel — email, meetings, other people's urgencies — and when you reach for the rocks that actually matter, there's no room left. But place the big rocks first, and everything else settles into the space around them. Your calendar is the jar. The question is only ever what goes in first.</p>
+      </div>
+    </section>
+
+    <!-- ROCKS / SAND -->
+    <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:14px;padding:24px 26px;"><p style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;margin-bottom:8px;">The big rocks</p><p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.78);">Health. The people you love. The work only you can do. The thing you'll regret not doing. Few in number, heavy in weight.</p></div>
+        <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:14px;padding:24px 26px;"><p style="font-family:'Newsreader',serif;font-size:22px;color:#1B1810;margin-bottom:8px;">The sand</p><p style="font-size:15px;line-height:1.55;color:#56524A;">The inbox, the pings, the meetings that could've been notes. Feels urgent, weighs nothing, expands to fill whatever space you give it.</p></div>
+      </div>
+    </section>
+
+    <!-- REFLECT -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:40px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;">Reflect</p>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;flex:none;line-height:1.3;">1</span><p style="font-size:18px;line-height:1.55;color:#1B1810;">What are your three big rocks right now — the few things that, if you got them right, would make the rest matter less?</p></div>
+          <div style="display:flex;gap:16px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;flex:none;line-height:1.3;">2</span><p style="font-size:18px;line-height:1.55;color:#1B1810;">Look at last week's calendar. Did the big rocks go in first — or did the sand fill the jar before they had a chance?</p></div>
+          <div style="display:flex;gap:16px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;flex:none;line-height:1.3;">3</span><p style="font-size:18px;line-height:1.55;color:#1B1810;">What sand have you been treating like a rock — and who could carry it instead of you?</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIME FOR ACTION -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:36px 38px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for action</span>
+          <span style="font-size:12px;color:#8C8473;">this week · on your calendar</span>
+        </div>
+        <p style="font-family:'Newsreader',serif;font-weight:400;font-size:27px;line-height:1.25;color:#FBF8F1;margin-bottom:16px;">Put next week's big rocks on the calendar <span style="font-style:italic;color:#E0744A;">before</span> anything else gets scheduled.</p>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.78);margin-bottom:18px;">Open next week now, while it's still empty. Block time for your three big rocks first — actual calendar events, not a to-do list. Then let the sand fill in around them.</p>
+        <div style="background:rgba(244,240,231,0.05);border-radius:12px;padding:16px 18px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#8C8473;margin-bottom:6px;">A commitment you could make</p>
+          <p style="font-size:15.5px;line-height:1.55;color:#E7E0D2;">"Before leaving my desk each day, I will review tomorrow's calendar and ask: am I fully committed to what's on it, or do I need to protect a big rock?"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPLETE + TRACK -->
+    <div id="complete">
+      <MwComplete
+        workoutId="big-rocks"
+        dim="Mental"
+        dimLabel="Mental"
+        notePlaceholder="My three big rocks this week are…"
+      />
+
+      <MwCommitment
+        workoutId="big-rocks"
+        dim="Mental"
+        dimLabel="Mental"
+        c1="When I plan my day, instead of starting with the small stuff, ||I will schedule one big rock first."
+        c2="When I sit down at my desk, instead of opening email, ||I will spend two minutes on my most important thing."
+        c3="When I feel busy, instead of adding a task, ||I will ask 'is this a rock or gravel?' once."
+        willPh="put one big rock first"
+      />
+    </div>
+
+    <!-- NEXT -->
+    <section style="max-width:1000px;margin:52px auto 0;padding:0 32px 90px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <a href={workoutPath('legendary-intent')} style="display:flex;flex-direction:column;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:28px 30px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">Related</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#1B1810;margin-bottom:8px;">Legendary Intent</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#56524A;">Decide who you intend to be before the day decides for you.</p>
+        </a>
+        <a href={SLUGS.workouts} style="display:flex;flex-direction:column;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:28px 30px;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">Keep going</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#1B1810;margin-bottom:8px;">Browse all workouts</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#56524A;">Pick your next rep by dimension.</p>
+        </a>
+      </div>
+    </section>
+    </article>
+
+  </div>
+
+  <MwRelated current="big-rocks" />
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

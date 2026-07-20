@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('go-for-it');
+const title = 'Go For It — Mindset Workout 01 | Be Legendary';
+const description =
+  'A Mindset Workout on vulnerability. When did you last go for it — knowing you might fall flat in front of everyone? A Moneyball clip and a real rep. Free.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource, enriched with entity @ids, plus a
+// HowTo (the "Time for Action" rep) so the workout surfaces as a doable task.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'Go For It — Mindset Workout 01',
+    learningResourceType: 'Mindset warmup and workout',
+    teaches:
+      'Vulnerability as a strength — going for it means being willing to be seen failing, and making that normal',
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT10M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Do the one thing you’d do if you couldn’t look bad',
+    description:
+      'A one-rep, no-audience-needed exercise in going for it: pick the bold move you’ve been avoiding, do it for real this week, and log what happened.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Pick the move',
+        text: 'Pick the move you’ve been "keeping your options open" on — the conversation, the pitch, the ask, or the line you haven’t drawn.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Do it for real',
+        text: 'Do it before Sunday. Not perfectly — just for real. No audience needed.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Log what happened',
+        text: 'Come back and log the rep so it counts toward your path. Courage grows in the recovery, not the rep.',
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Go For It — Mindset Workout 01"
+  ogDescription="When was the last time you truly went for it — knowing you might fall flat, and doing it anyway?"
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO (cream) -->
+    <header style="max-width:760px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">Go For It</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;">Mindset Workout 01</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#C9BCA3;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8A7F6C;">Mental + Spiritual</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#C9BCA3;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8A7F6C;">Warmup · ~3 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(46px,8vw,84px);line-height:0.98;letter-spacing:-0.025em;color:#1B1810;">When did you last <span style="color:#C04A26;font-style:italic;">truly</span> go for it?</h1>
+      <p style="margin-top:26px;font-family:'Newsreader',serif;font-weight:400;font-style:italic;font-size:clamp(20px,2.6vw,26px);line-height:1.35;color:#C04A26;max-width:30ch;">Not "gave it a shot." Not "kept your options open." Truly.</p>
+      <p style="margin-top:22px;font-size:18px;line-height:1.6;color:#56524A;max-width:60ch;">Not "gave it a shot." Not "kept my options open." Truly went for it — knowing you might fall flat, and doing it anyway. If you have to think hard to remember, that's the workout.</p>
+    </header>
+
+    <!-- VIDEO (dark frame) -->
+    <div style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+      <div style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid rgba(27,24,16,0.12);background:#000;box-shadow:0 30px 70px -34px rgba(58,44,20,0.4);">
+        <iframe src="https://www.youtube-nocookie.com/embed/L-zvvDQkMs8?rel=0" title="Go For It — Mindset Workout 01" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:relative;width:100%;height:100%;border:0;display:block;"></iframe>
+      </div>
+    </div>
+
+    <!-- WARMUP -->
+    <section style="max-width:760px;margin:36px auto 0;padding:0 32px;">
+      <p style="font-size:19px;line-height:1.65;color:#3A362E;margin-bottom:22px;">In <em style="font-style:italic;">Moneyball</em>, a nervous catcher named Jeremy is terrified to round first base — he's stumbled before, been laughed at, so he plays it safe every at-bat. Then one day he swings for real, connects, and in a panic trips rounding first, scrambling back to the bag, certain he's blown it in front of everyone. The dugout is yelling. He braces for the humiliation — and they're not laughing. They're cheering. The ball cleared the fence. He hit a home run, and almost missed it protecting himself from looking bad.</p>
+      <p style="font-size:19px;line-height:1.65;color:#3A362E;margin-bottom:22px;">That clip is the whole movie in ninety seconds — which is why they show it. Billy Beane bet everything on an approach the entire sport mocked. And like Jeremy rounding first, they fell short: they lost the last game of the season, and people laughed. But they'd already hit the home run. They changed baseball forever. Going all-in on something that could fail — and having it fail in public — is the price of changing anything.</p>
+      <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.12);border-radius:16px;padding:28px 30px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Warmup · one reflection</p>
+        <p style="font-size:18px;line-height:1.6;color:#1B1810;">When did you last truly go for it — knowing you might fall flat — and do it anyway? Just bring one moment to mind. If it takes real effort to find one, sit with that. That's the whole warmup.</p>
+      </div>
+    </section>
+
+    <!-- GO DEEPER -->
+    <section style="max-width:760px;margin:34px auto 0;padding:0 32px;">
+      <div id="go-deep-prompt" style="display:block;">
+        <button id="go-deep-btn" type="button" style="width:100%;cursor:pointer;background:#1B1810;border:1px solid rgba(192,74,38,0.5);border-radius:16px;padding:26px 30px;text-align:left;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.borderColor='#C04A26'" onmouseout="this.style.borderColor='rgba(192,74,38,0.5)'">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+            <div>
+              <span style="display:block;font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">The workout · ~10 min + optional 30 days</span>
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;line-height:1.2;">Want to go deeper and do some reps on this?</span>
+            </div>
+            <span style="flex:none;font-size:26px;color:#E0744A;">&darr;</span>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- WORKOUT -->
+    <div id="go-deep-content" style="display:none;">
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">The workout · vulnerability is a strength</p>
+        <div style="font-size:18px;line-height:1.72;color:#3A362E;">
+          <p style="margin-bottom:20px;">The clip ends with an easy, offhand <em style="font-style:italic;">"I'll call ya"</em> — like going for it and stumbling is the most normal thing in the world. That's the whole lesson. Going for it means being willing to be <em style="font-style:italic;">seen</em> failing — and building a world around you where that's no big deal.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:30px 0;padding-left:22px;border-left:3px solid #C04A26;">Going for it and looking good are not the same thing. Most leaders quietly optimize for the second — and call it the first.</p>
+          <p>Vulnerability is a strength you exercise like a muscle. The leaders who go for it aren't fearless; they've decided that looking good is worth less than swinging big — and they make it safe for the people around them to do the same. The subconscious will always choose protecting yourself over going for it, unless you consciously override it. That override is the rep.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:30px 0 0;padding-left:22px;border-left:3px solid #C04A26;">When have you been <span style="color:#C04A26;">that</span> committed — all-in on something that could fail?</p>
+        </div>
+      </section>
+
+      <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+        <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Reflect — be honest, no one's watching</p>
+          <div style="display:flex;flex-direction:column;gap:18px;">
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">1</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">When did you last <em style="font-style:italic;">truly</em> go for it — knowing you might fall flat — and do it anyway? What did it feel like?</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">2</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">The last time you held back — what were you actually protecting? Looking good? Being right? Staying safe from being seen failing?</p></div>
+            <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">3</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">When someone on your team takes a real risk and falls flat — do they get the dugout cheering, or the silence? What would "I'll call ya" look like from you?</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIME FOR ACTION (dark punctuation) -->
+      <section style="max-width:760px;margin:38px auto 0;padding:0 32px;">
+        <div style="background:#1B1810;border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 36px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for Action</span>
+            <span style="font-size:12px;color:#8C8473;">one real rep · this week · no audience needed</span>
+          </div>
+          <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.25;color:#FBF8F1;margin-bottom:14px;">This week, do the one thing you'd do if you couldn't look bad.</p>
+          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Pick the move you've been "keeping your options open" on — the conversation, the pitch, the ask, the line you haven't drawn. Do it before Sunday. Not perfectly — just for real. Then come back and log what happened.</p>
+        </div>
+      </section>
+
+      <MwComplete
+        workoutId="go-for-it"
+        dim="Emotional"
+        dimLabel="Mental & Spiritual"
+        notePlaceholder="The one thing I'd do if I couldn't look bad is…"
+        doneHead="Rep logged. That's the first shift."
+        doneBody="Courage grows in the recovery, not the rep — so let it land, then come back for the next one. You're on the path now."
+        nextHref={workoutPath('mindset-of-a-legend')}
+        nextCta="Next · The ABCs"
+      />
+
+      <!-- 30-DAY COMMITMENT BUILDER (shared component, below log-it) -->
+      <MwCommitment
+        workoutId="go-for-it"
+        dim="Emotional"
+        dimLabel="Mental & Spiritual"
+        c1="When I brush my teeth in the morning, instead of zoning out at the mirror, ||I will name out loud one thing I'd do today if I couldn't look bad."
+        c2="When I sit down at my desk, instead of opening email first, ||I will write the single boldest sentence I could send today — even if I never send it."
+        c3="When I get in my car to head home, instead of replaying the day, ||I will name one moment I held back, and the braver version I'll try tomorrow."
+        whenPh="brush my teeth in the morning"
+        insteadPh="zoning out at the mirror"
+        willPh="do one squat"
+      />
+    </div>
+
+  </div>
+
+  <MwRelated current="go-for-it" />
+
+  <SiteFooter audience="leaders" variant="slim" />
+
+  <script>
+    (function () {
+      const btn = document.getElementById('go-deep-btn');
+      const prompt = document.getElementById('go-deep-prompt');
+      const content = document.getElementById('go-deep-content');
+      if (btn && prompt && content) {
+        btn.addEventListener('click', function () {
+          prompt.style.display = 'none';
+          content.style.display = 'block';
+        });
+      }
+    })();
+  </script>
+</BaseLayout>

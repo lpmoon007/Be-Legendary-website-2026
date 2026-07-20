@@ -1,0 +1,128 @@
+---
+import { Image } from 'astro:assets';
+import LdolLayout from '../../layouts/LdolLayout.astro';
+import LdolHeader from '../../components/LdolHeader.astro';
+import LdolFooter from '../../components/LdolFooter.astro';
+import { CTA_URL, SITE_URL } from '../../lib/site';
+import james from '../../assets/james.jpg';
+
+const title = 'About James Carter — author of Lost Disciplines of Leadership™';
+const description =
+  'James Carter has spent 25 years inside the execution gap — co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra, and Brian Tracy, featured on CNN and in Business Insider. A Be Legendary book.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'James Carter',
+    url: `${SITE_URL}/lost-disciplines/about-james/`,
+    jobTitle: 'Author & executive-team advisor',
+    description:
+      'Executive-team advisor of 25 years; co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra, and Brian Tracy; featured on CNN and in Business Insider.',
+    worksFor: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Lost Disciplines of Leadership',
+    url: `${SITE_URL}/lost-disciplines/`,
+    logo: `${SITE_URL}/assets/ldol-b-logo.png`,
+    parentOrganization: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'James Carter — keynote to 1,000 leaders at Siemens',
+    description: 'James Carter delivers a leadership keynote to an audience of 1,000 leaders at Siemens.',
+    thumbnailUrl: `${SITE_URL}/assets/james.jpg`,
+    uploadDate: '2016-10',
+    embedUrl: 'https://player.vimeo.com/video/174889009',
+    contentUrl: 'https://vimeo.com/174889009',
+  },
+];
+---
+<LdolLayout title={title} description={description} path="/lost-disciplines/about-james/" schema={schema}>
+  <LdolHeader active="about-james" />
+
+  <!-- HERO -->
+  <header style="background:#14203a;">
+    <div class="ldol-wrap ldol-collapse" style="display:grid;grid-template-columns:0.62fr 1fr;gap:64px;align-items:center;padding-top:96px;padding-bottom:96px;">
+      <div style="border-radius:6px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45);">
+        <Image src={james} alt="James Carter" width={620} format="webp" quality={82} loading="eager" fetchpriority="high" style="width:100%;height:auto;display:block;" />
+      </div>
+      <div>
+        <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:26px;">About the Author</div>
+        <h1 class="ldol-h1" style="font-family:'Newsreader',serif;font-weight:500;font-size:56px;line-height:1.06;letter-spacing:-.015em;margin:0 0 24px;">James Carter</h1>
+        <p style="font-size:19px;line-height:1.6;color:#aeb8cf;margin:0;max-width:33em;">Twenty-five years inside the execution gap &mdash; the space between what leadership teams know and what they actually do.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- AUTHORITY STATS -->
+  <section style="background:#1a1510;">
+    <div class="ldol-wrap" style="padding-top:64px;padding-bottom:20px;">
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-bottom:1px solid rgba(201,162,74,.14);padding-bottom:56px;">
+        <div><div style="font-family:'Newsreader',serif;font-size:44px;color:#c9a24a;line-height:1;">25<span style="font-size:24px;">yrs</span></div><div style="font-size:14px;color:#a59a8d;margin-top:8px;">advising executive teams</div></div>
+        <div><div style="font-family:'Newsreader',serif;font-size:44px;color:#c9a24a;line-height:1;">4</div><div style="font-size:14px;color:#a59a8d;margin-top:8px;">bestselling co-authors</div></div>
+        <div><div style="font-family:'Newsreader',serif;font-size:44px;color:#c9a24a;line-height:1;">CNN</div><div style="font-size:14px;color:#a59a8d;margin-top:8px;">&amp; Business Insider features</div></div>
+        <div><div style="font-family:'Newsreader',serif;font-size:44px;color:#c9a24a;line-height:1;">100s</div><div style="font-size:14px;color:#a59a8d;margin-top:8px;">of leaders on stage &amp; off</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIO -->
+  <section style="background:#1a1510;">
+    <div class="ldol-wrap" style="padding-top:56px;padding-bottom:80px;">
+      <div style="max-width:680px;">
+        <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.45;color:#f4f0e6;margin:0 0 30px;">James has spent his career on one question: why do capable teams, with the right strategy and the right people, still fail to execute?</p>
+        <p style="font-size:17px;line-height:1.75;color:#b3a899;margin:0 0 22px;">For twenty-five years he has sat inside executive teams at the moment the plan meets the doing &mdash; fast-scaling founders, enterprise leadership teams, boards mid-transition. The pattern repeated everywhere: the strategy was sound, the people were able, and still the work stalled. The gap, he found, is rarely about knowledge. It is almost always about disciplines a team has quietly stopped keeping.</p>
+        <p style="font-size:17px;line-height:1.75;color:#b3a899;margin:0 0 22px;">That finding became the <strong style="color:#f4f0e6;font-weight:600;">Flag Model&trade;</strong>: one Flag the whole team can march toward, held up by four disciplines &mdash; the Decision, the Rhythm, the Standard, and the Learning &mdash; all governed by a single principle, <em style="font-style:italic;color:#d8b566;">Truth Over Comfort</em>. It is not another framework to bolt on. It is a way to name exactly where a team breaks first, and to rebuild it.</p>
+        <p style="font-size:17px;line-height:1.75;color:#b3a899;margin:0 0 22px;">He has co-authored alongside Stephen Covey, Ken Blanchard, Deepak Chopra, and Brian Tracy &mdash; including <em style="font-style:italic;">Discover Your Inner Strength</em> &mdash; and his work has been featured on CNN, CNN Money, and in Business Insider. He has taught it from the Siemens main stage in front of a thousand leaders and across the table in closed-door boardrooms. The message does not change with the room: capable teams do not fail for lack of answers. They fail one small, comfortable compromise at a time.</p>
+        <p style="font-size:17px;line-height:1.75;color:#b3a899;margin:0 0 22px;">He founded the practice as <strong style="color:#f4f0e6;font-weight:600;">Repario</strong> &mdash; Latin, roughly <em style="font-style:italic;">to rediscover, to find again</em> &mdash; on a simple conviction: every executive team already holds the disciplines it needs; the job is to find the ones it has lost. Today that practice is <a href="https://www.belegendary.org/" rel="noopener" style="color:#c9a24a;">Be Legendary</a>.</p>
+        <p style="font-size:17px;line-height:1.75;color:#b3a899;margin:0;"><em style="font-style:italic;">Lost Disciplines of Leadership&trade;</em> is the distillation of that work &mdash; a fable that names what teams lose, then the field guide to rebuild it, chapter by chapter. It is the foundational text behind the Flag Model&trade; and everything Be Legendary does.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT HE BELIEVES -->
+  <section style="background:#0f1830;">
+    <div class="ldol-wrap" style="padding-top:76px;padding-bottom:76px;">
+      <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:30px;">What James believes</div>
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px;">
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#f4f0e6;margin:0 0 10px;">Execution is a discipline problem.</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#aeb8cf;margin:0;">Not a motivation problem, not a talent problem. Teams already know what to do. The work is holding the disciplines that turn knowing into doing.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#f4f0e6;margin:0 0 10px;">The truth is the intervention.</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#aeb8cf;margin:0;">Most teams are one honest conversation away from progress and have been avoiding it for months. Truth Over Comfort is the whole game.</p>
+        </div>
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#f4f0e6;margin:0 0 10px;">Find where it breaks first.</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#aeb8cf;margin:0;">You don&rsquo;t fix everything at once. There is a place your team fails first &mdash; and it&rsquo;s findable. Name it, rebuild it, and the rest follows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIEMENS CLIP -->
+  <section style="background:#14203a;">
+    <div class="ldol-wrap" style="padding-top:80px;padding-bottom:80px;">
+      <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:24px;">On stage &middot; Siemens keynote</div>
+      <div style="position:relative;width:100%;max-width:900px;margin:0 auto;aspect-ratio:16/9;border-radius:8px;overflow:hidden;border:1px solid rgba(201,162,74,.2);background:#000;">
+        <iframe src="https://player.vimeo.com/video/174889009?title=0&byline=0&portrait=0" loading="lazy" title="James Carter — keynote to 1,000 leaders at Siemens" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#f4f0e6;color:#211b16;">
+    <div class="ldol-wrap" style="padding-top:80px;padding-bottom:80px;text-align:center;">
+      <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:40px;margin:0 0 14px;">Read what James has been teaching for 25 years.</h2>
+      <p style="font-size:17px;color:#5c544c;margin:0 0 30px;">Join the waitlist for Lost Disciplines of Leadership&trade; and get the free first chapter.</p>
+      <a href="/lost-disciplines/#waitlist" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:600;color:#f4f0e6;background:#14203a;border-radius:3px;padding:15px 32px;display:inline-block;text-decoration:none;">Join the waitlist</a>
+    </div>
+  </section>
+
+  <LdolFooter />
+</LdolLayout>

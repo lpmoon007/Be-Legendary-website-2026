@@ -2,6 +2,42 @@
 # Serve directory URLs from index.html and use the branded 404.
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
+# An index-less directory (e.g. a hub page not built yet during the phased
+# rollout) otherwise returns Apache's raw "Forbidden" — map 403 to the 404 too.
+ErrorDocument 403 /404.html
+Options -Indexes
+
+# ── Library → Leaders migration (301) ──
+# Redirect preserves the path suffix, so /library/mindset-of-a-legend/ →
+# /leaders/mindset-of-a-legend/ (same leaf slugs), and /library/ → /leaders/.
+Redirect 301 /library/ /leaders/
+
+# ── 30-Day Challenge (301) ──
+# /leaders/30-day-challenge/ is the canonical slug we cite (SLUGS.challenge,
+# llms.txt, cross-domain redirects) but has no static page — the live app runs
+# on the challenge subdomain. Send it there so the canonical URL resolves.
+Redirect 301 /leaders/30-day-challenge/ https://challenge.belegendary.org/
+
+# ── Retired pages from the previous site (301 → nearest live equivalent) ──
+# These old URLs still surface in crawlers/backlinks and were returning 404.
+# Clear mappings:
+Redirect 301 /actionable-coaching/ /leaders/actionable-coaching/
+Redirect 301 /articles/ /field-notes/
+Redirect 301 /free-leadership-tools/ /resources/
+# Judgment calls (nearest-topic hub — change target if a better page exists):
+Redirect 301 /commitment-quotient/ /break-point-self-assessment/
+Redirect 301 /common-executive-team-challenges/ /teams/
+Redirect 301 /fractional-chief-people-officer/ /teams/
+Redirect 301 /peopleops/ /teams/
+Redirect 301 /terms-of-use/ /privacy/
+
+# ── Text compression (biggest transfer win on an inline-styled site) ──
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml application/manifest+json
+</IfModule>
 
 # Long-cache fingerprinted build assets (safe: filenames change on rebuild).
 <IfModule mod_expires.c>

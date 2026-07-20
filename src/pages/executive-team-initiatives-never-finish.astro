@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = "Our Initiatives Never Finish. Everyone's Busy, Nothing Ships. Why? | Be Legendary";
-const description = "When a leadership team starts more than it finishes, good strategies stall — not because they're wrong, but because nothing reaches the finish line. Here's why busy teams don't ship, and the work-in-progress discipline that fixes it.";
+const title = "Executive Team Initiatives Never Finish? | Be Legendary";
+const description = "When a leadership team starts more than it finishes, nothing ships. Here's why busy teams stall, and the work-in-progress discipline that fixes it.";
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -22,7 +24,7 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.initiativesNeverFinish} ogType="article" ogTitle="Our initiatives never finish and everyone's busy. Why?" ogDescription="Starting is free. Finishing is the discipline. Here's how to protect the finish line." schema={schema}>
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
@@ -34,7 +36,7 @@ const schema = [
     <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
     <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
-      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Because starting work is free and finishing it is the discipline most teams never build. When anything new can be added without something else stopping, capacity spreads across too many initiatives at once &mdash; ten things at 60% instead of three at 100% &mdash; so the team stays busy while nothing actually ships. This is the Rhythm discipline, and it's rebuilt with one rule: work-in-progress limits. One in, one out.</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Because starting work is free and finishing it is the discipline most teams never build. When anything new can be added without something else stopping, capacity spreads across too many initiatives at once &mdash; ten things at 60% instead of three at 100% &mdash; so the team stays busy while nothing actually ships. This is the Rhythm discipline, and it's rebuilt with one rule: work-in-progress limits. One in, one out.</p>
     </div>
   </header>
 
@@ -70,7 +72,9 @@ const schema = [
       </a>
     </div>
   </div>
-  </article>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
 </BaseLayout>

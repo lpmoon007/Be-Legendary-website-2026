@@ -1,24 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import FlagDiagram from '../components/FlagDiagram.astro';
 import Faq from '../components/Faq.astro';
+import PressStrip from '../components/PressStrip.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { TESTIMONIALS } from '../lib/testimonials';
 import { Image } from 'astro:assets';
 import imgJames from '../assets/james.jpg';
 import imgLdol from '../assets/book-ldol.png';
 import imgDiscover from '../assets/book-discover.jpg';
 import imgRoadmap from '../assets/book-roadmap.png';
 import imgOneGreatIdea from '../assets/book-onegreatidea.jpg';
-import { CTA_URL, SLUGS, SISTER } from '../lib/site';
+import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'The Flag Model — Where Will Your Executive Team Break First? | Be Legendary';
-const description = "You've already bought the offsite, the framework, the coach — and behavior didn't change. There's no lightswitch. But there is a place your executive team breaks first, and it's findable. The Flag Model shows you where. Book a 15-minute Calibration Call.";
+const title = 'The Flag Model: Where Your Executive Team Breaks First';
+const description = "Strategy is sound but execution stalls. The Flag Model finds where your executive team breaks first — and rebuilds the discipline that broke. Book a call.";
 
 const schema = [
   { '@type': 'WebSite', '@id': 'https://www.belegendary.org/#website', url: 'https://www.belegendary.org/', name: 'Be Legendary', publisher: { '@id': 'https://www.belegendary.org/#org' } },
-  { '@type': ['Organization', 'ProfessionalService'], '@id': 'https://www.belegendary.org/#org', name: 'Be Legendary', alternateName: 'Repario', url: 'https://www.belegendary.org/', logo: { '@type': 'ImageObject', url: 'https://www.belegendary.org/assets/favicon-snail.png', width: 512, height: 512 }, image: 'https://www.belegendary.org/assets/share-card.png', description: 'An executive-team diagnostic and performance firm. We rebuild the disciplines of the Flag Model that turn a stalled leadership team into one that executes.', slogan: 'Where does your executive team break first?', founder: { '@id': 'https://www.belegendary.org/#james' }, foundingDate: '2010', areaServed: 'US', knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation', 'leadership offsites', 'team accountability'], contactPoint: { '@type': 'ContactPoint', contactType: 'sales', url: 'https://meetings.hubspot.com/jcarter28' }, sameAs: ['https://www.buildingteams.com/', 'https://www.legendary-retreats.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'] },
-  { '@type': 'Person', '@id': 'https://www.belegendary.org/#james', name: 'James Carter', jobTitle: 'Founder, Be Legendary', worksFor: { '@id': 'https://www.belegendary.org/#org' }, description: 'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership and co-author of Discover Your Inner Strength alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Twenty-five years with hundreds of leadership teams; featured in CNN, CNN Money and Business Insider.', sameAs: ['https://www.linkedin.com/in/jlcarter/', 'https://www.buildingteams.com/about/james-carter/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'] },
+  { '@type': 'Organization', '@id': 'https://www.belegendary.org/#org', name: 'Be Legendary', alternateName: 'Repario', url: 'https://www.belegendary.org/', logo: { '@type': 'ImageObject', url: 'https://www.belegendary.org/assets/favicon-snail.png', width: 512, height: 512 }, image: 'https://www.belegendary.org/assets/share-card.png', description: 'An executive-team diagnostic and performance firm. We rebuild the disciplines of the Flag Model that turn a stalled leadership team into one that executes.', slogan: 'Where does your executive team break first?', founder: { '@id': 'https://www.belegendary.org/#james' }, foundingDate: '2010', areaServed: 'US', knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation', 'leadership offsites', 'team accountability'], contactPoint: { '@type': 'ContactPoint', contactType: 'sales', url: 'https://meetings-na2.hubspot.com/jcarter28' }, sameAs: ['https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'] },
+  { '@type': 'Person', '@id': 'https://www.belegendary.org/#james', name: 'James Carter', jobTitle: 'Founder, Be Legendary', worksFor: { '@id': 'https://www.belegendary.org/#org' }, description: 'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership and co-author of Discover Your Inner Strength alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Twenty-five years with hundreds of leadership teams; featured in CNN, CNN Money and Business Insider.', sameAs: ['https://www.linkedin.com/in/jlcarter/', 'https://www.buildingteams.com/about/james-carter/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG', 'https://www.wikidata.org/wiki/Q140514540'] },
   { '@type': 'Book', '@id': 'https://www.belegendary.org/#book', name: 'Lost Disciplines of Leadership', author: { '@id': 'https://www.belegendary.org/#james' }, about: 'Why leaders and teams know what to do and still fail to do it — and the disciplines that close the gap.' },
   { '@type': 'Book', name: 'Discover Your Inner Strength', author: [{ '@id': 'https://www.belegendary.org/#james' }, { '@type': 'Person', name: 'Stephen Covey' }, { '@type': 'Person', name: 'Ken Blanchard' }, { '@type': 'Person', name: 'Brian Tracy' }] },
   { '@type': 'DefinedTerm', '@id': 'https://www.belegendary.org/#flagmodel', name: 'The Flag Model', description: 'A leadership-execution framework with five components: a center (the Flag — the 2 to 3 operational priorities everything serves) and four disciplines that hold it upright — the Decision, the Rhythm, the Standard and the Learning — governed by the principle Truth Over Comfort.', inDefinedTermSet: 'Be Legendary' },
@@ -31,6 +34,15 @@ const schema = [
     { '@type': 'Question', name: "My executives can't make a decision without me. Why?", acceptedAnswer: { '@type': 'Answer', text: "That's the Decision discipline lost to chaos: the team can't commit, so every call routes back to you. The fix is a decision protocol — owner, data, deadline, and the obligation to defend it — that lets a decision stick without your sign-off." } },
     { '@type': 'Question', name: 'What happens on a Calibration Call?', acceptedAnswer: { '@type': 'Answer', text: "It's a 15-minute conversation. You'll run a short Choices exercise that surfaces priority misalignment in real time, and you'll leave with a concrete read on where your team stands — whether or not we work together. It's a calibration, not a pitch." } },
   ] },
+  // Client testimonials as Review nodes (entity/GEO value; Google won't render
+  // stars for first-party org reviews, so no AggregateRating is claimed).
+  ...TESTIMONIALS.map((t) => ({
+    '@type': 'Review',
+    itemReviewed: { '@id': 'https://www.belegendary.org/#org' },
+    author: { '@type': 'Person', name: t.name },
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    reviewBody: t.quote,
+  })),
 ];
 
 const faqs = [
@@ -41,35 +53,102 @@ const faqs = [
   { q: 'Is this just another framework or coach?', a: "No. We don't sell a lightswitch. We find where your team breaks first, measure it with FlagScore, and rebuild the specific discipline that broke — over time, as a Performance Partnership. The Flag Model is the system we install, not a poster we hand you." },
 ];
 
+// In-page nav mirrors the design's primary nav: section anchors plus real
+// routes (Resources → hub, Retreats → team retreats). The CTA button and the
+// For Teams/For Leaders toggle are supplied by SiteHeader.
 const homeLinks = [
+  { label: 'The truth', href: '#truth' },
   { label: 'The Flag Model', href: '#model' },
   { label: 'Resources', href: SLUGS.resources },
-  { label: 'The Library', href: SLUGS.library },
+  { label: 'How it works', href: '#work' },
+  { label: 'Retreats', href: SLUGS.teamRetreats },
   { label: 'James', href: '#james' },
-  { label: 'Retreats', href: SISTER.retreats },
 ];
 ---
 <BaseLayout title={title} description={description} path="/" siteGraph={false} ogTitle="Where is your executive team going to break first?" ogDescription="There's no single fix for a stalled leadership team. But there is a place it breaks first. The Flag Model finds it." schema={schema}>
-  <Header maxWidth={1200} home="#top" links={homeLinks} />
+  <SiteHeader audience="teams" variant="full" maxWidth={1200} logoHref="#top" links={homeLinks} />
 
   <!-- HERO -->
-  <section id="top" class="bl-hero-pad" style="position:relative;max-width:1200px;margin:0 auto;padding:108px 32px 92px;">
-    <div style="position:absolute;top:-100px;right:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(192,74,38,0.20),transparent 62%);pointer-events:none;"></div>
-    <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:28px;">
-      <span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive team performance
-    </p>
-    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(42px,7vw,92px);line-height:1.0;letter-spacing:-0.025em;max-width:15ch;color:#FBF8F1;">
-      Where is your executive team going to <span style="font-style:italic;color:#E0744A;">break first?</span>
-    </h1>
-    <p style="margin-top:32px;font-size:clamp(18px,2.1vw,23px);line-height:1.55;max-width:58ch;color:rgba(244,240,231,0.80);font-weight:400;">
-      You've already bought the offsite, the framework, the coach. Behavior didn't change. Here's the part no one will tell you: there is no single fix &mdash; but there <em style="font-style:italic;color:#F4F0E7;">is</em> a place your team breaks first, and it's findable.
-    </p>
-    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
-      <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
-      <a href="#model" style="border:1px solid rgba(244,240,231,0.26);color:#F4F0E7;text-decoration:none;padding:17px 28px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.26)'">See where teams break</a>
-      <span style="font-size:13.5px;color:rgba(244,240,231,0.55);max-width:24ch;line-height:1.4;">15 minutes. You leave with a concrete read on your team &mdash; work with us or not.</span>
+  <style>
+    .bl-hero-full {
+      position: relative;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      min-height: min(90vh, 880px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #100E0A;
+    }
+    .bl-hero-full__bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 74%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
+              mask-image: linear-gradient(90deg, transparent 0%, #000 24%);
+      z-index: 0;
+    }
+    .bl-hero-full__scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(16,14,10,0.96) 0%, rgba(16,14,10,0.90) 26%, rgba(16,14,10,0.48) 54%, rgba(16,14,10,0.04) 76%),
+        linear-gradient(0deg, rgba(16,14,10,0.5) 0%, rgba(16,14,10,0) 42%);
+    }
+    .bl-hero-full__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 104px 32px;
+    }
+    .bl-hero-full__copy { max-width: 600px; }
+    @media (max-width: 860px) {
+      .bl-hero-full { min-height: auto; }
+      .bl-hero-full__bg { width: 100%; object-position: 72% center; -webkit-mask-image: none; mask-image: none; }
+      .bl-hero-full__scrim {
+        background: linear-gradient(180deg, rgba(16,14,10,0.93) 0%, rgba(16,14,10,0.76) 42%, rgba(16,14,10,0.52) 72%, rgba(16,14,10,0.74) 100%);
+      }
+      .bl-hero-full__inner { padding: 72px 24px 84px; }
+      .bl-hero-full__copy { max-width: 100%; }
+    }
+  </style>
+  <section id="top" class="bl-hero-full">
+    <img
+      class="bl-hero-full__bg"
+      src="/assets/the-flag-model-hero.webp"
+      alt="The Flag Model — a rust-red flag held upright by four taut cables anchored into bedrock engraved Truth Over Comfort. The flag is a leadership team's two or three priorities; the four cables are the disciplines that hold them up."
+      width="1600" height="900" loading="eager" fetchpriority="high" decoding="async"
+    />
+    <div class="bl-hero-full__scrim"></div>
+    <div class="bl-hero-full__inner">
+      <div class="bl-hero-full__copy">
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:28px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive team performance
+        </p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(42px,5.8vw,80px);line-height:1.01;letter-spacing:-0.025em;max-width:15ch;color:#FBF8F1;text-shadow:0 2px 30px rgba(0,0,0,0.35);">
+          Where is your executive team going to <span style="font-style:italic;color:#E0744A;">break first?</span>
+        </h1>
+        <p style="margin-top:30px;font-size:clamp(17px,1.95vw,22px);line-height:1.55;max-width:48ch;color:rgba(244,240,231,0.86);font-weight:400;">
+          You've already bought the offsite, the framework, the coach. Behavior didn't change. Here's the part no one will tell you: there is no single fix &mdash; but there <em style="font-style:italic;color:#F4F0E7;">is</em> a place your team breaks first, and it's findable.
+        </p>
+        <div style="margin-top:38px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+          <a href="#model" style="border:1px solid rgba(244,240,231,0.32);color:#F4F0E7;text-decoration:none;padding:17px 28px;border-radius:11px;font-weight:600;font-size:16px;backdrop-filter:blur(2px);" onmouseover="this.style.borderColor='rgba(244,240,231,0.65)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.32)'">See where teams break</a>
+        </div>
+        <p style="margin-top:18px;font-size:13.5px;color:rgba(244,240,231,0.6);max-width:34ch;line-height:1.4;">15 minutes. You leave with a concrete read on your team &mdash; work with us or not.</p>
+      </div>
     </div>
   </section>
+
+  <PressStrip />
 
   <!-- THE LIGHTSWITCH TRUTH -->
   <section id="truth" class="bl-section-pad" style="background:#F4F0E7;color:#1B1810;padding:100px 32px;">
@@ -226,6 +305,8 @@ const homeLinks = [
     </div>
   </section>
 
+  <Testimonials />
+
   <!-- FINAL CTA -->
   <section id="book" style="background:linear-gradient(180deg,#1B1810,#15130E);color:#F4F0E7;padding:120px 32px;text-align:center;position:relative;">
     <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
@@ -236,5 +317,5 @@ const homeLinks = [
     </div>
   </section>
 
-  <Footer variant="full" />
+  <SiteFooter audience="teams" />
 </BaseLayout>

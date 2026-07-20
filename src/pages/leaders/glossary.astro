@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, SLUGS, workoutPath } from '../../lib/site';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+
+const path = SLUGS.leadersGlossary;
+const title = "The Leader's Glossary — Vocabulary of a Legendary Mindset";
+const description =
+  "Every term in Be Legendary's leader work, defined in one place: Misogi, Shakubuku, Kintsugi, the Golden Buddha, the ABCs, habit stacking, and more.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// BreadcrumbList + DefinedTermSet — schema types and every DefinedTerm
+// preserved exactly from the design.
+const schema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'For Leaders', item: `${SITE_URL}/leaders/` },
+      { '@type': 'ListItem', position: 2, name: 'Glossary', item: canonical },
+    ],
+  },
+  {
+    '@type': 'DefinedTermSet',
+    '@id': `${canonical}#set`,
+    name: "Be Legendary — Leader's Glossary",
+    description:
+      "The vocabulary of Be Legendary's individual-leader work: the mindset workouts, the 30-day challenge, and the concepts behind them.",
+    hasDefinedTerm: [
+      { '@type': 'DefinedTerm', '@id': `${canonical}#misogi`, name: 'Misogi', description: 'One deliberately hard challenge undertaken once a year, designed with roughly a 50% chance of failure and done privately for the growth it produces, not for recognition.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#shakubuku`, name: 'Shakubuku', description: "A sudden, radical shift in how you see yourself — an awakening to your inherent greatness. Also the name of Be Legendary's flagship, by-application experience." },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#kintsugi`, name: 'Kintsugi', description: 'The Japanese art of repairing broken pottery with gold so the mended piece is valued more than the original; as a mindset, gilding your cracks instead of hiding them.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#wabi-sabi`, name: 'Wabi-Sabi', description: 'The aesthetic of loving something because of its imperfections and impermanence, not in spite of them — the worldview behind kintsugi.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#golden-buddha`, name: 'The Golden Buddha', description: 'A real statue hidden under plaster for ~200 years, then revealed as solid gold; the metaphor that your greatness is already there and the work is to clear what covers it.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#abcs`, name: 'The ABCs of a legendary mindset', description: 'The three things a legendary mindset does: Control your Awareness, Know your Beliefs, Harness your Courage — verbs, not nouns.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#new-eyes`, name: 'New Eyes', description: 'The skill of looking at what everyone sees and noticing the value no one else does — practiced first on others, then on yourself.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#legendary-intent`, name: 'Legendary Intent', description: 'A single sentence naming who you intend to be, used as the filter that makes hard decisions for you.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#miracle`, name: 'The .1% Miracle', description: 'Ninety seconds of deliberate, courageous action taken daily — a tiny rep that compounds a legendary mindset over time.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#type-2-fun`, name: 'Type 2 Fun', description: "An experience that's difficult or miserable while it's happening but deeply rewarding in retrospect." },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#habit-stacking`, name: 'Habit stacking', description: "Building a new habit by anchoring it to an existing one, using 'When I [current habit], I will [new tiny habit].'" },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#implementation-intention`, name: 'Implementation intention', description: "A specific if-then plan — 'When [situation], I will [action]' — that pre-decides behavior so you don't rely on in-the-moment willpower." },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#lead-measure`, name: 'Lead measure', description: 'A daily input you directly control that predicts and drives a desired outcome, as opposed to a lag measure, which only reports the result.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#mindset-workout`, name: 'Mindset Workout', description: 'A free, ~10-minute guided rep — a video, a teaching, honest questions, and one real-world action — for training a specific dimension of a legendary mindset.' },
+      { '@type': 'DefinedTerm', '@id': `${canonical}#challenge`, name: 'The 30-Day Challenge', description: 'A free behavior challenge that turns a workout into a daily habit: pick one ridiculously easy lead measure and get one text a day for thirty days.' },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="The Leader's Glossary — the Vocabulary of a Legendary Mindset"
+  ogDescription="Misogi, Shakubuku, Kintsugi, the Golden Buddha, the ABCs, habit stacking — every term, defined."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <header style="max-width:900px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Glossary</span>
+      </nav>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">The Leader's glossary</h1>
+      <p style="margin-top:22px;font-size:18.5px;line-height:1.62;color:#56524A;max-width:60ch;">The vocabulary of a legendary mindset — the practices, concepts, and habit mechanics behind the Mindset Workouts and the 30-Day Challenge. Every term links to a full explainer.</p>
+    </header>
+
+    <!-- PRACTICES -->
+    <section style="max-width:900px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Practices &amp; experiences</p>
+      <div style="display:flex;flex-direction:column;gap:1px;background:rgba(27,24,16,0.1);border:1px solid rgba(27,24,16,0.1);border-radius:14px;overflow:hidden;">
+        <a id="misogi" href={SLUGS.whatIsMisogi} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Misogi</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">One deliberately hard challenge a year, ~50% chance of failure, done privately for who it makes you.</span></a>
+        <a id="shakubuku" href={SLUGS.whatIsShakubuku} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Shakubuku</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">A sudden, radical shift in how you see yourself — and Be Legendary's flagship experience.</span></a>
+        <a id="mindset-workout" href={SLUGS.workouts} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Mindset Workout</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">A free, ~10-minute guided rep — video, teaching, questions, and one real action — training one dimension of mindset.</span></a>
+        <a id="challenge" href={SLUGS.challenge} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">The 30-Day Challenge</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">Turns a workout into a daily habit: one ridiculously easy lead measure, one text a day, thirty days.</span></a>
+      </div>
+    </section>
+
+    <!-- CONCEPTS -->
+    <section style="max-width:900px;margin:40px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Concepts</p>
+      <div style="display:flex;flex-direction:column;gap:1px;background:rgba(27,24,16,0.1);border:1px solid rgba(27,24,16,0.1);border-radius:14px;overflow:hidden;">
+        <a id="kintsugi" href={SLUGS.whatIsKintsugi} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Kintsugi</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">The art of mending broken pottery with gold; as a mindset, gilding your cracks instead of hiding them.</span></a>
+        <a id="wabi-sabi" href={SLUGS.whatIsKintsugi} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Wabi-Sabi</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">Loving something because of its imperfections, not in spite of them — the worldview behind kintsugi.</span></a>
+        <a id="golden-buddha" href={SLUGS.goldenBuddhaStory} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">The Golden Buddha</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">The gold was always under the clay: your greatness is already there — clear what covers it.</span></a>
+        <a id="abcs" href={SLUGS.abcsOfMindset} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">The ABCs</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">Control your Awareness, Know your Beliefs, Harness your Courage — verbs, not nouns.</span></a>
+        <a id="new-eyes" href={workoutPath('kintsugi-wabi-sabi')} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">New Eyes</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">Looking at what everyone sees and noticing the value no one else does.</span></a>
+        <a id="legendary-intent" href={workoutPath('legendary-intent')} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Legendary Intent</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">One sentence naming who you intend to be — the filter that makes hard calls for you.</span></a>
+        <a id="miracle" href={workoutPath('mindset-of-a-legend')} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">The .1% Miracle</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">Ninety seconds of deliberate, courageous action taken daily — a tiny rep that compounds.</span></a>
+        <a id="type-2-fun" href={SLUGS.type2Fun} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Type 2 Fun</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">Miserable while it's happening, deeply rewarding in retrospect — the good kind of hard.</span></a>
+      </div>
+    </section>
+
+    <!-- HABIT MECHANICS -->
+    <section style="max-width:900px;margin:40px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Habit mechanics</p>
+      <div style="display:flex;flex-direction:column;gap:1px;background:rgba(27,24,16,0.1);border:1px solid rgba(27,24,16,0.1);border-radius:14px;overflow:hidden;">
+        <a id="habit-stacking" href={SLUGS.habitStacking} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Habit stacking</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">Anchor a new habit to one you already do: "When I [current habit], I will [new tiny habit]."</span></a>
+        <a id="implementation-intention" href={SLUGS.implementationIntentions} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Implementation intention</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">A specific if-then plan that pre-decides behavior so you don't need in-the-moment willpower.</span></a>
+        <a id="lead-measure" href={SLUGS.leadVsLag} style="text-decoration:none;background:#F4F0E7;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:baseline;"><span style="font-family:'Newsreader',serif;font-size:21px;color:#1B1810;">Lead measure</span><span style="font-size:15.5px;line-height:1.55;color:#56524A;">A daily input you control that drives the outcome — the thing worth tracking, unlike a lag measure.</span></a>
+      </div>
+    </section>
+
+    <section style="max-width:900px;margin:44px auto 0;padding:0 32px;">
+      <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Stop reading, start repping — free</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:26ch;margin:0 auto 16px;">Pick one term. Turn it into a 30-day rep.</h2>
+        <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">Every concept here has a free guided workout behind it — and every workout can become one text a day for thirty days.</p>
+        <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+          <a href={SLUGS.workouts} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Browse the workouts <span>&rarr;</span></a>
+          <a href={SLUGS.challenge} style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Start a 30-day challenge</a>
+        </div>
+      </div>
+    </section>
+    <div style="margin-top:56px;">
+      <ArticleEndCTA maxWidth={900} assess="leaders" />
+    </div>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

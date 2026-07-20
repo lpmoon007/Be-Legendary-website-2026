@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'How Much Does Executive Team Coaching Cost? (2026 Ranges) | Be Legendary';
-const description = 'An honest breakdown of what executive team coaching and development costs in 2026 — typical ranges by format (offsite facilitation, ongoing team engagements, individual executive coaching), what drives the price, and how to judge value against the cost of the problem. Written to inform, not to sell.';
+const title = 'How Much Does Executive Team Coaching Cost? (2026 Ranges)';
+const description = 'Honest 2026 ranges for executive team coaching by format — offsite facilitation, ongoing engagements, individual coaching — plus what drives the price.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -30,7 +30,7 @@ const schema = [
   ogDescription="Honest 2026 ranges by format, what drives the price, and how to judge value against the cost of the problem."
   schema={schema}
 >
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
@@ -43,7 +43,7 @@ const schema = [
     <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
     <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
-      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">It depends heavily on format. In 2026, a facilitated offsite typically runs <strong style="color:#FBF8F1;">$10K&ndash;$50K+</strong>; an ongoing team engagement with diagnostics and follow-through, roughly <strong style="color:#FBF8F1;">$30K&ndash;$250K+</strong>; individual executive coaching, about <strong style="color:#FBF8F1;">$500&ndash;$1,500+/hour</strong> or $25K&ndash;$100K+ for a multi-month engagement. The wide ranges reflect seniority, scope, and whether you're buying an event or a sustained change in behavior.</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">It depends heavily on format. In 2026, a facilitated offsite typically runs <strong style="color:#FBF8F1;">$10K&ndash;$50K+</strong>; an ongoing team engagement with diagnostics and follow-through, roughly <strong style="color:#FBF8F1;">$30K&ndash;$250K+</strong>; individual executive coaching, about <strong style="color:#FBF8F1;">$500&ndash;$1,500+/hour</strong> or $25K&ndash;$100K+ for a multi-month engagement. The wide ranges reflect seniority, scope, and whether you're buying an event or a sustained change in behavior.</p>
     </div>
   </header>
 
@@ -73,6 +73,11 @@ const schema = [
         </div>
         <p style="margin-top:10px;font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.74);">One-on-one coaching for a single leader &mdash; roughly $25K&ndash;$100K+ for a multi-month engagement with a senior coach. Develops the individual; note it won't, on its own, fix how the team operates together.</p>
       </div>
+    </div>
+
+    <div style="background:#211D15;border:1px solid rgba(192,74,38,0.35);border-radius:14px;padding:24px 28px;margin-top:14px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Where Be Legendary fits</p>
+      <p style="font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.84);">The ranges above are the market; here's our real, published number. Be Legendary's team engagements run from <strong style="color:#FBF8F1;">$25K to $500K+</strong> depending on scope — a focused, ready-to-run retreat at the low end, a fully bespoke engagement engineered to one measured outcome at the high end. Unlike most firms, those tiers are public: <a href={SLUGS.teamRetreats} style="color:#E0744A;text-decoration:underline;">see exactly what's in each &rarr;</a></p>
     </div>
 
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 20px;">What drives the price</h2>
@@ -110,5 +115,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary · General market ranges, not a quote." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary · General market ranges, not a quote." />
 </BaseLayout>

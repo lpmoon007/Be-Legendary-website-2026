@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = "Why Isn't My Executive Team Executing? (And How to Fix It) | Be Legendary";
-const description = "If your executive team has the strategy but can't execute, the problem usually isn't strategy, intelligence, or effort — it's discipline. Here are the four ways execution breaks on a leadership team, and how to rebuild the one that broke.";
+const title = "Why Isn't My Executive Team Executing? | Be Legendary";
+const description = "If your executive team has the strategy but can't execute, it's rarely strategy or effort — it's discipline. Here are the four ways execution breaks.";
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -23,7 +25,7 @@ const schema = [
 ];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.whyNotExecuting} ogType="article" ogTitle="Why isn't my executive team executing?" ogDescription="It's almost never a strategy problem. It's a discipline problem — and it breaks in one of four specific places first." schema={schema}>
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <!-- HERO + ANSWER-FIRST -->
@@ -36,7 +38,7 @@ const schema = [
     <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
     <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
-      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">The problem usually isn't strategy, intelligence, or effort &mdash; it's <strong>discipline</strong>. Smart, accomplished people know what to do and still don't do it when comfort is easier than truth. And execution doesn't break everywhere at once: it breaks in <strong>one of four specific places first.</strong> Find that one, rebuild it, and the team starts moving &mdash; without buying another framework.</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">The problem usually isn't strategy, intelligence, or effort &mdash; it's <strong>discipline</strong>. Smart, accomplished people know what to do and still don't do it when comfort is easier than truth. And execution doesn't break everywhere at once: it breaks in <strong>one of four specific places first.</strong> Find that one, rebuild it, and the team starts moving &mdash; without buying another framework.</p>
     </div>
   </header>
 
@@ -109,9 +111,15 @@ const schema = [
         <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">We did EOS &amp; OKRs and nothing changed. Why?</span>
         <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Frameworks assume a team that can already execute. Here's the layer underneath them.</span>
       </a>
+      <a href={SLUGS.signsDysfunction} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Signs of a dysfunctional leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The seven symptoms, and the one root cause underneath them.</span>
+      </a>
     </div>
   </div>
-  </article>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. Field notes on executive-team execution." />
 </BaseLayout>

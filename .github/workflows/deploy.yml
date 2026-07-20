@@ -7,7 +7,12 @@ name: Deploy to VPS
 on:
   push:
     branches: [claude/epic-carson-cjyx09, main]
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      submit_all:
+        description: 'Submit ALL URLs to IndexNow (re-seed the whole site), not just changed'
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy-${{ github.ref }}
@@ -20,6 +25,8 @@ jobs:
     if: ${{ true }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so IndexNow can diff the pushed range
 
       - uses: actions/setup-node@v4
         with:
@@ -51,3 +58,20 @@ jobs:
             -e "ssh -i ~/.ssh/deploy_key -p $PORT -o StrictHostKeyChecking=accept-new" \
             dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
           echo "Deployed to $DEPLOY_HOST:$DEPLOY_PATH"
+
+      - name: Notify IndexNow (Bing, Yandex, Seznam, …)
+        # Runs only after a real deploy (the key file must be live for IndexNow to
+        # validate). Submits changed page URLs — or the whole site when a shared
+        # file changed, on first push, or when re-seeding via workflow_dispatch.
+        # Best-effort: the script never exits non-zero, so it can't fail a deploy.
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          SUBMIT_ALL: ${{ github.event.inputs.submit_all }}
+        run: |
+          if [ -z "$DEPLOY_SSH_KEY" ]; then
+            echo "::notice::No deploy occurred — skipping IndexNow."
+            exit 0
+          fi
+          node scripts/indexnow.mjs

@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Signs of a Dysfunctional Leadership Team (and the Root Cause)';
+const description =
+  'The signs of a dysfunctional leadership team are rarely dramatic — capable people who can’t decide, don’t finish, avoid the hard conversation, and repeat the same mistakes. Here are the seven signs and the one root cause underneath them.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Signs of a Dysfunctional Leadership Team', item: 'https://www.belegendary.org/signs-of-a-dysfunctional-leadership-team/' },
+  ] },
+  { '@type': 'Article', headline: 'Signs of a dysfunctional leadership team — and the one root cause underneath', datePublished: '2026-07-12', dateModified: '2026-07-12', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/signs-of-a-dysfunctional-leadership-team/', description: 'Seven observable signs of a dysfunctional leadership team, all tracing to one root cause: eroded discipline, not bad people. Plus how to find which discipline broke.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What are the signs of a dysfunctional leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'The most common signs are: every decision runs through one person; initiatives start with energy and quietly die; missed commitments carry no consequence; the team agrees in the room then does something different; the same problems resurface every quarter; offsites feel great and change nothing; and installed frameworks like EOS or OKRs never changed behavior. They look like different problems but trace to one root cause — eroded discipline, not bad people.' } },
+    { '@type': 'Question', name: 'What causes a dysfunctional leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'Rarely a personality clash or a lack of talent. Dysfunction is usually the slow erosion of four disciplines: the team stops making decisions that stick, stops finishing on a cadence, stops holding a real standard, and stops learning from misses. Each erosion is a series of small choices to keep the peace instead of tell the truth. The dysfunction is the symptom; the missing discipline is the cause.' } },
+    { '@type': 'Question', name: 'How do you fix a dysfunctional leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'Not by replacing people or buying another framework. Find the one discipline that has eroded furthest — decision, rhythm, standard, or learning — and rebuild that first. A team almost never fails everywhere at once; it fails in one specific place, and fixing that place makes the others easier. Diagnose where yours breaks first, then rebuild that discipline deliberately.' } },
+  ] },
+];
+
+const signs = [
+  { n: '01', title: 'Every decision runs through one person.', body: 'The team can’t move without the boss in the room. Calls get deferred, re-opened, or quietly reversed in the hallway.', href: SLUGS.wontDecide, link: 'Why your team won’t decide without you' },
+  { n: '02', title: 'Initiatives start with energy and quietly die.', body: 'Lots of kickoffs, few finishes. Work sprawls, momentum leaks, and last quarter’s priorities are still “in progress.”', href: SLUGS.initiativesNeverFinish, link: 'Why initiatives never finish' },
+  { n: '03', title: 'Missed commitments carry no consequence.', body: 'Someone misses, and nothing happens. The bar quietly lowers to the most tolerated behavior, and “done” keeps sliding.', href: SLUGS.noAccountability, link: 'Why there’s no accountability' },
+  { n: '04', title: 'Everyone agrees in the room — then executes something else.', body: 'The meeting produces harmony, not alignment. The real disagreement never makes it onto the table, so it plays out afterward.', href: SLUGS.notAligned, link: 'Why the team isn’t aligned' },
+  { n: '05', title: 'The same problems resurface every quarter.', body: 'Failures become a search for who’s at fault instead of what to change — so the miss is never metabolized, and it returns wearing a new name.', href: SLUGS.sameMistakes, link: 'Why the team repeats mistakes' },
+  { n: '06', title: 'Offsites feel great and change nothing.', body: 'The team leaves energized and a month later nothing is different. Good conversation, no follow-through, no durable change.', href: SLUGS.offsitesDontStick, link: 'Why offsites don’t stick' },
+  { n: '07', title: 'You installed a framework and behavior didn’t change.', body: 'EOS, OKRs, a new operating system — adopted with real effort, and the team still behaves exactly as before.', href: SLUGS.eosOkrs, link: 'Why EOS / OKRs didn’t change behavior' },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.signsDysfunction}
+  ogType="article"
+  ogTitle="Signs of a Dysfunctional Leadership Team"
+  ogDescription="Seven signs — capable people who can’t decide, don’t finish, and repeat mistakes — and the one root cause underneath them all."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Signs of a Dysfunctional Leadership Team</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Diagnostic</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Signs of a dysfunctional leadership team</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A dysfunctional leadership team usually isn&rsquo;t dramatic &mdash; no shouting, no sabotage. It&rsquo;s capable people who <strong>can&rsquo;t decide, don&rsquo;t finish, avoid the hard conversation, and repeat the same mistakes</strong>. The seven signs below look like different problems, but they trace to one root cause: not a personality clash and not a lack of talent, but <strong>eroded discipline</strong>. The fix isn&rsquo;t better people or another framework &mdash; it&rsquo;s finding the one discipline that broke and rebuilding it.</p>
+    </div>
+  </header>
+
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#signs" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The seven signs</a></li>
+        <li><a href="#root" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The one root cause</a></li>
+        <li><a href="#fix" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">What to do about it</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- INTRO -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">When people picture a dysfunctional team, they picture conflict &mdash; the shouting match, the power struggle, the obvious villain. Real executive-team dysfunction is quieter and more dangerous than that. It&rsquo;s a room full of smart, well-intentioned, hard-working people who are somehow <a href={SLUGS.whyNotExecuting} style="color:#D98A5E;">busy without moving</a>. The dysfunction hides inside politeness. Here&rsquo;s how to spot it.</p>
+  </div>
+
+  <!-- THE SIGNS -->
+  <div id="signs" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">The seven signs</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      {signs.map((s) => (
+        <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:24px 26px;">
+          <div style="display:flex;gap:16px;align-items:baseline;">
+            <span style="font-family:'Newsreader',serif;font-size:22px;color:#C04A26;flex:none;">{s.n}</span>
+            <div>
+              <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;margin-bottom:8px;">{s.title}</p>
+              <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);margin-bottom:10px;">{s.body}</p>
+              <a href={s.href} style="font-size:14px;font-weight:600;color:#E0744A;text-decoration:none;">{s.link} &rarr;</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- THE ROOT CAUSE -->
+  <div id="root" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The one root cause underneath all seven</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Notice what the seven signs have in common: none of them is really about personality, and none is fixed by adding talent. They&rsquo;re all symptoms of the same thing &mdash; a leadership team that has quietly stopped keeping four disciplines. The team stopped making decisions that stick (the Decision), stopped finishing on a cadence (the Rhythm), stopped holding a real standard (the Standard), and stopped turning misses into change (the Learning). Under all four sits one governing choice, made or dodged daily: <strong style="color:#F4F0E7;">Truth Over Comfort</strong>.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">That&rsquo;s the reframe that changes what you do next. &ldquo;Dysfunction&rdquo; sounds like a people problem, so leaders reach for people solutions &mdash; a re-org, a new hire, a coach for the difficult VP. But dysfunction is a <em>discipline</em> problem wearing a personality mask. The <a href={SLUGS.flagModel} style="color:#D98A5E;">Flag Model</a> exists to name which discipline eroded &mdash; and a team almost never fails in all four at once. It fails in one specific place first.</p>
+  </div>
+
+  <!-- WHAT TO DO -->
+  <div id="fix" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">What to do about it</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">You don&rsquo;t fix all seven signs. You find the one discipline that&rsquo;s slipped furthest and rebuild that first &mdash; the others get easier because they were never really separate problems.</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;color:#3A372F;">
+        <li><strong>Name the pattern.</strong> Which of the seven signs is loudest on your team? That&rsquo;s the thread to pull.</li>
+        <li><strong>Trace it to a discipline.</strong> Can&rsquo;t decide &rarr; the Decision. Never finish &rarr; the Rhythm. No consequences &rarr; the Standard. Repeats mistakes &rarr; the Learning.</li>
+        <li><strong>Rebuild that one, deliberately.</strong> Measure it, put consequences behind it, and hold it &mdash; over time, not in a workshop.</li>
+      </ol>
+      <p style="font-size:15px;line-height:1.6;color:#5A5248;margin-top:18px;">For the full playbook &mdash; the specific mechanism to rebuild for each broken discipline, and the order to do it in &mdash; see <a href={SLUGS.fixDysfunctionalTeam} style="color:#C04A26;font-weight:600;">how to fix a dysfunctional leadership team</a>. Want a read on which one broke? The <a href={SLUGS.breakPointAssessment} style="color:#C04A26;font-weight:600;">Break Point self-assessment</a> gives you a first answer in a few minutes; the <a href={SLUGS.teamDiagnostic} style="color:#C04A26;font-weight:600;">team diagnostic</a> turns it into a full read for the whole team.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find where your team breaks first.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which discipline is driving the dysfunction &mdash; and the first move to rebuild it &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What are the signs of a dysfunctional leadership team?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Every decision runs through one person; initiatives start and quietly die; missed commitments carry no consequence; the team agrees in the room then does something different; the same problems resurface every quarter; offsites feel great and change nothing; and installed frameworks never changed behavior. They look like separate problems but trace to one root cause &mdash; eroded discipline, not bad people.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What causes a dysfunctional leadership team?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Rarely a personality clash or a lack of talent. It&rsquo;s the slow erosion of four disciplines &mdash; decisions that stick, a finishing cadence, a real standard, and learning from misses &mdash; each one a series of small choices to keep the peace instead of tell the truth. The dysfunction is the symptom; the missing discipline is the cause.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do you fix a dysfunctional leadership team?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Not by replacing people or buying another framework. Find the one discipline that eroded furthest &mdash; decision, rhythm, standard, or learning &mdash; and rebuild that first. A team almost never fails everywhere at once; fixing the place it breaks first makes the rest easier.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The four disciplines and the Flag behind the dysfunction.</span>
+      </a>
+      <a href={SLUGS.measureTeamPerformance} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to measure leadership team performance</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Turn &ldquo;something&rsquo;s off&rdquo; into a number you can track.</span>
+      </a>
+      <a href={SLUGS.strategyExecutionGap} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The strategy execution gap</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why sound strategy still fails to get done.</span>
+      </a>
+      <a href={SLUGS.highPerformingTeam} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Build a high-performing leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The opposite of everything on this page.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. Dysfunction is a discipline problem wearing a personality mask." />
+</BaseLayout>

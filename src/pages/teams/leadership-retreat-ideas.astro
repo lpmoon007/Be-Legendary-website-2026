@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
+
+const path = SLUGS.leadershipRetreatIdeas;
+const title = 'Leadership Retreat Ideas That Change a Team | Be Legendary';
+const description =
+  'Leadership retreat ideas that do more than fill a day: experiential formats — off-road, backcountry, sailing, estate — each matched to an outcome.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design, enriched with
+// entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Corporate Leadership Retreat Ideas That Actually Change a Team',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['leadership retreat ideas', 'corporate retreat', 'executive offsite'],
+    description:
+      'Experiential corporate leadership retreat ideas, matched to outcomes, and how to choose the right format.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What are good corporate leadership retreat ideas?', acceptedAnswer: { '@type': 'Answer', text: 'The best ideas are chosen by outcome, not novelty. For trust and candor, a remote-cabin immersion. For interdependence, an off-road or backcountry challenge. For alignment and shared command, sailing or open water. For reflection and vision, a five-star estate built for deep work. The idea should be the vehicle for a specific result, with facilitation and 30-day reinforcement around it.' } },
+      { '@type': 'Question', name: 'How do you plan a leadership retreat that actually works?', acceptedAnswer: { '@type': 'Answer', text: 'Start with the one outcome you need — what the team should feel, think and do differently afterward — then pick the format that produces it, not the other way around. Add real facilitation so the experience converts into change, and plan reinforcement for the weeks after so it holds. A great venue with no outcome is just an expensive trip.' } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Corporate Leadership Retreat Ideas That Actually Change a Team"
+  ogDescription="The best retreat idea is the one matched to your outcome. Here's how to choose."
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader
+    audience="teams"
+    variant="slim"
+    logoHref="/"
+    contextLink={{ label: 'Book a Calibration Call', href: CTA_URL, external: true }}
+  />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <article>
+    <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">Leadership Retreat Ideas</span>
+      </nav>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#3A0A0C;max-width:20ch;">Corporate leadership retreat ideas that actually change a team.</h1>
+      <div style="margin-top:28px;background:#F6F1E7;border-left:3px solid #64010a;border-radius:0 12px 12px 0;padding:24px 26px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">The short answer</p>
+        <p class="bl-speakable" style="font-size:18px;line-height:1.6;color:#4A3A34;">The best retreat idea isn't the most novel one — it's the one matched to your <em style="font-style:italic;">outcome.</em> Trust needs a different format than alignment; interdependence needs a different one than vision. Below are the ideas that work, sorted by what you're actually trying to change.</p>
+      </div>
+    </header>
+
+    <!-- IDEAS BY OUTCOME -->
+    <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Ideas, sorted by outcome</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Remote cabin immersion</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for trust &amp; candor</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">Close quarters, no escape hatch — a team finally has to be together with nowhere to hide.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Off-road or backcountry challenge</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for interdependence</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">Real terrain and shared adversity, where the team has to depend on each other under genuine pressure.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Sailing or open water</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for alignment &amp; command</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">One heading, one crew — a boat is your company compressed into a day.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Five-star estate, built for deep work</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for reflection &amp; vision</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">Space, beauty, remarkable food, and the right table — room to think at the altitude the work requires.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:12px;padding:22px 24px;"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:baseline;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">Winter survival</h3><span style="font-size:13px;font-weight:700;color:#C04A26;">for breaking divides</span></div><p style="font-size:15px;line-height:1.55;color:#5A4A44;margin-top:6px;">Cold, stakes, and interdependence — for pushing through stubborn divides and ego.</p></div>
+      </div>
+    </section>
+
+    <!-- THE REFRAME -->
+    <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+      <div style="font-size:19px;line-height:1.72;color:#4A3A34;">
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#3A0A0C;margin:0 0 22px;padding-left:22px;border-left:3px solid #64010a;">Pick the outcome first. The idea is just the vehicle that gets you there.</p>
+        <p>The reason most retreats are forgotten by the following month isn't a bad idea — it's the missing pieces around it: real facilitation to convert the experience into change, and reinforcement in the weeks after so it holds. A great venue with no outcome is an expensive trip. A great idea with facilitation and follow-through is a different team.</p>
+      </div>
+    </section>
+
+    <!-- SOFT CTA -->
+    <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+      <div style="background:#64010a;color:#F6EFE0;border-radius:18px;padding:40px 42px;text-align:center;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF3E7;max-width:24ch;margin:0 auto 16px;">Tell us the outcome. We'll bring the idea — and run it.</h2>
+        <p style="font-size:17px;line-height:1.6;color:rgba(246,239,224,0.82);max-width:48ch;margin:0 auto 28px;">Be Legendary designs and delivers the whole thing, from format to facilitation to the 30-day reinforcement. Fifteen minutes with James narrows it fast.</p>
+        <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+          <a href={SLUGS.teamRetreats} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">See formats &amp; case studies <span>&rarr;</span></a>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="border:1px solid rgba(246,239,224,0.35);color:#F6EFE0;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Book a Calibration Call</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="max-width:820px;margin:56px auto 0;padding:0 32px 90px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#3A0A0C;margin-bottom:28px;">Straight answers</h2>
+      <div style="display:flex;flex-direction:column;gap:24px;">
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:8px;">How do you plan a retreat that actually works?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">Start with the one outcome you need, pick the format that produces it, add real facilitation to convert experience into change, and plan reinforcement for the weeks after. Outcome first, idea second.</p></div>
+        <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:8px;">What does it cost?</h3><p style="font-size:16px;line-height:1.65;color:#5A4A44;">$25k–$50k for a Focused retreat, $35k–$100k for a Signature experiential one, $75k–$500k+ for fully bespoke — set by the outcome, not the budget.</p></div>
+      </div>
+    </section>
+      <!-- internal-linking: keep-reading rail -->
+      <section style="max-width:860px;margin:8px auto 0;padding:0 32px 76px;">
+        <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep reading</p>
+        <div style="display:grid;gap:12px;">
+          <a href="/teams/corporate-retreat-ideas/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">Corporate retreat ideas that stick</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/teams/executive-offsite-ideas/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">Executive offsite ideas that actually stick</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/teams/luxury-executive-retreat/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">The luxury executive retreat</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+        </div>
+      </section>
+      <ArticleEndCTA maxWidth={920} />
+      <ShareRow title={title} maxWidth={920} />
+</article>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="slim" />
+</BaseLayout>

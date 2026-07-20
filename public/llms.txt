@@ -1,12 +1,12 @@
 # Be Legendary
 
-> Be Legendary is an executive-team performance firm founded by James Carter (est. 2010, formerly Repario). We diagnose where a leadership team breaks first and rebuild the disciplines that turn strategy into execution, using a proprietary framework called the Flag Model. Primary call to action: a free 15-minute, CEO-only Calibration Call.
+> Be Legendary serves two audiences under one brand. For Teams: an executive-team performance firm founded by James Carter (est. 2010, formerly Repario) that diagnoses where a leadership team breaks first and rebuilds the disciplines that turn strategy into execution, using a proprietary framework called the Flag Model. For Leaders: individual-leader development — the Mindset Workouts gym, the 30-Day Challenge, and immersive experiences that change how a leader sees themselves. Primary call to action: a free 15-minute Calibration Call.
 
 ## Core concepts
 - The Flag Model: a leadership-execution framework — a Flag (the 2–3 priorities everything serves) held upright by four disciplines: the Decision, the Rhythm, the Standard, and the Learning. Governing principle: Truth Over Comfort.
 - The five components a team can lose: the Flag (alignment), the Decision (commitment), the Rhythm (finishing), the Standard (holding the bar), the Learning (correcting).
 - FlagScore: a composite measure of an executive team's health across the five components.
-- Calibration Call: a free 15-minute CEO-only conversation that surfaces a team's first break point.
+- Calibration Call: a free 15-minute conversation that surfaces a team's first break point.
 - ELFS (Executive Leadership Failure Simulation): a solo CEO pressure simulation with a written report.
 
 ## Key pages
@@ -43,8 +43,43 @@
 - How to choose a leadership team offsite facilitator: https://www.belegendary.org/leadership-team-offsite-facilitator/
 - How much does executive team coaching cost? (2026 ranges): https://www.belegendary.org/executive-team-coaching-cost/
 
+## For individual leaders
+- For Leaders home — the mindset gym, the challenge, and the path: https://www.belegendary.org/leaders/
+- Mindset Workouts — a free "gym" of 18 short workouts across three readiness dimensions (Mental, Emotional, Spiritual): https://www.belegendary.org/leaders/workouts/
+- The 30-Day Challenge — turn a workout's lesson into one ridiculously-easy daily rep via SMS. The method: "When [existing habit], instead of [autopilot], I will [one tiny rep]." https://www.belegendary.org/leaders/30-day-challenge/
+- The ABCs of a Legendary Mindset — Awareness, Beliefs, Courage: https://www.belegendary.org/leaders/abcs-of-mindset/
+- The Roadmap to Legendary — the stages of a leader's growth: https://www.belegendary.org/leaders/roadmap-to-legendary/
+- The Legendary Leader — the flagship whole-person program built around a Shakubuku: https://www.belegendary.org/leaders/the-legendary-leader/
+- Leader's Glossary — Shakubuku, Kintsugi, Misogi, the Golden Buddha, and more, defined: https://www.belegendary.org/leaders/glossary/
+
+## Leader guides & essays (individual-leader SEO/GEO cluster, all under /leaders/)
+- Habit-building: what is habit stacking (/leaders/what-is-habit-stacking/), how to build a habit (/leaders/how-to-build-a-habit/), implementation intentions (/leaders/implementation-intentions/), why habits fail (/leaders/why-habits-fail/), lead vs lag measures (/leaders/lead-vs-lag-measures/).
+- Leadership essentials: what is leadership (/leaders/what-is-leadership/), what makes a good leader (/leaders/what-makes-a-good-leader/), leadership qualities (/leaders/leadership-qualities/), how to improve leadership skills (/leaders/improve-leadership-skills/), what is executive coaching (/leaders/what-is-executive-coaching/), breaking a leadership plateau (/leaders/leadership-plateau/), executive imposter syndrome (/leaders/executive-imposter-syndrome/).
+- When you've "made it": successful but unfulfilled (/leaders/successful-but-unfulfilled/), what's next after success (/leaders/whats-next-after-success/), who am I without my title (/leaders/who-am-i-without-my-title/).
+- Recharge & reset: executive burnout retreat (/leaders/executive-burnout-retreat/), stress management retreat (/leaders/stress-management-retreat/), wilderness therapy for executives (/leaders/wilderness-therapy-for-executives/), where executives recharge (/leaders/where-executives-recharge/), what is Type 2 fun (/leaders/type-2-fun/).
+- Mindset vocabulary: what is Shakubuku (/leaders/what-is-shakubuku/), what is Kintsugi (/leaders/what-is-kintsugi/), what is a Misogi (/leaders/what-is-a-misogi/), the Golden Buddha story (/leaders/the-golden-buddha-story/).
+
+## For Teams — retreats & programs (all under /teams/)
+- For Teams hub — the framework, diagnostics, retreats, and guides in one place: https://www.belegendary.org/teams/
+- Team Retreats — executive-team retreats that turn alignment into execution: https://www.belegendary.org/teams/retreats/
+- Destinations — where the retreats happen: https://www.belegendary.org/teams/retreats/destinations/
+- Retreat Formats — the formats and how to choose: https://www.belegendary.org/teams/retreats/formats/
+- Ways to Work Together — engagement tiers: https://www.belegendary.org/teams/retreats/ways-to-work-together/
+- For Executive Assistants — planning a leadership retreat: https://www.belegendary.org/teams/retreats/for-executive-assistants/
+- Team Diagnostic — where your executive team breaks first: https://www.belegendary.org/teams/diagnostic/
+- Team guides: followership (/teams/followership/), corporate retreat ideas & locations (/teams/corporate-retreat-ideas/), executive offsite ideas (/teams/executive-offsite-ideas/), leadership retreat ideas (/teams/leadership-retreat-ideas/), luxury executive retreat (/teams/luxury-executive-retreat/).
+
+## Key definitions (for leaders)
+- Shakubuku: a sudden, radical shift in how you see yourself — an awakening to your own inherent greatness; also Be Legendary's flagship by-application experience.
+- Misogi: one hard ordeal a year, real stakes, lived in the physical world, that resets what you believe you're capable of.
+- Kintsugi / Wabi-Sabi: seeing earned imperfection as beauty — in others and yourself.
+- The Golden Buddha: the best of who you are, hidden under clay you can clear away.
+
+## The book — Lost Disciplines of Leadership (TM)
+The forthcoming book by James Carter and the foundational text behind the Flag Model. It's about the execution gap: why capable leadership teams know what to do and still fail to do it, and how the Flag Model rebuilds the disciplines stalled teams quietly lose — one Flag (alignment) and four disciplines (the Decision, the Rhythm, the Standard, the Learning), governed by Truth Over Comfort. A fable, then a field guide. Launching 2026; join the waitlist for the free first chapter. Launch site: https://www.belegendary.org/lost-disciplines/ (The Book /lost-disciplines/the-book/, About James /lost-disciplines/about-james/, Bulk & Speaking /lost-disciplines/bulk-and-speaking/).
+
 ## Who it's for
-CEOs and executive teams whose strategy is sound but whose execution stalls. We work with leaders from fast-scaling founders to enterprise teams.
+For Teams: CEOs and executive teams whose strategy is sound but whose execution stalls — from fast-scaling founders to enterprise teams. For Leaders: individuals who want to grow their own mindset and readiness, one daily rep at a time.
 
 ## Contact
 Book a Calibration Call: https://meetings.hubspot.com/jcarter28

@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('mindset-of-a-legend');
+const title = 'Mindset of a Legend — the ABCs, in three workouts';
+const description =
+  "A three-part Mindset Workout on the ABCs of a legendary mindset: control your Awareness, know your Beliefs, harness your Courage. Free — work all three.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// The three-part A/B/C arc. Each part is rendered in full (video, teaching,
+// reflect, its own "Your rep" block, then its own inline log-it). The part ids
+// (mol-awareness/mol-beliefs/mol-courage) match the gym index + progress meters.
+const parts = [
+  {
+    id: 'mol-awareness', anchor: 'awareness', letter: 'A', name: 'Awareness', kicker: 'Part one',
+    dim: 'Mental', dimLabel: 'Mental',
+    video: 'https://www.youtube-nocookie.com/embed/r1FVjB8V3-g?rel=0',
+    videoTitle: 'The Awareness Test',
+    videoCaption: 'Watch: the Awareness Test. Count the passes — and miss the moon-walking bear in plain sight. That bear is opportunity, already there, that your focus filters out.',
+    heading: 'Control Your Awareness',
+    paras: [
+      "Awareness is two questions. First: are you seeing the opportunities right in front of you? Science is blunt — we miss an enormous amount of what's directly in our field of view. We feel observant; we aren't.",
+      "Second: do you know your core values? Your values are the filter that decides which opportunities even register. And here's what makes it urgent — everyone is competing for your attention and telling you which passes to count: advertisers, the news, your inbox, all pushing the negative because it grabs hold fastest.",
+      "If you don't decide what matters most to you, someone else decides for you — and you'll spend your life counting their passes while the moon-walking bears go by. Without awareness, being legendary happens only by accident. And accident is not a strategy.",
+    ],
+    questions: [
+      { n: '1', text: 'What are the three passes someone else is telling you to count right now — and who benefits when you do?' },
+      { n: '2', text: 'Say your top core value out loud. When did you last make a decision that actually ran through it?' },
+      { n: '3', text: 'What’s one moon-walking bear — an opportunity to make a difference — you’ve been walking past?' },
+    ],
+    misogiHead: 'For the next few days, catch one bear a day.',
+    misogiBody: 'Ninety seconds each morning: name the one thing that matters most to you today, and watch for a single opportunity that serves it. That’s the rep — deliberate awareness, on purpose, before the world sets your focus for you.',
+    notePlaceholder: 'The bear I’ve been walking past is…',
+    doneHead: 'Awareness — logged.',
+    doneBody: 'You’ve seen it now, and you can’t un-see it. That’s the point. Beliefs are next.',
+    nextHref: '#beliefs', nextCta: 'Go to B · Beliefs',
+  },
+  {
+    id: 'mol-beliefs', anchor: 'beliefs', letter: 'B', name: 'Beliefs', kicker: 'Part two',
+    dim: 'Emotional', dimLabel: 'Emotional',
+    video: 'https://www.youtube-nocookie.com/embed/2Z8Zz0xoALk?rel=0',
+    videoTitle: 'Diamond Shreddies — the power of belief',
+    videoCaption: 'Watch: "Diamond Shreddies" — the same square, turned 45 degrees, and everyone believes it tastes better. Nothing changed but the presenter’s absolute belief. That’s how your beliefs get shaped every day — toward someone else’s agenda.',
+    heading: 'Know Your Beliefs',
+    paras: [
+      "Your beliefs drive your actions and sharpen your awareness. They decide what you see, what you hear, and how you act. And here's what surprises almost everyone who does this work: how rarely they've ever said their beliefs out loud. We carry them, we're run by them, and we've never once put words to them.",
+      "When you examine what you actually believe about your own capacity, you arrive at an uncomfortable, awesome truth: you are already legendary. You're already committing legendary acts — you've just been telling yourself the wrong story about them, negating them or handing the credit away.",
+      "The work isn't to become something new. It's to stop denying what you already are. And that realization comes with a weight: accountability. Once you know, you can't un-know.",
+    ],
+    questions: [
+      { n: '1', text: 'Write down one belief you hold about your own capacity — in a full sentence. When did you last say it out loud?' },
+      { n: '2', text: 'Whose conviction shaped a belief you’re running on? Was it ever really yours to keep?' },
+      { n: '3', text: 'Name one recent act of yours you brushed off as "nothing." What’s the true story of it?' },
+    ],
+    misogiHead: 'Say the belief out loud. Then act as if it’s true.',
+    misogiBody: 'Pick the belief about yourself you’d most want to be true, and for the next few days, say it aloud each morning — then take one small action that only makes sense if it is true. Belief isn’t a feeling you wait for. It’s a story you practice.',
+    notePlaceholder: 'The belief I’ll say out loud is…',
+    doneHead: 'Beliefs — logged.',
+    doneBody: 'You’ve named it, and naming it makes it yours. Now the hard part: acting on it. Courage is next.',
+    nextHref: '#courage', nextCta: 'Go to C · Courage',
+  },
+  {
+    id: 'mol-courage', anchor: 'courage', letter: 'C', name: 'Courage', kicker: 'Part three',
+    dim: 'Emotional', dimLabel: 'Emotional',
+    video: 'https://www.youtube-nocookie.com/embed/2PDYXkzOLeE?rel=0',
+    videoTitle: 'The Tree — courage to act',
+    videoCaption: 'Watch: "The Tree" — courage isn’t the absence of fear; it’s acting while you still feel it.',
+    heading: 'Harness Your Courage',
+    paras: [
+      "Awareness isn't enough. Belief isn't enough. You have to act — and action takes courage. Here's the relationship that matters: the stronger your beliefs, the less courage you need. When you intentionally make a difference for someone else, you connect your heart and mind to the outcome, and something physical happens — like a tuning fork struck inside you. You hum, and your mind finally tells you the true story: I am legendary.",
+      "And you can't switch it back off. Once you've acted on your values courageously and heard your own mind say it, the story sticks. The question for every leader is simply: how do you take action when you know you should, but you're afraid?",
+      "There's a quieter courage, too — the courage to tell yourself the right story. You won't seize every opportunity; nobody can. When you let one pass, don't say “I’m not legendary.” The true story is: “I missed a legendary opportunity that time.” Saying that takes courage, because it means holding yourself to the belief that you can be legendary. That's a high bar. Set it anyway.",
+    ],
+    questions: [
+      { n: '1', text: 'What’s one action you know you should take, but fear has been holding back? What are you actually afraid of?' },
+      { n: '2', text: 'The last opportunity you let pass — did you tell yourself "I’m not legendary," or "I missed one that time"?' },
+      { n: '3', text: 'Who could you make a real difference for this week — the kind that strikes the tuning fork?' },
+    ],
+    misogiHead: 'Act while you’re still afraid. Then tell the true story.',
+    misogiBody: 'Take the one action you’ve been avoiding — small is fine, real is required — before the week is out. And each day, when you miss an opportunity, practice the honest line: “I missed a legendary one that time,” never “I’m not legendary.” That’s the .1% Miracle: 90 seconds of courageous, deliberate action, daily.',
+    notePlaceholder: 'The action I’ve been avoiding is…',
+    doneHead: 'Courage — logged.',
+    doneBody: 'You’ve made one full pass through the ABCs. The loop compounds from here — awareness sharpens, belief strengthens, courage gets cheaper.',
+    nextHref: SLUGS.workouts, nextCta: 'Back to the gym',
+  },
+];
+
+const arc = parts.map((p) => ({ id: p.id, letter: p.letter, name: p.name }));
+
+// JSON-LD: the design's LearningResource (enriched with entity @ids), a
+// DefinedTerm for the concept (concept workout), and a HowTo capturing the
+// three .1% Miracle reps as one full pass through the ABCs.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'Mindset of a Legend — the ABCs',
+    learningResourceType: 'Guided mindset workout (three parts)',
+    teaches: 'Awareness, Beliefs, Courage — the ABCs of a legendary mindset',
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT30M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'Mindset of a Legend',
+    description:
+      'The Mindset of a Legend is a practiced mindset built on three verbs — the ABCs: Control your Awareness (see the opportunities and values your focus filters out), Know your Beliefs (name what you believe about your own capacity and act as if it’s true), and Harness your Courage (act while you still feel fear, then tell yourself the true story). Legendary is not fame or fortune; it is the deliberate, daily practice of these three.',
+    inDefinedTermSet: 'Be Legendary',
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Make one full pass through the ABCs of a legendary mindset',
+    description:
+      'A three-rep pass through the ABCs: control your awareness, know your beliefs, and harness your courage — one real rep for each, logged as you go.',
+    totalTime: 'PT30M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Awareness — catch one bear a day',
+        text: 'Ninety seconds each morning: name the one thing that matters most to you today, and watch for a single opportunity that serves it — deliberate awareness, on purpose, before the world sets your focus for you.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Beliefs — say it out loud, then act as if it’s true',
+        text: 'Pick the belief about yourself you’d most want to be true, say it aloud each morning, then take one small action that only makes sense if it is true.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Courage — act while you’re still afraid',
+        text: 'Take the one action you’ve been avoiding — small is fine, real is required — and each day when you miss an opportunity, practice the honest line: “I missed a legendary one that time,” never “I’m not legendary.”',
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Mindset of a Legend — the ABCs, in three workouts"
+  ogDescription="Control your Awareness. Know your Beliefs. Harness your Courage."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <header style="max-width:1000px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">Mindset of a Legend</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Three-part arc · the ABCs</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">~10 min each</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,6.5vw,74px);line-height:0.98;letter-spacing:-0.025em;color:#1B1810;">The Mindset of a Legend</h1>
+      <p style="margin-top:22px;font-size:18.5px;line-height:1.62;color:#56524A;max-width:56ch;">Legendary isn't fame or fortune — it's a <em style="font-style:italic;color:#C04A26;">mindset</em>, built on three things you <em style="font-style:italic;">do</em>: Control your <strong style="color:#1B1810;">Awareness</strong>, Know your <strong style="color:#1B1810;">Beliefs</strong>, Harness your <strong style="color:#1B1810;">Courage</strong>. Not nouns — verbs. Do all three reps and you've made one full pass through the method.</p>
+    </header>
+
+    <!-- PART JUMP NAV -->
+    <div style="max-width:1000px;margin:34px auto 0;padding:0 32px;">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+        {parts.map((t) => (
+          <a href={`#${t.anchor}`} style="cursor:pointer;font-family:'Hanken Grotesk',sans-serif;border-radius:14px;padding:14px 16px;text-align:left;border:1.5px solid rgba(27,24,16,0.14);background:#FBF8F1;text-decoration:none;display:block;">
+            <span style="display:flex;align-items:center;gap:10px;">
+              <span style="flex:none;width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:18px;background:rgba(27,24,16,0.08);color:#8A7F6C;">{t.letter}</span>
+              <span style="text-align:left;">
+                <span style="display:block;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">{t.kicker}</span>
+                <span style="display:block;font-family:'Newsreader',serif;font-size:17px;color:#1B1810;">{t.name}</span>
+              </span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- THREE PARTS -->
+    {parts.map((p) => (
+      <>
+        <section id={p.anchor} style="max-width:760px;margin:44px auto 0;padding:0 32px;scroll-margin-top:24px;">
+          <div style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid rgba(27,24,16,0.12);background:#000;box-shadow:0 30px 70px -34px rgba(0,0,0,0.6);">
+            <iframe src={p.video} title={p.videoTitle} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;display:block;"></iframe>
+          </div>
+          <p style="margin-top:12px;font-size:14px;line-height:1.55;color:#6B6358;">{p.videoCaption}</p>
+
+          <div style="margin-top:36px;">
+            <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:18px;">
+              <span style="font-family:'Newsreader',serif;font-size:clamp(38px,6vw,58px);color:#C04A26;line-height:0.9;">{p.letter}</span>
+              <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(25px,3.4vw,36px);line-height:1.08;color:#1B1810;">{p.heading}</h2>
+            </div>
+            {p.paras.map((para) => (
+              <p style="font-size:18px;line-height:1.72;color:#3A362E;margin-bottom:20px;">{para}</p>
+            ))}
+          </div>
+
+          <div style="margin-top:26px;border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Reflect</p>
+            <div style="display:flex;flex-direction:column;gap:18px;">
+              {p.questions.map((q) => (
+                <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">{q.n}</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">{q.text}</p></div>
+              ))}
+            </div>
+          </div>
+
+          <div style="margin-top:34px;background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:32px 34px;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Your rep · the .1% Miracle</span><span style="font-size:12px;color:#8C8473;">90 seconds a day</span></div>
+            <p style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;line-height:1.25;color:#FBF8F1;margin-bottom:12px;">{p.misogiHead}</p>
+            <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">{p.misogiBody}</p>
+          </div>
+        </section>
+
+        <!-- log it (per part) -->
+        <MwComplete
+          workoutId={p.id}
+          dim={p.dim}
+          dimLabel={p.dimLabel}
+          notePlaceholder={p.notePlaceholder}
+          doneHead={p.doneHead}
+          doneBody={p.doneBody}
+          nextHref={p.nextHref}
+          nextCta={p.nextCta}
+        />
+      </>
+    ))}
+
+    <!-- ONE 30-DAY COMMITMENT BUILDER FOR THE WHOLE ARC -->
+    <MwCommitment
+      workoutId="mindset-of-a-legend"
+      dim="Mental"
+      dimLabel="Mental & Emotional"
+      c1="When I pour my morning coffee, instead of checking the news, ||I will name the one thing that matters most to me today."
+      c2="When I look in the mirror in the morning, instead of running on autopilot, ||I will say one belief about myself out loud as if it's true."
+      c3="When I feel fear before something I know I should do, instead of waiting for it to pass, ||I will take one 90-second action anyway."
+      willPh="take one 90-second action"
+    />
+
+    <!-- ARC PROGRESS -->
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px 90px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;text-align:center;">Your pass through the ABCs</p>
+      <p id="arc-text" style="font-size:14.5px;color:#6B6358;margin-bottom:24px;text-align:center;">Work through A, B, and C — in any order you like.</p>
+      <div style="display:flex;align-items:flex-start;">
+        {arc.map((a, i) => (
+          <div style="display:flex;align-items:center;flex:1;min-width:0;">
+            <div style="display:flex;flex-direction:column;align-items:center;text-align:center;flex:1;min-width:0;">
+              <div data-arc-mark={a.id} style="width:44px;height:44px;border-radius:999px;background:transparent;border:1px solid rgba(27,24,16,0.28);color:#8A7F6C;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:18px;margin-bottom:10px;">{a.letter}</div>
+              <span data-arc-label={a.id} style="font-size:12.5px;font-weight:600;color:#8C8473;">{a.name}</span>
+            </div>
+            {i < arc.length - 1 && <div style="height:1px;background:rgba(27,24,16,0.14);flex:0 0 16px;margin-top:-22px;"></div>}
+          </div>
+        ))}
+      </div>
+      <div id="arc-alldone" style="display:none;margin-top:24px;background:#C04A26;color:#fff;border-radius:14px;padding:24px 28px;text-align:center;">
+        <p style="font-family:'Newsreader',serif;font-size:22px;margin-bottom:8px;color:#fff;">One full pass, complete.</p>
+        <p style="font-size:15px;color:rgba(255,255,255,0.85);margin-bottom:16px;">You've worked the whole method once. Keep the .1% Miracle going — and see where else you can range.</p>
+        <a href={SLUGS.workouts} style="display:inline-flex;align-items:center;gap:8px;background:#15130E;color:#fff;padding:13px 24px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;">Back to the gym →</a>
+      </div>
+    </section>
+
+  </div>
+
+  <MwRelated current="mindset-of-a-legend" />
+
+  <SiteFooter audience="leaders" variant="slim" />
+
+  <script is:inline>
+    (function () {
+      try {
+        var d = JSON.parse(localStorage.getItem('bl_mw_progress')) || {};
+        var done = d.done || {};
+        var ids = ['mol-awareness', 'mol-beliefs', 'mol-courage'];
+        var count = 0;
+        ids.forEach(function (id) {
+          if (done[id]) {
+            count++;
+            var m = document.querySelector('[data-arc-mark="' + id + '"]');
+            if (m) { m.style.background = '#C04A26'; m.style.border = '1px solid #C04A26'; m.style.color = '#F4F0E7'; m.textContent = '✓'; }
+            var l = document.querySelector('[data-arc-label="' + id + '"]');
+            if (l) { l.style.color = '#1B1810'; }
+          }
+        });
+        var t = document.getElementById('arc-text');
+        if (t) {
+          if (count === 3) t.textContent = 'All three done — one full pass through the method.';
+          else if (count > 0) t.textContent = count + ' of 3 complete';
+        }
+        if (count >= 3) { var b = document.getElementById('arc-alldone'); if (b) b.style.display = 'block'; }
+      } catch (e) {}
+    })();
+  </script>
+</BaseLayout>

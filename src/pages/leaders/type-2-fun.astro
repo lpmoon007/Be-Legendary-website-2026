@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../lib/site';
+
+const path = SLUGS.type2Fun;
+const title = 'Type 2 Fun: Why the Hard Thing Is the Good Thing';
+const description =
+  "Type 2 fun is miserable while it happens and meaningful once it's done — the suffer-now, love-it-later experiences that grow you most. Why leaders need it.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + DefinedTerm + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Type 2 Fun: Why the Hard Thing Is the Good Thing',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['type 2 fun', 'type two fun', 'fun scale'],
+    description:
+      "What type 2 fun means, why it's where growth lives, and why leaders should seek it out.",
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'Type 2 Fun',
+    description:
+      'Type 2 fun is an experience that is difficult or unpleasant while it is happening but deeply rewarding in retrospect — the suffer-now, treasure-later end of the fun scale, where most real growth and the best stories come from.',
+    inDefinedTermSet: 'Be Legendary',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is type 2 fun?', acceptedAnswer: { '@type': 'Answer', text: "Type 2 fun is an experience that's miserable in the moment but deeply satisfying once it's over — a hard climb, a cold expedition, a brutal training block. It sits on the 'fun scale': Type 1 is fun while it happens (a great meal), Type 2 is fun only in retrospect (the epic you'll tell stories about), and Type 3 is never fun. Growth, meaning and the best memories cluster in Type 2." } },
+      { '@type': 'Question', name: 'Why is type 2 fun good for you?', acceptedAnswer: { '@type': 'Answer', text: "Because comfort rarely changes anyone. Type 2 fun asks more of you than you thought you had, and the reward is a bigger sense of what you're capable of. For leaders especially, deliberately choosing hard, meaningful experiences builds the resilience, perspective and confidence that ease never will." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Type 2 Fun: Why the Hard Thing Is the Good Thing"
+  ogDescription="Type 1 fun feels good now. Type 2 fun changes you. Leaders need the second kind."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Type 2 Fun</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:18ch;">Type 2 fun: why the hard thing is the good thing.</h1>
+    <p style="margin-top:16px;font-size:14px;color:#6E6757;">By <a href={SLUGS.about} style="color:#C04A26;text-decoration:none;">James Carter</a> &middot; Founder, Be Legendary</p>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p class="bl-speakable" style="font-size:18px;line-height:1.6;color:#2E2A22;">Type 2 fun is <strong style="font-weight:700;">miserable while it happens and meaningful once it's done</strong> — the hard climb, the cold night, the brutal push you'll tell stories about for years. Type 1 feels good now; Type 2 changes you. Growth lives in the second kind.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">Climbers named it "the fun scale." <strong style="font-weight:700;">Type 1</strong> is fun in the moment — a great dinner, a perfect ski run. <strong style="font-weight:700;">Type 2</strong> is miserable in the moment and glorious in memory — the summit you swore at, the storm you pushed through. <strong style="font-weight:700;">Type 3</strong> is never fun and best avoided. Notice which one produces the stories you actually tell.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">Nobody tells the story of the comfortable weekend. The reps that changed you were all Type 2.</p>
+          <p>Here's why it matters for a leader: comfort rarely changes anyone. The experiences that expand your sense of what you're capable of are almost always the ones that were hard while you were in them. Choosing Type 2 fun on purpose — a real challenge with a real chance you'll struggle — is how you keep growing after success has made your life comfortable enough to stop.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:12px;padding:22px 20px;"><p style="font-family:'Newsreader',serif;font-size:24px;color:#8A7F6C;">Type 1</p><p style="font-size:14.5px;line-height:1.5;color:#56524A;margin-top:6px;">Fun now, forgotten soon. Pleasant, not transformative.</p></div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:12px;padding:22px 20px;"><p style="font-family:'Newsreader',serif;font-size:24px;color:#E0744A;">Type 2</p><p style="font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.82);margin-top:6px;">Hard now, treasured later. Where growth and the stories live.</p></div>
+          <div style="background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:12px;padding:22px 20px;"><p style="font-family:'Newsreader',serif;font-size:24px;color:#8A7F6C;">Type 3</p><p style="font-size:14.5px;line-height:1.5;color:#56524A;margin-top:6px;">Never fun, no upside. Skip it.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Design some on purpose</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">Put more Type 2 in your calendar.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The free Mindset Workouts help you choose the hard, meaningful thing on purpose — and a Misogi is Type 2 fun by design. Start with one rep.</p>
+          <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+            <a href={SLUGS.workouts} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Enter the gym — free <span>&rarr;</span></a>
+            <a href={workoutPath('design-your-misogi')} style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Design a Misogi</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px 90px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Why is type 2 fun good for you?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Because comfort rarely grows anyone. Type 2 fun asks more of you than you thought you had, and hands back a bigger sense of what you're capable of — resilience, perspective and confidence that ease never builds.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">What's an example of type 2 fun?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">A hard alpine climb, a winter survival night, a marathon you hadn't fully trained for, a wilderness expedition. Miserable in the middle, unforgettable after. It's the whole premise behind an experiential immersion like a Shakubuku.</p></div>
+        </div>
+      </section>
+      <ArticleEndCTA maxWidth={820} />
+      <ShareRow title={title} maxWidth={820} />
+</article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('what-the-beep');
+const title =
+  'What the Beep?! — the invisible forces shaping your behavior';
+const description =
+  "A Mindset Workout on awareness. Behind every automatic behavior is a 'beep' — an invisible trigger you never chose. Catch it, name it, question it. Free.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource (entity @ids added) plus a HowTo built
+// from the "Time for Action" beep rep.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'What the Beep?! — the invisible forces shaping your behavior',
+    learningResourceType: 'Guided mindset workout',
+    teaches:
+      'Noticing the automatic triggers that drive behavior, and choosing consciously',
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT10M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Kill one beep — or install one worth obeying',
+    description:
+      'Take the trigger that benefits you least and break the reflex, or design a new cue that fires a behavior you’d choose on purpose.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Name the beep',
+        text: 'Name three beeps in your day, then pick the one you obey most automatically.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Ask what it’s for',
+        text: 'Ask it straight: how does this behavior actually benefit me — and whose agenda installed it?',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Break it or replace it',
+        text: 'Break the reflex — turn off the notification, put a gap between trigger and action — or design a new beep that serves what you actually want. Then log the rep.',
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="What the Beep?! — the invisible forces shaping your behavior"
+  ogDescription="Behind every automatic behavior is a trigger you never chose. Catch the beep."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <header style="max-width:1000px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">What the Beep?!</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0A34A;">Mental</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B48AD9;">Spiritual</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">~10 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(42px,7vw,78px);line-height:0.98;letter-spacing:-0.025em;color:#1B1810;">What the Beep?!</h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#56524A;max-width:52ch;">A bell rings, a salesperson jumps up and changes the number on the board. An email lands, you drop everything to look. A notification <em style="font-style:italic;color:#C04A26;">beeps</em> — and you move, before you've decided anything. There are invisible forces shaping your behavior all day. This is a tough one, and hard to accept.</p>
+    </header>
+
+    <div style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <div style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid rgba(244,240,231,0.1);background:#000;box-shadow:0 30px 70px -34px rgba(0,0,0,0.6);">
+        <iframe src="https://www.youtube-nocookie.com/embed/9raB-bbK10A?rel=0" title="The Awareness Test — how much you miss" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;display:block;"></iframe>
+      </div>
+      <p style="margin-top:12px;font-size:14px;line-height:1.55;color:#8A7F6C;"><strong style="color:#56524A;">Watch first:</strong> the Awareness Test. If you've seen it, skip ahead. If not — count carefully. It sets up everything below: you are being trained, all day, to pay attention to what you've been told to.</p>
+    </div>
+
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">The teaching</p>
+      <div style="font-size:18px;line-height:1.72;color:#3A362E;">
+        <p style="margin-bottom:20px;">Pavlov rang a bell before he fed his dogs. Soon the bell alone made them salivate — no food required. The bell is a <em style="font-style:italic;">beep:</em> a trigger that fires a behavior automatically, without a decision in between. You are full of them, and most you've never noticed.</p>
+        <p style="margin-bottom:20px;">A sale closes (<strong style="color:#1B1810;">beep</strong>) → you ring the bell and change the number. An email notification (<strong style="color:#1B1810;">beep</strong>) → you stop mid-thought and open it. The behavior feels like a choice. It isn't — it's a reflex you were handed.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:23px;line-height:1.4;color:#1B1810;margin:30px 0;padding-left:22px;border-left:3px solid #C04A26;">Many behaviors have no benefit at all. Some benefit one person and cost another. The beep just fires — you decide whether it's worth obeying.</p>
+        <p>Here's the hard part: to judge a beep, you have to know what you actually want. Without that, you'll keep obeying beeps someone else installed — the bell, the badge, the buzz — and calling it your own behavior. Awareness is catching the beep in the gap before the behavior, and asking one question: <em style="font-style:italic;">how does this actually benefit me?</em></p>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+      <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Reflect</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">1</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Name three beeps in your day — the notification, the meeting invite, the Slack ping. What behavior does each one fire?</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">2</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Pick the one you obey most automatically. Ask it straight: how does this behavior actually benefit me?</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">3</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Whose agenda installed that beep? Yours — or someone who profits when you jump?</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:38px auto 0;padding:0 32px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 36px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for Action</span><span style="font-size:12px;color:#8C8473;">one behavior · this week</span></div>
+        <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.25;color:#FBF8F1;margin-bottom:14px;">Kill one beep. Or install one worth obeying.</p>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Take the beep that benefits you least and break the reflex — turn off the notification, ignore the bell, put a gap between trigger and action. Or design a new one that serves what you actually want: a cue that fires a behavior you'd choose on purpose. You decide what's worth jumping for.</p>
+      </div>
+    </section>
+
+    <MwComplete
+      workoutId="what-the-beep"
+      dim="Mental"
+      dimLabel="Mental"
+      notePlaceholder="The beep I'll break this week is…"
+      doneHead="Beep — caught."
+      doneBody="You can't un-hear it now. Every trigger is a choice you get to make on purpose."
+    />
+
+    <MwCommitment
+      workoutId="what-the-beep"
+      dim="Mental"
+      dimLabel="Mental"
+      c1="When I feel a reaction spike, instead of acting on it, ||I will name the trigger: 'that's a beep.'"
+      c2="When my phone buzzes, instead of grabbing it, ||I will take one breath before I look."
+      c3="When I get in my car, instead of autopilot, ||I will name one trigger I noticed today."
+      willPh="name the beep"
+    />
+
+  </div>
+
+  <MwRelated current="what-the-beep" />
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

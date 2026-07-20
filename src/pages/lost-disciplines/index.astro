@@ -1,0 +1,321 @@
+---
+import { Image } from 'astro:assets';
+import LdolLayout from '../../layouts/LdolLayout.astro';
+import LdolHeader from '../../components/LdolHeader.astro';
+import LdolFooter from '../../components/LdolFooter.astro';
+import { CTA_URL, SITE_URL, HUBSPOT, LDOL_CHAPTER_URL, CONTACT_EMAIL } from '../../lib/site';
+import ldolCover from '../../assets/ldol-cover.png';
+import james from '../../assets/james.jpg';
+
+const title = 'Lost Disciplines of Leadership™ — the book on why teams don’t execute';
+const description =
+  'Why capable leadership teams know what to do and still fail to do it — and how the Flag Model™ rebuilds the disciplines stalled teams quietly lose. The new book by James Carter. A Be Legendary book.';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Book',
+    name: 'Lost Disciplines of Leadership',
+    alternateName: 'Lost Disciplines of Leadership™',
+    url: `${SITE_URL}/lost-disciplines/`,
+    image: `${SITE_URL}/assets/ldol-cover.png`,
+    bookFormat: 'https://schema.org/Hardcover',
+    inLanguage: 'en',
+    abstract:
+      'Why capable leadership teams know what to do and still fail to do it — the execution gap — and how the Flag Model™ rebuilds the disciplines that stalled teams quietly lose: the Flag (alignment), the Decision, the Rhythm, the Standard, and the Learning, governed by Truth Over Comfort.',
+    author: {
+      '@type': 'Person',
+      name: 'James Carter',
+      url: `${SITE_URL}/lost-disciplines/about-james/`,
+      jobTitle: 'Author & executive-team advisor',
+      description:
+        'Executive-team advisor of 25 years; co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra, and Brian Tracy; featured on CNN and in Business Insider.',
+    },
+    publisher: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' },
+    about: ['Leadership', 'Team execution', 'Accountability', 'Organizational alignment'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Lost Disciplines of Leadership',
+    url: `${SITE_URL}/lost-disciplines/`,
+    logo: `${SITE_URL}/assets/ldol-b-logo.png`,
+    parentOrganization: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is Lost Disciplines of Leadership about?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'It is a book by James Carter about the execution gap — why capable leadership teams know what to do and still fail to do it — and how the Flag Model™ rebuilds the disciplines stalled teams lose.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the Flag Model?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'A framework of one Flag (alignment) and four disciplines — the Decision, the Rhythm, the Standard, and the Learning — all governed by Truth Over Comfort. High-performing teams keep them; stalled teams quietly lose them.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Why do leadership teams fail to execute?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Because execution is a discipline problem, not a motivation problem. Teams erode the Decision, Rhythm, Standard, and Learning one small compromise at a time until the plan outpaces the doing.',
+        },
+      },
+    ],
+  },
+];
+---
+<LdolLayout title={title} description={description} path="/lost-disciplines/" schema={schema}>
+  <LdolHeader active={null} />
+
+  <!-- HERO -->
+  <header id="top" style="position:relative;overflow:hidden;background:radial-gradient(120% 120% at 80% 38%, rgba(192,74,38,.16), transparent 55%);">
+    <div class="ldol-wrap" style="padding-top:112px;padding-bottom:120px;">
+      <div style="max-width:760px;">
+        <div class="ldol-eyebrow" style="color:#C04A26;margin-bottom:30px;">Lost Disciplines of Leadership&trade; &middot; Coming 2026</div>
+        <h1 class="ldol-h1" style="font-family:'Newsreader',serif;font-weight:500;font-size:80px;line-height:1.02;letter-spacing:-.015em;color:#f4f0e6;margin:0 0 30px;">They know what to do.<br>They still <span style="font-style:italic;color:#c9a24a;">don&rsquo;t do it.</span></h1>
+        <p style="font-size:20px;line-height:1.6;color:#b3a899;margin:0 0 42px;max-width:31em;">The book on why capable teams stall &mdash; and how the Flag Model&trade; rebuilds the disciplines they&rsquo;ve quietly lost.</p>
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <a href="#waitlist" style="font-size:15px;font-weight:600;color:#1a1510;background:#c9a24a;border-radius:3px;padding:15px 30px;text-decoration:none;">Join the waitlist</a>
+          <a href="#chapter" style="font-size:15px;font-weight:600;color:#f4f0e6;border:1px solid rgba(244,240,230,.32);border-radius:3px;padding:14px 28px;text-decoration:none;">Read the first chapter &rarr;</a>
+        </div>
+      </div>
+      <div class="ldol-flag-motif" style="position:absolute;right:96px;top:50%;transform:translateY(-50%);width:170px;height:320px;">
+        <div style="position:absolute;left:50%;top:0;width:3px;height:320px;background:#c9a24a;transform:translateX(-50%);"></div>
+        <div style="position:absolute;left:calc(50% + 1.5px);top:8px;width:82px;height:56px;background:#C04A26;clip-path:polygon(0 0, 100% 50%, 0 100%);"></div>
+        <div style="position:absolute;left:50%;bottom:0;width:10px;height:10px;border-radius:50%;background:#c9a24a;transform:translate(-50%,50%);"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- THE EXECUTION GAP -->
+  <section style="background:#14203a;">
+    <div class="ldol-wrap ldol-collapse" style="display:grid;grid-template-columns:0.52fr 1fr;gap:64px;align-items:center;padding-top:96px;padding-bottom:96px;">
+      <div style="display:flex;justify-content:center;position:relative;">
+        <div style="position:absolute;width:280px;height:280px;background:radial-gradient(circle, rgba(201,162,74,.2), transparent 68%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+        <Image src={ldolCover} alt="Lost Disciplines of Leadership book cover" width={500} format="webp" quality={82} loading="eager" fetchpriority="high" style="position:relative;width:250px;height:auto;border-radius:3px;box-shadow:0 32px 64px rgba(0,0,0,.5);transform:rotate(-2deg);" />
+      </div>
+      <div>
+        <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:20px;">The Execution Gap</div>
+        <p style="font-family:'Newsreader',serif;font-weight:400;font-size:31px;line-height:1.42;color:#f4f0e6;margin:0 0 26px;">Every stalled team was once a capable one. The disciplines didn&rsquo;t disappear in a crisis &mdash; they eroded in a hundred small moments where comfort won over truth.</p>
+        <p style="font-size:16.5px;line-height:1.68;color:#aeb8cf;margin:0;max-width:36em;">You&rsquo;ve read the strategy books. You&rsquo;ve run the offsites. And still the plan outpaces the doing. <em style="color:#d8b566;">Lost Disciplines of Leadership&trade;</em> names what slipped &mdash; and gives you the field guide to rebuild it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FLAG MODEL -->
+  <section id="the-model" style="background:#f4f0e6;color:#211b16;">
+    <div class="ldol-wrap" style="padding-top:92px;padding-bottom:92px;">
+      <div style="text-align:center;max-width:680px;margin:0 auto 60px;">
+        <div class="ldol-eyebrow" style="color:#C04A26;margin-bottom:18px;">The Flag Model&trade;</div>
+        <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:44px;line-height:1.1;letter-spacing:-.01em;margin:0 0 18px;">A flag to march toward. Four disciplines to get there.</h2>
+        <p style="font-size:17px;line-height:1.6;color:#5c544c;margin:0;">High-performing teams rally behind a clear flag and hold four disciplines that stalled teams quietly lose &mdash; all governed by Truth Over Comfort.</p>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:26px;background:#14203a;border-radius:6px;padding:34px 40px;margin-bottom:22px;flex-wrap:wrap;">
+        <div style="flex-shrink:0;width:64px;height:88px;position:relative;">
+          <div style="position:absolute;left:50%;top:0;width:3px;height:88px;background:#c9a24a;transform:translateX(-50%);"></div>
+          <div style="position:absolute;left:calc(50% + 1.5px);top:4px;width:44px;height:30px;background:#C04A26;clip-path:polygon(0 0, 100% 50%, 0 100%);"></div>
+        </div>
+        <div style="min-width:260px;flex:1;">
+          <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px;">
+            <span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#c9a24a;">The Flag</span>
+            <span style="font-size:13px;color:#9aa6c0;">Alignment</span>
+          </div>
+          <p style="font-family:'Newsreader',serif;font-size:22px;line-height:1.35;color:#f4f0e6;margin:0;">The single direction everyone can see and agrees is worth marching toward. Without it, the disciplines have nothing to serve.</p>
+        </div>
+      </div>
+
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px;">
+        <div style="background:#fff;border:1px solid rgba(33,27,22,.1);border-radius:6px;padding:30px 32px;">
+          <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-style:italic;font-size:26px;color:#c9a24a;">01</span><span style="font-family:'Newsreader',serif;font-size:24px;">The Decision</span></div>
+          <p style="font-size:15.5px;line-height:1.6;color:#5c544c;margin:0;">How the team commits, dissents, and moves &mdash; without relitigating what was already settled.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(33,27,22,.1);border-radius:6px;padding:30px 32px;">
+          <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-style:italic;font-size:26px;color:#c9a24a;">02</span><span style="font-family:'Newsreader',serif;font-size:24px;">The Rhythm</span></div>
+          <p style="font-size:15.5px;line-height:1.6;color:#5c544c;margin:0;">The cadence that turns intent into repeated action &mdash; the beat a team keeps when no one is watching.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(33,27,22,.1);border-radius:6px;padding:30px 32px;">
+          <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-style:italic;font-size:26px;color:#c9a24a;">03</span><span style="font-family:'Newsreader',serif;font-size:24px;">The Standard</span></div>
+          <p style="font-size:15.5px;line-height:1.6;color:#5c544c;margin:0;">The bar you hold when it&rsquo;s inconvenient to hold it &mdash; and the tolerance you refuse to grant.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(33,27,22,.1);border-radius:6px;padding:30px 32px;">
+          <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:12px;"><span style="font-family:'Newsreader',serif;font-style:italic;font-size:26px;color:#c9a24a;">04</span><span style="font-family:'Newsreader',serif;font-size:24px;">The Learning</span></div>
+          <p style="font-size:15.5px;line-height:1.6;color:#5c544c;margin:0;">How the team metabolizes failure into capability &mdash; instead of into blame or quiet avoidance.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:40px;flex-wrap:wrap;">
+        <span class="ldol-eyebrow" style="color:#C04A26;">Governed by</span>
+        <span style="font-family:'Newsreader',serif;font-style:italic;font-size:23px;color:#a87b2e;">Truth Over Comfort</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSIDE THE BOOK -->
+  <section style="background:#1a1510;">
+    <div class="ldol-wrap" style="padding-top:88px;padding-bottom:88px;">
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:1fr 0.9fr;gap:64px;align-items:center;">
+        <div>
+          <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:20px;">Inside the book</div>
+          <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:40px;line-height:1.12;margin:0 0 22px;color:#f4f0e6;">A fable, then a field guide.</h2>
+          <p style="font-size:16.5px;line-height:1.7;color:#b3a899;margin:0 0 24px;max-width:34em;">The story of a leader whose team has everything but momentum &mdash; and the mentor who names what they&rsquo;ve lost. Then the practical model to rebuild it in your own team, chapter by chapter.</p>
+          <ul style="list-style:none;padding:0;margin:0 0 30px;display:flex;flex-direction:column;gap:14px;">
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:16px;color:#cdc4b6;line-height:1.5;">Why competent teams stop executing &mdash; the erosion no one notices</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:16px;color:#cdc4b6;line-height:1.5;">The Flag Model&trade; explained, discipline by discipline</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:16px;color:#cdc4b6;line-height:1.5;">Diagnostics to find which discipline your team has lost</span></li>
+            <li style="display:flex;gap:14px;align-items:flex-start;"><span style="color:#c9a24a;font-family:'Newsreader',serif;font-style:italic;">&mdash;</span><span style="font-size:16px;color:#cdc4b6;line-height:1.5;">A rebuild plan you can run at your next offsite</span></li>
+          </ul>
+          <a href="/lost-disciplines/the-book/" style="font-size:15px;font-weight:600;color:#c9a24a;text-decoration:none;">See what&rsquo;s inside &rarr;</a>
+        </div>
+        <div style="display:flex;justify-content:center;position:relative;">
+          <div style="position:absolute;width:300px;height:300px;background:radial-gradient(circle, rgba(201,162,74,.16), transparent 68%);top:50%;left:50%;transform:translate(-50%,-50%);"></div>
+          <Image src={ldolCover} alt="Lost Disciplines of Leadership book cover" width={600} format="webp" quality={82} loading="lazy" style="position:relative;width:300px;height:auto;border-radius:3px;box-shadow:0 36px 72px rgba(0,0,0,.55);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT JAMES -->
+  <section style="background:#14203a;">
+    <div class="ldol-wrap" style="padding-top:88px;padding-bottom:88px;">
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:0.42fr 1fr;gap:56px;align-items:center;">
+        <div style="border-radius:6px;overflow:hidden;box-shadow:0 24px 50px rgba(0,0,0,.4);">
+          <Image src={james} alt="James Carter" width={520} format="webp" quality={82} loading="lazy" style="width:100%;height:auto;display:block;" />
+        </div>
+        <div>
+          <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:20px;">The Author</div>
+          <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:40px;line-height:1.12;margin:0 0 22px;color:#f4f0e6;">James Carter has spent 25 years inside the execution gap.</h2>
+          <p style="font-size:16.5px;line-height:1.7;color:#aeb8cf;margin:0 0 30px;max-width:36em;">Co-author alongside Covey, Blanchard, Chopra, and Tracy. Featured on CNN and in Business Insider. He&rsquo;s worked with executive teams from the Siemens main stage to the boardroom &mdash; and Lost Disciplines of Leadership&trade; is the distillation of what actually moves them.</p>
+          <div style="display:flex;gap:40px;flex-wrap:wrap;margin-bottom:30px;">
+            <div><div style="font-family:'Newsreader',serif;font-size:34px;color:#c9a24a;">25<span style="font-size:20px;">yrs</span></div><div style="font-size:13px;color:#9aa6c0;">with executive teams</div></div>
+            <div><div style="font-family:'Newsreader',serif;font-size:34px;color:#c9a24a;">4</div><div style="font-size:13px;color:#9aa6c0;">bestselling co-authors</div></div>
+            <div><div style="font-family:'Newsreader',serif;font-size:34px;color:#c9a24a;">CNN</div><div style="font-size:13px;color:#9aa6c0;">&amp; Business Insider</div></div>
+          </div>
+          <a href="/lost-disciplines/about-james/" style="font-size:15px;font-weight:600;color:#c9a24a;text-decoration:none;">More about James &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRAISE -->
+  <section style="background:#1a1510;">
+    <div class="ldol-wrap" style="padding-top:80px;padding-bottom:80px;">
+      <div style="text-align:center;margin-bottom:44px;">
+        <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:14px;">Early Praise</div>
+        <p style="font-size:15px;color:#8a8378;margin:0 0 8px;font-style:italic;">Endorsements are being gathered ahead of launch.</p>
+        <a href="/lost-disciplines/praise/" style="font-size:14px;font-weight:600;color:#c9a24a;text-decoration:none;">See the praise page &rarr;</a>
+      </div>
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+        <div style="border:1px dashed rgba(201,162,74,.3);border-radius:6px;padding:32px;background:rgba(201,162,74,.03);"><div style="font-family:'Newsreader',serif;font-size:40px;color:rgba(201,162,74,.4);line-height:1;margin-bottom:12px;">&ldquo;</div><p style="font-family:'Newsreader',serif;font-size:18px;line-height:1.5;color:#6f6a60;margin:0 0 20px;">Endorsement blurb from a named leader will appear here.</p><div style="font-size:13px;color:#6f6a60;letter-spacing:.02em;">&mdash; Name, Title</div></div>
+        <div style="border:1px dashed rgba(201,162,74,.3);border-radius:6px;padding:32px;background:rgba(201,162,74,.03);"><div style="font-family:'Newsreader',serif;font-size:40px;color:rgba(201,162,74,.4);line-height:1;margin-bottom:12px;">&ldquo;</div><p style="font-family:'Newsreader',serif;font-size:18px;line-height:1.5;color:#6f6a60;margin:0 0 20px;">Endorsement blurb from a named leader will appear here.</p><div style="font-size:13px;color:#6f6a60;letter-spacing:.02em;">&mdash; Name, Title</div></div>
+        <div style="border:1px dashed rgba(201,162,74,.3);border-radius:6px;padding:32px;background:rgba(201,162,74,.03);"><div style="font-family:'Newsreader',serif;font-size:40px;color:rgba(201,162,74,.4);line-height:1;margin-bottom:12px;">&ldquo;</div><p style="font-family:'Newsreader',serif;font-size:18px;line-height:1.5;color:#6f6a60;margin:0 0 20px;">Endorsement blurb from a named leader will appear here.</p><div style="font-size:13px;color:#6f6a60;letter-spacing:.02em;">&mdash; Name, Title</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST / LEAD MAGNET -->
+  <section id="waitlist" style="background:#f4f0e6;color:#211b16;">
+    <div class="ldol-wrap" style="padding-top:92px;padding-bottom:92px;">
+      <div id="chapter" class="ldol-collapse" style="display:grid;grid-template-columns:1fr 0.8fr;gap:64px;align-items:center;">
+        <div>
+          <div class="ldol-eyebrow" style="color:#C04A26;margin-bottom:18px;">Free First Chapter</div>
+          <h2 class="ldol-h2" style="font-family:'Newsreader',serif;font-weight:500;font-size:42px;line-height:1.1;margin:0 0 18px;">Be first to read it.</h2>
+          <p style="font-size:17px;line-height:1.6;color:#5c544c;margin:0 0 32px;max-width:30em;">Join the waitlist and we&rsquo;ll send you the opening chapter of <em>Lost Disciplines of Leadership&trade;</em> the day it&rsquo;s ready &mdash; plus launch news, nothing else.</p>
+          <form id="ldol-waitlist" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.ldolWaitlistFormGuid} data-chapter={LDOL_CHAPTER_URL} data-contact={CONTACT_EMAIL} style="display:flex;gap:10px;max-width:460px;flex-wrap:wrap;">
+            <input type="email" name="email" required placeholder="Your work email" style="flex:1;min-width:220px;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#211b16;background:#fff;border:1px solid rgba(33,27,22,.2);border-radius:3px;padding:15px 16px;outline:none;" />
+            <button type="submit" data-label style="font-family:'Hanken Grotesk',sans-serif;font-size:14.5px;font-weight:600;color:#f4f0e6;background:#14203a;border:none;border-radius:3px;padding:0 26px;cursor:pointer;white-space:nowrap;">Get the chapter</button>
+          </form>
+          <p data-note style="font-size:13px;color:#8a8378;margin:14px 0 0;">Free first chapter, no spam. A Be Legendary book.</p>
+        </div>
+        <div style="display:flex;justify-content:center;">
+          <Image src={ldolCover} alt="Lost Disciplines of Leadership book cover" width={440} format="webp" quality={82} loading="lazy" style="width:220px;height:auto;border-radius:3px;box-shadow:0 30px 60px rgba(0,0,0,.28);transform:rotate(2deg);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BULK & SPEAKING -->
+  <section style="background:#14203a;">
+    <div class="ldol-wrap" style="padding-top:80px;padding-bottom:80px;">
+      <div class="ldol-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div style="border:1px solid rgba(201,162,74,.2);border-radius:6px;padding:40px;">
+          <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:16px;">Bulk &amp; Corporate</div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.2;margin:0 0 14px;color:#f4f0e6;">Put it in every leader&rsquo;s hands.</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#aeb8cf;margin:0 0 26px;">Bulk orders for leadership teams, cohorts, and offsites &mdash; with volume pricing and optional facilitation guides.</p>
+          <a href="/lost-disciplines/bulk-and-speaking/#enquire" style="font-size:14.5px;font-weight:600;color:#1a1510;background:#c9a24a;border-radius:3px;padding:12px 24px;display:inline-block;text-decoration:none;">Enquire about bulk orders</a>
+        </div>
+        <div style="border:1px solid rgba(201,162,74,.2);border-radius:6px;padding:40px;">
+          <div class="ldol-eyebrow" style="color:#c9a24a;margin-bottom:16px;">Speaking</div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.2;margin:0 0 14px;color:#f4f0e6;">Bring the Flag Model&trade; to your stage.</h3>
+          <p style="font-size:15.5px;line-height:1.65;color:#aeb8cf;margin:0 0 26px;">James speaks to executive audiences on execution, alignment, and the disciplines that separate teams that ship from teams that stall.</p>
+          <a href="/lost-disciplines/bulk-and-speaking/#enquire" style="font-size:14.5px;font-weight:600;color:#f4f0e6;border:1px solid rgba(244,240,230,.32);border-radius:3px;padding:12px 24px;display:inline-block;text-decoration:none;">Enquire about speaking</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUITE ROUTING -->
+  <section style="background:#0f1830;">
+    <div class="ldol-wrap" style="padding-top:64px;padding-bottom:64px;text-align:center;">
+      <img src="/assets/ldol-snail-cream.png" alt="Be Legendary" width="34" height="34" style="height:34px;width:auto;margin-bottom:22px;opacity:.9;" />
+      <p style="font-family:'Newsreader',serif;font-size:24px;line-height:1.45;color:#e7e0d2;margin:0 auto 24px;max-width:30em;">Finished the book and ready to rebuild your team&rsquo;s disciplines for real?</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="font-size:15px;font-weight:600;color:#1a1510;background:#c9a24a;border-radius:3px;padding:14px 30px;display:inline-block;text-decoration:none;">Book a Calibration Call at Be Legendary &rarr;</a>
+    </div>
+  </section>
+
+  <LdolFooter />
+
+  <script is:inline>
+    // Waitlist → HubSpot submissions API (portal + form GUID from data-*).
+    (function () {
+      var f = document.getElementById('ldol-waitlist');
+      if (!f) return;
+      var EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = f.querySelector('input[name="email"]');
+        var btn = f.querySelector('[data-label]');
+        var note = f.parentElement.querySelector('[data-note]');
+        var email = (input && input.value || '').trim();
+        if (!EMAIL.test(email)) { if (input) input.focus(); return; }
+        var portal = f.getAttribute('data-portal');
+        var guid = f.getAttribute('data-guid');
+        var chapter = f.getAttribute('data-chapter');
+        var contact = f.getAttribute('data-contact');
+
+        function confirmOnList() {
+          if (btn) { btn.textContent = 'Check your inbox ✓'; btn.disabled = true; btn.style.opacity = '0.85'; }
+          if (note) {
+            if (chapter) {
+              note.innerHTML = 'Thanks — you’re on the list. <a href="' + chapter + '" style="color:#a87b2e;font-weight:600;">Download the first chapter →</a>';
+            } else {
+              note.textContent = 'Thanks — you’re on the list. We’ll send the first chapter the day it’s ready.';
+            }
+          }
+          if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'ldol_waitlist' });
+        }
+        function waitlistFallback() {
+          var href = 'mailto:' + contact + '?subject=' + encodeURIComponent('Add me to the Lost Disciplines waitlist') + '&body=' + encodeURIComponent('Please add ' + email + ' to the waitlist and send the first chapter when it’s ready.');
+          if (note) note.innerHTML = 'Almost there — <a href="' + href + '" style="color:#a87b2e;font-weight:600;text-decoration:underline;">email us to join the waitlist</a> and we’ll add you.';
+        }
+
+        if (!guid) { waitlistFallback(); return; }
+        fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: [{ name: 'email', value: email }], context: { pageUri: location.href, pageName: 'Lost Disciplines — Waitlist' } }),
+        }).then(function (res) { if (res && res.ok) { confirmOnList(); } else { waitlistFallback(); } })
+          .catch(function () { waitlistFallback(); });
+      });
+    })();
+  </script>
+</LdolLayout>

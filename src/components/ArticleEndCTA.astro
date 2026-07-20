@@ -1,0 +1,55 @@
+---
+// End-of-article block: an "About the author" box (E-E-A-T + human trust) plus
+// the Field Notes email capture (HubSpot newsletter form). Dropped in just above
+// the ShareRow on article/guide pages.
+import { Image } from 'astro:assets';
+import NewsletterSignup from './NewsletterSignup.astro';
+import ProofStrip from './ProofStrip.astro';
+import { SLUGS, CTA_URL } from '../lib/site';
+import james from '../assets/james.jpg';
+export interface Props {
+  /** Match the article body width (920 default; 820 for the For-Leaders pages). */
+  maxWidth?: number;
+  /** Which testimonial the proof strip features (index into TESTIMONIALS). */
+  proof?: number;
+  /** Which free assessment to offer as the low-commitment first step. */
+  assess?: 'teams' | 'leaders';
+}
+const { maxWidth = 920, proof = 0, assess = 'teams' } = Astro.props;
+const ladder = assess === 'leaders'
+  ? { href: SLUGS.leadershipScorecard, label: 'Take the free Leadership Scorecard', sub: 'Is your leadership building your team or bottlenecking it? A real read in ~4 minutes.' }
+  : { href: SLUGS.breakPointAssessment, label: 'Take the free Break-Point Self-Assessment', sub: 'See which of the five components your team is most likely to lose first — in ~4 minutes.' };
+---
+<ProofStrip maxWidth={maxWidth} featured={proof} />
+<div style={`max-width:${maxWidth}px;margin:32px auto 0;padding:0 32px;`}>
+  <!-- About the author -->
+  <div style="display:flex;gap:22px;align-items:center;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:24px 26px;flex-wrap:wrap;">
+    <Image src={james} alt="James Carter, founder of Be Legendary" width={160} height={160} format="webp" quality={80} loading="lazy" style="width:74px;height:74px;border-radius:50%;object-fit:cover;object-position:50% 22%;flex:none;" />
+    <div style="flex:1;min-width:250px;">
+      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D98A5E;margin-bottom:6px;">About the author</p>
+      <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;margin-bottom:7px;">James Carter</p>
+      <p style="font-size:14.5px;line-height:1.62;color:rgba(244,240,231,0.74);">Founder of Be Legendary and creator of the Flag Model&trade;. Twenty-five years inside executive teams; co-author alongside Stephen Covey, Ken Blanchard, Deepak Chopra &amp; Brian Tracy, and featured on CNN and in Business Insider. <a href={SLUGS.about} style="color:#D98A5E;font-weight:600;white-space:nowrap;">More about James &rarr;</a></p>
+    </div>
+  </div>
+  <!-- Primary action: book the call. -->
+  <div style="margin-top:18px;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:260px;">
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;line-height:1.15;">See where your team breaks first.</p>
+      <p style="margin-top:6px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.7);">A Calibration Call is 15 minutes — you leave with a concrete read on your team, whether or not we work together. It's a calibration, not a pitch.</p>
+    </div>
+    <a href={CTA_URL} target="_blank" rel="noopener" style="flex:none;background:#C04A26;color:#fff;text-decoration:none;padding:15px 26px;border-radius:11px;font-weight:700;font-size:15.5px;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+  </div>
+  <!-- Commitment ladder: a lower-commitment first step than booking a call -->
+  <a href={ladder.href} style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-radius:16px;padding:22px 26px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.7)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.35)'">
+    <div style="flex:1;min-width:260px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:7px;">Not ready to talk? Start free</p>
+      <p style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;line-height:1.15;">{ladder.label}</p>
+      <p style="margin-top:6px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.66);">{ladder.sub} <strong style="color:rgba(244,240,231,0.82);">No email required to see your result.</strong></p>
+    </div>
+    <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Start the assessment &rarr;</span>
+  </a>
+  <!-- Field Notes email capture -->
+  <div style="margin-top:18px;">
+    <NewsletterSignup />
+  </div>
+</div>

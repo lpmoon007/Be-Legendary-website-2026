@@ -2,6 +2,12 @@
 import '../styles/global.css';
 import Analytics from '../components/Analytics.astro';
 import { SITE_URL, ORG_NODE, PERSON_NODE, WEBSITE_NODE, WEBSITE_ID } from '../lib/site';
+// Preload only the above-the-fold fonts so the LCP text (Newsreader H1 +
+// Hanken body) isn't stuck behind the full 9-weight font download. Vite
+// resolves these to the hashed /_astro/ URLs at build.
+import fontHeadline from '@fontsource/newsreader/files/newsreader-latin-500-normal.woff2';
+import fontBody from '@fontsource/hanken-grotesk/files/hanken-grotesk-latin-400-normal.woff2';
+import fontUi from '@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff2';
 
 export interface Props {
   title: string;
@@ -24,6 +30,15 @@ export interface Props {
   noindex?: boolean;
   /** Page background (most pages are ink-dark). */
   bodyBg?: string;
+  /** Override the last breadcrumb crumb (defaults to the title's leading phrase). */
+  breadcrumbLabel?: string;
+  /**
+   * CSS selectors for the SpeakableSpecification on the WebPage node — the
+   * passages a voice assistant should read aloud. Defaults to the H1 plus any
+   * ".bl-speakable" element (the "short answer" box carries this class), which
+   * is the most TTS-worthy summary on a page. Pass [] to omit speakable.
+   */
+  speakable?: string[];
 }
 
 const {
@@ -37,6 +52,8 @@ const {
   siteGraph = true,
   noindex = false,
   bodyBg = '#15130E',
+  breadcrumbLabel,
+  speakable = ['h1', '.bl-speakable'],
 } = Astro.props;
 
 const canonical = new URL(path, SITE_URL).href;
@@ -46,6 +63,57 @@ const shareAlt = 'Be Legendary — the Flag Model for executive-team performance
 // Assemble the JSON-LD graph: canonical identity entities (on inner pages) +
 // a WebPage node tying this page to the site + the page's own nodes.
 const pageNodes = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+// ── Auto-inject datePublished/dateModified on Article-type nodes lacking them ──
+const LAUNCH_DATE = '2026-07-06';
+const buildDate = new Date().toISOString().split('T')[0];
+const ARTICLE_TYPES = new Set(['Article', 'BlogPosting', 'NewsArticle', 'TechArticle', 'ScholarlyArticle']);
+const isType = (t: any, set: Set<string>) =>
+  typeof t === 'string' ? set.has(t) : Array.isArray(t) && t.some((x) => set.has(x));
+const datedNodes = pageNodes.map((n: any) => {
+  if (!isType(n['@type'], ARTICLE_TYPES)) return n;
+  return {
+    ...n,
+    datePublished: n.datePublished ?? LAUNCH_DATE,
+    dateModified: n.dateModified ?? buildDate,
+  };
+});
+
+// ── Auto-derive a BreadcrumbList from the URL path when the page didn't supply one ──
+const SEG_LABELS: Record<string, string> = {
+  leaders: 'For Leaders',
+  teams: 'For Teams',
+  workouts: 'Mindset Workouts',
+  retreats: 'Retreats',
+};
+const hasBreadcrumb = datedNodes.some((n: any) => isType(n['@type'], new Set(['BreadcrumbList'])));
+const leafLabel = (breadcrumbLabel ?? (ogTitle ?? title).split(/\s+[|—–]\s+/)[0]).trim();
+function deriveBreadcrumb() {
+  const segs = path.split('/').filter(Boolean);
+  if (!segs.length) return null; // homepage — no breadcrumb
+  const items = [{ name: 'Home', item: `${SITE_URL}/` }];
+  let acc = '';
+  segs.forEach((seg, i) => {
+    acc += `/${seg}`;
+    const isLast = i === segs.length - 1;
+    const name = isLast
+      ? leafLabel
+      : SEG_LABELS[seg] ?? seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    items.push({ name, item: `${SITE_URL}${acc}/` });
+  });
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${canonical}#breadcrumb`,
+    itemListElement: items.map((it, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: it.name,
+      item: it.item,
+    })),
+  };
+}
+const autoCrumb = !hasBreadcrumb && path !== '/' ? deriveBreadcrumb() : null;
+
 const webPage = {
   '@type': 'WebPage',
   '@id': `${canonical}#webpage`,
@@ -55,9 +123,13 @@ const webPage = {
   inLanguage: 'en-US',
   isPartOf: { '@id': WEBSITE_ID },
   primaryImageOfPage: { '@type': 'ImageObject', url: shareCard },
+  ...(autoCrumb ? { breadcrumb: { '@id': autoCrumb['@id'] } } : {}),
+  ...(speakable && speakable.length
+    ? { speakable: { '@type': 'SpeakableSpecification', cssSelector: speakable } }
+    : {}),
 };
 const identityNodes = siteGraph ? [ORG_NODE, PERSON_NODE, WEBSITE_NODE, webPage] : [];
-const graphNodes = [...identityNodes, ...pageNodes];
+const graphNodes = [...identityNodes, ...datedNodes, ...(autoCrumb ? [autoCrumb] : [])];
 
 const jsonLd = graphNodes.length
   ? JSON.stringify({ '@context': 'https://schema.org', '@graph': graphNodes })
@@ -73,6 +145,12 @@ const jsonLd = graphNodes.length
   <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
   <meta name="theme-color" content="#15130E" />
   <link rel="canonical" href={canonical} />
+  <link rel="alternate" type="application/rss+xml" title="Be Legendary — Executive-team performance" href={`${SITE_URL}/rss.xml`} />
+
+  <!-- Preload critical above-the-fold fonts (LCP) -->
+  <link rel="preload" href={fontHeadline} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={fontBody} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={fontUi} as="font" type="font/woff2" crossorigin />
 
   <!-- Open Graph -->
   <meta property="og:type" content={ogType} />
@@ -105,6 +183,7 @@ const jsonLd = graphNodes.length
   <Analytics />
 </head>
 <body style={`background:${bodyBg};color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow-x:hidden;`}>
+  <a class="bl-skip" href="#bl-main" onclick="var m=document.querySelector('main,article');if(m){m.id='bl-main';m.tabIndex=-1;m.focus();}">Skip to content</a>
   <slot />
 </body>
 </html>

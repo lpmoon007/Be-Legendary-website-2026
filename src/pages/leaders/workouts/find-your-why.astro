@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('find-your-why');
+const title = 'Find Your Why — the 5 Whys, turned inward | Be Legendary';
+const description =
+  "A Mindset Workout on purpose: the 5 Whys turned inward. Dig past the surface to the core motivation that drives you. Knowing your why is strength. Free.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource enriched with entity @ids, plus a
+// HowTo (the "Time for Action" 5 Whys rep).
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'Find Your Why — the 5 Whys',
+    learningResourceType: 'Guided mindset workout',
+    teaches: 'Discovering core motivation and purpose using the 5 Whys',
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT10M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Run the 5 Whys on yourself',
+    description:
+      'A ten-minute rep in purpose: take a behavior that is costing you, ask "why?" five times on paper, and read the fifth answer for the purpose worth protecting or the belief worth dropping.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Name the behavior',
+        text: 'Pick a reaction that saps your strength — the anger, the avoidance, the overwork — and write one true statement about it at the top of a page.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Ask why five times',
+        text: 'Ask "why is that important to me?" five times, each answer responding to the line directly above it, not the original statement. Do it on paper, not in your head.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Read answer #5',
+        text: "Read the fifth answer — it sits close to a piece of your inner strength. If it doesn't feel true, revise the first line and run it again.",
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Find Your Why — the 5 Whys, turned inward"
+  ogDescription="Dig past the surface to the core motivation that drives you. Knowing your why is a source of strength."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <header style="max-width:1000px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">Find Your Why</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B48AD9;">Spiritual</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">~10 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(44px,7.5vw,80px);line-height:0.98;letter-spacing:-0.025em;color:#1B1810;">Find Your Why</h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#56524A;max-width:52ch;">The behavior is identical — a car weaving through traffic. Cut off by a stranger, you're furious. See the word <em style="font-style:italic;">Ambulance</em> on the door, and you're praying no one's hurt. Same behavior, opposite reaction. The only thing that changed is that you know the <em style="font-style:italic;color:#C04A26;">why.</em></p>
+    </header>
+
+    <div style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <div style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid rgba(244,240,231,0.1);background:#000;box-shadow:0 30px 70px -34px rgba(0,0,0,0.6);">
+        <iframe src="https://www.youtube-nocookie.com/embed/vlsa_RZO3z4?rel=0" title="Find Your Why — James Carter on the 5 Whys" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;display:block;"></iframe>
+      </div>
+    </div>
+
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:start;">
+        <div>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#8C8473;margin-bottom:12px;">Why this workout</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:24px;line-height:1.2;color:#1B1810;">Knowing your why is a source of strength.</h2>
+          <p style="margin-top:12px;font-size:16px;line-height:1.65;color:#56524A;">A spiritual rep — not religious, but about meaning. When you understand your own motivation, your behavior finally makes sense, and your gut-level decisions get clearer. Maximum input equals maximum output.</p>
+        </div>
+        <div style="border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:24px 26px;background:rgba(244,240,231,0.02);">
+          <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8C8473;margin-bottom:14px;">The tool · James's 5 Whys</p>
+          <p style="font-size:15px;line-height:1.6;color:#3A362E;margin-bottom:14px;">Borrowed from Toyota, turned inward. Start with a statement about yourself, then ask <em style="font-style:italic;">why?</em> five times — each answer to the line directly above it, not the original. Answer #5 sits very close to a piece of your inner strength.</p>
+          <p style="font-size:13px;line-height:1.5;color:#8C8473;">On paper, not in your head. You need to go back and examine the answers — sometimes again and again.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">James's example</p>
+      <div style="font-size:18px;line-height:1.72;color:#3A362E;">
+        <p style="margin-bottom:20px;">"I used to be a road-rage person. One day a driver cut me off and I started screaming — and forgot my one-year-old daughter was in the back. She began to cry. That was in direct opposition to who I wanted to be."</p>
+        <div style="background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:14px;padding:24px 28px;margin:8px 0 20px;font-size:16.5px;line-height:1.7;color:rgba(244,240,231,0.86);">
+          <p style="font-family:'Newsreader',serif;font-style:italic;color:#FBF8F1;margin-bottom:10px;">I am reading this book.</p>
+          <p><strong style="color:#E0744A;">Why?</strong> I want to learn about my own inner strength.<br><strong style="color:#E0744A;">Why?</strong> I need greater inner strength.<br><strong style="color:#E0744A;">Why?</strong> I want to be a good role model for my child.<br><strong style="color:#E0744A;">Why?</strong> I want my child to grow up confident and strong.<br><strong style="color:#E0744A;">Why?</strong> Raising my child is the greatest contribution I can make in life.</p>
+        </div>
+        <p>"That fifth answer is one of my core reasons for being. And once I understood it, I could look at my behavior differently. Now I simply assume everyone driving like mad is rushing to the hospital — and I'm much happier. Understanding what drives me created a choice to react differently."</p>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+      <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Reflect — on paper, out loud</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">1</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Write one true statement about yourself — "I am reading this," "I work the hours I do," "I want this promotion." Anything real.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">2</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Ask "why is that important to me?" five times — each answer to the line above it. Cover the others if it helps.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">3</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Read answer #5. If it doesn't feel right, revise the first statement and run it again. You'll know when it's true.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:38px auto 0;padding:0 32px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 36px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for Action</span><span style="font-size:12px;color:#8C8473;">on paper · this week</span></div>
+        <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.25;color:#FBF8F1;margin-bottom:14px;">Run the 5 Whys on a behavior that's costing you.</p>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Pick a reaction that saps your strength — the anger, the avoidance, the overwork. Put it at the top of a page and ask why five times. Be honest, or the tool won't help you. Somewhere in there is either a purpose worth protecting, or a belief worth dropping.</p>
+      </div>
+    </section>
+
+    <MwComplete
+      workoutId="find-your-why"
+      dim="Spiritual"
+      dimLabel="Spiritual"
+      notePlaceholder="The behavior I'll run the 5 Whys on is…"
+      doneHead="Why — logged."
+      doneBody="Knowing your why is a source of strength. Come back for the next rep when you're ready."
+    />
+
+    <MwCommitment
+      workoutId="find-your-why"
+      dim="Spiritual"
+      dimLabel="Spiritual"
+      c1="When I pour my morning coffee, instead of checking the news, ||I will say one sentence of why today matters."
+      c2="When I open my laptop, instead of diving into tasks, ||I will write the single word that is my why today."
+      c3="When I lie down to sleep, instead of scrolling, ||I will name one thing I did today that was actually mine."
+      willPh="say my why in one sentence"
+    />
+
+  </div>
+
+  <MwRelated current="find-your-why" />
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import MwRelated from '../../../components/MwRelated.astro';
+import MwComplete from '../../../components/MwComplete.astro';
+import MwCommitment from '../../../components/MwCommitment.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../../lib/site';
+
+const path = workoutPath('the-golden-buddha');
+const title = 'The Golden Buddha — the gold under your clay | Be Legendary';
+const description =
+  "A Mindset Workout on self-worth. A true story of gold hidden under clay for 200 years — the truest picture of a leader's career. You're already gold. Free.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// JSON-LD: the design's LearningResource (entity @ids added), a HowTo built from
+// the "Time for Action" rep, and — because this is a concept workout — a
+// DefinedTerm for the Golden Buddha parable.
+const schema = [
+  {
+    '@type': 'LearningResource',
+    '@id': `${canonical}#learningresource`,
+    name: 'The Golden Buddha — the gold under your clay',
+    learningResourceType: 'Guided mindset workout',
+    teaches:
+      'Self-worth, self-acceptance, and reframing flaws as strengths (Kintsugi / Wabi-Sabi)',
+    educationalLevel: 'Executive / founder',
+    isAccessibleForFree: true,
+    timeRequired: 'PT10M',
+    author: { '@id': PERSON_ID },
+    provider: { '@id': ORG_ID },
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'The Golden Buddha',
+    description:
+      'A parable Be Legendary uses for self-worth: a plain clay statue revered for roughly two hundred years turned out to be more than five tons of solid gold beneath the clay. It means every leader starts as gold, then covers it in protective clay over a career — and becoming legendary is not addition but subtraction, clearing the clay to uncover what was always there.',
+    inDefinedTermSet: 'Be Legendary',
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'Don’t hide the crack. Gild it.',
+    description:
+      'A one-rep exercise in self-worth: show one thing you’d normally cover in clay, and watch the room see the gold.',
+    totalTime: 'PT10M',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Pick the crack',
+        text: 'Choose one thing you’d normally cover in clay — a mistake, an "I don’t know," or a past failure that shaped you.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Gild it out loud',
+        text: 'This week, show it: own the mistake out loud, say "I don’t know" without flinching, or tell someone how a past failure made you better at this.',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Watch the room',
+        text: 'Notice what happens when you stop covering it — the crack is where they finally see the gold. Then come back and log the rep.',
+      },
+    ],
+  },
+  { '@type': 'VideoObject', name: 'James Carter tells the Golden Buddha story', description: 'James Carter tells the story of the Golden Buddha — the clay we let cover our gold.', thumbnailUrl: 'https://www.belegendary.org/assets/james.jpg', uploadDate: '2012', embedUrl: 'https://player.vimeo.com/video/41984996', contentUrl: 'https://vimeo.com/41984996', author: { '@id': PERSON_ID }, publisher: { '@id': ORG_ID } },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="The Golden Buddha — the gold under your clay"
+  ogDescription="You're already gold. The work is subtraction — and Kintsugi says the crack is where the value shows."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <header style="max-width:1000px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><a href={SLUGS.workouts} style="color:inherit;text-decoration:none;">Mindset Workouts</a><span>/</span><span style="color:#C04A26;">The Golden Buddha</span>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px;">
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Emotional</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#B48AD9;">Spiritual</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#6E6757;"></span>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8C8473;">~10 min</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(42px,7vw,78px);line-height:0.98;letter-spacing:-0.025em;color:#1B1810;">You&rsquo;ve hidden the best of who you are.</h1>
+      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#56524A;max-width:52ch;">For two hundred years, monks knelt before a plain clay statue. It was ten and a half feet of <em style="font-style:italic;color:#C04A26;">solid gold</em> — hidden, forgotten, nearly thrown away. It's a true story, and it's the most accurate picture I know of what happens to a leader over a career: we cover our gold in clay, then forget it was ever there.</p>
+    </header>
+
+    <div style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <div style="aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid rgba(244,240,231,0.1);background:#000;box-shadow:0 30px 70px -34px rgba(0,0,0,0.6);">
+        <iframe src="https://player.vimeo.com/video/41984996?title=0&byline=0&portrait=0" title="James Carter tells the Golden Buddha story" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;display:block;"></iframe>
+      </div>
+    </div>
+
+    <section style="max-width:760px;margin:44px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">The story</p>
+      <div style="font-size:18px;line-height:1.72;color:#3A362E;">
+        <p style="margin-bottom:20px;">In 1955, workers in Bangkok were moving a large clay Buddha from an old temple. It was unremarkable — the kind of statue you'd walk past. As the crane lifted it, the ropes gave way and it dropped. The clay cracked. And in the crack, something glinted.</p>
+        <p style="margin-bottom:20px;">Underneath was solid gold — more than five tons of it. Centuries earlier, monks had covered their golden Buddha in clay to hide it from an invading army. The army destroyed the temple and killed the monks, and the secret died with them. For roughly two hundred years, generation after generation knelt before what they believed was an ordinary clay statue.</p>
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:23px;line-height:1.4;color:#1B1810;margin:30px 0;padding-left:22px;border-left:3px solid #C04A26;">The gold was never lost. It was only covered. And being covered, it was forgotten.</p>
+        <p style="margin-bottom:20px;">You started as gold too. Then life did what it does — a criticism that landed too hard, a risk that didn't pay, a role that asked you to be smaller. Each one a layer of clay, applied reasonably, to protect the gold underneath. The clay isn't weakness; it's <strong style="color:#1B1810;">protection.</strong> The danger is what time does: the layers harden, the world only sees clay, and eventually <em style="font-style:italic;">you</em> start to believe the clay is all there is.</p>
+        <p>Notice how the gold was found — not by careful restoration, but by a <em style="font-style:italic;">fall.</em> The statue had to drop and crack before anyone could see. For most leaders it's the same: the moment that reveals your gold is rarely the promotion — it's the setback, the hard conversation, the failure you were sure would end you. The work of becoming legendary isn't adding anything. It's <strong style="color:#1B1810;">subtraction.</strong></p>
+      </div>
+    </section>
+
+    <!-- KINTSUGI / WABI-SABI -->
+    <section style="max-width:760px;margin:34px auto 0;padding:0 32px;">
+      <a href={workoutPath('kintsugi-wabi-sabi')} style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#211D15;border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:24px 28px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(224,116,74,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+        <div><p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0A34A;margin-bottom:6px;">A companion workout</p><p style="font-size:16.5px;line-height:1.4;color:#F4F0E7;">This is the gold in <em style="font-style:italic;">you.</em> To learn to see it in others — a scar, gray hair, an earned imperfection — do <strong style="color:#FBF8F1;">Kintsugi &amp; Wabi-Sabi.</strong></p></div>
+        <span style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;font-weight:700;font-size:15px;white-space:nowrap;">Kintsugi &amp; Wabi-Sabi <span>&rarr;</span></span>
+      </a>
+    </section>
+
+    <section style="max-width:760px;margin:40px auto 0;padding:0 32px;">
+      <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:34px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Reflect</p>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">1</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Name one layer of clay you're carrying — a belief about yourself that once protected you, but now just keeps you small.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">2</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Think of a crack you're proud of nothing about — a failure or scar. What strength did it actually give you?</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;line-height:1.4;">3</span><p style="font-size:17.5px;line-height:1.5;color:#1B1810;">Where do you spend energy hiding a flaw that, gilded, might be the most trusted thing about you?</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:760px;margin:38px auto 0;padding:0 32px;">
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 36px;">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;">Time for Action</span><span style="font-size:12px;color:#8C8473;">gild one crack · this week</span></div>
+        <p style="font-family:'Newsreader',serif;font-weight:400;font-size:26px;line-height:1.25;color:#FBF8F1;margin-bottom:14px;">Don't hide the crack. Gild it.</p>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">This week, show one thing you'd normally cover in clay: own a mistake out loud, say "I don't know" without flinching, or tell someone how a past failure made you better at this. Watch what happens to the room. The crack is where they finally see the gold.</p>
+      </div>
+    </section>
+
+    <MwComplete
+      workoutId="the-golden-buddha"
+      dim="Emotional"
+      dimLabel="Emotional & Spiritual"
+      notePlaceholder="The crack I'll gild this week is…"
+      doneHead="Gold — uncovered."
+      doneBody="You're not becoming more golden. You already are. The work from here is just clearing what covers it."
+    />
+
+    <MwCommitment
+      workoutId="the-golden-buddha"
+      dim="Emotional"
+      dimLabel="Emotional & Spiritual"
+      c1="When I look in the mirror in the morning, instead of the critique, ||I will name one thing that's already gold in me."
+      c2="When I catch harsh self-talk, instead of agreeing with it, ||I will call it clay I'm clearing, not a flaw I am."
+      c3="When I brush my teeth, instead of zoning out, ||I will say one strength I usually keep hidden."
+      willPh="name one thing that's already gold"
+    />
+
+  </div>
+
+  <MwRelated current="the-golden-buddha" />
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

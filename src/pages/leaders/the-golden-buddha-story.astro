@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, workoutPath } from '../../lib/site';
+
+const path = SLUGS.goldenBuddhaStory;
+const title = 'The Golden Buddha Story: The Gold Was Always Under the Clay';
+const description =
+  'A statue hidden under plaster for 200 years was solid gold. The true story of the Golden Buddha, and why your greatness is uncovered, not built.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + DefinedTerm + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'The Golden Buddha Story: The Gold Was Always Under the Clay',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['Golden Buddha', 'self-image', 'potential'],
+    description:
+      'The true story of the Golden Buddha of Wat Traimit, its meaning as a metaphor, and how leaders use it.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'DefinedTerm',
+    '@id': `${canonical}#term`,
+    name: 'The Golden Buddha',
+    description:
+      "The Golden Buddha is a real statue in Bangkok that spent roughly 200 years hidden under a coating of plaster and clay, until it was accidentally revealed to be solid gold. As a metaphor it means a person's greatness is already present and intact; the work is not to become golden but to clear away the protective covering that hides what is already there.",
+    inDefinedTermSet: 'Be Legendary',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is the story of the Golden Buddha?', acceptedAnswer: { '@type': 'Answer', text: "The Golden Buddha at Wat Traimit in Bangkok is a large statue made of solid gold that was, centuries ago, covered in plaster and colored glass — most likely to disguise its value and protect it from invaders. It sat unremarkable for around 200 years. In 1955, while being moved, the plaster cracked and revealed the gold beneath. The statue weighs roughly five and a half tons of gold." } },
+      { '@type': 'Question', name: 'What is the meaning of the Golden Buddha story?', acceptedAnswer: { '@type': 'Answer', text: "The metaphor is that your worth was never lost — only covered. The 'clay' is the protective layer of stories, defenses, and expectations you accumulate over a life. You don't have to build yourself into someone golden; you're already gold under the covering. The work is to clear the clay, not to manufacture value that was there all along." } },
+      { '@type': 'Question', name: 'How do leaders use the Golden Buddha idea?', acceptedAnswer: { '@type': 'Answer', text: "It reframes personal growth from addition to subtraction. Instead of chasing more credentials or a new persona, a leader asks what protective 'clay' — the safe story, the borrowed belief, the fear of being seen — is covering capacities they already have, and begins clearing it. It pairs with the ABCs of a legendary mindset, where naming your true beliefs is the first chip in the plaster." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="The Golden Buddha Story: The Gold Was Always Under the Clay"
+  ogDescription="Hidden under plaster for 200 years, then revealed as solid gold. The story — and what it means for you."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">The Golden Buddha Story</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:18ch;">The Golden Buddha</h1>
+    <p style="margin-top:16px;font-size:14px;color:#6E6757;">By <a href={SLUGS.about} style="color:#C04A26;text-decoration:none;">James Carter</a> &middot; Founder, Be Legendary</p>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p class="bl-speakable" style="font-size:18px;line-height:1.6;color:#2E2A22;">The Golden Buddha is a real statue in Bangkok that spent roughly <strong style="font-weight:700;">200 years covered in plaster</strong> — until it was accidentally chipped and revealed to be solid gold beneath. The metaphor: your greatness is already there. Life covered it in protective clay. The work isn't to <em style="font-style:italic;">become</em> golden — it's to clear away what covers what you already are.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">The true story</p>
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">At Wat Traimit in Bangkok sits a Buddha of solid gold — about ten feet tall and roughly five and a half tons. For centuries no one knew. Sometime long ago it had been coated in plaster and colored glass, most likely to hide its value from invading armies. The disguise worked so well that the gold was forgotten entirely, and the statue was treated as an ordinary stucco relic.</p>
+          <p>In 1955 it was being moved to a new temple. The ropes gave way, the statue dropped, and the plaster cracked. Through the crack, someone saw a glint of gold. They chipped the covering away — and uncovered one of the largest gold statues in the world, whole and untouched, exactly as it had always been.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">What it means</p>
+          <p style="margin-bottom:22px;">You are the statue. Somewhere along the way — to stay safe, to fit in, to avoid being seen and judged — you let a covering form over what you actually are. The safe story. The borrowed belief. The fear of being caught trying. Layer by layer, the clay hid the gold until you started to believe the clay was you.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">You are not becoming more golden. You already are. The work from here is just clearing what covers it.</p>
+          <p>That's the shift: growth as <em style="font-style:italic;">subtraction,</em> not addition. Not another credential or a new persona — but a steady chipping away of the protective plaster over capacities you've had all along.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Start chipping — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">Name one piece of clay you're ready to clear.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The Golden Buddha mindset workout is a free, guided rep that turns this story into a look in the mirror — and one honest thing to set down.</p>
+          <a href={workoutPath('the-golden-buddha')} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Do the Golden Buddha workout <span>&rarr;</span></a>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Is the Golden Buddha real?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Yes. It's the Phra Phuttha Maha Suwan Patimakon at Wat Traimit, Bangkok — solid gold, roughly five and a half tons, hidden under plaster for about two centuries and revealed in 1955 when it was dropped during a move.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">What's the meaning of the story?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Your worth was never lost — only covered. The "clay" is the layer of stories, defenses, and expectations you accumulate. Growth is clearing the covering, not manufacturing gold that was there all along.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">How does it connect to the ABCs of a legendary mindset?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Naming what you actually believe about your own capacity is the first chip in the plaster — which is exactly where the <a href={SLUGS.abcsOfMindset} style="color:#C04A26;text-decoration:underline;">ABCs</a> begin: Awareness, Beliefs, Courage.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px 20px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep going</p>
+        <div class="bl-cards-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <a href={SLUGS.whatIsKintsugi} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">What is kintsugi?</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The cracks are where the gold goes.</span></a>
+          <a href={SLUGS.abcsOfMindset} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">The ABCs of a legendary mindset</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Awareness, Beliefs, Courage.</span></a>
+          <a href={SLUGS.leadersGlossary} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">The Leader's glossary</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">Every term, defined in one place.</span></a>
+        </div>
+      </section>
+      <ArticleEndCTA maxWidth={820} />
+      <ShareRow title={title} maxWidth={820} />
+</article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

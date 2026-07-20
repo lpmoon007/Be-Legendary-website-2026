@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
+
+const path = SLUGS.leadershipPlateau;
+const title = 'Leadership Plateau: Why Successful Leaders Feel Unfulfilled';
+const description =
+  "Hit a leadership plateau? Successful but unfulfilled? You didn't lose your edge — you stopped applying stress and recovery. The workout model for growth.";
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + FAQPage — schema types preserved from the design, enriched with
+// entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'Leadership Plateau: Why Successful Leaders Feel Unfulfilled',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['leadership plateau', 'successful but unfulfilled', 'executive growth'],
+    description:
+      'Why accomplished leaders stall and feel flat, and how a workout model of applied stress and real recovery breaks the plateau.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is a leadership plateau?', acceptedAnswer: { '@type': 'Answer', text: "A leadership plateau is the point where an accomplished leader stops growing — not because they've hit their ceiling, but because they've adapted to their current level. The challenges that once stretched you are now routine, so growth stops. It often shows up as feeling successful but unfulfilled: the results are fine, but the sense of becoming is gone." } },
+      { '@type': 'Question', name: 'Why do successful leaders feel unfulfilled?', acceptedAnswer: { '@type': 'Answer', text: "Because success removes struggle, and humans grow through struggle. Once you're good at your role, you stop applying real stress to yourself and stop deliberately recovering — the two things growth requires. The result is comfort that reads as emptiness. You're not broken or ungrateful; you've simply stopped training." } },
+      { '@type': 'Question', name: 'How do you break past a leadership plateau?', acceptedAnswer: { '@type': 'Answer', text: "Treat growth like a workout: apply deliberate, uncomfortable stress in a specific dimension, then recover on purpose. Small, repeatable reps beat grand gestures. Be Legendary's free Mindset Workouts are built exactly this way — short reps that reintroduce productive stress, followed by real recovery, so you start becoming again instead of just performing." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="Leadership Plateau: Why Successful Leaders Feel Unfulfilled"
+  ogDescription="A plateau isn't a ceiling. It's an adaptation. Here's how leaders break past it."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">Leadership Plateau</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">Successful, and quietly flat. That's a plateau — not a ceiling.</h1>
+    <p style="margin-top:16px;font-size:14px;color:#6E6757;">By <a href={SLUGS.about} style="color:#C04A26;text-decoration:none;">James Carter</a> &middot; Founder, Be Legendary</p>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p class="bl-speakable" style="font-size:18px;line-height:1.6;color:#2E2A22;">A leadership plateau is what happens when you stop growing because you've <em style="font-style:italic;">adapted</em> — the challenges that used to stretch you are now routine. You feel successful but unfulfilled because you stopped doing the two things growth requires: applying real stress, and truly recovering. It's not a ceiling. It's a training problem.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Why the flatness showed up</p>
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:22px;">You're good at this now. The role that once terrified you fits like an old coat. The wins still come, but they don't <em style="font-style:italic;">land</em> the way they used to — and some part of you feels guilty for even noticing, because on paper you've made it.</p>
+          <p style="margin-bottom:22px;">Here's what's actually happening: <strong style="font-weight:700;">you adapted.</strong> The same way a body adapts to a weight and stops getting stronger, you adapted to your level and stopped becoming. Success quietly removed the one input growth depends on — struggle. Nobody's stretching you anymore, least of all you.</p>
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:34px 0;padding-left:22px;border-left:3px solid #C04A26;">A plateau doesn't mean you've peaked. It means you've stopped training.</p>
+          <p>And the answer isn't what the wellness industry sells you. It's not <em style="font-style:italic;">less</em> — less stress, more balance, another vacation. That's how you rust. The answer is <strong style="font-weight:700;">more of the right stress, applied on purpose, followed by real recovery.</strong> The workout model. You don't grow past a plateau by resting on it. You grow by loading it.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How growth actually works</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.12;color:#1B1810;margin-bottom:24px;">Stress, then recovery. Reps, not gestures.</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:#15130E;color:#F4F0E7;border-radius:14px;padding:26px 28px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">Apply stress</p>
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.8);">Deliberately do the uncomfortable rep — the hard conversation, the honest look, the belief you've avoided challenging. Comfort is the enemy of a plateaued leader.</p>
+          </div>
+          <div style="background:#15130E;color:#F4F0E7;border-radius:14px;padding:26px 28px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">Then recover</p>
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.8);">Strength is built in the recovery, not the strain. Reflect, integrate, rest on purpose — then load again. Miss this half and you don't grow, you just grind.</p>
+          </div>
+        </div>
+        <p style="margin-top:22px;font-size:16.5px;line-height:1.65;color:#2E2A22;">Do that in small, repeatable reps — across all four dimensions, physical, mental, emotional, spiritual — and the plateau stops being a place you're stuck and starts being a floor you're climbing off of.</p>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Start loading the plateau</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">Take one rep today. Feel what stretching feels like again.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The Mindset Workouts are free, about ten minutes each, and built on exactly this model — apply a little productive stress, then recover. Not sure where you're stuck? Start with the two-minute read on where you are.</p>
+          <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+            <a href={SLUGS.workouts} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Try a Mindset Workout — free <span>&rarr;</span></a>
+            <a href={SLUGS.legendsJourney} style="border:1px solid rgba(244,240,231,0.3);color:#F4F0E7;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;">Find where you are</a>
+          </div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Why do I feel unfulfilled when everything's going well?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Because success removes struggle, and you grow through struggle. Once you're good at the role, you stop applying real stress to yourself and stop deliberately recovering — the two inputs growth needs. The comfort reads as emptiness. You're not ungrateful; you've stopped training.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Is a plateau a sign I've reached my limit?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">No — it's a sign you've adapted, not arrived. A muscle stops growing under a weight it's used to; so do you. Reintroduce deliberate, uncomfortable reps and the plateau becomes a floor you climb off of.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">What's the first step?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">One free Mindset Workout — about ten minutes. It reintroduces a small, productive stress and pairs it with real recovery, so you feel the stretch again today, no travel or commitment required.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px 90px;">
+        <a href={SLUGS.leaders} style="display:flex;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:14px;padding:26px 30px;flex-wrap:wrap;">
+          <div>
+            <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">The bigger picture</p>
+            <p style="font-family:'Newsreader',serif;font-size:22px;color:#1B1810;">This is the whole idea behind Be Legendary for Leaders.</p>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:9px;color:#1B1810;font-weight:700;font-size:15.5px;white-space:nowrap;">See the full picture <span>&rarr;</span></span>
+        </a>
+      </section>
+      <!-- internal-linking: keep-reading rail -->
+      <section style="max-width:860px;margin:8px auto 0;padding:0 32px 76px;">
+        <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep reading</p>
+        <div style="display:grid;gap:12px;">
+          <a href="/leaders/successful-but-unfulfilled/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">Successful but unfulfilled — when the win feels empty</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/leaders/whats-next-after-success/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">What's next after you've already made it</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+          <a href="/leaders/who-am-i-without-my-title/" style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+            <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">Who am I without my title?</span>
+            <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+          </a>
+        </div>
+      </section>
+      <ArticleEndCTA maxWidth={820} />
+      <ShareRow title={title} maxWidth={820} />
+</article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>

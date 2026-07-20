@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'How to Choose a Leadership Team Offsite Facilitator | Be Legendary';
-const description = 'A practical guide to hiring a leadership offsite facilitator: what a great one actually does, the difference between facilitation and a deeper engagement, the questions to ask, and how to make sure the offsite holds after everyone goes home. Written to inform, not to sell.';
+const title = 'Leadership Team Offsite Facilitator: How to Choose One';
+const description = 'A practical guide to hiring a leadership team offsite facilitator: what a great one does, the questions to ask, and how to make the offsite hold afterward.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -30,7 +30,7 @@ const schema = [
   ogDescription="What a great facilitator does, the questions to ask, and how to make the offsite hold afterward."
   schema={schema}
 >
-  <Header maxWidth={880} links={[]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[]} />
 
   <article>
   <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 40px;">
@@ -43,7 +43,7 @@ const schema = [
     <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated June 2026</p>
     <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
-      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A great facilitator is neutral, prepares by understanding your team <em>before</em> the day, keeps the conversation honest, manages dynamics so the loudest voice doesn't win, and drives the room to real decisions with owners &mdash; not a pleasant discussion. The single best predictor of a worthwhile offsite isn't the agenda or the venue. It's <strong style="color:#FBF8F1;">what the facilitator builds in for after everyone goes home.</strong></p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A great facilitator is neutral, prepares by understanding your team <em>before</em> the day, keeps the conversation honest, manages dynamics so the loudest voice doesn't win, and drives the room to real decisions with owners &mdash; not a pleasant discussion. The single best predictor of a worthwhile offsite isn't the agenda or the venue. It's <strong style="color:#FBF8F1;">what the facilitator builds in for after everyone goes home.</strong></p>
     </div>
   </header>
 
@@ -94,5 +94,5 @@ const schema = [
   </div>
   </article>
 
-  <Footer variant="slim" maxWidth={880} note="© 2026 Be Legendary. A guide for executive teams." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={880} note="© 2026 Be Legendary. A guide for executive teams." />
 </BaseLayout>

@@ -1,17 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import { Image } from 'astro:assets';
 import imgJames from '../../assets/james.jpg';
 import imgLdol from '../../assets/book-ldol.png';
 import imgDiscover from '../../assets/book-discover.jpg';
 import imgRoadmap from '../../assets/book-roadmap.png';
 import imgOneGreatIdea from '../../assets/book-onegreatidea.jpg';
-import { CTA_URL, SLUGS, SISTER } from '../../lib/site';
+import { CTA_URL, SLUGS, SISTER, PERSON_ID, ORG_ID } from '../../lib/site';
 
-const title = 'James Carter — Founder of Be Legendary, Creator of the Flag Model | Be Legendary';
-const description = 'For 25 years, James Carter has sat inside executive teams as they made the calls that defined their companies. Founder of Be Legendary, creator of the Flag Model, sole author of Lost Disciplines of Leadership, and co-author with Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy.';
+const title = 'James Carter — Founder & Creator of the Flag Model';
+const description = 'James Carter, founder of Be Legendary and creator of the Flag Model, has spent 25 years inside executive teams. Author of Lost Disciplines of Leadership.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -19,8 +19,22 @@ const schema = [
     { '@type': 'ListItem', position: 2, name: 'About', item: 'https://www.belegendary.org/about/' },
     { '@type': 'ListItem', position: 3, name: 'James Carter', item: 'https://www.belegendary.org/about/james-carter/' },
   ] },
-  { '@type': 'ProfilePage', '@id': 'https://www.belegendary.org/about/james-carter/#page', mainEntity: { '@id': 'https://www.belegendary.org/#james' } },
-  { '@type': 'Person', '@id': 'https://www.belegendary.org/#james', name: 'James Carter', jobTitle: 'Founder & Lead Advisor, Be Legendary', worksFor: { '@type': 'Organization', name: 'Be Legendary', url: 'https://www.belegendary.org/' }, description: 'Founder of Be Legendary and creator of the Flag Model. For 25 years James has advised executive teams from inside the room where their hardest calls get made. Sole author of the forthcoming Lost Disciplines of Leadership and co-author of collaborative works alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Featured by CNN, CNN Money and Business Insider.', knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation'], sameAs: ['https://www.linkedin.com/in/jlcarter/', 'https://www.buildingteams.com/about/james-carter/', 'https://www.legendary-retreats.com/about-4', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'], author: [{ '@type': 'Book', name: 'Lost Disciplines of Leadership' }, { '@type': 'Book', name: 'Discover Your Inner Strength' }, { '@type': 'Book', name: 'Roadmap to Success' }, { '@type': 'Book', name: 'One Great Idea' }] },
+  { '@type': 'ProfilePage', '@id': 'https://www.belegendary.org/about/james-carter/#page', mainEntity: { '@id': PERSON_ID } },
+  { '@type': 'Book', name: 'Lost Disciplines of Leadership', author: { '@id': PERSON_ID } },
+  { '@type': 'Book', name: 'Discover Your Inner Strength', author: { '@id': PERSON_ID } },
+  { '@type': 'Book', name: 'Roadmap to Success', author: { '@id': PERSON_ID } },
+  { '@type': 'Book', name: 'One Great Idea', author: { '@id': PERSON_ID } },
+  {
+    '@type': 'VideoObject',
+    name: 'James Carter — keynote to 1,000 leaders at Siemens',
+    description: 'James Carter delivers a leadership keynote to an audience of 1,000 leaders at Siemens.',
+    thumbnailUrl: 'https://www.belegendary.org/assets/james.jpg',
+    uploadDate: '2016-10',
+    embedUrl: 'https://player.vimeo.com/video/174889009',
+    contentUrl: 'https://vimeo.com/174889009',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+  },
 ];
 ---
 <BaseLayout
@@ -32,7 +46,7 @@ const schema = [
   ogDescription="25 years inside the room where the hardest calls get made. Founder of Be Legendary and creator of the Flag Model."
   schema={schema}
 >
-  <Header maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }]} />
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1140} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'Field notes', href: SLUGS.fieldNotes }]} />
 
   <!-- HERO -->
   <section style="position:relative;max-width:1140px;margin:0 auto;padding:80px 32px 64px;">
@@ -79,7 +93,7 @@ const schema = [
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.015em;max-width:20ch;">In the room for the decisions that matter.</h2>
       <p style="margin-top:26px;font-size:18.5px;line-height:1.7;color:#3A372F;max-width:62ch;">James has spent his career not as an outside observer of leadership, but inside it &mdash; alongside executive teams as they made the calls that defined their companies. That vantage point is what makes his work different. He isn't delivering a curriculum. He's reading the room, surfacing what's unspoken, and guiding a team through it.</p>
       <p style="margin-top:22px;font-size:18.5px;line-height:1.7;color:#3A372F;max-width:62ch;">He's co-authored books alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy, and his work has been featured by CNN, CNN Money and Business Insider. But the credential that matters most isn't on a cover or a broadcast &mdash; it's the thousands of leaders who left a session changed, and stayed that way.</p>
-      <p style="margin-top:22px;font-size:18.5px;line-height:1.7;color:#3A372F;max-width:62ch;">Today James designs and leads immersive <a href={SISTER.retreats} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:underline;">executive leadership retreats</a> for CEOs and their teams, and his team-building work continues through <a href={SISTER.buildingTeams} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:underline;">Building Teams</a>.</p>
+      <p style="margin-top:22px;font-size:18.5px;line-height:1.7;color:#3A372F;max-width:62ch;">Today James designs and leads immersive <a href={SLUGS.teamRetreats} style="color:#C04A26;text-decoration:underline;">executive leadership retreats</a> for CEOs and their teams, and his team-building work continues through <a href={SISTER.buildingTeams} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:underline;">Building Teams</a>.</p>
       <figure style="margin:40px 0 0;border-left:3px solid #C04A26;padding:6px 0 6px 28px;">
         <blockquote style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(22px,2.8vw,30px);line-height:1.32;color:#1B1810;">"Teams don't trust him because of the names on a book cover. They trust him because he gets them to the other side."</blockquote>
       </figure>
@@ -121,7 +135,7 @@ const schema = [
     <div style="max-width:1140px;margin:0 auto;">
       <p style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;margin-bottom:10px;">03</p>
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.015em;">On the page, and on the shelf.</h2>
-      <p style="margin-top:20px;font-size:18px;line-height:1.62;color:#3A372F;max-width:60ch;">Sole author of the forthcoming <em style="font-style:italic;">Lost Disciplines of Leadership</em>&trade;, and a co-author &mdash; alongside Covey, Blanchard, Chopra and Tracy &mdash; of three collaborative works on leadership and growth.</p>
+      <p style="margin-top:20px;font-size:18px;line-height:1.62;color:#3A372F;max-width:60ch;">Sole author of the forthcoming <a href="/lost-disciplines/" style="color:#C04A26;text-decoration:none;font-weight:600;"><em style="font-style:italic;">Lost Disciplines of Leadership</em>&trade;</a>, and a co-author &mdash; alongside Covey, Blanchard, Chopra and Tracy &mdash; of three collaborative works on leadership and growth.</p>
       <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;">
         <div style="display:flex;flex-direction:column;gap:12px;">
           <div style="aspect-ratio:2/3;border-radius:10px;box-shadow:0 16px 34px -14px rgba(0,0,0,0.5);overflow:hidden;position:relative;">
@@ -162,5 +176,5 @@ const schema = [
     </div>
   </section>
 
-  <Footer variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Founded and led by James Carter." />
+  <SiteFooter audience="teams" variant="slim" maxWidth={1140} note="© 2026 Be Legendary. Founded and led by James Carter." />
 </BaseLayout>

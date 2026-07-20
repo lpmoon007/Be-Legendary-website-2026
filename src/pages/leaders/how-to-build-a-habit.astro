@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS } from '../../lib/site';
+
+const path = SLUGS.howToBuildHabit;
+const title = 'How to Build a Habit That Sticks (Without Willpower)';
+const description =
+  'The five rules for building a habit that actually lasts: make it tiny, anchor it, never miss twice, measure the input, and forget the 21-day myth.';
+
+const canonical = new URL(path, SITE_URL).href;
+
+// Article + HowTo + FAQPage — schema types preserved from the design,
+// enriched with entity @ids so the founder/org graph resolves.
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${canonical}#article`,
+    headline: 'How to Build a Habit That Sticks (Without Willpower)',
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['habit formation', 'building habits', 'behavior change'],
+    description:
+      'Five rules for building a durable habit — make it tiny, anchor it, never miss twice, measure the input, and the honest timeline.',
+    mainEntityOfPage: `${canonical}#webpage`,
+  },
+  {
+    '@type': 'HowTo',
+    '@id': `${canonical}#howto`,
+    name: 'How to build a habit that sticks',
+    step: [
+      { '@type': 'HowToStep', name: 'Make it ridiculously easy', text: "Shrink the habit until it's smaller than feels worth doing — one push-up, one sentence, one squat. A rep you can't fail beats an ambition you can't sustain." },
+      { '@type': 'HowToStep', name: 'Anchor it to an existing habit', text: "Attach the new behavior to a routine you never skip, using 'When I [anchor], I will [tiny habit].' The reliable cue triggers the new action." },
+      { '@type': 'HowToStep', name: 'Never miss twice', text: "A missed day is recovery, not failure. One skip is noise; two in a row starts a new habit. Restart the next day with no story about it." },
+      { '@type': 'HowToStep', name: 'Measure the input, not the outcome', text: "Track whether you did the rep (the lead measure), not the result (the lag measure). You control the input daily; the outcome follows." },
+      { '@type': 'HowToStep', name: 'Ignore the 21-day myth', text: "There is no fixed number of days. Research puts automaticity anywhere from about two weeks to several months depending on the behavior. Judge by whether it feels automatic, not by the calendar." },
+    ],
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'How long does it take to build a habit?', acceptedAnswer: { '@type': 'Answer', text: "There's no universal number, and it is not 21 days. A well-known study found habits became automatic anywhere from about 18 to 254 days, averaging around 66, depending on the behavior and the person. Simple habits stick faster; harder ones take longer. Judge readiness by whether the behavior feels automatic, not by a date on the calendar." } },
+      { '@type': 'Question', name: 'What is the easiest way to build a new habit?', acceptedAnswer: { '@type': 'Answer', text: "Make it so small you can't fail, and attach it to something you already do. 'After I pour my coffee, I will write one priority.' Tiny plus anchored removes the two things that kill most habits: forgetting, and needing motivation." } },
+      { '@type': 'Question', name: 'Why do I keep breaking my habits?', acceptedAnswer: { '@type': 'Answer', text: "Usually because the habit is too big, the cue is too vague, or a single missed day turned into a story about failing. Shrink the behavior, tie it to a specific moment, and adopt the never-miss-twice rule so one slip doesn't become a collapse." } },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="article"
+  ogTitle="How to Build a Habit That Sticks (Without Willpower)"
+  ogDescription="Consistency beats intensity. Five rules for a habit that lasts — and the timeline nobody tells you."
+  bodyBg="#EFE8DA"
+  schema={schema}
+>
+  <SiteHeader
+    audience="leaders"
+    variant="slim"
+    logoHref={SLUGS.leaders}
+    contextLink={{ label: 'The Legendary Leader →', href: SLUGS.legendaryLeader }}
+  />
+
+  <div style="background:#EFE8DA;color:#1B1810;">
+    <article>
+      <header style="max-width:820px;margin:0 auto;padding:52px 32px 0;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#C04A26;">How to Build a Habit That Sticks</span>
+        </nav>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,5vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#1B1810;max-width:20ch;">How to build a habit that sticks</h1>
+    <p style="margin-top:16px;font-size:14px;color:#6E6757;">By <a href={SLUGS.about} style="color:#C04A26;text-decoration:none;">James Carter</a> &middot; Founder, Be Legendary</p>
+        <div style="margin-top:28px;background:#F4F0E7;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">The short answer</p>
+          <p class="bl-speakable" style="font-size:18px;line-height:1.6;color:#2E2A22;">You build a habit that sticks by making it <strong style="font-weight:700;">so small you can't fail</strong>, anchoring it to a routine you already have, and treating a missed day as recovery instead of failure. Consistency beats intensity: one rep done daily rewires more than a heroic effort you can't repeat.</p>
+        </div>
+      </header>
+
+      <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="margin-bottom:8px;">Most habit advice fails because it leans on willpower — and willpower is a finite, unreliable fuel. The habits that last don't require you to be disciplined every day. They're engineered so the easy path <em style="font-style:italic;">is</em> the habit. Five rules do the engineering.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:36px auto 0;padding:0 32px;">
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;gap:18px;align-items:flex-start;background:#15130E;color:#F4F0E7;border-radius:14px;padding:26px 28px;"><span style="font-family:'Newsreader',serif;font-size:28px;color:#E0744A;flex:none;line-height:1.1;">1</span><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:6px;">Make it ridiculously easy</h3><p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">Shrink it until it's smaller than feels worth doing — one push-up, one sentence, one squat. The goal at the start isn't results; it's making the behavior so easy that skipping it is harder than doing it. You can always do more. You can rarely do more <em style="font-style:italic;">every day.</em></p></div></div>
+          <div style="display:flex;gap:18px;align-items:flex-start;background:#15130E;color:#F4F0E7;border-radius:14px;padding:26px 28px;"><span style="font-family:'Newsreader',serif;font-size:28px;color:#E0744A;flex:none;line-height:1.1;">2</span><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:6px;">Anchor it to a habit you already have</h3><p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">Use <em style="font-style:italic;">"When I [anchor], I will [tiny habit]."</em> The anchor is a moment you never skip — brushing your teeth, the first coffee, sitting at your desk. Its reliability becomes the trigger, so you don't have to remember. This is <a href={SLUGS.habitStacking} style="color:#E0744A;text-decoration:underline;">habit stacking</a>.</p></div></div>
+          <div style="display:flex;gap:18px;align-items:flex-start;background:#15130E;color:#F4F0E7;border-radius:14px;padding:26px 28px;"><span style="font-family:'Newsreader',serif;font-size:28px;color:#E0744A;flex:none;line-height:1.1;">3</span><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:6px;">Never miss twice</h3><p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">A missed day is recovery, not failure. One skip is noise; <em style="font-style:italic;">two in a row</em> is the start of a new, worse habit. Give yourself full permission to miss once — and a hard rule never to miss twice. This one rule saves more habits than any streak app.</p></div></div>
+          <div style="display:flex;gap:18px;align-items:flex-start;background:#15130E;color:#F4F0E7;border-radius:14px;padding:26px 28px;"><span style="font-family:'Newsreader',serif;font-size:28px;color:#E0744A;flex:none;line-height:1.1;">4</span><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:6px;">Measure the input, not the outcome</h3><p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">Track whether you did the rep — the <a href={SLUGS.leadVsLag} style="color:#E0744A;text-decoration:underline;">lead measure</a> — not the result. You control the input every day; the outcome is downstream and slow. Score the thing you can actually govern, and the results take care of themselves.</p></div></div>
+          <div style="display:flex;gap:18px;align-items:flex-start;background:#15130E;color:#F4F0E7;border-radius:14px;padding:26px 28px;"><span style="font-family:'Newsreader',serif;font-size:28px;color:#E0744A;flex:none;line-height:1.1;">5</span><div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:6px;">Forget the 21-day myth</h3><p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">There is no magic number. Automaticity can take anywhere from about two weeks to several months depending on the behavior. Judge by whether it feels automatic — not by a date. Thirty days is enough to prove to yourself you're someone who shows up; that identity shift is the real prize.</p></div></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+        <div style="font-size:19px;line-height:1.72;color:#2E2A22;">
+          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:24px;line-height:1.4;color:#1B1810;margin:8px 0;padding-left:22px;border-left:3px solid #C04A26;">You're not trying to do a hard thing once. You're trying to become the kind of person who does the small thing every day — and then never argues with themselves about it again.</p>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:44px auto 0;padding:0 32px;">
+        <div style="background:#15130E;color:#F4F0E7;border-radius:18px;padding:40px 42px;text-align:center;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Put it into practice — free</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,36px);line-height:1.1;color:#FBF8F1;max-width:24ch;margin:0 auto 16px;">Thirty days. One rep. One text a day.</h2>
+          <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.78);max-width:48ch;margin:0 auto 28px;">The 30-Day Challenge runs all five rules for you: pick a tiny rep, anchor it, and we send the nudge and the check-in. You just show up.</p>
+          <a href={SLUGS.challenge} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;">Start your 30-day challenge <span>&rarr;</span></a>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:56px auto 0;padding:0 32px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#1B1810;margin-bottom:28px;">Straight answers</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">How long does it really take to build a habit?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Not 21 days. A widely cited study found automaticity took anywhere from about <strong>18 to 254 days</strong>, averaging roughly 66 — depending on the behavior and the person. Simple habits stick faster; harder ones take longer. Track how automatic it feels, not the date.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Why do I keep breaking my habits?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">Usually the habit is too big, the cue is too vague, or one missed day became a story about failing. Shrink it, tie it to a specific moment, and never miss twice. See <a href={SLUGS.whyHabitsFail} style="color:#C04A26;text-decoration:underline;">why habits fail</a> for the full breakdown.</p></div>
+          <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">Do I need an app or a tracker?</h3><p style="font-size:16px;line-height:1.65;color:#56524A;">No. A tracker helps you see the trend, but the mechanism is the anchor, not the app. A daily text that names your rep and asks how it went is enough — which is exactly what the challenge does.</p></div>
+        </div>
+      </section>
+
+      <section style="max-width:820px;margin:52px auto 0;padding:0 32px 20px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep going</p>
+        <div class="bl-cards-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+          <a href={SLUGS.habitStacking} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">What is habit stacking?</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The anchor formula, and the squat story.</span></a>
+          <a href={SLUGS.whyHabitsFail} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">Why habits fail</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The three failure modes — and the fixes.</span></a>
+          <a href={SLUGS.implementationIntentions} style="text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.1);border-radius:14px;padding:22px 22px;display:block;"><span style="display:block;font-family:'Newsreader',serif;font-size:19px;color:#1B1810;margin-bottom:6px;">Implementation intentions</span><span style="display:block;font-size:14px;line-height:1.5;color:#6B6358;">The if-then plan that doubles follow-through.</span></a>
+        </div>
+      </section>
+      <ArticleEndCTA maxWidth={820} />
+      <ShareRow title={title} maxWidth={820} />
+</article>
+  </div>
+
+  <SiteFooter audience="leaders" variant="slim" />
+</BaseLayout>
