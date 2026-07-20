@@ -76,6 +76,11 @@ export default function EnrollPage() {
             <h2 className="mt-3 font-serif text-3xl font-500 text-ink-light sm:text-4xl">
               Three steps. Then it&apos;s just texts.
             </h2>
+            <p className="mx-auto mt-4 max-w-xl text-ink-light/60">
+              This starts a live, 30-day commitment. If you have one behavior you
+              want to hold yourself to and track every day, you&apos;re in the
+              right place — the check-ins begin tomorrow morning.
+            </p>
           </div>
           <SignupFlow />
 

@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
   // ── Look up the participant ───────────────────────────────────────────────
   const { data: user } = await supabase
     .from("users")
-    .select("id, timezone")
+    .select("id, timezone, is_private")
     .eq("phone", from)
     .maybeSingle();
 
@@ -61,16 +61,15 @@ export async function POST(req: NextRequest) {
     return twiml();
   }
 
-  // Always log the inbound message first.
-  await supabase.from("sms_log").insert({
-    user_id: user.id,
-    direction: "inbound",
-    body,
-    twilio_sid: params.MessageSid ?? null,
-  });
-
   // ── STOP handling (mirror the carrier-level opt-out in our DB) ─────────────
+  // "STOP" is not sensitive, so log it verbatim.
   if (isStopKeyword(body)) {
+    await supabase.from("sms_log").insert({
+      user_id: user.id,
+      direction: "inbound",
+      body,
+      twilio_sid: params.MessageSid ?? null,
+    });
     await supabase.from("users").update({ active: false }).eq("id", user.id);
     await supabase
       .from("conversation_state")
@@ -93,6 +92,18 @@ export async function POST(req: NextRequest) {
   // falling back to the user's local "today".
   const checkinDate = convo?.checkin_date ?? localDateISO(user.timezone);
 
+  // Log the inbound message. For private participants we redact any free-text
+  // reply (anything that isn't a numeric score) so the behavior/reflection is
+  // never stored — the coach supports the effort without seeing the content.
+  const logBody =
+    user.is_private && state !== "awaiting_score" ? "(private)" : body;
+  await supabase.from("sms_log").insert({
+    user_id: user.id,
+    direction: "inbound",
+    body: logBody,
+    twilio_sid: params.MessageSid ?? null,
+  });
+
   const action = processInbound(state, body);
 
   // ── Apply check-in mutations ──────────────────────────────────────────────
@@ -112,7 +123,9 @@ export async function POST(req: NextRequest) {
     await supabase
       .from("checkins")
       .update({
-        journal_entry: action.setJournal,
+        // Private participants: record that they reflected, but never store the
+        // reflection text.
+        journal_entry: user.is_private ? null : action.setJournal,
         journal_received_at: new Date().toISOString(),
       })
       .eq("user_id", user.id)

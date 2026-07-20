@@ -12,6 +12,7 @@ interface EnrollBody {
   commitment?: string;
   timezone?: string;
   consent?: boolean;
+  private?: boolean;
 }
 
 export async function POST(req: NextRequest) {
@@ -24,7 +25,10 @@ export async function POST(req: NextRequest) {
 
   const name = payload.name?.trim();
   const rawPhone = payload.phone?.trim() ?? "";
-  const commitment = payload.commitment?.trim();
+  const isPrivate = payload.private === true;
+  // In private mode we never persist the real behavior — store a placeholder so
+  // the coach (and the DB) never sees it. The morning nudge is generic.
+  const commitment = isPrivate ? "(private)" : payload.commitment?.trim();
   const consent = payload.consent === true;
   const timezone =
     payload.timezone && isValidTimezone(payload.timezone)
@@ -71,7 +75,7 @@ export async function POST(req: NextRequest) {
   if (existing) {
     await supabase
       .from("users")
-      .update({ name, commitment, timezone, active: true })
+      .update({ name, commitment, timezone, is_private: isPrivate, active: true })
       .eq("id", existing.id);
     await supabase
       .from("conversation_state")
@@ -91,6 +95,7 @@ export async function POST(req: NextRequest) {
       phone,
       commitment,
       timezone,
+      is_private: isPrivate,
       morning_time: "08:00",
       active: true,
     })
