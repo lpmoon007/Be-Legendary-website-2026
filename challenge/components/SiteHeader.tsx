@@ -20,7 +20,7 @@ export function SiteHeader() {
         </a>
         <nav className="flex items-center gap-6 text-sm font-600 text-ink-light/80">
           <a
-            href="https://www.belegendary.org/"
+            href="https://www.belegendary.org/leaders/workouts/"
             className="hidden transition-colors hover:text-ink-light sm:inline"
           >
             Mindset Workouts
