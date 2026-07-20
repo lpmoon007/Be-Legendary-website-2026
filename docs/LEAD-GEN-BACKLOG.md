@@ -102,11 +102,15 @@ low-risk first sale — give it its own CTA.
   cold-landing `/leaders/` content pages that lacked one (E-E-A-T for AI/search landers).
 
 ### 9. Smaller items
-- [ ] Teams glossary — adopt `ArticleEndCTA` for author/proof consistency (already has a
-  call CTA, so low priority).
-- [ ] Link the cost calculator from the retreat pricing pages (reframes the price as
-  cheaper than the problem — the reason-to-act-now).
-- [ ] Surface the phone number consistently (currently on one page only), or drop it.
-- [ ] A People-leader / CHRO champion path with internal-justification materials
-  (today only CEO + EA are served).
-- [ ] Coaching-cost page: add a "where we fit" line bridging market ranges to the real tiers.
+- [x] Teams glossary — added the `ArticleEndCTA` trust block (author + proof + free
+  assessment on-ramp) before the closing CTA.
+- [x] Linked the cost calculator from both retreat pricing pages (retreats hub +
+  ways-to-work) — reframes the spend against the cost of the problem.
+- [x] Surfaced the phone (800-513-8759) sitewide in both footer variants (was on one
+  page only).
+- [x] Coaching-cost page: added a "Where Be Legendary fits" callout bridging the market
+  ranges to the real published tiers ($25K–$500K+), linking to the retreat tiers.
+- [ ] **A People-leader / CHRO champion path** with internal-justification materials
+  (today only CEO + EA are served). *Needs your positioning input* — how you want to
+  speak to the CHRO/Head of People who champions this spend internally, and what
+  internal-sell materials (board-ready ROI, how to pitch the CEO/CFO) to give them.

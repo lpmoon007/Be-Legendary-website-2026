@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
 
 const title = 'Glossary: The Flag Model & FlagScore Terms | Be Legendary';
 const description = 'Plain definitions of the Be Legendary vocabulary: the Flag Model, its five components, FlagScore, the Calibration Call, ELFS and Truth Over Comfort.';
@@ -192,6 +193,10 @@ const schema = [
       <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:17px 34px;border-radius:12px;font-weight:700;font-size:17px;box-shadow:0 16px 44px -14px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:19px;">&rarr;</span></a>
     </div>
   </section>
+
+  <div style="margin-top:64px;">
+    <ArticleEndCTA maxWidth={1040} />
+  </div>
 
   <SiteFooter audience="teams" variant="slim" maxWidth={1040} note="© 2026 Be Legendary · The vocabulary of the Flag Model." />
 </BaseLayout>

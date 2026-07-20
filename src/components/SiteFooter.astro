@@ -53,7 +53,7 @@ const secondary = teamsActive ? LEADERS_COL : TEAMS_COL;
     </div>
     <div style={`max-width:${maxWidth}px;margin:28px auto 0;padding-top:20px;border-top:1px solid rgba(244,240,231,0.1);font-size:12.5px;color:#6E6757;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;`}>
       <span>{note ?? '© 2026 Be Legendary. All rights reserved.'}</span>
-      <span style="display:flex;gap:16px;"><a href={`mailto:${CONTACT_EMAIL}`} style="color:inherit;text-decoration:none;">Contact</a><a href={SLUGS.privacy} style="color:inherit;text-decoration:none;">Privacy</a><span>belegendary.org</span></span>
+      <span style="display:flex;gap:16px;flex-wrap:wrap;"><a href="tel:8005138759" style="color:inherit;text-decoration:none;">800-513-8759</a><a href={`mailto:${CONTACT_EMAIL}`} style="color:inherit;text-decoration:none;">Contact</a><a href={SLUGS.privacy} style="color:inherit;text-decoration:none;">Privacy</a><span>belegendary.org</span></span>
     </div>
   </footer>
 ) : (
@@ -92,6 +92,7 @@ const secondary = teamsActive ? LEADERS_COL : TEAMS_COL;
         <li><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a></li>
         <li><a href={SLUGS.glossary} style="color:inherit;text-decoration:none;">Flag Model glossary</a></li>
         <li><a href={`mailto:${CONTACT_EMAIL}`} style="color:inherit;text-decoration:none;">Contact us</a></li>
+        <li><a href="tel:8005138759" style="color:inherit;text-decoration:none;">800-513-8759</a></li>
         <li><a href={CHALLENGE_URL} target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Challenge login &#8599;</a></li>
       </ul>
       <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-block;margin-top:18px;background:#C04A26;color:#fff;text-decoration:none;padding:12px 20px;border-radius:9px;font-weight:700;font-size:14px;">{CTA_LABEL}</a>
