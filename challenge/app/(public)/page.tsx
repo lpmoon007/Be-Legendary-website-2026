@@ -1,12 +1,53 @@
+import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
 import { PhoneMock } from "@/components/PhoneMock";
 import { SignupFlow } from "@/components/SignupFlow";
 import { ProgressPreview } from "@/components/ProgressPreview";
 import { SnailMark } from "@/components/Logo";
 
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "https://challenge.belegendary.org/" },
+};
+
+// Ties the challenge to the same Be Legendary entity as the main site, so search
+// and AI answer engines connect the two.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.belegendary.org/#org",
+      name: "Be Legendary",
+      url: "https://www.belegendary.org/",
+      founder: { "@type": "Person", name: "James Carter" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://challenge.belegendary.org/#website",
+      url: "https://challenge.belegendary.org/",
+      name: "The 30-Day Challenge — Be Legendary",
+      publisher: { "@id": "https://www.belegendary.org/#org" },
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://challenge.belegendary.org/#webpage",
+      url: "https://challenge.belegendary.org/",
+      name: "The 30-Day Challenge",
+      isPartOf: { "@id": "https://challenge.belegendary.org/#website" },
+      description:
+        "A free 30-day habit challenge from Be Legendary: pick one behavior and get held to it daily — a morning nudge, a 4 p.m. check-in, and a line on how it went. No app to download.",
+    },
+  ],
+};
+
 export default function EnrollPage() {
   return (
     <div className="min-h-screen bg-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SiteHeader />
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
