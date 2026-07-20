@@ -7,6 +7,15 @@ export interface Testimonial {
 }
 
 export const TESTIMONIALS: Testimonial[] = [
+  // Featured first: a named C-suite voice for the executive-team pages (the
+  // ProofStrip defaults to index 0). Keeps the exec-team proof matched to the
+  // exec-team buyer, instead of a team-building/workshop quote.
+  {
+    quote:
+      'This truly resonated and will have a lasting influence on us as we work to create a technology organization where the best and brightest choose to be.',
+    name: 'Larry Quinlan',
+    role: 'Global CIO, Deloitte',
+  },
   {
     quote:
       'James Carter has a great way of capturing your attention with his thought-provoking activities and messages. You walk away feeling inspired to grow yourself, help others, and, as James would say, “Be Legendary.”',
