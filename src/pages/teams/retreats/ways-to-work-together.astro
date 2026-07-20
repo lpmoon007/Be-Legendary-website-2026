@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
+import ReinforcementModule from '../../../components/ReinforcementModule.astro';
 import { SLUGS, CTA_URL } from '../../../lib/site';
 
 const path = SLUGS.waysToWorkTogether;
@@ -123,6 +124,9 @@ const navLinks = [
       <p style="text-align:center;margin-top:28px;font-size:16px;color:#6B4A44;">Not sure which fits? That's the first conversation. <a href={CTA_URL} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:none;font-weight:600;">We'll tell you honestly</a> — sometimes the right answer is the simpler one.</p>
       <p style="text-align:center;margin-top:10px;font-size:14.5px;color:#8A6A64;">Weighing the investment? First see what the problem is already costing you — <a href={SLUGS.costCalculator} style="color:#C04A26;text-decoration:none;font-weight:600;">run the cost calculator</a>.</p>
     </section>
+
+    <!-- ============ 30-DAY REINFORCEMENT ============ -->
+    <ReinforcementModule maxWidth={1000} />
 
     <!-- ============ FOUR FOCUS AREAS ============ -->
     <section style="max-width:1000px;margin:72px auto 0;padding:0 32px;">

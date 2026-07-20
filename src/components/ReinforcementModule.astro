@@ -1,0 +1,32 @@
+---
+// "What the 30 days actually looks like" — explains the post-retreat
+// reinforcement (the answer to "won't this just fade like every other
+// offsite?"). Retreat/cream palette; used on the retreat money pages.
+export interface Props {
+  maxWidth?: number;
+}
+const { maxWidth = 1240 } = Astro.props;
+const steps = [
+  { n: '01', h: 'One behavior', b: 'Each leader leaves with a single behavior tied to the retreat’s outcome — not ten, one. The narrower the commitment, the more likely it survives contact with a busy week.' },
+  { n: '02', h: 'A morning nudge', b: 'Every morning, a reminder of the one thing you committed to. It starts the day pointed the right way, before the inbox decides your priorities for you.' },
+  { n: '03', h: 'A 4 p.m. check-in', b: 'Each afternoon, a check: did you do it — and a line about how it went. Said out loud, to someone, a commitment is far harder to quietly drop.' },
+  { n: '04', h: 'No app, no perfection', b: 'Nothing to download. You don’t have to be perfect. You have to keep showing up and doing your best — which, thirty days running, is what turns a resolution into how you work.' },
+];
+---
+<section style={`max-width:${maxWidth}px;margin:88px auto 0;padding:0 32px;`}>
+  <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:44px 46px;">
+    <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">What the 30 days actually looks like</p>
+    <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#3A0A0C;max-width:28ch;margin-bottom:14px;">A great retreat fades by the second Monday. This is what keeps it alive.</h2>
+    <p style="font-size:16.5px;line-height:1.65;color:#5A4A44;max-width:64ch;margin-bottom:32px;">The reason most offsites don’t stick isn’t the offsite — it’s that nothing changes in the operating rhythm the moment everyone is back at their desk. So we change the rhythm. Every leader leaves with one behavior, and for thirty days we hold them to it.</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+      {steps.map((s) => (
+        <div style="border-top:2px solid #64010a;padding-top:16px;">
+          <span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;">{s.n}</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:19px;color:#3A0A0C;margin:6px 0 8px;">{s.h}</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#5A4A44;">{s.b}</p>
+        </div>
+      ))}
+    </div>
+    <p style="margin-top:26px;font-size:15px;line-height:1.6;color:#6B4A44;font-style:italic;">Thirty days is long enough for a behavior to stop being a resolution and start being how you work — and that, not the two days away, is what makes the retreat worth it.</p>
+  </div>
+</section>

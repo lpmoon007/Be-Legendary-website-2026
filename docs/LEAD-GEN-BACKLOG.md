@@ -71,11 +71,12 @@ there. **Verify on the live site** that the embedded calendar renders (if a serv
 CSP `frame-src` blocks it, allow `https://meetings-na2.hubspot.com`). The page has
 a built-in "open in a new tab" fallback if the embed ever fails.
 
-### 4. One named C-suite testimonial  ·  *needs: permission/asset*
-The exec-team money pages show anonymized case studies + team-building testimonials
-(bike charity, councils) + unattributed stats. One named COO/CEO outcome quote would
-outconvert all eight. Tie it to a FlagScore/revenue outcome; feature it in `ProofStrip`
-on the team money pages.
+### 4. ~~One named C-suite testimonial~~  ·  ✅ DONE
+Featured the existing Larry Quinlan quote (Global CIO, Deloitte) as the default
+`ProofStrip` proof, so a C-suite voice shows across the exec-team pages + homepage +
+Review schema instead of a team-building quote. *Optional upgrade:* if you get a named
+C-suite quote tied to a hard outcome (revenue/FlagScore), add it to `testimonials.ts`
+for rotation.
 
 ### 5. Risk reversal on the money pages  ·  *needs: your policy call*
 The site coaches buyers to ask a vendor *"what happens if it doesn't work?"* then never
@@ -83,11 +84,12 @@ answers it for itself, on a $25K–$500K commitment. Add a "how we de-risk this"
 (outcome commitment / measured-against-baseline / refundable diagnostic). — code once
 you decide the wording.
 
-### 6. "What the 30 days actually looks like" module  ·  *needs: your process detail*
-"30-day reinforcement" is the #1 differentiator and the answer to "will it stick," but
-it's an unexplained slogan. A short module (weekly cadence, the lead measure per person,
-the FlagScore re-read) on the retreat/ways-to-work pages = concrete proof. — code once
-you give the specifics.
+### 6. ~~"What the 30 days actually looks like" module~~  ·  ✅ DONE
+Built `ReinforcementModule.astro` (retreat palette) and placed it on the retreats hub +
+ways-to-work pages, explaining the mechanic James provided: each leader leaves with one
+behavior; for 30 days we hold them to it — a morning nudge, a 4 p.m. check-in, and a line
+on how it went; no app; showing up beats perfection. Turns the "30-day reinforcement"
+slogan into concrete proof of how the retreat sticks.
 
 ### 7. Team Diagnostic pricing/path  ·  *needs: your pricing decision*
 The diagnostic reads like a paid product ("Step one · before any retreat") but shows no
