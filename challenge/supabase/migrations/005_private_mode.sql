@@ -10,7 +10,9 @@ ALTER TABLE users
 
 -- Recreate due_messages() so the sender knows whether to use the generic
 -- private morning message. (Adds is_private to the returned columns.)
-CREATE OR REPLACE FUNCTION due_messages()
+-- DROP first: Postgres can't change a function's return type via CREATE OR REPLACE.
+DROP FUNCTION IF EXISTS due_messages();
+CREATE FUNCTION due_messages()
 RETURNS TABLE (
   user_id      uuid,
   phone        text,
