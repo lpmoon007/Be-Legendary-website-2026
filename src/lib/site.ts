@@ -97,6 +97,9 @@ export const SLUGS = {
   meetingAgenda: '/leadership-team-meeting-agenda/',
   leadershipScorecard: '/leadership-scorecard/',
   coachingQuestions: '/leadership-coaching-questions/',
+  fixDysfunctionalTeam: '/how-to-fix-a-dysfunctional-leadership-team/',
+  disagreeAndCommit: '/disagree-and-commit/',
+  setPriorities: '/how-to-set-leadership-team-priorities/',
   // ── For Leaders universe (individual-leader development) ──────────────────
   // /leaders/ is the canonical home. The 4 concept pages migrated from /library/
   // (design intent), with 301s in public/.htaccess.

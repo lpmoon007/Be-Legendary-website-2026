@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'How to Set Leadership Team Priorities (the 2–3 That Matter)';
+const description =
+  'Setting leadership team priorities means choosing the two or three things everything else serves — and naming what you’ll stop doing to protect them. A method for choosing, writing, and holding priorities that actually direct decisions.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'How to Set Leadership Team Priorities', item: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/' },
+  ] },
+  { '@type': 'Article', headline: 'How to set leadership team priorities — the 2–3 that matter', datePublished: '2026-07-20', dateModified: '2026-07-20', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/', description: 'A method for setting leadership team priorities: force a ranked choice, cut to two or three, name the trade-offs, write them testably, and hold them on a cadence.' },
+  { '@type': 'HowTo', name: 'How to set leadership team priorities', description: 'A six-step method for choosing the two or three priorities a leadership team will actually organize around, and writing them so they direct real decisions.', step: [
+    { '@type': 'HowToStep', position: 1, name: 'Ask the one-thing question', url: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/#set', text: 'Start with: if we only moved one thing this year, what would make everything else easier or unnecessary? It forces the team past “everything matters” toward what actually drives the rest.' },
+    { '@type': 'HowToStep', position: 2, name: 'Force a ranked stack, not a bucket', url: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/#set', text: 'Make the team rank candidates 1-to-N, not sort them into “important” piles. Ranking forces the trade-offs a bucket hides — you learn what people actually believe when they must put one thing above another.' },
+    { '@type': 'HowToStep', position: 3, name: 'Cut to two or three', url: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/#set', text: 'Draw the line at two or three. The argument over what falls below the line is the real prioritization work — don’t resolve it by widening the list to keep the peace.' },
+    { '@type': 'HowToStep', position: 4, name: 'Name the trade-offs out loud', url: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/#set', text: 'State the good things you are choosing not to do this quarter to protect the priorities. A priority with no named sacrifice is a wish; the “no” is what makes the “yes” real.' },
+    { '@type': 'HowToStep', position: 5, name: 'Write each one testably, with an owner and a measure', url: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/#set', text: 'Phrase each priority precisely enough that any decision can be tested against it, and attach one owner and one measure of progress. Vague priorities can’t arbitrate anything.' },
+    { '@type': 'HowToStep', position: 6, name: 'Disagree and commit on the final set', url: 'https://www.belegendary.org/how-to-set-leadership-team-priorities/#set', text: 'Get explicit commitment out loud from everyone, including those who argued for something else, so the priorities survive contact with the first hard week.' },
+  ] },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'How many priorities should a leadership team have?', acceptedAnswer: { '@type': 'Answer', text: 'Two or three. Beyond that, priorities stop functioning as priorities: when everything is important, the team has no rule for what to do when two “priorities” collide, so it defaults to whatever is loudest or most urgent. Two or three is few enough that every leader can hold them in mind and test decisions against them without a document.' } },
+    { '@type': 'Question', name: 'How do you choose leadership team priorities?', acceptedAnswer: { '@type': 'Answer', text: 'Start from the one-thing question — if we could only move one thing, what makes everything else easier or unnecessary — then force a ranked stack rather than sorting things into “important” buckets, cut to two or three, and explicitly name the good things you’ll stop doing to protect them. Write each testably with an owner and a measure, and get the team to disagree and commit on the final set. The hard part isn’t naming what matters; it’s cutting what also matters but can’t make the cut.' } },
+    { '@type': 'Question', name: 'What’s the difference between a goal and a priority?', acceptedAnswer: { '@type': 'Answer', text: 'A goal is an outcome you want; a priority is what you’ll sacrifice other good things for to get it. You can have many goals. You can only have a few priorities, because a priority’s whole job is to lose to nothing and to beat everything else when they compete. If a stated priority never causes you to say no to something you’d otherwise do, it isn’t one.' } },
+    { '@type': 'Question', name: 'How often should a leadership team reset its priorities?', acceptedAnswer: { '@type': 'Answer', text: 'Review them every quarter and reset deliberately, while checking weekly that decisions still serve them. Priorities decay quietly — new initiatives accrete, urgent things crowd out important ones — so they need a standing place in the operating rhythm, not just an annual planning offsite. The weekly check keeps them honest; the quarterly reset keeps them current.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.setPriorities}
+  ogType="article"
+  ogTitle="How to Set Leadership Team Priorities"
+  ogDescription="Choosing the 2–3 things everything serves — and naming what you’ll stop doing to protect them. A method for priorities that actually direct decisions."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">How to Set Leadership Team Priorities</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to set leadership team priorities</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Setting leadership team priorities means choosing the <strong>two or three things everything else serves</strong> this quarter &mdash; and, harder, naming what you&rsquo;ll <strong>stop doing</strong> to protect them. Priorities aren&rsquo;t a list of everything important; they&rsquo;re the few things you&rsquo;ll sacrifice other good things for. You set them by forcing a ranked choice (not a bucket of &ldquo;important&rdquo; items), cutting to two or three, naming the trade-offs out loud, writing each one so any decision can be tested against it, and getting the team to disagree and commit on the final set.</p>
+    </div>
+  </header>
+
+  <!-- ON THIS PAGE -->
+  <nav aria-label="On this page" style="max-width:920px;margin:26px auto 0;padding:0 32px;">
+    <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:20px 24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:12px;">On this page</p>
+      <ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;">
+        <li><a href="#problem" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Why everything is a priority</a></li>
+        <li><a href="#what" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">What a priority actually is</a></li>
+        <li><a href="#set" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">How to set them</a></li>
+        <li><a href="#keep" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Keeping them alive</a></li>
+        <li><a href="#mistakes" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Common mistakes</a></li>
+        <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- THE PROBLEM -->
+  <div id="problem" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">First, why &ldquo;everything is a priority&rdquo; is the whole problem</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Ask most leadership teams for their priorities and you&rsquo;ll get a list of nine. Each one is genuinely important, each has a champion, and none can be cut without someone feeling their area got deprioritized. So the list stays long &mdash; and a list of nine priorities is functionally a list of <em>zero</em>. When two of them collide (and they always do), the team has no rule for which wins, so it defaults to whatever is loudest, most urgent, or closest to the CEO&rsquo;s last conversation. That&rsquo;s not prioritizing; that&rsquo;s reacting with a nicer vocabulary.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">This is the quiet source of a lot of dysfunction. When priorities are fuzzy, everyone optimizes for a slightly different thing and calls it disagreement; <a href={SLUGS.initiativesNeverFinish} style="color:#D98A5E;">initiatives sprawl and never finish</a>; and the team stays <a href={SLUGS.whyNotExecuting} style="color:#D98A5E;">busy without moving</a>. A clear, short set of priorities is the single highest-leverage thing a leadership team can produce &mdash; it&rsquo;s the Flag at the center of the <a href={SLUGS.flagModel} style="color:#D98A5E;">Flag Model</a>, the thing every other discipline exists to serve.</p>
+  </div>
+
+  <!-- WHAT A PRIORITY IS -->
+  <div id="what" style="max-width:920px;margin:0 auto;padding:44px 32px 8px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">What a priority actually is</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Here is the definition that makes setting them possible: <strong style="color:#F4F0E7;">a priority is something you&rsquo;ll give up other good things for.</strong> Not something important &mdash; everything on the list is important. A priority is what wins when it competes with something else that also matters. Which means the real test of a priority isn&rsquo;t &ldquo;is this valuable?&rdquo; It&rsquo;s &ldquo;what am I willing to <em>not</em> do to protect this?&rdquo;</p>
+    <div style="background:#211D15;border:1px solid rgba(192,74,38,0.3);border-radius:16px;padding:26px 28px;">
+      <p style="font-size:17px;line-height:1.6;color:#FBF8F1;">If a stated priority never causes you to say no to something you&rsquo;d otherwise do, <strong style="color:#E0744A;">it isn&rsquo;t a priority &mdash; it&rsquo;s a preference.</strong> The word comes from &ldquo;prior&rdquo;: the thing that comes before. Only a few things can come first. That&rsquo;s not a limitation to work around; it&rsquo;s the entire function of the exercise.</p>
+    </div>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-top:22px;">This is also why priority-setting is emotionally hard, not intellectually hard. Everyone can identify what matters. The work is agreeing to let good things lose &mdash; a product line that won&rsquo;t get the investment, a market you won&rsquo;t enter this year, a fire you&rsquo;ll deliberately let smolder. The fight over what falls below the line <em>is</em> the prioritization. Skip that fight and you haven&rsquo;t set priorities; you&rsquo;ve made a list.</p>
+  </div>
+
+  <!-- HOW TO SET THEM -->
+  <div id="set" style="max-width:920px;margin:32px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">How to set leadership team priorities, in six steps</p>
+      <ol style="margin:0;padding-left:24px;display:flex;flex-direction:column;gap:18px;font-size:16px;line-height:1.6;color:#3A372F;">
+        <li><strong>Ask the one-thing question.</strong> Before ranking anything, ask: <em>if we could only move one thing this year, what would make everything else easier or unnecessary?</em> It breaks the &ldquo;everything matters&rdquo; reflex and surfaces the priority that actually drives the others. You won&rsquo;t always land on one, but the question reorders the conversation.</li>
+        <li><strong>Force a ranked stack, not a bucket.</strong> Have the team rank the candidates 1&#8209;to&#8209;N &mdash; a strict order, no ties &mdash; instead of sorting them into &ldquo;important&rdquo; and &ldquo;later&rdquo; piles. Buckets hide trade-offs; ranking exposes them. You learn what people actually believe the moment they&rsquo;re forced to put one good thing above another.</li>
+        <li><strong>Cut to two or three.</strong> Draw the line. Everything above it is a priority; everything below it is explicitly not, this quarter. The argument about where the line falls is not a distraction from the work &mdash; it <em>is</em> the work. Don&rsquo;t resolve the tension by widening the list to keep everyone whole.</li>
+        <li><strong>Name the trade-offs out loud.</strong> For each priority, say the good thing you&rsquo;re choosing not to do to protect it. &ldquo;We&rsquo;re prioritizing X, which means Y waits and Z gets no new headcount.&rdquo; A priority with no named sacrifice is a wish. Saying the &ldquo;no&rdquo; in the room is what makes the &ldquo;yes&rdquo; real &mdash; and what stops the cut work from quietly creeping back.</li>
+        <li><strong>Write each one testably &mdash; with an owner and a measure.</strong> Phrase each priority precisely enough that any future decision can be checked against it: <em>does this serve priority X, or not?</em> Attach one owner and one measure of progress. &ldquo;Improve customer experience&rdquo; can&rsquo;t arbitrate a decision; &ldquo;cut time-to-first-value below 7 days, owned by [name]&rdquo; can.</li>
+        <li><strong>Disagree and commit on the final set.</strong> Go around the room and get commitment out loud &mdash; including from the people who argued for something that didn&rsquo;t make the cut. Priorities that weren&rsquo;t genuinely committed to fall apart the first hard week, when the deprioritized work comes back wearing a costume of urgency. <a href={SLUGS.disagreeAndCommit} style="color:#C04A26;font-weight:600;">How disagree and commit works &rarr;</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- KEEP THEM ALIVE -->
+  <div id="keep" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Keeping them alive</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Priorities decay the moment they stop being used. New initiatives accrete, urgent things crowd out important ones, and within a month the carefully chosen three are back to nine &mdash; not by decision, but by drift. Three habits keep them real:</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:16px;"><strong style="color:#F4F0E7;">Make them visible.</strong> The priorities live somewhere the whole team sees them weekly &mdash; not in a planning deck no one reopens. If a leader can&rsquo;t recite them from memory, they aren&rsquo;t directing anyone&rsquo;s decisions.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:16px;"><strong style="color:#F4F0E7;">Test decisions against them.</strong> The point of writing them testably is to use them as an arbiter: when a new request or opportunity shows up, ask out loud whether it serves a priority or competes with one. A priority that never kills or reshapes a proposal is decoration. Build the check into your <a href={SLUGS.meetingAgenda} style="color:#D98A5E;">weekly meeting agenda</a>.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);"><strong style="color:#F4F0E7;">Reset them on a cadence.</strong> Review the priorities every quarter and reset deliberately &mdash; keep, drop, or re-rank &mdash; so they stay current without whipsawing month to month. Setting them once is what leaves a team executing last year&rsquo;s priorities against this year&rsquo;s reality. Keeping them, and the alignment they require, is a discipline &mdash; the same one behind <a href={SLUGS.alignLeadershipTeam} style="color:#D98A5E;">keeping a leadership team aligned</a>.</p>
+  </div>
+
+  <!-- COMMON MISTAKES -->
+  <div id="mistakes" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">Common mistakes</h2>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Too many</p>
+        <p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">Five to nine &ldquo;priorities&rdquo; so no one has to lose. The team feels aligned and behaves exactly as before, because nothing was actually chosen.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Too vague to arbitrate</p>
+        <p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">&ldquo;Grow the business,&rdquo; &ldquo;delight customers.&rdquo; True, unarguable, and useless as a tie-breaker &mdash; which is the only job a priority has.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Set once, then forgotten</p>
+        <p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">Chosen at the annual offsite, filed, and never used to make a real decision. Priorities that aren&rsquo;t tested weekly quietly revert to the old nine.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Priorities vs. the to-do list</p>
+        <p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">Confusing the few things that direct everything (priorities) with the many things the team is doing (the operating list). The list can be long; the priorities can&rsquo;t.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">Top-down, no buy-in</p>
+        <p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">The CEO names them alone. They&rsquo;re technically clear and privately ignored, because the team never fought for them and so never owned them.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:22px 24px;">
+        <p style="font-size:16.5px;color:#FBF8F1;font-weight:600;margin-bottom:5px;">No named sacrifice</p>
+        <p style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">Priorities chosen without saying what they cost. When nothing is explicitly dropped, everything continues &mdash; and the &ldquo;priorities&rdquo; are just the old list with a headline.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See whether your team is actually on the same 2&ndash;3.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll run a short exercise that reveals, in real time, how many of your leaders have the same priorities in mind right now &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- STRAIGHT ANSWERS -->
+  <div id="faq" style="max-width:920px;margin:56px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How many priorities should a leadership team have?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Two or three. Beyond that they stop functioning &mdash; when everything is important, the team has no rule for what to do when two collide, so it defaults to whatever is loudest or most urgent. Two or three is few enough to hold in mind and test decisions against without a document.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do you choose them?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Start from the one-thing question, force a ranked stack rather than buckets, cut to two or three, and name the good things you&rsquo;ll stop doing to protect them. Write each testably with an owner and a measure, then disagree and commit. The hard part isn&rsquo;t naming what matters &mdash; it&rsquo;s cutting what also matters but can&rsquo;t make the cut.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What&rsquo;s the difference between a goal and a priority?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">A goal is an outcome you want; a priority is what you&rsquo;ll sacrifice other good things for to get it. You can have many goals and only a few priorities &mdash; a priority&rsquo;s whole job is to win when things compete. If a stated priority never makes you say no to something, it isn&rsquo;t one.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How often should you reset them?</h3><p style="font-size:16px;line-height:1.65;color:rgba(244,240,231,0.72);">Review and reset every quarter, and check weekly that decisions still serve them. Priorities decay quietly as new work accretes, so they need a standing place in the operating rhythm &mdash; the weekly check keeps them honest, the quarterly reset keeps them current.</p></div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.flagModel} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The Flag Model, in full</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The Flag is your 2&ndash;3 priorities &mdash; the thing every discipline serves.</span>
+      </a>
+      <a href={SLUGS.alignLeadershipTeam} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to align a leadership team</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Once you&rsquo;ve set them, this is how you keep the team on them.</span>
+      </a>
+      <a href={SLUGS.disagreeAndCommit} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Disagree and commit</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">How the team commits to a priority set not everyone chose.</span>
+      </a>
+      <a href={SLUGS.strategyExecutionGap} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">The strategy execution gap</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Unclear priorities are where the deciding-to-doing gap begins.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. A priority is what you’ll give up other good things for." />
+</BaseLayout>
