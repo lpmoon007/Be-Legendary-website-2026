@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PRESET_BEHAVIORS } from "@/lib/presets";
 import { digitCount } from "@/lib/phone";
 
@@ -25,6 +25,19 @@ export function SignupFlow() {
   const [error, setError] = useState<string | null>(null);
   // Outcome of step 2: did they opt in to texts or decline?
   const [outcome, setOutcome] = useState<"enrolled" | "declined" | null>(null);
+
+  // Deep-link support: /?rep=<behavior> (e.g. from a CQ report) pre-selects
+  // "Write my own…" and fills in the behavior so they land straight in setup.
+  useEffect(() => {
+    const rep = new URLSearchParams(window.location.search).get("rep");
+    if (rep && rep.trim().length > 3) {
+      setChoice(CUSTOM);
+      setCustom(rep.trim());
+      document
+        .getElementById("signup")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
 
   const commitment =
     choice === CUSTOM ? custom.trim() : choice ?? "";
