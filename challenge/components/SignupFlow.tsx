@@ -20,6 +20,9 @@ export function SignupFlow() {
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
   const [isPrivate, setIsPrivate] = useState(false);
+  // Delivery times (HH:MM, participant's local zone). Default 8 a.m. nudge / 4 p.m. check-in.
+  const [reminderTime, setReminderTime] = useState("08:00");
+  const [reflectionTime, setReflectionTime] = useState("16:00");
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,8 +51,11 @@ export function SignupFlow() {
 
   // Consent is NOT required to submit — SMS opt-in is optional (A2P compliance).
   // You can complete the form and use Be Legendary without agreeing to texts.
+  // The afternoon check-in should land after the morning reminder (string compare
+  // works for HH:MM time-of-day ordering).
+  const timesValid = reflectionTime > reminderTime;
   const step2Valid =
-    firstName.trim().length > 0 && digitCount(phone) >= 10;
+    firstName.trim().length > 0 && digitCount(phone) >= 10 && timesValid;
 
   function reset() {
     setStep(1);
@@ -59,6 +65,8 @@ export function SignupFlow() {
     setPhone("");
     setConsent(false);
     setIsPrivate(false);
+    setReminderTime("08:00");
+    setReflectionTime("16:00");
     setError(null);
     setOutcome(null);
   }
@@ -89,6 +97,8 @@ export function SignupFlow() {
           consent,
           private: isPrivate,
           timezone,
+          reminder_time: reminderTime,
+          reflection_time: reflectionTime,
         }),
       });
       const data = await res.json();
@@ -211,6 +221,44 @@ export function SignupFlow() {
               />
             </label>
 
+            {/* Delivery times — a morning nudge to do the rep, an afternoon check-in to rate it. */}
+            <div>
+              <span className="text-sm font-600 text-ink-body">When should we text you?</span>
+              <p className="mt-0.5 text-xs text-ink-muted">
+                A morning nudge to do your rep, and an afternoon check-in to rate
+                how it went — in your local time.
+              </p>
+              <div className="mt-2 grid grid-cols-2 gap-3">
+                <label className="block">
+                  <span className="text-xs font-600 text-ink-muted">
+                    Morning reminder
+                  </span>
+                  <input
+                    type="time"
+                    value={reminderTime}
+                    onChange={(e) => setReminderTime(e.target.value)}
+                    className="mt-1 w-full rounded-btn border border-ink-muted/40 bg-white px-4 py-3 text-ink-body outline-none focus:border-accent"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-xs font-600 text-ink-muted">
+                    Afternoon check-in
+                  </span>
+                  <input
+                    type="time"
+                    value={reflectionTime}
+                    onChange={(e) => setReflectionTime(e.target.value)}
+                    className="mt-1 w-full rounded-btn border border-ink-muted/40 bg-white px-4 py-3 text-ink-body outline-none focus:border-accent"
+                  />
+                </label>
+              </div>
+              {!timesValid && (
+                <p className="mt-2 text-xs font-600 text-accent">
+                  Your check-in should be later in the day than your reminder.
+                </p>
+              )}
+            </div>
+
             <label className="flex cursor-pointer items-start gap-3 rounded-btn border border-ink-muted/25 bg-white/60 p-3">
               <input
                 type="checkbox"
@@ -279,7 +327,7 @@ export function SignupFlow() {
             You&apos;re in.
           </h3>
           <p className="mt-2 text-ink-body">
-            Day 1 lands tomorrow at 8 a.m.
+            Day 1 lands tomorrow at {formatTime(reminderTime)}.
           </p>
 
           <div className="mt-5 rounded-btn border border-accent/30 bg-accent/5 px-4 py-3 text-left">
@@ -335,6 +383,16 @@ export function SignupFlow() {
       )}
     </div>
   );
+}
+
+// "08:00" → "8 a.m.", "16:30" → "4:30 p.m."
+function formatTime(hhmm: string): string {
+  const [h, m] = hhmm.split(":").map(Number);
+  const period = h < 12 ? "a.m." : "p.m.";
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return m === 0
+    ? `${h12} ${period}`
+    : `${h12}:${String(m).padStart(2, "0")} ${period}`;
 }
 
 function ProgressRail({ step }: { step: Step }) {

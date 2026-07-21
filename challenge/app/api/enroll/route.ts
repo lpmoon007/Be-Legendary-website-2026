@@ -45,6 +45,8 @@ interface EnrollBody {
   email?: string;
   // The chosen daily nudge time (HH:MM). Replaces the fixed 8 a.m. morning nudge.
   reminder_time?: string;
+  // The chosen afternoon check-in time (HH:MM). Replaces the fixed 4 p.m. check-in.
+  reflection_time?: string;
 }
 
 const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
@@ -77,11 +79,15 @@ export async function POST(req: NextRequest) {
       : "America/Denver";
   const workoutId = payload.workout_id?.trim() || null;
   const email = payload.email?.trim() || null;
-  // The user's chosen time replaces the 8 a.m. morning nudge; 4 p.m. check-in stays fixed.
+  // The user's chosen times replace the fixed 8 a.m. nudge and 4 p.m. check-in.
   const morningTime =
     payload.reminder_time && TIME_RE.test(payload.reminder_time)
       ? payload.reminder_time
       : "08:00";
+  const afternoonTime =
+    payload.reflection_time && TIME_RE.test(payload.reflection_time)
+      ? payload.reflection_time
+      : "16:00";
 
   // ── Validation (name is optional — the workout block doesn't collect it) ───
   if (!commitment) {
@@ -113,6 +119,7 @@ export async function POST(req: NextRequest) {
       commitment,
       timezone,
       morning_time: morningTime,
+      afternoon_time: afternoonTime,
       active: true,
     };
     if (name) update.name = name;
@@ -139,6 +146,7 @@ export async function POST(req: NextRequest) {
     commitment,
     timezone,
     morning_time: morningTime,
+    afternoon_time: afternoonTime,
     active: true,
   };
   if (workoutId) insert.workout_id = workoutId;
