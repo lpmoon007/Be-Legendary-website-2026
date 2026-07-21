@@ -10,6 +10,34 @@ export const metadata: Metadata = {
   openGraph: { url: "https://challenge.belegendary.org/" },
 };
 
+// Single source for the visible FAQ and the FAQPage schema — they must match.
+const faqs = [
+  {
+    q: "Is the 30-Day Challenge free?",
+    a: "Yes — completely free. You pick one behavior, and for thirty days we hold you to it by text. No cost, no catch, no credit card.",
+  },
+  {
+    q: "Do I need to download an app?",
+    a: "No app to download. The whole challenge runs over text messages — a morning nudge and a quick evening check-in. If you can reply to a text, you can do it.",
+  },
+  {
+    q: "How does it actually work?",
+    a: "You choose one behavior. Each morning you get a one-line reminder to do it; at 4 p.m. you rate the day 1–10; a great day or a hard day earns one short follow-up question. That's it — one text a day for thirty days.",
+  },
+  {
+    q: "What behavior should I choose?",
+    a: "One small, daily action you control — a lead measure. Send one note of appreciation. Ten minutes of deep work before email. One honest conversation you've been avoiding. Small enough to do on your worst day, meaningful enough to change something.",
+  },
+  {
+    q: "What if I miss a day?",
+    a: "You don't have to be perfect — you have to keep showing up. Replying that you didn't do it still counts, because consistency, not perfection, is what rewires the habit. Missing a day isn't failing; quitting is.",
+  },
+  {
+    q: "How many texts will I get, and can I stop?",
+    a: "About one a day — roughly 30 messages over the 30 days. Reply STOP anytime to cancel, or HELP for help. We never sell or share your number.",
+  },
+];
+
 // Ties the challenge to the same Be Legendary entity as the main site, so search
 // and AI answer engines connect the two.
 const jsonLd = {
@@ -37,6 +65,15 @@ const jsonLd = {
       isPartOf: { "@id": "https://challenge.belegendary.org/#website" },
       description:
         "A free 30-day habit challenge from Be Legendary: pick one behavior and get held to it daily — a morning nudge, a 4 p.m. check-in, and a line on how it went. No app to download.",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://challenge.belegendary.org/#faq",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
   ],
 };
@@ -181,6 +218,27 @@ export default function EnrollPage() {
             </h2>
           </div>
           <ProgressPreview />
+        </div>
+      </section>
+
+      {/* ── FAQ ───────────────────────────────────────────────────────────── */}
+      <section className="bg-card">
+        <div className="mx-auto max-w-3xl px-6 py-16">
+          <h2 className="font-serif text-3xl font-500 text-ink-heading sm:text-4xl">
+            Questions, answered
+          </h2>
+          <div className="mt-8 flex flex-col gap-5">
+            {faqs.map((f) => (
+              <div key={f.q} className="surface bg-card-light p-6 shadow-card">
+                <h3 className="font-serif text-xl font-500 text-ink-heading">
+                  {f.q}
+                </h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-body/80">
+                  {f.a}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
