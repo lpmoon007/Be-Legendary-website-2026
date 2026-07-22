@@ -5,9 +5,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'Denver Executive Leadership Retreat — Off-Road Immersion | Be Legendary';
+const title = 'Denver Executive Leadership Offsite — The Off-Road Immersion | Be Legendary';
 const description =
-  'A private, James-Carter-led leadership immersion in the Rockies west of Denver. Real off-road terrain, real trust, real transformation — for executive teams. By invitation.';
+  'A private, one-day, James-Carter-led leadership offsite in the Rockies west of Denver. Real off-road terrain, real trust, real transformation — for executive teams. By invitation.';
 
 // Gated pricing: Service + FAQ + Breadcrumb only. No Offer / price (invitation-only).
 const schema = [
@@ -17,8 +17,8 @@ const schema = [
     { '@type': 'ListItem', position: 3, name: 'Off-Road Immersion', item: 'https://www.belegendary.org/denver-executive-leadership-retreat/' },
   ] },
   { '@type': 'Service', '@id': 'https://www.belegendary.org/denver-executive-leadership-retreat/#service',
-    name: 'Off-Road Immersion — Executive Leadership Retreat',
-    serviceType: 'Executive leadership retreat',
+    name: 'Off-Road Immersion — Executive Leadership Offsite',
+    serviceType: 'Executive leadership offsite',
     provider: { '@id': 'https://www.belegendary.org/#org' },
     areaServed: { '@type': 'City', name: 'Denver', containedInPlace: { '@type': 'AdministrativeArea', name: 'Colorado' } },
     description: 'A private, one-day executive leadership immersion led by James Carter in the Rocky Mountains west of Denver, Colorado. Small executive teams spend a day off-road — two per Jeep, everyone driving and deciding — with facilitated leadership reflection tied to what happens on the mountain. Offered by invitation, May through October.',
@@ -37,7 +37,7 @@ const schema = [
   title={title}
   description={description}
   path={SLUGS.denverImmersion}
-  ogTitle="Off-Road Immersion — A Denver Executive Leadership Retreat"
+  ogTitle="The Off-Road Immersion — A Denver Executive Leadership Offsite"
   ogDescription="A private, one-day leadership immersion in the Colorado Rockies with James Carter. Where real terrain, real stakes, and real reflection build trust no boardroom can."
   schema={schema}
   bodyBg="#100E0A"
@@ -54,7 +54,7 @@ const schema = [
     @media (max-width:860px){ .odi-hero{ min-height:auto; } .odi-hero__inner{ padding:0 24px 56px; } }
   </style>
   <section class="odi-hero">
-    <img class="odi-hero__bg" src="/assets/dest-montana.webp" alt="A premium mountain lodge glowing at dusk in the Rocky Mountains — the setting for the Off-Road Immersion executive leadership retreat near Denver, Colorado." width="945" height="630" loading="eager" fetchpriority="high" decoding="async" />
+    <img class="odi-hero__bg" src="/assets/cs-sanjuan.webp" alt="The San Juan Mountains, Colorado backcountry west of Denver — the terrain for the Off-Road Immersion executive leadership offsite." width="1050" height="1400" loading="eager" fetchpriority="high" decoding="async" />
     <div class="odi-hero__scrim"></div>
     <div class="odi-hero__inner">
       <div style="max-width:680px;">
@@ -221,7 +221,7 @@ const schema = [
     </div>
   </section>
 
-  <ShareRow title="Off-Road Immersion — a Denver executive leadership retreat" maxWidth={900} />
+  <ShareRow title="The Off-Road Immersion — a Denver executive leadership offsite" maxWidth={900} />
   </article>
 
   <SiteFooter audience="teams" />
