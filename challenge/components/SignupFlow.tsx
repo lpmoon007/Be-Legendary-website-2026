@@ -24,6 +24,10 @@ export function SignupFlow() {
   const [reminderTime, setReminderTime] = useState("08:00");
   const [reflectionTime, setReflectionTime] = useState("16:00");
 
+  // Carried silently from a CQ report deep-link (/?email=…) so the enrollment
+  // can be stitched back to the person's Commitment Quotient result by email.
+  const [linkedEmail, setLinkedEmail] = useState<string | null>(null);
+
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // Outcome of step 2: did they opt in to texts or decline?
@@ -32,7 +36,8 @@ export function SignupFlow() {
   // Deep-link support: /?rep=<behavior> (e.g. from a CQ report) pre-selects
   // "Write my own…" and fills in the behavior so they land straight in setup.
   useEffect(() => {
-    const rep = new URLSearchParams(window.location.search).get("rep");
+    const params = new URLSearchParams(window.location.search);
+    const rep = params.get("rep");
     if (rep && rep.trim().length > 3) {
       setChoice(CUSTOM);
       setCustom(rep.trim());
@@ -40,6 +45,9 @@ export function SignupFlow() {
         .getElementById("signup")
         ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+    // Not shown in the UI — just remembered for the enroll payload.
+    const email = params.get("email");
+    if (email && email.includes("@")) setLinkedEmail(email.trim().toLowerCase());
   }, []);
 
   const commitment =
@@ -99,6 +107,7 @@ export function SignupFlow() {
           timezone,
           reminder_time: reminderTime,
           reflection_time: reflectionTime,
+          ...(linkedEmail ? { email: linkedEmail } : {}),
         }),
       });
       const data = await res.json();
