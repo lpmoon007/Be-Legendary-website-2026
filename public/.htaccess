@@ -31,6 +31,15 @@ Redirect 301 /fractional-chief-people-officer/ /teams/
 Redirect 301 /peopleops/ /teams/
 Redirect 301 /terms-of-use/ /privacy/
 
+# ── Legacy WordPress assets & blog (301) ──
+# The 2015 "Roadmap to Success" PDF is still the domain's top-clicked URL in
+# Search Console (pos ~11) but is an orphaned dead-end. Send it to the new
+# HTML page that captures the same intent and converts.
+RedirectMatch 301 ^/wp-content/uploads/2015/02/Roadmap-to-Success-James-Carter\.pdf$ /roadmap-to-success/
+RedirectMatch 301 ^/wp-content/uploads/2015/02/Discover-Your-Inner-Strength.*$ /about/james-carter/
+# Old WordPress blog posts (still indexed, now 404) → the current writing hub.
+RedirectMatch 301 ^/blog(/.*)?$ /field-notes/
+
 # ── Text compression (biggest transfer win on an inline-styled site) ──
 <IfModule mod_brotli.c>
   AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json image/svg+xml application/manifest+json

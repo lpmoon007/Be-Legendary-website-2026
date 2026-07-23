@@ -53,6 +53,7 @@ export const LDOL_CHAPTER_URL = '';
 export const SLUGS = {
   home: '/',
   flagModel: '/flag-model/',
+  roadmapToSuccess: '/roadmap-to-success/',
   about: '/about/james-carter/',
   breakPointAssessment: '/break-point-self-assessment/',
   costCalculator: '/cost-of-lost-disciplines-calculator/',

@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS, PERSON_ID, ORG_ID } from '../lib/site';
+
+const title = 'The Roadmap to Success: How Leaders Actually Get There | Be Legendary';
+const description =
+  'A roadmap to success is a sequence, not a slogan: commit, finish, hold the bar, and correct — repeated. James Carter on the four disciplines that turn effort into results, for leaders and executive teams.';
+
+const faqs = [
+  ['What is a roadmap to success?', 'A roadmap to success is the ordered set of behaviors that turn effort into results — not a destination or a slogan, but a repeatable sequence. In our work it comes down to four disciplines: commit to the few things that matter, finish what you start, hold the bar when it slips, and correct honestly when you are wrong. Success is what happens when a person or a team runs that loop over and over.'],
+  ['Why do most success plans fail?', 'Because they name a destination ("grow 30%", "be more accountable") and skip the road. Plans assume the underlying disciplines are already in place. When a team cannot commit, finish, or hold each other to a standard, the plan lives on a slide and behavior never changes. The roadmap fixes the disciplines underneath the plan.'],
+  ['Is this for an individual leader or a whole team?', 'Both, on the same principle. An individual leader walks the personal version — the Roadmap to Legendary. An executive team runs the collective version — the Flag Model — where the same four disciplines are measured across the team with FlagScore. The behavior is identical; the scale differs.'],
+  ['How long does it take to see results?', 'Faster than most expect, because the roadmap changes behavior rather than adding a framework. Teams typically feel the difference within a quarter — the first sign is decisions that stick instead of getting re-litigated a week later.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'The Roadmap to Success', item: 'https://www.belegendary.org/roadmap-to-success/' },
+  ] },
+  { '@type': 'Article', headline: 'The Roadmap to Success: how leaders actually get there',
+    datePublished: '2026-07-23', dateModified: '2026-07-23',
+    author: { '@id': PERSON_ID }, publisher: { '@id': ORG_ID },
+    mainEntityOfPage: 'https://www.belegendary.org/roadmap-to-success/',
+    description: 'The four disciplines that turn effort into results — a roadmap, not a slogan.' },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.roadmapToSuccess}
+  ogType="article"
+  ogTitle="The Roadmap to Success — how leaders actually get there"
+  ogDescription="A roadmap to success is a sequence, not a slogan: commit, finish, hold the bar, and correct — repeated. The four disciplines that turn effort into results."
+  schema={schema}
+  bodyBg="#100E0A"
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={1160} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'For Leaders', href: SLUGS.leaders }, { label: 'Glossary', href: SLUGS.glossary }]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 24px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">The Roadmap to Success</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The path</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">The Roadmap to Success</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div class="bl-speakable" style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A roadmap to success isn&rsquo;t a destination or a slogan &mdash; it&rsquo;s a <strong style="color:#FBF8F1;">repeatable sequence</strong>. Commit to the few things that matter, finish what you start, hold the bar when it slips, and correct honestly when you&rsquo;re wrong. Success is what happens when you run that loop over and over. Everything below is that road, and where it goes next.</p>
+    </div>
+  </header>
+
+  <!-- WHY MOST PLANS FAIL -->
+  <div style="max-width:880px;margin:0 auto;padding:32px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:22px;">Most success advice hands you a destination &mdash; &ldquo;grow thirty percent,&rdquo; &ldquo;be more decisive,&rdquo; &ldquo;build a great culture&rdquo; &mdash; and leaves you to find the road. The plan sits on a slide and behavior never changes, because a plan assumes the disciplines underneath it are already in place. They usually aren&rsquo;t. The roadmap is the road: the four moves, in order, that turn effort into results.</p>
+  </div>
+
+  <!-- THE FOUR MOVES -->
+  <section style="max-width:880px;margin:0 auto;padding:24px 32px;">
+    <ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px;">
+      {[
+        ['01','Commit','Decide what actually matters &mdash; two or three priorities, not twelve &mdash; and make the call stick. Most people never truly commit; they keep their options open and call it flexibility. The road starts when a decision gets made and stops routing back for re-litigation a week later.'],
+        ['02','Finish','Start less, complete more. Momentum comes from finished work, not busy work. The discipline is closing the loop &mdash; carrying the few committed things all the way to done before the next shiny thing pulls you off.'],
+        ['03','Hold the bar','Success erodes quietly, at the standard you&rsquo;re willing to walk past. Holding the bar &mdash; on yourself first, then with the people around you &mdash; is the unglamorous discipline that keeps everything else from sliding. It&rsquo;s also the one most people avoid, because it&rsquo;s uncomfortable.'],
+        ['04','Correct','Then look honestly at what went wrong and fix it &mdash; without flinching, without blame. The willingness to choose the truthful, harder path over the comfortable one is the engine underneath all of it. Correct, and the loop begins again, a little stronger.'],
+      ].map(([n,h,b], i) => (
+        <li style={`display:grid;grid-template-columns:60px 1fr;gap:22px;padding:26px 0;${i < 3 ? 'border-bottom:1px solid rgba(244,240,231,0.12);' : ''}`}>
+          <span style="font-family:'Newsreader',serif;font-size:32px;color:#C04A26;line-height:1;">{n}</span>
+          <div>
+            <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;color:#FBF8F1;margin-bottom:8px;">{h}</h2>
+            <p style="font-size:17px;line-height:1.66;color:rgba(244,240,231,0.82);">{b}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <p style="margin-top:28px;font-size:17px;line-height:1.7;color:rgba(244,240,231,0.7);">That&rsquo;s the whole road: <strong style="color:#FBF8F1;">commit, finish, hold the bar, correct</strong> &mdash; repeated. It&rsquo;s deceptively simple, which is exactly why it works and exactly why it&rsquo;s rare. The hard part was never knowing the moves. It&rsquo;s doing them when it&rsquo;s uncomfortable &mdash; the principle we call <a href={`${SLUGS.glossary}#truth-over-comfort`} style="color:#D98A5E;text-decoration:none;">Truth Over Comfort</a>.</p>
+  </section>
+
+  <!-- TWO DOORS -->
+  <section style="background:#15130E;border-top:1px solid rgba(244,240,231,0.08);border-bottom:1px solid rgba(244,240,231,0.08);margin-top:20px;">
+    <div style="max-width:880px;margin:0 auto;padding:56px 32px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:10px;">Where the road goes next</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:8px;">Same four moves. Two scales.</h2>
+      <p style="font-size:16.5px;line-height:1.6;color:rgba(244,240,231,0.72);max-width:60ch;margin-bottom:30px;">Walk it as one leader, or run it across a whole executive team. Pick the door that fits where you&rsquo;re standing.</p>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <a href={SLUGS.roadmap} style="display:block;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:28px 30px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">For one leader</p>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:8px;">The Roadmap to Legendary</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.75);">The personal version &mdash; the five stages a high-potential leader walks from stuck to legacy.</p>
+          <span style="display:inline-block;margin-top:14px;color:#D98A5E;font-weight:700;font-size:14.5px;">Walk the path &rarr;</span>
+        </a>
+        <a href={SLUGS.flagModel} style="display:block;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:28px 30px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">For an executive team</p>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:8px;">The Flag Model</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.75);">The team version &mdash; the same four disciplines, measured across your leadership team with FlagScore.</p>
+          <span style="display:inline-block;margin-top:14px;color:#D98A5E;font-weight:700;font-size:14.5px;">See the framework &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section style="max-width:880px;margin:0 auto;padding:56px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:26px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      {faqs.map(([q, a]) => (
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">{q}</h3>
+          <p style="font-size:16.5px;line-height:1.66;color:rgba(244,240,231,0.76);">{a}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <ArticleEndCTA maxWidth={880} />
+  <ShareRow title="The Roadmap to Success — how leaders actually get there" maxWidth={880} />
+  </article>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>
