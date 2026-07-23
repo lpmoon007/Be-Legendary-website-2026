@@ -217,6 +217,7 @@ export const ORG_NODE = {
   founder: { '@id': PERSON_ID },
   foundingDate: '2010',
   areaServed: 'US',
+  contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+1-800-513-8759', url: 'https://meetings-na2.hubspot.com/jcarter28' },
   sameAs: ['https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
 };
 
