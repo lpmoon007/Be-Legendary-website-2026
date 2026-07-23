@@ -78,16 +78,23 @@ const places = [
       </div>
     </section>
 
-    <!-- ============ DENVER IMMERSION SPOTLIGHT ============ -->
+    <!-- ============ OFF-ROAD IMMERSION SPOTLIGHT (two settings) ============ -->
     <section style="max-width:1240px;margin:34px auto 0;padding:0 32px;">
-      <a href={SLUGS.denverImmersion} style="display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:#3A0A0C;color:#F6EFE0;border-radius:18px;padding:38px 44px;text-decoration:none;transition:box-shadow .16s;" onmouseover="this.style.boxShadow='0 20px 44px -26px rgba(58,10,12,0.6)'" onmouseout="this.style.boxShadow='none'">
-        <div style="max-width:62ch;">
-          <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;font-weight:700;">Only in Denver</span>
-          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:25px;color:#F6EFE0;margin:8px 0 10px;">The Off-Road Immersion</h2>
-          <p style="font-size:15.5px;line-height:1.6;color:#F0D9D2;">Gather your leadership team in Denver, then take them west into the Rockies for a day where the terrain does the teaching. A one-of-a-kind executive immersion you can only run here.</p>
+      <div style="background:#3A0A0C;color:#F6EFE0;border-radius:18px;padding:38px 44px;">
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;font-weight:700;">The Off-Road Immersion</span>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,30px);color:#F6EFE0;margin:8px 0 8px;max-width:24ch;">A single day where the terrain does the teaching.</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#F0D9D2;max-width:66ch;margin-bottom:24px;">Two executives per Jeep, real off-road, and James turning what happens on the trail into the leadership conversation your team has been avoiding. We run it in two settings &mdash; pick your terrain.</p>
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <a href={SLUGS.denverImmersion} style="display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(246,239,224,0.06);border:1px solid rgba(246,239,224,0.18);border-radius:14px;padding:22px 26px;text-decoration:none;transition:background .16s;" onmouseover="this.style.background='rgba(246,239,224,0.12)'" onmouseout="this.style.background='rgba(246,239,224,0.06)'">
+            <span><span style="display:block;font-family:'Newsreader',serif;font-size:20px;color:#F6EFE0;">Colorado &middot; the San Juans</span><span style="font-size:13.5px;color:#D9B7A9;">High country, out of Denver</span></span>
+            <span style="color:#E0744A;font-weight:800;font-size:15px;white-space:nowrap;">See it &rarr;</span>
+          </a>
+          <a href={SLUGS.sedonaImmersion} style="display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(246,239,224,0.06);border:1px solid rgba(246,239,224,0.18);border-radius:14px;padding:22px 26px;text-decoration:none;transition:background .16s;" onmouseover="this.style.background='rgba(246,239,224,0.12)'" onmouseout="this.style.background='rgba(246,239,224,0.06)'">
+            <span><span style="display:block;font-family:'Newsreader',serif;font-size:20px;color:#F6EFE0;">Sedona &middot; the red rock</span><span style="font-size:13.5px;color:#D9B7A9;">Slickrock, out of Phoenix</span></span>
+            <span style="color:#E0744A;font-weight:800;font-size:15px;white-space:nowrap;">See it &rarr;</span>
+          </a>
         </div>
-        <span style="background:#F6EFE0;color:#3A0A0C;padding:15px 26px;border-radius:999px;font-weight:800;font-size:15px;white-space:nowrap;">See the immersion &rarr;</span>
-      </a>
+      </div>
     </section>
 
     <!-- ============ WORLDWIDE ============ -->
