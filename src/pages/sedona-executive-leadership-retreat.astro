@@ -5,40 +5,40 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'Executive Off-Road Leadership Offsite — Denver, Colorado & Sedona | Be Legendary';
+const title = 'Executive Off-Road Leadership Offsite in Sedona — Out of Phoenix | Be Legendary';
 const description =
-  'A private, one-day, James-Carter-led off-road leadership offsite for executive teams — in Colorado\'s San Juan high country (fly in from Denver) or the Sedona red rock, out of Phoenix. Real terrain, real trust, real transformation. By invitation.';
+  'A private, one-day, James-Carter-led off-road leadership offsite in the Sedona red rock — a short shuttle from Phoenix. Real terrain, real trust, real transformation, for executive teams. By invitation.';
 
 // Gated pricing: Service + FAQ + Breadcrumb only. No Offer / price (invitation-only).
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
     { '@type': 'ListItem', position: 2, name: 'Executive Retreats', item: 'https://www.belegendary.org/teams/retreats/' },
-    { '@type': 'ListItem', position: 3, name: 'Off-Road Immersion', item: 'https://www.belegendary.org/denver-executive-leadership-retreat/' },
+    { '@type': 'ListItem', position: 3, name: 'Off-Road Immersion — Sedona', item: 'https://www.belegendary.org/sedona-executive-leadership-retreat/' },
   ] },
-  { '@type': 'Service', '@id': 'https://www.belegendary.org/denver-executive-leadership-retreat/#service',
-    name: 'Off-Road Immersion — Executive Leadership Offsite',
+  { '@type': 'Service', '@id': 'https://www.belegendary.org/sedona-executive-leadership-retreat/#service',
+    name: 'Off-Road Immersion — Sedona Executive Leadership Offsite',
     serviceType: 'Executive leadership offsite',
     provider: { '@id': 'https://www.belegendary.org/#org' },
-    areaServed: [ { '@type': 'AdministrativeArea', name: 'Colorado' }, { '@type': 'AdministrativeArea', name: 'Arizona' }, { '@type': 'City', name: 'Denver' }, { '@type': 'City', name: 'Sedona' }, { '@type': 'City', name: 'Phoenix' } ],
-    description: 'A private, one-day executive leadership immersion led by James Carter, run in Colorado\'s San Juan high country (teams gather in Denver and fly in to Montrose, or meet in southwest Colorado) and in the Sedona red rock of Arizona (out of Phoenix). Small executive teams spend a day off-road — two per Jeep, everyone driving and deciding — with facilitated leadership reflection tied to what happens on the mountain. By invitation.',
+    areaServed: [ { '@type': 'AdministrativeArea', name: 'Arizona' }, { '@type': 'City', name: 'Sedona' }, { '@type': 'City', name: 'Phoenix' } ],
+    description: 'A private, one-day executive leadership immersion led by James Carter in the Sedona red rock of Arizona, a short shuttle from Phoenix. Small executive teams spend a day off-road — two per Jeep, everyone driving and deciding — with facilitated leadership reflection tied to what happens on the trail. By invitation.',
     audience: { '@type': 'Audience', audienceType: 'Executive teams' } },
   { '@type': 'FAQPage', mainEntity: [
-    { '@type': 'Question', name: 'Where does the Off-Road Immersion take place?', acceptedAnswer: { '@type': 'Answer', text: 'We run it in two settings. In Colorado, teams gather in Denver and — for a true single day — fly from Centennial into the San Juan high country near Montrose (our premium fly-in), or meet us directly in southwest Colorado. We also run the same day in the Sedona red rock of Arizona, out of Phoenix. What makes it singular is not the location; it is James and the method.' } },
+    { '@type': 'Question', name: 'Where does the Off-Road Immersion take place?', acceptedAnswer: { '@type': 'Answer', text: 'In the Sedona red rock of Arizona. Teams fly into Phoenix and we shuttle you up to Sedona — about two hours — where the day runs on real slickrock and high-desert trails. We also run the same experience in Colorado’s San Juan high country. What makes it singular is not the location; it is James and the method.' } },
     { '@type': 'Question', name: 'Is there a minimum group size?', acceptedAnswer: { '@type': 'Answer', text: 'No — we have hosted teams as small as two. It is built to be small and high-touch (two executives per Jeep). There is a minimum investment for the day regardless of headcount, which we share when you enquire.' } },
-    { '@type': 'Question', name: 'When can we do it?', acceptedAnswer: { '@type': 'Answer', text: 'In Colorado, roughly May through October, when the high country is open. Sedona extends the season into the spring and fall shoulder months. We host a small number of executive teams each season, so dates are limited and arranged directly.' } },
+    { '@type': 'Question', name: 'When can we do it?', acceptedAnswer: { '@type': 'Answer', text: 'Sedona runs close to year-round, with spring and fall the best windows — the high desert is mild when the mountains are snowed in. We host a small number of executive teams each season, so dates are limited and arranged directly.' } },
     { '@type': 'Question', name: 'Do we need off-road experience or to be especially fit?', acceptedAnswer: { '@type': 'Answer', text: 'No experience is required. Professional off-road guides lead every mile, the vehicles are provided, and the day is risk-managed throughout. It is challenging and dramatic by design, but safe and guided — the difficulty is emotional and relational, not athletic.' } },
     { '@type': 'Question', name: 'How much does it cost?', acceptedAnswer: { '@type': 'Answer', text: 'This is an invitation, not a package, so there is no public price. There is a minimum investment for the day, which we share when you start the conversation. Tell us about your team and what you are trying to become, and we will take it from there.' } },
-    { '@type': 'Question', name: 'What is included?', acceptedAnswer: { '@type': 'Answer', text: 'Everything but your arrival: James Carter-led facilitation, professional guides and all vehicles (two guests per Jeep), group staging and ground shuttle, premium food and beverage, and all permits, insurance, safety, and logistics. A pre-day alignment call tailors the leadership focus to your team’s real situation.' } },
+    { '@type': 'Question', name: 'What is included?', acceptedAnswer: { '@type': 'Answer', text: 'Everything but your arrival: James Carter-led facilitation, professional guides and all vehicles (two guests per Jeep), group staging and shuttle from Phoenix, premium food and beverage, and all permits, insurance, safety, and logistics. A pre-day alignment call tailors the leadership focus to your team’s real situation.' } },
   ] },
 ];
 ---
 <BaseLayout
   title={title}
   description={description}
-  path={SLUGS.denverImmersion}
-  ogTitle="The Off-Road Immersion — A Denver Executive Leadership Offsite"
-  ogDescription="A private, one-day leadership immersion in the Colorado Rockies with James Carter. Where real terrain, real stakes, and real reflection build trust no boardroom can."
+  path={SLUGS.sedonaImmersion}
+  ogTitle="The Off-Road Immersion — A Sedona Executive Leadership Offsite"
+  ogDescription="A private, one-day leadership immersion in the Sedona red rock with James Carter. Where real terrain, real stakes, and real reflection build trust no boardroom can."
   schema={schema}
   bodyBg="#100E0A"
 >
@@ -48,19 +48,19 @@ const schema = [
   <!-- HERO -->
   <style>
     .odi-hero { position:relative; width:100vw; margin-left:calc(50% - 50vw); min-height:min(88vh,820px); display:flex; align-items:flex-end; overflow:hidden; background:#100E0A; }
-    .odi-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; z-index:0; }
+    .odi-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 42%; z-index:0; }
     .odi-hero__scrim { position:absolute; inset:0; z-index:1; background:linear-gradient(0deg,rgba(16,14,10,0.94) 2%,rgba(16,14,10,0.55) 34%,rgba(16,14,10,0.25) 62%,rgba(16,14,10,0.5) 100%); }
     .odi-hero__inner { position:relative; z-index:2; width:100%; max-width:1160px; margin:0 auto; padding:0 32px 76px; }
     @media (max-width:860px){ .odi-hero{ min-height:auto; } .odi-hero__inner{ padding:0 24px 56px; } }
   </style>
   <section class="odi-hero">
-    <img class="odi-hero__bg" src="/assets/offroad/colorado/co-offroad-hero.webp" alt="A Jeep on a rocky shelf road high in the Colorado Rockies, two executives looking out over the valley — the Off-Road Immersion leadership offsite." width="1672" height="941" loading="eager" fetchpriority="high" decoding="async" />
+    <img class="odi-hero__bg" src="/assets/sedona/sedona-hero.webp" alt="A Jeep on red slickrock with the Sedona cliffs rising behind — the Off-Road Immersion leadership offsite in Arizona." width="1760" height="1338" loading="eager" fetchpriority="high" decoding="async" />
     <div class="odi-hero__scrim"></div>
     <div class="odi-hero__inner">
       <div style="max-width:680px;">
-        <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive off-road immersion &middot; Colorado &amp; Sedona</p>
-        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(40px,6vw,76px);line-height:1.01;letter-spacing:-0.025em;color:#FBF8F1;text-shadow:0 2px 30px rgba(0,0,0,0.5);">Where the mountain <span style="font-style:italic;color:#E0744A;">becomes the lesson.</span></h1>
-        <p style="margin-top:26px;font-size:clamp(17px,2vw,21px);line-height:1.55;max-width:52ch;color:rgba(244,240,231,0.9);">A private, one-day off-road leadership immersion in the <strong style="color:#F4F0E7;">Colorado high country</strong> &mdash; or the Sedona red rock &mdash; led by James Carter, where real terrain, real stakes, and real reflection build trust no boardroom can.</p>
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive off-road immersion &middot; Sedona, Arizona</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(40px,6vw,76px);line-height:1.01;letter-spacing:-0.025em;color:#FBF8F1;text-shadow:0 2px 30px rgba(0,0,0,0.5);">Where the red rock <span style="font-style:italic;color:#E0744A;">becomes the lesson.</span></h1>
+        <p style="margin-top:26px;font-size:clamp(17px,2vw,21px);line-height:1.55;max-width:52ch;color:rgba(244,240,231,0.9);">A private, one-day off-road leadership immersion in the <strong style="color:#F4F0E7;">Sedona red rock</strong>, a short shuttle from Phoenix &mdash; led by James Carter, where real terrain, real stakes, and real reflection build trust no boardroom can.</p>
         <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
           <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation <span style="font-size:18px;">&rarr;</span></a>
         </div>
@@ -73,8 +73,8 @@ const schema = [
   <section style="background:#F4F0E7;color:#1B1810;padding:96px 32px;">
     <div style="max-width:820px;margin:0 auto;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;">The idea</p>
-      <p style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3.4vw,38px);line-height:1.3;letter-spacing:-0.01em;color:#1B1810;">Most leadership offsites happen in a hotel. This one happens at 11,000 feet. Two executives per Jeep &mdash; everyone drives, everyone decides &mdash; across terrain that demands trust and rewards it. Between the climbs, <strong style="color:#C04A26;">James Carter turns what just happened into the leadership conversation your team has been avoiding.</strong> It&rsquo;s intense, it&rsquo;s dramatic, and it changes how a team sees itself.</p>
-      <p style="margin-top:26px;font-size:18px;line-height:1.65;color:#56524A;max-width:62ch;">You can&rsquo;t learn to lead from a slide. Like a language, leadership is learned by immersion &mdash; dropped somewhere you can&rsquo;t coast, where the next move is real and the team is watching. The Jeeps are just the vehicle. What you can&rsquo;t rent anywhere else is the man, the facilitation, and the meaning James wraps around the mountain &mdash; the tip of the spear of a full Be Legendary retreat, compressed into one unforgettable day.</p>
+      <p style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3.4vw,38px);line-height:1.3;letter-spacing:-0.01em;color:#1B1810;">Most leadership offsites happen in a hotel ballroom. This one happens on the slickrock. Two executives per Jeep &mdash; everyone drives, everyone decides &mdash; across red-rock terrain that demands trust and rewards it. Between the climbs, <strong style="color:#C04A26;">James Carter turns what just happened into the leadership conversation your team has been avoiding.</strong> It&rsquo;s intense, it&rsquo;s dramatic, and it changes how a team sees itself.</p>
+      <p style="margin-top:26px;font-size:18px;line-height:1.65;color:#56524A;max-width:62ch;">You can&rsquo;t learn to lead from a slide. Like a language, leadership is learned by immersion &mdash; dropped somewhere you can&rsquo;t coast, where the next move is real and the team is watching. The Jeeps are just the vehicle. What you can&rsquo;t rent anywhere else is the man, the facilitation, and the meaning James wraps around the day &mdash; the tip of the spear of a full Be Legendary retreat, compressed into one unforgettable day.</p>
     </div>
   </section>
 
@@ -83,14 +83,14 @@ const schema = [
     <div style="max-width:1160px;margin:0 auto;">
       <div style="max-width:64ch;">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Why off-road works</p>
-        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;">You can&rsquo;t coast on a mountain.</h2>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,50px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;">You can&rsquo;t coast on the slickrock.</h2>
         <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.8);max-width:60ch;">This isn&rsquo;t a thrill ride with a debrief bolted on. The terrain is a leadership instrument &mdash; it strips away the two things that let a team hide, comfort and pretense, and puts four real dynamics on the table where James can work them.</p>
       </div>
       <div class="bl-grid-collapse" style="margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
         <div style="background:#211D15;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:32px 34px;">
           <span style="display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The core idea</span>
           <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:10px;">Obstacle vs. limitation</h3>
-          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">The mountain hands your team a real obstacle &mdash; a line to pick, a call to make with something actually at stake. Meeting it, each person runs into something else: the limitation they brought along, the quiet story about what they can&rsquo;t do. Off-road makes the difference physical &mdash; you feel, in your body, which walls are real and which you built. No leader owns anything more useful, and none of it survives a slide deck.</p>
+          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">The trail hands your team a real obstacle &mdash; a line to pick, a call to make with something actually at stake. Meeting it, each person runs into something else: the limitation they brought along, the quiet story about what they can&rsquo;t do. Off-road makes the difference physical &mdash; you feel, in your body, which walls are real and which you built. No leader owns anything more useful, and none of it survives a slide deck.</p>
         </div>
         <div style="background:#211D15;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:32px 34px;">
           <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:10px;">Across the line, into the learning zone</h3>
@@ -102,7 +102,7 @@ const schema = [
         </div>
         <div style="background:#211D15;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:32px 34px;">
           <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:10px;">How your team actually operates</h3>
-          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Under real load, the team&rsquo;s true operating system shows: who steps up, who goes quiet, where trust runs thin. James reads it in motion and hands it back at the debrief. What surfaces on the mountain is what&rsquo;s been running the business the whole time.</p>
+          <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">Under real load, the team&rsquo;s true operating system shows: who steps up, who goes quiet, where trust runs thin. James reads it in motion and hands it back at the debrief. What surfaces on the trail is what&rsquo;s been running the business the whole time.</p>
         </div>
       </div>
     </div>
@@ -116,10 +116,10 @@ const schema = [
       <p style="margin-top:18px;font-size:18px;line-height:1.65;color:#56524A;max-width:58ch;">Not an itinerary &mdash; an arc. It starts before the wheels turn and ends with a team that sees itself differently.</p>
       <ol style="margin:44px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;">
         {[
-          ['01','Dawn gather & brief','Coffee, and the frame from James: today, the terrain is the teacher. What we&rsquo;re really here to work on.'],
-          ['02','Into the mountains','Two-up Jeeps, real off-road, escalating challenge. Teams navigate, decide, and rely on each other as the trail climbs.'],
+          ['01','Morning gather & brief','Coffee, and the frame from James: today, the terrain is the teacher. What we&rsquo;re really here to work on.'],
+          ['02','Onto the red rock','Two-up Jeeps, real slickrock, escalating challenge. Teams navigate, decide, and rely on each other as the trail climbs.'],
           ['03','The hard stretch','The dramatic, trust-forging section &mdash; guided and safe &mdash; where the leadership metaphors stop being metaphors.'],
-          ['04','Summit reset','A facilitated leadership conversation with James at altitude, tied directly to what just happened in the vehicles.'],
+          ['04','Overlook reset','A facilitated leadership conversation with James at a red-rock overlook, tied directly to what just happened in the vehicles.'],
           ['05','The table','A premium meal and debrief. Commitments, and what carries back to the business on Monday.'],
         ].map(([n,h,b], i) => (
           <li style={`display:grid;grid-template-columns:64px 1fr;gap:22px;padding:26px 0;${i < 4 ? 'border-bottom:1px solid rgba(27,24,16,0.12);' : ''}`}>
@@ -167,11 +167,11 @@ const schema = [
     <div class="bl-grid-collapse" style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;">
       <div>
         <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Done for you</p>
-        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,42px);line-height:1.06;letter-spacing:-0.015em;color:#FBF8F1;">Guests just arrive. We handle the mountain.</h2>
-        <p style="margin-top:20px;font-size:17px;line-height:1.62;color:rgba(244,240,231,0.8);max-width:46ch;">Staging, ground shuttle, vehicles, fuel, food, guiding, facilitation, and every permit and policy behind an off-road day on public land &mdash; all of it is ours to carry. Yours is to show up and be present.</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,42px);line-height:1.06;letter-spacing:-0.015em;color:#FBF8F1;">Guests just arrive. We handle the trail.</h2>
+        <p style="margin-top:20px;font-size:17px;line-height:1.62;color:rgba(244,240,231,0.8);max-width:46ch;">Staging, shuttle from Phoenix, vehicles, fuel, food, guiding, facilitation, and every permit and policy behind an off-road day on public land &mdash; all of it is ours to carry. Yours is to show up and be present.</p>
         <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;">
-          <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Colorado &amp; Sedona</span>
-          <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">May&ndash;October</span>
+          <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Sedona &middot; out of Phoenix</span>
+          <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Runs year-round</span>
           <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Small &amp; intimate</span>
           <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">No experience needed</span>
         </div>
@@ -182,7 +182,7 @@ const schema = [
           {[
             'James Carter-led facilitation and the leadership through-line',
             'Professional off-road guides and all vehicles — two guests per Jeep',
-            'Group shuttle and staging to and from the trailhead',
+            'Group shuttle and staging from Phoenix to the trail',
             'Premium food and beverage',
             'Permits, insurance, safety, and full logistics',
             'A pre-day alignment call to tailor the focus to your team',
@@ -195,11 +195,11 @@ const schema = [
     <!-- Where we run it -->
     <div style="max-width:1160px;margin:56px auto 0;padding-top:40px;border-top:1px solid rgba(244,240,231,0.1);">
       <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:44px;align-items:center;">
-        <img src="/assets/offroad/colorado/co-alpine-loop-signs.webp" alt="Trail signs for Engineer Pass, Cinnamon Pass and Silverton on Colorado's Alpine Loop, above a green mining valley — the San Juan terrain of the Off-Road Immersion." width="1400" height="1050" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(244,240,231,0.12);display:block;" />
+        <img src="/assets/sedona/sedona-vista.webp" alt="A Sedona red-rock overlook, buttes and mesas stretching to the horizon — the high-desert terrain of the Off-Road Immersion." width="1400" height="1050" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(244,240,231,0.12);display:block;" />
         <div>
           <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:14px;">Where we run it</p>
-          <p style="font-size:19px;line-height:1.6;color:rgba(244,240,231,0.86);">Two settings, one experience. In <strong style="color:#F4F0E7;">Colorado&rsquo;s San Juan high country</strong> &mdash; old mining roads onto 12,000-foot passes, ghost-town relics, tundra most people only see from a plane window. And in the <strong style="color:#F4F0E7;">Sedona red rock of Arizona</strong>. What you can&rsquo;t get anywhere else isn&rsquo;t the zip code &mdash; it&rsquo;s James and this method, wrapped around the mountain.</p>
-          <p style="margin-top:16px;font-size:14.5px;line-height:1.6;color:rgba(244,240,231,0.6);">Colorado teams gather in Denver; for a true single day we fly you from Centennial into the San Juans &mdash; the premium way in &mdash; or meet you in the southwest. Prefer red rock? See the <a href={SLUGS.sedonaImmersion} style="color:#D98A5E;text-decoration:none;font-weight:600;">Sedona Off-Road Immersion &rarr;</a></p>
+          <p style="font-size:19px;line-height:1.6;color:rgba(244,240,231,0.86);">Two settings, one experience. Here in the <strong style="color:#F4F0E7;">Sedona red rock of Arizona</strong> &mdash; slickrock shelves, high-desert switchbacks, and buttes that glow at the end of the day. And in <strong style="color:#F4F0E7;">Colorado&rsquo;s San Juan high country</strong>. What you can&rsquo;t get anywhere else isn&rsquo;t the zip code &mdash; it&rsquo;s James and this method, wrapped around the terrain.</p>
+          <p style="margin-top:16px;font-size:14.5px;line-height:1.6;color:rgba(244,240,231,0.6);">Sedona runs out of Phoenix &mdash; fly into Sky Harbor and we shuttle you up, about two hours. Prefer the Rockies? See the <a href={SLUGS.denverImmersion} style="color:#D98A5E;text-decoration:none;font-weight:600;">Colorado Off-Road Immersion &rarr;</a></p>
         </div>
       </div>
     </div>
@@ -209,17 +209,17 @@ const schema = [
   <section style="background:#F4F0E7;color:#1B1810;padding:96px 32px;">
     <div style="max-width:900px;margin:0 auto;">
       <figure style="margin:0 0 44px;">
-        <img src="/assets/offroad/colorado/co-offroad-facilitation.webp" alt="James Carter, kneeling in a grey pullover, facilitating a leadership debrief with an executive team standing in a circle on Colorado's Alpine Loop above Silverton." width="1536" height="1024" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:18px;border:1px solid rgba(27,24,16,0.1);display:block;box-shadow:0 34px 66px -36px rgba(27,24,16,0.55);" />
-        <figcaption style="margin-top:13px;font-size:13.5px;color:#8A7F6C;">James facilitating the debrief on the Alpine Loop above Silverton, Colorado &mdash; the conversation the whole day is built around.</figcaption>
+        <img src="/assets/sedona/sedona-group.webp" alt="An executive leadership team gathered between Jeeps on the red dirt in Sedona, Arizona, after a day off-road with James Carter." width="1536" height="1152" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:18px;border:1px solid rgba(27,24,16,0.1);display:block;box-shadow:0 34px 66px -36px rgba(27,24,16,0.55);" />
+        <figcaption style="margin-top:13px;font-size:13.5px;color:#8A7F6C;">A real leadership team on a Sedona off-road day &mdash; the kind of group James takes into the red rock.</figcaption>
       </figure>
       <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Who leads it</p>
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,42px);line-height:1.06;color:#1B1810;">James Carter</h2>
-      <p style="margin-top:20px;font-size:18.5px;line-height:1.65;color:#3A372F;max-width:62ch;">James is the creator of the Flag Model and the sole author of the forthcoming <em style="font-style:italic;">Lost Disciplines of Leadership</em>&trade;, and co-authored <em style="font-style:italic;">Discover Your Inner Strength</em> alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. He has spent twenty-five years inside hundreds of leadership teams &mdash; work featured in CNN, CNN Money and Business Insider. On the mountain, that experience becomes a facilitator who can read a team in motion and turn a switchback into the conversation that changes them.</p>
+      <p style="margin-top:20px;font-size:18.5px;line-height:1.65;color:#3A372F;max-width:62ch;">James is the creator of the Flag Model and the sole author of the forthcoming <em style="font-style:italic;">Lost Disciplines of Leadership</em>&trade;, and co-authored <em style="font-style:italic;">Discover Your Inner Strength</em> alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. He has spent twenty-five years inside hundreds of leadership teams &mdash; work featured in CNN, CNN Money and Business Insider. On the trail, that experience becomes a facilitator who can read a team in motion and turn a hard climb into the conversation that changes them.</p>
       <p style="margin-top:16px;font-size:15px;color:#6B675E;"><a href={SLUGS.about} style="color:#C04A26;text-decoration:none;font-weight:600;">More about James &rarr;</a></p>
 
       <!-- Testimonial slot — add 1–2 executive quotes from past off-road days -->
       <figure style="margin:44px 0 0;background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-left:3px solid #C04A26;border-radius:16px;padding:32px 34px;">
-        <blockquote style="margin:0;font-family:'Newsreader',serif;font-style:italic;font-size:clamp(19px,2.3vw,25px);line-height:1.4;color:#1B1810;max-width:52ch;">The day in the mountains did more for how our leadership team trusts each other than anything we&rsquo;d tried in the office.</blockquote>
+        <blockquote style="margin:0;font-family:'Newsreader',serif;font-style:italic;font-size:clamp(19px,2.3vw,25px);line-height:1.4;color:#1B1810;max-width:52ch;">The day in the red rock did more for how our leadership team trusts each other than anything we&rsquo;d tried in the office.</blockquote>
         <figcaption style="margin-top:16px;font-size:13.5px;color:#8A7F6C;">Executive testimonial &mdash; <span style="font-style:italic;">placeholder; swap for a named quote once gathered.</span></figcaption>
       </figure>
     </div>
@@ -232,9 +232,9 @@ const schema = [
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,46px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;margin-bottom:34px;">Answered, plainly.</h2>
       <div style="display:flex;flex-direction:column;gap:24px;">
         {[
-          ['Where does it take place?','Two settings. In Colorado, teams gather in Denver and &mdash; for a true single day &mdash; fly from Centennial into the San Juan high country near Montrose (our premium fly-in), or meet us directly in southwest Colorado. We also run the same day in the Sedona red rock of Arizona, out of Phoenix. What makes it singular isn&rsquo;t the location &mdash; it&rsquo;s James and the method.'],
+          ['Where does it take place?','In the Sedona red rock of Arizona. Teams fly into Phoenix and we shuttle you up to Sedona &mdash; about two hours &mdash; where the day runs on real slickrock and high-desert trails. We also run the same experience in Colorado&rsquo;s San Juan high country. What makes it singular isn&rsquo;t the location &mdash; it&rsquo;s James and the method.'],
           ['Is there a minimum group size?','No &mdash; we&rsquo;ve hosted teams as small as two. It&rsquo;s built to be small and high-touch, two executives per Jeep. There is a minimum investment for the day regardless of headcount, which we share when you enquire.'],
-          ['When can we do it?','In Colorado, roughly May through October, while the high country is open. Sedona extends the season into the spring and fall shoulder months. We host a small number of executive teams each season, so dates are limited and arranged directly with you.'],
+          ['When can we do it?','Sedona runs close to year-round, with spring and fall the best windows &mdash; the high desert is mild when the mountains are snowed in. We host a small number of executive teams each season, so dates are limited and arranged directly with you.'],
           ['Do we need off-road experience or to be especially fit?','No experience required. Professional guides lead every mile, vehicles are provided, and the day is risk-managed throughout. It&rsquo;s dramatic by design but safe and guided &mdash; the difficulty is relational, not athletic.'],
           ['How much does it cost?','It&rsquo;s an invitation, not a package, so there&rsquo;s no public price. There is a minimum investment for the day, which we share when you start the conversation.'],
           ['How do we enquire?','Request an invitation below. Tell us about your team and what you&rsquo;re trying to become, and James will be in touch personally.'],
@@ -249,14 +249,14 @@ const schema = [
   <section style="background:linear-gradient(180deg,#1B1810,#100E0A);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">
     <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
     <div style="position:relative;max-width:720px;margin:0 auto;">
-      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.025em;color:#FBF8F1;">Spend a day in the mountains &mdash; come back a stronger team.</h2>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.025em;color:#FBF8F1;">Spend a day in the red rock &mdash; come back a stronger team.</h2>
       <p style="margin-top:22px;font-size:18.5px;line-height:1.58;color:rgba(244,240,231,0.8);max-width:52ch;margin-left:auto;margin-right:auto;">This is an invitation, not a package. Tell us about your team, and we&rsquo;ll start the conversation personally.</p>
       <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:34px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 38px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation <span style="font-size:20px;">&rarr;</span></a>
       <p style="margin-top:26px;font-size:14px;line-height:1.5;color:rgba(244,240,231,0.5);">Planning corporate give-back team building instead? That&rsquo;s our sister brand, <a href="https://www.buildingteams.com/" target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;">Building Teams &rarr;</a></p>
     </div>
   </section>
 
-  <ShareRow title="The Off-Road Immersion — a Denver executive leadership offsite" maxWidth={900} />
+  <ShareRow title="The Off-Road Immersion — a Sedona executive leadership offsite" maxWidth={900} />
   </article>
 
   <SiteFooter audience="teams" />
