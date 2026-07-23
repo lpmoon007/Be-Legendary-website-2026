@@ -219,7 +219,7 @@ export const ORG_NODE = {
   foundingDate: '2010',
   areaServed: 'US',
   contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+1-800-513-8759', url: 'https://meetings-na2.hubspot.com/jcarter28' },
-  sameAs: ['https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
+  sameAs: ['https://www.linkedin.com/company/repario-and-be-legendary/', 'https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
 };
 
 export const PERSON_NODE = {
