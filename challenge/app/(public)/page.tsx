@@ -13,7 +13,7 @@ export default function EnrollPage() {
       <section className="mx-auto max-w-shell px-6 pb-16 pt-14 sm:pt-20">
         <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
           <div>
-            <p className="eyebrow">The 30-Day Challenge</p>
+            <p className="eyebrow">Your 30-Day Challenge</p>
             <h1 className="mt-4 font-serif text-[44px] font-400 leading-[1.05] text-ink-light sm:text-[68px]">
               A workout is a rep.{" "}
               <span className="italic text-accent-light">
