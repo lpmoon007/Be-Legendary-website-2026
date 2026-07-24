@@ -54,6 +54,7 @@ export const SLUGS = {
   home: '/',
   flagModel: '/flag-model/',
   roadmapToSuccess: '/roadmap-to-success/',
+  discoverInnerStrength: '/discover-your-inner-strength/',
   fractionalCpo: '/fractional-chief-people-officer/',
   about: '/about/james-carter/',
   breakPointAssessment: '/break-point-self-assessment/',
@@ -228,7 +229,7 @@ export const PERSON_NODE = {
   name: 'James Carter',
   jobTitle: 'Founder, Be Legendary',
   description:
-    'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership; a collaborative author featured on the cover of Roadmap to Success (2012) alongside Deepak Chopra and Ken Blanchard; and co-author of Discover Your Inner Strength with Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Twenty-five years working with hundreds of executive teams; featured in CNN, CNN Money and Business Insider.',
+    'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership; a collaborative author featured on the cover of Roadmap to Success (2012) alongside Deepak Chopra and Ken Blanchard; and co-author of Discover Your Inner Strength (2009) alongside Brian Tracy, Ken Blanchard and Stephen Covey. Twenty-five years working with hundreds of executive teams; featured in CNN, CNN Money and Business Insider.',
   knowsAbout: [
     'executive team performance', 'leadership team alignment', 'the Flag Model',
     'organizational execution', 'leadership development', 'executive facilitation',

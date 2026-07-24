@@ -35,7 +35,7 @@ Redirect 301 /terms-of-use/ /privacy/
 # Search Console (pos ~11) but is an orphaned dead-end. Send it to the new
 # HTML page that captures the same intent and converts.
 RedirectMatch 301 ^/wp-content/uploads/2015/02/Roadmap-to-Success-James-Carter\.pdf$ /roadmap-to-success/
-RedirectMatch 301 ^/wp-content/uploads/2015/02/Discover-Your-Inner-Strength.*$ /about/james-carter/
+RedirectMatch 301 ^/wp-content/uploads/2015/02/Discover-Your-Inner-Strength.*$ /discover-your-inner-strength/
 # Old WordPress blog posts (still indexed, now 404) → the current writing hub.
 RedirectMatch 301 ^/blog(/.*)?$ /field-notes/
 
