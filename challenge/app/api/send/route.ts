@@ -45,7 +45,12 @@ export async function POST(req: NextRequest) {
   }
 
   const due = (data ?? []) as DueRow[];
-  const results: { user_id: string; type: string; ok: boolean }[] = [];
+  const results: {
+    user_id: string;
+    type: string;
+    ok: boolean;
+    error?: string;
+  }[] = [];
 
   for (const row of due) {
     const body =
@@ -80,8 +85,14 @@ export async function POST(req: NextRequest) {
 
       results.push({ user_id: row.user_id, type: row.message_type, ok: true });
     } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
       console.error(`Send failed for ${row.user_id} (${row.message_type}):`, err);
-      results.push({ user_id: row.user_id, type: row.message_type, ok: false });
+      results.push({
+        user_id: row.user_id,
+        type: row.message_type,
+        ok: false,
+        error: message,
+      });
     }
   }
 
@@ -108,7 +119,11 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  return NextResponse.json({ processed: results.length, results });
+  return NextResponse.json({
+    due: due.length,
+    processed: results.length,
+    results,
+  });
 }
 
 // Allow GET for a quick "is it wired?" health check (still secret-gated).
