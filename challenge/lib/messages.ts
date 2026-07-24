@@ -5,7 +5,9 @@
 
 export const messages = {
   morning: (commitment: string) =>
-    `Morning. Today's rep: ${commitment}. You've got this.`,
+    // Strip trailing sentence punctuation so a commitment that already ends in
+    // "." doesn't produce "bad.. You've got this."
+    `Morning. Today's rep: ${commitment.trim().replace(/[.!?]+$/, "")}. You've got this.`,
 
   // Private-mode morning nudge — never names the behavior. Keeps the "Morning."
   // prefix so the duplicate guard in due_messages() still matches.
