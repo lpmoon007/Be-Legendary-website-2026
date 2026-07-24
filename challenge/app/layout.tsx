@@ -4,8 +4,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://challenge.belegendary.org"),
   title: {
-    default: "The 30-Day Challenge — Be Legendary",
-    template: "%s | The 30-Day Challenge",
+    default: "Your 30-Day Challenge — Be Legendary",
+    template: "%s | Your 30-Day Challenge",
   },
   description:
     "Pick one behavior. Get one text a day. For thirty days, we hold you to it — a morning nudge, a 4 p.m. check-in, and a line on how it went. No app to download.",
