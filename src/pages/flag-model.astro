@@ -217,10 +217,19 @@ const schema = [
         <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How it's measured</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.06;letter-spacing:-0.015em;">FlagScore™: your team's vitals.</h2>
         <p style="margin-top:22px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;"><strong style="color:#1B1810;">FlagScore</strong> turns &ldquo;we feel stuck&rdquo; into a composite read across all five components of the model. It's how a Performance Partnership stays honest: we track FlagScore movement quarter over quarter, so progress is <em>measured, not asserted.</em></p>
-        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;">One $3B client's leadership team improved its daily mindset scores <strong style="color:#C04A26;">209% in thirty days.</strong> The point isn't the number. The point is that there was a number at all.</p>
+        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;">With one $3B client's leadership team, we didn't assert that things got better &mdash; we <strong style="color:#C04A26;">measured it, week over week.</strong> The point isn't any single number. The point is that there was a number at all &mdash; a read you can track, instead of a feeling you hope is real.</p>
       </div>
       <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.10);border-radius:20px;padding:36px;">
-        <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9E3A1C;">FlagScore</span>
+          <span style="font-family:'Newsreader',serif;font-size:36px;line-height:1;color:#1B1810;">55<span style="font-size:0.42em;color:#9E8E78;">/100</span></span>
+        </div>
+        <div style="height:10px;border-radius:99px;background:#E7E1D3;overflow:hidden;margin-bottom:24px;"><div style="height:100%;width:55%;background:linear-gradient(90deg,#C04A26,#1B1810);border-radius:99px;"></div></div>
+        <div style="display:flex;flex-direction:column;gap:15px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Flag <span style="font-weight:400;color:#9E8E78;">· alignment</span></span><span style="color:#6B675E;">Holding</span></div>
+            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:58%;background:#1B1810;border-radius:99px;"></div></div>
+          </div>
           <div>
             <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Decision</span><span style="color:#9E3A1C;">Rebuilding</span></div>
             <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:48%;background:#C04A26;border-radius:99px;"></div></div>
@@ -238,7 +247,7 @@ const schema = [
             <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:66%;background:#1B1810;border-radius:99px;"></div></div>
           </div>
         </div>
-        <p style="margin-top:20px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#A39C8C;">Illustrative FlagScore readout &mdash; not live data.</p>
+        <p style="margin-top:20px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#A39C8C;">Illustrative FlagScore readout &mdash; the composite and its five components. Not live data.</p>
         <a href={SLUGS.breakPointAssessment} style="margin-top:16px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:13px 22px;border-radius:10px;font-weight:700;font-size:15px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Get your own snapshot &mdash; take the 4-minute assessment <span style="font-size:17px;">&rarr;</span></a>
       </div>
     </div>
@@ -264,7 +273,7 @@ const schema = [
         </div>
         <div>
           <h3 style="font-size:20px;font-weight:600;color:#FBF8F1;">How do I find out which discipline my team has lost?</h3>
-          <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.76);max-width:70ch;">Start with a <a href={CTA_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:underline;">Calibration Call</a> &mdash; 15 minutes &mdash; or read <a href={SLUGS.whyNotExecuting} style="color:#E0744A;text-decoration:underline;">why executive teams stop executing</a> to recognize the pattern first.</p>
+          <p style="margin-top:12px;font-size:16.5px;line-height:1.62;color:rgba(244,240,231,0.76);max-width:70ch;">Three ways in, by depth: take the free <a href={SLUGS.breakPointAssessment} style="color:#E0744A;text-decoration:underline;">Break-Point self-assessment</a> (4 minutes), run the solo <a href={SLUGS.elfs} style="color:#E0744A;text-decoration:underline;">ELFS simulation</a> to feel the diagnostic yourself, or start with a <a href={CTA_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:underline;">Calibration Call</a> &mdash; 15 minutes. Prefer to read first? See <a href={SLUGS.whyNotExecuting} style="color:#E0744A;text-decoration:underline;">why executive teams stop executing</a>.</p>
         </div>
       </div>
     </div>

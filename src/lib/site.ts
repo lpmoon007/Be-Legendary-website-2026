@@ -53,6 +53,9 @@ export const LDOL_CHAPTER_URL = '';
 export const SLUGS = {
   home: '/',
   flagModel: '/flag-model/',
+  roadmapToSuccess: '/roadmap-to-success/',
+  discoverInnerStrength: '/discover-your-inner-strength/',
+  fractionalCpo: '/fractional-chief-people-officer/',
   about: '/about/james-carter/',
   breakPointAssessment: '/break-point-self-assessment/',
   costCalculator: '/cost-of-lost-disciplines-calculator/',
@@ -100,6 +103,8 @@ export const SLUGS = {
   fixDysfunctionalTeam: '/how-to-fix-a-dysfunctional-leadership-team/',
   disagreeAndCommit: '/disagree-and-commit/',
   setPriorities: '/how-to-set-leadership-team-priorities/',
+  denverImmersion: '/denver-executive-leadership-retreat/',
+  sedonaImmersion: '/sedona-executive-leadership-retreat/',
   // ── For Leaders universe (individual-leader development) ──────────────────
   // /leaders/ is the canonical home. The 4 concept pages migrated from /library/
   // (design intent), with 301s in public/.htaccess.
@@ -214,7 +219,9 @@ export const ORG_NODE = {
   founder: { '@id': PERSON_ID },
   foundingDate: '2010',
   areaServed: 'US',
-  sameAs: ['https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
+  contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+1-800-513-8759', url: 'https://meetings-na2.hubspot.com/jcarter28' },
+  subOrganization: { '@type': 'Organization', name: 'Building Teams', url: 'https://www.buildingteams.com/', description: 'The corporate team-building and charity-events arm of Be Legendary.' },
+  sameAs: ['https://www.linkedin.com/company/repario-and-be-legendary/', 'https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
 };
 
 export const PERSON_NODE = {
@@ -223,7 +230,7 @@ export const PERSON_NODE = {
   name: 'James Carter',
   jobTitle: 'Founder, Be Legendary',
   description:
-    'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership and co-author of Discover Your Inner Strength alongside Stephen Covey, Ken Blanchard, Deepak Chopra and Brian Tracy. Twenty-five years working with hundreds of executive teams; featured in CNN, CNN Money and Business Insider.',
+    'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership; a collaborative author featured on the cover of Roadmap to Success (2012) alongside Deepak Chopra and Ken Blanchard; and co-author of Discover Your Inner Strength (2009) alongside Brian Tracy, Ken Blanchard and Stephen Covey. Twenty-five years working with hundreds of executive teams; featured in CNN, CNN Money and Business Insider.',
   knowsAbout: [
     'executive team performance', 'leadership team alignment', 'the Flag Model',
     'organizational execution', 'leadership development', 'executive facilitation',

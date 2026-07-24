@@ -17,15 +17,15 @@ const NAV_LINKS = [
 ];
 
 const places = [
-  { name: 'Moab, Utah', region: 'Utah', desc: 'Red-rock off-road country. For teams that need to face genuine adversity together.', img: '/assets/dest-moab.webp' },
-  { name: 'Sierra Nevada', region: 'California', desc: 'Four-season range — winter survival to five-star mountain lodges. Grit or serenity, by design.', img: '/assets/dest-rubicon.webp' },
-  { name: 'Great Basin Desert', region: 'Nevada', desc: 'Fly into Reno, drive into emptiness. The most off-grid, off-road immersion we run.', img: '/assets/dest-deathvalley.webp' },
-  { name: 'Sedona, Arizona', region: 'Arizona', desc: 'High desert and red rock for clarity and reset.', img: '/assets/dest-sedona.webp' },
-  { name: 'Napa Valley', region: 'California', desc: 'Vineyard estates near San Francisco for board offsites and realignment.', img: '/assets/dest-napa.webp' },
-  { name: 'Lake Tahoe', region: 'CA / NV', desc: 'Alpine lake and peaks, accessible from the Bay Area and Reno.', img: '/assets/dest-tahoe.webp' },
-  { name: 'Jackson Hole', region: 'Wyoming', desc: 'The Tetons and world-class ranch lodges for high-stakes offsites.', img: '/assets/dest-jackson.webp' },
-  { name: 'Montana', region: 'Montana', desc: 'Rivers, ranches, and five-star lodges for deep disconnection.', img: '/assets/dest-montana.webp' },
-  { name: 'Death Valley', region: 'California', desc: 'Stark, elemental terrain that strips away the noise.', img: '/assets/dest-deathvalley.webp' },
+  { name: 'Moab, Utah', region: 'Utah', desc: 'Red-rock off-road country for the team that has to face real adversity together — and find out who it becomes under load.', img: '/assets/dest-moab.webp' },
+  { name: 'Sierra Nevada', region: 'California', desc: 'One range, four seasons — winter-survival grit or five-star stillness, chosen for what the team needs to feel, not the view.', img: '/assets/dest-rubicon.webp' },
+  { name: 'Great Basin Desert', region: 'Nevada', desc: 'Total signal blackout — for a team that has to strip everything away and rebuild how it depends on itself.', img: '/assets/dest-deathvalley.webp' },
+  { name: 'Sedona, Arizona', region: 'Arizona', desc: 'For the reset: red-rock high desert that slows a frantic team down enough to think clearly again.', img: '/assets/dest-sedona.webp' },
+  { name: 'Napa Valley', region: 'California', desc: 'For board-level strategy and realignment — the comfort that lets a team stop bracing and actually think.', img: '/assets/dest-napa.webp' },
+  { name: 'Lake Tahoe', region: 'CA / NV', desc: 'For teams that need beauty and real challenge in the same day — granite and alpine water, an hour apart.', img: '/assets/dest-tahoe.webp' },
+  { name: 'Jackson Hole', region: 'Wyoming', desc: 'For high-stakes offsites where the setting has to match the moment — the Tetons, and rooms that hold hard conversations.', img: '/assets/dest-jackson.webp' },
+  { name: 'Montana', region: 'Montana', desc: 'For deep disconnection — remote rivers and ranches, far enough off the grid that a team can finally reconnect.', img: '/assets/dest-montana.webp' },
+  { name: 'Death Valley', region: 'California', desc: 'Stark, elemental terrain that strips away the noise and forces a team back to what actually matters.', img: '/assets/dest-deathvalley.webp' },
 ];
 ---
 <BaseLayout
@@ -75,6 +75,25 @@ const places = [
             </div>
           </a>
         ))}
+      </div>
+    </section>
+
+    <!-- ============ OFF-ROAD IMMERSION SPOTLIGHT (two settings) ============ -->
+    <section style="max-width:1240px;margin:34px auto 0;padding:0 32px;">
+      <div style="background:#3A0A0C;color:#F6EFE0;border-radius:18px;padding:38px 44px;">
+        <span style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;font-weight:700;">The Off-Road Immersion</span>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,30px);color:#F6EFE0;margin:8px 0 8px;max-width:24ch;">A single day where the terrain does the teaching.</h2>
+        <p style="font-size:15.5px;line-height:1.6;color:#F0D9D2;max-width:66ch;margin-bottom:24px;">Two executives per Jeep, real off-road, and James turning what happens on the trail into the leadership conversation your team has been avoiding. We run it in two settings &mdash; pick your terrain.</p>
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <a href={SLUGS.denverImmersion} style="display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(246,239,224,0.06);border:1px solid rgba(246,239,224,0.18);border-radius:14px;padding:22px 26px;text-decoration:none;transition:background .16s;" onmouseover="this.style.background='rgba(246,239,224,0.12)'" onmouseout="this.style.background='rgba(246,239,224,0.06)'">
+            <span><span style="display:block;font-family:'Newsreader',serif;font-size:20px;color:#F6EFE0;">Colorado &middot; the San Juans</span><span style="font-size:13.5px;color:#D9B7A9;">High country, out of Denver</span></span>
+            <span style="color:#E0744A;font-weight:800;font-size:15px;white-space:nowrap;">See it &rarr;</span>
+          </a>
+          <a href={SLUGS.sedonaImmersion} style="display:flex;align-items:center;justify-content:space-between;gap:14px;background:rgba(246,239,224,0.06);border:1px solid rgba(246,239,224,0.18);border-radius:14px;padding:22px 26px;text-decoration:none;transition:background .16s;" onmouseover="this.style.background='rgba(246,239,224,0.12)'" onmouseout="this.style.background='rgba(246,239,224,0.06)'">
+            <span><span style="display:block;font-family:'Newsreader',serif;font-size:20px;color:#F6EFE0;">Sedona &middot; the red rock</span><span style="font-size:13.5px;color:#D9B7A9;">Slickrock, out of Phoenix</span></span>
+            <span style="color:#E0744A;font-weight:800;font-size:15px;white-space:nowrap;">See it &rarr;</span>
+          </a>
+        </div>
       </div>
     </section>
 

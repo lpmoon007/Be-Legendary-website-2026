@@ -1,0 +1,26 @@
+---
+// "Trusted by" client strip — text wordmarks (no logo files), understated
+// on purpose so it reads as credibility, not a logo wall. The named clients
+// are from James Carter's published career record (his chapter in
+// "Discover Your Inner Strength," Insight Publishing, 2009).
+export interface Props {
+  eyebrow?: string;
+  note?: string;
+}
+const {
+  eyebrow = 'Trusted by leadership teams at',
+  note = 'Across a career working with much of the Fortune 100.',
+} = Astro.props;
+const clients = ['American Express', 'Johnson & Johnson', 'Caterpillar', 'Bayer', 'Siemens'];
+---
+<section aria-label="Clients" style="background:#F4F0E7;color:#1B1810;padding:72px 32px 8px;">
+  <div style="max-width:1000px;margin:0 auto;text-align:center;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;">{eyebrow}</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:clamp(16px,3.6vw,44px);flex-wrap:wrap;">
+      {clients.map((c) => (
+        <span style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(18px,2.3vw,25px);color:#3A372F;letter-spacing:0.01em;">{c}</span>
+      ))}
+    </div>
+    {note && <p style="margin-top:22px;font-size:14px;color:#8A7F6C;">{note}</p>}
+  </div>
+</section>

@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { CTA_URL, SLUGS, PERSON_ID, ORG_ID } from '../lib/site';
+
+const title = 'Fractional Chief People Officer: What It Fixes — and What It Can\'t | Be Legendary';
+const description =
+  'A fractional Chief People Officer builds the People function part-time. But a fractional CPO can\'t, by itself, fix a leadership team that won\'t execute — that\'s a performance problem, not an org-design one. Here\'s the difference, and who fixes which.';
+
+const faqs = [
+  ['What is a fractional Chief People Officer?', 'A fractional Chief People Officer (CPO) is an experienced People or HR executive who works part-time — leading talent, culture, compensation, org design, and HR operations for a company that isn\'t ready for, or doesn\'t need, a full-time CHRO. They build and run the People function; they don\'t usually own the executive team\'s day-to-day execution.'],
+  ['Can a fractional CPO fix a dysfunctional leadership team?', 'Rarely on its own. A fractional CPO installs systems and programs. But a leadership team that can\'t commit to a decision, finish what it starts, or hold each other to a standard has a behavioral problem, not an org-design gap — and adding another leader seldom changes the behavior. It usually needs a focused performance intervention. The two are complementary, not the same job.'],
+  ['How does Be Legendary work with a Chief People Officer?', 'Be Legendary is the executive-team performance partner a CPO or CHRO brings in when the leadership team itself is the bottleneck. We locate where the team breaks first with the Flag Model, measure it with FlagScore, and rebuild that specific discipline — while the People leader keeps owning the broader function. It makes the People leader look good, because the team finally moves.'],
+  ['Fractional CPO or team-performance work — which do we need first?', 'If you need someone to build hiring, comp, and HR systems part-time, hire a fractional CPO. If those systems are fine but the senior team keeps stalling on execution, that\'s team-performance work. Many companies need both — usually the performance work first, so the systems land on a team that can actually run them.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'For Teams', item: 'https://www.belegendary.org/teams/' },
+    { '@type': 'ListItem', position: 3, name: 'Fractional Chief People Officer', item: 'https://www.belegendary.org/fractional-chief-people-officer/' },
+  ] },
+  { '@type': 'Article', headline: 'Fractional Chief People Officer: what it fixes, and what it can\'t',
+    datePublished: '2026-07-23', dateModified: '2026-07-23',
+    author: { '@id': PERSON_ID }, publisher: { '@id': ORG_ID },
+    mainEntityOfPage: 'https://www.belegendary.org/fractional-chief-people-officer/',
+    description: 'The difference between a fractional CPO (the People function) and executive-team performance work (the leadership team\'s disciplines).' },
+  { '@type': 'DefinedTerm', name: 'Fractional Chief People Officer', description: 'A part-time or fractional People/HR executive who leads talent, culture, compensation, org design, and HR operations for a company that does not need a full-time CHRO.' },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.fractionalCpo}
+  ogType="article"
+  ogTitle="Fractional Chief People Officer — what it fixes, and what it can't"
+  ogDescription="A fractional CPO builds the People function. It can't, by itself, fix a leadership team that won't execute. Here's who fixes which."
+  schema={schema}
+  bodyBg="#100E0A"
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={920} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'For Teams', href: SLUGS.teams }, { label: 'Case studies', href: SLUGS.caseStudies }]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 36px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#D98A5E;">Fractional Chief People Officer</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">For People leaders</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Fractional Chief People Officer: <span style="font-style:italic;color:#E0744A;">what it fixes, and what it can't.</span></h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <div class="bl-speakable" style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A <strong style="color:#FBF8F1;">fractional Chief People Officer</strong> is a part-time People/HR executive who builds the People function &mdash; talent, culture, comp, org design. It&rsquo;s the right hire when you need that function led without a full-time CHRO. What it <em>can&rsquo;t</em> do, on its own, is fix a leadership team that won&rsquo;t execute &mdash; because that&rsquo;s a behavioral problem, not an org-design one. Different problem, different fix.</p>
+    </div>
+  </header>
+
+  <!-- WHAT IT IS -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">What a fractional CPO actually does</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">A fractional Chief People Officer gives a growing company senior People leadership without a full-time executive salary. Typically that means building the machinery: hiring and onboarding, compensation and levelling, performance systems, org design, culture and engagement, and the HR operations that keep it all running. For a company that has outgrown an office manager but isn&rsquo;t ready for a full-time CHRO, it&rsquo;s often exactly the right move.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">That work is real and valuable. But notice what it is: <strong style="color:#FBF8F1;">systems and programs.</strong> It&rsquo;s the People <em>function</em> &mdash; the infrastructure the whole company runs on. It is not, and isn&rsquo;t designed to be, a fix for the specific senior team in the room whose execution has stalled.</p>
+  </div>
+
+  <!-- THE DISTINCTION -->
+  <div style="max-width:920px;margin:0 auto;padding:36px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The distinction that matters</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Here&rsquo;s where People leaders get stuck. The systems are good. Comp is fair, hiring is solid, the engagement scores are fine. And the executive team still can&rsquo;t make a decision stick, still lets the hard issue get tabled, still misses the same commitment three quarters running. Adding a fractional CPO &mdash; more systems &mdash; doesn&rsquo;t move it, because the problem was never the systems.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">A leadership team that won&rsquo;t execute has a <strong style="color:#FBF8F1;">discipline</strong> problem: it can&rsquo;t commit, finish, hold a standard, or correct honestly &mdash; usually because comfort is easier than truth. That&rsquo;s not fixed by org design or another program. It&rsquo;s fixed by rebuilding the disciplines the team lost, in the room, over time. That&rsquo;s the work we do.</p>
+  </div>
+
+  <!-- COMPARISON -->
+  <ComparisonTable
+    heading="Who fixes which"
+    competitor="A fractional CPO"
+    flagLabel="Be Legendary"
+    rows={[
+      { attr: "What it builds", a: "The People function: hiring, comp, org design, culture, HR operations.", b: "The executive team&rsquo;s execution: how it commits, finishes, holds a standard, and learns." },
+      { attr: "Best when", a: "You need senior People leadership without a full-time CHRO.", b: "The systems are fine, but the senior team keeps stalling on execution." },
+      { attr: "The unit of work", a: "Systems and programs, company-wide.", b: "The behavior of one specific leadership team, in the room.", },
+      { attr: "How progress shows", a: "Better processes, cleaner org, healthier HR metrics.", b: "Decisions that stick, fewer rolled commitments &mdash; tracked with FlagScore." },
+    ]}
+  />
+
+  <!-- FOR THE PEOPLE LEADER -->
+  <div style="max-width:920px;margin:40px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">If you own how the team performs</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:16px;">CHROs, Heads of People, and fractional CPOs are often the first to see it: the org is sound, but the executive team is the bottleneck &mdash; and it&rsquo;s landing on you. Be Legendary is the partner you bring in for exactly that. You keep owning the function; we rebuild the team&rsquo;s execution, measurably, and make the change hold for 30 days after. When the team finally moves, it&rsquo;s your call that made it happen.</p>
+      <p style="font-size:16px;line-height:1.6;color:#56524A;">Not sure whether it&rsquo;s a systems problem or a team-discipline problem? That&rsquo;s the first conversation &mdash; and we&rsquo;ll tell you honestly, even if the answer is a fractional CPO and not us.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section style="max-width:920px;margin:52px auto 0;padding:0 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:26px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      {faqs.map(([q, a]) => (
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">{q}</h3>
+          <p style="font-size:16.5px;line-height:1.66;color:rgba(244,240,231,0.76);">{a}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <ArticleEndCTA maxWidth={920} />
+  <ShareRow title="Fractional Chief People Officer — what it fixes, and what it can't" maxWidth={920} />
+  </article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} />
+</BaseLayout>

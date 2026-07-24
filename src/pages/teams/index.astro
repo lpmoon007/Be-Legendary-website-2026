@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
+import TrustedBy from '../../components/TrustedBy.astro';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
 
 const path = SLUGS.teams;
@@ -257,6 +258,8 @@ const schema = [
         </a>
       </div>
     </section>
+
+    <TrustedBy />
 
     <!-- ============ FINAL CTA + BRIDGE ============ -->
     <section style="background:#15130E;color:#F4F0E7;padding:40px 32px 90px;border-top:1px solid rgba(244,240,231,0.08);">

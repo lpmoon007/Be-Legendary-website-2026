@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS, PERSON_ID, ORG_ID } from '../lib/site';
+
+const PDF = '/assets/roadmap-to-success-be-legendary.pdf';
+
+const title = "Roadmap to Success: James Carter's 'Be Legendary' Chapter (Free PDF) | Be Legendary";
+const description =
+  "Roadmap to Success is a collaborative book of interviews with successful leaders. James Carter's chapter, 'Be Legendary,' is the origin of the whole idea — read it free, then see what it became.";
+
+const faqs = [
+  ['What is Roadmap to Success?', 'Roadmap to Success (Insight Publishing, 2012; ISBN 978-1-60013-921-5) is a collaborative business book — "America\'s Top Intellectual Minds Map Out Successful Business Strategies" — in which accomplished leaders each contribute a chapter on how they reach and stay at the top. James Carter, founder of Be Legendary, is featured on the cover alongside Deepak Chopra and Dr. Ken Blanchard; his chapter is titled "Be Legendary."'],
+  ['Did James Carter write Roadmap to Success?', 'James co-authored it — he contributed the chapter "Be Legendary" and is one of the authors featured on the cover, alongside Deepak Chopra and Dr. Ken Blanchard. It is one of several collaborative works he has contributed to, together with Discover Your Inner Strength (co-authored alongside Stephen Covey, Ken Blanchard and Brian Tracy).'],
+  ['What is the "Be Legendary" chapter about?', 'It defines being legendary as "having the courage to take action based upon your core beliefs to make a positive difference in the world around you" — not fame or being better than anyone else, but your own personal evolution: the discovery and rediscovery of the very best of who you are, and who you can be. It is the seed of everything Be Legendary teaches today.'],
+  ['Can I download it for free?', 'Yes. James\'s chapter is free to read — download the PDF above. No form, no email required.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Roadmap to Success', item: 'https://www.belegendary.org/roadmap-to-success/' },
+  ] },
+  { '@type': 'Book', '@id': 'https://www.belegendary.org/roadmap-to-success/#book', name: 'Roadmap to Success', alternateName: "America's Top Intellectual Minds Map Out Successful Business Strategies", isbn: '978-1-60013-921-5', datePublished: '2012', publisher: { '@type': 'Organization', name: 'Insight Publishing' }, image: 'https://www.belegendary.org/assets/roadmap-to-success-cover.webp', author: [{ '@id': PERSON_ID }, { '@type': 'Person', name: 'Deepak Chopra' }, { '@type': 'Person', name: 'Ken Blanchard' }], about: 'A collaborative book of interviews with successful leaders. James Carter is featured on the cover alongside Deepak Chopra and Ken Blanchard; his chapter is "Be Legendary."', url: 'https://www.belegendary.org/roadmap-to-success/', sameAs: 'https://www.amazon.com/Roadmap-Success-Dr-Deepak-Chopra-ebook/dp/B00BJAM0SA' },
+  { '@type': 'Article', headline: "Roadmap to Success: James Carter's 'Be Legendary' chapter",
+    datePublished: '2026-07-23', dateModified: '2026-07-23',
+    author: { '@id': PERSON_ID }, publisher: { '@id': ORG_ID },
+    mainEntityOfPage: 'https://www.belegendary.org/roadmap-to-success/',
+    description: 'The chapter where the Be Legendary idea began — and what it grew into.' },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.roadmapToSuccess}
+  ogType="article"
+  ogTitle="Roadmap to Success — James Carter's 'Be Legendary' chapter"
+  ogDescription="The collaborative book chapter where the Be Legendary idea began. Read it free, then see what it became."
+  schema={schema}
+  bodyBg="#100E0A"
+>
+  <SiteHeader audience="teams" logoHref="/" maxWidth={880} links={[{ label: 'The Flag Model', href: SLUGS.flagModel }, { label: 'For Leaders', href: SLUGS.leaders }, { label: 'About James', href: SLUGS.about }]} />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 24px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Roadmap to Success</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The book &middot; James's chapter</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">Roadmap to Success</h1>
+    <p style="margin-top:16px;font-size:15px;font-style:italic;color:rgba(244,240,231,0.62);">America&rsquo;s Top Intellectual Minds Map Out Successful Business Strategies</p>
+    <p style="margin-top:10px;font-size:14px;color:rgba(244,240,231,0.55);"><a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &mdash; chapter &ldquo;Be Legendary&rdquo; &mdash; featured alongside <strong style="color:rgba(244,240,231,0.75);font-weight:600;">Deepak Chopra</strong> and <strong style="color:rgba(244,240,231,0.75);font-weight:600;">Dr. Ken Blanchard</strong> &middot; Insight Publishing, 2012</p>
+    <div class="bl-speakable" style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short version</p>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;"><strong style="color:#FBF8F1;">Roadmap to Success</strong> is a collaborative book &mdash; interviews with successful leaders on how they reach the top and stay there. James Carter&rsquo;s chapter, <strong style="color:#FBF8F1;">&ldquo;Be Legendary,&rdquo;</strong> is where the whole idea began. It&rsquo;s free to read &mdash; and the rest of this page is what it grew into.</p>
+    </div>
+    <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+      <a href={PDF} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Read the chapter &mdash; free PDF <span style="font-size:16px;">&darr;</span></a>
+      <a href="https://www.amazon.com/Roadmap-Success-Dr-Deepak-Chopra-ebook/dp/B00BJAM0SA" target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;font-weight:600;font-size:15px;border:1px solid rgba(217,138,94,0.4);padding:15px 24px;border-radius:11px;">The full book on Amazon &nearr;</a>
+      <span style="font-size:13.5px;color:rgba(244,240,231,0.55);">Chapter is free &mdash; no email.</span>
+    </div>
+  </header>
+
+  <!-- WHAT THE CHAPTER SAYS -->
+  <div style="max-width:880px;margin:0 auto;padding:36px 32px 8px;">
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 210px;gap:34px;align-items:start;">
+      <div>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:18px;">Where &ldquo;Be Legendary&rdquo; started</h2>
+        <p style="font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);">Years before the Flag Model or a single leadership offsite, James was invited into <em>Roadmap to Success</em> (Insight Publishing, 2012) &mdash; a collaborative volume where accomplished leaders each set down their own map, in the interview format the series is known for (with David Wright). James is featured on the cover alongside <strong style="color:#FBF8F1;">Deepak Chopra</strong> and <strong style="color:#FBF8F1;">Dr. Ken Blanchard</strong>. His chapter didn&rsquo;t describe a tactic. It named a way of living, and gave it a phrase that stuck.</p>
+      </div>
+      <a href="https://www.amazon.com/Roadmap-Success-Dr-Deepak-Chopra-ebook/dp/B00BJAM0SA" target="_blank" rel="noopener" style="display:block;text-decoration:none;">
+        <img src="/assets/roadmap-to-success-cover.webp" alt="Cover of Roadmap to Success (Insight Publishing, 2012), featuring Dr. Deepak Chopra, James Carter, and Dr. Ken Blanchard." width="540" height="814" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:8px;border:1px solid rgba(244,240,231,0.14);box-shadow:0 20px 44px -18px rgba(0,0,0,0.7);display:block;" />
+        <span style="display:block;margin-top:10px;font-size:12.5px;color:rgba(244,240,231,0.5);text-align:center;">Chopra &middot; Carter &middot; Blanchard</span>
+      </a>
+    </div>
+    <figure style="margin:8px 0 4px;background:#15130E;border:1px solid rgba(244,240,231,0.1);border-left:3px solid #C04A26;border-radius:14px;padding:28px 30px;">
+      <blockquote style="margin:0;font-family:'Newsreader',serif;font-style:italic;font-size:clamp(19px,2.4vw,25px);line-height:1.45;color:#FBF8F1;">&ldquo;Be Legendary is having the courage to take action based upon your core beliefs to make a positive difference in the world around you. Not about being better than anyone else. Not about glory or fame. It is our own personal evolution &mdash; the discovery and rediscovery of the very best of who we are, and who we can be.&rdquo;</blockquote>
+      <figcaption style="margin-top:16px;font-size:13.5px;color:#8A8578;">&mdash; James Carter, &ldquo;Be Legendary,&rdquo; in <em>Roadmap to Success</em></figcaption>
+    </figure>
+  </div>
+
+  <!-- WHAT IT GREW INTO -->
+  <section style="background:#15130E;border-top:1px solid rgba(244,240,231,0.08);border-bottom:1px solid rgba(244,240,231,0.08);margin-top:40px;">
+    <div style="max-width:880px;margin:0 auto;padding:56px 32px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:10px;">What it grew into</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:8px;">One idea. Two ways to live it.</h2>
+      <p style="font-size:16.5px;line-height:1.6;color:rgba(244,240,231,0.72);max-width:60ch;margin-bottom:30px;">The courage to act on your beliefs became a discipline &mdash; for one leader, and for a whole team. Pick the door that fits where you&rsquo;re standing.</p>
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <a href={SLUGS.roadmap} style="display:block;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:28px 30px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">For one leader</p>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:8px;">The Roadmap to Legendary</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.75);">The five stages a leader walks from stuck to legacy &mdash; the modern version of the chapter&rsquo;s map.</p>
+          <span style="display:inline-block;margin-top:14px;color:#D98A5E;font-weight:700;font-size:14.5px;">Walk the path &rarr;</span>
+        </a>
+        <a href={SLUGS.flagModel} style="display:block;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:28px 30px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;margin-bottom:10px;">For an executive team</p>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin-bottom:8px;">The Flag Model</h3>
+          <p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.75);">The disciplines that turn courage into execution &mdash; measured across a leadership team.</p>
+          <span style="display:inline-block;margin-top:14px;color:#D98A5E;font-weight:700;font-size:14.5px;">See the framework &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD AGAIN -->
+  <div style="max-width:880px;margin:44px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+      <div style="max-width:46ch;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.8vw,28px);line-height:1.12;color:#FBF8F1;margin-bottom:8px;">Read the original chapter</h2>
+        <p style="font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.75);">James Carter&rsquo;s &ldquo;Be Legendary&rdquo; from <em>Roadmap to Success</em> &mdash; free, no email required.</p>
+      </div>
+      <a href={PDF} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:15px 28px;border-radius:11px;font-weight:700;font-size:16px;white-space:nowrap;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Download the PDF &darr;</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section style="max-width:880px;margin:52px auto 0;padding:0 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.4vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:26px;">Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      {faqs.map(([q, a]) => (
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">{q}</h3>
+          <p style="font-size:16.5px;line-height:1.66;color:rgba(244,240,231,0.76);">{a}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <ArticleEndCTA maxWidth={880} />
+  <ShareRow title="Roadmap to Success — James Carter's 'Be Legendary' chapter" maxWidth={880} />
+  </article>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>

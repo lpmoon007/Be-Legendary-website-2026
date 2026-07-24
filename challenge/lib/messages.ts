@@ -13,9 +13,11 @@ export const messages = {
   // prefix so the duplicate guard in due_messages() still matches.
   morningPrivate: () => `Morning. You know today's rep. Go do it — you've got this.`,
 
-  // Afternoon check-in rates today's EFFORT, 1–10. Keeps the "It's 4 p.m."
-  // prefix so the duplicate guard still matches.
-  afternoon: () => `It's 4 p.m. — how'd your effort go today? Rate it 1–10.`,
+  // Afternoon check-in rates today's EFFORT, 1–10. Time-neutral wording so a
+  // participant's chosen check-in time is honored (was hardcoded "It's 4 p.m.").
+  // Starts with "Check-in" — the duplicate guard in due_messages() keys on that
+  // prefix (migration 006 also still matches the legacy "It's 4 p.m." prefix).
+  afternoon: () => `Check-in — how'd your effort go today? Rate it 1–10.`,
 
   lowPrompt: () => `What got in the way today?`,
 
