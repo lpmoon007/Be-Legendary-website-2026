@@ -17,8 +17,25 @@ function client() {
 }
 
 export async function sendSms(to: string, body: string): Promise<string> {
+  const messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID?.trim();
+
+  // Preferred for A2P 10DLC: send through the Messaging Service tied to the
+  // approved campaign. Falls back to the raw From number if not configured.
+  if (messagingServiceSid) {
+    const msg = await client().messages.create({
+      to,
+      body,
+      messagingServiceSid,
+    });
+    return msg.sid;
+  }
+
   const raw = process.env.TWILIO_PHONE_NUMBER;
-  if (!raw) throw new Error("TWILIO_PHONE_NUMBER is not configured.");
+  if (!raw) {
+    throw new Error(
+      "Neither TWILIO_MESSAGING_SERVICE_SID nor TWILIO_PHONE_NUMBER is configured."
+    );
+  }
   // Twilio requires the From number in E.164 (+15551234567). Tolerate a value
   // set without the leading "+" (or with spaces/dashes) rather than failing.
   const from = raw.trim().startsWith("+")
