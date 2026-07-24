@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   },
   description:
     "Pick one behavior. Get one text a day. For thirty days, we hold you to it — a morning nudge, a 4 p.m. check-in, and a line on how it went. No app to download.",
-  applicationName: "The 30-Day Challenge",
+  applicationName: "Your 30-Day Challenge",
   robots: {
     index: true,
     follow: true,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Be Legendary",
-    title: "The 30-Day Challenge — Build a Leadership Habit That Sticks",
+    title: "Your 30-Day Challenge — Build a Leadership Habit That Sticks",
     description:
       "One behavior. Thirty days. A morning nudge and a 4 p.m. check-in hold you to it. No app to download. Free from Be Legendary.",
     images: [
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
         url: "https://www.belegendary.org/assets/share-card.png",
         width: 1200,
         height: 630,
-        alt: "The 30-Day Challenge — Be Legendary",
+        alt: "Your 30-Day Challenge — Be Legendary",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The 30-Day Challenge — Be Legendary",
+    title: "Your 30-Day Challenge — Be Legendary",
     description:
       "One behavior. Thirty days. Held to it daily — no app to download. Free from Be Legendary.",
     images: ["https://www.belegendary.org/assets/share-card.png"],

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // Single source for the visible FAQ and the FAQPage schema — they must match.
 const faqs = [
   {
-    q: "Is the 30-Day Challenge free?",
+    q: "Is Your 30-Day Challenge free?",
     a: "Yes — completely free. You pick one behavior, and for thirty days we hold you to it by text. No cost, no catch, no credit card.",
   },
   {
@@ -54,14 +54,14 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://challenge.belegendary.org/#website",
       url: "https://challenge.belegendary.org/",
-      name: "The 30-Day Challenge — Be Legendary",
+      name: "Your 30-Day Challenge — Be Legendary",
       publisher: { "@id": "https://www.belegendary.org/#org" },
     },
     {
       "@type": "WebPage",
       "@id": "https://challenge.belegendary.org/#webpage",
       url: "https://challenge.belegendary.org/",
-      name: "The 30-Day Challenge",
+      name: "Your 30-Day Challenge",
       isPartOf: { "@id": "https://challenge.belegendary.org/#website" },
       description:
         "A free 30-day habit challenge from Be Legendary: pick one behavior and get held to it daily — a morning nudge, a 4 p.m. check-in, and a line on how it went. No app to download.",
