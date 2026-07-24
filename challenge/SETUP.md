@@ -90,9 +90,17 @@ Vercel → your project → **Settings → Environment Variables**. Add each of 
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase service_role key |
 | `TWILIO_ACCOUNT_SID` | Twilio Account SID |
 | `TWILIO_AUTH_TOKEN` | Twilio Auth Token |
-| `TWILIO_PHONE_NUMBER` | your Twilio number, E.164 |
+| `TWILIO_MESSAGING_SERVICE_SID` | your A2P Messaging Service SID (`MG…`) — **required for 10DLC** |
+| `TWILIO_PHONE_NUMBER` | your Twilio number, E.164 (fallback if no Messaging Service) |
 | `NEXT_PUBLIC_APP_URL` | `https://challenge.belegendary.org` |
 | `CRON_SECRET` | the random string from Step 3 |
+
+> **Why the Messaging Service SID matters:** for A2P 10DLC, outbound must send
+> **through the Messaging Service** tied to your approved campaign — sending from
+> the raw number gets filtered by carriers. Set `TWILIO_MESSAGING_SERVICE_SID`
+> (Twilio → Messaging → Services → your service → the `MG…` at the top) and the
+> app routes through it automatically. Confirm your number is in that service's
+> **Sender Pool**.
 
 Then **Deploy**. When it's green, you'll have a `*.vercel.app` URL. Test:
 - `https://<your>.vercel.app/` → enrollment page
@@ -141,14 +149,20 @@ Check it's registered: `select jobname, schedule, active from cron.job;`
 
 ## Step 7 — Wire the Twilio inbound webhook (3 min)
 
-Twilio → **Phone Numbers → Manage → Active numbers →** your number →
-**Messaging** section:
-- **A message comes in** → **Webhook** →
-  `https://challenge.belegendary.org/api/sms/inbound` → **HTTP POST**.
+⚠️ **Set this on the MESSAGING SERVICE, not the phone number.** Once a number is
+attached to a Messaging Service, the service's inbound handler **overrides** the
+number's own webhook — a webhook set on the number is silently ignored.
+
+Twilio → **Messaging → Services →** your service → **Integration**:
+- Under **Incoming Messages**, choose **"Send a webhook."**
+- **Request URL:** `https://challenge.belegendary.org/api/sms/inbound` → **HTTP POST**.
 - Save.
 
 Signature validation is enforced on every request, so this must be the exact
 public URL (it's checked against `NEXT_PUBLIC_APP_URL`).
+
+> If you're **not** using a Messaging Service, set the same webhook on the number
+> instead: Phone Numbers → your number → Messaging → "A message comes in."
 
 ---
 

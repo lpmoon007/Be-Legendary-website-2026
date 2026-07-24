@@ -1,234 +1,166 @@
-# Integration Brief — Be Legendary 30-Day Challenge (SMS app)
+# Integration Brief — Your 30-Day Challenge (SMS app)
 
-**Audience:** the Claude Code session doing the larger Claude Design update to
-belegendary.org. This documents exactly what already exists and is **live in
-production**, so you integrate with it instead of breaking or duplicating it.
+**Audience:** any Claude Code session working in this repo — especially the
+design/marketing session. This documents what's **live in production** so you
+integrate with it instead of breaking or duplicating it.
 
-**Golden rule:** the `challenge/` app is a **separate, working, deployed
-system**. Treat its data model, API routes, SMS copy, and scheduler as a
-contract. Restyle freely; do **not** change behavior, message strings, DB
-schema, or route signatures without reading the "Do-not-break" section below.
+**Golden rule:** the `challenge/` app is a **separate, working, deployed, two-way
+SMS system**. Restyle freely; do **not** change its data model, API-route
+signatures, SMS copy prefixes, or migrations without reading the "Do-not-break"
+section.
 
 ---
 
-## 1. Repo & deploy topology (important — two apps, two hosts)
+## 0. Canonical name & session ownership (read first)
 
-This repo contains **two independent apps**:
+- **Product name is "Your 30-Day Challenge"** (personal, brand-neutral — it runs
+  across belegendary.org, provecq.com, buildingteams.com, all Be Legendary
+  services). Use this everywhere: title, hero, `applicationName`, OpenGraph,
+  Twitter, JSON-LD. Do **not** revert to "The 30-Day Challenge."
+- **Suggested ownership split** (we kept colliding otherwise):
+  - **Design/marketing session** → the Astro site (`src/`, repo root), plus SEO
+    metadata and JSON-LD in `challenge/` where it's marketing copy.
+  - **Challenge/app session** → `challenge/` app logic: API routes, DB schema +
+    migrations, SMS/state-machine, admin dashboard, Twilio wiring.
+  - **Shared touch-points to coordinate on:** `challenge/app/api/enroll/route.ts`,
+    `challenge/app/layout.tsx`, and the migration numbering.
+- **Migrations are numbered sequentially from ONE place.** Highest is currently
+  `006`. Next new migration = `007`. Never reuse a number (we already had two
+  `004`s collide).
+
+---
+
+## 1. Repo & deploy topology (two apps, two hosts)
 
 | App | Path | Framework | Host | Domain |
 |-----|------|-----------|------|--------|
-| Marketing site | repo root (`src/`, `astro.config.mjs`) | **Astro** (static) | VPS via GitHub Actions rsync | `www.belegendary.org` |
-| **Challenge (SMS)** | **`challenge/`** | **Next.js 14** (App Router) | **Vercel** | `challenge.belegendary.org` |
+| Marketing site | repo root (`src/`) | Astro (static) | VPS via GitHub Actions | `www.belegendary.org` |
+| **Your 30-Day Challenge** | **`challenge/`** | Next.js 14 (App Router) | **Vercel** (Root Directory = `challenge`) | `challenge.belegendary.org` |
 
-- They do **not** share a build. Astro ignores `challenge/`; Vercel's **Root
-  Directory is `challenge`** so it ignores the Astro root.
-- **Default branch is `claude/epic-carson-cjyx09`** (there is no `main`). Both
-  Vercel (challenge) and the VPS Action (marketing) deploy from it.
-- Vercel framework is pinned in `challenge/vercel.json` (`"framework": "nextjs"`).
-  Without it Vercel mis-detects "Other" and fails with *No Output Directory
-  "public"*. Leave it.
-
-**If the design update rebuilds the marketing site in Next.js / merges the two:**
-that's a big decision. The challenge app can move into a monorepo, but keep its
-Root Directory / build separate on Vercel, or migrate its routes wholesale. Do
-not half-merge.
+- Default/production branch: **`claude/epic-carson-cjyx09`** (there is no `main`).
+- Astro build ignores `challenge/`; Vercel (Root Dir = `challenge`) ignores the
+  Astro root. `challenge/vercel.json` pins `"framework": "nextjs"` — leave it.
 
 ---
 
 ## 2. Tech stack (challenge app)
 
-Next.js 14 App Router · TypeScript · Tailwind · Supabase (`@supabase/ssr` +
-`@supabase/supabase-js`) · Twilio (`twilio`) · Recharts · `date-fns-tz` ·
-Supabase pg_cron + `pg_net`.
-
-Node 20+. `npm run build` / `npm run dev` from inside `challenge/`.
+Next.js 14 · TypeScript · Tailwind · Supabase (`@supabase/ssr` + `@supabase/supabase-js`) ·
+Twilio (via **Messaging Service**) · Recharts · `date-fns-tz` · pg_cron + `pg_net`.
 
 ---
 
-## 3. Design system (already implemented — reuse verbatim)
+## 3. Design system (reuse, don't rebuild)
 
-Tokens live in `challenge/app/globals.css` (`:root` CSS vars) and
-`challenge/tailwind.config.ts` (mapped to Tailwind classes). Fonts loaded via
-Google Fonts `@import` in globals.css.
-
-```
---bg-page:#15130E  --bg-card:#F4F0E7  --bg-card-light:#FBF8F1
---bg-dark-nav:rgba(21,19,14,0.85)
---ink-heading:#1B1810  --ink-body:#2E2A22  --ink-muted:#8A7F6C  --ink-light:#F4F0E7
---accent:#C04A26  --accent-hover:#9E3A1C  --accent-light:#E0744A
-```
-Fonts: **Newsreader** (serif, headings/quotes) · **Hanken Grotesk** (sans, UI).
-Tailwind: `font-serif` / `font-sans`; numeric weights registered as
-`font-400…font-800`. Radii: `rounded-card` (20px), `rounded-btn` (10px),
-`rounded-pill`. Shadows: `shadow-card`, `shadow-cta`. Component classes:
-`.btn-cta`, `.btn-ghost`, `.eyebrow`, `.pill`, `.surface`.
-
-The snail mark is an inline SVG at `challenge/components/Logo.tsx` (`<SnailMark/>`,
-uses `currentColor`).
-
-**If the Claude Design update ships a new/evolved design system:** the safest
-path is to update the tokens in `globals.css` + `tailwind.config.ts` in one place
-— all challenge components read from them. Don't hard-code new hex values in
-components.
+Tokens live in `challenge/app/globals.css` (`:root` CSS vars) + `tailwind.config.ts`.
+Fonts: Newsreader (serif) / Hanken Grotesk (sans), numeric weights `font-400…800`.
+Components: `.btn-cta`, `.btn-ghost`, `.eyebrow`, `.pill`, `.surface`; snail mark
+= inline SVG `components/Logo.tsx`. A design refresh should edit the tokens in one
+place, not hard-code hex in components.
 
 ---
 
-## 4. File map (challenge/)
+## 4. Database (Supabase project `wucvglrpzqdkudvmdmdz`)
 
-```
-app/
-  (public)/page.tsx          Enrollment page (all sections + 3-step signup flow)
-  (public)/terms/page.tsx    SMS Terms & Conditions (A2P compliance)
-  admin/
-    layout.tsx               Coach chrome (nav)
-    login/page.tsx           Supabase Auth email+password
-    error.tsx                Admin error boundary (no white-screens)
-    page.tsx                 Roster (score / 7-day avg / streak / at-risk badge)
-    actions.ts               Server actions (see §7)
-    users/new/page.tsx       Add participant (client form, useFormState)
-    users/[id]/page.tsx      Detail: commitment, send-times+tz, metrics, chart,
-                             conversation thread + coach send, history table
-    users/[id]/ScoreChart.tsx   Recharts (client)
-    users/[id]/UserControls.tsx CommitmentEditor, SendTimesEditor, ActiveToggle,
-                                MessageSender (all client)
-    settings/page.tsx        Admin email/password change + sign out
-  api/
-    sms/inbound/route.ts     Twilio webhook — signature-validated state machine
-    enroll/route.ts          Public signup (service role)
-    send/route.ts            Scheduler target — sends due morning/afternoon/nudge
-  layout.tsx  globals.css
-lib/
-  conversation.ts   Pure inbound state machine (unit-tested)
-  messages.ts       SINGLE SOURCE OF TRUTH for every SMS body
-  timezone.ts  phone.ts  metrics.ts  presets.ts
-  supabase/{client,server,admin}.ts   Twilio.ts
-middleware.ts       Protects /admin/*
-supabase/migrations/001_schema.sql  002_nudges.sql  003_morning_default.sql
-supabase/functions/send-scheduled-messages/index.ts  (optional Edge Fn shim)
-SETUP.md  README.md  INTEGRATION_BRIEF.md (this file)
-```
+Tables: `users`, `checkins`, `sms_log`, `conversation_state`.
+
+`users` columns of note: `phone` (UNIQUE E.164), `timezone` (IANA), `commitment`,
+`morning_time` (default `08:00`), `afternoon_time` (default `16:00`), `active`,
+`is_private` (private mode), `workout_id` + `email` (workout-block enrollment;
+`name` is nullable).
+
+**Migrations (run in order; all applied in prod):**
+- `001_schema.sql` — tables, RLS, indexes, `due_messages()`
+- `002_nudges.sql` — `due_nudges()`
+- `003_morning_default.sql` — morning default 08:00
+- `004_workout_enroll.sql` — `workout_id`, `email`, nullable `name`
+- `005_private_mode.sql` — `is_private` + `due_messages()` returns it
+- `006_configurable_reflection.sql` — afternoon dedup guard matches new "Check-in%" **and** legacy "It's 4 p.m.%" prefixes
+
+**RLS:** `authenticated` (the coach) = full access; `anon` = nothing; server API
+routes use the **service_role** key (bypasses RLS).
+
+**Timezone engine (do NOT reimplement in JS):** `due_messages()` and
+`due_nudges()` decide who's due using `now() AT TIME ZONE users.timezone`.
+DST-safe. Send scheduling lives in Postgres.
 
 ---
 
-## 5. Database (Supabase project ref `wucvglrpzqdkudvmdmdz`)
+## 5. SMS flow & message contract (do-not-break)
 
-Tables: `users`, `checkins`, `sms_log`, `conversation_state`. Full DDL in
-`001_schema.sql`. Key points:
+All SMS bodies live in `lib/messages.ts`. **The SQL duplicate guards match on
+text prefixes** — change a prefix and you must update the migration guards:
+- morning → `'Morning.%'` (both `morning()` and `morningPrivate()` start with it)
+- afternoon → `'Check-in%'` OR legacy `'It''s 4 p.m.%'` (migration 006)
+- nudge → `'%quiet days%'` (in `due_nudges()`)
 
-- `users`: `phone` UNIQUE E.164, `timezone` IANA, `commitment`, `morning_time`
-  (default **08:00**), `afternoon_time` (default 16:00), `active`.
-- `checkins`: UNIQUE `(user_id, date)`, `score` 1–10, `journal_entry`,
-  timestamps. `date` is the participant's **local** date.
-- `sms_log`: every inbound/outbound message (`direction`, `body`, `twilio_sid`).
-- `conversation_state`: `state` ∈ `idle | awaiting_score | awaiting_journal`,
-  `checkin_date`.
-- **RLS**: enabled on all tables. `authenticated` role → full access (single
-  coach). `anon` → nothing. Server API routes use the **service_role** key
-  (bypasses RLS). So: admin pages read/write as the logged-in coach; public
-  routes (`/api/enroll`, `/api/send`, `/api/sms/inbound`) use service role.
+Afternoon check-in rates **effort** 1–10, time-neutral wording (participants pick
+their own check-in time). State machine (`lib/conversation.ts`, pure + tested):
+`awaiting_score` → 1–4 / 5–7 / 8–10 branches → `awaiting_journal` → `idle`.
+STOP → `active=false`.
 
-**Postgres RPCs (the timezone engine — do not reimplement in JS):**
-- `due_messages()` — returns users due for a morning/afternoon send *right now in
-  their own timezone*, with a duplicate guard on `sms_log`. Uses
-  `now() AT TIME ZONE users.timezone`. DST-safe.
-- `due_nudges()` — returns active users 3+ local days silent at their local noon,
-  once per silent streak (migration `002`).
+**Scheduler:** pg_cron every minute → `POST /api/send` (Bearer `CRON_SECRET`) →
+calls `due_messages()` + `due_nudges()` → sends via Twilio Messaging Service.
 
-Migrations already run in prod: 001, 002, 003.
+**Private mode:** if `is_private`, the morning nudge is generic, the commitment is
+stored as `(private)`, reflections are never stored, inbound free-text is redacted
+in `sms_log`, and the coach UI shows 🔒 (effort score only).
 
 ---
 
-## 6. SMS flow & the message contract (do-not-break)
+## 6. API routes & server actions (signatures = contract)
 
-**All SMS bodies are defined once in `lib/messages.ts`.** Change copy there.
-BUT: the duplicate-guard SQL matches on text prefixes/substrings —
-`due_messages()` keys on `'Morning.%'` and `'It''s 4 p.m.%'`; `due_nudges()`
-keys on `'%quiet days%'`. **If you edit those message strings, update the
-matching `LIKE` patterns in the migrations**, or dedup breaks (double-sends).
+| Route | Method | Auth |
+|-------|--------|------|
+| `/api/sms/inbound` | POST | Twilio signature |
+| `/api/enroll` | POST + OPTIONS (CORS for belegendary.org) | none (service role inside) |
+| `/api/send` | POST/GET | `Bearer CRON_SECRET` |
 
-State machine (`lib/conversation.ts`, pure + unit-tested):
-```
-awaiting_score + "1–4"   → "What got in the way today?"            → awaiting_journal
-awaiting_score + "5–7"   → "Got it. See you tomorrow."            → idle
-awaiting_score + "8–10"  → "An {n} — strong. What made it land…"  → awaiting_journal
-awaiting_score + non-1–10→ "Reply with a number between 1 and 10." → (unchanged)
-awaiting_journal + text  → "Logged. Keep building."               → idle
-idle + text              → "Nothing to respond to right now…"     → idle
-STOP/UNSUBSCRIBE/…       → user.active=false (mirror carrier opt-out)
-```
+`/api/enroll` accepts both flows: `commitment` **or** `lead_measure`; optional
+`name`, `timezone`, `private`, `workout_id`, `email`, `reminder_time`,
+`reflection_time`. Inserts are built conditionally so a flow never references a
+column its migration hasn't added.
 
-Scheduler: **pg_cron runs every minute → POSTs `/api/send`** (Bearer
-`CRON_SECRET`). `/api/send` calls the two RPCs and sends via Twilio. (An Edge
-Function shim exists but the live setup calls `/api/send` directly.)
+Server actions (`app/admin/actions.ts`): `createUser`, `updateCommitment`,
+`updateSchedule(userId,morning,afternoon,tz)`, `toggleActive`, `sendCoachMessage`
+(returns `{error?}`, never throws).
 
 ---
 
-## 7. API routes & server actions (signatures = contract)
-
-| Route | Method | Auth | Purpose |
-|-------|--------|------|---------|
-| `/api/sms/inbound` | POST | Twilio signature | Inbound state machine; returns empty TwiML |
-| `/api/enroll` | POST | none (service role inside) | `{name,phone,commitment,consent,timezone}` → create user + state |
-| `/api/send` | POST | `Bearer CRON_SECRET` | Scheduler; sends due messages + nudges |
-
-Server actions in `app/admin/actions.ts` (used by admin client components):
-`createUser`, `updateCommitment`, `updateSchedule(userId,morning,afternoon,tz)`,
-`toggleActive`, `sendCoachMessage` (returns `{error?}`, never throws).
-
----
-
-## 8. Env vars (set in Vercel; never commit)
+## 7. Env vars (Vercel; never commit)
 
 ```
-NEXT_PUBLIC_SUPABASE_URL      NEXT_PUBLIC_SUPABASE_ANON_KEY   SUPABASE_SERVICE_ROLE_KEY
-TWILIO_ACCOUNT_SID            TWILIO_AUTH_TOKEN               TWILIO_PHONE_NUMBER (E.164, with +)
-NEXT_PUBLIC_APP_URL=https://challenge.belegendary.org        CRON_SECRET
+NEXT_PUBLIC_SUPABASE_URL   NEXT_PUBLIC_SUPABASE_ANON_KEY   SUPABASE_SERVICE_ROLE_KEY
+TWILIO_ACCOUNT_SID   TWILIO_AUTH_TOKEN   TWILIO_MESSAGING_SERVICE_SID   TWILIO_PHONE_NUMBER
+NEXT_PUBLIC_APP_URL=https://challenge.belegendary.org   CRON_SECRET
 ```
-`NEXT_PUBLIC_APP_URL` must equal the Twilio inbound webhook host — it's used to
-reconstruct the URL for signature validation. `TWILIO_PHONE_NUMBER` is
-normalized to E.164 in code, but store it with the `+`.
+
+**Twilio A2P 10DLC (hard-won):**
+- Send **through the Messaging Service** — set `TWILIO_MESSAGING_SERVICE_SID`
+  (`MG…`). Sending from the raw number gets carrier-filtered.
+- The **inbound webhook goes on the Messaging Service → Integration**, NOT the
+  phone number (a number in a service ignores its own webhook).
+- Number must be in the service's **Sender Pool**.
 
 ---
 
-## 9. Compliance (already built — keep intact)
+## 8. Compliance (built — keep intact)
 
-- Mandatory SMS consent checkbox on enrollment with STOP/HELP language + links to
-  `/terms` and the privacy policy.
-- `/terms` page (SMS T&Cs). Footer links Terms + Privacy.
-- STOP mirrors to `users.active=false`.
-- Twilio signature validated on every inbound request.
-- Phone numbers only in the DB, never in plaintext app logs.
-
-Twilio A2P 10DLC campaign: **Low Volume Mixed**, currently *In Review*. Until
-Approved, US carriers block outbound — this is external, not an app bug.
+Optional SMS consent (checkbox not required to submit), `/terms` + `/privacy`
+pages with carrier-required language, STOP → `active=false`, Twilio signature on
+every inbound, phone numbers only in the DB. A2P campaign: Low Volume, approved.
 
 ---
 
-## 10. Do-NOT-break checklist
+## 9. Do-NOT-break checklist
 
-1. Don't rename/alter DB columns or the two RPCs without updating callers.
+1. Keep migrations sequentially numbered from one place (next = `007`).
 2. Don't change SMS copy prefixes without updating the SQL `LIKE` dedup guards.
-3. Don't move `challenge/` without preserving Vercel Root Directory = `challenge`
-   + `vercel.json` framework pin.
-4. Don't expose `SUPABASE_SERVICE_ROLE_KEY` to the client (server-only in
-   `lib/supabase/admin.ts` and API routes).
-5. Don't reimplement timezone math in JS — it lives in Postgres (`AT TIME ZONE`).
-6. Keep public API route signatures stable (`/api/enroll`, `/api/send`,
-   `/api/sms/inbound`) — Twilio and pg_cron point at them.
-7. Middleware protects `/admin/*` (except `/admin/login`). Keep it.
+3. Don't rename DB columns / the two RPCs (`due_messages`, `due_nudges`) without updating callers.
+4. Keep `challenge/` as Vercel Root Directory + the `vercel.json` framework pin.
+5. Never expose `SUPABASE_SERVICE_ROLE_KEY` to the client.
+6. Keep timezone math in Postgres — don't reimplement in JS.
+7. Keep public API route signatures stable (`/api/enroll`, `/api/send`, `/api/sms/inbound`).
+8. Use the canonical name **"Your 30-Day Challenge"** everywhere.
 
----
-
-## 11. Recommended integration approach
-
-- **Restyle, don't rebuild.** Point the design refresh at `globals.css` tokens
-  and the shared components (`SiteHeader`, `Logo`, `.btn-cta`, `.surface`, cards).
-- **Cross-link the sites:** marketing site → `challenge.belegendary.org` for the
-  challenge CTA; challenge header already links back to Mindset Workouts.
-- **Shared brand assets:** the snail mark is inline SVG here; if the design
-  system ships a canonical logo/token file, mirror it into both apps.
-- If unifying under one Next.js app later, migrate the challenge routes and env
-  wholesale and keep the Supabase/Twilio wiring exactly as documented above.
-
-Full go-live/runbook detail is in `challenge/SETUP.md`. Architecture rationale in
-`challenge/README.md`.
+Go-live runbook: `challenge/SETUP.md`. Architecture rationale: `challenge/README.md`.
