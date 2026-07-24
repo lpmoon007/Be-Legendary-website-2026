@@ -24,7 +24,7 @@ const schema = [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
     { '@type': 'ListItem', position: 2, name: 'Roadmap to Success', item: 'https://www.belegendary.org/roadmap-to-success/' },
   ] },
-  { '@type': 'Book', '@id': 'https://www.belegendary.org/roadmap-to-success/#book', name: 'Roadmap to Success', alternateName: "America's Top Intellectual Minds Map Out Successful Business Strategies", isbn: '978-1-60013-921-5', datePublished: '2012', publisher: { '@type': 'Organization', name: 'Insight Publishing' }, author: [{ '@id': PERSON_ID }, { '@type': 'Person', name: 'Deepak Chopra' }, { '@type': 'Person', name: 'Ken Blanchard' }], about: 'A collaborative book of interviews with successful leaders. James Carter is featured on the cover alongside Deepak Chopra and Ken Blanchard; his chapter is "Be Legendary."', url: 'https://www.belegendary.org/roadmap-to-success/' },
+  { '@type': 'Book', '@id': 'https://www.belegendary.org/roadmap-to-success/#book', name: 'Roadmap to Success', alternateName: "America's Top Intellectual Minds Map Out Successful Business Strategies", isbn: '978-1-60013-921-5', datePublished: '2012', publisher: { '@type': 'Organization', name: 'Insight Publishing' }, author: [{ '@id': PERSON_ID }, { '@type': 'Person', name: 'Deepak Chopra' }, { '@type': 'Person', name: 'Ken Blanchard' }], about: 'A collaborative book of interviews with successful leaders. James Carter is featured on the cover alongside Deepak Chopra and Ken Blanchard; his chapter is "Be Legendary."', url: 'https://www.belegendary.org/roadmap-to-success/', sameAs: 'https://www.amazon.com/Roadmap-Success-Dr-Deepak-Chopra-ebook/dp/B00BJAM0SA' },
   { '@type': 'Article', headline: "Roadmap to Success: James Carter's 'Be Legendary' chapter",
     datePublished: '2026-07-23', dateModified: '2026-07-23',
     author: { '@id': PERSON_ID }, publisher: { '@id': ORG_ID },
@@ -62,7 +62,8 @@ const schema = [
     </div>
     <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
       <a href={PDF} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Read the chapter &mdash; free PDF <span style="font-size:16px;">&darr;</span></a>
-      <span style="font-size:13.5px;color:rgba(244,240,231,0.55);">No form, no email.</span>
+      <a href="https://www.amazon.com/Roadmap-Success-Dr-Deepak-Chopra-ebook/dp/B00BJAM0SA" target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;font-weight:600;font-size:15px;border:1px solid rgba(217,138,94,0.4);padding:15px 24px;border-radius:11px;">The full book on Amazon &nearr;</a>
+      <span style="font-size:13.5px;color:rgba(244,240,231,0.55);">Chapter is free &mdash; no email.</span>
     </div>
   </header>
 
