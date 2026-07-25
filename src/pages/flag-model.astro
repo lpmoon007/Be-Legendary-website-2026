@@ -216,39 +216,28 @@ const schema = [
       <div>
         <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How it's measured</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.06;letter-spacing:-0.015em;">FlagScore™: your team's vitals.</h2>
-        <p style="margin-top:22px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;"><strong style="color:#1B1810;">FlagScore</strong> turns &ldquo;we feel stuck&rdquo; into a composite read across all five components of the model. It's how a Performance Partnership stays honest: we track FlagScore movement quarter over quarter, so progress is <em>measured, not asserted.</em></p>
-        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;">With one $3B client's leadership team, we didn't assert that things got better &mdash; we <strong style="color:#C04A26;">measured it, week over week.</strong> The point isn't any single number. The point is that there was a number at all &mdash; a read you can track, instead of a feeling you hope is real.</p>
+        <p style="margin-top:22px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;"><strong style="color:#1B1810;">FlagScore</strong> is a composite read across the five components of the model &mdash; scored from <strong style="color:#1B1810;">observed behavior across an engagement,</strong> not a survey. It&rsquo;s how a Performance Partnership stays honest: we track FlagScore movement quarter over quarter, so a team can <em>see</em> progress instead of being told it happened.</p>
+        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;">It&rsquo;s the codification of what we&rsquo;ve measured in the room for years &mdash; including the multi-year work with <a href={SLUGS.caseStudies} style="color:#C04A26;text-decoration:none;font-weight:600;">Eagle Manufacturing Group</a>.</p>
+        <p style="margin-top:18px;font-size:15px;line-height:1.55;color:#8A7F6C;max-width:50ch;">Not to be confused with the free <a href={SLUGS.breakPointAssessment} style="color:#9E3A1C;text-decoration:none;font-weight:600;">Break-Point self-assessment</a> &mdash; that&rsquo;s a 4-minute self-scored snapshot anyone can take. FlagScore is the measured, longitudinal instrument inside a partnership.</p>
       </div>
       <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.10);border-radius:20px;padding:36px;">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;">
-          <span style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9E3A1C;">FlagScore</span>
-          <span style="font-family:'Newsreader',serif;font-size:36px;line-height:1;color:#1B1810;">55<span style="font-size:0.42em;color:#9E8E78;">/100</span></span>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9E3A1C;margin-bottom:20px;">How the composite is built</p>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          {[
+            ['The Flag', 'alignment', 'Do the same two or three priorities show up in what people actually work on?'],
+            ['The Decision', 'commitment', 'Do calls get made and stick — without routing back to the CEO a week later?'],
+            ['The Rhythm', 'finishing', 'Does committed work get completed, not just started?'],
+            ['The Standard', 'the bar', 'Does the team hold each other to the bar when it slips?'],
+            ['The Learning', 'correcting', 'Does the team examine what went wrong and adjust?'],
+          ].map(([name, tag, obs], i) => (
+            <div style={`display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;padding:14px 0;${i < 4 ? 'border-bottom:1px solid rgba(27,24,16,0.09);' : ''}`}>
+              <span style="font-family:'Newsreader',serif;font-size:16px;color:#1B1810;white-space:nowrap;">{name} <span style="font-size:12px;color:#9E8E78;">&middot; {tag}</span></span>
+              <span style="font-size:14px;line-height:1.5;color:#56524A;">{obs}</span>
+            </div>
+          ))}
         </div>
-        <div style="height:10px;border-radius:99px;background:#E7E1D3;overflow:hidden;margin-bottom:24px;"><div style="height:100%;width:55%;background:linear-gradient(90deg,#C04A26,#1B1810);border-radius:99px;"></div></div>
-        <div style="display:flex;flex-direction:column;gap:15px;">
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Flag <span style="font-weight:400;color:#9E8E78;">· alignment</span></span><span style="color:#6B675E;">Holding</span></div>
-            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:58%;background:#1B1810;border-radius:99px;"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Decision</span><span style="color:#9E3A1C;">Rebuilding</span></div>
-            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:48%;background:#C04A26;border-radius:99px;"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Rhythm</span><span style="color:#6B675E;">Holding</span></div>
-            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:71%;background:#1B1810;border-radius:99px;"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Standard</span><span style="color:#9E3A1C;">At risk</span></div>
-            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:34%;background:#C04A26;border-radius:99px;"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:7px;"><span>The Learning</span><span style="color:#6B675E;">Holding</span></div>
-            <div style="height:9px;border-radius:99px;background:#E7E1D3;overflow:hidden;"><div style="height:100%;width:66%;background:#1B1810;border-radius:99px;"></div></div>
-          </div>
-        </div>
-        <p style="margin-top:20px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#A39C8C;">Illustrative FlagScore readout &mdash; the composite and its five components. Not live data.</p>
-        <a href={SLUGS.breakPointAssessment} style="margin-top:16px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:13px 22px;border-radius:10px;font-weight:700;font-size:15px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Get your own snapshot &mdash; take the 4-minute assessment <span style="font-size:17px;">&rarr;</span></a>
+        <p style="margin-top:20px;font-size:13px;line-height:1.55;color:#6B675E;">Each is scored from observed behavior across the engagement, composited into one FlagScore and tracked quarter over quarter. A real, client-masked readout is walked through in the room &mdash; we don&rsquo;t reproduce a mock one here.</p>
+        <a href={SLUGS.breakPointAssessment} style="margin-top:18px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:13px 22px;border-radius:10px;font-weight:700;font-size:15px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Want a free snapshot first? Take the Break-Point self-assessment <span style="font-size:17px;">&rarr;</span></a>
       </div>
     </div>
   </section>
