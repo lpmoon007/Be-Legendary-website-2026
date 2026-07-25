@@ -30,6 +30,11 @@ Redirect 301 /common-executive-team-challenges/ /teams/
 Redirect 301 /peopleops/ /teams/
 Redirect 301 /terms-of-use/ /privacy/
 
+# ── Fractional Chief People Officer → moved to Prove (provecq.com) ──
+# CQ/Prove owns the "who delivers" question; this page moved off the advisory
+# site. Catch both slash forms → the exact non-trailing-slash Prove URL.
+RedirectMatch 301 ^/fractional-chief-people-officer/?$ https://provecq.com/fractional-chief-people-officer
+
 # ── Legacy WordPress assets & blog (301) ──
 # The 2015 "Roadmap to Success" PDF is still the domain's top-clicked URL in
 # Search Console (pos ~11) but is an orphaned dead-end. Send it to the new

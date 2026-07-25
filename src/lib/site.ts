@@ -55,7 +55,6 @@ export const SLUGS = {
   flagModel: '/flag-model/',
   roadmapToSuccess: '/roadmap-to-success/',
   discoverInnerStrength: '/discover-your-inner-strength/',
-  fractionalCpo: '/fractional-chief-people-officer/',
   about: '/about/james-carter/',
   breakPointAssessment: '/break-point-self-assessment/',
   costCalculator: '/cost-of-lost-disciplines-calculator/',
