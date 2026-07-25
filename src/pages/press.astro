@@ -24,6 +24,12 @@ const PRESS = [
 
 const featured = PRESS.filter((p) => p.url);
 
+// Earlier / archival coverage — older clippings, usually PDF scans. Drop the
+// PDF into public/assets/press/ and add a row here.
+const ARCHIVE = [
+  { year: '2003', outlet: 'HR Magazine (SHRM)', desc: '&ldquo;Thwarting the Diversity Backlash&rdquo; &mdash; founder James Carter, then of The Carter Group, on engaging every employee in inclusion.', pdf: '/assets/press/hr-magazine-thwarting-the-diversity-backlash-2003.pdf' },
+];
+
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
@@ -81,6 +87,27 @@ const schema = [
       ))}
     </div>
   </section>
+
+  <!-- FROM THE ARCHIVE -->
+  {ARCHIVE.length > 0 && (
+    <section style="max-width:1080px;margin:0 auto;padding:24px 32px 8px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">From the archive</p>
+      <div style="border-top:1px solid rgba(244,240,231,0.12);">
+        {ARCHIVE.map((a) => (
+          <div style="display:flex;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(244,240,231,0.12);">
+            <div style="flex:none;width:56px;font-weight:700;font-size:14px;color:#E0744A;">{a.year}</div>
+            <div style="flex:1;">
+              <div style="font-family:'Newsreader',serif;font-size:19px;line-height:1.2;color:#FBF8F1;">{a.outlet}</div>
+              <div style="margin-top:5px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.7);" set:html={a.desc}></div>
+            </div>
+            {a.pdf && (
+              <a href={a.pdf} target="_blank" rel="noopener" style="flex:none;font-weight:700;font-size:13px;color:#E0744A;white-space:nowrap;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">PDF &rarr;</a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
 
   <!-- MEDIA ENQUIRIES -->
   <section style="max-width:1080px;margin:0 auto;padding:32px 32px 96px;">
