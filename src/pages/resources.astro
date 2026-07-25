@@ -15,12 +15,12 @@ const schema = [
   ] },
   { '@type': 'CollectionPage', '@id': 'https://www.belegendary.org/resources/#page', name: 'Resources', about: 'Tools, comparisons and research for executive teams', isPartOf: { '@type': 'Organization', name: 'Be Legendary' } },
   { '@type': 'ItemList', name: 'Be Legendary resources', itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Cost of Lost Disciplines Calculator', url: 'https://www.belegendary.org/cost-of-lost-disciplines-calculator/' },
-    { '@type': 'ListItem', position: 2, name: 'Break-Point Self-Assessment', url: 'https://www.belegendary.org/break-point-self-assessment/' },
-    { '@type': 'ListItem', position: 3, name: 'The Flag Model', url: 'https://www.belegendary.org/flag-model/' },
-    { '@type': 'ListItem', position: 4, name: 'Flag Model vs EOS and OKRs', url: 'https://www.belegendary.org/eos-okrs-didnt-change-behavior/' },
-    { '@type': 'ListItem', position: 5, name: 'Field Notes', url: 'https://www.belegendary.org/field-notes/' },
-    { '@type': 'ListItem', position: 6, name: 'The State of Executive Team Execution', url: 'https://www.belegendary.org/state-of-executive-team-execution/' },
+    { '@type': 'ListItem', position: 1, name: 'The State of Executive Team Execution', url: 'https://www.belegendary.org/state-of-executive-team-execution/' },
+    { '@type': 'ListItem', position: 2, name: 'Cost of Lost Disciplines Calculator', url: 'https://www.belegendary.org/cost-of-lost-disciplines-calculator/' },
+    { '@type': 'ListItem', position: 3, name: 'Break-Point Self-Assessment', url: 'https://www.belegendary.org/break-point-self-assessment/' },
+    { '@type': 'ListItem', position: 4, name: 'The Flag Model', url: 'https://www.belegendary.org/flag-model/' },
+    { '@type': 'ListItem', position: 5, name: 'Flag Model vs EOS and OKRs', url: 'https://www.belegendary.org/eos-okrs-didnt-change-behavior/' },
+    { '@type': 'ListItem', position: 6, name: 'Field Notes', url: 'https://www.belegendary.org/field-notes/' },
   ] },
 ];
 ---
@@ -40,7 +40,27 @@ const schema = [
     <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:58ch;color:rgba(244,240,231,0.8);">Free, no email required. Estimate the cost, learn the framework, compare it to what you already run, and recognize the patterns &mdash; before you ever book a call.</p>
   </header>
 
-  <!-- FEATURED TOOL -->
+  <!-- FEATURED: RESEARCH REPORT -->
+  <section style="max-width:1140px;margin:0 auto;padding:0 32px 20px;">
+    <a href={SLUGS.research} style="text-decoration:none;display:block;background:#1B1810;border:1px solid rgba(244,240,231,0.16);border-radius:22px;padding:46px;color:#F4F0E7;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)';this.querySelector('.arr').style.transform='translateX(6px)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.16)';this.querySelector('.arr').style.transform='translateX(0)'">
+      <div style="position:absolute;top:-80px;right:-60px;width:380px;height:380px;background:radial-gradient(circle,rgba(192,74,38,0.18),transparent 64%);pointer-events:none;"></div>
+      <div class="bl-grid-collapse" style="position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;">
+        <div>
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;">Featured research &middot; free to cite &amp; link</span>
+          <h2 style="margin-top:14px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.06;color:#FBF8F1;">The State of Executive Team Execution</h2>
+          <p style="margin-top:14px;font-size:16.5px;line-height:1.55;color:rgba(244,240,231,0.82);max-width:48ch;">The data on why leadership teams fail to execute &mdash; McKinsey, HBR, LSA Global, Gallup &mdash; synthesized into one citable report, plus early FlagScore&trade; signals.</p>
+          <span class="arr" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:#E0744A;transition:transform .2s;">Read the report <span style="font-size:18px;">&rarr;</span></span>
+        </div>
+        <div style="background:rgba(0,0,0,0.25);border:1px solid rgba(244,240,231,0.1);border-radius:16px;padding:28px;text-align:center;">
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,240,231,0.6);">Sources synthesized</p>
+          <p style="font-family:'Newsreader',serif;font-size:clamp(36px,5vw,52px);line-height:1.05;margin-top:8px;color:#FBF8F1;">20+</p>
+          <p style="font-size:14px;color:rgba(244,240,231,0.7);margin-top:6px;">peer studies &mdash; every statistic sourced</p>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- FEATURED TOOL: CALCULATOR -->
   <section style="max-width:1140px;margin:0 auto;padding:0 32px 20px;">
     <a href={SLUGS.costCalculator} style="text-decoration:none;display:block;background:linear-gradient(150deg,#C04A26,#7E2D13);border-radius:22px;padding:46px;color:#fff;position:relative;overflow:hidden;" onmouseover="this.querySelector('.arr').style.transform='translateX(6px)'" onmouseout="this.querySelector('.arr').style.transform='translateX(0)'">
       <div style="position:absolute;top:-60px;right:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(255,255,255,0.12),transparent 65%);"></div>
@@ -93,30 +113,6 @@ const schema = [
         <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:54ch;">15 tap-to-copy prompts that coach the three traits that predict leadership &mdash; Initiative, Applied Grit, Learnability. For your next one-on-one.</p>
       </div>
       <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Get the questions &rarr;</span>
-    </a>
-  </section>
-
-  <!-- THIRD TOOL: RESEARCH REPORT -->
-  <section style="max-width:1140px;margin:0 auto;padding:18px 32px 8px;">
-    <a href={SLUGS.research} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px 38px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
-      <div style="flex:1;min-width:280px;">
-        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Research report &middot; 2026</span>
-        <p style="margin-top:12px;font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;color:#FBF8F1;">The State of Executive Team Execution</p>
-        <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:54ch;">20+ studies on why leadership teams fail to execute, synthesized through the five components &mdash; with every statistic sourced. Free to cite.</p>
-      </div>
-      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Read the report &rarr;</span>
-    </a>
-  </section>
-
-  <!-- RESEARCH REPORT -->
-  <section style="max-width:1140px;margin:0 auto;padding:18px 32px 8px;">
-    <a href={SLUGS.research} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px 38px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
-      <div style="flex:1;min-width:280px;">
-        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Research report &middot; cite &amp; link</span>
-        <p style="margin-top:12px;font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);line-height:1.12;color:#FBF8F1;">The State of Executive Team Execution</p>
-        <p style="margin-top:10px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:56ch;">The data on why leadership teams fail to execute &mdash; McKinsey, HBR, LSA Global, Gallup &mdash; synthesized into one citable report, plus early FlagScore&trade; signals.</p>
-      </div>
-      <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">Read the report &rarr;</span>
     </a>
   </section>
 
