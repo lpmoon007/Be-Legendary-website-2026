@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SLUGS, CTA_URL } from '../lib/site';
+
+const path = SLUGS.howWeWorkTogether;
+const title = 'How We Work Together — The Be Legendary Ladder';
+const description =
+  'One clear way in, sequenced by commitment. Start with a free calibration call, see exactly why your team stalls with Team LFS, then act — a sprint, a retreat, or the 12-month Performance Partnership. Every paid step credits 50% toward the next.';
+
+// JSON-LD — OfferCatalog of the PUBLIC rungs only. The audit and advisory
+// relationship are deliberately not listed (relationship offers, not products).
+// Partnership shows its base fee; the ceiling lives in the proposal, not here.
+const schema = [
+  {
+    '@type': 'OfferCatalog',
+    name: 'Be Legendary — Ways to Work Together',
+    description: 'The public offer ladder, sequenced by commitment. Each paid step credits 50% toward whatever you do next.',
+    itemListElement: [
+      { '@type': 'Offer', name: 'Calibration Call', priceCurrency: 'USD', price: '0', description: 'A free 15-minute conversation to confirm fit — a calibration, not a pitch.' },
+      { '@type': 'Offer', name: 'Solo ELFS', priceCurrency: 'USD', price: '7500', description: 'A private, safe trial of the diagnostic for the CEO alone — often waived for qualified executives.' },
+      { '@type': 'Offer', name: 'Team LFS', priceCurrency: 'USD', price: '28000', description: 'In 90 minutes, see exactly why your leadership team knows what to do and still does not do it — per executive and as a team, with behavioral evidence and a FlagScore baseline. $28K–$35K.' },
+      { '@type': 'Offer', name: 'Single Discipline Sprint', priceCurrency: 'USD', price: '45000', description: 'A 90-day sprint that fixes the one broken discipline the diagnostic found. $45K–$65K.' },
+      { '@type': 'Offer', name: 'Leadership Retreat', priceCurrency: 'USD', price: '25000', description: 'A facilitated experiential retreat — Focused, Signature or Bespoke — that rebuilds what the diagnostic surfaced. $25K–$500K+.' },
+      { '@type': 'Offer', name: 'Performance Partnership', priceCurrency: 'USD', price: '75000', description: 'The systemic 12-month engagement. Base fee from $75K; success fees only when documented value confirms a 10x return, so your direct risk is the base fee.' },
+    ],
+  },
+];
+
+const navLinks = [
+  { label: 'Retreats', href: SLUGS.teamRetreats },
+  { label: 'Resources', href: SLUGS.resources },
+  { label: 'James', href: SLUGS.about },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="How We Work Together | Be Legendary"
+  ogDescription={description}
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader audience="teams" variant="full" logoHref="/" links={navLinks} />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;">
+
+    <!-- ============ HERO ============ -->
+    <section style="max-width:1000px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;">
+        <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#64010a;">How we work together</span>
+      </nav>
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How we work together</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.02;letter-spacing:-0.022em;color:#3A0A0C;max-width:17ch;">One way in. Every step credited toward the next.</h1>
+      <p class="bl-speakable" style="margin-top:22px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:62ch;">You don't have to commit to a year to begin. Start where it's safe, see the truth about your team fast, and decide how far to go from there. Each paid step is small, understood, and priced in the open — and your Team LFS investment credits <strong>50% toward whatever you do next</strong>.</p>
+    </section>
+
+    <!-- ============ FRONT OF THE LADDER ============ -->
+    <section style="max-width:1000px;margin:52px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Start here — free, then a private trial</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <!-- Rung 1 · Calibration Call -->
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:32px 34px;display:flex;flex-direction:column;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Step 1 · 15 minutes</span>
+          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.06;margin:10px 0 8px;color:#3A0A0C;">Calibration Call</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:#4A3A34;margin-bottom:18px;flex:1;">Fifteen minutes to confirm there's a fit — no more. You'll run a short exercise that surfaces where your team stands, and leave with a real read whether or not we work together. A calibration, not a pitch.</p>
+          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;">
+            <p style="font-family:'Newsreader',serif;font-size:24px;color:#3A0A0C;">Free</p>
+            <a href={CTA_URL} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;">Book the call &rarr;</a>
+          </div>
+        </div>
+        <!-- Rung 2 · Solo ELFS -->
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:32px 34px;display:flex;flex-direction:column;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Step 2 · CEO alone</span>
+          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.06;margin:10px 0 8px;color:#3A0A0C;">A private trial (Solo ELFS)</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:#4A3A34;margin-bottom:18px;flex:1;">Feel the diagnostic yourself before you put it in front of your team. You go through it alone and see the quality of the individual read — the safe, self-qualifying way to decide whether to bring the whole team.</p>
+          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+            <p style="font-family:'Newsreader',serif;font-size:24px;color:#3A0A0C;line-height:1.2;">$7,500<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;color:#8A6A64;">often waived for qualified executives</span></p>
+            <a href={SLUGS.elfs} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap;">How it works &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE HERO: TEAM LFS ============ -->
+    <section style="max-width:1000px;margin:22px auto 0;padding:0 32px;">
+      <div style="background:#64010a;border-radius:22px;padding:44px 46px;position:relative;overflow:hidden;">
+        <span style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#3A0A0C;background:#E9A98F;padding:5px 12px;border-radius:999px;margin-bottom:18px;">The one most teams start with</span>
+        <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:start;">
+          <div>
+            <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.06;letter-spacing:-0.02em;color:#FBF3E7;margin-bottom:16px;">Team LFS</h2>
+            <p style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(19px,2.2vw,24px);line-height:1.4;color:#F0D9D2;margin-bottom:20px;">In 90 minutes, see exactly why your leadership team knows what to do and still doesn't do it — per executive, and as a team, with real behavioral evidence.</p>
+            <p style="font-size:16px;line-height:1.7;color:rgba(246,239,224,0.85);margin-bottom:18px;">It's the closest honest thing to the light switch every CEO is hunting for — and it's emotionally safe. The finger points at the dynamics and the situation, not at your competence. That's why a team will let it see a scary truth. Runs virtually or in person.</p>
+            <div style="display:flex;flex-direction:column;gap:11px;">
+              <span style="font-size:15px;color:rgba(246,239,224,0.9);display:flex;gap:10px;align-items:flex-start;"><span style="color:#E9A98F;flex:none;">✓</span> Individual reports — trait by trait, with behavioral evidence</span>
+              <span style="font-size:15px;color:rgba(246,239,224,0.9);display:flex;gap:10px;align-items:flex-start;"><span style="color:#E9A98F;flex:none;">✓</span> A team dynamics report — how those patterns collide under pressure</span>
+              <span style="font-size:15px;color:rgba(246,239,224,0.9);display:flex;gap:10px;align-items:flex-start;"><span style="color:#E9A98F;flex:none;">✓</span> A FlagScore baseline and a 30-day commitment per participant</span>
+            </div>
+          </div>
+          <div style="background:rgba(246,239,224,0.07);border:1px solid rgba(246,239,224,0.18);border-radius:16px;padding:26px 24px;">
+            <p style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#D99A88;margin-bottom:6px;">Investment</p>
+            <p style="font-family:'Newsreader',serif;font-size:34px;color:#FBF3E7;line-height:1.1;">$28K–$35K</p>
+            <p style="font-size:13.5px;color:rgba(246,239,224,0.7);margin:6px 0 20px;">Up to 8 executives · 90 minutes</p>
+            <div style="border-top:1px solid rgba(246,239,224,0.18);padding-top:16px;">
+              <p style="font-size:14.5px;line-height:1.55;color:rgba(246,239,224,0.9);margin-bottom:18px;"><strong style="color:#FBF3E7;">Credits 50%</strong> toward whatever you do next — a sprint, a retreat, or the partnership.</p>
+              <a href={CTA_URL} target="_blank" rel="noopener" style="display:block;text-align:center;background:#F6EFE0;color:#64010a;padding:14px 20px;border-radius:999px;font-weight:800;font-size:14.5px;text-decoration:none;">Start with a Calibration Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:#8A6A64;margin:14px 4px 0;line-height:1.55;">Team LFS is our newest instrument — among the first cohort of teams to run it. Its credibility rests on 25 years and hundreds of leadership teams behind the method, and on the evidence each run produces for <em>your</em> team.</p>
+    </section>
+
+    <!-- ============ THREE PATHS OFF LFS ============ -->
+    <section style="max-width:1000px;margin:64px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">Once you've seen the truth — three ways to act</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#3A0A0C;max-width:24ch;margin-bottom:28px;">The diagnostic points to one of three moves. All accept your LFS credit.</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <!-- 4a · Sprint -->
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">90 days · one discipline</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">Single Discipline Sprint</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">When the problem is concentrated in one broken discipline, we fix that one — fast, fixed fee, immediate start. The momentum-catcher when a 12-month yes is more than you need right now.</p>
+          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;"><p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">$45K–$65K</p></div>
+        </div>
+        <!-- 4b · Retreat -->
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">The step most teams take</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">A Leadership Retreat</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">"Let's go fix it together." The diagnostic becomes the retreat's agenda — here's what broke, here's the retreat built to rebuild exactly that. Focused, Signature, or Bespoke.</p>
+          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
+            <p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">$25K–$500K+</p>
+            <a href={SLUGS.waysToWorkTogether} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:13.5px;white-space:nowrap;">See tiers &rarr;</a>
+          </div>
+        </div>
+        <!-- 4c · Partnership -->
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">12 months · systemic</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">Performance Partnership</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">When the dysfunction is systemic, the full engagement installs the Flag Model over a year, measured quarterly against metrics your CEO and CFO co-sign.</p>
+          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;"><p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">Base from $75K</p></div>
+        </div>
+      </div>
+      <p style="margin-top:18px;font-size:14.5px;color:#6B4A44;line-height:1.6;"><strong>Which one?</strong> The diagnostic decides: one broken discipline points to a Sprint; systemic dysfunction points to the Partnership; and for most teams the retreat is the natural, hopeful next move. We'll tell you honestly which fits.</p>
+    </section>
+
+    <!-- ============ THE 10x GUARANTEE (Partnership detail) ============ -->
+    <section style="max-width:1000px;margin:44px auto 0;padding:0 32px;">
+      <div style="background:#E7DECB;border-radius:20px;padding:40px 44px;">
+        <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;align-items:center;">
+          <div>
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">The Performance Partnership</p>
+            <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,2.9vw,32px);line-height:1.1;color:#3A0A0C;">Your direct risk is the base fee. Nothing more.</h2>
+          </div>
+          <div>
+            <p style="font-size:16.5px;line-height:1.7;color:#4A3A34;margin-bottom:16px;">The partnership begins from a <strong>$75K base fee</strong>. Beyond that, we only earn a success fee when documented value confirms a <strong>10x return</strong> on three metrics you already track — baselined and co-signed by your CEO and CFO before we start. If the ratio isn't there, no fee is invoiced against it.</p>
+            <p style="font-size:15px;line-height:1.65;color:#5A4A44;">We share the outcome, not just the invoice. The tiers, maximums, and full mechanics live in the proposal — we walk you through them once we're in a real conversation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE CREDIT SPINE ============ -->
+    <section style="max-width:1000px;margin:40px auto 0;padding:0 32px;">
+      <div style="border:1px solid rgba(100,1,10,0.2);border-radius:16px;padding:30px 34px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+        <span style="font-family:'Newsreader',serif;font-style:italic;font-size:20px;line-height:1.4;color:#64010a;flex:1;min-width:280px;">Your Team LFS investment credits 50% toward whatever you do next — a sprint, a retreat, or the partnership. It's a complete product on its own, and we still reward you for continuing.</span>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT STARTS ============ -->
+    <section style="max-width:1000px;margin:64px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;">How it starts</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="border-top:2px solid rgba(100,1,10,0.25);padding-top:18px;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;">01</span><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;color:#3A0A0C;margin:6px 0 8px;">A 15-minute call</h3><p style="font-size:14.5px;line-height:1.6;color:#5A4A44;">We confirm whether there's a fit — honestly — and where the smallest useful first step is.</p></div>
+        <div style="border-top:2px solid rgba(100,1,10,0.25);padding-top:18px;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;">02</span><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;color:#3A0A0C;margin:6px 0 8px;">See the truth</h3><p style="font-size:14.5px;line-height:1.6;color:#5A4A44;">Team LFS shows exactly why your team stalls — the evidence that becomes the plan.</p></div>
+        <div style="border-top:2px solid rgba(100,1,10,0.25);padding-top:18px;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;">03</span><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;color:#3A0A0C;margin:6px 0 8px;">Decide how far to go</h3><p style="font-size:14.5px;line-height:1.6;color:#5A4A44;">Sprint, retreat, or partnership — with your credit applied. You choose the depth.</p></div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section style="background:#64010a;color:#F6EFE0;margin-top:72px;">
+      <div style="max-width:760px;margin:0 auto;padding:72px 32px;text-align:center;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,42px);line-height:1.08;letter-spacing:-0.02em;">Start small. See the truth. Then decide.</h2>
+        <p style="margin:18px auto 0;max-width:48ch;font-size:16.5px;line-height:1.6;color:#F0D9D2;">Fifteen minutes with James tells you more than any brochure — and there's no obligation on the other side of it.</p>
+        <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:30px;display:inline-flex;background:#F6EFE0;color:#64010a;padding:16px 30px;border-radius:999px;font-weight:800;font-size:15.5px;text-decoration:none;">Book a Calibration Call &rarr;</a>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>
