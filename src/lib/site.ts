@@ -220,7 +220,10 @@ export const ORG_NODE = {
   foundingDate: '2010',
   areaServed: 'US',
   contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+1-800-513-8759', url: 'https://meetings-na2.hubspot.com/jcarter28' },
-  subOrganization: { '@type': 'Organization', name: 'Building Teams', url: 'https://www.buildingteams.com/', description: 'The corporate team-building and charity-events arm of Be Legendary.' },
+  subOrganization: [
+    { '@type': 'Organization', name: 'Prove', url: 'https://www.provecq.com/', description: 'Prove measures who delivers — the Commitment Quotient (CQ), a behavioral measurement of Initiative, Applied Grit, and Learnability. The individual-capacity companion to the Flag Model.' },
+    { '@type': 'Organization', name: 'Building Teams', url: 'https://www.buildingteams.com/', description: 'The corporate team-building and charity-events arm of Be Legendary.' },
+  ],
   sameAs: ['https://www.linkedin.com/company/repario-and-be-legendary/', 'https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
 };
 
