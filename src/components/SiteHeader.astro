@@ -10,8 +10,15 @@ export interface Props {
    *          (SEO/content/article pages). Narrower by default.
    */
   variant?: 'full' | 'slim';
-  /** Right-side section links (full variant). Defaults depend on the audience. */
-  links?: { label: string; href: string; external?: boolean }[];
+  /** Right-side section links (full variant). Defaults depend on the audience.
+   *  A link may carry `children` to render as a hover/focus dropdown; a child
+   *  with `soon` shows as a muted "Coming" row, `divider` sets it off at the end. */
+  links?: {
+    label: string;
+    href: string;
+    external?: boolean;
+    children?: { label: string; href?: string; external?: boolean; soon?: boolean; divider?: boolean }[];
+  }[];
   /** Primary button (full variant). Defaults to the Calibration Call. Pass null to hide. */
   cta?: { label: string; href: string; external?: boolean } | null;
   /** Single right-side link (slim variant), e.g. "The Legendary Leader →". */
@@ -24,7 +31,17 @@ export interface Props {
 const TEAMS_LINKS = [
   { label: 'How we work together', href: SLUGS.howWeWorkTogether },
   { label: 'Retreats', href: SLUGS.teamRetreats },
-  { label: 'Resources', href: SLUGS.resources },
+  {
+    label: 'Resources',
+    href: SLUGS.resources,
+    children: [
+      { label: 'Field Notes', href: SLUGS.fieldNotes },
+      { label: 'Case studies', href: SLUGS.caseStudies },
+      { label: 'Research Notes', soon: true },
+      { label: 'Press', soon: true },
+      { label: 'All resources', href: SLUGS.resources, divider: true },
+    ],
+  },
   { label: 'James', href: SLUGS.about },
 ];
 const LEADERS_LINKS = [
@@ -89,14 +106,41 @@ const slim = variant === 'slim';
     ) : (
       <div class="bl-nav-links" style="display:flex;align-items:center;gap:26px;font-size:14.5px;font-weight:500;color:rgba(244,240,231,0.72);">
         {links.map((l) => (
-          <a
-            class="bl-nav-secondary"
-            href={l.href}
-            {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}
-            style="color:inherit;text-decoration:none;"
-            onmouseover="this.style.color='#F4F0E7'"
-            onmouseout="this.style.color='rgba(244,240,231,0.72)'"
-          >{l.label}</a>
+          l.children && l.children.length ? (
+            <div class="bl-nav-item bl-nav-secondary">
+              <a
+                class="bl-nav-trigger"
+                href={l.href}
+                aria-haspopup="true"
+                style="color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px;"
+                onmouseover="this.style.color='#F4F0E7'"
+                onmouseout="this.style.color='rgba(244,240,231,0.72)'"
+              >{l.label}<svg class="bl-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+              <div class="bl-dropdown" role="menu">
+                {l.children.map((c) => (
+                  c.soon ? (
+                    <span class="bl-dd-soon"><span>{c.label}</span><span class="bl-dd-tag">Coming</span></span>
+                  ) : (
+                    <a
+                      class={c.divider ? 'bl-dd-link bl-dd-all' : 'bl-dd-link'}
+                      role="menuitem"
+                      href={c.href}
+                      {...(c.external ? { target: '_blank', rel: 'noopener' } : {})}
+                    >{c.divider ? `${c.label} →` : c.label}</a>
+                  )
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              class="bl-nav-secondary"
+              href={l.href}
+              {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}
+              style="color:inherit;text-decoration:none;"
+              onmouseover="this.style.color='#F4F0E7'"
+              onmouseout="this.style.color='rgba(244,240,231,0.72)'"
+            >{l.label}</a>
+          )
         ))}
         {cta && (
           <a

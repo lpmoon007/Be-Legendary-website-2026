@@ -41,6 +41,52 @@ body {
 }
 ::selection { background: #C04A26; color: #fff; }
 
+/* ---- Header nav dropdown (desktop; the whole item is .bl-nav-secondary,
+   so it hides with the other section links under 860px) ---- */
+.bl-nav-item { position: relative; }
+/* transparent bridge so the pointer can cross the gap to the panel */
+.bl-nav-item::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 14px; }
+.bl-caret { opacity: 0.7; transition: transform 0.16s ease; }
+.bl-nav-item:hover .bl-caret,
+.bl-nav-item:focus-within .bl-caret { transform: rotate(180deg); }
+.bl-dropdown {
+  position: absolute; top: calc(100% + 12px); left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  min-width: 216px; background: #1B1810;
+  border: 1px solid rgba(244,240,231,0.14); border-radius: 14px;
+  padding: 7px; display: flex; flex-direction: column; gap: 1px;
+  box-shadow: 0 18px 44px rgba(0,0,0,0.45); z-index: 60;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.bl-nav-item:hover .bl-dropdown,
+.bl-nav-item:focus-within .bl-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.bl-dd-link {
+  padding: 9px 12px; border-radius: 9px; color: rgba(244,240,231,0.82);
+  text-decoration: none; font-size: 14px; white-space: nowrap;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.bl-dd-link:hover { background: rgba(244,240,231,0.07); color: #F4F0E7; }
+.bl-dd-all {
+  margin-top: 5px; padding-top: 12px;
+  border-top: 1px solid rgba(244,240,231,0.10);
+  color: #E0744A; font-weight: 600;
+}
+.bl-dd-all:hover { background: rgba(192,74,38,0.12); color: #E0744A; }
+.bl-dd-soon {
+  padding: 9px 12px; font-size: 14px; color: rgba(244,240,231,0.4);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; white-space: nowrap;
+}
+.bl-dd-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  color: #B79A62; border: 1px solid rgba(183,154,98,0.4);
+  border-radius: 999px; padding: 2px 7px;
+}
+
 /* ---- Range inputs (Cost Calculator) ---- */
 input[type=range] {
   -webkit-appearance: none; appearance: none;
