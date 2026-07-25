@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SLUGS } from '../../lib/site';
+
+const path = '/research-notes/leadership-team-aligned-not-executing/';
+const title = "Your leadership team is aligned. So why isn't anything happening? | Be Legendary";
+const description =
+  "Executives say they're aligned, then the priorities don't move. BCG, David Livermore and 20 years of consulting all point to the same thing: alignment is the symptom, not the cause.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Research Notes', item: 'https://www.belegendary.org/research-notes/' },
+    { '@type': 'ListItem', position: 3, name: "Your leadership team is aligned. So why isn't anything happening?", item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'Article',
+    headline: "Your leadership team is aligned. So why isn't anything happening?",
+    datePublished: '2026-07-25', dateModified: '2026-07-25',
+    author: { '@id': 'https://www.belegendary.org/#james' },
+    publisher: { '@id': 'https://www.belegendary.org/#org' },
+    mainEntityOfPage: `https://www.belegendary.org${path}`,
+    description: 'Why leadership teams that genuinely agree still fail to execute — and the four disciplines that break underneath the word "alignment," drawn from BCG, David Livermore and twenty years of senior-team consulting.',
+    citation: [
+      { '@type': 'CreativeWork', name: 'The CEO Insomnia Index: What (and Who) Is Keeping CEOs Up at Night?', publisher: 'Boston Consulting Group', url: 'https://www.bcg.com/publications/collections/the-insomnia-index-understanding-ceo-pressure' },
+      { '@type': 'CreativeWork', name: 'The surprising challenge that keeps CEOs awake at night', author: 'David Livermore', url: 'https://davidlivermore.com/2026/04/20/the-surprising-challenge-that-keeps-ceos-awake-at-night/' },
+      { '@type': 'CreativeWork', name: "Execution Tops CEO's List of Concerns", author: 'Charles Pfeffer', url: 'https://www.charlespfeffer.com/execution-tops-ceos-list-of-concerns/' },
+    ],
+  },
+];
+
+const sources = [
+  { name: 'Boston Consulting Group, <em>The CEO Insomnia Index: What (and Who) Is Keeping CEOs Up at Night?</em>', meta: 'April 2026 · ~500 CEOs, $100M–$5B+ revenue', url: 'https://www.bcg.com/publications/collections/the-insomnia-index-understanding-ceo-pressure' },
+  { name: 'David Livermore, &ldquo;The surprising challenge that keeps CEOs awake at night&rdquo;', meta: 'April 2026 · 15-month executive interview study', url: 'https://davidlivermore.com/2026/04/20/the-surprising-challenge-that-keeps-ceos-awake-at-night/' },
+  { name: 'Charles Pfeffer, &ldquo;Execution Tops CEO&rsquo;s List of Concerns&rdquo;', meta: 'Reflecting on 20 years of senior-team consulting', url: 'https://www.charlespfeffer.com/execution-tops-ceos-list-of-concerns/' },
+];
+
+const disciplines = [
+  { verb: 'commit', text: "The team can't <strong>commit</strong> to a decision, so choices get made and then relitigated a week later, and no one owns the call." },
+  { verb: 'complete', text: "The team can't <strong>complete</strong> what it starts, so initiatives pile up half-finished and roll from one quarter to the next while everyone stays busy." },
+  { verb: 'hold', text: "The team can't <strong>hold each other</strong>, so a missed commitment passes without anyone naming it in the room, and the real standard quietly drops." },
+  { verb: 'repeat', text: "The team keeps <strong>repeating the same mistake</strong> under a new name, because nothing that was learned ever got built into how the team operates." },
+];
+
+const bodyP = 'font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:26px;';
+const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.12;letter-spacing:-0.015em;color:#FBF8F1;margin:52px 0 20px;";
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="Your leadership team is aligned. So why isn't anything happening?" ogDescription="Alignment is the symptom you can see. Underneath it, one of four specific disciplines has quietly broken." schema={schema}>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 32px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.15),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.researchNotes} style="color:inherit;text-decoration:none;">Research Notes</a><span>/</span><span style="color:#D98A5E;">Aligned, not executing</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">Research Note</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">Your leadership team is aligned. So why isn&rsquo;t anything happening?</h1>
+    <p style="margin-top:20px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; July 2026</p>
+  </header>
+
+  <!-- LEAD -->
+  <div style="max-width:880px;margin:0 auto;padding:16px 32px 0;">
+    <p class="bl-speakable" style="font-size:clamp(19px,2.2vw,23px);line-height:1.6;color:#FBF8F1;margin-bottom:30px;">Ask a room of executives whether they&rsquo;re aligned and most will say yes. Ask the same room, six weeks later, why the three priorities they agreed on haven&rsquo;t moved, and the answers get quieter. This is the gap that defines most underperforming leadership teams: not a failure to agree, but a failure to act on what was agreed. And it is the problem that, increasingly, the research says CEOs carry to bed with them.</p>
+
+    <h2 style={h2}>What the research keeps finding</h2>
+    <p style={bodyP}>The striking thing about the evidence on executive-team dysfunction is not any single study. It&rsquo;s that studies separated by two decades, different methods, and different researchers keep landing in the same place.</p>
+    <p style={bodyP}>In early 2026, Boston Consulting Group published its first CEO Insomnia Index, a survey of roughly 500 chief executives running companies from $100 million to more than $5 billion in revenue. More than 70% reported clinically high stress. The sources that felt most urgent weren&rsquo;t the ones you&rsquo;d expect from the headlines &mdash; not AI, not recession. They came from closer to home. Senior leadership teams ranked among the top three sources of stress overall, and the single top source for CEOs of the largest companies. More than half of the CEOs surveyed said they expected to change their senior leadership team within six months.</p>
+    <p style={bodyP}>Around the same time, researcher David Livermore spent fifteen months asking executives across Asia, the Middle East, Europe, and the US a simple question: what keeps you awake at night? Tariffs and AI and cost pressure came up, as expected. But one of the top five themes was, in his word, &ldquo;surprisingly basic.&rdquo; Executives kept returning to their own senior teams, and the way they phrased it is worth quoting exactly, because it is not the language of a strategy deck:</p>
+    <blockquote style="margin:0 0 30px;padding:6px 0 6px 26px;border-left:3px solid #C04A26;font-family:'Newsreader',serif;font-style:italic;font-size:clamp(20px,2.5vw,26px);line-height:1.45;color:#FBF8F1;">Can I rely on them to manage the unending volatility facing us? Do they have my back? Can we move beyond endless debates about prioritization and timing and execute?</blockquote>
+    <p style={bodyP}>Now go back twenty years. A consultant named Charles Pfeffer, writing about what tops CEOs&rsquo; lists of concerns, drew a distinction that has aged unnervingly well: the difference between &ldquo;excellence in execution&rdquo; and &ldquo;consistent execution by top management.&rdquo; His conclusion, after two decades in the room with senior teams, was blunt. It has been rare, he wrote, to find a senior leadership team that practiced real rigor in how it interacted and decided.</p>
+    <p style={bodyP}>Three sources, three methods, twenty years apart, all circling the same finding. That convergence is the point. Any one study can be waved away as a survey artifact or a consultant&rsquo;s pet theory. The pattern across all of them cannot. The leadership team itself &mdash; not the market, not the technology &mdash; is a durable and central source of executive pain. And notice the word that recurs when executives describe it in their own voice: not &ldquo;strategy,&rdquo; but <em>rely, back, execute</em>. Trust and action, present tense.</p>
+
+    <h2 style={h2}>The word everyone reaches for is &ldquo;alignment.&rdquo; That&rsquo;s where the analysis usually stops.</h2>
+    <p style={bodyP}>Read the prescriptions that accompany this research and they tend to converge on a single instruction: align your team. Define roles more clearly. Meet more regularly. Build a stronger teamwork mentality at the top. This is not wrong. It is just incomplete in a way that matters, because it treats alignment as the cause when alignment is the symptom you can see.</p>
+    <p style={bodyP}>Here is the trap. &ldquo;We&rsquo;re not aligned&rdquo; is the most available explanation a leadership team has for its own dysfunction, because it&rsquo;s the one that assigns no blame and requires no one to look too closely. It&rsquo;s comfortable. It also, conveniently, describes almost nothing you can act on. A team can leave an offsite genuinely aligned &mdash; everyone nodding at the same three priorities &mdash; and still fail to execute a single one of them. If alignment were the cause, that team would be fine. It isn&rsquo;t.</p>
+    <p style={bodyP}>What&rsquo;s actually happening underneath &ldquo;we&rsquo;re not aligned&rdquo; is that one or more specific disciplines have quietly broken, and the team has no shared language to name which one. That&rsquo;s why it feels unfixable. The problem gets discussed at the altitude of &ldquo;we need to communicate better&rdquo; when it lives at the altitude of &ldquo;we make decisions no one owns,&rdquo; or &ldquo;we start things we never finish,&rdquo; or &ldquo;we let missed commitments pass without a word.&rdquo; Those are not the same failure, and they don&rsquo;t have the same fix. Lumping them under &ldquo;alignment&rdquo; guarantees the team works on the wrong one.</p>
+    <p style={bodyP}>Pfeffer, twenty years ago, saw exactly this. He separated the two things most people blur together: process discipline and alignment. Livermore&rsquo;s executives were describing it too &mdash; they weren&rsquo;t asking &ldquo;do we agree?&rdquo; They were asking &ldquo;can we stop debating and <em>execute</em>?&rdquo; The felt problem was never agreement. It was the disciplines that turn agreement into action, and those disciplines had eroded.</p>
+
+    <h2 style={h2}>Where the breakdown actually lives</h2>
+    <p style={bodyP}>If alignment is the symptom, the useful question is: symptom of what, specifically? In our work with executive teams, the failure almost always resolves to one of four disciplines that teams lose quietly, over time, usually without noticing.</p>
+  </div>
+
+  <!-- FOUR DISCIPLINES -->
+  <div style="max-width:880px;margin:0 auto;padding:0 32px;display:flex;flex-direction:column;gap:14px;">
+    {disciplines.map((d, i) => (
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;display:flex;gap:20px;align-items:flex-start;">
+        <span style="flex:none;font-family:'Newsreader',serif;font-size:26px;line-height:1;color:#C04A26;width:34px;">{`0${i + 1}`}</span>
+        <p style="font-size:17px;line-height:1.6;color:rgba(244,240,231,0.82);margin:0;" set:html={d.text}></p>
+      </div>
+    ))}
+  </div>
+
+  <div style="max-width:880px;margin:0 auto;padding:30px 32px 0;">
+    <p style={bodyP}>Each of these presents, on the surface, as &ldquo;we&rsquo;re not aligned.&rdquo; Each has a different root and a different remedy. A team drowning in half-finished work does not need more alignment; it needs a limit on how much it starts. A team that relitigates every decision does not need another offsite; it needs a way to make a decision stick. The value of naming the four is not the elegance of the model. It&rsquo;s that it moves the conversation from a vague, blameless, unactionable place to a specific, locatable, fixable one. You stop asking &ldquo;why aren&rsquo;t we aligned&rdquo; and start asking &ldquo;which of these four broke, and when?&rdquo;</p>
+    <p style="font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;">That question has an answer. &ldquo;Why aren&rsquo;t we aligned&rdquo; does not.</p>
+
+    <h2 style={h2}>The honest caveat</h2>
+    <p style={bodyP}>A word on the evidence, because precision here is the whole point. The strongest of these studies skew large. BCG&rsquo;s finding that the leadership team is the <em>top</em> stressor is specific to CEOs of $5 billion-plus companies; across the full sample it ranks among the top three. Livermore&rsquo;s most-quoted line carries the same qualifier. So the fair claim is not &ldquo;this is every CEO&rsquo;s number-one problem.&rdquo; The fair claim is that among the executives these studies reached, the leadership team ranked at or near the top of what wakes them up &mdash; consistently, across two decades and multiple continents. That is a strong enough finding to take seriously without inflating it. If your leadership team is executing cleanly, this may not be your problem. If it isn&rsquo;t, you are in extremely well-documented company.</p>
+    <p style={bodyP}>The teams that break out of this pattern are not the ones that align harder. They&rsquo;re the ones that stop treating &ldquo;alignment&rdquo; as a diagnosis and start locating the specific discipline that failed. That&rsquo;s a harder conversation. It&rsquo;s also the only one that changes anything.</p>
+
+    <!-- Flag Model tie-in -->
+    <div style="margin:40px 0 8px;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:30px 32px;">
+      <p style="font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.86);margin:0;">The <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> maps the four disciplines that hold an executive team upright &mdash; the Decision, the Rhythm, the Standard, the Learning &mdash; and how to find the one that broke first.</p>
+    </div>
+
+    <!-- Sources -->
+    <div style="margin-top:48px;border-top:1px solid rgba(244,240,231,0.12);padding-top:26px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:18px;">Sources</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:16px;">
+        {sources.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener" style="color:#F4F0E7;text-decoration:none;font-size:15.5px;line-height:1.5;" onmouseover="this.style.color='#E0744A'" onmouseout="this.style.color='#F4F0E7'"><span set:html={s.name}></span> <span style="color:#E0744A;">&#8599;</span></a>
+            <p style="margin-top:4px;font-size:13.5px;color:rgba(244,240,231,0.5);">{s.meta}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+  </article>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>

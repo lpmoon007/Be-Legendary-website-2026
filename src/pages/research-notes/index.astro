@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { SLUGS } from '../../lib/site';
+
+const title = 'Research Notes | Be Legendary';
+const description =
+  'What the research actually says about why executive teams stall — synthesized, sourced, and translated into the disciplines you can act on. Original research notes from Be Legendary.';
+
+// Research notes, newest first. Add a note by prepending an entry.
+const NOTES = [
+  {
+    title: 'Your leadership team is aligned. So why isn’t anything happening?',
+    href: '/research-notes/leadership-team-aligned-not-executing/',
+    date: 'July 2026',
+    dek: 'Executives say they’re aligned, then the priorities don’t move. BCG, David Livermore, and twenty years of consulting all circle the same finding: alignment is the symptom, not the cause — and one of four disciplines has quietly broken underneath it.',
+    tag: 'Executive-team execution',
+  },
+];
+const featured = NOTES[0];
+const rest = NOTES.slice(1);
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Research Notes', item: 'https://www.belegendary.org/research-notes/' },
+  ] },
+  { '@type': 'CollectionPage', '@id': 'https://www.belegendary.org/research-notes/#page', name: 'Research Notes',
+    about: 'Sourced synthesis of research on executive-team execution', isPartOf: { '@type': 'Organization', name: 'Be Legendary' } },
+  { '@type': 'ItemList', name: 'Be Legendary research notes', itemListElement: NOTES.map((n, i) => (
+    { '@type': 'ListItem', position: i + 1, name: n.title, url: `https://www.belegendary.org${n.href}` }
+  )) },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.researchNotes} ogType="website" ogTitle="Research Notes — Be Legendary" ogDescription="What the research actually says about why executive teams stall — sourced and translated into disciplines you can act on." schema={schema}>
+
+<div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:1080px;margin:0 auto;padding:84px 32px 44px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Research Notes</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Research Notes</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">What the research actually says.</h1>
+    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:60ch;color:rgba(244,240,231,0.8);">Longer-form synthesis of the evidence on why executive teams stall &mdash; sourced, quoted accurately, and translated into the specific disciplines you can act on. No inflation, every claim cited.</p>
+  </header>
+
+  <!-- FEATURED NOTE -->
+  <section style="max-width:1080px;margin:0 auto;padding:0 32px 8px;">
+    <a href={featured.href} style="text-decoration:none;display:block;background:#1B1810;border:1px solid rgba(244,240,231,0.16);border-radius:22px;padding:46px;color:#F4F0E7;position:relative;overflow:hidden;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)';this.querySelector('.arr').style.transform='translateX(6px)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.16)';this.querySelector('.arr').style.transform='translateX(0)'">
+      <div style="position:absolute;top:-80px;right:-60px;width:380px;height:380px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 64%);pointer-events:none;"></div>
+      <div style="position:relative;">
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;">Latest &middot; {featured.date}</span>
+        <h2 style="margin-top:14px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.06;color:#FBF8F1;max-width:24ch;">{featured.title}</h2>
+        <p style="margin-top:16px;font-size:17px;line-height:1.6;color:rgba(244,240,231,0.82);max-width:64ch;">{featured.dek}</p>
+        <span class="arr" style="margin-top:24px;display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:16px;color:#E0744A;transition:transform .2s;">Read the note <span style="font-size:18px;">&rarr;</span></span>
+      </div>
+    </a>
+  </section>
+
+  {rest.length > 0 && (
+    <section style="max-width:1080px;margin:0 auto;padding:20px 32px 8px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        {rest.map((n) => (
+          <a href={n.href} style="text-decoration:none;display:flex;flex-direction:column;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:30px;color:#F4F0E7;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">{n.date}</span>
+            <span style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;color:#FBF8F1;">{n.title}</span>
+            <span style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">{n.dek}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- NEWSLETTER -->
+  <section style="max-width:1080px;margin:0 auto;padding:40px 32px 88px;">
+    <NewsletterSignup />
+  </section>
+
+  <SiteFooter audience="teams" />
+
+</div>
+</BaseLayout>
