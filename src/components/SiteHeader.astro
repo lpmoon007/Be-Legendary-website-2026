@@ -38,11 +38,19 @@ const TEAMS_LINKS = [
       { label: 'Field Notes', href: SLUGS.fieldNotes },
       { label: 'Research Notes', href: SLUGS.research },
       { label: 'Case studies', href: SLUGS.caseStudies },
-      { label: 'Press', href: SLUGS.press },
       { label: 'All resources', href: SLUGS.resources, divider: true },
     ],
   },
-  { label: 'James', href: SLUGS.about },
+  {
+    label: 'About',
+    href: SLUGS.aboutIndex,
+    children: [
+      { label: 'About Be Legendary', href: SLUGS.aboutIndex },
+      { label: 'James Carter', href: SLUGS.about },
+      { label: 'Press', href: SLUGS.press },
+      { label: 'Contact', href: SLUGS.contact },
+    ],
+  },
 ];
 const LEADERS_LINKS = [
   { label: 'Mindset Workouts', href: SLUGS.workouts },

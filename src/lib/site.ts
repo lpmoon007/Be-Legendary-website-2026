@@ -42,6 +42,10 @@ export const HUBSPOT = {
   // message, intent. Create it in HubSpot and paste the GUID here to go live.
   // While empty, the form still confirms to the user but does not POST.
   ldolEnquiryFormGuid: '',
+  // Contact page "send a message" form: needs a HubSpot form with fields
+  // firstname, email, message. Paste the GUID here to POST submissions to
+  // HubSpot; while empty the form gracefully falls back to a mailto: draft.
+  contactFormGuid: '',
 };
 
 // Direct-download URL for the free first chapter. Empty until the PDF is
@@ -55,7 +59,9 @@ export const SLUGS = {
   flagModel: '/flag-model/',
   roadmapToSuccess: '/roadmap-to-success/',
   discoverInnerStrength: '/discover-your-inner-strength/',
+  aboutIndex: '/about/',
   about: '/about/james-carter/',
+  contact: '/contact/',
   breakPointAssessment: '/break-point-self-assessment/',
   costCalculator: '/cost-of-lost-disciplines-calculator/',
   research: '/state-of-executive-team-execution/',

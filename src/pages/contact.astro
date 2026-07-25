@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SLUGS, CTA_URL, HUBSPOT, CONTACT_EMAIL } from '../lib/site';
+
+const title = 'Contact Be Legendary | Talk to us, no call required';
+const description =
+  'Reach Be Legendary without booking a call: send a message, email jcarter@belegendary.org, or phone 800-513-8759. Prefer to talk it through? Book a free calibration call.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://www.belegendary.org/contact/' },
+  ] },
+  { '@type': 'ContactPage', '@id': 'https://www.belegendary.org/contact/#page', name: 'Contact Be Legendary',
+    mainEntity: { '@type': 'Organization', name: 'Be Legendary', email: CONTACT_EMAIL, telephone: '+1-800-513-8759' } },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.contact} ogType="website" ogTitle="Contact Be Legendary" ogDescription="Send a message, email, or call — booking a call is optional, not the only way in." schema={schema}>
+
+<div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:1080px;margin:0 auto;padding:84px 32px 44px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Contact</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Contact</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-0.02em;max-width:17ch;color:#FBF8F1;">Have a question? Just ask &mdash; no call required.</h1>
+    <p style="margin-top:24px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:56ch;color:rgba(244,240,231,0.8);">Send a message, email, or pick up the phone. A calibration call is there when you want it, but it&rsquo;s not the only way to reach us.</p>
+  </header>
+
+  <!-- BODY: form + direct channels -->
+  <section style="max-width:1080px;margin:0 auto;padding:8px 32px 92px;">
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:start;">
+
+      <!-- Message form -->
+      <div style="background:linear-gradient(150deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:20px;padding:38px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.12;color:#FBF8F1;">Send us a message</h2>
+        <p style="margin-top:12px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.75);max-width:44ch;">Tell us what&rsquo;s going on with your team or what you&rsquo;d like to know. We read every message and reply personally &mdash; usually within one business day.</p>
+
+        <div class="bl-contact-form" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.contactFormGuid} data-contact={CONTACT_EMAIL} style="margin-top:24px;">
+          <label style="display:block;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(244,240,231,0.55);margin-bottom:7px;">Your name</label>
+          <input class="bl-cf-name" type="text" autocomplete="name" placeholder="First and last name" aria-label="Your name" style="width:100%;padding:14px 16px;border-radius:11px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+
+          <label style="display:block;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(244,240,231,0.55);margin:16px 0 7px;">Work email</label>
+          <input class="bl-cf-email" type="email" autocomplete="email" placeholder="you@company.com" aria-label="Work email" style="width:100%;padding:14px 16px;border-radius:11px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+
+          <label style="display:block;font-size:12.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(244,240,231,0.55);margin:16px 0 7px;">Message</label>
+          <textarea class="bl-cf-msg" rows="5" placeholder="What&rsquo;s on your mind?" aria-label="Message" style="width:100%;padding:14px 16px;border-radius:11px;border:1px solid rgba(244,240,231,0.2);background:#15130E;color:#F4F0E7;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;resize:vertical;"></textarea>
+
+          <button class="bl-cf-submit bl-tap" style="margin-top:16px;width:100%;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 18px;border-radius:11px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Send message</button>
+          <p class="bl-cf-err" style="margin-top:10px;font-size:13px;color:#E0744A;min-height:18px;visibility:hidden;"></p>
+        </div>
+
+        <div class="bl-cf-sent" style="display:none;">
+          <p style="font-family:'Newsreader',serif;font-size:24px;color:#FBF8F1;">Thanks &mdash; message received.</p>
+          <p style="margin-top:8px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.75);">We&rsquo;ll reply personally, usually within one business day. If it&rsquo;s urgent, call <a href="tel:8005138759" style="color:#E0744A;text-decoration:none;">800-513-8759</a>.</p>
+        </div>
+      </div>
+
+      <!-- Direct channels -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <a href={`mailto:${CONTACT_EMAIL}`} style="text-decoration:none;display:block;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:24px 26px;color:#F4F0E7;" onmouseover="this.style.borderColor='rgba(192,74,38,0.55)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Email</p>
+          <p style="margin-top:8px;font-size:17px;color:#FBF8F1;">{CONTACT_EMAIL}</p>
+          <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.6);">Straight to the team. We reply within a business day.</p>
+        </a>
+
+        <a href="tel:8005138759" style="text-decoration:none;display:block;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:24px 26px;color:#F4F0E7;" onmouseover="this.style.borderColor='rgba(192,74,38,0.55)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Phone</p>
+          <p style="margin-top:8px;font-size:17px;color:#FBF8F1;">800-513-8759</p>
+          <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.6);">Mon&ndash;Fri. Leave a message and we&rsquo;ll call back.</p>
+        </a>
+
+        <div style="background:linear-gradient(150deg,#1B1810,#100E0A);border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:24px 26px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Prefer to talk?</p>
+          <p style="margin-top:8px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.8);">Book a free 15-minute calibration call &mdash; a real read on where your team stands, whether or not we work together.</p>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:16px;display:inline-block;background:#C04A26;color:#fff;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a calibration call &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <SiteFooter audience="teams" />
+
+</div>
+
+<script>
+  const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  document.querySelectorAll<HTMLElement>('.bl-contact-form').forEach((form) => {
+    const nameEl = form.querySelector('.bl-cf-name') as HTMLInputElement;
+    const emailEl = form.querySelector('.bl-cf-email') as HTMLInputElement;
+    const msgEl = form.querySelector('.bl-cf-msg') as HTMLTextAreaElement;
+    const submit = form.querySelector('.bl-cf-submit') as HTMLButtonElement;
+    const err = form.querySelector('.bl-cf-err') as HTMLElement;
+    const sent = form.nextElementSibling as HTMLElement;
+    const portal = form.dataset.portal!;
+    const guid = (form.dataset.guid || '').trim();
+    const contact = form.dataset.contact!;
+
+    [nameEl, emailEl, msgEl].forEach((el) => el.addEventListener('input', () => { err.style.visibility = 'hidden'; }));
+
+    const showSent = () => { form.style.display = 'none'; sent.style.display = 'block';
+      if (typeof (window as any).gtag === 'function') (window as any).gtag('event', 'contact_message', { method: guid ? 'hubspot' : 'mailto' }); };
+
+    const mailtoFallback = (name: string, email: string, message: string) => {
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      window.location.href = `mailto:${contact}?subject=${encodeURIComponent('Website enquiry from ' + name)}&body=${encodeURIComponent(body)}`;
+    };
+
+    submit.addEventListener('click', async () => {
+      const name = nameEl.value.trim();
+      const email = emailEl.value.trim();
+      const message = msgEl.value.trim();
+      if (!name) { err.textContent = 'Please add your name.'; err.style.visibility = 'visible'; return; }
+      if (!EMAIL_RE.test(email)) { err.textContent = 'Please enter a valid email.'; err.style.visibility = 'visible'; return; }
+      if (message.length < 4) { err.textContent = 'Please add a short message.'; err.style.visibility = 'visible'; return; }
+
+      // No HubSpot form configured yet → open a prefilled email draft instead.
+      if (!guid) { mailtoFallback(name, email, message); showSent(); return; }
+
+      let ok = false;
+      try {
+        const res = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portal}/${guid}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: [
+              { name: 'firstname', value: name },
+              { name: 'email', value: email },
+              { name: 'message', value: message },
+            ],
+            context: { pageUri: location.href, pageName: document.title },
+          }),
+        });
+        ok = res.ok;
+      } catch (e) { ok = false; }
+
+      if (!ok) {
+        err.innerHTML = `Couldn't send just now. <a href="mailto:${contact}?subject=${encodeURIComponent('Website enquiry')}" style="color:#E0744A;text-decoration:underline;">Email us directly</a> and we'll get right back to you.`;
+        err.style.visibility = 'visible';
+        return;
+      }
+      showSent();
+    });
+  });
+</script>
+</BaseLayout>

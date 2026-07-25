@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SLUGS, CTA_URL } from '../../lib/site';
+
+const title = 'About Be Legendary | Executive-team performance advisory';
+const description =
+  'Be Legendary is an executive-team performance advisory founded by James Carter, creator of the Flag Model. One brand, two ways in: rebuild the disciplines that make a team execute, and the daily reps that make a leader legendary.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://www.belegendary.org/about/' },
+  ] },
+  { '@type': 'AboutPage', '@id': 'https://www.belegendary.org/about/#page', name: 'About Be Legendary',
+    about: { '@type': 'Organization', name: 'Be Legendary', founder: { '@type': 'Person', name: 'James Carter' },
+      description: 'An executive-team performance advisory built on the Flag Model, founded by James Carter.' } },
+];
+
+const paths = [
+  { tag: 'For executive teams', href: SLUGS.teams, title: 'Rebuild the disciplines that make a team execute.',
+    body: 'Most leadership teams know what to do and still don’t do it. We rebuild the four disciplines the Flag Model measures — Decision, Rhythm, Standard, Learning — through diagnostics, sprints, and retreats.' },
+  { tag: 'For individual leaders', href: SLUGS.leaders, title: 'The daily reps that make a leader legendary.',
+    body: 'Mindset Workouts and the 30-Day Challenge — short, repeatable reps that build the habits behind Initiative, Applied Grit, and Learnability. Truth over comfort, paid daily.' },
+];
+
+const explore = [
+  { label: 'The Flag Model', href: SLUGS.flagModel, note: 'The framework: a flag held upright by four cables.' },
+  { label: 'How we work together', href: SLUGS.howWeWorkTogether, note: 'One way in, sequenced by commitment.' },
+  { label: 'Case studies', href: SLUGS.caseStudies, note: 'Real executive-team turnarounds.' },
+  { label: 'Press', href: SLUGS.press, note: 'Features and media coverage.' },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.aboutIndex} ogType="website" ogTitle="About Be Legendary" ogDescription="Executive-team performance advisory, built on the Flag Model and founded by James Carter." schema={schema}>
+
+<div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:1080px;margin:0 auto;padding:84px 32px 52px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">About</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">About Be Legendary</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">One brand, two ways in.</h1>
+    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:60ch;color:rgba(244,240,231,0.82);">Be Legendary is an executive-team performance advisory founded by <a href={SLUGS.about} style="color:#E0744A;text-decoration:none;">James Carter</a>, creator of the Flag Model. We rebuild the disciplines that make an executive team execute &mdash; and the daily reps that make a leader legendary. Truth over comfort, paid daily.</p>
+  </header>
+
+  <!-- TWO WAYS IN -->
+  <section style="max-width:1080px;margin:0 auto;padding:0 32px 12px;">
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      {paths.map((p) => (
+        <a href={p.href} style="text-decoration:none;display:flex;flex-direction:column;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:34px;color:#F4F0E7;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">{p.tag}</span>
+          <span style="margin-top:14px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(23px,2.8vw,30px);line-height:1.1;color:#FBF8F1;">{p.title}</span>
+          <span style="margin-top:14px;font-size:16px;line-height:1.6;color:rgba(244,240,231,0.76);">{p.body}</span>
+          <span style="margin-top:18px;font-weight:700;font-size:14.5px;color:#E0744A;">Explore &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section style="max-width:1080px;margin:0 auto;padding:44px 32px 12px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:22px;padding:46px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;">
+        <div>
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;">The founder</p>
+          <h2 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.08;max-width:20ch;">James Carter, creator of the Flag Model.</h2>
+          <p style="margin-top:16px;font-size:17px;line-height:1.62;color:#3A372F;max-width:52ch;">For 25 years James has sat with executive teams at the moment they stop executing &mdash; and found the same answer underneath every stall: a broken discipline, not a broken strategy. The Flag Model is how he makes that visible, and how teams rebuild it.</p>
+          <a href={SLUGS.about} style="margin-top:22px;display:inline-block;color:#C04A26;text-decoration:none;font-weight:700;font-size:15px;">Read James&rsquo;s story &rarr;</a>
+        </div>
+        <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:18px;padding:30px;">
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C04A26;margin-bottom:14px;">The Flag Model, in one line</p>
+          <p style="font-family:'Newsreader',serif;font-size:20px;line-height:1.4;color:#1B1810;">A flag held upright by four cables &mdash; the Decision, the Rhythm, the Standard, the Learning. Cut one and it tilts.</p>
+          <a href={SLUGS.flagModel} style="margin-top:18px;display:inline-block;color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;">See the framework &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAMILY / DISAMBIGUATION -->
+  <section style="max-width:1080px;margin:0 auto;padding:36px 32px 12px;">
+    <p style="font-size:15px;line-height:1.7;color:rgba(244,240,231,0.6);max-width:82ch;">Be Legendary&rsquo;s companion product <a href="https://www.provecq.com/" target="_blank" rel="noopener" style="color:rgba(244,240,231,0.85);text-decoration:none;">Prove</a> measures who delivers &mdash; the Commitment Quotient (CQ). Corporate team-building and charity events run as <a href="https://www.buildingteams.com/" target="_blank" rel="noopener" style="color:rgba(244,240,231,0.85);text-decoration:none;">Building Teams</a>. We are not affiliated with any similarly named coaching or wellness brand.</p>
+  </section>
+
+  <!-- EXPLORE -->
+  <section style="max-width:1080px;margin:0 auto;padding:36px 32px 24px;">
+    <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:20px;">Explore</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      {explore.map((e) => (
+        <a href={e.href} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:16px;background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:14px;padding:20px 24px;color:#F4F0E7;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.12)'">
+          <span><span style="display:block;font-size:16.5px;font-weight:600;color:#FBF8F1;">{e.label}</span><span style="display:block;margin-top:4px;font-size:14px;color:rgba(244,240,231,0.6);">{e.note}</span></span>
+          <span style="color:#E0744A;font-size:18px;">&rarr;</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="max-width:1080px;margin:0 auto;padding:24px 32px 92px;">
+    <div style="background:linear-gradient(150deg,#C04A26,#7E2D13);border-radius:22px;padding:46px;color:#fff;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-60px;right:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(255,255,255,0.12),transparent 65%);pointer-events:none;"></div>
+      <div style="position:relative;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.08;max-width:22ch;">Wherever you start, start with the truth.</h2>
+        <p style="margin-top:14px;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.92);max-width:54ch;">Book a free calibration call, or just send us a message &mdash; a real read on where your team stands, no pitch.</p>
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:14px;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#15130E;color:#fff;text-decoration:none;padding:14px 24px;border-radius:11px;font-weight:700;font-size:15px;">Book a calibration call &rarr;</a>
+          <a href={SLUGS.contact} style="background:rgba(255,255,255,0.14);color:#fff;text-decoration:none;padding:14px 24px;border-radius:11px;font-weight:700;font-size:15px;">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter audience="teams" />
+
+</div>
+</BaseLayout>
