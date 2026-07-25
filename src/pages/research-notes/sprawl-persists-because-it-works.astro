@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SLUGS } from '../../lib/site';
+
+const path = '/research-notes/sprawl-persists-because-it-works/';
+const paralysisHref = '/research-notes/what-decision-paralysis-costs/';
+const postmortemHref = '/research-notes/post-mortem-would-not-qualify/';
+const candorHref = '/research-notes/more-candor-will-make-it-worse/';
+const title = 'Sprawl persists because it works at first | Be Legendary';
+const description =
+  'Every over-committed team is told to focus — a destination with no mechanism. Why initiative sprawl persists: it speeds a team up first, then slows it down a quarter later. And why the fix is a limit, not a list.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Research Notes', item: 'https://www.belegendary.org/research-notes/' },
+    { '@type': 'ListItem', position: 3, name: 'Sprawl persists because it works at first', item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'Article',
+    headline: 'Sprawl persists because it works at first',
+    datePublished: '2026-07-25', dateModified: '2026-07-25',
+    author: { '@id': 'https://www.belegendary.org/#james' },
+    publisher: { '@id': 'https://www.belegendary.org/#org' },
+    mainEntityOfPage: `https://www.belegendary.org${path}`,
+    description: 'Why leadership teams keep adding initiatives even when they agree focus matters: load produces a short-run speedup before the reversal, so the decision to add looks validated and the cost is misattributed a quarter later. The thinnest-evidenced of the four disciplines, stated as such.',
+    citation: [
+      { '@type': 'CreativeWork', name: 'Why Strategy Execution Unravels — and What to Do About It', author: 'D. Sull, R. Homkes and C. Sull', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
+      { '@type': 'CreativeWork', name: 'Impact of Workload on Service Time and Patient Safety: An Econometric Analysis of Hospital Operations', author: 'D. S. KC and C. Terwiesch', url: 'https://pubsonline.informs.org/doi/10.1287/mnsc.1090.1037' },
+      { '@type': 'CreativeWork', name: 'Information, Technology, and Information Worker Productivity', author: 'S. Aral, E. Brynjolfsson and M. Van Alstyne', url: 'https://dspace.mit.edu/handle/1721.1/87556' },
+      { '@type': 'CreativeWork', name: 'Understanding Fire Fighting in New Product Development', author: 'N. P. Repenning', url: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/1540-5885.1850285' },
+    ],
+  },
+];
+
+const sources = [
+  { name: 'Sull, D., Homkes, R., &amp; Sull, C. (2015). Why Strategy Execution Unravels &mdash; and What to Do About It. <em>Harvard Business Review</em>, March 2015.', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
+  { name: 'KC, D. S., &amp; Terwiesch, C. (2009). Impact of Workload on Service Time and Patient Safety: An Econometric Analysis of Hospital Operations. <em>Management Science</em>, 55(9), 1486&ndash;1498.', url: 'https://pubsonline.informs.org/doi/10.1287/mnsc.1090.1037' },
+  { name: 'Aral, S., Brynjolfsson, E., &amp; Van Alstyne, M. (2012). Information, Technology, and Information Worker Productivity. <em>Information Systems Research</em>, 23(3), 849&ndash;867.', url: 'https://dspace.mit.edu/handle/1721.1/87556' },
+  { name: 'Repenning, N. P. (2001). Understanding Fire Fighting in New Product Development. <em>Journal of Product Innovation Management</em>, 18(5), 285&ndash;300.', url: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/1540-5885.1850285' },
+];
+
+const bodyP = 'font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:26px;';
+const whiteP = 'font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;';
+const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.12;letter-spacing:-0.015em;color:#FBF8F1;margin:52px 0 20px;";
+const keyline = "margin:6px 0 30px;padding:4px 0 4px 24px;border-left:3px solid #C04A26;font-family:'Newsreader',serif;font-size:clamp(21px,2.6vw,28px);line-height:1.35;color:#FBF8F1;";
+const caveat = 'margin:0 0 26px;background:#181510;border:1px solid rgba(244,240,231,0.14);border-left:3px solid rgba(217,138,94,0.7);border-radius:12px;padding:22px 26px;';
+const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);margin:0;';
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="Sprawl persists because it works at first" ogDescription="Load speeds a team up before it slows it down — which is exactly why initiative sprawl is self-reinforcing. The thinnest-evidenced of the four disciplines, stated plainly." schema={schema}>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 32px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.15),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.researchNotes} style="color:inherit;text-decoration:none;">Research Notes</a><span>/</span><span style="color:#D98A5E;">Sprawl persists because it works at first</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">Research Note</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">Sprawl persists because it works at first</h1>
+    <p style="margin-top:20px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; July 2026</p>
+    <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.5);">Fourth and last in a series on the four disciplines. The first covered <a href={paralysisHref} style="color:#D98A5E;text-decoration:none;">what decision paralysis costs</a>; the second, <a href={postmortemHref} style="color:#D98A5E;text-decoration:none;">after-action reviews</a>; the third, <a href={candorHref} style="color:#D98A5E;text-decoration:none;">why mandating candor backfires</a>.</p>
+  </header>
+
+  <!-- LEAD -->
+  <div style="max-width:880px;margin:0 auto;padding:16px 32px 0;">
+    <p class="bl-speakable" style="font-size:clamp(19px,2.2vw,23px);line-height:1.6;color:#FBF8F1;margin-bottom:26px;">Every executive team carrying a dozen half-finished initiatives has been told to focus. The advice is correct and useless, in that order. It names a destination and no mechanism, which is why teams agree with it, kill nothing, and add two more things by June.</p>
+
+    <div style={caveat}>
+      <p style={caveatP}><strong style="color:#F4F0E7;">A disclosure.</strong> This note is about the mechanism, and the evidence here is the weakest of the four disciplines we have written about. There is no meta-analysis. Not one study examined an executive team. One of the four sources below is a simulation rather than a measurement. We are telling you that up front because the advice industry states this case with more confidence than the research supports &mdash; and because you should weight what follows accordingly.</p>
+    </div>
+
+    <h2 style={h2}>What the research shows</h2>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Sull, Homkes and Sull</strong> (<em>Harvard Business Review</em>, 2015), surveying 7,600 managers across 262 companies, documented the conditions that let sprawl accumulate. Fewer than a third of managers believed their organizations reallocated funds quickly enough to the right places. Only one in five said their organization did a good job of moving people across units to support strategic priorities. Half of the middle managers surveyed believed they could secure significant resources for attractive opportunities that fell outside the company&rsquo;s strategic objectives. And when asked what obstructed their understanding of strategy, middle managers were four times more likely to cite the sheer number of corporate priorities and initiatives than to cite a lack of clarity in how strategy was communicated.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">KC and Terwiesch</strong> (<em>Management Science</em>, 2009) analyzed operational data from two hospital services and found something that complicates the standard advice. Workers speed up as load rises. A 10 percent increase in load reduced length of stay by two days in cardiothoracic surgery. But the acceleration does not hold. Sustained high load reversed it, with a 1 percent increase in their overwork measure adding roughly six hours to length of stay, and quality measures degraded alongside it.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Aral, Brynjolfsson and Van Alstyne</strong> (<em>Information Systems Research</em>, 2012) studied an executive recruiting firm using five years of project accounting data across more than 1,300 projects, 125,000 email messages, and survey data on the same workers. Their published finding is that more multitasking was associated with more project output, subject to diminishing marginal returns.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Repenning</strong> (<em>Journal of Product Innovation Management</em>, 2001) built a formal model of firefighting in a multi-project development environment. The model produces two results worth carrying: firefighting is self-reinforcing, and multi-project systems are considerably more vulnerable to it than practitioners assume. Past a tipping point, the system settles into a stable equilibrium where reacting to late-stage problems becomes the actual development process.</p>
+
+    <div style={caveat}>
+      <p style={caveatP}><strong style="color:#F4F0E7;">On what these are and are not.</strong> A large-sample manager survey, an econometric study of hospital operations, an econometric panel study of one recruiting firm, and a simulation. Different methods, and no shared population, which is the honest form of convergence. But hospitals are not leadership teams, recruiters are not executives, and a model demonstrates what follows from its assumptions rather than what happens in the world. Sull&rsquo;s sample had median annual sales near $430 million, overlapping the mid-market band, with average headcount around 6,000 and a sector mix that does not.</p>
+    </div>
+
+    <div style={caveat}>
+      <p style={caveatP}><strong style="color:#F4F0E7;">One correction worth making, because we made it on ourselves.</strong> The most-quoted claim in this area is that multitasking has an inverted-U relationship with productivity, with completion rates declining beyond an optimum. That language appears in the 2007 NBER working paper version of the Aral study. The peer-reviewed version published in <em>Information Systems Research</em> states the weaker result: more output with diminishing returns. Diminishing returns and decline are different claims. We use the published one. If you have seen the inverted U cited, it was probably sourced from the working paper.</p>
+    </div>
+
+    <h2 style={h2}>What this actually explains</h2>
+    <p style={bodyP}>The research names the symptom and the advice industry supplies a target. Neither explains the thing CEOs actually find baffling, which is why intelligent people who agree that focus matters keep adding work anyway.</p>
+    <p style={whiteP}>Here is the claim we make that the research does not.</p>
+    <p style={keyline}>Sprawl persists because it works at first.</p>
+    <p style={bodyP}>Read KC and Terwiesch again. Load produced a real, measurable speedup before it produced the reversal. That is not a curiosity &mdash; it is the entire reason the pattern is stable. Add a priority to a loaded leadership team and the following weeks look good. People move faster, meetings get crisper, the sense of momentum is genuine rather than imagined. The decision to add appears to have been validated. Then the cost arrives one or two quarters later, arriving as slippage rather than as a signal, by which point it is attributable to a hire who did not work out, a competitor move, a vendor delay &mdash; anything but the initiative added in March.</p>
+    <p style={bodyP}>That delay between cause and effect is what makes this feel unfixable. Repenning&rsquo;s model gives it a name and a shape: a self-reinforcing loop with a tipping point past which the degraded mode becomes the operating mode. The team is not failing to see the problem. It is seeing a problem, correctly, and misattributing it, because the evidence available in the moment genuinely points somewhere else.</p>
+    <p style={bodyP}>We flag this as our synthesis. KC and Terwiesch measured hospital workers, not leadership teams, and made no claim about how managers interpret the delay. Repenning modeled product development. Connecting the load reversal to the misattribution is our reading of what the two imply together.</p>
+    <p style={bodyP}>This is why the Rhythm rebuild is a limit rather than a priority list. A priority list is a statement of intent that survives contact with nothing. A limit is a rule that forces the trade to happen at the moment of decision, when the cost is still visible, rather than two quarters later when it is not. One in, one out means the price of the new thing is paid in the room where the new thing is proposed.</p>
+    <p style={bodyP}>We should be clear that the specific prescription is not directly evidenced. No study we found tested initiative limits on an executive team. The case for a limit is an inference from queueing logic and from the load research, and it is offered as such.</p>
+
+    <h2 style={h2}>The test</h2>
+    <p style={bodyP}>If Rhythm is what broke on your team, you would predict a specific timing pattern rather than a general sense of overload.</p>
+    <p style={bodyP}>Take the last significant initiative your team added, and find the date. Then look at what happened to delivery in the six to ten weeks that followed. If throughput improved, note that, because it is the part that fooled you. Now look at the two quarters after that, and at what you attributed the slowdown to at the time.</p>
+    <p style={bodyP}>If the degradation began before the event you blamed it on, you have your answer, and no amount of prioritization language will fix it. If throughput never improved after the add, something else is wrong and this is not your discipline.</p>
+
+    <h2 style={h2}>Closing the set</h2>
+    <p style={bodyP}>Four disciplines hold a team upright, and execution fails when one of them goes. The <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> sets out all four and what rebuilding each one requires.</p>
+    <p style={bodyP}>A final word on the series. The evidence behind these four is not equally strong. The <strong style="color:#FBF8F1;">Learning</strong> discipline has a meta-analysis of 46 samples behind it. The <strong style="color:#FBF8F1;">Standard</strong> has two meta-analyses that disagree and a study of 70 top management teams that resolves them. The <strong style="color:#FBF8F1;">Decision</strong> has longitudinal and case evidence but no price tag anyone can defend. <strong style="color:#FBF8F1;">Rhythm</strong> has what you have just read, which is thinner than any of it.</p>
+    <p style={whiteP}>We would rather tell you that than have you find out from someone else.</p>
+
+    <!-- Sources -->
+    <div style="margin-top:48px;border-top:1px solid rgba(244,240,231,0.12);padding-top:26px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">Sources</p>
+      <p style="font-size:13.5px;color:rgba(244,240,231,0.5);margin-bottom:18px;">All primary. Every figure was verified against the original study or article text.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+        {sources.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener" style="color:#F4F0E7;text-decoration:none;font-size:15px;line-height:1.5;" onmouseover="this.style.color='#E0744A'" onmouseout="this.style.color='#F4F0E7'"><span set:html={s.name}></span> <span style="color:#E0744A;">&#8599;</span></a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+  </article>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>
