@@ -22,10 +22,6 @@ const schema = [
   },
 ];
 
-const navLinks = [
-  { label: 'Retreats', href: SLUGS.teamRetreats },
-  { label: 'Case studies', href: SLUGS.caseStudies },
-];
 ---
 <BaseLayout
   title={title}
@@ -37,7 +33,7 @@ const navLinks = [
   bodyBg="#EFE9DD"
   schema={schema}
 >
-  <SiteHeader audience="teams" variant="full" logoHref="/" links={navLinks} />
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
 
   <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;">
 

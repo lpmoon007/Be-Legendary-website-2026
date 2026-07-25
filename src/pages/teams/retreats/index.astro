@@ -11,12 +11,6 @@ const description =
   'Three ways to run a leadership retreat for your executive team: a Focused retreat around one outcome, a Signature experiential retreat, or fully bespoke.';
 
 // Ported from design; the reusable teams shell replaces the prototype header/footer.
-const NAV_LINKS = [
-  { label: 'Ways to Work Together', href: SLUGS.waysToWorkTogether },
-  { label: 'Formats', href: SLUGS.retreatFormats },
-  { label: 'Destinations', href: SLUGS.destinations },
-  { label: 'Case studies', href: SLUGS.caseStudies },
-];
 
 // Signature format starting points (design's `formats` list).
 const formats = [
@@ -45,7 +39,7 @@ const dials = [
   ogDescription="You already know your team needs this. The only question is the right shape for it."
   bodyBg="#EFE9DD"
 >
-  <SiteHeader audience="teams" variant="full" logoHref="/" links={NAV_LINKS} />
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
 
   <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;">
 

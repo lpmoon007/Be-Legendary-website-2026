@@ -9,12 +9,6 @@ const title = 'Leadership Retreat Destinations | Be Legendary';
 const description =
   'Leadership retreat destinations we return to — from the San Juan Mountains to Moab to the Alaska backcountry. The destination always serves your outcome.';
 
-const NAV_LINKS = [
-  { label: 'Ways to Work Together', href: SLUGS.waysToWorkTogether },
-  { label: 'Formats', href: SLUGS.retreatFormats },
-  { label: 'Destinations', href: SLUGS.destinations },
-  { label: 'Case studies', href: SLUGS.caseStudies },
-];
 
 const places = [
   { name: 'Moab, Utah', region: 'Utah', desc: 'Red-rock off-road country for the team that has to face real adversity together — and find out who it becomes under load.', img: '/assets/dest-moab.webp' },
@@ -36,7 +30,7 @@ const places = [
   ogDescription="The destination always serves your outcome, never the reverse. A few places we keep coming back to."
   bodyBg="#EFE9DD"
 >
-  <SiteHeader audience="teams" variant="full" logoHref="/" links={NAV_LINKS} />
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
 
   <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;">
 
