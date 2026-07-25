@@ -42,10 +42,10 @@ export const HUBSPOT = {
   // message, intent. Create it in HubSpot and paste the GUID here to go live.
   // While empty, the form still confirms to the user but does not POST.
   ldolEnquiryFormGuid: '',
-  // Contact page "send a message" form: needs a HubSpot form with fields
-  // firstname, email, message. Paste the GUID here to POST submissions to
-  // HubSpot; while empty the form gracefully falls back to a mailto: draft.
-  contactFormGuid: '',
+  // Contact page "send a message" form — rendered via the HubSpot embed
+  // script on /contact/, so fields/validation/workflows are whatever is
+  // configured in HubSpot for this form.
+  contactFormGuid: 'bad3be34-c7d6-4d32-933c-508ecb972054',
 };
 
 // Direct-download URL for the free first chapter. Empty until the PDF is
