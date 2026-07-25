@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SLUGS } from '../../lib/site';
+
+const path = '/research-notes/more-candor-will-make-it-worse/';
+const paralysisHref = '/research-notes/what-decision-paralysis-costs/';
+const postmortemHref = '/research-notes/post-mortem-would-not-qualify/';
+const title = 'More candor will make it worse | Be Legendary';
+const description =
+  'The standard fix for a team that tolerates mediocrity is more candor. For most executive teams that makes it worse. Two meta-analyses disagree on task conflict — but agree on the one variable that decides which way it goes.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Research Notes', item: 'https://www.belegendary.org/research-notes/' },
+    { '@type': 'ListItem', position: 3, name: 'More candor will make it worse', item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'Article',
+    headline: 'More candor will make it worse',
+    datePublished: '2026-07-25', dateModified: '2026-07-25',
+    author: { '@id': 'https://www.belegendary.org/#james' },
+    publisher: { '@id': 'https://www.belegendary.org/#org' },
+    mainEntityOfPage: `https://www.belegendary.org${path}`,
+    description: 'Two meta-analyses of intragroup conflict reach opposite conclusions about task conflict — but converge on one moderator: whether arguing about the work stays separate from arguing about each other. Why mandating candor in a fused room makes decisions worse.',
+    citation: [
+      { '@type': 'CreativeWork', name: 'Task Versus Relationship Conflict, Team Performance, and Team Member Satisfaction: A Meta-Analysis', author: 'C. K. W. de Dreu and L. R. Weingart', url: 'https://pubmed.ncbi.nlm.nih.gov/12940412/' },
+      { '@type': 'CreativeWork', name: 'The Paradox of Intragroup Conflict: A Meta-Analysis', author: 'F. R. C. de Wit, L. L. Greer and K. A. Jehn', url: 'https://pubmed.ncbi.nlm.nih.gov/21842974/' },
+      { '@type': 'CreativeWork', name: 'Task Conflict and Relationship Conflict in Top Management Teams: The Pivotal Role of Intragroup Trust', author: 'T. L. Simons and R. S. Peterson', url: 'https://scholarship.sha.cornell.edu/articles/719/' },
+      { '@type': 'CreativeWork', name: 'Why Strategy Execution Unravels — and What to Do About It', author: 'D. Sull, R. Homkes and C. Sull', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
+    ],
+  },
+];
+
+const sources = [
+  { name: 'De Dreu, C. K. W., &amp; Weingart, L. R. (2003). Task Versus Relationship Conflict, Team Performance, and Team Member Satisfaction: A Meta-Analysis. <em>Journal of Applied Psychology</em>, 88(4), 741&ndash;749.', url: 'https://pubmed.ncbi.nlm.nih.gov/12940412/' },
+  { name: 'De Wit, F. R. C., Greer, L. L., &amp; Jehn, K. A. (2012). The Paradox of Intragroup Conflict: A Meta-Analysis. <em>Journal of Applied Psychology</em>, 97(2), 360&ndash;390.', url: 'https://pubmed.ncbi.nlm.nih.gov/21842974/' },
+  { name: 'Simons, T. L., &amp; Peterson, R. S. (2000). Task Conflict and Relationship Conflict in Top Management Teams: The Pivotal Role of Intragroup Trust. <em>Journal of Applied Psychology</em>, 85(1), 102&ndash;111.', url: 'https://scholarship.sha.cornell.edu/articles/719/' },
+  { name: 'Sull, D., Homkes, R., &amp; Sull, C. (2015). Why Strategy Execution Unravels &mdash; and What to Do About It. <em>Harvard Business Review</em>, March 2015.', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
+];
+
+const bodyP = 'font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:26px;';
+const whiteP = 'font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;';
+const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.12;letter-spacing:-0.015em;color:#FBF8F1;margin:52px 0 20px;";
+const keyline = "margin:6px 0 30px;padding:4px 0 4px 24px;border-left:3px solid #C04A26;font-family:'Newsreader',serif;font-size:clamp(21px,2.5vw,27px);line-height:1.38;color:#FBF8F1;";
+const caveat = 'margin:0 0 26px;background:#181510;border:1px solid rgba(244,240,231,0.14);border-left:3px solid rgba(217,138,94,0.7);border-radius:12px;padding:22px 26px;';
+const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);margin:0;';
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="More candor will make it worse" ogDescription="The operative variable isn't how much a team argues. It's whether arguing about the work stays separate from arguing about each other." schema={schema}>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 32px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.15),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.researchNotes} style="color:inherit;text-decoration:none;">Research Notes</a><span>/</span><span style="color:#D98A5E;">More candor will make it worse</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">Research Note</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:18ch;">More candor will make it worse</h1>
+    <p style="margin-top:20px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; July 2026</p>
+    <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.5);">Third in a series. The first examined <a href={paralysisHref} style="color:#D98A5E;text-decoration:none;">what decision paralysis costs</a>; the second, <a href={postmortemHref} style="color:#D98A5E;text-decoration:none;">why almost no executive team runs a real after-action review</a>.</p>
+  </header>
+
+  <!-- LEAD -->
+  <div style="max-width:880px;margin:0 auto;padding:16px 32px 0;">
+    <p class="bl-speakable" style="font-size:clamp(19px,2.2vw,23px);line-height:1.6;color:#FBF8F1;margin-bottom:26px;">The standard prescription for a leadership team that tolerates mediocrity is more candor. Say the hard thing. Debate openly. Have the conversation nobody wants to have.</p>
+    <p style={bodyP}>Applied to most executive teams, that advice will degrade performance rather than improve it. This note is about the condition that determines which way it goes &mdash; and about why almost every article on this subject cites only the half of the research that supports the advice it is already giving.</p>
+
+    <h2 style={h2}>Where the research disagrees</h2>
+    <p style={bodyP}>Two meta-analyses sit at the center of this literature. They reach different conclusions, nine years apart, and most writing in this market cites whichever one is convenient.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">De Dreu and Weingart</strong> (<em>Journal of Applied Psychology</em>, 2003) aggregated the research on intragroup conflict and found both types negatively correlated with team performance and member satisfaction. Relationship conflict, the interpersonal kind, was negative as expected. Task conflict &mdash; the disagreement-about-the-work kind that academic research and textbooks had been recommending &mdash; was also strongly negative. The authors said plainly that this contradicted what the field had been teaching. They also found conflict more damaging in complex tasks, specifically decision-making and project work, than in production work.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">De Wit, Greer and Jehn</strong> (<em>Journal of Applied Psychology</em>, 2012) revisited the question across 116 empirical studies covering 8,880 groups. They confirmed the stable negative relationships for relationship conflict and for process conflict. They did <em>not</em> replicate the strong negative association for task conflict. Instead they found the picture was contingent, and three of the contingencies matter here: task conflict related more positively to performance when its correlation with relationship conflict was weak, in top management teams rather than other teams, and when performance was measured as financial results or decision quality rather than overall performance.</p>
+
+    <h2 style={h2}>Where they agree, which is the part that matters</h2>
+    <p style={bodyP}>Read those two side by side and the shared finding is easy to miss, because it is a moderator rather than a headline.</p>
+    <p style={bodyP}>Both meta-analyses found the same hinge. De Dreu and Weingart reported that task conflict was less damaging when task and relationship conflict were weakly rather than strongly correlated. De Wit and colleagues reported that task conflict was more beneficial under exactly the same condition. Two independent aggregations, nearly a decade apart, over largely different bodies of primary research, landing on the same variable from opposite directions.</p>
+    <p style={keyline}>The variable is not how much a team argues. It is whether arguing about the work stays separate from arguing about each other.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Simons and Peterson</strong> (<em>Journal of Applied Psychology</em>, 2000) supply the mechanism, and they did it in the right population. Studying 70 top management teams, they found that intragroup trust moderates whether task conflict turns into relationship conflict. Their evidence supported what they call the misattribution explanation: in a low-trust room, a challenge to the plan gets received as a challenge to the person. Trust is what keeps the two apart.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Sull, Homkes and Sull</strong> (<em>Harvard Business Review</em>, 2015), surveying 7,600 managers across 262 companies, describe what the failure looks like at scale. A majority of the companies they studied delayed action on underperformance, addressed it inconsistently, or tolerated it outright. Asked what happens to a manager who hits his numbers but fails to collaborate across units, one in five said it would be handled promptly, three in five said inconsistently or late, and one in five said it would be tolerated. Separately, a third of the distributed leaders in their sample believed factions existed within the C-suite.</p>
+
+    <div style={caveat}>
+      <p style={caveatP}><strong style="color:#F4F0E7;">On segment.</strong> Both meta-analyses aggregate studies of groups broadly, and a substantial share of that primary research involves student groups and non-executive work teams. The top-management-team finding in de Wit and colleagues is a moderator within that larger set, not a study of executives. Simons and Peterson is the exception, and it is a single study of 70 teams. All of this is correlational. Nobody has established the direction of causation, and it is entirely plausible that failing teams generate conflict rather than the reverse. Sull&rsquo;s sample had median annual sales around $430 million &mdash; overlapping the mid-market band &mdash; alongside average headcount near 6,000 and a sector concentration that does not.</p>
+    </div>
+
+    <h2 style={h2}>What follows, and what doesn&rsquo;t</h2>
+    <p style={bodyP}>The research names the condition. It stops there, and the advice industry fills the gap with the wrong instruction.</p>
+    <p style={whiteP}>Here is the claim we make that the research does not.</p>
+    <p style={bodyP}>Telling a team to be more candid is an intervention on volume. The research says the operative variable is separation. Those are not the same lever &mdash; and in a room where they are already fused, turning up the volume moves you further along the curve the 2003 meta-analysis measured, in decision-making work, where the relationship was most negative. You would expect the conversations to get more heated and the decisions to get worse. That is a specific, falsifiable prediction, and it is the opposite of what the person who ran your last offsite predicted.</p>
+    <p style={bodyP}>We think this explains something CEOs report constantly and rarely get a good account of: the candor initiative that worked for a quarter and then made everything harder. The room did not fail to follow instructions. It followed them, and the instructions were aimed at the wrong variable.</p>
+    <p style={bodyP}>Underneath it sits the thing that makes avoidance feel unfixable. Silence is comfortable. Naming a problem in front of eight peers is not, and it stays uncomfortable for exactly as long as the team experiences it as an event. The <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> treats this as the Standard, one of four disciplines that hold a team upright, and the rebuild is not more courage. It is making the naming of a problem routine enough that it stops registering as an accusation. Frequency is what produces separation. A team that surfaces small problems weekly is not braver than yours &mdash; it has simply removed the signal value from speaking up, so that raising something no longer implies the thing was worth the risk.</p>
+    <p style={bodyP}>We flag that last step as interpretation. No study cited here measured frequency of problem-naming as a route to separating conflict types. It is our reading of what the moderator implies in practice.</p>
+
+    <h2 style={h2}>The test</h2>
+    <p style={bodyP}>If the Standard is what broke on your team, you would predict a specific pattern rather than a general absence of candor. The team can name the problem. It just does it after the meeting.</p>
+    <p style={bodyP}>So check the hallway. If the substantive assessment of a colleague&rsquo;s plan happens in twos and threes afterward, and the meeting itself produced agreement, the problem is not that your people lack the words. They have the words. They are choosing an audience where saying them costs less.</p>
+    <p style={bodyP}>Then check the second thing. When someone does challenge a plan in the room, watch what happens over the following week, not in the moment. If the challenge follows the person out of the room &mdash; if it shows up later as a comment about their judgment rather than about the plan &mdash; the two conflict types are fused, and adding candor will make it worse before it makes it better. If the challenge dies at the door and the two of them are fine on Thursday, your Standard is intact and your execution problem is somewhere else.</p>
+    <p style={whiteP}>The second test is the one worth running. It costs nothing and it takes a week.</p>
+
+    <!-- Sources -->
+    <div style="margin-top:48px;border-top:1px solid rgba(244,240,231,0.12);padding-top:26px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">Sources</p>
+      <p style="font-size:13.5px;color:rgba(244,240,231,0.5);margin-bottom:18px;">All primary. Every figure was verified against the original study or article text.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+        {sources.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener" style="color:#F4F0E7;text-decoration:none;font-size:15px;line-height:1.5;" onmouseover="this.style.color='#E0744A'" onmouseout="this.style.color='#F4F0E7'"><span set:html={s.name}></span> <span style="color:#E0744A;">&#8599;</span></a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+  </article>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>
