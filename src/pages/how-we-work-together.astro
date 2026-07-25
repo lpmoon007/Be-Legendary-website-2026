@@ -19,8 +19,8 @@ const schema = [
     description: 'The public offer ladder, sequenced by commitment. Each paid step credits 50% toward whatever you do next.',
     itemListElement: [
       { '@type': 'Offer', name: 'Calibration Call', priceCurrency: 'USD', price: '0', description: 'A free 15-minute conversation to confirm fit — a calibration, not a pitch.' },
-      { '@type': 'Offer', name: 'Solo ELFS', priceCurrency: 'USD', price: '7500', description: 'A private, safe trial of the diagnostic for the CEO alone — often waived for qualified executives.' },
-      { '@type': 'Offer', name: 'Team LFS', priceCurrency: 'USD', price: '28000', description: 'In 90 minutes, see exactly why your leadership team knows what to do and still does not do it — per executive and as a team, with behavioral evidence and a FlagScore baseline. $28K–$35K.' },
+      { '@type': 'Offer', name: 'Solo ELFS (Executive Leadership Failure Simulation)', priceCurrency: 'USD', price: '7500', description: 'The diagnostic run solo, for the CEO alone — feel it yourself before bringing the team. Often waived for qualified executives.' },
+      { '@type': 'Offer', name: 'Team LFS (Team Leadership Failure Simulation)', priceCurrency: 'USD', price: '28000', description: 'In 90 minutes, see exactly why your leadership team knows what to do and still does not do it — per executive and as a team, with behavioral evidence and a FlagScore baseline. $28K–$35K.' },
       { '@type': 'Offer', name: 'Single Discipline Sprint', priceCurrency: 'USD', price: '45000', description: 'A 90-day sprint that fixes the one broken discipline the diagnostic found. $45K–$65K.' },
       { '@type': 'Offer', name: 'Leadership Retreat', priceCurrency: 'USD', price: '25000', description: 'A facilitated experiential retreat — Focused, Signature or Bespoke — that rebuilds what the diagnostic surfaced. $25K–$500K+.' },
       { '@type': 'Offer', name: 'Performance Partnership', priceCurrency: 'USD', price: '75000', description: 'The systemic 12-month engagement. Base fee from $75K; success fees only when documented value confirms a 10x return, so your direct risk is the base fee.' },
@@ -55,12 +55,12 @@ const navLinks = [
       </nav>
       <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How we work together</p>
       <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.02;letter-spacing:-0.022em;color:#3A0A0C;max-width:17ch;">One way in. Every step credited toward the next.</h1>
-      <p class="bl-speakable" style="margin-top:22px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:62ch;">You don't have to commit to a year to begin. Start where it's safe, see the truth about your team fast, and decide how far to go from there. Each paid step is small, understood, and priced in the open — and your Team LFS investment credits <strong>50% toward whatever you do next</strong>.</p>
+      <p class="bl-speakable" style="margin-top:22px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:62ch;">You don't have to commit to a year to begin. Start where it's safe, see the truth about your team fast, and decide how far to go from there. Each paid step is small, understood, and priced in the open — and your Team Leadership Failure Simulation (Team&nbsp;LFS) credits <strong>50% toward whatever you do next</strong>.</p>
     </section>
 
     <!-- ============ FRONT OF THE LADDER ============ -->
     <section style="max-width:1000px;margin:52px auto 0;padding:0 32px;">
-      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Start here — free, then a private trial</p>
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Start here — free, then a solo run</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
         <!-- Rung 1 · Calibration Call -->
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:32px 34px;display:flex;flex-direction:column;">
@@ -74,9 +74,9 @@ const navLinks = [
         </div>
         <!-- Rung 2 · Solo ELFS -->
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:32px 34px;display:flex;flex-direction:column;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Step 2 · CEO alone</span>
-          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.06;margin:10px 0 8px;color:#3A0A0C;">A private trial (Solo ELFS)</h2>
-          <p style="font-size:15.5px;line-height:1.6;color:#4A3A34;margin-bottom:18px;flex:1;">Feel the diagnostic yourself before you put it in front of your team. You go through it alone and see the quality of the individual read — the safe, self-qualifying way to decide whether to bring the whole team.</p>
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Step 2 · The CEO alone</span>
+          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.06;margin:10px 0 8px;color:#3A0A0C;">Run it on yourself first</h2>
+          <p style="font-size:15.5px;line-height:1.6;color:#4A3A34;margin-bottom:18px;flex:1;">The <strong>Executive Leadership Failure Simulation (ELFS)</strong>, run solo — feel the diagnostic yourself before you put it in front of your team. You go through it alone and see the quality of the individual read, then decide from experience whether to bring the whole team.</p>
           <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
             <p style="font-family:'Newsreader',serif;font-size:24px;color:#3A0A0C;line-height:1.2;">$7,500<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;color:#8A6A64;">often waived for qualified executives</span></p>
             <a href={SLUGS.elfs} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap;">How it works &rarr;</a>
@@ -91,7 +91,8 @@ const navLinks = [
         <span style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#3A0A0C;background:#E9A98F;padding:5px 12px;border-radius:999px;margin-bottom:18px;">The one most teams start with</span>
         <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:start;">
           <div>
-            <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.06;letter-spacing:-0.02em;color:#FBF3E7;margin-bottom:16px;">Team LFS</h2>
+            <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.06;letter-spacing:-0.02em;color:#FBF3E7;margin-bottom:6px;">Team Leadership Failure Simulation</h2>
+            <p style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#D99A88;margin-bottom:16px;">Team LFS</p>
             <p style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(19px,2.2vw,24px);line-height:1.4;color:#F0D9D2;margin-bottom:20px;">In 90 minutes, see exactly why your leadership team knows what to do and still doesn't do it — per executive, and as a team, with real behavioral evidence.</p>
             <p style="font-size:16px;line-height:1.7;color:rgba(246,239,224,0.85);margin-bottom:18px;">It's the closest honest thing to the light switch every CEO is hunting for — and it's emotionally safe. The finger points at the dynamics and the situation, not at your competence. That's why a team will let it see a scary truth. Runs virtually or in person.</p>
             <div style="display:flex;flex-direction:column;gap:11px;">
