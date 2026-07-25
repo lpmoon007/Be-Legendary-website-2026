@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SLUGS, CONTACT_EMAIL } from '../lib/site';
+
+const title = 'Press & Media | Be Legendary';
+const description =
+  'Be Legendary and James Carter in the press — features and mentions across CNN, CNN Money, Business Destinations and more, plus media enquiries and press-kit requests.';
+
+// ---------------------------------------------------------------------------
+// Press mentions. Each outlet the work has appeared in gets a card. To publish
+// a link, fill in `title`, `url` (and optionally `date` / `blurb`) — a card
+// with a `url` becomes a clickable feature; without one it shows the outlet
+// with a quiet "feature link coming" note. No coverage is described until the
+// real headline and URL are added, so nothing here is invented.
+// ---------------------------------------------------------------------------
+const PRESS = [
+  { outlet: 'CNN', title: '', date: '', url: '', blurb: '' },
+  { outlet: 'CNN Money', title: '', date: '', url: '', blurb: '' },
+  { outlet: 'Business Destinations', title: '', date: '', url: '', blurb: '' },
+];
+
+const featured = PRESS.filter((p) => p.url);
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Press', item: 'https://www.belegendary.org/press/' },
+  ] },
+  { '@type': 'CollectionPage', '@id': 'https://www.belegendary.org/press/#page', name: 'Press & Media', about: 'Media coverage of Be Legendary and James Carter', isPartOf: { '@type': 'Organization', name: 'Be Legendary' },
+    ...(featured.length ? { hasPart: featured.map((p) => ({ '@type': 'NewsArticle', headline: p.title, publisher: { '@type': 'Organization', name: p.outlet }, url: p.url })) } : {}) },
+];
+---
+<BaseLayout title={title} description={description} path={SLUGS.press} ogType="website" ogTitle="Press & Media — Be Legendary" ogDescription="Features and mentions across CNN, CNN Money, Business Destinations and more." schema={schema}>
+
+<div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:1080px;margin:0 auto;padding:84px 32px 48px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Press</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Press &amp; media</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,5.6vw,70px);line-height:1.01;letter-spacing:-0.02em;max-width:17ch;color:#FBF8F1;">The work, as the press has covered it.</h1>
+    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:58ch;color:rgba(244,240,231,0.8);">Features and mentions of Be Legendary and James Carter&rsquo;s work with executive teams. For interviews, commentary, or a press kit, the fastest way to reach us is below.</p>
+  </header>
+
+  <!-- AS FEATURED IN -->
+  <section style="max-width:1080px;margin:0 auto;padding:0 32px 8px;">
+    <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:20px;">As featured in</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;border-top:1px solid rgba(244,240,231,0.1);border-bottom:1px solid rgba(244,240,231,0.1);padding:26px 0;">
+      {PRESS.map((p) => (
+        <span style="font-family:'Newsreader',serif;font-size:clamp(20px,2.6vw,28px);color:rgba(244,240,231,0.82);letter-spacing:-0.01em;">{p.outlet}</span>
+      ))}
+    </div>
+  </section>
+
+  <!-- MENTIONS -->
+  <section style="max-width:1080px;margin:0 auto;padding:44px 32px 24px;">
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      {PRESS.map((p) => (
+        p.url ? (
+          <a href={p.url} target="_blank" rel="noopener" style="text-decoration:none;display:flex;flex-direction:column;background:#1B1810;border:1px solid rgba(244,240,231,0.14);border-radius:18px;padding:30px 32px;color:#F4F0E7;" onmouseover="this.style.borderColor='rgba(192,74,38,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">{p.outlet}{p.date ? ` · ${p.date}` : ''}</span>
+            <span style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.14;color:#FBF8F1;">{p.title}</span>
+            {p.blurb && (<span style="margin-top:12px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);">{p.blurb}</span>)}
+            <span style="margin-top:18px;font-weight:700;font-size:14.5px;color:#E0744A;">Read the feature &rarr;</span>
+          </a>
+        ) : (
+          <div style="display:flex;flex-direction:column;background:#181510;border:1px dashed rgba(244,240,231,0.16);border-radius:18px;padding:30px 32px;">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,240,231,0.55);">{p.outlet}</span>
+            <span style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;color:rgba(251,248,241,0.7);">Feature link coming</span>
+            <span style="margin-top:10px;font-size:14px;line-height:1.55;color:rgba(244,240,231,0.5);">We&rsquo;re gathering the archive link for this piece.</span>
+          </div>
+        )
+      ))}
+    </div>
+  </section>
+
+  <!-- MEDIA ENQUIRIES -->
+  <section style="max-width:1080px;margin:0 auto;padding:32px 32px 96px;">
+    <div style="background:linear-gradient(150deg,#1B1810,#100E0A);border:1px solid rgba(244,240,231,0.12);border-radius:22px;padding:46px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-80px;right:-60px;width:360px;height:360px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 64%);pointer-events:none;"></div>
+      <div style="position:relative;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;">Media enquiries</p>
+        <h2 style="margin-top:14px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.08;color:#FBF8F1;max-width:22ch;">Interviews, commentary, and press kit.</h2>
+        <p style="margin-top:16px;font-size:16.5px;line-height:1.6;color:rgba(244,240,231,0.82);max-width:56ch;">James Carter speaks on executive-team execution, the Flag Model, and why leadership teams know what to do and still don&rsquo;t do it. For quotes, interviews, or high-resolution assets, get in touch.</p>
+        <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;">
+          <a href={`mailto:${CONTACT_EMAIL}?subject=Press%20enquiry`} style="background:#C04A26;color:#fff;text-decoration:none;padding:13px 22px;border-radius:10px;font-weight:700;font-size:14.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Email press &amp; media</a>
+          <a href={SLUGS.about} style="border:1px solid rgba(244,240,231,0.22);color:#F4F0E7;text-decoration:none;padding:13px 22px;border-radius:10px;font-weight:600;font-size:14.5px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.45)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.22)'">About James &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter audience="teams" />
+
+</div>
+</BaseLayout>

@@ -65,6 +65,7 @@ export const SLUGS = {
   glossary: '/glossary/',
   resources: '/resources/',
   fieldNotes: '/field-notes/',
+  press: '/press/',
   // Field Notes cluster
   whyNotExecuting: '/why-isnt-my-executive-team-executing/',
   wontDecide: '/leadership-team-wont-make-decisions-without-me/',
