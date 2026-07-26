@@ -19,7 +19,7 @@ const schema = [
     description: 'The public offer ladder, sequenced by commitment. Each paid step credits 50% toward whatever you do next.',
     itemListElement: [
       { '@type': 'Offer', name: 'Calibration Call', priceCurrency: 'USD', price: '0', description: 'A free 15-minute conversation to confirm fit — a calibration, not a pitch.' },
-      { '@type': 'Offer', name: 'Solo ELFS (Executive Leadership Failure Simulation)', priceCurrency: 'USD', price: '7500', description: 'The diagnostic run solo, for the CEO alone — feel it yourself before bringing the team. Often waived for qualified executives.' },
+      { '@type': 'Offer', name: 'Solo ELFS (Executive Leadership Failure Simulation)', priceCurrency: 'USD', price: '7500', description: 'The diagnostic run solo, for the CEO alone — feel it yourself before bringing the team. Fees are credited toward Team LFS.' },
       { '@type': 'Offer', name: 'Team LFS (Team Leadership Failure Simulation)', priceCurrency: 'USD', price: '28000', description: 'In 90 minutes, see exactly why your leadership team knows what to do and still does not do it — per executive and as a team, with behavioral evidence and a FlagScore baseline. $28K–$35K.' },
       { '@type': 'Offer', name: 'Single Discipline Sprint', priceCurrency: 'USD', price: '45000', description: 'A 90-day sprint that fixes the one broken discipline the diagnostic found. $45K–$65K.' },
       { '@type': 'Offer', name: 'Leadership Retreat', priceCurrency: 'USD', price: '25000', description: 'A facilitated experiential retreat — Focused, Signature or Bespoke — that rebuilds what the diagnostic surfaced. $25K–$500K+.' },
@@ -73,7 +73,7 @@ const schema = [
           <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.06;margin:10px 0 8px;color:#3A0A0C;">Run it on yourself first</h2>
           <p style="font-size:15.5px;line-height:1.6;color:#4A3A34;margin-bottom:18px;flex:1;">The <strong>Executive Leadership Failure Simulation (ELFS)</strong>, run solo — feel the diagnostic yourself before you put it in front of your team. You go through it alone and see the quality of the individual read, then decide from experience whether to bring the whole team.</p>
           <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
-            <p style="font-family:'Newsreader',serif;font-size:24px;color:#3A0A0C;line-height:1.2;">$7,500<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;color:#8A6A64;">often waived for qualified executives</span></p>
+            <p style="font-family:'Newsreader',serif;font-size:24px;color:#3A0A0C;line-height:1.2;">$7,500<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;color:#8A6A64;">fees are credited toward Team LFS</span></p>
             <a href={SLUGS.elfs} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap;">How it works &rarr;</a>
           </div>
         </div>
