@@ -8,6 +8,7 @@ import { SLUGS } from '../../lib/site';
 
 const path = '/research-notes/post-mortem-would-not-qualify/';
 const paralysisHref = '/research-notes/what-decision-paralysis-costs/';
+const candorHref = '/research-notes/more-candor-will-make-it-worse/';
 const title = 'Your post-mortem would not have qualified | Be Legendary';
 const description =
   'Three meta-analyses agree the after-action review works, it takes under twenty minutes — yet almost no executive team runs a session that would qualify. What the research establishes, and why the constraint is safety, not process.';
@@ -78,7 +79,7 @@ const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);ma
     <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">Research Note</p>
     <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">Your post-mortem would not have qualified</h1>
     <p style="margin-top:20px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; July 2026</p>
-    <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.5);">Second in a series. The first examined <a href={paralysisHref} style="color:#D98A5E;text-decoration:none;">what decision paralysis actually costs</a>.</p>
+    <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.5);">Part of a series on the five elements of the Flag Model. Earlier notes covered <a href={paralysisHref} style="color:#D98A5E;text-decoration:none;">what decision paralysis actually costs</a> and <a href={candorHref} style="color:#D98A5E;text-decoration:none;">why mandating candor backfires</a>.</p>
   </header>
 
   <!-- LEAD -->
@@ -146,9 +147,9 @@ const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);ma
     <p style={bodyP}>So run the test. Take a decision from six months ago that went badly and ask what the team would do differently. If the answer is a list of what went wrong, that is description, not learning. Then run it again on something that went well. <strong style="color:#FBF8F1;">If the team can do the first exercise and not the second, your constraint is not process. It is safety, and no framework fixes that.</strong></p>
 
     <h2 style={h2}>Which one broke</h2>
-    <p style={bodyP}>Learning is one of four disciplines that hold a team upright, and execution fails when one of them goes.</p>
+    <p style={bodyP}>Learning is one of four disciplines that run off a central set of operating priorities, and execution fails when one of them goes.</p>
     <div style="margin:8px 0;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:30px 32px;">
-      <p style="font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.86);margin:0;">The <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> sets out which four disciplines hold a team upright &mdash; the Decision, the Rhythm, the Standard, the Learning &mdash; and what rebuilding each one requires. Eighteen minutes is not the hard part.</p>
+      <p style="font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.86);margin:0;">The <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> sets out the five elements and what rebuilding each one requires. Eighteen minutes is not the hard part.</p>
     </div>
 
     <!-- Sources -->

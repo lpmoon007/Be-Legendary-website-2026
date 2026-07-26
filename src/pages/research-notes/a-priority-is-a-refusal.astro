@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SLUGS } from '../../lib/site';
+
+const path = '/research-notes/a-priority-is-a-refusal/';
+const paralysisHref = '/research-notes/what-decision-paralysis-costs/';
+const postmortemHref = '/research-notes/post-mortem-would-not-qualify/';
+const candorHref = '/research-notes/more-candor-will-make-it-worse/';
+const sprawlHref = '/research-notes/sprawl-persists-because-it-works/';
+const title = 'A priority is a refusal | Be Legendary';
+const description =
+  'Every executive team can name its priorities — the least useful fact about them. The gap the research documents: stated priorities versus the movement of money and people. Why a priority that declines nothing is a preference with better branding.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Research Notes', item: 'https://www.belegendary.org/research-notes/' },
+    { '@type': 'ListItem', position: 3, name: 'A priority is a refusal', item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'Article',
+    headline: 'A priority is a refusal',
+    datePublished: '2026-07-26', dateModified: '2026-07-26',
+    author: { '@id': 'https://www.belegendary.org/#james' },
+    publisher: { '@id': 'https://www.belegendary.org/#org' },
+    mainEntityOfPage: `https://www.belegendary.org${path}`,
+    description: 'The distance between a leadership team\'s stated priorities and the movement of money and people. Half of 4,701 CEOs reallocate 10% or less of their resources year over year — so a priority that has caused no refusal is not a priority.',
+    citation: [
+      { '@type': 'CreativeWork', name: 'Stop Chasing Too Many Priorities', author: 'P. Leinwand and C. Mainardi', url: 'https://hbr.org/2011/04/stop-chasing-too-many-prioriti' },
+      { '@type': 'CreativeWork', name: 'Why Strategy Execution Unravels — and What to Do About It', author: 'D. Sull, R. Homkes and C. Sull', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
+      { '@type': 'CreativeWork', name: 'Reinvention on the Edge of Tomorrow: 28th Annual Global CEO Survey', author: 'PwC', url: 'https://www.pwc.com/gx/en/ceo-survey/2025/28th-ceo-survey.pdf' },
+    ],
+  },
+];
+
+const sources = [
+  { name: 'Leinwand, P., &amp; Mainardi, C. (2011). Stop Chasing Too Many Priorities. <em>Harvard Business Review</em>, April 2011.', url: 'https://hbr.org/2011/04/stop-chasing-too-many-prioriti' },
+  { name: 'Sull, D., Homkes, R., &amp; Sull, C. (2015). Why Strategy Execution Unravels &mdash; and What to Do About It. <em>Harvard Business Review</em>, March 2015.', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
+  { name: 'PwC (2025). Reinvention on the Edge of Tomorrow: 28th Annual Global CEO Survey. 4,701 CEOs across 109 countries, fielded 1 Oct&ndash;8 Nov 2024.', url: 'https://www.pwc.com/gx/en/ceo-survey/2025/28th-ceo-survey.pdf' },
+];
+
+const bodyP = 'font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:26px;';
+const whiteP = 'font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;';
+const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.12;letter-spacing:-0.015em;color:#FBF8F1;margin:52px 0 20px;";
+const keyline = "margin:6px 0 30px;padding:4px 0 4px 24px;border-left:3px solid #C04A26;font-family:'Newsreader',serif;font-size:clamp(21px,2.6vw,28px);line-height:1.35;color:#FBF8F1;";
+const caveat = 'margin:0 0 26px;background:#181510;border:1px solid rgba(244,240,231,0.14);border-left:3px solid rgba(217,138,94,0.7);border-radius:12px;padding:22px 26px;';
+const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);margin:0;';
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="A priority is a refusal" ogDescription="If naming something a priority hasn't caused you to decline something you'd otherwise have funded, it isn't a priority — it's a preference with better branding." schema={schema}>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 32px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.15),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.researchNotes} style="color:inherit;text-decoration:none;">Research Notes</a><span>/</span><span style="color:#D98A5E;">A priority is a refusal</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">Research Note</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:16ch;">A priority is a refusal</h1>
+    <p style="margin-top:20px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; July 2026</p>
+    <p style="margin-top:6px;font-size:14px;color:rgba(244,240,231,0.5);">Part of a series on the five elements of the Flag Model. Earlier notes covered <a href={paralysisHref} style="color:#D98A5E;text-decoration:none;">decision paralysis</a>, <a href={postmortemHref} style="color:#D98A5E;text-decoration:none;">after-action reviews</a>, <a href={candorHref} style="color:#D98A5E;text-decoration:none;">why mandating candor backfires</a>, and <a href={sprawlHref} style="color:#D98A5E;text-decoration:none;">why sprawl persists</a>.</p>
+  </header>
+
+  <!-- LEAD -->
+  <div style="max-width:880px;margin:0 auto;padding:16px 32px 0;">
+    <p class="bl-speakable" style="font-size:clamp(19px,2.2vw,23px);line-height:1.6;color:#FBF8F1;margin-bottom:26px;">Every executive team that has been through a strategy process can name its priorities. That is the least useful fact about them.</p>
+    <p style={bodyP}>This note is about a gap the research documents clearly and that almost nobody reads correctly: the distance between a leadership team&rsquo;s stated priorities and the movement of money and people. It is also the note where we have to be most careful, because the evidence here is broad, large, and made almost entirely of self-report.</p>
+
+    <h2 style={h2}>What the research shows</h2>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Leinwand and Mainardi</strong> (<em>Harvard Business Review</em>, 2011) reported on a survey of 1,800 global executives, run through Strategy&amp;&rsquo;s Coherence Profiler. Sixty-four percent said they had too many conflicting priorities.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Sull, Homkes and Sull</strong> (<em>Harvard Business Review</em>, 2015), surveying 7,600 managers across 262 companies, found that only 55 percent of the middle managers they reached could name even one of their company&rsquo;s top five priorities. Among members of the top teams themselves, just over half said they had a clear sense of how the company&rsquo;s major priorities fit together.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">PwC&rsquo;s 28th Annual Global CEO Survey</strong> (2025) put the question to 4,701 CEOs across 109 countries, fielded in October and November 2024. Forty-two percent said their company would remain viable for less than ten years on its current path. Then the number that matters more: roughly half told PwC they reallocate 10 percent or less of their financial and human resources from one year to the next, and more than two-thirds reallocate less than 20 percent. On average, 7 percent of revenue over the prior five years came from businesses created in that period. PwC names weak decision-making processes and low resource reallocation among the principal barriers to reinvention.</p>
+
+    <div style={caveat}>
+      <p style={caveatP}><strong style="color:#F4F0E7;">On method, and this is the honest weakness of this note.</strong> All three are surveys. Not one is a meta-analysis, an experiment, or an operational study, which distinguishes this element from the Learning discipline where three meta-analyses agree. The populations differ usefully &mdash; global executives, middle managers, CEOs &mdash; and the decades differ, but self-report is self-report, and a CEO estimating his own reallocation rate is not the same as auditing his capital budget.</p>
+      <p style={`${caveatP} margin-top:14px;`}><strong style="color:#F4F0E7;">On independence, which nobody else citing these will tell you.</strong> Strategy&amp; is PwC&rsquo;s strategy consulting arm, and Leinwand is one of its senior figures as well as an architect of the instrument his survey used. So two of the three sources here trace to the same parent firm. That is precisely the correlated-method problem this series exists to flag, and it applies to us here. Treat the 2011 and 2024 figures as one house&rsquo;s view sampled twice, not as two independent confirmations.</p>
+      <p style={`${caveatP} margin-top:14px;`}><strong style="color:#F4F0E7;">On segment.</strong> The 2011 survey is fifteen years old and its methodology beyond the sample size is not published. Sull&rsquo;s companies had median annual sales around $430 million, overlapping the mid-market band, with average headcount near 6,000 and a sector concentration that does not. PwC&rsquo;s global figures are weighted by country nominal GDP, so they lean toward large economies, and the sample is global CEOs rather than mid-market American ones.</p>
+    </div>
+
+    <div style={caveat}>
+      <p style={caveatP}><strong style="color:#F4F0E7;">A corruption already circulating.</strong> The 42 percent viability figure appears in the wild as 72 percent on at least one widely shared commentary, and as 40 percent in several summaries. Note also that PwC&rsquo;s own survey contains a second 42 percent &mdash; for CEOs expecting headcount growth of 5 percent or more. Two different findings, one number, adjacent pages. Quote the sentence, not the figure.</p>
+    </div>
+
+    <h2 style={h2}>What everyone gets wrong about this</h2>
+    <p style={bodyP}>Read those findings together and the standard conclusion is that companies have too many priorities and communicate them badly. The fix that follows is communication: fewer priorities, cascaded harder, repeated more often, printed on something.</p>
+    <p style={whiteP}>Here is the claim we make that the research does not.</p>
+    <p style={keyline}>A priority is not a statement. It is a refusal.</p>
+    <p style={bodyP}>If naming something as a priority has not caused you to decline something you would otherwise have funded, it is not a priority. It is a preference with better branding.</p>
+    <p style={bodyP}>The reallocation figures are what make this more than wordplay. Half of 4,701 CEOs move a tenth or less of their money and people year over year. Whatever last year&rsquo;s priorities were, the resource base barely registered them. Which means a leadership team can run a rigorous offsite, land on three genuinely good priorities, communicate them competently, and move 8 percent of the budget. Nothing in those two facts contradicts the other. That coexistence is the failure, and it is invisible to any diagnostic that asks whether people know the priorities.</p>
+    <p style={bodyP}>It also reframes Sull&rsquo;s 55 percent. The usual reading is a communication breakdown: middle managers were not told. We read it differently. With more than five priorities there is no top five to name, and a manager who cannot name one is not necessarily uninformed &mdash; he may be accurately reporting that the list does not function as a ranking. We flag that as our interpretation. Sull&rsquo;s team measured awareness, not whether the list was operative.</p>
+    <p style={bodyP}>Underneath sits the reason this stays broken in teams that fully understand the argument. Setting a real Flag is not a naming exercise. It is a subtraction exercise, and subtraction has a named loser in the room. Every item you decline to name is somebody&rsquo;s budget, somebody&rsquo;s headcount, somebody&rsquo;s year. Adding a priority costs nothing at the moment of the meeting. Removing one costs a relationship. So lists grow &mdash; not because leaders lack discipline in the abstract, but because the discipline is priced in a currency the meeting is bad at spending.</p>
+    <p style={bodyP}>That step is ours. No study cited here measured the social cost of subtraction.</p>
+
+    <h2 style={h2}>The test</h2>
+    <p style={bodyP}>If the Flag is what broke on your team, you would predict something specific, and it is the opposite of what a communication problem predicts. Your team can name the priorities. Nothing has been declined on their basis.</p>
+    <p style={bodyP}>So run two checks.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">First</strong>, list your last five significant resource commitments. For each, ask whether it was settled by reference to the priorities or by who asked and how well they asked. Then ask what you turned down in the last two quarters, and why. If the answer to the second question is nothing, you do not have priorities. You have a list &mdash; and the honest version of that sentence is worth sitting with before you fix anything.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Second</strong>, and this is the harder one. Ask each member of your team to write down the three priorities separately, without conferring. Do not check whether the words match, because they usually will. Check whether each person would apply them the same way to the same pending decision that is currently on your desk. Agreement on wording is cheap. Agreement on what the wording rules out is the thing you actually need and almost certainly do not have.</p>
+
+    <h2 style={h2}>Where this element sits</h2>
+    <p style={bodyP}>The Flag is not one of the four disciplines. It sits at the centre, and the four run off it: the Decision, the Rhythm, the Standard, the Learning. A team with no operative Flag cannot fail at the Decision in any interesting way, because there is no standard against which a decision was the wrong one. The <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> sets out all five.</p>
+    <div style="margin:8px 0;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:30px 32px;">
+      <p style="font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.86);margin:0;">One thing we cannot tell you. PwC establishes that reallocation is low and names it as a barrier to survival. It does not quantify what higher reallocation is worth. Nobody we could find has put a performance number on moving resources against stated priorities in a mid-market company. If you want that number, it does not yet exist &mdash; and we would rather say so than build one.</p>
+    </div>
+
+    <!-- Sources -->
+    <div style="margin-top:48px;border-top:1px solid rgba(244,240,231,0.12);padding-top:26px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">Sources</p>
+      <p style="font-size:13.5px;color:rgba(244,240,231,0.5);margin-bottom:18px;">All primary. Every figure was verified against the publishing source&rsquo;s own text.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+        {sources.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener" style="color:#F4F0E7;text-decoration:none;font-size:15px;line-height:1.5;" onmouseover="this.style.color='#E0744A'" onmouseout="this.style.color='#F4F0E7'"><span set:html={s.name}></span> <span style="color:#E0744A;">&#8599;</span></a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+  </article>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>
