@@ -22,7 +22,7 @@ const schema = [
   ] },
   { '@type': 'Article',
     headline: 'Sprawl persists because it works at first',
-    datePublished: '2026-07-25', dateModified: '2026-07-25',
+    datePublished: '2026-07-25', dateModified: '2026-07-26',
     author: { '@id': 'https://www.belegendary.org/#james' },
     publisher: { '@id': 'https://www.belegendary.org/#org' },
     mainEntityOfPage: `https://www.belegendary.org${path}`,
@@ -32,6 +32,7 @@ const schema = [
       { '@type': 'CreativeWork', name: 'Impact of Workload on Service Time and Patient Safety: An Econometric Analysis of Hospital Operations', author: 'D. S. KC and C. Terwiesch', url: 'https://pubsonline.informs.org/doi/10.1287/mnsc.1090.1037' },
       { '@type': 'CreativeWork', name: 'Information, Technology, and Information Worker Productivity', author: 'S. Aral, E. Brynjolfsson and M. Van Alstyne', url: 'https://dspace.mit.edu/handle/1721.1/87556' },
       { '@type': 'CreativeWork', name: 'Understanding Fire Fighting in New Product Development', author: 'N. P. Repenning', url: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/1540-5885.1850285' },
+      { '@type': 'CreativeWork', name: 'Work Trend Index: Breaking Down the Infinite Workday', author: 'Microsoft', url: 'https://www.microsoft.com/en-us/worklab/work-trend-index/breaking-down-infinite-workday' },
     ],
   },
 ];
@@ -41,6 +42,7 @@ const sources = [
   { name: 'KC, D. S., &amp; Terwiesch, C. (2009). Impact of Workload on Service Time and Patient Safety: An Econometric Analysis of Hospital Operations. <em>Management Science</em>, 55(9), 1486&ndash;1498.', url: 'https://pubsonline.informs.org/doi/10.1287/mnsc.1090.1037' },
   { name: 'Aral, S., Brynjolfsson, E., &amp; Van Alstyne, M. (2012). Information, Technology, and Information Worker Productivity. <em>Information Systems Research</em>, 23(3), 849&ndash;867.', url: 'https://dspace.mit.edu/handle/1721.1/87556' },
   { name: 'Repenning, N. P. (2001). Understanding Fire Fighting in New Product Development. <em>Journal of Product Innovation Management</em>, 18(5), 285&ndash;300.', url: 'https://onlinelibrary.wiley.com/doi/abs/10.1111/1540-5885.1850285' },
+  { name: 'Microsoft (2025). Work Trend Index: Breaking Down the Infinite Workday.', url: 'https://www.microsoft.com/en-us/worklab/work-trend-index/breaking-down-infinite-workday' },
 ];
 
 const bodyP = 'font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:26px;';
@@ -71,7 +73,7 @@ const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);ma
     <p class="bl-speakable" style="font-size:clamp(19px,2.2vw,23px);line-height:1.6;color:#FBF8F1;margin-bottom:26px;">Every executive team carrying a dozen half-finished initiatives has been told to focus. The advice is correct and useless, in that order. It names a destination and no mechanism, which is why teams agree with it, kill nothing, and add two more things by June.</p>
 
     <div style={caveat}>
-      <p style={caveatP}><strong style="color:#F4F0E7;">A disclosure.</strong> This note is about the mechanism, and the evidence here is the weakest of the four disciplines we have written about. There is no meta-analysis. Not one study examined an executive team. One of the four sources below is a simulation rather than a measurement. We are telling you that up front because the advice industry states this case with more confidence than the research supports &mdash; and because you should weight what follows accordingly.</p>
+      <p style={caveatP}><strong style="color:#F4F0E7;">A disclosure.</strong> This note is about the mechanism, and the evidence here is the weakest of the four disciplines we have written about. There is no meta-analysis. Not one study examined an executive team. One of the five sources below is a simulation rather than a measurement. We are telling you that up front because the advice industry states this case with more confidence than the research supports &mdash; and because you should weight what follows accordingly.</p>
     </div>
 
     <h2 style={h2}>What the research shows</h2>
@@ -79,13 +81,16 @@ const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);ma
     <p style={bodyP}><strong style="color:#FBF8F1;">KC and Terwiesch</strong> (<em>Management Science</em>, 2009) analyzed operational data from two hospital services and found something that complicates the standard advice. Workers speed up as load rises. A 10 percent increase in load reduced length of stay by two days in cardiothoracic surgery. But the acceleration does not hold. Sustained high load reversed it, with a 1 percent increase in their overwork measure adding roughly six hours to length of stay, and quality measures degraded alongside it.</p>
     <p style={bodyP}><strong style="color:#FBF8F1;">Aral, Brynjolfsson and Van Alstyne</strong> (<em>Information Systems Research</em>, 2012) studied an executive recruiting firm using five years of project accounting data across more than 1,300 projects, 125,000 email messages, and survey data on the same workers. Their published finding is that more multitasking was associated with more project output, subject to diminishing marginal returns.</p>
     <p style={bodyP}><strong style="color:#FBF8F1;">Repenning</strong> (<em>Journal of Product Innovation Management</em>, 2001) built a formal model of firefighting in a multi-project development environment. The model produces two results worth carrying: firefighting is self-reinforcing, and multi-project systems are considerably more vulnerable to it than practitioners assume. Past a tipping point, the system settles into a stable equilibrium where reacting to late-stage problems becomes the actual development process.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Microsoft</strong> (<em>Work Trend Index</em>, 2025) measured the environment sprawl produces, using aggregated Microsoft&nbsp;365 telemetry through February 2025 alongside a global survey. In the survey, 48 percent of employees and 52 percent of leaders said their work felt chaotic and fragmented. In the telemetry, 60 percent of meetings were ad hoc rather than scheduled.</p>
 
     <div style={caveat}>
-      <p style={caveatP}><strong style="color:#F4F0E7;">On what these are and are not.</strong> A large-sample manager survey, an econometric study of hospital operations, an econometric panel study of one recruiting firm, and a simulation. Different methods, and no shared population, which is the honest form of convergence. But hospitals are not leadership teams, recruiters are not executives, and a model demonstrates what follows from its assumptions rather than what happens in the world. Sull&rsquo;s sample had median annual sales near $430 million, overlapping the mid-market band, with average headcount around 6,000 and a sector mix that does not.</p>
+      <p style={caveatP}><strong style="color:#F4F0E7;">On what these are and are not.</strong> A large-sample manager survey, an econometric study of hospital operations, an econometric panel study of one recruiting firm, a simulation, and product telemetry published by the company selling the remedy. Different methods, and no shared population, which is the honest form of convergence. But hospitals are not leadership teams, recruiters are not executives, a model demonstrates what follows from its assumptions rather than what happens in the world, and telemetry from one software vendor&rsquo;s tenants is not a random sample of working life. Sull&rsquo;s sample had median annual sales near $430 million, overlapping the mid-market band, with average headcount around 6,000 and a sector mix that does not.</p>
     </div>
 
     <div style={caveat}>
-      <p style={caveatP}><strong style="color:#F4F0E7;">One correction worth making, because we made it on ourselves.</strong> The most-quoted claim in this area is that multitasking has an inverted-U relationship with productivity, with completion rates declining beyond an optimum. That language appears in the 2007 NBER working paper version of the Aral study. The peer-reviewed version published in <em>Information Systems Research</em> states the weaker result: more output with diminishing returns. Diminishing returns and decline are different claims. We use the published one. If you have seen the inverted U cited, it was probably sourced from the working paper.</p>
+      <p style={caveatP}><strong style="color:#F4F0E7;">Two corrections worth making, one of them on ourselves.</strong></p>
+      <p style={`${caveatP} margin-top:14px;`}>The most-quoted claim in this area is that multitasking has an inverted-U relationship with productivity, with completion rates declining beyond an optimum. That language appears in the 2007 NBER working paper version of the Aral study. The peer-reviewed version published in <em>Information Systems Research</em> states the weaker result: more output with diminishing returns. Diminishing returns and decline are different claims. We use the published one. If you have seen the inverted U cited, it was probably sourced from the working paper.</p>
+      <p style={`${caveatP} margin-top:14px;`}>The second is the figure you have almost certainly seen quoted from the Microsoft research: that employees are interrupted every two minutes. Microsoft&rsquo;s own methodology note states that this figure is based on the top 20 percent of users by ping volume received. It is not the average worker &mdash; it is the most-pinged fifth of them. That qualifier is stated plainly by Microsoft and dropped by nearly everyone who repeats the number. We are not using the two-minute figure, because the version of it in circulation is not what the data says.</p>
     </div>
 
     <h2 style={h2}>What this actually explains</h2>

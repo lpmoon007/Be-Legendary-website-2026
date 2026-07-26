@@ -19,7 +19,7 @@ const schema = [
   ] },
   { '@type': 'Article',
     headline: 'What decision paralysis actually costs',
-    datePublished: '2026-07-25', dateModified: '2026-07-25',
+    datePublished: '2026-07-25', dateModified: '2026-07-26',
     author: { '@id': 'https://www.belegendary.org/#james' },
     publisher: { '@id': 'https://www.belegendary.org/#org' },
     mainEntityOfPage: `https://www.belegendary.org${path}`,
@@ -29,6 +29,8 @@ const schema = [
       { '@type': 'CreativeWork', name: 'Making Fast Strategic Decisions in High-Velocity Environments', author: 'K. M. Eisenhardt', url: 'https://journals.aom.org/doi/10.5465/256434' },
       { '@type': 'CreativeWork', name: 'Why Strategy Execution Unravels — and What to Do About It', author: 'D. Sull, R. Homkes and C. Sull', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
       { '@type': 'CreativeWork', name: 'Cleaning Up the Big Muddy: A Meta-Analytic Review of the Determinants of Escalation of Commitment', author: 'D. J. Sleesman, D. E. Conlon, G. McNamara and J. E. Miles', url: 'https://journals.aom.org/doi/10.5465/amj.2010.0696' },
+      { '@type': 'CreativeWork', name: 'Pulse Survey: 100 Days In, What\'s Next for Business (678 US executives, May 2025)', author: 'PwC', url: 'https://www.pwc.com/us/en/library/pulse-survey/business-outlook-100-days.html' },
+      { '@type': 'CreativeWork', name: 'C-Suite Outlook: Executive Views on Policy, Risk, and Growth', author: 'PwC', url: 'https://www.pwc.com/us/en/america-in-motion/executive-views-policy-risk-growth.html' },
     ],
   },
 ];
@@ -38,6 +40,8 @@ const sources = [
   { name: 'Eisenhardt, K. M. (1989). Making Fast Strategic Decisions in High-Velocity Environments. <em>Academy of Management Journal</em>, 32(3), 543&ndash;576.', url: 'https://journals.aom.org/doi/10.5465/256434' },
   { name: 'Sull, D., Homkes, R., &amp; Sull, C. (2015). Why Strategy Execution Unravels &mdash; and What to Do About It. <em>Harvard Business Review</em>, March 2015.', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
   { name: 'Sleesman, D. J., Conlon, D. E., McNamara, G., &amp; Miles, J. E. (2012). Cleaning Up the Big Muddy: A Meta-Analytic Review of the Determinants of Escalation of Commitment. <em>Academy of Management Journal</em>, 55(3), 541&ndash;562.', url: 'https://journals.aom.org/doi/10.5465/amj.2010.0696' },
+  { name: 'PwC (2025). Pulse Survey: 100 Days In, What&rsquo;s Next for Business. Survey of 678 US executives, May 2025.', url: 'https://www.pwc.com/us/en/library/pulse-survey/business-outlook-100-days.html' },
+  { name: 'PwC (2026). C-Suite Outlook: Executive Views on Policy, Risk, and Growth.', url: 'https://www.pwc.com/us/en/america-in-motion/executive-views-policy-risk-growth.html' },
 ];
 
 const costs = [
@@ -70,15 +74,20 @@ const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,
     <p style={bodyP}>That is worth saying plainly at the top of a note about cost, because the honest version of this subject starts with what the research does <em>not</em> establish.</p>
 
     <h2 style={h2}>What independent research does agree on</h2>
-    <p style={bodyP}>Three bodies of work, built with different methods in different decades on different populations, converge on two findings.</p>
+    <p style={bodyP}>Four bodies of work, built with different methods in different decades on different populations, converge on two findings.</p>
     <p style={bodyP}><strong style="color:#FBF8F1;">Baum and Wally</strong> (<em>Strategic Management Journal</em>, 2003) collected measures from 318 CEOs between 1996 and 2000 and modeled strategic decision speed against subsequent firm performance. Faster strategic decision-making predicted later growth and profitability.</p>
     <p style={bodyP}><strong style="color:#FBF8F1;">Eisenhardt</strong> (<em>Academy of Management Journal</em>, 1989) studied eight microcomputer firms inductively and found the opposite of the intuitive result: the executive teams that decided fastest drew on <em>more</em> information and generated <em>more</em> alternatives than the slow ones, not fewer. Fast decision-making tracked with stronger performance.</p>
     <p style={bodyP}><strong style="color:#FBF8F1;">Sull, Homkes and Sull</strong> (<em>Harvard Business Review</em>, 2015) surveyed 7,600 managers across 262 companies. They were not asking about decision speed at all, but they documented the machinery around it: when senior executives insist on making the important calls themselves, middle managers learn to escalate conflicts rather than resolve them, and over time lose the capacity to work things out on their own.</p>
-    <p style={bodyP}>The agreement is the argument here, and it holds because the methods do not overlap. One is a four-year longitudinal model of CEO-reported speed. One is inductive case work in a single industry nearly forty years ago. One is a large-sample manager survey. None was designed to confirm the others. Most articles you will read on this topic cite a single study &mdash; usually the author&rsquo;s own &mdash; which is why the convergence rarely gets made.</p>
-    <p style={bodyP}>What none of them do is price it. Not one establishes what paralysis costs a specific company, and none was built on mid-market firms in the first place.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">PwC</strong> (<em>Pulse Survey</em>, May 2025) asked 678 US executives at public and private companies across six sectors, and 57 percent said they were missing opportunities because they could not make decisions quickly enough. Roughly a third of that sample sat in the C-suite proper, with board directors and functional chiefs making up the rest.</p>
+    <p style={bodyP}>The agreement is the argument here, and it holds because the methods do not overlap. One is a four-year longitudinal model of CEO-reported speed. One is inductive case work in a single industry nearly forty years ago. One is a large-sample manager survey. One is a point-in-time survey of American executives. None was designed to confirm the others. Most articles you will read on this topic cite a single study &mdash; usually the author&rsquo;s own &mdash; which is why the convergence rarely gets made.</p>
+    <p style={bodyP}>What none of them do is price it. Not one establishes what paralysis costs a specific company.</p>
+
+    <div style="margin:0 0 26px;background:#181510;border:1px solid rgba(244,240,231,0.14);border-left:3px solid rgba(217,138,94,0.7);border-radius:12px;padding:22px 26px;">
+      <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);margin:0;"><strong style="color:#F4F0E7;">On segment.</strong> Among the companies Sull&rsquo;s team reached, median annual sales were around $430 million and average headcount around 6,000, concentrated in financial services, information technology, telecommunications and oil and gas, with a third based in emerging markets. The revenue median sits inside the $50M&ndash;$1B band. The headcount and the sector mix do not describe most mid-market companies. Baum and Wally&rsquo;s data ends in 2000. Eisenhardt&rsquo;s work covers eight firms in one industry and is framed as propositions rather than tested hypotheses. PwC&rsquo;s sample is the closest to you in nationality and seniority and the furthest from you in rigor, being a single self-report item with no performance outcome attached. Use all of it to aim. None of it to conclude.</p>
+    </div>
 
     <div style="margin:0 0 30px;background:#181510;border:1px solid rgba(244,240,231,0.14);border-left:3px solid rgba(217,138,94,0.7);border-radius:12px;padding:22px 26px;">
-      <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);margin:0;"><strong style="color:#F4F0E7;">On segment.</strong> Among the companies Sull&rsquo;s team reached, median annual sales were around $430 million and average headcount around 6,000, concentrated in financial services, information technology, telecommunications and oil and gas, with a third based in emerging markets. The revenue median sits inside the $50M&ndash;$1B band. The headcount and the sector mix do not describe most mid-market companies. Baum and Wally&rsquo;s data ends in 2000. Eisenhardt&rsquo;s work covers eight firms in one industry and is framed as propositions rather than tested hypotheses. Use all of it to aim. None of it to conclude.</p>
+      <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);margin:0;"><strong style="color:#F4F0E7;">A warning about that last number, from the same source.</strong> PwC ran the survey again roughly a year later. In the follow-up, 67 percent of executives reported being ahead of competitors on speed of decision-making and execution, and 90 percent said their company was in a stronger position than two years earlier. PwC itself describes this as a sharp shift from the May 2025 result. Executive decision-making did not transform in twelve months &mdash; what moved was sentiment. This is the clearest available demonstration of why self-reported decision speed cannot carry weight in an argument about cost, and we are citing the 57 percent while telling you exactly how soft it is.</p>
     </div>
 
     <h2 style={h2}>Where the cost actually lands</h2>

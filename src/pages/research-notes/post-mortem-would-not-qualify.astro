@@ -10,7 +10,7 @@ const path = '/research-notes/post-mortem-would-not-qualify/';
 const paralysisHref = '/research-notes/what-decision-paralysis-costs/';
 const title = 'Your post-mortem would not have qualified | Be Legendary';
 const description =
-  'The best-evidenced practice in management takes under 20 minutes, and almost no executive team runs a real one. What after-action-review research establishes — and why your post-mortem would not qualify.';
+  'Three meta-analyses agree the after-action review works, it takes under twenty minutes — yet almost no executive team runs a session that would qualify. What the research establishes, and why the constraint is safety, not process.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -20,13 +20,15 @@ const schema = [
   ] },
   { '@type': 'Article',
     headline: 'Your post-mortem would not have qualified',
-    datePublished: '2026-07-25', dateModified: '2026-07-25',
+    datePublished: '2026-07-25', dateModified: '2026-07-26',
     author: { '@id': 'https://www.belegendary.org/#james' },
     publisher: { '@id': 'https://www.belegendary.org/#org' },
     mainEntityOfPage: `https://www.belegendary.org${path}`,
-    description: 'After-action reviews are among the best-evidenced practices in management — roughly 20% improvement, under twenty minutes — yet almost no executive team runs a session that would qualify. Why the constraint is safety, not process.',
+    description: 'Three independent meta-analyses (Tannenbaum & Cerasoli; Keiser & Arthur ×2) agree the after-action review works — effects rising from d=0.67 to d=0.92 as the base widens — yet almost no executive team runs a session that would qualify. Why the constraint is safety, not process.',
     citation: [
       { '@type': 'CreativeWork', name: 'Do Team and Individual Debriefs Enhance Performance? A Meta-Analysis', author: 'S. I. Tannenbaum and C. P. Cerasoli', url: 'https://journals.sagepub.com/doi/10.1177/0018720812448394' },
+      { '@type': 'CreativeWork', name: 'A Meta-Analysis of the Effectiveness of the After-Action Review (or Debrief) and Factors That Influence Its Effectiveness', author: 'N. L. Keiser and W. Arthur Jr.', url: 'https://doi.org/10.1037/apl0000821' },
+      { '@type': 'CreativeWork', name: 'A Meta-Analysis of Task and Training Characteristics That Contribute to or Attenuate the Effectiveness of the After-Action Review (or Debrief)', author: 'N. L. Keiser and W. Arthur Jr.', url: 'https://link.springer.com/article/10.1007/s10869-021-09784-x' },
       { '@type': 'CreativeWork', name: 'After-Event Reviews: Drawing Lessons From Successful and Failed Experience', author: 'S. Ellis and I. Davidi', url: 'https://pubmed.ncbi.nlm.nih.gov/16162059/' },
       { '@type': 'CreativeWork', name: 'Psychological Safety and Learning Behavior in Work Teams', author: 'A. C. Edmondson', url: 'https://journals.sagepub.com/doi/10.2307/2666999' },
       { '@type': 'CreativeWork', name: 'Why Strategy Execution Unravels — and What to Do About It', author: 'D. Sull, R. Homkes and C. Sull', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
@@ -36,6 +38,8 @@ const schema = [
 
 const sources = [
   { name: 'Tannenbaum, S. I., &amp; Cerasoli, C. P. (2013). Do Team and Individual Debriefs Enhance Performance? A Meta-Analysis. <em>Human Factors</em>, 55(1), 231&ndash;245.', url: 'https://journals.sagepub.com/doi/10.1177/0018720812448394' },
+  { name: 'Keiser, N. L., &amp; Arthur, W., Jr. (2021). A Meta-Analysis of the Effectiveness of the After-Action Review (or Debrief) and Factors That Influence Its Effectiveness. <em>Journal of Applied Psychology</em>, 106(7), 1007&ndash;1032.', url: 'https://doi.org/10.1037/apl0000821' },
+  { name: 'Keiser, N. L., &amp; Arthur, W., Jr. (2022). A Meta-Analysis of Task and Training Characteristics That Contribute to or Attenuate the Effectiveness of the After-Action Review (or Debrief). <em>Journal of Business and Psychology</em>, 37, 953&ndash;976.', url: 'https://link.springer.com/article/10.1007/s10869-021-09784-x' },
   { name: 'Ellis, S., &amp; Davidi, I. (2005). After-Event Reviews: Drawing Lessons From Successful and Failed Experience. <em>Journal of Applied Psychology</em>, 90(5), 857&ndash;871.', url: 'https://pubmed.ncbi.nlm.nih.gov/16162059/' },
   { name: 'Edmondson, A. C. (1999). Psychological Safety and Learning Behavior in Work Teams. <em>Administrative Science Quarterly</em>, 44(2), 350&ndash;383.', url: 'https://journals.sagepub.com/doi/10.2307/2666999' },
   { name: 'Sull, D., Homkes, R., &amp; Sull, C. (2015). Why Strategy Execution Unravels &mdash; and What to Do About It. <em>Harvard Business Review</em>, March 2015.', url: 'https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it' },
@@ -56,11 +60,12 @@ const disqualified = [
 ];
 
 const bodyP = 'font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:26px;';
+const whiteP = 'font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;';
 const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.12;letter-spacing:-0.015em;color:#FBF8F1;margin:52px 0 20px;";
 const caveat = 'margin:0 0 26px;background:#181510;border:1px solid rgba(244,240,231,0.14);border-left:3px solid rgba(217,138,94,0.7);border-radius:12px;padding:22px 26px;';
 const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);margin:0;';
 ---
-<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="Your post-mortem would not have qualified" ogDescription="The best-evidenced practice in management takes under twenty minutes — and almost no executive team runs a real one." schema={schema}>
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="Your post-mortem would not have qualified" ogDescription="Three meta-analyses agree the after-action review works — and almost no executive team runs a session that would qualify." schema={schema}>
   <SiteHeader audience="teams" logoHref="/" />
 
   <article>
@@ -78,30 +83,25 @@ const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);ma
 
   <!-- LEAD -->
   <div style="max-width:880px;margin:0 auto;padding:16px 32px 0;">
-    <p class="bl-speakable" style="font-size:clamp(19px,2.2vw,23px);line-height:1.6;color:#FBF8F1;margin-bottom:26px;">There is one practice in the management literature with an unusually strong evidence base behind it. It is cheap, it takes under twenty minutes, and it works about as well for teams as for individuals. Almost no executive team runs it.</p>
+    <p class="bl-speakable" style="font-size:clamp(19px,2.2vw,23px);line-height:1.6;color:#FBF8F1;margin-bottom:26px;">There is one practice in the management literature with an unusually strong evidence base behind it. It is cheap, it takes under twenty minutes, and three separate meta-analyses agree it works. Almost no executive team runs it.</p>
     <p style={bodyP}>That gap is the subject of this note, and the interesting part is not that teams neglect a good idea. It is that most of them believe they already do it.</p>
 
     <h2 style={h2}>What independent research agrees on</h2>
-    <p style={bodyP}>Four bodies of work, built with genuinely different methods on genuinely different populations, converge.</p>
-    <p style={bodyP}><strong style="color:#FBF8F1;">Tannenbaum and Cerasoli</strong> (<em>Human Factors</em>, 2013) ran a meta-analysis of debriefs and after-action reviews across 46 independent samples drawn from 31 studies, with a combined sample of 2,136. Average improvement over control conditions was roughly 25 percent. Effects held for teams and individuals, in simulated and real settings, in medical and nonmedical populations, and under both within-group and between-group designs. The average session in the studies they reviewed lasted about eighteen minutes.</p>
-    <p style={bodyP}><strong style="color:#FBF8F1;">Ellis and Davidi</strong> (<em>Journal of Applied Psychology</em>, 2005) ran a quasi-field experiment with soldiers on repeated navigation exercises. Those who reviewed both their successes and their failures after each training day improved significantly more than those who reviewed only their failures. The authors also found something less expected: before any intervention, participants&rsquo; mental models of the events that went badly were already richer than their models of the events that went well.</p>
-    <p style={bodyP}><strong style="color:#FBF8F1;">Edmondson</strong> (<em>Administrative Science Quarterly</em>, 1999) studied 51 work teams inside a manufacturing company using a multimethod design and found that team psychological safety predicted learning behavior, and that learning behavior mediated the relationship between safety and team performance. Team efficacy did not survive as a predictor once psychological safety was controlled for.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Tannenbaum and Cerasoli</strong> (<em>Human Factors</em>, 2013) meta-analyzed debriefs and after-action reviews across 46 independent samples drawn from 31 studies, combined sample 2,136. Average improvement over control was roughly 25 percent, an effect size of d&nbsp;=&nbsp;0.67, falling to d&nbsp;=&nbsp;0.54 with three outliers removed. Effects held for teams and individuals, in simulated and real settings, in medical and nonmedical populations, and under both within-group and between-group designs. The average session lasted about eighteen minutes.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Keiser and Arthur</strong> (<em>Journal of Applied Psychology</em>, 2021) rebuilt the analysis on a larger base: 61 studies, 107 effect sizes, 915 teams and 3,499 individuals. They found d&nbsp;=&nbsp;0.79, larger than the 2013 estimate and larger than some of the biggest training-method effects in the literature. Two characteristics consistently contributed: alignment of the review to the individual or the team, and use of objective rather than subjective performance-review media.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Keiser and Arthur</strong> (<em>Journal of Business and Psychology</em>, 2022) extended it again to 83 studies, 134 effect sizes, 955 teams and 4,684 individuals, finding an overall d&nbsp;=&nbsp;0.92. This is the finding that matters most here, and it is not the number. They report that the AAR is most effective in task environments combining high complexity with ambiguity &mdash; environments that supply no intrinsic feedback about whether you did well. They identify those as most often project and decision-making tasks, and they note that such tasks are concentrated in industries that do not traditionally use after-action reviews.</p>
     <p style={bodyP}><strong style="color:#FBF8F1;">Sull, Homkes and Sull</strong> (<em>Harvard Business Review</em>, 2015) surveyed 7,600 managers across 262 companies. Fewer than a third said they could have open and honest discussions about the most difficult issues. A third said many important issues were treated as off limits entirely.</p>
-    <p style={bodyP}>A meta-analysis of quasi-experiments, a field experiment, a multimethod field study, and a large-sample manager survey. Soldiers, surgical teams, manufacturing crews, corporate managers. No shared instrument, no shared population, no shared decade. They were not built to confirm each other, which is why the agreement between them carries weight that any one of them would not.</p>
+    <p style={bodyP}>Three independent meta-analyses, conducted by two different research groups nine years apart over substantially different bodies of primary studies, all point the same direction and none contradicts the others. That is a stronger evidentiary position than anything else written about executive teams. The effect estimates rise as the base widens, which is unusual and worth noting rather than exploiting: the honest reading is that the true effect sits somewhere in a range roughly bounded by d&nbsp;=&nbsp;0.54 and d&nbsp;=&nbsp;0.92, and that the practice works. Anyone quoting a single precise percentage from this literature has picked one study.</p>
 
     <div style={caveat}>
-      <p style={caveatP}><strong style="color:#F4F0E7;">On segment, and this one matters.</strong> Not one of these studies examined an executive team. Tannenbaum and Cerasoli drew primarily on military, medical, aviation and educational contexts, with an average team size of about five. Ellis and Davidi studied soldiers navigating terrain. Edmondson studied one manufacturing company. Sull&rsquo;s sample had median annual sales around $430 million &mdash; inside the mid-market band &mdash; but average headcount near 6,000 and a heavy concentration in financial services, IT, telecom and oil and gas.</p>
-    </div>
-    <p style="font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;">So the honest position is this: the best-evidenced practice in the management literature has essentially never been tested on the people running the company. We think it transfers. We are telling you plainly that transfer is an inference, not a finding.</p>
-
-    <div style={caveat}>
-      <p style={caveatP}><strong style="color:#F4F0E7;">And on the number.</strong> The figure you will see quoted everywhere is 25 percent. The authors&rsquo; own conservative estimate, with three outlier studies removed, is 21 percent. Studies using objective performance criteria produced smaller effects than those using subjective ratings, and even those landed near 20 percent. Most of the underlying research is quasi-experimental, and the authors say directly that causal inference should be drawn carefully. Take 20 percent, not 25.</p>
+      <p style={caveatP}><strong style="color:#F4F0E7;">On segment, and this one matters.</strong> None of these studies examined an executive team directly. The underlying research is drawn from military, medical, aviation and educational settings, with average team sizes around five. That was the honest limitation of this note in its first version, and the 2022 finding narrows it without closing it. Keiser and Arthur did not study executives &mdash; but they did identify the task profile where AARs pay off most, and it is the profile executive work fits: complex, ambiguous, and lacking any built-in signal about whether the call was right. The inference from that task profile to your leadership team is ours. The task profile itself is theirs.</p>
+      <p style={`${caveatP} margin-top:14px;`}>Sull&rsquo;s sample had median annual sales around $430 million, which sits inside the mid-market band, alongside average headcount near 6,000 and a sector concentration that does not.</p>
     </div>
 
     <h2 style={h2}>What the research names, and what it misses</h2>
     <p style={bodyP}>The advice that follows from all of this is &ldquo;run after-action reviews.&rdquo; Most executive teams hear that and conclude they already do. They hold post-mortems. They run quarterly business reviews. They do 360s.</p>
-    <p style="font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;">Here is the claim we make that the research does not.</p>
-    <p style={bodyP}>Those are not after-action reviews, and the meta-analysis says so in its own methodology. Before Tannenbaum and Cerasoli could measure anything, they had to define a debrief tightly enough to decide what to exclude. They settled on four required elements.</p>
+    <p style={whiteP}>Here is the claim we make that the research does not.</p>
+    <p style={bodyP}>Those are not after-action reviews, and the 2013 meta-analysis says so in its own methodology. Before Tannenbaum and Cerasoli could measure anything, they had to define a debrief tightly enough to decide what to exclude. They settled on four required elements.</p>
   </div>
 
   <!-- FOUR ELEMENTS -->
@@ -128,17 +128,18 @@ const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);ma
   </div>
 
   <div style="max-width:880px;margin:0 auto;padding:30px 32px 0;">
-    <p style="font-size:18.5px;line-height:1.72;color:#FBF8F1;margin-bottom:26px;">Most executive teams have never conducted a single session that would have qualified for inclusion in this meta-analysis. Not one. That is checkable, which is the point of putting it in writing.</p>
+    <p style={whiteP}>Most executive teams have never conducted a single session that would have qualified for inclusion in any of these three meta-analyses. Not one. That is checkable, which is the point of putting it in writing.</p>
 
     <h2 style={h2}>Why it isn&rsquo;t a process problem</h2>
-    <p style={bodyP}>Look at the four elements again and notice what three of them have in common. Non-punitive intent. Multiple sources instead of the boss&rsquo;s version. Self-discovery instead of being told. None of those is a technique. All three are conditions about whether the room is safe enough for people to say what they actually saw.</p>
-    <p style={bodyP}>Edmondson&rsquo;s finding supplies the mechanism. Learning behavior is what carries psychological safety through to performance. Without the safety, the behavior does not appear, and without the behavior, nothing transfers. Set that against Sull&rsquo;s numbers &mdash; where fewer than a third of managers report being able to discuss the hardest issues openly &mdash; and the picture resolves.</p>
-    <p style={bodyP}>We flag this as our synthesis rather than either study&rsquo;s finding. Edmondson measured manufacturing teams and a specific construct; Sull measured self-reported candor in a different population. Neither set out to explain executive-team debriefs. Our reading is that the reason your team does not run real after-action reviews is not that it lacks a protocol. Protocols are free and everywhere. It is that the protocol requires a room where being wrong out loud is survivable &mdash; and installing a protocol into a room that isn&rsquo;t will produce a meeting that satisfies the form and none of the four elements.</p>
+    <p style={bodyP}>Look at the four elements again and notice what three of them have in common. Non-punitive intent. Multiple sources instead of the boss&rsquo;s version. Self-discovery instead of being told. None is a technique. All three are conditions about whether the room is safe enough for people to say what they actually saw.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Edmondson</strong> (<em>Administrative Science Quarterly</em>, 1999) supplies the mechanism. Studying 51 work teams in a manufacturing company, she found that psychological safety predicted learning behavior, and that learning behavior mediated the relationship between safety and team performance. Team efficacy did not survive as a predictor once safety was controlled for. Set that against Sull&rsquo;s numbers &mdash; where fewer than a third of managers report being able to discuss the hardest issues openly &mdash; and the picture resolves.</p>
+    <p style={bodyP}>We flag this as our synthesis. Edmondson measured manufacturing teams and a specific construct; Sull measured self-reported candor in a different population. Our reading is that the reason your team does not run real after-action reviews is not that it lacks a protocol. Protocols are free and everywhere. It is that the protocol requires a room where being wrong out loud is survivable &mdash; and installing a protocol into a room that isn&rsquo;t will produce a meeting that satisfies the form and none of the four elements.</p>
     <p style={bodyP}>This is why &ldquo;we should do better retrospectives&rdquo; reliably changes nothing. It treats a discipline as a calendar item.</p>
 
     <h2 style={h2}>Start with the quarter that went well</h2>
-    <p style={bodyP}>Ellis and Davidi&rsquo;s result points somewhere counterintuitive and useful. The instinct is to examine failures, and the teams that examined only failures learned less than the teams that examined both. Their second finding explains why. People already understand their failures in more detail than their successes. Reviewing what went wrong is largely re-treading ground the team has covered privately for weeks. The win is the unexamined case.</p>
-    <p style={bodyP}>There is a second reason to start there, and this one is ours rather than theirs. The successful quarter is the safest thing your team can put on the table. If the room cannot yet examine a failure without it becoming an accountability conversation, examining a success is the entry point that does not require the safety to exist first. It builds it.</p>
+    <p style={bodyP}><strong style="color:#FBF8F1;">Ellis and Davidi</strong> (<em>Journal of Applied Psychology</em>, 2005) ran a quasi-field experiment with soldiers on repeated navigation exercises. Those who reviewed both successes and failures after each training day improved significantly more than those who reviewed only failures. Their second finding explains why: before any intervention, participants&rsquo; mental models of events that went badly were already richer than their models of events that went well.</p>
+    <p style={bodyP}>The instinct is to examine failures. Reviewing what went wrong largely re-treads ground the team has covered privately for weeks. The win is the unexamined case.</p>
+    <p style={bodyP}>There is a second reason to start there, and this one is ours. The successful quarter is the safest thing your team can put on the table. If the room cannot yet examine a failure without it becoming an accountability conversation, examining a success is the entry point that does not require the safety to exist first. It builds it.</p>
 
     <h2 style={h2}>The test</h2>
     <p style={bodyP}>If the Learning discipline is what broke on your team, you would predict two things. The same category of mistake returns each year wearing a different name. And the team can describe what happened in detail but cannot name what it changed about how it operates.</p>
@@ -153,7 +154,7 @@ const caveatP = 'font-size:16px;line-height:1.62;color:rgba(244,240,231,0.72);ma
     <!-- Sources -->
     <div style="margin-top:48px;border-top:1px solid rgba(244,240,231,0.12);padding-top:26px;">
       <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:8px;">Sources</p>
-      <p style="font-size:13.5px;color:rgba(244,240,231,0.5);margin-bottom:18px;">All primary. Every figure was verified against the original study text.</p>
+      <p style="font-size:13.5px;color:rgba(244,240,231,0.5);margin-bottom:18px;">All primary. Every figure was verified against the original study text or the publishing journal&rsquo;s record.</p>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
         {sources.map((s) => (
           <li>
