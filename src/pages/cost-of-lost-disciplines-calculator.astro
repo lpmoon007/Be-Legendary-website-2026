@@ -6,7 +6,7 @@ import CostCalculator from '../components/CostCalculator.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Cost of Lost Disciplines Calculator | Be Legendary';
-const description = 'Cost of Lost Disciplines Calculator: estimate what decision chaos and misalignment cost your executive team each year, grounded in third-party research.';
+const description = 'Cost of Lost Disciplines Calculator: estimate what ineffective decision time costs your executive team each year — your own numbers times McKinsey\'s finding that ~58% of decision-making time runs ineffective.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -15,13 +15,13 @@ const schema = [
     { '@type': 'ListItem', position: 3, name: 'Cost of Lost Disciplines Calculator', item: 'https://www.belegendary.org/cost-of-lost-disciplines-calculator/' },
   ] },
   { '@type': 'FAQPage', mainEntity: [
-    { '@type': 'Question', name: 'How much does a misaligned executive team cost?', acceptedAnswer: { '@type': 'Answer', text: 'Research suggests mid-market companies lose roughly 2.5% to 4% of annual revenue to decision chaos and misalignment combined. McKinsey finds managers spend about 37% of their time making decisions and more than half of that time is wasted; LSA Global finds highly aligned companies grow revenue 58% faster and are 72% more profitable than misaligned peers. For a $50M company, 2.5–4% is $1.25M to $2M a year.' } },
-    { '@type': 'Question', name: 'What is the cost of poor decision-making in a company?', acceptedAnswer: { '@type': 'Answer', text: 'McKinsey illustrates ineffective decision-making as costing a typical Fortune 500 company around 530,000 days of lost management time a year — roughly $250M in labor. Scaled to a mid-market company, decision chaos alone tends to cost an estimated 1.5–2% of revenue.' } },
-    { '@type': 'Question', name: 'How is the Cost of Lost Disciplines Calculator estimate produced?', acceptedAnswer: { '@type': 'Answer', text: 'It applies conservative, published research ranges to your own numbers. The revenue-based estimate uses 2.5–4% of revenue (the research range for combined decision chaos and misalignment). The meeting-waste figure is calculated directly from your leadership headcount, hours in meetings, loaded hourly cost, and the share of meeting time lost to re-litigation. We show the ranges and cite the sources rather than asserting false precision.' } },
+    { '@type': 'Question', name: 'How much does a dysfunctional executive team cost?', acceptedAnswer: { '@type': 'Answer', text: 'The cost rarely appears as a P&L line, which is why most teams never quantify it. What can be measured cleanly is decision time: McKinsey finds managers spend about 37% of their time making decisions and that roughly 58% of that time is used ineffectively. Applied to a leadership team\'s size, decision-meeting hours and loaded hourly cost, that typically runs into the hundreds of thousands of dollars a year — and this calculator computes it directly from your own numbers.' } },
+    { '@type': 'Question', name: 'What is the cost of poor decision-making in a company?', acceptedAnswer: { '@type': 'Answer', text: 'McKinsey illustrates ineffective decision-making as costing a typical Fortune 500 company more than 530,000 days of lost management time a year — roughly $250M in labor. That is McKinsey\'s own illustration for a large enterprise, not a measured loss; this tool applies the same underlying figure — about 58% of decision-making time used ineffectively — to your own team\'s numbers.' } },
+    { '@type': 'Question', name: 'How is the Cost of Lost Disciplines Calculator estimate produced?', acceptedAnswer: { '@type': 'Answer', text: 'It multiplies your own inputs — leadership headcount, average decision-meeting hours, loaded hourly cost — by one published figure: McKinsey\'s finding that about 58% of decision-making time is used ineffectively. There is no revenue-percentage conversion and no recovery assumption, because neither is established by the underlying research. Every number in the result is your arithmetic times one cited coefficient.' } },
   ] },
 ];
 ---
-<BaseLayout title={title} description={description} path={SLUGS.costCalculator} ogTitle="The Cost of Lost Disciplines Calculator" ogDescription="Estimate what decision chaos and misalignment are costing your company — using conservative, third-party research ranges." schema={schema}>
+<BaseLayout title={title} description={description} path={SLUGS.costCalculator} ogTitle="The Cost of Lost Disciplines Calculator" ogDescription="Estimate what ineffective decision time is costing your leadership team — your own numbers, times McKinsey's published figure." schema={schema}>
   <SiteHeader audience="teams" logoHref="/" />
 
   <section style="position:relative;max-width:1140px;margin:0 auto;padding:80px 32px 40px;">
@@ -31,7 +31,7 @@ const schema = [
     </nav>
     <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Free research tool</p>
     <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.4vw,66px);line-height:1.02;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">What is a misaligned executive team costing you?</h1>
-    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:60ch;color:rgba(244,240,231,0.82);">It rarely shows up on a P&amp;L line &mdash; which is exactly why most leaders never quantify it. You're about to. <strong style="color:#FBF8F1;">Published studies suggest mid-market companies lose 2.5&ndash;4% of revenue</strong> to decision chaos and misalignment alone. Put in your numbers for a grounded estimate &mdash; using <em>their</em> research, not ours.</p>
+    <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:60ch;color:rgba(244,240,231,0.82);">It rarely shows up on a P&amp;L line &mdash; which is exactly why most leaders never quantify it. You're about to. <strong style="color:#FBF8F1;">McKinsey finds managers spend ~37% of their time on decisions, and ~58% of that time runs ineffective.</strong> Put in your team's numbers for a grounded estimate &mdash; your own math, times <em>their</em> published figure.</p>
   </section>
 
   <CostCalculator />
@@ -45,8 +45,8 @@ const schema = [
 
       <div class="bl-grid-collapse" style="margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;">
         <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:16px;padding:28px;">
-          <p style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;line-height:1;">37%</p>
-          <p style="margin-top:12px;font-size:15.5px;line-height:1.55;color:#3A372F;">of a manager's time goes to decision-making &mdash; and over half of it is wasted, costing a typical Fortune 500 ~530,000 days (~$250M) a year.</p>
+          <p style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;line-height:1;">37% &middot; 58%</p>
+          <p style="margin-top:12px;font-size:15.5px;line-height:1.55;color:#3A372F;">of a manager's time goes to decisions &mdash; and ~58% of that time runs ineffective. McKinsey illustrates the waste as ~530,000 days (~$250M) a year at a Fortune 500.</p>
           <p style="margin-top:12px;font-size:12.5px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#8A8578;"><a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:rgba(138,133,120,0.5);">McKinsey &middot; Decision making in the age of urgency &#8599;</a></p>
         </div>
         <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:16px;padding:28px;">
@@ -66,7 +66,7 @@ const schema = [
         </div>
       </div>
 
-      <p style="margin-top:26px;font-size:14px;line-height:1.6;color:#6B675E;max-width:80ch;">Method: the headline range applies the research figure of 2.5&ndash;4% of revenue (decision chaos ~1.5&ndash;2% per McKinsey scaling; misalignment ~1&ndash;2% per LSA Global) to your revenue. The meeting-waste figure is computed directly from your leadership headcount &times; meeting hours &times; loaded rate &times; wasted share &times; 52 weeks. Recovery assumes the research-supported 60&ndash;75% reversible over ~18 months. Figures are estimates, stated as ranges, and meant to inform a conversation &mdash; not to replace a financial audit.</p>
+      <p style="margin-top:26px;font-size:14px;line-height:1.6;color:#6B675E;max-width:80ch;">Method: the estimate is your own inputs &mdash; leadership headcount &times; decision-meeting hours &times; loaded rate &times; the share of that time that runs ineffective &times; 52 weeks. The default 58% share is McKinsey&rsquo;s published figure for how much decision-making time is typically ineffective; adjust it to your team. There is no revenue-percentage estimate and no recovery assumption &mdash; every figure is your arithmetic times one cited number, stated as a directional estimate, not a financial audit.</p>
     </div>
   </section>
 
