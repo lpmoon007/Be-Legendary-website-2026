@@ -5,9 +5,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'Executive Off-Road Leadership Immersion — Colorado & Sedona | Be Legendary';
+const title = 'Executive Off-Road Leadership Immersion — Las Vegas, Phoenix, Denver, LA & Salt Lake | Be Legendary';
 const description =
-  'A private, one-day, James-Carter-led off-road leadership immersion for executive teams — in Colorado\'s San Juan high country (fly in from Denver) or the Sedona red rock, out of Phoenix. Real terrain, real trust, real transformation. By invitation.';
+  'A private, one-day, James-Carter-led off-road leadership immersion for executive teams — within reach of Las Vegas, Phoenix–Scottsdale, Denver–Boulder, Los Angeles or Salt Lake City. Fly in, real terrain, back for dinner. By invitation.';
 
 // Gated pricing: Service + FAQ + Breadcrumb only. No Offer / price (invitation-only).
 const schema = [
@@ -20,17 +20,54 @@ const schema = [
     name: 'Off-Road Immersion — Executive Leadership Offsite',
     serviceType: 'Executive leadership offsite',
     provider: { '@id': 'https://www.belegendary.org/#org' },
-    areaServed: [ { '@type': 'AdministrativeArea', name: 'Colorado' }, { '@type': 'AdministrativeArea', name: 'Arizona' }, { '@type': 'City', name: 'Denver' }, { '@type': 'City', name: 'Sedona' }, { '@type': 'City', name: 'Phoenix' } ],
-    description: 'A private, one-day executive leadership immersion led by James Carter, run in Colorado\'s San Juan high country (teams gather in Denver and fly in to Montrose, or meet in southwest Colorado) and in the Sedona red rock of Arizona (out of Phoenix). Small executive teams spend a day off-road — two per Jeep, everyone driving and deciding — with facilitated leadership reflection tied to what happens on the trail. By invitation.',
+    areaServed: [ { '@type': 'City', name: 'Las Vegas' }, { '@type': 'City', name: 'Phoenix' }, { '@type': 'City', name: 'Scottsdale' }, { '@type': 'City', name: 'Denver' }, { '@type': 'City', name: 'Boulder' }, { '@type': 'City', name: 'Los Angeles' }, { '@type': 'City', name: 'Salt Lake City' }, { '@type': 'AdministrativeArea', name: 'Nevada' }, { '@type': 'AdministrativeArea', name: 'Arizona' }, { '@type': 'AdministrativeArea', name: 'Colorado' }, { '@type': 'AdministrativeArea', name: 'California' }, { '@type': 'AdministrativeArea', name: 'Utah' } ],
+    description: 'A private, one-day executive leadership immersion led by James Carter, run on real off-road terrain within reach of a major Western city — Las Vegas, Phoenix–Scottsdale, Denver–Boulder, Los Angeles or Salt Lake City. Small executive teams spend a day off-road — two per Jeep, everyone driving and deciding — with facilitated leadership reflection tied to what happens on the trail. By invitation.',
     audience: { '@type': 'Audience', audienceType: 'Executive teams' } },
   { '@type': 'FAQPage', mainEntity: [
-    { '@type': 'Question', name: 'Where does the Off-Road Immersion take place?', acceptedAnswer: { '@type': 'Answer', text: 'We run it in two settings. In Colorado, teams gather in Denver and — for a true single day — fly from Centennial into the San Juan high country near Montrose (our premium fly-in), or meet us directly in southwest Colorado. We also run the same day in the Sedona red rock of Arizona, out of Phoenix. What makes it singular is not the location; it is James and the method.' } },
+    { '@type': 'Question', name: 'Where does the Off-Road Immersion take place?', acceptedAnswer: { '@type': 'Answer', text: 'Within reach of a major Western city — you fly in, and it is roughly 30 to 100 minutes to the trailhead. We run it near Las Vegas (the Mojave), Phoenix–Scottsdale (the Sonoran Desert), Denver–Boulder (the Front Range high country), Los Angeles (Hungry Valley, out of Santa Clarita), and Salt Lake City (desert, canyon and Little Moab). What makes it singular is not the location; it is James and the method. Multi-day expeditions on iconic routes — the San Juan Alpine Loop, Sedona, Moab, the Rubicon — are arranged directly.' } },
     { '@type': 'Question', name: 'Is there a minimum group size?', acceptedAnswer: { '@type': 'Answer', text: 'No — we have hosted teams as small as two. It is built to be small and high-touch (two executives per Jeep). There is a minimum investment for the day regardless of headcount, which we share when you enquire.' } },
-    { '@type': 'Question', name: 'When can we do it?', acceptedAnswer: { '@type': 'Answer', text: 'In Colorado, roughly May through October, when the high country is open. Sedona runs close to year-round, with spring and fall the best windows, so between the two settings we can host in most seasons. We take a small number of executive teams each season, so dates are limited and arranged directly.' } },
+    { '@type': 'Question', name: 'When can we do it?', acceptedAnswer: { '@type': 'Answer', text: 'It depends on the setting, and between them we can host in most seasons. The desert metros — Las Vegas, Phoenix and Salt Lake City — run best October through April; Denver–Boulder is a summer-to-early-fall high-country window (roughly June through October); Los Angeles is best in spring and fall. We take a small number of executive teams each season, so dates are limited and arranged directly.' } },
     { '@type': 'Question', name: 'Do we need off-road experience or to be especially fit?', acceptedAnswer: { '@type': 'Answer', text: 'No experience is required. Professional off-road guides lead every mile, the vehicles are provided, and the day is risk-managed throughout. It is challenging and dramatic by design, but safe and guided — the difficulty is emotional and relational, not athletic.' } },
     { '@type': 'Question', name: 'How much does it cost?', acceptedAnswer: { '@type': 'Answer', text: 'This is an invitation, not a package, so there is no public price. There is a minimum investment for the day, which we share when you start the conversation. Tell us about your team and what you are trying to become, and we will take it from there.' } },
     { '@type': 'Question', name: 'What is included?', acceptedAnswer: { '@type': 'Answer', text: 'Everything but your arrival: James Carter-led facilitation, professional guides and all vehicles (two guests per Jeep), group staging and ground shuttle, premium food and beverage, and all permits, insurance, safety, and logistics. A pre-day alignment call tailors the leadership focus to your team’s real situation.' } },
   ] },
+];
+
+// ── Where we run it ──────────────────────────────────────────────────────────
+// One-day, metro-based off-road settings: fly in, ~60–90 min to staging, 4–6 hrs
+// on trail, back for dinner. `photo` is null until a real image is supplied —
+// drop the file at the path in the comment and set photo to it (alt too).
+const LOCATIONS = [
+  {
+    id: 'las-vegas', region: 'Nevada', name: 'The Mojave, off the Strip',
+    photo: null, photoAlt: '', // /assets/offroad/las-vegas/lv-vista.webp
+    body: 'Red sandstone, sandy washes and slickrock across the Nellis badlands, Nelson Hills and Eldorado Canyon — with the 45,000-acre Logandale trail system when a longer transfer earns it. Fly into Harry Reid International; staging is 30–75 minutes from the Strip, so it’s a breakfast departure and a dinner return with convention-grade lodging behind you.',
+    season: 'Best October–April; summer heat is the limiter.',
+  },
+  {
+    id: 'phoenix', region: 'Arizona', name: 'The Sonoran Desert',
+    photo: null, photoAlt: '', // /assets/offroad/phoenix/phx-vista.webp
+    body: 'Saguaro-studded desert and mountain climbs at Bulldog Canyon, Four Peaks and Box Canyon in the Tonto National Forest, 35–75 minutes from a Scottsdale resort. Distinctive scenery, beginner-to-advanced routes and dependable winter weather — with room to fold in navigation or a remote lunch.',
+    season: 'Best October–April.',
+  },
+  {
+    id: 'denver', region: 'Colorado', name: 'The Front Range high country',
+    photo: null, photoAlt: '', // /assets/offroad/colorado/co-front-range.webp
+    body: 'Historic mining roads and alpine scenery on the Switzerland Trail, Rampart Range and the Peak-to-Peak corridor — based out of Boulder to keep the transfer tight, 50–100 minutes to the trail. The most dramatic scenery of the five, when the date falls inside the mountain-access window.',
+    season: 'Primarily June–October, once the high country dries out.',
+  },
+  {
+    id: 'los-angeles', region: 'California', name: 'Hungry Valley',
+    photo: null, photoAlt: '', // /assets/offroad/los-angeles/la-hungry-valley.webp
+    body: 'A managed 19,000-acre recreation area with 130+ miles of trail north of Los Angeles — enough terrain to run several teams without every convoy sharing a route. Base in Santa Clarita or Valencia, not the coast, to hold the transfer near 75 minutes.',
+    season: 'Best spring and fall.',
+  },
+  {
+    id: 'salt-lake-city', region: 'Utah', name: 'Desert, canyon & Little Moab',
+    photo: null, photoAlt: '', // /assets/offroad/salt-lake-city/slc-little-moab.webp
+    body: 'Fast access to three kinds of terrain — Five Mile Pass desert, American Fork Canyon, and the sandstone of Little Moab — 35–75 minutes from a downtown hotel, with the airport minutes away. Moab-style rock without the expedition-scale commitment.',
+    season: 'Broad season in the lower desert; higher routes open in summer.',
+  },
 ];
 ---
 <BaseLayout
@@ -38,7 +75,7 @@ const schema = [
   description={description}
   path={SLUGS.offRoadImmersion}
   ogTitle="The Off-Road Immersion — An Executive Leadership Offsite"
-  ogDescription="A private, one-day leadership immersion in the Colorado high country or the Sedona red rock with James Carter. Where real terrain, real stakes, and real reflection build trust no boardroom can."
+  ogDescription="A private, one-day off-road leadership immersion within reach of Las Vegas, Phoenix, Denver, Los Angeles or Salt Lake City, led by James Carter. Where real terrain, real stakes, and real reflection build trust no boardroom can."
   schema={schema}
   bodyBg="#100E0A"
 >
@@ -58,9 +95,9 @@ const schema = [
     <div class="odi-hero__scrim"></div>
     <div class="odi-hero__inner">
       <div style="max-width:680px;">
-        <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive off-road immersion &middot; Colorado &amp; Sedona</p>
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Executive off-road immersion &middot; near five Western cities</p>
         <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(40px,6vw,76px);line-height:1.01;letter-spacing:-0.025em;color:#FBF8F1;text-shadow:0 2px 30px rgba(0,0,0,0.5);">Where the terrain <span style="font-style:italic;color:#E0744A;">becomes the lesson.</span></h1>
-        <p style="margin-top:26px;font-size:clamp(17px,2vw,21px);line-height:1.55;max-width:52ch;color:rgba(244,240,231,0.9);">A private, one-day off-road leadership immersion in the <strong style="color:#F4F0E7;">Colorado high country</strong> &mdash; or the <strong style="color:#F4F0E7;">Sedona red rock</strong> &mdash; led by James Carter, where real terrain, real stakes, and real reflection build trust no boardroom can.</p>
+        <p style="margin-top:26px;font-size:clamp(17px,2vw,21px);line-height:1.55;max-width:52ch;color:rgba(244,240,231,0.9);">A private, one-day off-road leadership immersion within reach of a major Western city &mdash; from the <strong style="color:#F4F0E7;">Mojave outside Las Vegas</strong> to the <strong style="color:#F4F0E7;">Colorado high country</strong> &mdash; led by James Carter, where real terrain, real stakes, and real reflection build trust no boardroom can.</p>
         <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
           <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation <span style="font-size:18px;">&rarr;</span></a>
         </div>
@@ -170,7 +207,7 @@ const schema = [
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,42px);line-height:1.06;letter-spacing:-0.015em;color:#FBF8F1;">Guests just arrive. We handle the trail.</h2>
         <p style="margin-top:20px;font-size:17px;line-height:1.62;color:rgba(244,240,231,0.8);max-width:46ch;">Staging, ground shuttle, vehicles, fuel, food, guiding, facilitation, and every permit and policy behind an off-road day on public land &mdash; all of it is ours to carry. Yours is to show up and be present.</p>
         <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;">
-          <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Colorado &amp; Sedona</span>
+          <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Five Western metros</span>
           <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Runs most of the year</span>
           <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">Small &amp; intimate</span>
           <span style="font-size:13px;font-weight:600;color:#F4F0E7;background:#211D15;border:1px solid rgba(244,240,231,0.14);padding:8px 14px;border-radius:999px;">No experience needed</span>
@@ -193,34 +230,29 @@ const schema = [
       </div>
     </div>
 
-    <!-- Where we run it — two settings, one experience -->
+    <!-- Where we run it — one-day settings near major Western cities -->
     <div style="max-width:1160px;margin:56px auto 0;padding-top:40px;border-top:1px solid rgba(244,240,231,0.1);">
-      <div style="max-width:64ch;margin-bottom:32px;">
+      <div style="max-width:66ch;margin-bottom:32px;">
         <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:14px;">Where we run it</p>
-        <p style="font-size:19px;line-height:1.6;color:rgba(244,240,231,0.86);">Two settings, one experience. What you can&rsquo;t get anywhere else isn&rsquo;t the zip code &mdash; it&rsquo;s James and this method, wrapped around the terrain. Pick the country that fits your team and your season.</p>
+        <p style="font-size:19px;line-height:1.6;color:rgba(244,240,231,0.86);">One experience, near a major Western city. Fly in, drive out to real terrain, and be back for dinner. What you can&rsquo;t get anywhere else isn&rsquo;t the zip code &mdash; it&rsquo;s James and this method, wrapped around the terrain. Pick the metro that fits your team and your season.</p>
       </div>
-      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-        <!-- Colorado -->
-        <div id="colorado" style="scroll-margin-top:90px;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:18px;overflow:hidden;">
-          <img src="/assets/offroad/colorado/co-alpine-loop-signs.webp" alt="Trail signs for Engineer Pass, Cinnamon Pass and Silverton on Colorado's Alpine Loop, above a green mining valley — the San Juan terrain of the Off-Road Immersion." width="1400" height="1050" loading="lazy" decoding="async" style="width:100%;height:220px;object-fit:cover;display:block;border-bottom:1px solid rgba(244,240,231,0.1);" />
-          <div style="padding:28px 30px;">
-            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Colorado</span>
-            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;color:#FBF8F1;margin:8px 0 10px;">The San Juan high country</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">Old mining roads onto 12,000-foot passes, ghost-town relics, and alpine tundra most people only see from a plane window. Teams gather in Denver; for a true single day we fly you from Centennial into the San Juans near Montrose &mdash; the premium way in &mdash; or meet you in the southwest.</p>
-            <p style="margin-top:14px;font-size:13.5px;color:rgba(244,240,231,0.55);">Best May&ndash;October, while the high country is open.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+        {LOCATIONS.map((loc) => (
+          <div id={loc.id} style="scroll-margin-top:90px;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;">
+            {loc.photo
+              ? <img src={loc.photo} alt={loc.photoAlt} width="1400" height="1050" loading="lazy" decoding="async" style="width:100%;height:210px;object-fit:cover;display:block;border-bottom:1px solid rgba(244,240,231,0.1);" />
+              : <div style="height:210px;display:flex;align-items:flex-end;justify-content:flex-start;padding:18px 20px;border-bottom:1px solid rgba(244,240,231,0.1);background:radial-gradient(130% 150% at 50% 0%,rgba(192,74,38,0.24),rgba(33,29,21,0.65));"><span style="font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.48);">Photo coming</span></div>
+            }
+            <div style="padding:26px 28px;">
+              <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">{loc.region}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:22px;color:#FBF8F1;margin:8px 0 10px;">{loc.name}</h3>
+              <p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.78);">{loc.body}</p>
+              <p style="margin-top:14px;font-size:13px;color:rgba(244,240,231,0.55);">{loc.season}</p>
+            </div>
           </div>
-        </div>
-        <!-- Sedona -->
-        <div id="sedona" style="scroll-margin-top:90px;background:#211D15;border:1px solid rgba(244,240,231,0.12);border-radius:18px;overflow:hidden;">
-          <img src="/assets/sedona/sedona-vista.webp" alt="A Sedona red-rock overlook, buttes and mesas stretching to the horizon — the high-desert terrain of the Off-Road Immersion in Arizona." width="1760" height="1338" loading="lazy" decoding="async" style="width:100%;height:220px;object-fit:cover;display:block;border-bottom:1px solid rgba(244,240,231,0.1);" />
-          <div style="padding:28px 30px;">
-            <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E0744A;">Sedona, Arizona</span>
-            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;color:#FBF8F1;margin:8px 0 10px;">The red rock</h3>
-            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.78);">Slickrock shelves, high-desert switchbacks, and buttes that glow at the end of the day. Teams fly into Phoenix Sky Harbor and we shuttle you up to Sedona &mdash; about two hours &mdash; where the day runs on real slickrock and high-desert trails.</p>
-            <p style="margin-top:14px;font-size:13.5px;color:rgba(244,240,231,0.55);">Runs close to year-round, spring and fall the best windows &mdash; mild when the mountains are snowed in.</p>
-          </div>
-        </div>
+        ))}
       </div>
+      <p style="margin-top:24px;font-size:14.5px;line-height:1.6;color:rgba(244,240,231,0.58);max-width:74ch;">Want the bucket-list version? We also run <strong style="color:rgba(244,240,231,0.8);font-weight:600;">multi-day expeditions</strong> on iconic routes &mdash; the San Juan Alpine Loop, the Sedona red rock, Moab and the Rubicon &mdash; arranged directly for teams that want the full journey rather than a single day.</p>
     </div>
   </section>
 
@@ -251,9 +283,9 @@ const schema = [
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.2vw,46px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;margin-bottom:34px;">Answered, plainly.</h2>
       <div style="display:flex;flex-direction:column;gap:24px;">
         {[
-          ['Where does it take place?','Two settings. In Colorado, teams gather in Denver and &mdash; for a true single day &mdash; fly from Centennial into the San Juan high country near Montrose (our premium fly-in), or meet us directly in southwest Colorado. We also run the same day in the Sedona red rock of Arizona, out of Phoenix. What makes it singular isn&rsquo;t the location &mdash; it&rsquo;s James and the method.'],
+          ['Where does it take place?','Within reach of a major Western city &mdash; you fly in, and it&rsquo;s roughly 30 to 100 minutes to the trailhead. We run it near Las Vegas (the Mojave), Phoenix&ndash;Scottsdale (the Sonoran Desert), Denver&ndash;Boulder (the Front Range high country), Los Angeles (Hungry Valley, out of Santa Clarita), and Salt Lake City (desert, canyon and Little Moab). What makes it singular isn&rsquo;t the location &mdash; it&rsquo;s James and the method. Prefer the bucket-list version? We also run multi-day expeditions on iconic routes &mdash; the San Juan Alpine Loop, Sedona, Moab, the Rubicon &mdash; arranged directly.'],
           ['Is there a minimum group size?','No &mdash; we&rsquo;ve hosted teams as small as two. It&rsquo;s built to be small and high-touch, two executives per Jeep. There is a minimum investment for the day regardless of headcount, which we share when you enquire.'],
-          ['When can we do it?','In Colorado, roughly May through October, while the high country is open. Sedona runs close to year-round, with spring and fall the best windows &mdash; so between the two settings we can host in most seasons. We take a small number of executive teams each season, so dates are limited and arranged directly with you.'],
+          ['When can we do it?','It depends on the setting, and between them we can host in most seasons. The desert metros &mdash; Las Vegas, Phoenix and Salt Lake City &mdash; run best October through April; Denver&ndash;Boulder is a summer-to-early-fall high-country window; Los Angeles is best in spring and fall. We take a small number of executive teams each season, so dates are limited and arranged directly with you.'],
           ['Do we need off-road experience or to be especially fit?','No experience required. Professional guides lead every mile, vehicles are provided, and the day is risk-managed throughout. It&rsquo;s dramatic by design but safe and guided &mdash; the difficulty is relational, not athletic.'],
           ['How much does it cost?','It&rsquo;s an invitation, not a package, so there&rsquo;s no public price. There is a minimum investment for the day, which we share when you start the conversation.'],
           ['How do we enquire?','Request an invitation below. Tell us about your team and what you&rsquo;re trying to become, and James will be in touch personally.'],
