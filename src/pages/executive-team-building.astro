@@ -13,8 +13,8 @@ const description =
 // the experience is not the intervention. Prices are deliberately omitted:
 // every engagement is scoped to the team, so a range would mislead.
 const formats = [
-  { name: 'The Executive Off-Road Immersion', href: SLUGS.offRoadImmersion, meta: 'One dramatic day', desc: 'A single day where real terrain makes the team’s true operating system visible — then a facilitated debrief turns it into the conversation you’ve been avoiding.' },
-  { name: 'Sailing Team Building', href: SLUGS.sailingTeamBuilding, meta: 'On the water', desc: 'A day of sailing built as a coupled system where the team’s real behavior surfaces under pressure — then a structured debrief converts it into how you operate.' },
+  { name: 'The Executive Off-Road Immersion', href: SLUGS.offRoadImmersion, meta: 'One dramatic day', img: '/assets/offroad/colorado/co-offroad-hero.webp', desc: 'A single day where real terrain makes the team’s true operating system visible — then a facilitated debrief turns it into the conversation you’ve been avoiding.' },
+  { name: 'Sailing Team Building', href: SLUGS.sailingTeamBuilding, meta: 'On the water', img: '/assets/sailing/schooner.webp', desc: 'A day of sailing built as a coupled system where the team’s real behavior surfaces under pressure — then a structured debrief converts it into how you operate.' },
 ];
 
 // "At a glance" — the EA's payload. Group size, duration, location, lead time,
@@ -110,11 +110,14 @@ const schema = [
         <!-- 3b. Single-day format cards -->
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
           {formats.map((c) => (
-            <a href={c.href} style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:32px 32px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(244,240,231,0.42)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
-              <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">{c.meta}</span>
-              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;margin-bottom:10px;color:#FBF8F1;">{c.name}</h3>
-              <p style="font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);margin-bottom:18px;">{c.desc}</p>
-              <span style="margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F4F0E7;">Explore <span>&rarr;</span></span>
+            <a href={c.href} style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(244,240,231,0.42)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+              <img src={c.img} alt={c.name} loading="lazy" width="800" height="440" style="width:100%;height:210px;object-fit:cover;display:block;" />
+              <div style="padding:28px 32px 32px;display:flex;flex-direction:column;flex:1;">
+                <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">{c.meta}</span>
+                <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;margin-bottom:10px;color:#FBF8F1;">{c.name}</h3>
+                <p style="font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);margin-bottom:18px;">{c.desc}</p>
+                <span style="margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F4F0E7;">Explore <span>&rarr;</span></span>
+              </div>
             </a>
           ))}
         </div>
