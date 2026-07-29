@@ -63,10 +63,12 @@ export function processInbound(
           setScore: score,
         };
       }
-      // 5–7: acknowledge, no reflection prompt.
+      // 5–7: still invite a one-line reflection. Research (Actionable 2025) shows
+      // journaling frequency drives behavior change regardless of sentiment — so
+      // every check-in gets a reflection opportunity, not just the highs and lows.
       return {
-        reply: messages.midAck(),
-        nextState: "idle",
+        reply: messages.midPrompt(),
+        nextState: "awaiting_journal",
         setScore: score,
       };
     }

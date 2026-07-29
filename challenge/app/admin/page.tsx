@@ -4,6 +4,8 @@ import {
   recentAverage,
   currentStreak,
   daysSilent,
+  isWeekOne,
+  weekOneCheckins,
   scoreColor,
   type CheckinRow,
 } from "@/lib/metrics";
@@ -13,6 +15,9 @@ export const dynamic = "force-dynamic";
 
 // Silent for this many local days → flagged "at risk" (matches the nudge threshold).
 const AT_RISK_DAYS = 3;
+// Week 1 is fragile and predictive (Actionable 2025 Factor #2), so flag silence
+// faster during a participant's first 7 days.
+const WEEK1_AT_RISK_DAYS = 2;
 
 interface UserRow {
   id: string;
@@ -52,13 +57,18 @@ export default async function RosterPage() {
   const active = roster.filter((u) => u.active);
   const inactive = roster.filter((u) => !u.active);
 
+  const enrolledISOFor = (u: UserRow) =>
+    localDateISO(u.timezone, new Date(u.created_at));
   const silentDaysFor = (u: UserRow) =>
-    daysSilent(
-      byUser.get(u.id) ?? [],
-      localDateISO(u.timezone),
-      localDateISO(u.timezone, new Date(u.created_at))
-    );
-  const atRiskCount = active.filter((u) => silentDaysFor(u) >= AT_RISK_DAYS).length;
+    daysSilent(byUser.get(u.id) ?? [], localDateISO(u.timezone), enrolledISOFor(u));
+  // Tighter threshold during week 1.
+  const riskThreshold = (u: UserRow) =>
+    isWeekOne(enrolledISOFor(u), localDateISO(u.timezone))
+      ? WEEK1_AT_RISK_DAYS
+      : AT_RISK_DAYS;
+  const atRiskCount = active.filter(
+    (u) => silentDaysFor(u) >= riskThreshold(u)
+  ).length;
 
   return (
     <div>
@@ -88,7 +98,10 @@ export default async function RosterPage() {
             const avg7 = recentAverage(checkins, 7);
             const streak = currentStreak(checkins, today);
             const silent = silentDaysFor(u);
-            const atRisk = u.active && silent >= AT_RISK_DAYS;
+            const enrolledISO = enrolledISOFor(u);
+            const weekOne = u.active && isWeekOne(enrolledISO, today);
+            const w1Count = weekOne ? weekOneCheckins(checkins, enrolledISO) : 0;
+            const atRisk = u.active && silent >= riskThreshold(u);
             return (
               <Link
                 key={u.id}
@@ -110,6 +123,11 @@ export default async function RosterPage() {
                     {atRisk && (
                       <span className="pill bg-accent/15 text-accent">
                         ⚠ {silent} days silent
+                      </span>
+                    )}
+                    {weekOne && !atRisk && (
+                      <span className="pill bg-accent-light/15 text-accent-light">
+                        Week 1 · {w1Count} check-in{w1Count === 1 ? "" : "s"}
                       </span>
                     )}
                   </div>

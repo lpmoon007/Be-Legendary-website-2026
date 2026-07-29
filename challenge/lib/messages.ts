@@ -24,6 +24,10 @@ export const messages = {
   highPrompt: (score: number) =>
     `An ${score} — strong. What made it land today?`,
 
+  // 5–7: acknowledge the rep, then invite a low-pressure one-line reflection.
+  midPrompt: () => `Solid — that's a rep in the bank. One line on how today went?`,
+
+  // Kept for reference / rollback; no longer used in the state machine.
   midAck: () => `Got it. See you tomorrow.`,
 
   journalAck: () => `Logged. Keep building.`,

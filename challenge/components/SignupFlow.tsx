@@ -21,6 +21,7 @@ export function SignupFlow() {
   const [phone, setPhone] = useState("");
   const [consent, setConsent] = useState(false);
   const [isPrivate, setIsPrivate] = useState(false);
+  const [why, setWhy] = useState("");
   // Delivery times (HH:MM, participant's local zone). Default 8 a.m. nudge / 4 p.m. check-in.
   const [reminderTime, setReminderTime] = useState("08:00");
   const [reflectionTime, setReflectionTime] = useState("16:00");
@@ -88,6 +89,7 @@ export function SignupFlow() {
     setPhone("");
     setConsent(false);
     setIsPrivate(false);
+    setWhy("");
     setReminderTime("08:00");
     setReflectionTime("16:00");
     setTzEditing(false);
@@ -118,6 +120,7 @@ export function SignupFlow() {
           commitment: isPrivate ? "(private)" : commitment,
           consent,
           private: isPrivate,
+          why: why.trim() || undefined,
           timezone,
           reminder_time: reminderTime,
           reflection_time: reflectionTime,
@@ -149,6 +152,11 @@ export function SignupFlow() {
           </h3>
           <p className="mt-1 text-sm text-ink-muted">
             One behavior. The smallest rep that changes who you become.
+          </p>
+          <p className="mt-2 text-xs text-ink-muted">
+            Pick something you can practice <span className="font-600">every
+            day</span> — not just in the big moments. Foundational habits that
+            show up in 1:1s, team meetings, even at home are what actually stick.
           </p>
 
           <div className="mt-5 space-y-3">
@@ -220,6 +228,26 @@ export function SignupFlow() {
               commitment or your reflections.
             </span>
           </label>
+
+          {!isPrivate && (
+            <label className="mt-4 block">
+              <span className="text-sm font-600 text-ink-body">
+                Why does this matter to you?{" "}
+                <span className="font-400 text-ink-muted">(optional)</span>
+              </span>
+              <textarea
+                value={why}
+                onChange={(e) => setWhy(e.target.value)}
+                rows={2}
+                placeholder="The deeper reason you want to keep this up…"
+                className="mt-1 w-full rounded-btn border border-ink-muted/40 bg-white px-4 py-3 text-ink-body outline-none focus:border-accent"
+              />
+              <span className="mt-1 block text-xs text-ink-muted">
+                A clear &ldquo;why&rdquo; is what gets you to do the rep on the
+                hard days.
+              </span>
+            </label>
+          )}
 
           <div className="mt-5 space-y-4">
             <label className="block">

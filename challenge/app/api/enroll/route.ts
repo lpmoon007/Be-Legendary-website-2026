@@ -40,6 +40,8 @@ interface EnrollBody {
   consent?: boolean;
   // Private mode (challenge landing page): keep the behavior + reflections private.
   private?: boolean;
+  // Optional "why this matters" motivation (Actionable Factor #1).
+  why?: string;
   // Workout-block extras (additive; require the workout-enroll migration).
   workout_id?: string;
   email?: string;
@@ -79,6 +81,8 @@ export async function POST(req: NextRequest) {
       : "America/Denver";
   const workoutId = payload.workout_id?.trim() || null;
   const email = payload.email?.trim() || null;
+  // Not stored in private mode (it may itself be personal).
+  const why = isPrivate ? null : payload.why?.trim() || null;
   // The user's chosen times replace the fixed 8 a.m. nudge and 4 p.m. check-in.
   const morningTime =
     payload.reminder_time && TIME_RE.test(payload.reminder_time)
@@ -125,6 +129,7 @@ export async function POST(req: NextRequest) {
     if (name) update.name = name;
     if (workoutId) update.workout_id = workoutId;
     if (email) update.email = email;
+    if (why) update.why = why;
     // Only reference the private column when it's set (works pre-migration for
     // the common non-private flows).
     if (isPrivate) update.is_private = true;
@@ -151,6 +156,7 @@ export async function POST(req: NextRequest) {
   };
   if (workoutId) insert.workout_id = workoutId;
   if (email) insert.email = email;
+  if (why) insert.why = why;
   if (isPrivate) insert.is_private = true;
 
   const { data: user, error } = await supabase
