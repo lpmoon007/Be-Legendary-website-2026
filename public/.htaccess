@@ -30,6 +30,12 @@ Redirect 301 /common-executive-team-challenges/ /teams/
 Redirect 301 /peopleops/ /teams/
 Redirect 301 /terms-of-use/ /privacy/
 
+# ── Off-Road Immersion consolidation ──
+# The near-duplicate Denver + Sedona geo pages were merged into one
+# location-neutral page (both settings shown there, anchored #colorado/#sedona).
+Redirect 301 /denver-executive-leadership-retreat/ /executive-off-road-immersion/
+Redirect 301 /sedona-executive-leadership-retreat/ /executive-off-road-immersion/
+
 # ── Fractional Chief People Officer → moved to Prove (provecq.com) ──
 # CQ/Prove owns the "who delivers" question; this page moved off the advisory
 # site. Catch both slash forms → the exact non-trailing-slash Prove URL.
