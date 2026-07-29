@@ -12,6 +12,7 @@ import {
   recentAverage,
   currentStreak,
   consistencyPct,
+  journalingRate,
   scoreColor,
   type CheckinRow,
 } from "@/lib/metrics";
@@ -29,6 +30,7 @@ interface UserDetail {
   afternoon_time: string;
   active: boolean;
   is_private: boolean;
+  why: string | null;
 }
 
 export default async function UserDetailPage({
@@ -41,7 +43,7 @@ export default async function UserDetailPage({
   const { data: user } = await supabase
     .from("users")
     .select(
-      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private"
+      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private, why"
     )
     .eq("id", params.id)
     .maybeSingle();
@@ -51,7 +53,7 @@ export default async function UserDetailPage({
 
   const { data: checkinData } = await supabase
     .from("checkins")
-    .select("date, score, journal_entry")
+    .select("date, score, journal_entry, journal_received_at")
     .eq("user_id", u.id)
     .order("date", { ascending: false });
 
@@ -78,6 +80,7 @@ export default async function UserDetailPage({
   const avg7 = recentAverage(checkins, 7);
   const streak = currentStreak(checkins, today);
   const consistency = consistencyPct(checkins, 30);
+  const journaling = journalingRate(checkins);
 
   return (
     <div>
@@ -123,6 +126,18 @@ export default async function UserDetailPage({
         </div>
       </div>
 
+      {/* Their "why" (motivation) */}
+      {!u.is_private && u.why && (
+        <div className="surface mt-4 bg-card-light p-5 shadow-card">
+          <span className="text-xs font-700 uppercase tracking-wide text-ink-muted">
+            Why it matters to them
+          </span>
+          <p className="mt-2 font-serif text-lg italic text-ink-heading">
+            &ldquo;{u.why}&rdquo;
+          </p>
+        </div>
+      )}
+
       {/* Send times (inline editable) */}
       <div className="surface mt-4 bg-card-light p-5 shadow-card">
         <span className="text-xs font-700 uppercase tracking-wide text-ink-muted">
@@ -139,10 +154,14 @@ export default async function UserDetailPage({
       </div>
 
       {/* Metric strip */}
-      <div className="mt-4 grid grid-cols-3 gap-4">
+      <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
         <StatTile label="7-day avg" value={avg7 != null ? avg7.toFixed(1) : "—"} />
         <StatTile label="Streak" value={`${streak}🔥`} />
         <StatTile label="Consistency" value={`${consistency}%`} />
+        <StatTile
+          label="Journaling"
+          value={journaling != null ? `${journaling}%` : "—"}
+        />
       </div>
 
       {/* Conversation — thread + coach reply box */}

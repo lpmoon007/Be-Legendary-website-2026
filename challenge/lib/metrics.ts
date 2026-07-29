@@ -4,6 +4,7 @@ export interface CheckinRow {
   date: string; // YYYY-MM-DD
   score: number | null;
   journal_entry: string | null;
+  journal_received_at?: string | null; // set even for private users (content isn't)
 }
 
 /** Score band → semantic color key. 1–4 low, 5–7 mid, 8–10 high. */
@@ -75,6 +76,50 @@ export function daysSilent(
     (Date.parse(`${todayISO}T00:00:00Z`) - Date.parse(`${anchor}T00:00:00Z`)) /
     86_400_000;
   return Math.max(0, Math.round(diff));
+}
+
+/**
+ * Journaling rate = share of scored check-ins that also included a reflection
+ * (0–100). Uses `journal_received_at` so it works for private users too (their
+ * reflection content isn't stored, but the fact that they reflected is).
+ * Actionable 2025: journaling frequency predicts behavior change.
+ */
+export function journalingRate(checkins: CheckinRow[]): number | null {
+  const scored = checkins.filter((c) => c.score != null);
+  if (scored.length === 0) return null;
+  const journaled = scored.filter(
+    (c) => c.journal_received_at != null || (c.journal_entry ?? "") !== ""
+  ).length;
+  return Math.round((journaled / scored.length) * 100);
+}
+
+/** Whole days since enrollment (day of enrollment = 0). */
+export function daysSinceEnroll(enrolledISO: string, todayISO: string): number {
+  const diff =
+    (Date.parse(`${todayISO}T00:00:00Z`) -
+      Date.parse(`${enrolledISO}T00:00:00Z`)) /
+    86_400_000;
+  return Math.max(0, Math.round(diff));
+}
+
+/** Is the participant still in their fragile first 7 days? (Actionable Factor #2) */
+export function isWeekOne(enrolledISO: string, todayISO: string): boolean {
+  return daysSinceEnroll(enrolledISO, todayISO) <= 6;
+}
+
+/** Count of scored check-ins within the first 7 days of enrollment. */
+export function weekOneCheckins(
+  checkins: CheckinRow[],
+  enrolledISO: string
+): number {
+  const start = Date.parse(`${enrolledISO}T00:00:00Z`);
+  const end = start + 7 * 86_400_000;
+  return checkins.filter(
+    (c) =>
+      c.score != null &&
+      Date.parse(`${c.date}T00:00:00Z`) >= start &&
+      Date.parse(`${c.date}T00:00:00Z`) < end
+  ).length;
 }
 
 /** Consistency = share of the last `windowDays` days with a check-in (0–100). */
