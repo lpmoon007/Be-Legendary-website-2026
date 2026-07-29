@@ -150,7 +150,17 @@ const resources = [
       <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">If you'd rather dig in yourself</p>
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#3A0A0C;max-width:22ch;">EA planning resources.</h2>
       <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#5A4A44;max-width:62ch;">Everything we'd handle for you is written up here too &mdash; agendas, planning guides, and ideas. Use them to brief us, or to build it yourself.</p>
-      <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+
+      <a href={SLUGS.retreatKit} style="margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;background:#64010a;border-radius:16px;padding:26px 30px;text-decoration:none;">
+        <span style="max-width:52ch;">
+          <span style="display:block;font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E8B4A0;margin-bottom:8px;">Free download</span>
+          <span style="display:block;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.15;color:#FBF3E7;">The Complete Retreat Planning Kit</span>
+          <span style="display:block;margin-top:6px;font-size:14.5px;line-height:1.5;color:rgba(246,239,224,0.82);">The principles, the agenda shape, a logistics checklist, the prep timeline, and the 30-day follow-through &mdash; in one PDF.</span>
+        </span>
+        <span style="flex:none;display:inline-flex;align-items:center;gap:9px;background:#F6EFE0;color:#64010a;padding:14px 24px;border-radius:999px;font-weight:800;font-size:14.5px;">Get the kit <span>&rarr;</span></span>
+      </a>
+
+      <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
         {resources.map((r) => (
           <a href={r.href} style="display:flex;flex-direction:column;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:14px;padding:24px 26px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.55)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)'">
             <span style="font-family:'Newsreader',serif;font-size:19px;line-height:1.2;color:#3A0A0C;">{r.title}</span>
