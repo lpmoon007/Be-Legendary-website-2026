@@ -168,6 +168,9 @@ export const SLUGS = {
   // reframes it toward the serious diagnostic offering (buildingteams.com/
   // executive-team-building/ 301s here). Deliberately NOT in the header nav.
   executiveTeamBuilding: '/executive-team-building/',
+  // Sailing spoke off the executive-team-building hub — the Shackleton Adventure
+  // on San Francisco Bay, reframed as a behavioral laboratory (not an event).
+  sailingTeamBuilding: '/sailing-team-building/',
   teamRetreats: '/teams/retreats/',
   destinations: '/teams/retreats/destinations/',
   retreatFormats: '/teams/retreats/formats/',

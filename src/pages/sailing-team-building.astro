@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
+
+const path = SLUGS.sailingTeamBuilding;
+const title = 'Sailing Team Building for Executive Teams — The Shackleton Adventure | Be Legendary';
+const description =
+  'Sailing team building on San Francisco Bay, reframed: a coupled system where your executive team’s real behavior surfaces under pressure — then a structured debrief turns it into how you operate. Featuring the Shackleton Adventure. Not a fun day out.';
+
+// What a properly facilitated sail makes observable.
+const reveals = [
+  ['Alignment', 'Does the crew agree on the objective — or keep executing an outdated plan while conditions have changed?'],
+  ['Roles', 'Are responsibilities explicit? Do two people fight for the same task while a critical one goes unowned?'],
+  ['Decision-making', 'Who actually decides, on what information, and how fast? Are decisions reopened without new evidence?'],
+  ['Communication', 'Is it clear, early and closed-loop — or does positional status decide who gets heard?'],
+  ['Leadership & followership', 'Who takes the helm, who enables others, who confuses contribution with command — and can they trade roles without friction?'],
+  ['Adaptability', 'When the plan fails, does the team blame, freeze, over-control, or update — while holding the objective and changing the method?'],
+];
+
+const formats = [
+  { name: 'The Shackleton Adventure™', meta: 'Signature · one day · SF Bay', desc: 'A day on San Francisco Bay inside the true story of the Endurance and her 28 sailors — a historic schooner, a proven leadership model, and a debrief that ties what happened on the water to how your team leads through change.' },
+  { name: 'Rotating small-crew regatta', meta: 'One day · leadership rotation', desc: 'Teams of four to six learn to sail, then race. Because every executive rotates through the helm and the lines, it produces the most usable one-day design: brief, sail, debrief, rotate, sail again, compare, transfer.' },
+  { name: 'Offshore expedition', meta: 'Multi-day · deeper work', desc: 'A single-vessel passage — SF Bay, the BVI, the San Juans or the Chesapeake — for whole-team interdependence, shared leadership under fatigue, and the relationship depth a three-hour sail can’t reach.' },
+];
+
+const faqs = [
+  ['Is this just a fun day of sailing?', 'No — and if that’s what you want, there are cheaper ways to get it. The sail is a behavioral laboratory: a coupled system where strategy, communication, role clarity and leadership have immediate, visible consequences. The development happens in the structured debrief and in the operating agreements you take back to work. Without those, it’s a nice day on the water and nothing changes.'],
+  ['Do we need to know how to sail?', 'No experience required — and some of the sharpest breakthroughs come from people new to it. That’s part of the point: sailing puts most executives outside their technical competence, which temporarily levels title and function and shows whether someone can contribute without being the expert in the room. Professional skippers and instructors handle safety and seamanship throughout.'],
+  ['Where do you run it?', 'San Francisco Bay is home water for the Shackleton Adventure — a historic schooner and smaller vessels, with the city and the Golden Gate as the backdrop. Longer expeditions run from the port that fits the outcome: the BVI, the San Juan Islands or the Chesapeake among them.'],
+  ['What if someone can’t swim, or the weather turns?', 'Everyone wears a personal flotation device; swimming is not required. Weather is part of the lesson, not a threat to it — the same way business throws adversity at a team; we plan for it and adapt, which is usually the more instructive version of the day.'],
+  ['How do you measure whether it worked?', 'Not by whether people enjoyed it. We agree the behavioral targets before you sail — decision speed, role clarity, cross-functional communication, CEO dependency — observe them on the water, and convert them into explicit operating agreements. Then at 30 and 60 days we look at whether decisions got faster, fewer got reopened, risks surfaced earlier, and direct reports actually saw different behavior.'],
+  ['Sailing team building in San Francisco — how is yours different?', 'Most corporate sailing is an activity with a debrief bolted on. Ours is a diagnosed intervention that happens to use a boat: we start from a real executive-team problem, engineer the day around it, observe how the team actually operates, and follow through afterward. The Bay is the setting. The method is the reason it works.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Executive Team Building', item: `${SITE_URL}${SLUGS.executiveTeamBuilding}` },
+    { '@type': 'ListItem', position: 3, name: 'Sailing Team Building', item: `${SITE_URL}${SLUGS.sailingTeamBuilding}` },
+  ] },
+  { '@type': 'Service', '@id': `${SITE_URL}${SLUGS.sailingTeamBuilding}#service`,
+    name: 'Sailing Team Building — The Shackleton Adventure',
+    serviceType: 'Experiential executive team development',
+    provider: { '@id': ORG_ID },
+    areaServed: [ { '@type': 'City', name: 'San Francisco' }, { '@type': 'AdministrativeArea', name: 'California' }, { '@type': 'Country', name: 'United States' } ],
+    audience: { '@type': 'Audience', audienceType: 'Executive teams' },
+    description: 'Sailing used as a behavioral laboratory for executive teams on San Francisco Bay, including the Shackleton Adventure: a diagnosed, facilitated program in which the crew’s real leadership and teamwork behavior is surfaced under pressure, debriefed, and converted into executive operating agreements.' },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => (
+    { '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }
+  )) },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Sailing Team Building — The Shackleton Adventure on San Francisco Bay"
+  ogDescription="A coupled system where your executive team’s real behavior surfaces under pressure, then a structured debrief turns it into how you operate. Not a fun day out."
+  bodyBg="#100E0A"
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <div style="background:#100E0A;color:#F4F0E7;overflow:hidden;">
+
+    <!-- ============ HERO ============ -->
+    <section style="position:relative;background:radial-gradient(120% 120% at 78% -10%,rgba(43,74,110,0.5),transparent 55%),linear-gradient(180deg,#0E1622,#100E0A 70%);padding:76px 32px 96px;">
+      <div style="max-width:1120px;margin:0 auto;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.executiveTeamBuilding} style="color:inherit;text-decoration:none;">Executive Team Building</a><span>/</span><span style="color:#D98A5E;">Sailing</span>
+        </nav>
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Sailing team building &middot; San Francisco Bay</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,6.4vw,80px);line-height:0.98;letter-spacing:-0.026em;color:#FBF8F1;max-width:16ch;">The Shackleton Adventure<span style="font-size:0.4em;vertical-align:top;color:rgba(244,240,231,0.55);">™</span></h1>
+        <p style="margin-top:20px;font-family:'Newsreader',serif;font-style:italic;font-size:clamp(18px,2.4vw,26px);line-height:1.3;color:#E0744A;max-width:40ch;">A journey of leadership through crisis, survival and success.</p>
+        <p style="margin-top:24px;font-size:19px;line-height:1.6;max-width:56ch;color:rgba(244,240,231,0.84);">A day on San Francisco Bay inside the true story of the <em style="font-style:italic;">Endurance</em> &mdash; built as a behavioral laboratory for how your executive team decides, communicates and leads under pressure. The sailing is the setting. The debrief is the intervention.</p>
+
+        <!-- The ad -->
+        <figure style="margin:40px 0 0;max-width:60ch;background:rgba(8,12,18,0.55);border:1px solid rgba(244,240,231,0.16);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:28px 30px;">
+          <blockquote style="margin:0;font-family:'Newsreader',serif;font-size:clamp(17px,2vw,21px);line-height:1.5;color:#F4F0E7;letter-spacing:0.01em;">&ldquo;Men wanted for hazardous journey. Small wages, bitter cold, long months of complete darkness, constant danger, safe return doubtful. Honor and recognition in case of success.&rdquo;</blockquote>
+          <figcaption style="margin-top:16px;font-size:13.5px;color:rgba(244,240,231,0.6);">&mdash; Ernest Shackleton&rsquo;s 1914 crew advertisement. Nearly 5,000 people answered it.</figcaption>
+        </figure>
+
+        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 40px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Ask about a voyage <span>&rarr;</span></a>
+          <a href={SLUGS.executiveTeamBuilding} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#D98A5E;text-decoration:none;">See all of executive team building <span>&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE STORY / MODEL ============ -->
+    <section style="background:#F4F0E7;color:#1B1810;padding:100px 32px;">
+      <div style="max-width:900px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Why Shackleton</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,4vw,46px);line-height:1.08;letter-spacing:-0.018em;max-width:22ch;">A leadership model that held when everything else failed.</h2>
+        <p style="margin-top:22px;font-size:19px;line-height:1.66;color:#56524A;">In 1914 the <em style="font-style:italic;">Endurance</em> sailed for Antarctica under Sir Ernest Shackleton. The ice took the ship; the goal became survival. Over the next twenty-two months Shackleton brought all twenty-eight men home &mdash; one of the most studied leadership stories ever told. You spend the day inside it, and work the five traits credited with that outcome:</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;">
+          {[
+            ['Optimism', 'Held for the crew, without denying the facts.'],
+            ['Effective communication', 'Clear, early, and to everyone — not just the inner circle.'],
+            ['Flexibility', 'The objective survived; the plan was rewritten repeatedly.'],
+            ['Leading by example', 'The costs he asked others to bear, he bore first.'],
+            ['Attention to health & wellness', 'Morale and stamina treated as strategic assets, not afterthoughts.'],
+          ].map(([t, d]) => (
+            <div style="display:flex;gap:14px;align-items:baseline;border-top:1px solid rgba(27,24,16,0.14);padding-top:16px;">
+              <span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;flex:none;">&bull;</span>
+              <div><p style="font-weight:700;font-size:16px;color:#1B1810;">{t}</p><p style="margin-top:3px;font-size:15px;line-height:1.5;color:#6B675E;">{d}</p></div>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:32px;font-size:15.5px;line-height:1.6;color:#6B675E;">Participants leave with a copy of <em style="font-style:italic;">Shackleton&rsquo;s Way</em> &mdash; the reference the day is built on &mdash; not a bag of swag.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHY SAILING WORKS ============ -->
+    <section style="background:#100E0A;color:#F4F0E7;padding:104px 32px;">
+      <div style="max-width:1120px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Why a boat, of all things</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">A sailboat is a coupled system. Nobody can fake it.</h2>
+        <p style="margin-top:22px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);max-width:62ch;">Most team-building exercises are only superficially collaborative &mdash; you can divide the work, perform alone, and reunite at the end. A boat doesn&rsquo;t allow that. One person&rsquo;s work lands on everyone else: the helm sets direction, trim sets speed, a missed call compromises the maneuver. That&rsquo;s why the team&rsquo;s real operating system shows up fast &mdash; and why the metaphors aren&rsquo;t metaphors.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+          {[
+            ['Genuine interdependence', 'Sales commits without operations; finance constrains without understanding delivery. On the water, disconnected functional behavior has an immediate, visible cost.'],
+            ['Closed-loop communication', 'A maneuver needs what’s happening, who acts, when, and confirmation it landed. Ambiguity produces consequences you can see — the exact failure mode of executive handoffs.'],
+            ['Immediate feedback', 'In the office, bad teamwork surfaces weeks later and gets blamed on the market. On a boat, a late decision or a conflicting command shows up in seconds and can’t be rationalized away.'],
+            ['Leadership has to move', 'The best person to lead navigation isn’t the best to run a maneuver. Sailing exposes whether an executive can take the helm, hand it off, and follow a peer without friction.'],
+            ['Novelty levels status', 'Outside their technical competence, title and function stop deciding who leads. It shows whether someone can contribute without being the expert in the room.'],
+            ['Nowhere to hide', 'No laptop to retreat behind, no side meeting, no delegating downward. Limited space makes interaction patterns visible almost immediately.'],
+          ].map(([t, d]) => (
+            <div style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.13);border-radius:16px;padding:28px 28px;">
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:9px;">{t}</h3>
+              <p style="font-size:15px;line-height:1.58;color:rgba(244,240,231,0.74);">{d}</p>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:28px;font-size:14px;color:rgba(244,240,231,0.5);max-width:70ch;">Grounded in the sail-training literature, which associates the maritime setting with teamwork, communication, adaptability and leadership development &mdash; and in the plain structural logic of a vessel that only moves when a crew coordinates.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHAT IT REVEALS ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1120px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">What a day on the water surfaces</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;">Six things about your team you can&rsquo;t see from a conference room.</h2>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+          {reveals.map(([t, d]) => (
+            <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:28px 28px;">
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:9px;">{t}</h3>
+              <p style="font-size:15px;line-height:1.58;color:#56524A;">{d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE DEBRIEF IS THE INTERVENTION ============ -->
+    <section style="background:#100E0A;color:#F4F0E7;padding:104px 32px;">
+      <div style="max-width:1120px;margin:0 auto;">
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center;">
+          <div>
+            <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Where the value actually is</p>
+            <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.07;letter-spacing:-0.018em;max-width:20ch;color:#FBF8F1;">The sail creates the evidence. The debrief is the intervention.</h2>
+            <p style="margin-top:22px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);max-width:56ch;">We&rsquo;ll be honest about the research: there is no study proving that a team which sails outperforms one that did another well-designed intervention. What <em style="font-style:italic;">is</em> well-evidenced is the mechanism underneath &mdash; across 46 studies, structured debriefs improved performance by roughly <strong style="color:#FBF8F1;font-weight:600;">20&ndash;25%</strong>.<a href="https://pubmed.ncbi.nlm.nih.gov/23516804/" target="_blank" rel="noopener nofollow" style="color:#D98A5E;text-decoration:none;"><sup>1</sup></a> So the sailing exists to produce something worth debriefing, and the day is built as a loop.</p>
+            <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.5);"><sup>1</sup> Tannenbaum &amp; Cerasoli (2013), <em>Human Factors</em> &mdash; debrief meta-analysis (d&nbsp;=&nbsp;0.67), across simulated and real settings.</p>
+          </div>
+          <ol style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;">
+            {[
+              ['Before', 'Diagnose one or two real problems — slow decisions, CEO dependency, cross-functional silos — and set the behaviors we’ll watch for.'],
+              ['First sail', 'The team organizes itself with minimal instruction. We observe; we don’t rescue every failure.'],
+              ['Debrief one', 'Intention vs. behavior vs. result. Name one or two operating changes.'],
+              ['Second sail', 'Rotate leadership and roles, raise the difficulty, and require the new agreements in practice.'],
+              ['Debrief two', 'Did behavior and performance actually change — on evidence, not vibes?'],
+              ['Ashore', 'Convert it into executive operating agreements: decision owners, closure points, who leads by expertise, how risk gets raised.'],
+              ['30–60 days', 'Follow through — faster decisions, fewer reopened, risks earlier, and whether direct reports see the difference.'],
+            ].map(([n, d], i) => (
+              <li style={`display:grid;grid-template-columns:auto 1fr;gap:16px;padding:16px 0;${i < 6 ? 'border-bottom:1px solid rgba(244,240,231,0.1);' : ''}`}>
+                <span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;min-width:92px;padding-top:2px;">{n}</span>
+                <span style="font-size:15px;line-height:1.55;color:rgba(244,240,231,0.82);">{d}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORMATS ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1120px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Ways to sail it</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;">Three serious formats. The problem picks the boat.</h2>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+          {formats.map((c) => (
+            <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:30px 30px;display:flex;flex-direction:column;">
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">{c.meta}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin-bottom:10px;color:#1B1810;">{c.name}</h3>
+              <p style="font-size:15px;line-height:1.58;color:#56524A;">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:28px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Sailing is a legitimate executive-development setting, not a novelty: Wharton&rsquo;s McNulty Leadership Program runs an eight-day tall-ship venture for its MBA and Executive MBA students. Our version pairs decades of on-the-water expertise with the facilitation that makes the day change how you work &mdash; no prior sailing experience required.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WE WON'T CLAIM ============ -->
+    <section style="background:#100E0A;color:#F4F0E7;padding:100px 32px;">
+      <div style="max-width:820px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Where we&rsquo;re honest</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.07;letter-spacing:-0.018em;max-width:22ch;color:#FBF8F1;">What we won&rsquo;t tell you about sailing.</h2>
+        <p style="margin-top:22px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);">You&rsquo;ll find sailing vendors claiming a day on the water lifts motivation 91%, raises job satisfaction 85%, or returns four dollars for every one spent. There is no traceable study behind those numbers, so we won&rsquo;t repeat them. We also won&rsquo;t claim that sailing &ldquo;automatically builds trust,&rdquo; that winning a regatta identifies your strongest team, or that a three-hour sail changes behavior on its own.</p>
+        <p style="margin-top:18px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);">Here&rsquo;s what&rsquo;s true: sailing is an unusually good environment for making executive behavior visible, and structured debriefing reliably turns that into change. The boat is the laboratory. The design, the debrief and the follow-through are the reason it works &mdash; which is exactly how we build it.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:900px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Straight answers</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.07;letter-spacing:-0.018em;margin-bottom:34px;">Corporate sailing, answered plainly.</h2>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          {faqs.map(([q, a]) => (
+            <div style="border-top:1px solid rgba(27,24,16,0.14);padding-top:20px;">
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#1B1810;margin-bottom:8px;">{q}</h3>
+              <p style="font-size:16px;line-height:1.66;color:#56524A;">{a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section style="background:linear-gradient(180deg,#0E1622,#100E0A);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.2),transparent 55%);pointer-events:none;"></div>
+      <div style="position:relative;max-width:720px;margin:0 auto;">
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(18px,2.2vw,23px);line-height:1.4;color:rgba(244,240,231,0.75);">&ldquo;Life is either a daring adventure, or nothing.&rdquo;<span style="display:block;margin-top:8px;font-style:normal;font-size:13.5px;letter-spacing:0.06em;color:rgba(244,240,231,0.5);">&mdash; Helen Keller</span></p>
+        <h2 style="margin-top:26px;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.6vw,52px);line-height:1.05;letter-spacing:-0.022em;color:#FBF8F1;">Take your team out where the water tells the truth.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.8);max-width:52ch;margin-left:auto;margin-right:auto;">Tell us the problem you&rsquo;re trying to solve and where you&rsquo;re based. We&rsquo;ll tell you whether a day on the water is the right instrument &mdash; and if it isn&rsquo;t, what is.</p>
+        <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 34px;border-radius:11px;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Ask about a voyage <span>&rarr;</span></a>
+          <a href={SLUGS.offRoadImmersion} style="border:1px solid rgba(244,240,231,0.28);color:#F4F0E7;text-decoration:none;padding:18px 30px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.28)'">Prefer dry land? The Off-Road Immersion</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>
