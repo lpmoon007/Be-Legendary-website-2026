@@ -41,7 +41,7 @@ const faqs = [
   ['Where do you run it?', 'Almost anywhere with a working harbor — one-day sails run from most major U.S. ports, so you fly in and we handle the boats and the water. Multi-day expeditions run from wherever fits the outcome: the BVI, the San Juan Islands or the Chesapeake among them.'],
   ['What if someone can’t swim, or the weather turns?', 'Everyone wears a personal flotation device; swimming is not required. Weather is part of the lesson, not a threat to it — the same way business throws adversity at a team; we plan for it and adapt, which is usually the more instructive version of the day.'],
   ['How do you measure whether it worked?', 'Not by whether people enjoyed it. We agree the behavioral targets before you sail — decision speed, role clarity, cross-functional communication, CEO dependency — observe them on the water, and convert them into explicit operating agreements. Then at 30 and 60 days we look at whether decisions got faster, fewer got reopened, risks surfaced earlier, and direct reports actually saw different behavior.'],
-  ['How is your corporate sailing different?', 'Most corporate sailing is an activity with a debrief bolted on. Ours is a diagnosed intervention that happens to use a boat: we start from a real executive-team problem, engineer the day around it, observe how the team actually operates, and follow through afterward. The water is the setting. The method is the reason it works.'],
+  ['How is your corporate sailing different?', 'A charter company gives you a boat and a captain. We give you the diagnosis, the facilitation and the follow-through that turn a day on the water into how your team operates — and that is not something you can charter. So we start from a real executive-team problem, engineer the day around it, observe how the team actually operates, and follow through afterward. The water is the setting; the method is the reason it works.'],
 ];
 
 const schema = [
@@ -252,6 +252,7 @@ const schema = [
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Where we sail</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">Coast to coast, in the harbors that fit.</h2>
         <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.82);max-width:60ch;">We charter traditional schooners and tall ships &mdash; typically 70-to-100-foot vessels certified for 40 to 50 &mdash; in working harbors across the country. You fly your team in; we handle the vessel and the water.</p>
+        <p style="margin-top:16px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.82);max-width:60ch;">The vessel is the one part of this you could rent yourself. Everything that makes the day matter &mdash; the diagnosis, the facilitation, the debrief, the follow-through &mdash; is what you actually hire us for.</p>
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
           {harbors.map((g) => (
             <div>
@@ -303,11 +304,12 @@ const schema = [
       <div style="position:relative;max-width:720px;margin:0 auto;">
         <p style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(18px,2.2vw,23px);line-height:1.4;color:rgba(244,240,231,0.75);">&ldquo;Life is either a daring adventure, or nothing.&rdquo;<span style="display:block;margin-top:8px;font-style:normal;font-size:13.5px;letter-spacing:0.06em;color:rgba(244,240,231,0.5);">&mdash; Helen Keller</span></p>
         <h2 style="margin-top:26px;font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.6vw,52px);line-height:1.05;letter-spacing:-0.022em;color:#FBF8F1;">Take your team out where the water tells the truth.</h2>
-        <p style="margin-top:20px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.8);max-width:52ch;margin-left:auto;margin-right:auto;">Tell us the problem you&rsquo;re trying to solve and where you&rsquo;re based. We&rsquo;ll tell you whether a day on the water is the right instrument &mdash; and if it isn&rsquo;t, what is.</p>
+        <p style="margin-top:20px;font-size:18px;line-height:1.58;color:rgba(244,240,231,0.8);max-width:52ch;margin-left:auto;margin-right:auto;">Whether you&rsquo;re the executive or the person arranging it for them, one conversation covers it. Tell us the problem you&rsquo;re trying to solve and where you&rsquo;re based, and we&rsquo;ll tell you whether a day on the water is the right instrument &mdash; and if it isn&rsquo;t, what is.</p>
         <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;">
           <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 34px;border-radius:11px;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Ask about a day on the water <span>&rarr;</span></a>
           <a href={SLUGS.offRoadImmersion} style="border:1px solid rgba(244,240,231,0.28);color:#F4F0E7;text-decoration:none;padding:18px 30px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.28)'">Prefer dry land? The Off-Road Immersion</a>
         </div>
+        <p style="margin-top:24px;font-size:14.5px;line-height:1.55;color:rgba(244,240,231,0.62);max-width:58ch;margin-left:auto;margin-right:auto;">One point of contact, from the first call to the final debrief. We handle the vessel, permits, safety, catering and facilitation &mdash; your team just shows up.</p>
       </div>
     </section>
 
