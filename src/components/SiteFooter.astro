@@ -10,11 +10,14 @@ export interface Props {
   note?: string;
 }
 
-const { audience = 'teams', variant = 'full', maxWidth = variant === 'slim' ? 820 : 1200, note } = Astro.props;
+const { audience = 'teams', variant = 'full', maxWidth = 1200, note } = Astro.props;
 const teamsActive = audience === 'teams';
 const pillOn = 'color:#F4F0E7;background:#C04A26;font-weight:700;';
 const pillOff = 'color:rgba(244,240,231,0.6);font-weight:600;';
-const slim = variant === 'slim';
+// Site owner's rule: every page gets the full footer. We keep the `variant`
+// prop for backwards-compat (pages still pass variant="slim"), but the slim
+// footer is never rendered — flip this to `variant === 'slim'` to restore it.
+const slim = false;
 
 const TEAMS_COL = {
   heading: 'For Teams',
