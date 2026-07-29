@@ -42,4 +42,24 @@ export const messages = {
   // so keep those two words if you edit this.
   nudge: (name?: string) =>
     `Hey${name ? ` ${name}` : ""} — it's been a few quiet days, and that's okay. No judgment here. Just checking: everything alright? I'm still in your corner whenever you're ready to pick it back up.`,
+
+  // ── Accountability Partner ("buddy") ─────────────────────────────────────
+  // Double opt-in invite. The buddy must reply YES before we send anything else.
+  buddyInvite: (participant: string, buddyName?: string) =>
+    `Hi${buddyName ? ` ${buddyName}` : ""} — ${participant} named you as their accountability partner for their 30-day challenge with Be Legendary. You'd get an occasional nudge to cheer them on (a couple of texts). Reply YES to accept, STOP to decline.`,
+
+  buddyConfirmed: (participant: string) =>
+    `You're in — thanks for having ${participant}'s back. I'll nudge you when it counts. Reply STOP anytime to opt out.`,
+
+  // Week-1 nudge. Keep "just started their 30-day" — due_buddy_nudges() dedupes on it.
+  buddyWeek1: (participant: string) =>
+    `${participant} just started their 30-day challenge — the first week is where it sticks or slips. A quick "proud of you" text from you goes a long way.`,
+
+  // At-risk escalation. Keep "has gone quiet" — due_buddy_nudges() dedupes on it.
+  buddyAtRisk: (participant: string) =>
+    `${participant} has gone quiet on their challenge the past few days. A nudge from you might be exactly what they need right now.`,
+
+  // Reply to any other text from a buddy (Phase 1 has no relay yet).
+  buddyAck: (participant: string) =>
+    `Thanks! I'll reach out when ${participant} could use some encouragement. Reply STOP to opt out.`,
 } as const;

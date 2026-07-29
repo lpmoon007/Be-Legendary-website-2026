@@ -6,8 +6,118 @@ import {
   updateSchedule,
   toggleActive,
   sendCoachMessage,
+  setBuddy,
 } from "@/app/admin/actions";
 import { COMMON_TIMEZONES } from "@/lib/timezone";
+
+export function BuddyEditor({
+  userId,
+  name,
+  phone,
+  status,
+}: {
+  userId: string;
+  name: string | null;
+  phone: string | null;
+  status: string | null;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [n, setN] = useState(name ?? "");
+  const [p, setP] = useState(phone ?? "");
+  const [pending, start] = useTransition();
+  const [error, setError] = useState<string | null>(null);
+
+  const badge = () => {
+    if (status === "confirmed")
+      return <span className="pill bg-[#4F7A46]/15 text-[#4F7A46]">✓ Active partner</span>;
+    if (status === "pending")
+      return <span className="pill bg-accent-light/15 text-accent-light">⏳ Invited — awaiting their YES</span>;
+    if (status === "stopped" || status === "declined")
+      return <span className="pill bg-ink-muted/20 text-ink-muted">Opted out</span>;
+    return null;
+  };
+
+  if (phone && !editing) {
+    return (
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="font-serif text-lg text-ink-heading">
+            {name || "Partner"} <span className="text-ink-muted">· {phone}</span>
+          </p>
+          <div className="mt-1">{badge()}</div>
+        </div>
+        <button
+          onClick={() => setEditing(true)}
+          className="shrink-0 text-sm font-600 text-accent hover:underline"
+        >
+          Change
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      {!phone && (
+        <p className="mb-3 text-sm text-ink-muted">
+          A partner who cheers them on nearly doubles engagement. We&apos;ll text
+          them to confirm before sending anything.
+        </p>
+      )}
+      <div className="flex flex-wrap items-end gap-3">
+        <label className="block">
+          <span className="text-xs font-600 text-ink-muted">Partner name</span>
+          <input
+            value={n}
+            onChange={(e) => setN(e.target.value)}
+            placeholder="Alex"
+            className="mt-1 block rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-ink-body outline-none focus:border-accent"
+          />
+        </label>
+        <label className="block">
+          <span className="text-xs font-600 text-ink-muted">Partner mobile</span>
+          <input
+            type="tel"
+            value={p}
+            onChange={(e) => setP(e.target.value)}
+            placeholder="(303) 555-1234"
+            className="mt-1 block rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-ink-body outline-none focus:border-accent"
+          />
+        </label>
+      </div>
+      {error && <p className="mt-2 text-sm font-600 text-accent">{error}</p>}
+      <div className="mt-3 flex gap-2">
+        <button
+          disabled={pending || p.trim().length === 0}
+          onClick={() => {
+            setError(null);
+            start(async () => {
+              const res = await setBuddy(userId, n, p);
+              if (res?.error) setError(res.error);
+              else setEditing(false);
+            });
+          }}
+          className="btn-cta !py-2 !text-sm"
+        >
+          {pending ? "Inviting…" : phone ? "Save & re-invite" : "Invite partner"}
+        </button>
+        {phone && (
+          <button
+            onClick={() => {
+              setN(name ?? "");
+              setP(phone ?? "");
+              setError(null);
+              setEditing(false);
+            }}
+            className="btn-ghost !py-2 !text-sm"
+          >
+            Cancel
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function SendTimesEditor({
   userId,
