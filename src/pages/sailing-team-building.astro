@@ -77,8 +77,17 @@ const schema = [
   <div style="background:#100E0A;color:#F4F0E7;overflow:hidden;">
 
     <!-- ============ HERO ============ -->
-    <section style="position:relative;background:radial-gradient(120% 120% at 78% -10%,rgba(43,74,110,0.5),transparent 55%),linear-gradient(180deg,#0E1622,#100E0A 70%);padding:76px 32px 96px;">
-      <div style="max-width:1120px;margin:0 auto;">
+    <style>
+      .sail-hero { position:relative; overflow:hidden; background:#0A0D11; }
+      .sail-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:0; }
+      .sail-hero__scrim { position:absolute; inset:0; z-index:1; background:linear-gradient(90deg, rgba(9,12,17,0.94) 0%, rgba(9,12,17,0.82) 30%, rgba(9,12,17,0.5) 58%, rgba(9,12,17,0.12) 100%), linear-gradient(0deg, rgba(9,12,17,0.72) 0%, transparent 42%); }
+      .sail-hero__inner { position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:84px 32px 100px; }
+      @media (max-width:860px){ .sail-hero__scrim { background:linear-gradient(0deg, rgba(9,12,17,0.96) 22%, rgba(9,12,17,0.72) 62%, rgba(9,12,17,0.5) 100%); } .sail-hero__inner { padding:64px 24px 72px; } }
+    </style>
+    <section class="sail-hero">
+      <img class="sail-hero__bg" src="/assets/sailing/tall-ship-crew.webp" alt="Aerial view of an executive team hauling on a line together on the deck of a tall ship under sail, deep blue ocean and wake alongside." width="1916" height="821" fetchpriority="high" decoding="async" />
+      <div class="sail-hero__scrim"></div>
+      <div class="sail-hero__inner">
         <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
           <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.executiveTeamBuilding} style="color:inherit;text-decoration:none;">Executive Team Building</a><span>/</span><span style="color:#D98A5E;">Sailing</span>
         </nav>
@@ -125,11 +134,19 @@ const schema = [
     </section>
 
     <!-- ============ TALL-SHIP SPOTLIGHT ============ -->
-    <section style="position:relative;background:radial-gradient(90% 120% at 85% 0%,rgba(192,74,38,0.2),transparent 55%),linear-gradient(180deg,#0E1622,#0B0A08 88%);color:#F4F0E7;padding:112px 32px;">
-      <div style="max-width:1120px;margin:0 auto;">
-        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">The flagship &middot; tall ship</p>
-        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,5vw,62px);line-height:1.0;letter-spacing:-0.024em;max-width:18ch;color:#FBF8F1;">Too big and too loud to talk. So the crew has to <span style="font-style:italic;color:#E0744A;">sing.</span></h2>
-        <p style="margin-top:24px;font-size:19px;line-height:1.62;color:rgba(244,240,231,0.86);max-width:60ch;">The tall ship is the most dramatic &mdash; and most honest &mdash; form of sailing team building there is. It&rsquo;s simply too large, and the wind and water too loud, for the crew to talk or shout across it. Raising a sail takes many hands hauling on the same line at the exact same instant, and you can&rsquo;t coordinate that with words. So sailors did it with rhythm.</p>
+    <section style="background:linear-gradient(180deg,#0E1622,#0B0A08 92%);color:#F4F0E7;">
+      <div style="position:relative;overflow:hidden;">
+        <img src="/assets/sailing/crew-hauling.webp" alt="An executive team hauling a line together in unison on the deck of a classic sailing ship at golden hour, the helmsman at the wheel." width="1916" height="821" loading="lazy" decoding="async" style="width:100%;height:clamp(320px,50vh,540px);object-fit:cover;object-position:center 40%;display:block;" />
+        <div style="position:absolute;inset:0;background:linear-gradient(0deg, rgba(11,10,8,0.97) 3%, rgba(11,10,8,0.55) 40%, rgba(11,10,8,0.28) 100%);"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;">
+          <div style="max-width:1120px;margin:0 auto;padding:0 32px 38px;">
+            <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">The flagship &middot; tall ship</p>
+            <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,5vw,62px);line-height:1.0;letter-spacing:-0.024em;max-width:18ch;color:#FBF8F1;">Too big and too loud to talk. So the crew has to <span style="font-style:italic;color:#E0744A;">sing.</span></h2>
+          </div>
+        </div>
+      </div>
+      <div style="max-width:1120px;margin:0 auto;padding:52px 32px 104px;">
+        <p style="font-size:19px;line-height:1.62;color:rgba(244,240,231,0.86);max-width:60ch;">The tall ship is the most dramatic &mdash; and most honest &mdash; form of sailing team building there is. It&rsquo;s simply too large, and the wind and water too loud, for the crew to talk or shout across it. Raising a sail takes many hands hauling on the same line at the exact same instant, and you can&rsquo;t coordinate that with words. So sailors did it with rhythm.</p>
         <div class="bl-grid-collapse" style="margin-top:44px;display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:start;">
           <div>
             <p style="font-size:17px;line-height:1.7;color:rgba(244,240,231,0.82);">The sea shanty was never entertainment &mdash; it was a <strong style="color:#FBF8F1;font-weight:600;">labor-control system set to music</strong>. A shantyman improvised a line; the crew answered with a chorus timed precisely to the pull. The song <em style="font-style:italic;">was</em> the operating system.</p>
