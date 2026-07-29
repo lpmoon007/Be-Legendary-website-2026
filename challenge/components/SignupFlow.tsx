@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { PRESET_BEHAVIORS } from "@/lib/presets";
 import { digitCount } from "@/lib/phone";
+import { COMMON_TIMEZONES } from "@/lib/timezone";
 
 type Step = 1 | 2 | 3;
 
@@ -23,6 +24,9 @@ export function SignupFlow() {
   // Delivery times (HH:MM, participant's local zone). Default 8 a.m. nudge / 4 p.m. check-in.
   const [reminderTime, setReminderTime] = useState("08:00");
   const [reflectionTime, setReflectionTime] = useState("16:00");
+  // Auto-detected from the browser; shown so the participant can confirm/correct it.
+  const [timezone, setTimezone] = useState("America/Denver");
+  const [tzEditing, setTzEditing] = useState(false);
 
   // Carried silently from a CQ report deep-link (/?email=…) so the enrollment
   // can be stitched back to the person's Commitment Quotient result by email.
@@ -48,6 +52,10 @@ export function SignupFlow() {
     // Not shown in the UI — just remembered for the enroll payload.
     const email = params.get("email");
     if (email && email.includes("@")) setLinkedEmail(email.trim().toLowerCase());
+
+    // Auto-detect the participant's timezone from their device.
+    const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (detected) setTimezone(detected);
   }, []);
 
   const commitment =
@@ -65,6 +73,13 @@ export function SignupFlow() {
   const step2Valid =
     firstName.trim().length > 0 && digitCount(phone) >= 10 && timesValid;
 
+  // Show the detected timezone with a friendly label; let them correct it.
+  const tzLabel =
+    COMMON_TIMEZONES.find((z) => z.value === timezone)?.label ?? timezone;
+  const tzOptions = COMMON_TIMEZONES.some((z) => z.value === timezone)
+    ? COMMON_TIMEZONES
+    : [{ value: timezone, label: timezone }, ...COMMON_TIMEZONES];
+
   function reset() {
     setStep(1);
     setChoice(null);
@@ -75,6 +90,7 @@ export function SignupFlow() {
     setIsPrivate(false);
     setReminderTime("08:00");
     setReflectionTime("16:00");
+    setTzEditing(false);
     setError(null);
     setOutcome(null);
   }
@@ -92,8 +108,6 @@ export function SignupFlow() {
 
     setSubmitting(true);
     try {
-      const timezone =
-        Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Denver";
       const res = await fetch("/api/enroll", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -266,6 +280,32 @@ export function SignupFlow() {
                   Your check-in should be later in the day than your reminder.
                 </p>
               )}
+
+              {/* Detected timezone — shown so a wrong auto-detect can be corrected. */}
+              <div className="mt-2 text-xs text-ink-muted">
+                Timezone:{" "}
+                <span className="font-600 text-ink-body">{tzLabel}</span>{" "}
+                <button
+                  type="button"
+                  onClick={() => setTzEditing((v) => !v)}
+                  className="text-accent underline"
+                >
+                  {tzEditing ? "done" : "not right? change"}
+                </button>
+                {tzEditing && (
+                  <select
+                    value={timezone}
+                    onChange={(e) => setTimezone(e.target.value)}
+                    className="mt-2 block w-full rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-ink-body outline-none focus:border-accent"
+                  >
+                    {tzOptions.map((z) => (
+                      <option key={z.value} value={z.value}>
+                        {z.label}
+                      </option>
+                    ))}
+                  </select>
+                )}
+              </div>
             </div>
 
             <label className="flex cursor-pointer items-start gap-3 rounded-btn border border-ink-muted/25 bg-white/60 p-3">
