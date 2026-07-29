@@ -5,9 +5,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
 
 const path = SLUGS.sailingTeamBuilding;
-const title = 'Sailing Team Building for Executive Teams — SF Bay & Beyond | Be Legendary';
+const title = 'Sailing Team Building for Executive Teams | Be Legendary';
 const description =
-  'Sailing team building for executive teams — home-based on San Francisco Bay and run wherever your team can reach the water. A coupled system where real behavior surfaces under pressure, then a structured debrief turns it into how you operate. Not a fun day out.';
+  'Sailing team building for executive teams, run from almost any major port: a coupled system where real behavior surfaces under pressure, then a structured debrief turns it into how you operate. Not a fun day out.';
 
 // What a properly facilitated sail makes observable.
 const reveals = [
@@ -31,10 +31,10 @@ const formats = [
 const faqs = [
   ['Is this just a fun day of sailing?', 'No — and if that’s what you want, there are cheaper ways to get it. The sail is a behavioral laboratory: a coupled system where strategy, communication, role clarity and leadership have immediate, visible consequences. The development happens in the structured debrief and in the operating agreements you take back to work. Without those, it’s a nice day on the water and nothing changes.'],
   ['Do we need to know how to sail?', 'No experience required — and some of the sharpest breakthroughs come from people new to it. That’s part of the point: sailing puts most executives outside their technical competence, which temporarily levels title and function and shows whether someone can contribute without being the expert in the room. Professional skippers and instructors handle safety and seamanship throughout.'],
-  ['Where do you run it?', 'San Francisco Bay is our home water — crewed keelboats and smaller vessels, with the city and the Golden Gate as the backdrop — but we can arrange a sail from almost any major sailing port. Multi-day expeditions run from wherever fits the outcome: the BVI, the San Juan Islands or the Chesapeake among them.'],
+  ['Where do you run it?', 'Almost anywhere with a working harbor — one-day sails run from most major U.S. ports, so you fly in and we handle the boats and the water. Multi-day expeditions run from wherever fits the outcome: the BVI, the San Juan Islands or the Chesapeake among them.'],
   ['What if someone can’t swim, or the weather turns?', 'Everyone wears a personal flotation device; swimming is not required. Weather is part of the lesson, not a threat to it — the same way business throws adversity at a team; we plan for it and adapt, which is usually the more instructive version of the day.'],
   ['How do you measure whether it worked?', 'Not by whether people enjoyed it. We agree the behavioral targets before you sail — decision speed, role clarity, cross-functional communication, CEO dependency — observe them on the water, and convert them into explicit operating agreements. Then at 30 and 60 days we look at whether decisions got faster, fewer got reopened, risks surfaced earlier, and direct reports actually saw different behavior.'],
-  ['Sailing team building in San Francisco — how is yours different?', 'Most corporate sailing is an activity with a debrief bolted on. Ours is a diagnosed intervention that happens to use a boat: we start from a real executive-team problem, engineer the day around it, observe how the team actually operates, and follow through afterward. The Bay is the setting. The method is the reason it works.'],
+  ['How is your corporate sailing different?', 'Most corporate sailing is an activity with a debrief bolted on. Ours is a diagnosed intervention that happens to use a boat: we start from a real executive-team problem, engineer the day around it, observe how the team actually operates, and follow through afterward. The water is the setting. The method is the reason it works.'],
 ];
 
 const schema = [
@@ -47,9 +47,9 @@ const schema = [
     name: 'Sailing Team Building for Executive Teams',
     serviceType: 'Experiential executive team development',
     provider: { '@id': ORG_ID },
-    areaServed: [ { '@type': 'City', name: 'San Francisco' }, { '@type': 'AdministrativeArea', name: 'California' }, { '@type': 'Country', name: 'United States' } ],
+    areaServed: { '@type': 'Country', name: 'United States' },
     audience: { '@type': 'Audience', audienceType: 'Executive teams' },
-    description: 'Sailing used as a behavioral laboratory for executive teams on San Francisco Bay: a diagnosed, facilitated program in which the crew’s real leadership and teamwork behavior is surfaced under pressure, debriefed, and converted into executive operating agreements.' },
+    description: 'Sailing used as a behavioral laboratory for executive teams: a diagnosed, facilitated program in which the crew’s real leadership and teamwork behavior is surfaced under pressure, debriefed, and converted into executive operating agreements.' },
   { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => (
     { '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }
   )) },
@@ -189,7 +189,7 @@ const schema = [
       <div style="max-width:1120px;margin:0 auto;">
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Ways to sail it</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;">The problem picks the boat &mdash; not the other way around.</h2>
-        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:#56524A;max-width:58ch;">From a half-day on the Bay to a multi-day passage. Each is a different way to make real behavior visible &mdash; the right one depends on the problem you&rsquo;re solving and the size of your team.</p>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:#56524A;max-width:58ch;">From a half-day sail to a multi-day passage. Each is a different way to make real behavior visible &mdash; the right one depends on the problem you&rsquo;re solving and the size of your team.</p>
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
           {formats.map((c) => (
             <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:30px 30px;display:flex;flex-direction:column;">
@@ -200,7 +200,7 @@ const schema = [
           ))}
         </div>
         <p style="margin-top:28px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Want a lighter day &mdash; a corporate regatta with the emphasis on enjoying the water rather than changing how you work? We run those too, and we&rsquo;ll tell you plainly that&rsquo;s what it is.</p>
-        <p style="margin-top:16px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Sailing is a legitimate executive-development setting, not a novelty: business schools and naval academies both use it to develop leadership under real conditions. Ours is leaner &mdash; a day or two on the water, home-based on San Francisco Bay and run where the outcome calls for it &mdash; built on the same principle: the boat is the laboratory, and the facilitation is what makes the day change how you work. No prior sailing experience required.</p>
+        <p style="margin-top:16px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Sailing is a legitimate executive-development setting, not a novelty: business schools and naval academies both use it to develop leadership under real conditions. Ours is leaner &mdash; a day or two on the water, run where the outcome calls for it &mdash; built on the same principle: the boat is the laboratory, and the facilitation is what makes the day change how you work. No prior sailing experience required.</p>
       </div>
     </section>
 
