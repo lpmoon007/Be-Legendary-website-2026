@@ -27,6 +27,14 @@ const formats = [
   { name: 'Offshore expedition', meta: 'Multi-day · port to port', desc: 'A multi-day passage where the team sails as working crew — preparing the vessel, standing watches, running the ship day and night. You board in one city and step off in another, having earned whole-team interdependence and shared leadership under fatigue that no single day can reach.' },
 ];
 
+// Harbors where a schooner or tall ship can be chartered. Seasons are typical;
+// exact dates are confirmed per charter. Vendor-neutral (no vessel names).
+const harbors = [
+  { region: 'Pacific', ports: [['San Francisco Bay, CA', 'Year-round'], ['San Diego, CA', 'Year-round'], ['San Juan Islands, WA', 'Summer']] },
+  { region: 'Northeast', ports: [['Newport, RI', 'May–Oct'], ['The Hamptons, NY', 'May–Oct'], ['New York City', 'Apr–Nov'], ['Boston, MA', 'May–Oct'], ['Coastal Maine', 'Jun–Oct']] },
+  { region: 'Southeast, Gulf & Lakes', ports: [['Key West, FL', 'Nov–Apr'], ['St. Simons Island, GA', 'Fall–spring'], ['Chesapeake · Annapolis, MD', 'Apr–Oct'], ['Chicago, IL', 'May–Oct']] },
+];
+
 const faqs = [
   ['Is this just a fun day of sailing?', 'No — and if that’s what you want, there are cheaper ways to get it. The sail is a behavioral laboratory: a coupled system where strategy, communication, role clarity and leadership have immediate, visible consequences. The development happens in the structured debrief and in the operating agreements you take back to work. Without those, it’s a nice day on the water and nothing changes.'],
   ['Do we need to know how to sail?', 'No experience required — and some of the sharpest breakthroughs come from people new to it. That’s part of the point: sailing puts most executives outside their technical competence, which temporarily levels title and function and shows whether someone can contribute without being the expert in the room. Professional skippers and instructors handle safety and seamanship throughout.'],
@@ -235,6 +243,31 @@ const schema = [
         </div>
         <p style="margin-top:28px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Want a lighter day &mdash; a corporate regatta with the emphasis on enjoying the water rather than changing how you work? We run those too, and we&rsquo;ll tell you plainly that&rsquo;s what it is.</p>
         <p style="margin-top:16px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Sailing is a legitimate executive-development setting, not a novelty: business schools and naval academies both use it to develop leadership under real conditions. Ours is leaner &mdash; a day or two on the water, run where the outcome calls for it &mdash; built on the same principle: the boat is the laboratory, and the facilitation is what makes the day change how you work. No prior sailing experience required.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHERE WE SAIL (harbors) ============ -->
+    <section style="background:linear-gradient(180deg,#0E1622,#100E0A 85%);color:#F4F0E7;padding:104px 32px;">
+      <div style="max-width:1120px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Where we sail</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">Coast to coast, in the harbors that fit.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.82);max-width:60ch;">We charter traditional schooners and tall ships &mdash; typically 70-to-100-foot vessels certified for 40 to 50 &mdash; in working harbors across the country. You fly your team in; we handle the vessel and the water.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+          {harbors.map((g) => (
+            <div>
+              <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(244,240,231,0.16);">{g.region}</p>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;">
+                {g.ports.map(([name, season]) => (
+                  <li style="display:flex;justify-content:space-between;align-items:baseline;gap:14px;">
+                    <span style="font-size:16px;color:#F4F0E7;">{name}</span>
+                    <span style="font-size:12.5px;font-weight:600;letter-spacing:0.03em;color:rgba(244,240,231,0.55);white-space:nowrap;">{season}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:36px;font-size:15px;line-height:1.6;color:rgba(244,240,231,0.6);max-width:74ch;">Seasons are typical, not a schedule &mdash; exact dates are confirmed by charter when you enquire. Don&rsquo;t see your city? Most major harbors have a vessel that fits; tell us where, and we&rsquo;ll find it.</p>
       </div>
     </section>
 
