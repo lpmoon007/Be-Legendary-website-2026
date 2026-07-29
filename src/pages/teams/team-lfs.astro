@@ -4,26 +4,28 @@ import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import { SLUGS, CTA_URL, ORG_ID } from '../../lib/site';
 
-const path = SLUGS.teamDiagnostic;
-const title = 'Team Diagnostic — How We Read Your Team | Be Legendary';
+const path = SLUGS.teamLfs;
+const title = 'Team LFS — The Instrumented Read on Your Executive Team | Be Legendary';
 const description =
-  "Our team diagnostic is a live behavioral simulation that surfaces how your executive team actually breaks under pressure — real actions, not self-reports.";
+  "Team LFS is a live behavioral simulation that surfaces how your executive team actually breaks under pressure — real observed actions, not self-report, with a measurable baseline. The instrumented read, when a conversation isn't enough.";
 
 // JSON-LD — Service (provider by @id) + FAQPage. Types preserved from the design.
 const schema = [
   {
     '@type': 'Service',
-    name: 'Team Diagnostic',
+    name: 'Team LFS — Team Leadership Failure Simulation',
+    alternateName: 'Team LFS',
     provider: { '@id': ORG_ID },
-    serviceType: 'Executive team behavioral diagnostic',
+    serviceType: 'Executive team behavioral simulation',
     description:
-      'A live, behavioral simulation that surfaces how an executive team actually breaks down under pressure, using real observed actions rather than self-report, to inform the design of a bespoke leadership retreat.',
+      'A live, behavioral simulation that surfaces how an executive team actually breaks down under pressure, using real observed actions rather than self-report, producing individual and team reports and a measurable baseline.',
   },
   {
     '@type': 'FAQPage',
     mainEntity: [
-      { '@type': 'Question', name: 'How is this different from a team assessment survey?', acceptedAnswer: { '@type': 'Answer', text: "Surveys and 360s capture what people say about themselves and each other. This captures what they actually do. Your team works through a live crisis scenario built from your own organization's context — each person plays themselves, decisions ripple to affect what everyone else sees, and every action is logged. The result is behavioral evidence of how your team coordinates and breaks under real ambiguity, not opinions about it." } },
-      { '@type': 'Question', name: 'What does the diagnostic produce?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: an individual report for each leader with trait-by-trait analysis backed by what they actually did in the simulation; a team dynamics report mapping influence, coordination patterns and where your collective failure modes appear; and a 30-day lead-measure commitment per participant. That becomes the blueprint for a retreat designed around your real fault lines, not generic ones.' } },
+      { '@type': 'Question', name: 'How is Team LFS different from a team assessment survey?', acceptedAnswer: { '@type': 'Answer', text: "Surveys and 360s capture what people say about themselves and each other. Team LFS captures what they actually do. Your team works through a live crisis scenario built from your own organization's context — each person plays themselves, decisions ripple to affect what everyone else sees, and every action is logged. The result is behavioral evidence of how your team coordinates and breaks under real ambiguity, not opinions about it." } },
+      { '@type': 'Question', name: 'What does Team LFS produce?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: an individual report for each leader with trait-by-trait analysis backed by what they actually did in the simulation; a team dynamics report mapping influence, coordination patterns and where your collective failure modes appear; and a measurable FlagScore baseline plus a 30-day lead-measure commitment per participant. That becomes the blueprint for a retreat designed around your real fault lines, not generic ones.' } },
+      { '@type': 'Question', name: 'Can I run it on myself before bringing the team?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. ELFS — the solo, roughly 90-minute version for the CEO — is the low-risk way to feel the simulation on yourself first, with a written report on where you default to comfort over truth. If you proceed to the full team run, your ELFS fee is applied toward it.' } },
     ],
   },
 ];
@@ -33,8 +35,8 @@ const schema = [
   description={description}
   path={path}
   ogType="website"
-  ogTitle="How We Diagnose Your Team — Before We Design the Retreat"
-  ogDescription="We don't guess how your team breaks. We watch it happen — safely — then build the retreat around it."
+  ogTitle="Team LFS — the instrumented read on your executive team"
+  ogDescription="We don't guess how your team breaks. We watch it happen — safely — with a measurable baseline, then build the work around it."
   bodyBg="#EFE9DD"
   schema={schema}
 >
@@ -45,11 +47,11 @@ const schema = [
     <!-- HERO -->
     <section style="max-width:1080px;margin:0 auto;padding:64px 32px 0;">
       <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-        <a href="/" style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">The Diagnostic</span>
+        <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">Team LFS</span>
       </nav>
-      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Step one · before any retreat</p>
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>The instrumented read</p>
       <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.4vw,66px);line-height:1.0;letter-spacing:-0.022em;color:#3A0A0C;max-width:17ch;">We don't guess how your team breaks. <span style="font-style:italic;color:#C04A26;">We watch it happen.</span></h1>
-      <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:52ch;">Most retreats start with a guess and hope the activities land. Ours start with evidence. A live simulation — built from your own company's reality — surfaces exactly how your executive team coordinates and cracks under pressure. Then we design the retreat around what we actually found.</p>
+      <p class="bl-speakable" style="margin-top:24px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:54ch;"><strong style="color:#3A0A0C;">Team LFS</strong> &mdash; the Team Leadership Failure Simulation &mdash; is a live simulation built from your own company's reality. It surfaces exactly how your executive team coordinates and cracks under pressure, in real observed behavior with a measurable baseline. When a conversation isn't enough and you want the read <em style="font-style:italic;">instrumented</em>, this is it.</p>
       <div style="margin-top:32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
         <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -16px rgba(192,74,38,0.6);">Book a Calibration Call <span>&rarr;</span></a>
         <a href="#how" style="color:#64010a;text-decoration:none;font-weight:700;font-size:15px;">How it works &darr;</a>
@@ -93,7 +95,7 @@ const schema = [
           <p style="font-size:15px;line-height:1.55;color:#5A4A44;">Every action is logged. Afterward, the full state is analyzed into individual and team reports — showing who does what when the pressure is on, in observable behavior, not theory.</p>
         </div>
       </div>
-      <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;">Retreat-based · up to 10 leaders on individual devices · 90–120 minutes, facilitator-paced · debrief immediately after.</p>
+      <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;">Up to 8 executives on individual devices · ~90 minutes, facilitator-paced · debrief immediately after · runs at your offsite or virtually.</p>
     </section>
 
     <!-- THE FOUR FAILURE MODES (FLAG MODEL) -->
@@ -114,11 +116,25 @@ const schema = [
     <!-- WHAT YOU GET -->
     <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
       <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">What you get</p>
-      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#3A0A0C;max-width:20ch;">Three outputs — and a retreat that's finally aimed.</h2>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#3A0A0C;max-width:20ch;">Three outputs — and a baseline you can measure against.</h2>
       <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">Individual reports</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">A trait-by-trait read on each leader, every finding backed by what they actually did in the simulation.</p></div>
-        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">Team dynamics report</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">How individual patterns interact to produce collective breakdown — influence mapping, coordination, and the failure mode that's yours.</p></div>
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">Team dynamics report</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">How individual patterns interact to produce collective breakdown — influence mapping, coordination, and the failure mode that's yours, with a FlagScore baseline.</p></div>
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">30-day commitments</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">One lead-measure per person to change starting immediately — the same reinforcement engine behind everything we do.</p></div>
+      </div>
+    </section>
+
+    <!-- RUN IT ON YOURSELF FIRST (ELFS fold-in) -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.16);border-radius:20px;padding:40px 42px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:36px;align-items:center;" class="bl-grid-collapse">
+        <div>
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:14px;">De-risk it — run it on yourself first</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#3A0A0C;margin-bottom:14px;">Feel the simulation before you bring the team.</h2>
+          <p style="font-size:16.5px;line-height:1.65;color:#5A4A44;max-width:56ch;"><strong style="color:#3A0A0C;">ELFS</strong> — the solo, roughly 90-minute version for the CEO — puts you under the same pressure and returns a written report on where you default to comfort over truth. It's the low-risk way to experience the work on yourself first. If you proceed to the full team run, your ELFS fee is applied toward it.</p>
+        </div>
+        <div>
+          <a href={SLUGS.elfs} style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#64010a;color:#F6EFE0;padding:15px 26px;border-radius:10px;font-weight:700;font-size:15.5px;text-decoration:none;">See how ELFS works &rarr;</a>
+        </div>
       </div>
     </section>
 
@@ -128,7 +144,7 @@ const schema = [
         <div>
           <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">Then — the retreat</p>
           <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#FBF3E7;margin-bottom:14px;">This is why our retreats change teams and others don't.</h2>
-          <p style="font-size:16px;line-height:1.65;color:rgba(246,239,224,0.82);">The diagnostic tells us exactly what to build. The retreat is then engineered around your real fault line — not a generic team-building day. Evidence in, transformation out.</p>
+          <p style="font-size:16px;line-height:1.65;color:rgba(246,239,224,0.82);">Team LFS tells us exactly what to build. The retreat is then engineered around your real fault line — not a generic team-building day. Evidence in, transformation out.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:12px;">
           <a href={SLUGS.teamRetreats} style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#C04A26;color:#fff;padding:15px 24px;border-radius:10px;font-weight:700;font-size:15.5px;text-decoration:none;">See the retreats &rarr;</a>

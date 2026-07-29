@@ -189,7 +189,9 @@ export const SLUGS = {
   retreatFormats: '/teams/retreats/formats/',
   waysToWorkTogether: '/teams/retreats/ways-to-work-together/',
   forExecutiveAssistants: '/teams/retreats/for-executive-assistants/',
-  teamDiagnostic: '/teams/diagnostic/',
+  // The canonical Team LFS page — the instrumented, measured read on the team
+  // (behavioral simulation). Was /teams/diagnostic/, 301'd in public/.htaccess.
+  teamLfs: '/teams/team-lfs/',
   followership: '/teams/followership/',
   corporateRetreatIdeas: '/teams/corporate-retreat-ideas/',
   executiveOffsiteIdeas: '/teams/executive-offsite-ideas/',
