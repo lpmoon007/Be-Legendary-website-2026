@@ -22,6 +22,16 @@ const schema = [
   },
 ];
 
+// Self-serve planning resources — the guides an EA can read whether briefing us
+// or building it themselves. All existing pages elsewhere on the site.
+const resources = [
+  { href: SLUGS.offsiteAgenda, title: 'Leadership offsite agenda', note: 'A ready structure for the day itself.' },
+  { href: SLUGS.executiveOffsite, title: 'How to plan an executive offsite', note: 'The full planning walkthrough, start to finish.' },
+  { href: SLUGS.howToPlanRetreat, title: 'How to plan a leadership retreat', note: 'The multi-day retreat version, end to end.' },
+  { href: SLUGS.meetingAgenda, title: 'Leadership team meeting agenda', note: 'A template for the recurring executive meeting.' },
+  { href: SLUGS.executiveTeamMeeting, title: 'How to run an executive team meeting', note: 'Make the standing meeting actually count.' },
+  { href: SLUGS.executiveOffsiteIdeas, title: 'Executive offsite ideas', note: 'Formats and themes worth borrowing.' },
+];
 ---
 <BaseLayout
   title={title}
@@ -135,12 +145,20 @@ const schema = [
       </div>
     </section>
 
-    <!-- ============ PLANNING GUIDE LINK ============ -->
-    <section style="max-width:760px;margin:56px auto 0;padding:0 32px;">
-      <a href={SLUGS.howToPlanRetreat} style="display:flex;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;background:#F6F1E7;border:1px solid rgba(100,1,10,0.16);border-radius:16px;padding:26px 30px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.55)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.16)'">
-        <span><span style="display:block;font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">Planning it yourself?</span><span style="font-family:'Newsreader',serif;font-size:21px;color:#3A0A0C;">How to plan a leadership retreat that actually sticks</span></span>
-        <span style="font-weight:700;font-size:15px;color:#C04A26;white-space:nowrap;">Read the guide &rarr;</span>
-      </a>
+    <!-- ============ PLANNING RESOURCES ============ -->
+    <section id="planning-resources" style="scroll-margin-top:80px;max-width:1000px;margin:72px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">If you'd rather dig in yourself</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#3A0A0C;max-width:22ch;">EA planning resources.</h2>
+      <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#5A4A44;max-width:62ch;">Everything we'd handle for you is written up here too &mdash; agendas, planning guides, and ideas. Use them to brief us, or to build it yourself.</p>
+      <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        {resources.map((r) => (
+          <a href={r.href} style="display:flex;flex-direction:column;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:14px;padding:24px 26px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.55)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)'">
+            <span style="font-family:'Newsreader',serif;font-size:19px;line-height:1.2;color:#3A0A0C;">{r.title}</span>
+            <span style="margin-top:8px;font-size:14px;line-height:1.5;color:#5A4A44;flex:1;">{r.note}</span>
+            <span style="margin-top:16px;font-size:13.5px;font-weight:700;color:#C04A26;">Read &rarr;</span>
+          </a>
+        ))}
+      </div>
     </section>
 
     <!-- ============ CTA ============ -->
