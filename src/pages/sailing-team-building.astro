@@ -5,9 +5,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
 
 const path = SLUGS.sailingTeamBuilding;
-const title = 'Sailing Team Building for Executive Teams — San Francisco Bay | Be Legendary';
+const title = 'Sailing Team Building for Executive Teams — SF Bay & Beyond | Be Legendary';
 const description =
-  'Sailing team building on San Francisco Bay, reframed: a coupled system where your executive team’s real behavior surfaces under pressure — then a structured debrief turns it into how you operate. Not a fun day out.';
+  'Sailing team building for executive teams — home-based on San Francisco Bay and run wherever your team can reach the water. A coupled system where real behavior surfaces under pressure, then a structured debrief turns it into how you operate. Not a fun day out.';
 
 // What a properly facilitated sail makes observable.
 const reveals = [
@@ -31,7 +31,7 @@ const formats = [
 const faqs = [
   ['Is this just a fun day of sailing?', 'No — and if that’s what you want, there are cheaper ways to get it. The sail is a behavioral laboratory: a coupled system where strategy, communication, role clarity and leadership have immediate, visible consequences. The development happens in the structured debrief and in the operating agreements you take back to work. Without those, it’s a nice day on the water and nothing changes.'],
   ['Do we need to know how to sail?', 'No experience required — and some of the sharpest breakthroughs come from people new to it. That’s part of the point: sailing puts most executives outside their technical competence, which temporarily levels title and function and shows whether someone can contribute without being the expert in the room. Professional skippers and instructors handle safety and seamanship throughout.'],
-  ['Where do you run it?', 'San Francisco Bay is our home water — crewed keelboats and smaller vessels, with the city and the Golden Gate as the backdrop. Multi-day expeditions run from the port that fits the outcome: the BVI, the San Juan Islands or the Chesapeake among them.'],
+  ['Where do you run it?', 'San Francisco Bay is our home water — crewed keelboats and smaller vessels, with the city and the Golden Gate as the backdrop — but we can arrange a sail from almost any major sailing port. Multi-day expeditions run from wherever fits the outcome: the BVI, the San Juan Islands or the Chesapeake among them.'],
   ['What if someone can’t swim, or the weather turns?', 'Everyone wears a personal flotation device; swimming is not required. Weather is part of the lesson, not a threat to it — the same way business throws adversity at a team; we plan for it and adapt, which is usually the more instructive version of the day.'],
   ['How do you measure whether it worked?', 'Not by whether people enjoyed it. We agree the behavioral targets before you sail — decision speed, role clarity, cross-functional communication, CEO dependency — observe them on the water, and convert them into explicit operating agreements. Then at 30 and 60 days we look at whether decisions got faster, fewer got reopened, risks surfaced earlier, and direct reports actually saw different behavior.'],
   ['Sailing team building in San Francisco — how is yours different?', 'Most corporate sailing is an activity with a debrief bolted on. Ours is a diagnosed intervention that happens to use a boat: we start from a real executive-team problem, engineer the day around it, observe how the team actually operates, and follow through afterward. The Bay is the setting. The method is the reason it works.'],
@@ -60,7 +60,7 @@ const schema = [
   description={description}
   path={path}
   ogType="website"
-  ogTitle="Sailing Team Building — Executive Teams on San Francisco Bay"
+  ogTitle="Sailing Team Building for Executive Teams — On the Water"
   ogDescription="A coupled system where your executive team’s real behavior surfaces under pressure, then a structured debrief turns it into how you operate. Not a fun day out."
   bodyBg="#100E0A"
   schema={schema}
@@ -75,9 +75,9 @@ const schema = [
         <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
           <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.executiveTeamBuilding} style="color:inherit;text-decoration:none;">Executive Team Building</a><span>/</span><span style="color:#D98A5E;">Sailing</span>
         </nav>
-        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Sailing team building &middot; San Francisco Bay</p>
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D98A5E;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Sailing team building &middot; San Francisco Bay &amp; beyond</p>
         <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,6vw,76px);line-height:1.0;letter-spacing:-0.026em;color:#FBF8F1;max-width:17ch;">Take your executive team somewhere it <span style="font-style:italic;color:#E0744A;">can&rsquo;t hide.</span></h1>
-        <p style="margin-top:24px;font-size:19px;line-height:1.6;max-width:58ch;color:rgba(244,240,231,0.84);">A day of sailing on San Francisco Bay, built as a behavioral laboratory: a coupled system where how your executive team really decides, communicates and leads becomes impossible to fake &mdash; then a structured debrief turns it into how you operate. The sailing is the setting. The debrief is the intervention.</p>
+        <p style="margin-top:24px;font-size:19px;line-height:1.6;max-width:58ch;color:rgba(244,240,231,0.84);">A day of sailing &mdash; on San Francisco Bay, or wherever your team can reach the water &mdash; built as a behavioral laboratory: a coupled system where how your executive team really decides, communicates and leads becomes impossible to fake. Then a structured debrief turns it into how you operate. The sailing is the setting. The debrief is the intervention.</p>
 
         <!-- short-answer / featured-snippet box -->
         <div style="margin-top:36px;max-width:62ch;background:rgba(8,12,18,0.55);border:1px solid rgba(244,240,231,0.16);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:26px 28px;">
@@ -200,7 +200,7 @@ const schema = [
           ))}
         </div>
         <p style="margin-top:28px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Want a lighter day &mdash; a corporate regatta with the emphasis on enjoying the water rather than changing how you work? We run those too, and we&rsquo;ll tell you plainly that&rsquo;s what it is.</p>
-        <p style="margin-top:16px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Sailing is a legitimate executive-development setting, not a novelty: business schools and naval academies both use it to develop leadership under real conditions. Ours is leaner &mdash; a day or two on the water on San Francisco Bay &mdash; built on the same principle: the boat is the laboratory, and the facilitation is what makes the day change how you work. No prior sailing experience required.</p>
+        <p style="margin-top:16px;font-size:15.5px;line-height:1.6;color:#6B675E;max-width:74ch;">Sailing is a legitimate executive-development setting, not a novelty: business schools and naval academies both use it to develop leadership under real conditions. Ours is leaner &mdash; a day or two on the water, home-based on San Francisco Bay and run where the outcome calls for it &mdash; built on the same principle: the boat is the laboratory, and the facilitation is what makes the day change how you work. No prior sailing experience required.</p>
       </div>
     </section>
 
