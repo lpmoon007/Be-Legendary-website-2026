@@ -21,8 +21,6 @@ const reveals = [
 
 const formats = [
   { name: 'The day sail', meta: 'One day · small team', desc: 'A single crewed keelboat — the core coupled-system day for a small executive team, run from almost any major port in the country. Brief, sail, debrief, and the operating agreements you take back to work.' },
-  { name: 'Large-yacht sail', meta: 'Larger group · facilitated', desc: 'A bigger crewed yacht with facilitators aboard, for a larger team. The organization-as-ship metaphor made literal: everyone a vital part of a whole that only moves in coordination — no role optional, and no one has to do everything.' },
-  { name: 'Tall-ship voyage', meta: 'Bigger group · sail-training ship', desc: 'A traditional square-rigger or gaff schooner with a professional crew, chartered where a vessel is available. Setting sail takes many hands hauling together on cue — the clearest picture there is of a large group that only moves when it coordinates, and of who leads, who follows, and who pulls their weight.' },
   { name: 'Team sailing challenge', meta: 'Day-long · theory to real', desc: 'Learn the skills, practice them in drills tied to how the team works on the job, then put it to the test in an actual local race while the facilitator steps back to observe. Theory, practice and the real thing in a single day.' },
   { name: 'Rotating small-crew regatta', meta: 'One day · leadership rotation', desc: 'Teams of four to six learn to sail, then race their own boats. Because every executive rotates through the helm and the lines, it produces the most usable one-day design: brief, sail, debrief, rotate, sail again, compare, transfer.' },
   { name: 'The pressure sail', meta: 'Small group · behavior under stress', desc: 'A small-group sail that introduces controlled pressure — timed drills and a real man-overboard recovery — to surface how the team coordinates when the stakes rise, then debriefs it against the same patterns at work. No gimmicks; the stress is real and so is the learning.' },
@@ -118,6 +116,37 @@ const schema = [
       </div>
     </section>
 
+    <!-- ============ TALL-SHIP SPOTLIGHT ============ -->
+    <section style="position:relative;background:radial-gradient(90% 120% at 85% 0%,rgba(192,74,38,0.2),transparent 55%),linear-gradient(180deg,#0E1622,#0B0A08 88%);color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:1120px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">The flagship &middot; tall ship</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,5vw,62px);line-height:1.0;letter-spacing:-0.024em;max-width:18ch;color:#FBF8F1;">Too big and too loud to talk. So the crew has to <span style="font-style:italic;color:#E0744A;">sing.</span></h2>
+        <p style="margin-top:24px;font-size:19px;line-height:1.62;color:rgba(244,240,231,0.86);max-width:60ch;">The tall ship is the most dramatic &mdash; and most honest &mdash; form of sailing team building there is. It&rsquo;s simply too large, and the wind and water too loud, for the crew to talk or shout across it. Raising a sail takes many hands hauling on the same line at the exact same instant, and you can&rsquo;t coordinate that with words. So sailors did it with rhythm.</p>
+        <div class="bl-grid-collapse" style="margin-top:44px;display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:start;">
+          <div>
+            <p style="font-size:17px;line-height:1.7;color:rgba(244,240,231,0.82);">The sea shanty was never entertainment &mdash; it was a <strong style="color:#FBF8F1;font-weight:600;">labor-control system set to music</strong>. A shantyman improvised a line; the crew answered with a chorus timed precisely to the pull. The song <em style="font-style:italic;">was</em> the operating system.</p>
+            <ul style="list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;">
+              {[
+                ['Halyard shanty', 'timed the long, heavy hauls that raised a sail.'],
+                ['Short-drag shanty', 'fired off a few brief pulls at maximum force.'],
+                ['Capstan shanty', 'kept the whole crew stepping in unison to raise the anchor.'],
+              ].map(([t, d]) => (
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:12px;border-top:1px solid rgba(244,240,231,0.12);padding-top:14px;">
+                  <span style="font-family:'Newsreader',serif;font-style:italic;font-size:17px;color:#D98A5E;white-space:nowrap;">{t}</span>
+                  <span style="font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.74);">{d}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div style="background:rgba(8,12,18,0.5);border:1px solid rgba(224,116,74,0.35);border-left:3px solid #C04A26;border-radius:0 16px 16px 0;padding:32px 34px;">
+            <p style="font-size:17.5px;line-height:1.65;color:#F4F0E7;">Ask a room of executives to sing and they&rsquo;ll laugh you out of it. On a tall ship it isn&rsquo;t optional &mdash; the system doesn&rsquo;t move without it. So they do: awkward at first, then normal, then necessary.</p>
+            <p style="margin-top:16px;font-size:17.5px;line-height:1.65;color:#F4F0E7;">And the question follows them home &mdash; <strong style="color:#FBF8F1;font-weight:600;">what is our team&rsquo;s version of singing?</strong> The shared rhythm that keeps a team coordinated when it can&rsquo;t all shout across the room &mdash; especially when half of it is remote.</p>
+            <p style="margin-top:22px;font-family:'Newsreader',serif;font-style:italic;font-size:clamp(19px,2.3vw,24px);line-height:1.35;color:#E0744A;">One afternoon of it is worth ten thousand slides.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ WHAT IT REVEALS ============ -->
     <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
       <div style="max-width:1120px;margin:0 auto;">
@@ -190,7 +219,7 @@ const schema = [
       <div style="max-width:1120px;margin:0 auto;">
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Ways to sail it</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;">The problem picks the boat &mdash; not the other way around.</h2>
-        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:#56524A;max-width:58ch;">From a half-day sail to a multi-day passage. Each is a different way to make real behavior visible &mdash; the right one depends on the problem you&rsquo;re solving and the size of your team.</p>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:#56524A;max-width:58ch;">The tall ship above is the most dramatic of our formats. Alongside it &mdash; from a half-day sail to a multi-day passage &mdash; each is a different way to make real behavior visible, and the right one depends on the problem you&rsquo;re solving and the size of your team.</p>
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
           {formats.map((c) => (
             <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:30px 30px;display:flex;flex-direction:column;">
