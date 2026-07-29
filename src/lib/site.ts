@@ -164,6 +164,10 @@ export const SLUGS = {
 
   // ── For Teams — hub, retreats, diagnostic, and team-side SEO (/teams/…) ────
   teams: '/teams/',
+  // Hub that captures "executive team building / offsite" search demand and
+  // reframes it toward the serious diagnostic offering (buildingteams.com/
+  // executive-team-building/ 301s here). Deliberately NOT in the header nav.
+  executiveTeamBuilding: '/executive-team-building/',
   teamRetreats: '/teams/retreats/',
   destinations: '/teams/retreats/destinations/',
   retreatFormats: '/teams/retreats/formats/',

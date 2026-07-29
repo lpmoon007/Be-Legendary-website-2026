@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
+
+const path = SLUGS.executiveTeamBuilding;
+const title = 'Executive Team Building That Changes How the Team Decides | Be Legendary';
+const description =
+  'Most executive team building is entertainment that changes nothing. We build your executive team as the highest-leverage decision system in the company — diagnosed, facilitated, and reinforced so it holds. Not trust falls.';
+
+// Formats we route to (the experience is a laboratory, not the intervention).
+const formats = [
+  { name: 'The Team Diagnostic', href: SLUGS.teamDiagnostic, meta: 'Start here', desc: 'We read how your team actually decides, disagrees and follows through before we design anything — so the work targets the real fault line, not the symptom.' },
+  { name: 'Team LFS Simulation', href: SLUGS.elfs, meta: 'Behavioral evidence', desc: 'A pressure simulation that surfaces, in about 90 minutes, how the team behaves when it matters — with a FlagScore baseline you can measure against.' },
+  { name: 'The Leadership Retreat', href: SLUGS.teamRetreats, meta: 'The core engagement', desc: 'A facilitated, outcome-built retreat that rebuilds the discipline the diagnostic surfaced — reinforced for 30 days so it survives contact with Monday.' },
+  { name: 'The Off-Road Immersion', href: SLUGS.offRoadImmersion, meta: 'One dramatic day', desc: 'A single day where real terrain makes the team’s true operating system visible — then a facilitated debrief turns it into the conversation you’ve been avoiding.' },
+  { name: 'Plan an Executive Offsite', href: SLUGS.executiveOffsite, meta: 'Do it yourself', desc: 'Running your own? The structure that separates an offsite that changes how the team decides from two expensive days away from the business.' },
+  { name: 'Ways to Work Together', href: SLUGS.waysToWorkTogether, meta: 'Engagement shapes', desc: 'The shapes an engagement can take — a sprint, a retreat, or a 12-month partnership — and how to tell which one your team actually needs.' },
+];
+
+const faqs = [
+  ['What is executive team building?', 'Executive team building is the deliberate work of turning a group of individually capable functional leaders into a single decision-making unit — one that sets shared priorities above functional ones, disagrees productively, and executes across boundaries. Done seriously, it is an intervention aimed at the interaction failures that constrain senior teams, not a morale activity. The evidence is blunt about where the value sits: not in the activity, but in exposing how the team really operates and converting that into changes in how it decides and follows through.'],
+  ['Do executive team building activities actually work?', 'An activity on its own does almost nothing. Across 51 controlled studies, active practice and simulation improved teamwork while lecture-style sessions barely moved it — and the single most reliable finding in the field is that structured debriefs improve performance by roughly 20–25%. The activity is only worth its cost when it is engineered around a real problem, observed by someone who knows what they are watching, debriefed honestly, and translated into how the team decides afterward. That design is the intervention; the activity is just the laboratory.'],
+  ['What is the difference between executive team building and a team offsite or retreat?', 'They are formats, not different things. An offsite is a block of time away from operations; a retreat is a facilitated version of it. Executive team building is what you do with that time. A retreat with no diagnosis, no honest conflict and no follow-through is an offsite with better catering. The question is never “where do we go?” — it is “what interaction failure are we here to fix, and how will we know it changed?”'],
+  ['Why does senior-team building need to be different from ordinary team building?', 'Because the failures are different. Executives rarely lack energy or camaraderie; they suffer from suppressed conflict, false agreement, unclear decision rights, and functional advocacy dressed up as strategy. Generic bonding does not touch those. And the stakes are multiplicative — the executive team’s behavior becomes the template the rest of the company copies. Building it is the highest-leverage move available, which is exactly why it should not be handed to an events vendor.'],
+  ['How do you measure whether it worked?', 'Not by whether people enjoyed it. In the room: shared priorities named, decision rights assigned, real conflicts surfaced, commitments documented. Over 30–90 days: decision-cycle time, how often decisions get reopened, commitment-completion rate, cross-functional escalations, and how fast bad news travels. Then the specific business outcome we started from. Causation in a live company is never clean; what we hold ourselves to is a documented chain — intervention, to changed behavior, to changed process, to measurable result.'],
+  ['We just need executive team building ideas or exercises. Can you help?', 'Yes — but we will start by talking you out of choosing the exercise first. Tell us the problem (slow decisions, silo conflict, a post-acquisition team, a new C-suite that has never actually functioned together) and the right format follows. Book a Calibration Call and you will leave with a real read on where your team breaks first, whether or not we work together.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
+    { '@type': 'ListItem', position: 3, name: 'Executive Team Building', item: `${SITE_URL}${SLUGS.executiveTeamBuilding}` },
+  ] },
+  { '@type': 'Service', '@id': `${SITE_URL}${SLUGS.executiveTeamBuilding}#service`,
+    name: 'Executive Team Building',
+    serviceType: 'Executive team development',
+    provider: { '@id': ORG_ID },
+    areaServed: 'US',
+    audience: { '@type': 'Audience', audienceType: 'Executive teams' },
+    description: 'Executive team building as a diagnosed, facilitated intervention rather than an event: we surface how a senior team actually decides, disagrees and executes, then rebuild those interaction capabilities and reinforce them so they hold.' },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => (
+    { '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }
+  )) },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Executive Team Building — the version that changes how the team decides"
+  ogDescription="Most executive team building is theater. We build the executive team as your highest-leverage decision system — diagnosed, facilitated, reinforced. Not trust falls."
+  bodyBg="#15130E"
+  schema={schema}
+>
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#15130E;color:#F4F0E7;overflow:hidden;">
+
+    <!-- ============ HERO ============ -->
+    <section style="background:#F4F0E7;color:#1B1810;">
+      <div style="max-width:1180px;margin:0 auto;padding:64px 32px 92px;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#C04A26;">Executive Team Building</span>
+        </nav>
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Executive team building</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-0.024em;color:#1B1810;max-width:20ch;">Executive team building that changes how the team decides &mdash; <span style="font-style:italic;color:#C04A26;">not how it feels.</span></h1>
+        <p style="margin-top:26px;font-size:20px;line-height:1.6;color:#56524A;max-width:56ch;">Your executive team is the highest-leverage decision system in the company. We build how it decides, disagrees and executes under pressure &mdash; then reinforce it so it holds. Not trust falls. Not two days out of the office you&rsquo;ll have forgotten by Monday.</p>
+
+        <!-- short-answer / featured-snippet box -->
+        <div style="margin-top:34px;max-width:64ch;background:#EFE8DA;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:26px 28px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">What is executive team building?</p>
+          <p style="font-size:18px;line-height:1.62;color:#3A362D;">The deliberate work of turning capable functional leaders into a <strong style="font-weight:700;">single decision-making unit</strong> &mdash; one that sets shared priorities, disagrees productively, and executes across boundaries. The research is clear about where the value is: <strong style="font-weight:700;">not in the activity, but in what a team does with it</strong> &mdash; exposing how it really operates, then converting that into how it decides.</p>
+        </div>
+
+        <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 40px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+          <a href={SLUGS.breakPointAssessment} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#C04A26;text-decoration:none;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">or find where your team breaks first <span style="transition:transform .2s;">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE REFRAME (dark) ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center;">
+          <div>
+            <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">What it&rsquo;s actually for</p>
+            <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">It isn&rsquo;t a morale activity. It&rsquo;s an intervention.</h2>
+            <p style="margin-top:22px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);max-width:56ch;">What caps most executive teams isn&rsquo;t individual talent &mdash; every seat is filled by someone excellent in their function. It&rsquo;s the <strong style="color:#FBF8F1;font-weight:600;">interaction failures</strong>: ego, competing priorities and unspoken tension at the top; conflict that gets suppressed in the room and litigated afterward; agreement that isn&rsquo;t real.</p>
+            <p style="margin-top:18px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);max-width:56ch;">McKinsey&rsquo;s assessment of top teams scored their collective health at just <strong style="color:#FBF8F1;font-weight:600;">44 out of 100</strong> &mdash; and the weakest areas were all interaction capabilities: conflict management, feedback, psychological safety and innovative thinking. You don&rsquo;t hire your way out of those. They&rsquo;re built and practiced by the team, together. That is what executive team building is for.</p>
+            <p style="margin-top:20px;font-size:14px;color:rgba(244,240,231,0.55);">Source: <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/go-teams-when-teams-get-healthier-the-whole-organization-benefits" target="_blank" rel="noopener nofollow" style="color:#D98A5E;text-decoration:underline;">McKinsey, “Cracking the code of team effectiveness.”</a></p>
+          </div>
+          <div style="background:linear-gradient(160deg,#211D15,#191510);border:1px solid rgba(244,240,231,0.14);border-radius:20px;padding:40px 38px;text-align:center;">
+            <p style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(64px,10vw,104px);line-height:1;color:#E0744A;">44<span style="font-size:0.42em;color:rgba(244,240,231,0.6);">/100</span></p>
+            <p style="margin-top:14px;font-size:15.5px;line-height:1.55;color:rgba(244,240,231,0.78);">Collective health of top executive teams, self-assessed. The lowest-scoring capabilities are all things a team can only build <em style="font-style:italic;">together.</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE STAKES (cream) ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Why it&rsquo;s worth the cost</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:1.05;letter-spacing:-0.02em;max-width:20ch;">The one team whose performance multiplies.</h2>
+        <p style="margin-top:22px;font-size:19px;line-height:1.65;color:#56524A;max-width:60ch;">A frontline team&rsquo;s mistakes are contained. An executive team&rsquo;s are not. Every decision it makes &mdash; or delays, or quietly reopens &mdash; sets the terms for everyone below. That is why the return on getting it right is not additive. It compounds.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:32px 30px;">
+            <p style="font-family:'Newsreader',serif;font-size:40px;color:#C04A26;line-height:1;">≈ 2×</p>
+            <p style="margin-top:14px;font-size:15.5px;line-height:1.6;color:#56524A;">Aligned, effective top teams were roughly twice as likely to post above-median financial performance in McKinsey&rsquo;s research &mdash; an association, not a guarantee, but a telling one.</p>
+          </div>
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:32px 30px;">
+            <p style="font-family:'Newsreader',serif;font-size:40px;color:#C04A26;line-height:1;">The template</p>
+            <p style="margin-top:14px;font-size:15.5px;line-height:1.6;color:#56524A;">When executives disagree privately and signal different priorities publicly, the whole company learns to escalate instead of resolve. The executive team is the behavior the rest of the org copies.</p>
+          </div>
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:32px 30px;">
+            <p style="font-family:'Newsreader',serif;font-size:40px;color:#C04A26;line-height:1;">Every hire</p>
+            <p style="margin-top:14px;font-size:15.5px;line-height:1.6;color:#56524A;">Each new appointment silently rewrites decision rights, alliances and trust. An org chart assigns authority. It does not create a functioning team &mdash; which is why cohesion can never be assumed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WORKS / WHAT WASTES MONEY (dark) ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Ruthless about what works</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:1.05;letter-spacing:-0.02em;max-width:22ch;color:#FBF8F1;">Most executive team building is theater. The evidence says why.</h2>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div style="background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:34px 34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(244,240,231,0.5);margin-bottom:18px;">Changes nothing</p>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;">
+              {['Entertainment presented as development','Personality quizzes and generic labels','Forced vulnerability and forced socializing','A physical challenge unrelated to the team’s work','A motivational speech with no behavior practice','An activity followed by no application on Monday','A retreat that carefully avoids the team’s real conflict','“Did everyone have fun?” as the only measure'].map((it) => (
+                <li style="display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.72);"><span style="color:rgba(244,240,231,0.4);flex:none;font-weight:700;">&times;</span><span>{it}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div style="background:linear-gradient(160deg,rgba(192,74,38,0.14),rgba(244,240,231,0.03));border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Changes the team</p>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;">
+              {['A defined business problem worth the executives’ time','Genuine interdependence — they need each other to succeed','Someone qualified observing how the team really operates','A structured debrief: what happened, why, where it shows up at work','Translation into decision rights, norms and priorities','Follow-through weeks later, to see if it survived','Measured on behavior and business outcomes, not enjoyment'].map((it) => (
+                <li style="display:flex;gap:11px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:rgba(244,240,231,0.9);"><span style="color:#E0744A;flex:none;font-weight:700;">&#10003;</span><span>{it}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:44px;max-width:74ch;">
+          <p style="font-size:18px;line-height:1.72;color:rgba(244,240,231,0.82);">The single most reliable finding in this field isn&rsquo;t about the activity at all. Across 46 studies, <strong style="color:#FBF8F1;font-weight:600;">structured debriefs</strong> &mdash; performing, getting honest evidence about how you performed, then converting it into changed behavior &mdash; improved effectiveness by roughly <strong style="color:#FBF8F1;font-weight:600;">20&ndash;25%</strong>, in real and simulated settings alike.<a href="https://pubmed.ncbi.nlm.nih.gov/23516804/" target="_blank" rel="noopener nofollow" style="color:#D98A5E;text-decoration:none;"><sup>1</sup></a> The activity just creates something worth debriefing.</p>
+          <p style="margin-top:18px;font-size:18px;line-height:1.72;color:rgba(244,240,231,0.82);">And when researchers compared training methods across 51 controlled studies, active practice and simulation moved teamwork and performance; lecture-style sessions barely registered.<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0169604" target="_blank" rel="noopener nofollow" style="color:#D98A5E;text-decoration:none;"><sup>2</sup></a> A 2018 review in <em style="font-style:italic;">American Psychologist</em> put it plainly: different team problems require different interventions &mdash; which is exactly why we diagnose before we design.</p>
+          <p style="margin-top:22px;font-size:13.5px;line-height:1.6;color:rgba(244,240,231,0.5);"><sup>1</sup> Tannenbaum &amp; Cerasoli (2013), <em>Human Factors</em> &mdash; debrief meta-analysis (d&nbsp;=&nbsp;0.67). &nbsp; <sup>2</sup> McEwan et&nbsp;al. (2017), <em>PLOS ONE</em> &mdash; meta-analysis of 51 controlled teamwork interventions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACTIVITIES REFRAME (cream, SEO capture) ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:820px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">If you came looking for activities</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-0.018em;">Searching for executive team building activities, exercises or ideas?</h2>
+        <p style="margin-top:22px;font-size:19px;line-height:1.68;color:#56524A;">Fair &mdash; that&rsquo;s how most people look for this. Here&rsquo;s the uncomfortable part: <strong style="color:#1B1810;font-weight:600;">the activity is the least important variable.</strong> A rock climb, a business simulation, an off-road day, a facilitated strategy session &mdash; any of them can transform a team or waste a day.</p>
+        <p style="margin-top:18px;font-size:19px;line-height:1.68;color:#56524A;">What decides which is whether the experience is engineered around a real fault line, observed by someone who knows what they&rsquo;re seeing, and converted into how the team decides afterward. We don&rsquo;t sell activities. We use them &mdash; as a laboratory for the behavior that&rsquo;s actually running your business.</p>
+      </div>
+    </section>
+
+    <!-- ============ FORMATS / HOW WE DO IT (dark) ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">How we do it</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">Diagnose first. Then choose the room.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.78);max-width:54ch;">The format follows the problem &mdash; never the other way around. Each of these is a way to make real behavior visible and turn it into how the team operates.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+          {formats.map((c) => (
+            <a href={c.href} style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:16px;padding:30px 30px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(244,240,231,0.42)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">{c.meta}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin-bottom:10px;color:#FBF8F1;">{c.name}</h3>
+              <p style="font-size:15px;line-height:1.58;color:rgba(244,240,231,0.72);margin-bottom:18px;">{c.desc}</p>
+              <span style="margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F4F0E7;">Explore <span>&rarr;</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEASUREMENT (cream) ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">How you&rsquo;ll know it worked</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:1.05;letter-spacing:-0.02em;max-width:20ch;">We don&rsquo;t measure whether people enjoyed it.</h2>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+          {[
+            ['In the room', ['Shared priorities named out loud','Decision rights assigned','Real conflicts surfaced, not managed around','Commitments documented']],
+            ['In 30–90 days', ['Decision-cycle time','How often decisions get reopened','Commitment-completion rate','Cross-functional escalations, and how fast bad news travels']],
+            ['In the business', ['The specific outcome we started from','Integration or transformation milestones','Execution against the year’s priorities','Confidence in senior leadership']],
+          ].map(([label, items]) => (
+            <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:30px 30px;">
+              <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">{label}</p>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;">
+                {items.map((it) => (
+                  <li style="display:flex;gap:10px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:#3A362D;"><span style="color:#C04A26;flex:none;font-weight:700;">&#10003;</span><span>{it}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:36px;font-size:17px;line-height:1.7;color:#56524A;max-width:74ch;">Causation inside a live company is never clean. What we hold ourselves to is a documented chain: <strong style="color:#1B1810;font-weight:600;">intervention &rarr; changed executive behavior &rarr; changed operating process &rarr; measurable business effect.</strong> If we can&rsquo;t draw that line, we don&rsquo;t claim the result.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ (dark) ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:900px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Straight answers</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.06;letter-spacing:-0.02em;color:#FBF8F1;margin-bottom:36px;">Executive team building, answered plainly.</h2>
+        <div style="display:flex;flex-direction:column;gap:26px;">
+          {faqs.map(([q, a]) => (
+            <div>
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:9px;">{q}</h3>
+              <p style="font-size:16px;line-height:1.68;color:rgba(244,240,231,0.74);">{a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section style="background:linear-gradient(180deg,#1B1810,#100E0A);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
+      <div style="position:relative;max-width:760px;margin:0 auto;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,5vw,56px);line-height:1.04;letter-spacing:-0.022em;color:#FBF8F1;">Start with where the team breaks. We&rsquo;ll tell you straight.</h2>
+        <p style="margin-top:22px;font-size:18.5px;line-height:1.58;color:rgba(244,240,231,0.8);max-width:54ch;margin-left:auto;margin-right:auto;">One call is enough to know whether this is right for your team &mdash; and we&rsquo;ll say so if it isn&rsquo;t. No activity catalog, no pitch.</p>
+        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 34px;border-radius:11px;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+          <a href={SLUGS.breakPointAssessment} style="border:1px solid rgba(244,240,231,0.28);color:#F4F0E7;text-decoration:none;padding:18px 30px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.28)'">Take the free self-assessment</a>
+        </div>
+        <p style="margin-top:26px;font-size:14px;line-height:1.5;color:rgba(244,240,231,0.5);">Want the corporate give-back and large-group events instead? That&rsquo;s our sister brand, <a href="https://www.buildingteams.com/" target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;">Building Teams &rarr;</a></p>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>

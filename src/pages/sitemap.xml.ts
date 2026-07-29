@@ -26,6 +26,7 @@ const meta: Record<string, [string, string]> = {
   [SLUGS.leadersGlossary]: ['0.7', 'monthly'],
   [SLUGS.legendaryLeader]: ['0.8', 'monthly'],
   [SLUGS.teamRetreats]: ['0.8', 'monthly'],
+  [SLUGS.executiveTeamBuilding]: ['0.8', 'monthly'],
 };
 const DEFAULT: [string, string] = ['0.7', 'monthly'];
 
