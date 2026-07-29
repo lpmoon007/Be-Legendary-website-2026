@@ -75,7 +75,7 @@ const formats = [
   },
   {
     name: 'Sailing Offsite', best: 'alignment & command under pressure',
-    photo: '/assets/dest-sailing.webp', photoAlt: 'A sailing yacht underway on open water',
+    photo: '/assets/sailing/schooner.webp', photoAlt: 'An executive team aboard a classic schooner under full sail at golden hour',
     desc: 'A boat is your company compressed into a day: one heading, clear roles, real consequences for a missed call. It surfaces exactly how your team aligns and who steps up when it counts.',
     dims: [
       { name: 'Physical', label: 'Moderate', pct: '50%' },
@@ -90,6 +90,8 @@ const formats = [
       { n: '4', text: 'Anchored debrief: how the crew decided, and what that mirrors back at the office.' },
     ],
     caseTitle: 'A team that learned to depend on each other',
+    caseHref: `${SLUGS.sailingTeamBuilding}#films`,
+    deepLink: { href: SLUGS.sailingTeamBuilding, label: 'Want to learn more — the Sailing Offsite' },
   },
   {
     name: 'Wilderness & Open Water', best: 'shared purpose, deep off-grid',
@@ -217,7 +219,7 @@ const tabInactive = 'background:transparent;color:#6B4A44;border-color:rgba(100,
 
             <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:18px;">
               <p style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;margin-bottom:6px;">Seen in a real retreat</p>
-              <a href={SLUGS.caseStudies} style="font-family:'Newsreader',serif;font-size:18px;line-height:1.25;color:#64010a;text-decoration:none;">{f.caseTitle} <span style="font-size:14px;">&rarr;</span></a>
+              <a href={f.caseHref || SLUGS.caseStudies} style="font-family:'Newsreader',serif;font-size:18px;line-height:1.25;color:#64010a;text-decoration:none;">{f.caseTitle} <span style="font-size:14px;">&rarr;</span></a>
             </div>
             {f.deepLink && (
               <a href={f.deepLink.href} style="display:block;margin-top:18px;padding-top:16px;border-top:1px solid rgba(100,1,10,0.14);font-size:13.5px;font-weight:700;color:#C04A26;text-decoration:none;">{f.deepLink.label} &rarr;</a>
