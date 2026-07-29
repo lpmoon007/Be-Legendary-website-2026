@@ -16,6 +16,8 @@ canonical page, consolidated authority, no self-competition.
 | buildingteams.com URL | → belegendary.org destination | Notes |
 | --- | --- | --- |
 | `/resources/executive-offsite-agenda/` | `/leadership-offsite-agenda/` | Destination optimized to also target "executive offsite agenda" (title, body, FAQ, schema) so the merged page ranks for both variants. Salvage any better template/checklist from the old page into the destination *before* redirecting. |
+| `/resources/company-offsite-planning-checklist/` | `/how-to-plan-an-executive-offsite/` | Added a "countdown" planning checklist (weeks-out timeline) to the destination — the one thing the old page had that this didn't. Also captures the "offsite planning checklist" query. |
+| `/resources/corporate-retreat-ideas/` | `/teams/corporate-retreat-ideas/` | Destination already stronger (organized by outcome, not event-vendor framing). Rounded its ideas list out to six to match our formats. Nothing to salvage from the old page. |
 | `/executive-team-building/` | `/executive-team-building/` | The exec-team-building hub is the reframed, evidence-anchored destination. |
 | `/experiences/corporate-sailing/` | `/sailing-team-building/` | Sailing reframed as a behavioral laboratory; the old vendor page is superseded. |
 | `/team-coaching/` | `/how-we-work-together/` | Coaching/engagement model lives here. |

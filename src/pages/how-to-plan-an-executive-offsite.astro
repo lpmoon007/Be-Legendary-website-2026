@@ -8,7 +8,7 @@ import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'How to Plan an Executive Offsite That Produces Decisions';
 const description =
-  'A step-by-step guide to planning an executive offsite — the one outcome, who to put in the room, the working agenda, facilitation, and the follow-through that makes it stick.';
+  'A step-by-step guide to planning an executive offsite — the one outcome, who to put in the room, the working agenda, facilitation, a countdown planning checklist, and the follow-through that makes it stick.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -67,6 +67,7 @@ const schema = [
         <li><a href="#outcome" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Start with the decision</a></li>
         <li><a href="#who" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Who&rsquo;s in the room</a></li>
         <li><a href="#steps" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The plan, in order</a></li>
+        <li><a href="#checklist" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">The planning checklist</a></li>
         <li><a href="#faq" style="color:rgba(244,240,231,0.82);text-decoration:none;font-size:15px;border-bottom:1px solid rgba(192,74,38,0.45);padding-bottom:1px;">Straight answers</a></li>
       </ol>
     </div>
@@ -119,6 +120,28 @@ const schema = [
   <!-- IF YOU'RE ORGANIZING IT -->
   <div style="max-width:920px;margin:44px auto 0;padding:0 32px;">
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Often the person searching &ldquo;how to plan an executive offsite&rdquo; isn&rsquo;t the executive &mdash; it&rsquo;s the chief of staff or executive assistant handed a date and a budget. If that&rsquo;s you: your leverage isn&rsquo;t the venue. It&rsquo;s protecting the outcome sentence, guarding the guest list, and making sure follow-through is planned before everyone scatters. We also run executive offsites end to end &mdash; design, facilitation, and the 30-day follow-through &mdash; with a single point of contact. <a href={SLUGS.forExecutiveAssistants} style="color:#D98A5E;font-weight:600;">See how we work with executive assistants &rarr;</a></p>
+  </div>
+
+  <!-- THE COUNTDOWN CHECKLIST -->
+  <div id="checklist" style="max-width:920px;margin:44px auto 0;padding:0 32px;scroll-margin-top:90px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:6px;">The countdown &mdash; a planning checklist</p>
+      <p style="font-size:15px;line-height:1.6;color:#5A5248;margin-bottom:26px;">The decision and the agenda come first (above). This is the logistics timeline that serves them &mdash; the part an organizer or EA actually runs.</p>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+        {[
+          ['6–8 wks out', 'Lock the date and the outcome sentence. Confirm the smallest right guest list, and hold the venue. Book the facilitator.'],
+          ['3–4 wks out', 'Build the working agenda around the one decision. Assign pre-reads so live updates are killed. Arrange travel, rooming and meals.'],
+          ['1 wk out', 'Send the outcome, agenda and pre-reads to everyone. Reconfirm logistics. Brief the facilitator on the real fault line, not the polite version.'],
+          ['The day(s)', 'Phones away. Protect the blocks in bold. Capture every decision with one owner, one deadline, and the place it will be checked.'],
+          ['Within 30 days', 'Run the reinforcement — who checks what, when, in which existing meeting. The block that decides whether any of it survives the drive home.'],
+        ].map(([when, what]) => (
+          <li style="display:flex;gap:16px;">
+            <span style="flex:none;width:104px;font-weight:700;color:#C04A26;font-size:14px;line-height:1.4;">{when}</span>
+            <span style="font-size:15.5px;line-height:1.5;color:#3A372F;">{what}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   </div>
 
   <!-- CTA -->
