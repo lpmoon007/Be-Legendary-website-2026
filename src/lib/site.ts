@@ -46,7 +46,17 @@ export const HUBSPOT = {
   // script on /contact/, so fields/validation/workflows are whatever is
   // configured in HubSpot for this form.
   contactFormGuid: 'bad3be34-c7d6-4d32-933c-508ecb972054',
+  // Complete Retreat Planning Kit lead magnet (embedded on /retreat-planning-kit/).
+  // Submit triggers the HubSpot follow-up workflow that emails the ungated
+  // download link (RETREAT_KIT_URL below). The download itself is not gated —
+  // the form only captures the lead so the link can be sent + tracked.
+  retreatKitFormGuid: 'c4bf79e3-be0f-4cdb-ac08-d3f2a146f949',
 };
+
+// Direct, ungated download for the Complete Retreat Planning Kit. Lives in the
+// repo at public/assets/downloads/ so it ships with the static build. Keep this
+// path STABLE — it's baked into the emailed link and any on-site download button.
+export const RETREAT_KIT_URL = '/assets/downloads/complete-retreat-planning-kit.pdf';
 
 // Direct-download URL for the free first chapter. Empty until the PDF is
 // uploaded (e.g. to public/assets/ldol-first-chapter.pdf → '/assets/ldol-first-chapter.pdf').
@@ -114,6 +124,9 @@ export const SLUGS = {
   // Consolidated off-road immersion (was two near-duplicate geo pages, Denver +
   // Sedona, now one location-neutral page; both old URLs 301 here via .htaccess).
   offRoadImmersion: '/executive-off-road-immersion/',
+  // Lead-magnet landing page — embeds the HubSpot form that delivers the
+  // Complete Retreat Planning Kit download link by email.
+  retreatKit: '/retreat-planning-kit/',
   // ── For Leaders universe (individual-leader development) ──────────────────
   // /leaders/ is the canonical home. The 4 concept pages migrated from /library/
   // (design intent), with 301s in public/.htaccess.

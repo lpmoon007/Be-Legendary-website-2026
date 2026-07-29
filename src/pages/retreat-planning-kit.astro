@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { HUBSPOT, SLUGS, RETREAT_KIT_URL, CONTACT_EMAIL } from '../lib/site';
+
+const title = 'The Complete Retreat Planning Kit | Be Legendary';
+const description =
+  'A free, no-fluff kit for planning an executive retreat that actually changes something: the three design principles, the agenda shape, a venue and logistics checklist, a prep timeline, a budget worksheet, and the 30-day follow-through plan.';
+
+// What's inside — mirrors the PDF's sections so the page sets accurate expectations.
+const inside = [
+  { n: '01', t: 'The three design principles', d: 'What separates a retreat that changes something from one that just happened.' },
+  { n: '02', t: 'Five sponsor-alignment questions', d: 'Settle these with your executive sponsor before you book anything.' },
+  { n: '03', t: 'The agenda shape', d: 'The ⅓ content / ⅓ conversation / ⅓ connection rule — and how to build the day around it.' },
+  { n: '04', t: 'Venue & logistics checklist', d: 'Everything that quietly makes or breaks the room, in one list.' },
+  { n: '05', t: 'The countdown', d: 'A prep timeline — what to lock, and when, from weeks out to the day of.' },
+  { n: '06', t: 'Budget worksheet', d: 'A simple frame for what to spend where, without guessing.' },
+  { n: '07', t: 'The 30-day follow-through', d: 'The retreat isn’t the point. What happens after is — here’s how to hold it.' },
+];
+
+const kitSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'The Complete Retreat Planning Kit',
+  description,
+  totalTime: 'P30D',
+  step: inside.map((s) => ({ '@type': 'HowToStep', name: s.t, text: s.d })),
+};
+---
+<BaseLayout title={title} description={description} path={SLUGS.retreatKit} schema={kitSchema} bodyBg="#F4F0E7">
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <main style="background:#F4F0E7;">
+    <div style="max-width:1080px;margin:0 auto;padding:52px 32px 64px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.12fr 0.88fr;gap:48px;align-items:start;">
+
+        <!-- LEFT: the promise + what's inside -->
+        <div>
+          <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#C04A26;display:inline-block;"></span>Free download · No fluff
+          </p>
+          <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,4.6vw,50px);line-height:1.03;letter-spacing:-0.02em;color:#1B1810;">The Complete Retreat Planning Kit</h1>
+          <p class="bl-speakable" style="margin-top:20px;font-size:18px;line-height:1.6;color:#3A362D;max-width:52ch;">Most retreats fail for the same reason: they’re built as <em>events</em> &mdash; fill the days, book the venue, hope people bond. The good ones are built as <strong style="color:#1B1810;">decisions</strong>. This kit is organized around that difference &mdash; the principles, the agenda shape, the checklist, and the follow-through that make an executive retreat change something.</p>
+
+          <div style="margin-top:30px;border-top:1px solid rgba(27,24,16,0.14);padding-top:26px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A5B2E;margin-bottom:18px;">What’s inside</p>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;">
+              {inside.map((s) => (
+                <li style="display:flex;gap:16px;align-items:flex-start;">
+                  <span style="flex:none;font-family:'Newsreader',serif;font-size:15px;color:#C04A26;letter-spacing:0.04em;padding-top:2px;">{s.n}</span>
+                  <span>
+                    <span style="display:block;font-weight:700;font-size:16px;color:#1B1810;">{s.t}</span>
+                    <span style="display:block;margin-top:3px;font-size:14.5px;line-height:1.5;color:#4A473F;">{s.d}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p style="margin-top:28px;font-size:14px;line-height:1.55;color:#5A564C;max-width:50ch;">The kit gets you a well-run retreat. Whether it’s the one that finally fixes the thing your team keeps avoiding is usually not a logistics question &mdash; that’s what a <a href="/book/" style="color:#C04A26;text-decoration:none;font-weight:600;">free 15-minute Calibration Call</a> is for. No pitch, just a sharper plan.</p>
+        </div>
+
+        <!-- RIGHT: the signup form -->
+        <div>
+          <div style="position:sticky;top:24px;background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:18px;padding:30px 30px 28px;box-shadow:0 30px 70px -40px rgba(0,0,0,0.35);">
+            <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:24px;line-height:1.12;color:#1B1810;">Get the kit</h2>
+            <p style="margin-top:10px;font-size:15px;line-height:1.55;color:#4A473F;">Tell us where to send it. We’ll email you a direct download link &mdash; no gate, no drip you didn’t ask for. It’s yours to save, print, and forward.</p>
+
+            <div class="hs-form-frame" data-region={HUBSPOT.region} data-form-id={HUBSPOT.retreatKitFormGuid} data-portal-id={HUBSPOT.portalId} style="margin-top:20px;min-height:210px;"></div>
+
+            <noscript>
+              <p style="margin-top:14px;font-size:14.5px;line-height:1.5;color:#4A473F;">The form needs JavaScript. You can <a href={RETREAT_KIT_URL} style="color:#C04A26;text-decoration:none;font-weight:600;">download the kit directly here</a>, or email us at <a href={`mailto:${CONTACT_EMAIL}`} style="color:#C04A26;text-decoration:none;">{CONTACT_EMAIL}</a>.</p>
+            </noscript>
+
+            <p style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(27,24,16,0.1);font-size:12.5px;line-height:1.5;color:#6E6757;">A one-page PDF kit &middot; ~1&nbsp;MB &middot; opens in any reader. You’ll only hear from us about the kit unless you ask for more.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={1080} note="© 2026 Be Legendary. A sharper plan, free." />
+
+  <!-- HubSpot forms embed loader (renders the .hs-form-frame above) -->
+  <script is:inline defer src={`https://js-${HUBSPOT.region}.hsforms.net/forms/embed/${HUBSPOT.portalId}.js`}></script>
+</BaseLayout>
