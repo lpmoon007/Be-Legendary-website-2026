@@ -20,11 +20,11 @@ const reveals = [
 ];
 
 const formats = [
-  { name: 'The day sail', meta: 'One day · small team', desc: 'A single crewed keelboat — the core coupled-system day for a small executive team, run from almost any major port in the country. Brief, sail, debrief, and the operating agreements you take back to work.' },
-  { name: 'Team sailing challenge', meta: 'Day-long · theory to real', desc: 'Learn the skills, practice them in drills tied to how the team works on the job, then put it to the test in an actual local race while the facilitator steps back to observe. Theory, practice and the real thing in a single day.' },
-  { name: 'Rotating small-crew regatta', meta: 'One day · leadership rotation', desc: 'Teams of four to six learn to sail, then race their own boats. Because every executive rotates through the helm and the lines, it produces the most usable one-day design: brief, sail, debrief, rotate, sail again, compare, transfer.' },
-  { name: 'The pressure sail', meta: 'Small group · behavior under stress', desc: 'A small-group sail that introduces controlled pressure — timed drills and a real man-overboard recovery — to surface how the team coordinates when the stakes rise, then debriefs it against the same patterns at work. No gimmicks; the stress is real and so is the learning.' },
-  { name: 'Offshore expedition', meta: 'Multi-day · port to port', desc: 'A multi-day passage where the team sails as working crew — preparing the vessel, standing watches, running the ship day and night. You board in one city and step off in another, having earned whole-team interdependence and shared leadership under fatigue that no single day can reach.' },
+  { name: 'The day sail', meta: 'One day · small team', img: '/assets/sailing/day-sail.webp', desc: 'A single crewed keelboat — the core coupled-system day for a small executive team, run from almost any major port in the country. Brief, sail, debrief, and the operating agreements you take back to work.' },
+  { name: 'Team sailing challenge', meta: 'Day-long · theory to real', img: '/assets/sailing/schooner.webp', desc: 'Learn the skills, practice them in drills tied to how the team works on the job, then put it to the test in an actual local race while the facilitator steps back to observe. Theory, practice and the real thing in a single day.' },
+  { name: 'Rotating small-crew regatta', meta: 'One day · leadership rotation', img: '/assets/sailing/regatta.webp', desc: 'Teams of four to six learn to sail, then race their own boats. Because every executive rotates through the helm and the lines, it produces the most usable one-day design: brief, sail, debrief, rotate, sail again, compare, transfer.' },
+  { name: 'The pressure sail', meta: 'Small group · behavior under stress', img: '/assets/sailing/crew-hauling.webp', desc: 'A small-group sail that introduces controlled pressure — timed drills and a real man-overboard recovery — to surface how the team coordinates when the stakes rise, then debriefs it against the same patterns at work. No gimmicks; the stress is real and so is the learning.' },
+  { name: 'Offshore expedition', meta: 'Multi-day · port to port', img: '/assets/sailing/tall-ship-crew.webp', desc: 'A multi-day passage where the team sails as working crew — preparing the vessel, standing watches, running the ship day and night. You board in one city and step off in another, having earned whole-team interdependence and shared leadership under fatigue that no single day can reach.' },
 ];
 
 // Harbors where a schooner or tall ship can be chartered. Seasons are typical;
@@ -251,10 +251,13 @@ const schema = [
         <p style="margin-top:20px;font-size:18px;line-height:1.65;color:#56524A;max-width:58ch;">The tall ship above is the most dramatic of our formats. Alongside it &mdash; from a half-day sail to a multi-day passage &mdash; each is a different way to make real behavior visible, and the right one depends on the problem you&rsquo;re solving and the size of your team.</p>
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
           {formats.map((c) => (
-            <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:30px 30px;display:flex;flex-direction:column;">
-              <span style="font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">{c.meta}</span>
-              <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin-bottom:10px;color:#1B1810;">{c.name}</h3>
-              <p style="font-size:15px;line-height:1.58;color:#56524A;">{c.desc}</p>
+            <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
+              <img src={c.img} alt={c.name} width="1916" height="821" loading="lazy" decoding="async" style="width:100%;height:168px;object-fit:cover;display:block;border-bottom:1px solid rgba(27,24,16,0.08);" />
+              <div style="padding:26px 28px;display:flex;flex-direction:column;flex:1;">
+                <span style="font-size:11px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">{c.meta}</span>
+                <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:23px;margin-bottom:10px;color:#1B1810;">{c.name}</h3>
+                <p style="font-size:15px;line-height:1.58;color:#56524A;">{c.desc}</p>
+              </div>
             </div>
           ))}
         </div>
