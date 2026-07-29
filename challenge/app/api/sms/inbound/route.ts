@@ -6,7 +6,8 @@ import {
   validateTwilioSignature,
 } from "@/lib/twilio";
 import { processInbound, type ConversationState } from "@/lib/conversation";
-import { isStopKeyword } from "@/lib/phone";
+import { isStopKeyword, isAffirmative } from "@/lib/phone";
+import { messages } from "@/lib/messages";
 import { localDateISO } from "@/lib/timezone";
 
 export const runtime = "nodejs";
@@ -50,8 +51,57 @@ export async function POST(req: NextRequest) {
     .eq("phone", from)
     .maybeSingle();
 
-  // Unknown number: log for the record (no user_id), then ignore. No reply.
+  // Not a participant? It might be an accountability partner replying to their
+  // invite (double opt-in) or opting out.
   if (!user) {
+    const { data: owner } = await supabase
+      .from("users")
+      .select("id, name, buddy_name, buddy_status")
+      .eq("buddy_phone", from)
+      .maybeSingle();
+
+    if (owner) {
+      const participant = owner.name || "your friend";
+
+      if (isStopKeyword(body)) {
+        await supabase
+          .from("users")
+          .update({ buddy_status: "stopped" })
+          .eq("id", owner.id);
+        return twiml(); // Twilio sends the carrier opt-out confirmation.
+      }
+
+      // First YES → confirm; then they'll receive nudges.
+      let reply: string;
+      if (owner.buddy_status !== "confirmed" && isAffirmative(body)) {
+        await supabase
+          .from("users")
+          .update({ buddy_status: "confirmed" })
+          .eq("id", owner.id);
+        reply = messages.buddyConfirmed(participant);
+      } else if (owner.buddy_status !== "confirmed") {
+        // Not yet confirmed and didn't say yes — re-explain.
+        reply = messages.buddyInvite(participant, owner.buddy_name ?? undefined);
+      } else {
+        // Confirmed buddy sent something else (no relay in Phase 1).
+        reply = messages.buddyAck(participant);
+      }
+
+      try {
+        const sid = await sendSms(from, reply);
+        await supabase.from("sms_log").insert({
+          user_id: owner.id,
+          direction: "outbound",
+          body: reply,
+          twilio_sid: sid,
+        });
+      } catch (err) {
+        console.error("Failed to reply to buddy:", err);
+      }
+      return twiml();
+    }
+
+    // Genuinely unknown number: log for the record (no user_id), then ignore.
     await supabase.from("sms_log").insert({
       user_id: null,
       direction: "inbound",

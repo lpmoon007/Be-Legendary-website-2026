@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { toE164, digitCount } from "@/lib/phone";
 import { isValidTimezone } from "@/lib/timezone";
+import { inviteBuddy } from "@/lib/buddy";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -42,6 +43,9 @@ interface EnrollBody {
   private?: boolean;
   // Optional "why this matters" motivation (Actionable Factor #1).
   why?: string;
+  // Optional accountability partner (Actionable Factor #3).
+  buddy_name?: string;
+  buddy_phone?: string;
   // Workout-block extras (additive; require the workout-enroll migration).
   workout_id?: string;
   email?: string;
@@ -83,6 +87,8 @@ export async function POST(req: NextRequest) {
   const email = payload.email?.trim() || null;
   // Not stored in private mode (it may itself be personal).
   const why = isPrivate ? null : payload.why?.trim() || null;
+  const buddyName = payload.buddy_name?.trim() || null;
+  const buddyPhoneRaw = payload.buddy_phone?.trim() || null;
   // The user's chosen times replace the fixed 8 a.m. nudge and 4 p.m. check-in.
   const morningTime =
     payload.reminder_time && TIME_RE.test(payload.reminder_time)
@@ -140,6 +146,10 @@ export async function POST(req: NextRequest) {
         { user_id: existing.id, state: "idle", updated_at: new Date().toISOString() },
         { onConflict: "user_id" }
       );
+    // Optional accountability partner (non-fatal — never blocks enrollment).
+    if (buddyPhoneRaw) {
+      await inviteBuddy(supabase, existing.id, name, buddyName, buddyPhoneRaw);
+    }
     return json({ ok: true, id: existing.id, reactivated: true });
   }
 
@@ -174,6 +184,11 @@ export async function POST(req: NextRequest) {
     user_id: user.id,
     state: "idle",
   });
+
+  // Optional accountability partner (non-fatal — never blocks enrollment).
+  if (buddyPhoneRaw) {
+    await inviteBuddy(supabase, user.id, name, buddyName, buddyPhoneRaw);
+  }
 
   return json({ ok: true, id: user.id });
 }

@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import { toE164, digitCount } from "@/lib/phone";
 import { isValidTimezone } from "@/lib/timezone";
 import { sendSms } from "@/lib/twilio";
+import { inviteBuddy } from "@/lib/buddy";
 
 // All admin mutations run through the request-bound (authenticated) server
 // client, which RLS grants full access. The middleware guarantees a session.
@@ -159,6 +160,34 @@ export async function updateSchedule(
     .eq("id", userId);
   if (error) throw new Error(error.message);
   revalidatePath(`/admin/users/${userId}`);
+}
+
+/** Coach adds/changes a participant's accountability partner + sends the invite. */
+export async function setBuddy(
+  userId: string,
+  buddyName: string,
+  buddyPhone: string
+): Promise<{ error?: string }> {
+  const supabase = createClient();
+  if (digitCount(buddyPhone) < 10) {
+    return { error: "Enter a valid partner mobile number." };
+  }
+  const { data: u } = await supabase
+    .from("users")
+    .select("name")
+    .eq("id", userId)
+    .maybeSingle();
+
+  const res = await inviteBuddy(
+    supabase,
+    userId,
+    u?.name ?? null,
+    buddyName.trim() || null,
+    buddyPhone
+  );
+  if (!res.ok) return { error: res.error };
+  revalidatePath(`/admin/users/${userId}`);
+  return {};
 }
 
 export async function toggleActive(userId: string, active: boolean) {

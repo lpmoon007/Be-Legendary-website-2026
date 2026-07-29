@@ -7,6 +7,7 @@ import {
   ActiveToggle,
   MessageSender,
   SendTimesEditor,
+  BuddyEditor,
 } from "./UserControls";
 import {
   recentAverage,
@@ -31,6 +32,9 @@ interface UserDetail {
   active: boolean;
   is_private: boolean;
   why: string | null;
+  buddy_name: string | null;
+  buddy_phone: string | null;
+  buddy_status: string | null;
 }
 
 export default async function UserDetailPage({
@@ -43,7 +47,7 @@ export default async function UserDetailPage({
   const { data: user } = await supabase
     .from("users")
     .select(
-      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private, why"
+      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private, why, buddy_name, buddy_phone, buddy_status"
     )
     .eq("id", params.id)
     .maybeSingle();
@@ -149,6 +153,21 @@ export default async function UserDetailPage({
             morning={u.morning_time.slice(0, 5)}
             afternoon={u.afternoon_time.slice(0, 5)}
             timezone={u.timezone}
+          />
+        </div>
+      </div>
+
+      {/* Accountability partner */}
+      <div className="surface mt-4 bg-card-light p-5 shadow-card">
+        <span className="text-xs font-700 uppercase tracking-wide text-ink-muted">
+          Accountability partner
+        </span>
+        <div className="mt-2">
+          <BuddyEditor
+            userId={u.id}
+            name={u.buddy_name}
+            phone={u.buddy_phone}
+            status={u.buddy_status}
           />
         </div>
       </div>

@@ -25,6 +25,15 @@ interface NudgeRow {
   local_date: string;
 }
 
+interface BuddyNudgeRow {
+  user_id: string;
+  participant_name: string;
+  buddy_name: string | null;
+  buddy_phone: string;
+  nudge_type: "week1" | "atrisk";
+  local_date: string;
+}
+
 // Internal endpoint. The Supabase scheduler (Edge Function / pg_cron) calls this
 // every minute with `Authorization: Bearer <CRON_SECRET>`. It asks Postgres who
 // is due *right now in their own timezone* (due_messages()), sends each text,
@@ -115,6 +124,45 @@ export async function POST(req: NextRequest) {
       } catch (err) {
         console.error(`Nudge failed for ${row.user_id}:`, err);
         results.push({ user_id: row.user_id, type: "nudge", ok: false });
+      }
+    }
+  }
+
+  // ── Accountability-partner nudges (week-1 + at-risk, confirmed buddies) ─────
+  const { data: buddyData, error: buddyError } = await supabase.rpc(
+    "due_buddy_nudges"
+  );
+  if (buddyError) {
+    console.error("due_buddy_nudges RPC failed:", buddyError);
+  } else {
+    for (const row of (buddyData ?? []) as BuddyNudgeRow[]) {
+      const body =
+        row.nudge_type === "week1"
+          ? messages.buddyWeek1(row.participant_name)
+          : messages.buddyAtRisk(row.participant_name);
+      try {
+        const sid = await sendSms(row.buddy_phone, body);
+        // Logged under the participant's user_id (the buddy isn't a user).
+        await supabase.from("sms_log").insert({
+          user_id: row.user_id,
+          direction: "outbound",
+          body,
+          twilio_sid: sid,
+        });
+        results.push({
+          user_id: row.user_id,
+          type: `buddy_${row.nudge_type}`,
+          ok: true,
+        });
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        console.error(`Buddy nudge failed for ${row.user_id}:`, err);
+        results.push({
+          user_id: row.user_id,
+          type: `buddy_${row.nudge_type}`,
+          ok: false,
+          error: message,
+        });
       }
     }
   }

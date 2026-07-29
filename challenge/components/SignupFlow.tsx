@@ -22,6 +22,8 @@ export function SignupFlow() {
   const [consent, setConsent] = useState(false);
   const [isPrivate, setIsPrivate] = useState(false);
   const [why, setWhy] = useState("");
+  const [buddyName, setBuddyName] = useState("");
+  const [buddyPhone, setBuddyPhone] = useState("");
   // Delivery times (HH:MM, participant's local zone). Default 8 a.m. nudge / 4 p.m. check-in.
   const [reminderTime, setReminderTime] = useState("08:00");
   const [reflectionTime, setReflectionTime] = useState("16:00");
@@ -90,6 +92,8 @@ export function SignupFlow() {
     setConsent(false);
     setIsPrivate(false);
     setWhy("");
+    setBuddyName("");
+    setBuddyPhone("");
     setReminderTime("08:00");
     setReflectionTime("16:00");
     setTzEditing(false);
@@ -121,6 +125,8 @@ export function SignupFlow() {
           consent,
           private: isPrivate,
           why: why.trim() || undefined,
+          buddy_name: buddyName.trim() || undefined,
+          buddy_phone: buddyPhone.trim() || undefined,
           timezone,
           reminder_time: reminderTime,
           reflection_time: reflectionTime,
@@ -333,6 +339,34 @@ export function SignupFlow() {
                     ))}
                   </select>
                 )}
+              </div>
+            </div>
+
+            {/* Accountability partner (optional) */}
+            <div className="rounded-btn border border-ink-muted/25 bg-white/60 p-3">
+              <span className="text-sm font-600 text-ink-body">
+                Accountability partner{" "}
+                <span className="font-400 text-ink-muted">(optional)</span>
+              </span>
+              <p className="mt-0.5 text-xs text-ink-muted">
+                Someone to cheer you on nearly doubles the odds you stick with it.
+                We&apos;ll text them once to confirm before anything else.
+              </p>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <input
+                  value={buddyName}
+                  onChange={(e) => setBuddyName(e.target.value)}
+                  placeholder="Their name"
+                  className="rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-sm text-ink-body outline-none focus:border-accent"
+                />
+                <input
+                  type="tel"
+                  inputMode="tel"
+                  value={buddyPhone}
+                  onChange={(e) => setBuddyPhone(e.target.value)}
+                  placeholder="Their mobile"
+                  className="rounded-btn border border-ink-muted/40 bg-white px-3 py-2 text-sm text-ink-body outline-none focus:border-accent"
+                />
               </div>
             </div>
 

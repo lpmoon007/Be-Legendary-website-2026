@@ -39,3 +39,24 @@ const STOP_KEYWORDS = new Set([
 export function isStopKeyword(body: string): boolean {
   return STOP_KEYWORDS.has(body.trim().toUpperCase());
 }
+
+const AFFIRMATIVE = new Set([
+  "YES",
+  "Y",
+  "YEAH",
+  "YEP",
+  "YESS",
+  "SURE",
+  "OK",
+  "OKAY",
+  "CONFIRM",
+  "ACCEPT",
+  "IN",
+  "START",
+  "ABSOLUTELY",
+]);
+
+/** Used for the accountability-partner opt-in (buddy replies YES to accept). */
+export function isAffirmative(body: string): boolean {
+  return AFFIRMATIVE.has(body.trim().toUpperCase());
+}
