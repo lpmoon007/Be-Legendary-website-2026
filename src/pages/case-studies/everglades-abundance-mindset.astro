@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
+
+const path = SLUGS.caseEverglades;
+const title = 'Case Study: Scarcity to Abundance in the Everglades | Be Legendary';
+const description =
+  'A CIO’s team learned to maximize the resources they had via a shelter-box survival simulation in the Everglades. 113% abundance-mindset gain in 30 days.';
+
+const schema = [
+  { '@type': 'Article',
+    headline: 'Case Study: Turning Scarcity Into an Abundance Mindset in the Everglades',
+    description: "A global professional-services firm's CIO and nine-person executive team were tasked with maximizing existing resources but kept competing instead of collaborating. A shelter-box survival simulation in the Everglades reframed trash as resources and produced a 113% improvement in abundance mindset measured 30 days later.",
+    author: { '@id': PERSON_ID },
+    publisher: { '@id': ORG_ID },
+    about: ['Executive team alignment', 'Abundance vs scarcity mindset', 'Resource maximization', 'Experiential leadership retreat'] },
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Case Studies', item: `${SITE_URL}${SLUGS.caseStudies}` },
+    { '@type': 'ListItem', position: 3, name: 'Everglades Abundance', item: `${SITE_URL}${path}` },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="Case Study: Scarcity to Abundance in the Everglades" ogDescription={description} schema={schema} bodyBg="#EFE9DD">
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <div style="font-family:'Hanken Grotesk',sans-serif;-webkit-font-smoothing:antialiased;background:#EFE9DD;color:#1C1A17;line-height:1.55;">
+
+    <!-- HERO -->
+    <section style="max-width:900px;margin:0 auto;padding:56px 40px 32px;">
+      <a href={SLUGS.caseStudies} style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#9A9182;text-decoration:none;">&larr; Case Studies</a>
+      <div style="display:flex;align-items:center;gap:12px;margin:24px 0 18px;flex-wrap:wrap;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#1C1A17;background:#E0B973;padding:4px 9px;border-radius:4px;">Case Study</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#9A9182;">Professional services &middot; client anonymized</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,4.8vw,58px);line-height:1.04;letter-spacing:-0.02em;">A pile of trash, a floating island, and a team that stopped seeing scarcity.</h1>
+      <p style="margin-top:26px;font-size:21px;line-height:1.6;color:#2A2620;font-weight:500;">A global professional-services firm's CIO and his nine-person executive team had been told to do more with the resources they already had. Instead they competed and protected turf. A survival simulation deep in the Everglades made them live the lesson &mdash; and 30 days later, their abundance mindset had improved 113%.</p>
+    </section>
+
+    <!-- STAT STRIP -->
+    <section style="max-width:900px;margin:0 auto;padding:16px 40px 40px;">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#DED7C9;border:1px solid #DED7C9;border-radius:14px;overflow:hidden;">
+        <div style="background:#1C1A17;padding:24px 22px;"><div style="font-family:'Newsreader',serif;font-size:34px;color:#E0B973;line-height:1;">113%</div><div style="font-size:12.5px;color:#B7AE9D;margin-top:8px;">abundance-mindset gain &middot; 30 days</div></div>
+        <div style="background:#FBF9F4;padding:24px 22px;"><div style="font-family:'Newsreader',serif;font-size:34px;color:#64010a;line-height:1;">10</div><div style="font-size:12.5px;color:#6B6358;margin-top:8px;">CIO + 9 executives</div></div>
+        <div style="background:#FBF9F4;padding:24px 22px;"><div style="font-family:'Newsreader',serif;font-size:34px;color:#64010a;line-height:1;">3 days</div><div style="font-size:12.5px;color:#6B6358;margin-top:8px;">in &amp; around the Everglades</div></div>
+        <div style="background:#FBF9F4;padding:24px 22px;"><div style="font-family:'Newsreader',serif;font-size:34px;color:#64010a;line-height:1;">2</div><div style="font-size:12.5px;color:#6B6358;margin-top:8px;">assumptions they never questioned</div></div>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <article style="max-width:760px;margin:0 auto;padding:24px 40px 40px;">
+
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;letter-spacing:-0.01em;">The need</h2>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">The CIO's executive team had a clear mandate: stop buying and building new, and squeeze far more out of the resources they already had. Collaborate across functions. Find new uses for existing assets. Maximize what was in hand. Back at the office, none of it was happening &mdash; and no amount of meetings, talking, or pressure was changing it. Each executive guarded their own resources and territory. The mandate was about abundance; the behavior was pure scarcity.</p>
+
+      <div style="margin-top:28px;background:#F4EFE5;border:1px solid #E5DCCB;border-radius:14px;padding:26px 30px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#64010a;margin-bottom:10px;">Function before format</div>
+        <p style="font-size:16.5px;line-height:1.65;color:#403B33;">The outcome to engineer: shift the team from a scarcity mindset to an abundance mindset &mdash; to make them <em>feel</em> what it means for "what we already have" to be more than enough. You can't lecture a team into that. So we built an environment where they'd have no choice but to discover it.</p>
+      </div>
+
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;letter-spacing:-0.01em;margin-top:48px;">Act one &middot; No breakfast, into the swamp</h2>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">They spent the first night at a five-star resort in Miami. The next morning we woke them at 6:30 with no breakfast &mdash; just a promise that we'd eat once we reached the Everglades. We'd partnered with the Miccosukee Tribe, the only private landowners in the Everglades, for access to one of their hammocks &mdash; the floating islands of land that dot the wetlands. Airboats took the hungry team on an hour-long tour past the alligators and snakes, with plenty of narration about everything out there that could eat or kill them.</p>
+
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;letter-spacing:-0.01em;margin-top:48px;">Act two &middot; The trash that wasn't trash</h2>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">The airboats dropped all ten of them on a single hammock and pulled away. On a table sat a small treasure chest, and inside it, instructions: <strong>here are your teams; build a shelter in 60 minutes; the team with the best shelter sleeps in their hotel room tonight.</strong> The hammock was strewn with what looked like garbage &mdash; ripped tarps, rope, cardboard, junk. The instant there was a use for it, the "garbage" became resources, and they scrambled to claim it.</p>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">This is our <strong>shelter-box simulation</strong> &mdash; built to mirror what families face after a hurricane in Puerto Rico, or a disaster anywhere, when all that's left to build shelter from is debris. Hidden in the grass with binoculars, we watched them fight over scraps, pull materials out of each other's hands, and even sabotage and raid a rival team's build. It was not pretty. And it was an exact replica of what was happening back at work.</p>
+
+      <!-- PULL -->
+      <div style="margin-top:36px;background:#1C1A17;color:#EFE9DD;border-radius:16px;padding:38px 40px;">
+        <p style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(22px,2.8vw,30px);line-height:1.35;color:#FBF9F4;">"As tourists they'd have seen garbage. With one reframe, the garbage became the most valuable thing on the island. That reframe was the entire point."</p>
+      </div>
+
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;letter-spacing:-0.01em;margin-top:44px;">Act three &middot; The brunch, and the real shelter box</h2>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">After 60 minutes we scored each shelter against the parameters we'd set. There was one clear winner &mdash; and the losing teams were furious: <em>"I'm not staying out here with the alligators."</em> We calmed them, loaded the airboats, and took them to a second hammock, where five-star restaurant chefs had set up an extraordinary covered brunch in the middle of the swamp.</p>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">Beside the canopies sat a real <strong>ShelterBox</strong> &mdash; the actual disaster-response kit, a tent and kitchen and survival gear, deployed to Japan after the tsunami and to Puerto Rico after the hurricanes. They inspected it and grasped, viscerally, what receiving one would mean to a family who'd lost everything. Over the best meal of the trip, we talked about resources: which ones they already had that they'd never recognized as resources at all.</p>
+
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;letter-spacing:-0.01em;margin-top:48px;">Act four &middot; The assumptions they never questioned</h2>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">The Everglades became the reference point they returned to for the next two days &mdash; because of what it exposed about their assumptions. Two went completely unchallenged:</p>
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:14px;">
+        <div style="background:#FBF9F4;border:1px solid #DED7C9;border-radius:14px;padding:24px 28px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#64010a;margin-bottom:8px;">Assumption 1</div>
+          <p style="font-size:16.5px;line-height:1.6;color:#403B33;">"Only the winning team sleeps in the hotel." No one ever asked what happened to teams two and three &mdash; they simply accepted the scarcity framing handed to them.</p>
+        </div>
+        <div style="background:#FBF9F4;border:1px solid #DED7C9;border-radius:14px;padding:24px 28px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#64010a;margin-bottom:8px;">Assumption 2</div>
+          <p style="font-size:16.5px;line-height:1.6;color:#403B33;">"We were split into three teams, so we compete." Not one of them stopped to say: <em>wait &mdash; we're one executive team. Let's build one shelter, together, and all of us sleep in the hotel.</em></p>
+        </div>
+      </div>
+      <p style="margin-top:22px;font-size:18px;line-height:1.75;color:#403B33;">That was the whole retreat in miniature: stop, and rethink. What resources do we actually have? Have we truly examined them? Where else could they be used? Who else could we talk to about maximizing them? Two days of the most open-minded conversation I've seen from executives at that level followed.</p>
+
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:30px;letter-spacing:-0.01em;margin-top:48px;">The result</h2>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">Each executive committed to a specific daily behavior designed to shift their thinking from lacking to abundance &mdash; a different commitment for each person, tracked every day for 30 days. By day 30, the team's abundance mindset had improved <strong>113%</strong>.</p>
+      <p style="margin-top:16px;font-size:18px;line-height:1.75;color:#403B33;">The principle underneath it is simple, and it held: when you start looking for abundance, you find it. Solutions and opportunities that were always there become visible &mdash; because you're finally focused on what you have, not on what you're missing.</p>
+
+      <p style="margin-top:32px;font-size:14px;line-height:1.6;color:#8A8270;font-style:italic;">Client identity anonymized. Engagement details shared with permission; some specifics generalized to protect the client and individuals involved.</p>
+    </article>
+
+    <!-- CTA -->
+    <section style="position:relative;overflow:hidden;background:#64010a;color:#F6EFE0;margin-top:32px;">
+      <div style="position:relative;max-width:760px;margin:0 auto;padding:72px 40px;text-align:center;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,42px);line-height:1.08;letter-spacing:-0.02em;">Is your team stuck in a scarcity mindset?</h2>
+        <p style="margin:18px auto 0;max-width:48ch;font-size:16.5px;line-height:1.6;color:#F0D9D2;">Sometimes the resources are already there &mdash; the team just can't see them yet. We design the experience that makes them obvious.</p>
+        <div style="margin-top:30px;display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#F6EFE0;color:#64010a;padding:16px 30px;border-radius:999px;font-weight:800;font-size:15.5px;text-decoration:none;">Book a Calibration Call &rarr;</a>
+          <a href={SLUGS.caseStudies} style="padding:16px 26px;border-radius:999px;font-weight:700;font-size:15.5px;color:#F6EFE0;border:1px solid rgba(246,239,224,0.4);text-decoration:none;">More case studies &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>

@@ -76,6 +76,13 @@ export const SLUGS = {
   costCalculator: '/cost-of-lost-disciplines-calculator/',
   research: '/state-of-executive-team-execution/',
   caseStudies: '/case-studies/',
+  // Retreat case studies ported from the legendary-retreats.com handoff. Slugs
+  // match the old URLs so the cross-domain 301s recover their search equity.
+  caseAutoRetailer: '/case-studies/online-auto-retailer-leadership-team/',
+  caseSanJuan: '/case-studies/san-juan-mountains-work-ethic/',
+  caseEverglades: '/case-studies/everglades-abundance-mindset/',
+  caseFederalFiscal: '/case-studies/federal-fiscal-leadership-team/',
+  caseAlaska: '/case-studies/alaska-executive-vulnerability/',
   howWeWorkTogether: '/how-we-work-together/',
   elfs: '/elfs/',
   glossary: '/glossary/',
