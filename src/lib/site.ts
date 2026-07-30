@@ -184,6 +184,11 @@ export const SLUGS = {
   // Sailing spoke off the executive-team-building hub — executive sailing on
   // San Francisco Bay, reframed as a behavioral laboratory (not an event).
   sailingTeamBuilding: '/sailing-team-building/',
+  // Sibling hub to executive-team-building, targeting the "executive team
+  // development" cluster (programs / coaching / plan). Differentiated: building
+  // = the intervention/experience; development = the ongoing, evidence-based
+  // process of building the team's collective capability. Evidence-anchored.
+  executiveTeamDevelopment: '/executive-team-development/',
   teamRetreats: '/teams/retreats/',
   destinations: '/teams/retreats/destinations/',
   retreatFormats: '/teams/retreats/formats/',

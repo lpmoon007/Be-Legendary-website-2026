@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
+
+const path = SLUGS.executiveTeamDevelopment;
+const title = 'Executive Team Development: What Actually Builds the Team | Be Legendary';
+const description =
+  'Executive team development is building the collective capability of your leadership team — not developing individuals one at a time. The evidence is clear on what works: diagnosis, real practice, feedback, reinforcement, and transfer to actual work. Here is how, and why most programs fail.';
+
+// The six-step engineered process — each step maps to a condition the evidence
+// rewards (Lacerenza et al., 2017). Development is the process; the experience
+// is only the laboratory.
+const model = [
+  { n: '01', t: 'Diagnose the real requirement', d: 'We read how the team actually decides, disagrees and executes under pressure — with Team LFS or the calibration call — before designing anything.', ev: 'The evidence’s #1 condition: a genuine needs analysis.' },
+  { n: '02', t: 'Engineer the experience', d: 'A relevant behavioral laboratory — a retreat, an off-road day, a day on the water, a simulation — with real interdependence and consequences.', ev: 'Active practice and simulation, not lecture.' },
+  { n: '03', t: 'Practice, feedback, reflection', d: 'Executives perform, get specific and credible feedback on what they actually did, reflect, and try a different approach.', ev: 'The mechanisms with the largest measured effects.' },
+  { n: '04', t: 'Translate to live work', d: 'The behavior is connected to the team’s real strategic priorities and operating rhythm — not left as an insight from an offsite.', ev: 'Content matched to the role; transfer to real work.' },
+  { n: '05', t: 'Reinforce over time', d: 'A 30-day reinforcement cycle: who checks what, when, in which existing meeting. Spaced follow-through, not one concentrated event.', ev: 'Spaced sessions beat a single event.' },
+  { n: '06', t: 'Measure against a baseline', d: 'We track the documented chain — behavior, to process, to business effect — against the baseline the diagnosis set.', ev: 'Progress assessed after the program, not assumed.' },
+];
+
+// Evidence-graded methods. Honest grades; captures the long-tail queries
+// (programs, coaching, exercises, plan, action learning, simulation).
+const methods = [
+  { name: 'Formal leadership programs', grade: 'Strong — when designed well', note: 'Improve learning, behavior and organizational outcomes when built as diagnosis → practice → feedback → application → reinforcement. Weak when it’s content → discussion → satisfaction survey.' },
+  { name: 'Experiential simulation', grade: 'Moderate–High', note: 'Well aligned with the strongest findings: it supplies practice, feedback and repetition. The more it resembles the behavioral demands of executive work, the stronger the transfer.' },
+  { name: 'Stretch assignments & real work', grade: 'Strong in theory', note: 'Real assignments create the complexity, consequences and feedback courses lack — but only develop if the executive gets feedback, reflects accurately, and extracts transferable lessons.' },
+  { name: 'Action learning', grade: 'Moderate', note: 'Development on a live organizational problem — structurally strong. The risk: the project consumes the learning, leaving people busy but not developed.' },
+  { name: 'Executive coaching', grade: 'Moderate (individual)', note: 'A 2023 RCT-only meta-analysis found positive effects, strongest on behavior. Best for individualized change — but it may improve one executive without fixing the team system producing the problem.' },
+  { name: 'Peer development', grade: 'Plausible–Moderate', note: 'Exposes executives to alternative models and challenge without hierarchy. The risk is anecdotal advice and social support without real challenge.' },
+  { name: '360-degree feedback', grade: 'Small average effects', note: 'Can contribute to change, but the report is not development. Average behavioral effects are small; change follows only when the executive accepts it, targets specific behavior, and follows through with support.' },
+  { name: 'Executive education', grade: 'Mixed', note: 'Efficient for frameworks and peer exposure; weakest when an organization assumes attendance will change workplace behavior on its own.' },
+];
+
+const faqs = [
+  ['What is executive team development?', 'Executive team development is the deliberate work of building the collective capability of a leadership team — how it decides, aligns, disagrees productively and executes together — rather than developing each executive individually. It is a distinction that matters: a company can develop strong individual leaders and still have a dysfunctional executive team if incentives are opposed, decision rights are unclear, or functional goals outrank enterprise goals. The enterprise value usually depends on the collective capacity, not the sum of the individuals.'],
+  ['How is executive team development different from leadership development, or team building?', 'Leader development increases an individual executive’s judgment, self-awareness and skill. Leadership (or team) development increases the collective capacity of the team and its system to produce leadership. Team building is often a single event. Executive team development, done seriously, is the ongoing, engineered process that builds collective capability over time — with diagnosis, practice, feedback, reinforcement and transfer to real work. The event can initiate it; it rarely completes it.'],
+  ['Do executive team development programs actually work?', 'They can, and the evidence is stronger than most assume. The largest meta-analysis — 335 leadership-training samples — found substantial average effects on learning, on transfer to workplace behavior, and on organizational results. But those effects depend on design: a genuine needs analysis, feedback, multiple methods, real practice, spaced sessions rather than one event, and content matched to the role. The consistent failure point is transfer — organizations spend on the order of $60 billion a year on leadership development, and most of it never changes behavior at work. Design decides the outcome.'],
+  ['What are good executive team development exercises?', 'The exercise is the least important variable. A strategy simulation, an off-road day, a day on the water, a facilitated operating session — any of them can develop a team or waste its time. What decides which is whether the exercise is a behavioral laboratory built around a diagnosed requirement, observed by someone who knows what they’re seeing, debriefed honestly, connected to real work, and reinforced afterward. We don’t sell exercises; we engineer development around them.'],
+  ['Do you offer an executive team development plan or program?', 'Yes — but we build it around your diagnosed requirement, not off a shelf. The shape is consistent: diagnose how the team actually operates, engineer a relevant experience, run practice-feedback-reflection, translate it to your live strategic priorities, reinforce for 30 days, and measure against the baseline. That is the program: an engineered development process, not a course you attend.'],
+  ['Does executive coaching develop the team?', 'Coaching develops individuals, and the rigorous evidence for it is genuinely positive — a 2023 meta-analysis limited to randomized controlled trials found real effects, strongest on behavior. But coaching has a structural limit: it can improve one executive without correcting the team, incentive or governance system producing the problem. Team development addresses the collective — how the group decides and executes together — which individual coaching, on its own, does not reach.'],
+  ['How do L&D teams collaborate with executives on leadership development?', 'The strongest partnerships split the work: the L&D or CHRO function owns internal integration, sponsorship and continuity; we bring the diagnosis, the experience design, the facilitation, and the reinforcement-and-measurement engine. We provide the documentation your team needs, work within your existing cadence and processes, and hand back a baseline and a chain of measures — so development is something the organization can sustain, not a one-off vendor event.'],
+  ['What is the ROI of executive team development?', 'There is no defensible universal multiplier — published estimates range from large gains to net losses, precisely because programs differ in objective, quality, duration, support and measurement. A valid ROI analysis starts from a specific executive-performance problem and builds a chain: for example, cross-functional decisions that take 45 days → improved decision rights and closure → reduced reopen and escalation → a 20-day cycle → earlier launches and lower carrying cost. Without that chain, an ROI figure is mostly an attribution exercise. We hold ourselves to the chain.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
+    { '@type': 'ListItem', position: 3, name: 'Executive Team Development', item: `${SITE_URL}${SLUGS.executiveTeamDevelopment}` },
+  ] },
+  { '@type': 'Service', '@id': `${SITE_URL}${SLUGS.executiveTeamDevelopment}#service`,
+    name: 'Executive Team Development',
+    serviceType: 'Executive leadership team development',
+    provider: { '@id': ORG_ID },
+    areaServed: 'US',
+    audience: { '@type': 'Audience', audienceType: 'Executive teams' },
+    description: 'Executive team development as an engineered, evidence-based process — diagnosis, real practice, feedback, reinforcement and transfer to work — that builds the collective capability of a leadership team rather than developing individuals in isolation.' },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => (
+    { '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }
+  )) },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Executive Team Development — the version the evidence actually supports"
+  ogDescription="Building the collective capability of a leadership team, not developing individuals one at a time. Diagnosis, practice, feedback, reinforcement — engineered around real work."
+  bodyBg="#15130E"
+  schema={schema}
+>
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#15130E;color:#F4F0E7;overflow:hidden;">
+
+    <!-- ============ HERO ============ -->
+    <section style="background:#F4F0E7;color:#1B1810;">
+      <div style="max-width:1180px;margin:0 auto;padding:64px 32px 92px;">
+        <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#C04A26;">Executive Team Development</span>
+        </nav>
+        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Executive team development</p>
+        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-0.024em;color:#1B1810;max-width:20ch;">Executive team development that builds the <span style="font-style:italic;color:#C04A26;">team</span> — not just the people on it.</h1>
+        <p style="margin-top:26px;font-size:20px;line-height:1.6;color:#56524A;max-width:56ch;">You can develop eight strong individual executives and still have a leadership team that can&rsquo;t decide, won&rsquo;t align, and quietly competes. Enterprise value depends on the <strong style="color:#1B1810;">collective</strong> capability &mdash; how the team decides and executes together. That is what we develop, and the research is clear about how.</p>
+
+        <!-- short-answer / featured-snippet box -->
+        <div class="bl-speakable" style="margin-top:34px;max-width:64ch;background:#EFE8DA;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:26px 28px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">What is executive team development?</p>
+          <p style="font-size:18px;line-height:1.62;color:#3A362D;">The deliberate work of building the <strong style="font-weight:700;">collective capability</strong> of a leadership team &mdash; how it decides, aligns, disagrees productively and executes together &mdash; rather than developing each executive individually. Done seriously, it is an <strong style="font-weight:700;">engineered process</strong>, not a course: diagnosis, real practice, feedback, reinforcement, and transfer to actual work.</p>
+        </div>
+
+        <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 40px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+          <a href={SLUGS.breakPointAssessment} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#C04A26;text-decoration:none;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">or find where your team breaks first <span style="transition:transform .2s;">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE DISTINCTION (dark) ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">The distinction that decides everything</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:1.05;letter-spacing:-0.02em;max-width:22ch;color:#FBF8F1;">Developing leaders and developing the team are not the same job.</h2>
+        <p style="margin-top:22px;font-size:19px;line-height:1.65;color:rgba(244,240,231,0.82);max-width:62ch;">Most executive-development spend goes to the first: coaching, courses, assessments that make individuals better. Valuable &mdash; but a company can do all of it and still have a team that stalls. The failure isn&rsquo;t talent. It&rsquo;s the <strong style="color:#FBF8F1;font-weight:600;">system between</strong> the talented people.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div style="background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:34px 34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(244,240,231,0.5);margin-bottom:18px;">Leader development — the individual</p>
+            <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);margin-bottom:14px;">Increases one executive&rsquo;s judgment, self-awareness, identity and skill. Real, and often necessary.</p>
+            <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.78);">But a team of well-developed individuals still fails when incentives are opposed, decision rights are unclear, the CEO dominates every call, trust is thin, and meetings reinforce reporting instead of collective work.</p>
+          </div>
+          <div style="background:linear-gradient(160deg,rgba(192,74,38,0.14),rgba(244,240,231,0.03));border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Team development — the collective</p>
+            <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.9);margin-bottom:14px;">Increases the capacity of the people, relationships and system to produce leadership <em style="font-style:italic;">together.</em></p>
+            <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.9);">Shared priorities above functional ones, clear decision rights, conflict that surfaces in the room, and an operating rhythm built for collective work. This is where enterprise value is made — and it can only be built by the team, together.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE EVIDENCE (cream) ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">What the research actually shows</p>
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center;">
+          <div>
+            <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;">Leadership capability is developable. The design decides whether it develops.</h2>
+            <p style="margin-top:22px;font-size:18px;line-height:1.68;color:#56524A;max-width:56ch;">The largest evidence base is a meta-analysis of <strong style="color:#1B1810;font-weight:600;">335 independent leadership-training samples</strong>, spanning studies from 1951 to 2014. Averaged across them, the effects were substantial &mdash; not just on how participants felt, but on <strong style="color:#1B1810;font-weight:600;">transfer to workplace behavior</strong> and on organizational results.</p>
+            <p style="margin-top:18px;font-size:18px;line-height:1.68;color:#56524A;max-width:56ch;">The effects were larger when programs included the things most executive offsites skip: a genuine needs analysis, feedback, multiple learning methods, real practice, sessions spaced over time rather than one concentrated event, and content matched to the leader&rsquo;s role. That is the whole argument for doing this as a process, not an event.</p>
+            <p style="margin-top:20px;font-size:14px;color:#8A7F6C;">Source: <a href="https://doi.org/10.1037/apl0000241" target="_blank" rel="noopener nofollow" style="color:#9E3A1C;text-decoration:underline;">Lacerenza, Reyes, Marlow, Joseph &amp; Salas (2017), <em>Journal of Applied Psychology</em></a>.</p>
+          </div>
+          <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:20px;padding:38px 34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:22px;">Average effects (δ) — 335 samples</p>
+            {[
+              ['Transfer to workplace behavior', '0.82'],
+              ['Learning', '0.73'],
+              ['Organizational / subordinate results', '0.72'],
+              ['Participant reactions', '0.63'],
+            ].map(([label, val]) => (
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid rgba(27,24,16,0.08);">
+                <span style="font-size:15px;line-height:1.4;color:#3A362D;max-width:22ch;">{label}</span>
+                <span style="font-family:'Newsreader',serif;font-size:34px;color:#C04A26;line-height:1;">{val}</span>
+              </div>
+            ))}
+            <p style="margin-top:18px;font-size:13px;line-height:1.55;color:#8A7F6C;">Substantial average effects — but averages hide wide variance. Design, duration, and organizational support move them.</p>
+          </div>
+        </div>
+
+        <!-- the transfer problem -->
+        <div style="margin-top:56px;background:#64010a;border-radius:20px;padding:44px 44px;">
+          <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:36px;align-items:center;">
+            <div>
+              <p style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,6vw,64px);line-height:1;color:#F6EFE0;">≈ $60B</p>
+              <p style="margin-top:12px;font-size:14.5px;line-height:1.55;color:rgba(246,239,224,0.8);">Spent each year on leadership development, by common industry estimates.</p>
+            </div>
+            <div>
+              <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E9A98F;margin-bottom:12px;">The failure point is transfer</p>
+              <p style="font-size:18px;line-height:1.66;color:rgba(246,239,224,0.9);">An executive can understand the model, agree with the instructor, score well on the assessment, and enjoy the program &mdash; and none of it proves changed leadership. The consistent weakness across the field isn&rsquo;t whether people learn. It&rsquo;s whether the learning ever reaches the way the team actually works. Engineering that transfer is the entire job.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRAINING VS DEVELOPMENT (dark) ============ -->
+    <section style="background:#100E0A;color:#F4F0E7;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Training is not development</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:22ch;color:#FBF8F1;">A two-day event can initiate development. It rarely completes it.</h2>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.12);border-radius:18px;padding:34px 34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(244,240,231,0.5);margin-bottom:18px;">Training — teach a competency</p>
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.76);margin-bottom:16px;">Financial acumen, negotiation, communication, strategic analysis, governance. Identifiable skills that can be taught, practiced and assessed inside a structured program.</p>
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.76);">Necessary, bounded, and relatively easy to measure. But it is not the thing that makes an executive team execute.</p>
+          </div>
+          <div style="background:linear-gradient(160deg,rgba(192,74,38,0.14),rgba(244,240,231,0.03));border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:34px 34px;">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Development — build adaptive capacity</p>
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.9);margin-bottom:16px;">Judgment, identity, perspective, learning agility, enterprise orientation, the ability to operate through ambiguity and to build leadership in others.</p>
+            <p style="font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.9);">These are built through repeated experience and reflection over time — which is why we run development as a cumulative process, not a calendar entry.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW WE BUILD IT (cream) — the engineered process ============ -->
+    <section style="background:#F4F0E7;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">How we build it</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:1.05;letter-spacing:-0.02em;max-width:22ch;">The experience is the laboratory. The process is the product.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:#56524A;max-width:62ch;">Every step maps to a condition the evidence rewards. The experience &mdash; a retreat, a day off-road, a simulation &mdash; only exists to create real data about how your team perceives, decides, communicates and leads under pressure. What we build around it is the development.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+          {model.map((s) => (
+            <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:28px 28px;display:flex;flex-direction:column;">
+              <span style="font-family:'Newsreader',serif;font-size:15px;color:#C04A26;letter-spacing:0.04em;">{s.n}</span>
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#1B1810;margin:8px 0 10px;">{s.t}</h3>
+              <p style="font-size:15px;line-height:1.58;color:#56524A;margin-bottom:16px;flex:1;">{s.d}</p>
+              <p style="font-size:12.5px;line-height:1.45;color:#9E3A1C;font-weight:600;border-top:1px solid rgba(27,24,16,0.1);padding-top:12px;">{s.ev}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVIDENCE BY METHOD (dark) ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Every method, graded honestly</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:24ch;color:#FBF8F1;">What the evidence says about each way to develop executives.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.78);max-width:60ch;">No method is magic and none is worthless. Each is strong under the right conditions and weak without them — which is why we combine them around a diagnosis rather than selling one.</p>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          {methods.map((m) => (
+            <div style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.12);border-radius:14px;padding:26px 28px;">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:10px;">
+                <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;">{m.name}</h3>
+                <span style="flex:none;font-size:11.5px;font-weight:700;letter-spacing:0.04em;color:#E0744A;text-transform:uppercase;text-align:right;">{m.grade}</span>
+              </div>
+              <p style="font-size:14.5px;line-height:1.58;color:rgba(244,240,231,0.72);">{m.note}</p>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:28px;font-size:13.5px;line-height:1.6;color:rgba(244,240,231,0.5);max-width:80ch;">Coaching evidence: <a href="https://pubmed.ncbi.nlm.nih.gov/37333584/" target="_blank" rel="noopener nofollow" style="color:#D98A5E;text-decoration:none;">Nicolau et al. (2023)</a>, a meta-analysis limited to randomized controlled trials. 360-feedback: meta-analyses of longitudinal studies find small average behavioral effects (Smither, London &amp; Reilly, 2005). The $60B figure is a widely cited industry estimate, not a measured constant.</p>
+      </div>
+    </section>
+
+    <!-- ============ WHAT IT SHOULD CHANGE (cream) ============ -->
+    <section style="background:#EFE8DA;color:#1B1810;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">What to expect it to change</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.4vw,50px);line-height:1.05;letter-spacing:-0.02em;max-width:22ch;">Closer outcomes are more credible. Distant ones are more valuable.</h2>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+          {[
+            ['Proximal — most credible', ['Self-awareness and leader identity','Strategic perspective','Confidence and self-efficacy','Quality of reflection','Willingness to seek and use feedback']],
+            ['Behavioral — more valuable', ['Decision quality and speed','Delegation and follow-through','Conflict behavior','Cross-functional collaboration','Coaching of subordinates']],
+            ['Organizational — hardest to attribute', ['Execution against the year’s priorities','Retention and engagement','Succession strength','Transformation execution','Business-unit performance']],
+          ].map(([label, items]) => (
+            <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.1);border-radius:16px;padding:30px 30px;">
+              <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">{label}</p>
+              <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;">
+                {items.map((it) => (
+                  <li style="display:flex;gap:10px;align-items:flex-start;font-size:15.5px;line-height:1.5;color:#3A362D;"><span style="color:#C04A26;flex:none;font-weight:700;">&#10003;</span><span>{it}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <p style="margin-top:36px;font-size:17px;line-height:1.7;color:#56524A;max-width:76ch;">These levels are separated by time and by many intervening variables. Development first alters capability and identity, then behavior, then how the team operates, and only later the business result. There is no honest universal ROI multiplier — so we start from a specific performance problem and hold ourselves to a documented chain: <strong style="color:#1B1810;font-weight:600;">changed behavior &rarr; changed process &rarr; measurable business effect.</strong></p>
+      </div>
+    </section>
+
+    <!-- ============ WHERE IT HAPPENS (dark) — link to interventions ============ -->
+    <section style="background:#100E0A;color:#F4F0E7;padding:104px 32px;">
+      <div style="max-width:1180px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Where the development happens</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:22ch;color:#FBF8F1;">The laboratories we build the process around.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.78);max-width:60ch;">Development is the engineered process. These are the experiences it runs on &mdash; each a way to make real behavior visible, then convert it into how the team operates.</p>
+        <div style="margin-top:44px;display:flex;flex-direction:column;gap:14px;">
+          {[
+            { name: 'Team LFS — the instrumented read', href: SLUGS.teamLfs, note: 'A live behavioral simulation that surfaces how the team actually decides under pressure, with a measurable baseline. The diagnosis every development plan should start from.' },
+            { name: 'The Leadership Retreat', href: SLUGS.teamRetreats, note: 'The core engagement — a facilitated, multi-day experience engineered around the diagnosed fault line, reinforced for 30 days.' },
+            { name: 'Executive Team Building — the intervention', href: SLUGS.executiveTeamBuilding, note: 'The single-day and experiential formats (off-road, sailing) as behavioral laboratories. Where an experience becomes development.' },
+            { name: 'How we work together', href: SLUGS.howWeWorkTogether, note: 'The engagement model end to end — diagnosis, design, facilitation, reinforcement and measurement.' },
+          ].map((i) => (
+            <a href={i.href} style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:26px 30px;text-decoration:none;" onmouseover="this.style.background='rgba(244,240,231,0.06)'" onmouseout="this.style.background='rgba(244,240,231,0.03)'">
+              <span style="flex:1 1 340px;">
+                <span style="display:block;font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;margin-bottom:6px;">{i.name}</span>
+                <span style="display:block;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.72);max-width:72ch;">{i.note}</span>
+              </span>
+              <span style="flex:none;font-size:14px;font-weight:700;color:#F4F0E7;">Explore &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ (dark) ============ -->
+    <section style="background:#15130E;color:#F4F0E7;padding:112px 32px;">
+      <div style="max-width:900px;margin:0 auto;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Straight answers</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.06;letter-spacing:-0.02em;color:#FBF8F1;margin-bottom:36px;">Executive team development, answered plainly.</h2>
+        <div style="display:flex;flex-direction:column;gap:26px;">
+          {faqs.map(([q, a]) => (
+            <div>
+              <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:9px;">{q}</h3>
+              <p style="font-size:16px;line-height:1.68;color:rgba(244,240,231,0.74);">{a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSE ============ -->
+    <section style="background:linear-gradient(180deg,#1B1810,#100E0A);color:#F4F0E7;padding:110px 32px;text-align:center;position:relative;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(192,74,38,0.22),transparent 55%);pointer-events:none;"></div>
+      <div style="position:relative;max-width:760px;margin:0 auto;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,5vw,56px);line-height:1.04;letter-spacing:-0.022em;color:#FBF8F1;">Start with a real read on the team.</h2>
+        <p style="margin-top:22px;font-size:18.5px;line-height:1.58;color:rgba(244,240,231,0.8);max-width:54ch;margin-left:auto;margin-right:auto;">The evidence is unanimous on one thing: development starts with a genuine diagnosis, not a catalog. One call is enough to find where your team breaks first &mdash; whether or not we build the program.</p>
+        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 34px;border-radius:11px;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+          <a href={SLUGS.breakPointAssessment} style="border:1px solid rgba(244,240,231,0.28);color:#F4F0E7;text-decoration:none;padding:18px 30px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.28)'">Take the free self-assessment</a>
+        </div>
+        <p style="margin-top:28px;font-size:15px;line-height:1.6;color:rgba(244,240,231,0.6);max-width:60ch;margin-left:auto;margin-right:auto;">Partnering from an L&amp;D or CHRO seat? We build within your cadence and hand back a baseline you can sustain. <a href={SLUGS.contact} style="color:#D98A5E;text-decoration:none;font-weight:600;">Start a conversation &rarr;</a></p>
+      </div>
+    </section>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>
