@@ -8,7 +8,7 @@ import { SLUGS, CTA_URL } from '../../../lib/site';
 const path = SLUGS.teamRetreats;
 const title = 'Team Retreats — Focused, Signature & Bespoke | Be Legendary';
 const description =
-  'Three ways to run a leadership retreat for your executive team: a Focused retreat around one outcome, a Signature experiential retreat, or fully bespoke.';
+  'Three ways to run an executive team building retreat: a Focused leadership retreat around one outcome, a Signature experiential retreat, or fully bespoke — facilitated and reinforced for 30 days.';
 
 // Ported from design; the reusable teams shell replaces the prototype header/footer.
 
@@ -30,11 +30,24 @@ const dials = [
   { name: 'Mental', lo: 'passive', hi: 'total focus', value: 55 },
   { name: 'Spiritual', lo: 'surface', hi: 'who am I, really', value: 50 },
 ];
+
+// FAQ — captures "executive team building retreat" (and the offsite/retreat
+// distinction) with FAQPage schema. This page is the canonical owner of the term.
+const faqs = [
+  ['Is this an executive team building retreat?', 'Yes — but not an activities day dressed up as one. An executive team building retreat, the way we run it, is a facilitated multi-day experience built around one real outcome your team needs to reach. The experience becomes a laboratory for how the team actually decides and executes — then it is reinforced for 30 days so the change survives the trip home. The setting is the retreat; the product is the behavior change.'],
+  ['What is the difference between an executive team building retreat and a corporate offsite?', 'An offsite is a block of time away from operations. A retreat is the facilitated version of it — built around a diagnosed outcome, run so the experience becomes commitments, and followed through afterward. A retreat with no real outcome and no follow-through is just an offsite with better catering. The question is never “where do we go?” but “what are we here to change, and how will we know it did?”'],
+  ['How long is an executive team building retreat, and where does it run?', 'Most run multi-day, at curated venues — domestic or international — chosen to fit the outcome, not the other way around. We handle the venue, travel, food, facilitation and the 30-day reinforcement end to end; you bring the team and the outcome. A single dramatic day is possible when that is the right container, but the retreats are built for a depth a day cannot reach.'],
+];
+
+const schema = [
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+];
 ---
 <BaseLayout
   title={title}
   description={description}
   path={path}
+  schema={schema}
   ogTitle="Team Retreats — Focused, Signature & Bespoke | Be Legendary"
   ogDescription="You already know your team needs this. The only question is the right shape for it."
   bodyBg="#EFE9DD"
@@ -50,7 +63,7 @@ const dials = [
       </nav>
       <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;">
         <div>
-          <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Leadership retreats · CEOs &amp; their teams</p>
+          <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Leadership &amp; executive team building retreats · CEOs &amp; their teams</p>
           <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.0;letter-spacing:-0.022em;color:#3A0A0C;max-width:15ch;">Three ways to run a <span style="font-style:italic;color:#C04A26;">legendary</span> retreat.</h1>
           <p style="margin-top:24px;font-size:18px;line-height:1.6;color:#4A3A34;max-width:46ch;">You already know your team needs this. The only question is the right shape for it. All three are fully facilitated, built around a real outcome, and reinforced for 30 days afterward — measurably.</p>
           <div style="margin-top:30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
@@ -309,6 +322,20 @@ const dials = [
       <div style="margin-top:30px;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
         <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 44px -16px rgba(192,74,38,0.55);">Book a Calibration Call <span>&rarr;</span></a>
         <a href="tel:8005138759" style="border:1px solid rgba(100,1,10,0.3);color:#64010a;text-decoration:none;padding:18px 30px;border-radius:10px;font-weight:600;font-size:16px;">800-513-8759</a>
+      </div>
+    </section>
+
+    <!-- ============ FAQ (captures "executive team building retreat") ============ -->
+    <section style="max-width:900px;margin:88px auto 0;padding:0 32px 8px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Straight answers</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.6vw,40px);line-height:1.08;letter-spacing:-0.02em;color:#3A0A0C;margin-bottom:32px;">Executive team building retreats, answered plainly.</h2>
+      <div style="display:flex;flex-direction:column;gap:26px;">
+        {faqs.map(([q, a]) => (
+          <div style="border-top:1px solid rgba(100,1,10,0.16);padding-top:22px;">
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:9px;">{q}</h3>
+            <p style="font-size:16px;line-height:1.66;color:#5A4A44;max-width:68ch;">{a}</p>
+          </div>
+        ))}
       </div>
     </section>
 
