@@ -99,7 +99,7 @@ const schema = [
     <div style="max-width:1080px;margin:0 auto;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">More teams that chose to change</p>
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.08;letter-spacing:-0.015em;max-width:22ch;">Trust, rebuilt under real pressure.</h2>
-      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
         <article style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:30px;display:flex;flex-direction:column;">
           <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">National franchise &middot; COO</span>
           <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Reuniting an exec team and 23 regional directors.</h3>
@@ -110,11 +110,61 @@ const schema = [
           <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">The honest call about who fits.</h3>
           <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;">Over six months of retreats and individual coaching with an executive team of five, it became clear &mdash; to everyone &mdash; that one leader wasn't a fit for the group. The CEO handled it with grace: an amicable parting, and a new hire chosen for fit, brought in with our help.</p>
         </article>
-        <article style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.09);border-radius:18px;padding:30px;display:flex;flex-direction:column;">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Federal agency &middot; Branch chief &middot; $1B budget</span>
+      </div>
+      <p style="margin-top:26px;font-size:15px;line-height:1.6;color:#56524A;">Looking for the immersive retreat stories &mdash; the auto retailer, the San Juans, the Everglades, the federal fiscal branch, Alaska? They&rsquo;re in <a href="#retreat-case-studies" style="color:#C04A26;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(192,74,38,0.35);">Retreat Case Studies</a> below.</p>
+    </div>
+  </section>
+
+  <!-- RETREAT CASE STUDIES — deep-link target for /teams/retreats/ ("#retreat-case-studies"). Kept
+       visually and narratively distinct from the coaching turnarounds above so the two don't blur. -->
+  <section id="retreat-case-studies" style="scroll-margin-top:90px;background:#15130E;color:#F4F0E7;padding:84px 32px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:18px;">Retreat Case Studies</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.08;letter-spacing:-0.015em;max-width:24ch;color:#FBF8F1;">Experiences engineered to change a team — and measured after.</h2>
+      <p style="margin-top:20px;font-size:17px;line-height:1.6;color:rgba(244,240,231,0.72);max-width:64ch;">Bespoke and signature retreats where the environment does the teaching. Each was designed backward from a specific outcome, then tracked with our behavioral habit tracker for 30 days. Clients anonymized; engagement details shared with permission.</p>
+
+      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+
+        <a href={SLUGS.caseAutoRetailer} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Bespoke &middot; Off-road &middot; Auto retailer</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Five-star egos, one fractured team, a minivan they'll never forget.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">Five all-stars poached from rivals, fighting for turf, remade into one team through a retreat built entirely around vehicles, empathy, and shared adversity.</p>
+          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">178%</span><span style="font-size:13px;color:#8A8578;">teaming gain &middot; 30 days</span></span>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
+        </a>
+
+        <a href={SLUGS.caseSanJuan} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Bespoke &middot; Winter survival &middot; Biomedical</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Two camps, one mountain, and our biggest change ever.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A team split into two warring camps over work ethic, reunited by an avalanche-survival scenario in Colorado's San Juan Mountains.</p>
+          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">268%</span><span style="font-size:13px;color:#8A8578;">behavioral gain &middot; 30 days</span></span>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
+        </a>
+
+        <a href={SLUGS.caseEverglades} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Signature &middot; Everglades &middot; Professional services</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">A pile of trash, a floating island, a team that stopped seeing scarcity.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A CIO's team learned to maximize the resources they already had through a shelter-box survival simulation deep in the Everglades.</p>
+          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">113%</span><span style="font-size:13px;color:#8A8578;">abundance-mindset gain</span></span>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
+        </a>
+
+        <a href={SLUGS.caseFederalFiscal} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Retreat series &middot; Federal agency &middot; $1B budget</span>
           <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Five former rivals, one fiscal branch.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;">Five executives &mdash; one in each time zone, each from a previously competing branch &mdash; now jointly ran a $1B budget with no trust and poor communication. We ran retreats in every time zone to build trust, defuse long-standing beliefs, and forge one leadership team. The agency then awarded us the same work for the next two layers of the organization.</p>
-        </article>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">Five executives from four formerly competing branches, virtual across every time zone, forged into one team &mdash; through a retreat in each leader's own time zone.</p>
+          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">+2</span><span style="font-size:13px;color:#8A8578;">org layers added after</span></span>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
+        </a>
+
+        <a href={SLUGS.caseAlaska} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Bespoke &middot; Fortune 100 &middot; Vulnerability</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">The most polished team in the building. And the most alone.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A Fortune 100 team's professional armor dissolved in a staged Alaska survival scenario &mdash; into the closest executive group we've seen in 25 years.</p>
+          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:18px;font-style:italic;color:#C04A26;">Bonds intact today</span></span>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
+        </a>
+
       </div>
     </div>
   </section>

@@ -67,10 +67,15 @@ main site's `public/.htaccess` so the target resolves.
 | `/offsite-vs-executive-retreat`, `/offsite-vs-team-building`, `/team-offsite-ideas`, `/executive-offsite-agenda` | `.../teams/executive-offsite-ideas/` |
 | `/executive-offsite-facilitator` | `.../leadership-team-offsite-facilitator/` |
 
-### Case studies (no per-study routes → hub)
+### Case studies (retreat studies map 1:1; rest → hub)
 | Old path | → New URL |
 |---|---|
-| `/case-studies`, `/case-studies/*` | `.../case-studies/` |
+| `/case-studies/online-auto-retailer-leadership-team` | `.../case-studies/online-auto-retailer-leadership-team/` |
+| `/case-studies/san-juan-mountains-work-ethic` | `.../case-studies/san-juan-mountains-work-ethic/` |
+| `/case-studies/everglades-abundance-mindset` | `.../case-studies/everglades-abundance-mindset/` |
+| `/case-studies/federal-fiscal-leadership-team` | `.../case-studies/federal-fiscal-leadership-team/` |
+| `/case-studies/alaska-executive-vulnerability` | `.../case-studies/alaska-executive-vulnerability/` |
+| `/case-studies`, other `/case-studies/*` | `.../case-studies/` |
 
 ### Field notes (closest topical page; rest → hub)
 | Old path | → New URL |

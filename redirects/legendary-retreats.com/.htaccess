@@ -31,7 +31,13 @@ RewriteRule ^team-offsite-ideas/?$             https://www.belegendary.org/teams
 RewriteRule ^executive-offsite-agenda/?$       https://www.belegendary.org/teams/executive-offsite-ideas/ [R=301,L]
 RewriteRule ^executive-offsite-facilitator/?$  https://www.belegendary.org/leadership-team-offsite-facilitator/ [R=301,L]
 
-# ── Case studies (fold into the case-studies hub) ──
+# ── Case studies — specific retreat studies BEFORE the catch-all (preserve per-page equity) ──
+RewriteRule ^case-studies/online-auto-retailer-leadership-team/?$  https://www.belegendary.org/case-studies/online-auto-retailer-leadership-team/ [R=301,L]
+RewriteRule ^case-studies/san-juan-mountains-work-ethic/?$        https://www.belegendary.org/case-studies/san-juan-mountains-work-ethic/ [R=301,L]
+RewriteRule ^case-studies/everglades-abundance-mindset/?$         https://www.belegendary.org/case-studies/everglades-abundance-mindset/ [R=301,L]
+RewriteRule ^case-studies/federal-fiscal-leadership-team/?$       https://www.belegendary.org/case-studies/federal-fiscal-leadership-team/ [R=301,L]
+RewriteRule ^case-studies/alaska-executive-vulnerability/?$       https://www.belegendary.org/case-studies/alaska-executive-vulnerability/ [R=301,L]
+# Remaining case-study URLs fold into the hub
 RewriteRule ^case-studies(/.*)?$           https://www.belegendary.org/case-studies/ [R=301,L]
 
 # ── Field notes — specific mappings BEFORE the /field-notes catch-all ──
