@@ -29,6 +29,14 @@ const schema = [
     ],
   },
 ];
+
+// What the read feeds into — the intervention is engineered around the fault
+// line Team LFS surfaces, not pulled off a shelf.
+const interventions = [
+  { name: 'The Leadership Retreat', href: SLUGS.teamRetreats, note: 'A facilitated, multi-day retreat that rebuilds the discipline the read surfaced — reinforced for 30 days so it holds.' },
+  { name: 'The Off-Road Immersion', href: SLUGS.offRoadImmersion, note: 'One dramatic day where real terrain makes the team’s operating system visible, then a facilitated debrief.' },
+  { name: 'Sailing Team Building', href: SLUGS.sailingTeamBuilding, note: 'A day on the water as a coupled system — real behavior under pressure, converted into how you operate.' },
+];
 ---
 <BaseLayout
   title={title}
@@ -138,17 +146,26 @@ const schema = [
       </div>
     </section>
 
-    <!-- BRIDGE TO RETREAT -->
+    <!-- THEN — THE INTERVENTION IT POINTS TO -->
     <section style="max-width:1080px;margin:72px auto 0;padding:0 32px 90px;">
-      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border-radius:20px;padding:48px 46px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;">
-        <div>
-          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">Then — the retreat</p>
-          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#FBF3E7;margin-bottom:14px;">This is why our retreats change teams and others don't.</h2>
-          <p style="font-size:16px;line-height:1.65;color:rgba(246,239,224,0.82);">Team LFS tells us exactly what to build. The retreat is then engineered around your real fault line — not a generic team-building day. Evidence in, transformation out.</p>
+      <div style="background:linear-gradient(180deg,#211D15,#1A160F);border-radius:20px;padding:48px 46px;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">Then — the intervention it points to</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#FBF3E7;margin-bottom:14px;max-width:22ch;">The read tells us what to build. Then we build it.</h2>
+        <p style="font-size:16px;line-height:1.65;color:rgba(246,239,224,0.82);max-width:64ch;">Team LFS shows exactly where the team breaks. What comes next is engineered around that fault line &mdash; never pulled off a shelf. Depending on what surfaces, that&rsquo;s a multi-day retreat, a single dramatic day off-road, or a day on the water. Evidence in, transformation out.</p>
+
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+          {interventions.map((i) => (
+            <a href={i.href} style="display:flex;flex-direction:column;background:rgba(246,239,224,0.06);border:1px solid rgba(246,239,224,0.16);border-radius:14px;padding:26px 26px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(224,116,74,0.6)'" onmouseout="this.style.borderColor='rgba(246,239,224,0.16)'">
+              <span style="font-family:'Newsreader',serif;font-size:20px;line-height:1.2;color:#FBF3E7;">{i.name}</span>
+              <span style="margin-top:10px;font-size:14.5px;line-height:1.55;color:rgba(246,239,224,0.74);flex:1;">{i.note}</span>
+              <span style="margin-top:16px;font-size:13.5px;font-weight:700;color:#E9A98F;">Explore &rarr;</span>
+            </a>
+          ))}
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href={SLUGS.teamRetreats} style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#C04A26;color:#fff;padding:15px 24px;border-radius:10px;font-weight:700;font-size:15.5px;text-decoration:none;">See the retreats &rarr;</a>
-          <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(246,239,224,0.3);color:#F6EFE0;padding:15px 24px;border-radius:10px;font-weight:600;font-size:15.5px;text-decoration:none;">Book a Calibration Call</a>
+
+        <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#C04A26;color:#fff;padding:15px 26px;border-radius:10px;font-weight:700;font-size:15.5px;text-decoration:none;">Book a Calibration Call <span>&rarr;</span></a>
+          <a href={SLUGS.executiveTeamBuilding} style="display:inline-flex;align-items:center;gap:8px;color:#E9A98F;font-weight:700;font-size:15px;text-decoration:none;">See all the ways we build teams &rarr;</a>
         </div>
       </div>
     </section>
