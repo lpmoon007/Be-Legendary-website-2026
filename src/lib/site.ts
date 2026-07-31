@@ -209,6 +209,14 @@ export const SLUGS = {
   executiveOffsiteIdeas: '/teams/executive-offsite-ideas/',
   leadershipRetreatIdeas: '/teams/leadership-retreat-ideas/',
   luxuryExecutiveRetreat: '/teams/luxury-executive-retreat/',
+  // ── One Crazy Day — a single engineered day, built from the same logic as a
+  // retreat but compressed into one impossible-feeling mission. Hub + archetype
+  // sub-pages (City / Expedition / Systems). These are anonymized format
+  // examples, not client case studies.
+  oneCrazyDay: '/teams/one-crazy-day/',
+  ocdCity: '/teams/one-crazy-day/the-city/',
+  ocdExpedition: '/teams/one-crazy-day/the-expedition/',
+  ocdSystem: '/teams/one-crazy-day/the-system/',
 
   // Legacy Library alias → the For Leaders home (old /library/ 301s here).
   library: '/leaders/',
