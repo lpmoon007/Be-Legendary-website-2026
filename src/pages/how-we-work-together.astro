@@ -21,6 +21,7 @@ const schema = [
       { '@type': 'Offer', name: 'Calibration Call', priceCurrency: 'USD', price: '0', description: 'A free 15-minute conversation to confirm fit — a calibration, not a pitch.' },
       { '@type': 'Offer', name: 'Solo ELFS (Executive Leadership Failure Simulation)', priceCurrency: 'USD', price: '7500', description: 'The diagnostic run solo, for the CEO alone — feel it yourself before bringing the team. Fees are credited toward Team LFS.' },
       { '@type': 'Offer', name: 'Team LFS (Team Leadership Failure Simulation)', priceCurrency: 'USD', price: '28000', description: 'In 90 minutes, see exactly why your leadership team knows what to do and still does not do it — per executive and as a team, with behavioral evidence and a FlagScore baseline. $28K–$35K.' },
+      { '@type': 'Offer', name: 'Executive Immersion', priceCurrency: 'USD', price: '35000', description: 'A single engineered day, built from whatever is within reach of your team — expedition, city or ownership. From $35K.' },
       { '@type': 'Offer', name: 'Single Discipline Sprint', priceCurrency: 'USD', price: '45000', description: 'A 90-day sprint that fixes the one broken discipline the diagnostic found. $45K–$65K.' },
       { '@type': 'Offer', name: 'Leadership Retreat', priceCurrency: 'USD', price: '25000', description: 'A facilitated experiential retreat — Focused, Signature or Bespoke — that rebuilds what the diagnostic surfaced. $25K–$500K+.' },
       { '@type': 'Offer', name: 'Performance Partnership', priceCurrency: 'USD', price: '75000', description: 'The systemic 12-month engagement. Base fee from $75K; success fees only when documented value confirms a 10x return, so your direct risk is the base fee.' },
@@ -50,38 +51,12 @@ const schema = [
       </nav>
       <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How we work together</p>
       <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.02;letter-spacing:-0.022em;color:#3A0A0C;max-width:17ch;">One way in. Every step credited toward the next.</h1>
-      <p class="bl-speakable" style="margin-top:22px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:62ch;">You don't have to commit to a year to begin. Start where it's safe, see the truth about your team fast, and decide how far to go from there. Each paid step is small, understood, and priced in the open — and your Team Leadership Failure Simulation (Team&nbsp;LFS) credits <strong>50% toward whatever you do next</strong>.</p>
+      <p class="bl-speakable" style="margin-top:22px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:64ch;">You don't have to commit to a year to begin. Start by seeing the truth about your team &mdash; the Team Leadership Failure Simulation &mdash; then choose the way that fits: a single engineered day, a retreat, a focused sprint, or the full partnership. They aren't equal, and they aren't a checklist. Your Team&nbsp;LFS credits <strong>50% toward whatever you do next</strong>.</p>
     </section>
 
-    <!-- ============ FRONT OF THE LADDER ============ -->
-    <section style="max-width:1000px;margin:52px auto 0;padding:0 32px;">
-      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Start here — free, then a solo run</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <!-- Rung 1 · Calibration Call -->
-        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:32px 34px;display:flex;flex-direction:column;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Step 1 · 15 minutes</span>
-          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.06;margin:10px 0 8px;color:#3A0A0C;">Calibration Call</h2>
-          <p style="font-size:15.5px;line-height:1.6;color:#4A3A34;margin-bottom:18px;flex:1;">Fifteen minutes to confirm there's a fit — no more. You'll run a short exercise that surfaces where your team stands, and leave with a real read whether or not we work together. A calibration, not a pitch.</p>
-          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;">
-            <p style="font-family:'Newsreader',serif;font-size:24px;color:#3A0A0C;">Free</p>
-            <a href={CTA_URL} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;">Book the call &rarr;</a>
-          </div>
-        </div>
-        <!-- Rung 2 · Solo ELFS -->
-        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:32px 34px;display:flex;flex-direction:column;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Step 2 · The CEO alone</span>
-          <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:27px;line-height:1.06;margin:10px 0 8px;color:#3A0A0C;">Run it on yourself first</h2>
-          <p style="font-size:15.5px;line-height:1.6;color:#4A3A34;margin-bottom:18px;flex:1;">The <strong>Executive Leadership Failure Simulation (ELFS)</strong>, run solo — feel the diagnostic yourself before you put it in front of your team. You go through it alone and see the quality of the individual read, then decide from experience whether to bring the whole team.</p>
-          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
-            <p style="font-family:'Newsreader',serif;font-size:24px;color:#3A0A0C;line-height:1.2;">$7,500<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12.5px;color:#8A6A64;">fees are credited toward Team LFS</span></p>
-            <a href={SLUGS.elfs} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap;">How it works &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ THE HERO: TEAM LFS ============ -->
-    <section style="max-width:1000px;margin:22px auto 0;padding:0 32px;">
+    <!-- ============ THE DIAGNOSTIC: TEAM LFS ============ -->
+    <section id="team-lfs" style="max-width:1000px;margin:52px auto 0;padding:0 32px;scroll-margin-top:90px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Start here — see the truth first</p>
       <div style="background:#64010a;border-radius:22px;padding:44px 46px;position:relative;overflow:hidden;">
         <span style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:#3A0A0C;background:#E9A98F;padding:5px 12px;border-radius:999px;margin-bottom:18px;">The one most teams start with</span>
         <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:start;">
@@ -107,24 +82,38 @@ const schema = [
           </div>
         </div>
       </div>
+      <!-- ELFS folded in — the solo run, for the CEO who wants to feel it first -->
+      <div style="margin-top:16px;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:22px 28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+        <div style="flex:1 1 440px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:6px;">Prefer to feel it first? Run it solo</p>
+          <p style="font-size:15px;line-height:1.6;color:#4A3A34;">Before you put it in front of the team, run the diagnostic on yourself &mdash; the <strong>Executive Leadership Failure Simulation (ELFS)</strong>, the CEO alone. <strong>$7,500</strong>, fully credited toward Team&nbsp;LFS.</p>
+        </div>
+        <a href={SLUGS.elfs} style="flex:none;color:#C04A26;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap;">How the ELFS works &rarr;</a>
+      </div>
       <p style="font-size:13px;color:#8A6A64;margin:14px 4px 0;line-height:1.55;">Team LFS is our newest instrument — among the first cohort of teams to run it. Its credibility rests on 25 years and hundreds of leadership teams behind the method, and on the evidence each run produces for <em>your</em> team.</p>
     </section>
 
-    <!-- ============ THREE PATHS OFF LFS ============ -->
+    <!-- ============ THE WAYS TO ACT (grouped) ============ -->
     <section style="max-width:1000px;margin:64px auto 0;padding:0 32px;">
-      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">Once you've seen the truth — three ways to act</p>
-      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#3A0A0C;max-width:24ch;margin-bottom:28px;">The diagnostic points to one of three moves. All accept your LFS credit.</h2>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-        <!-- 4a · Sprint -->
-        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">90 days · one discipline</span>
-          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">Single Discipline Sprint</h3>
-          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">When the problem is concentrated in one broken discipline, we fix that one — fast, fixed fee, immediate start. The momentum-catcher when a 12-month yes is more than you need right now.</p>
-          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;"><p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">$45K–$65K</p></div>
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">Once you've seen the truth — the ways to act</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#3A0A0C;max-width:26ch;margin-bottom:28px;">They aren't equal, and they aren't a checklist. The read points to the one that fits.</h2>
+
+      <!-- Experiences -->
+      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:14px;">Experiences &middot; a designed day, or a multi-day retreat</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <!-- Executive Immersion -->
+        <div id="executive-immersion" style="scroll-margin-top:90px;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">One engineered day</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">Executive Immersion</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">One extraordinary day, engineered end to end and built from whatever is within reach of your team — expedition, city or ownership — designed backward from the outcome the top executive names.</p>
+          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
+            <p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">From $35K</p>
+            <a href={SLUGS.executiveImmersion} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:13.5px;white-space:nowrap;">See how a day gets built &rarr;</a>
+          </div>
         </div>
-        <!-- 4b · Retreat -->
+        <!-- Leadership Retreat -->
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">The step most teams take</span>
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Multi-day · the step most teams take</span>
           <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">A Leadership Retreat</h3>
           <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">"Let's go fix it together." The diagnostic becomes the retreat's agenda — here's what broke, here's the retreat built to rebuild exactly that. Focused, Signature, or Bespoke.</p>
           <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
@@ -132,15 +121,28 @@ const schema = [
             <a href={SLUGS.teamRetreats} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:13.5px;white-space:nowrap;">See tiers &rarr;</a>
           </div>
         </div>
-        <!-- 4c · Partnership -->
-        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
+      </div>
+
+      <!-- Programs -->
+      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin:30px 0 14px;">Programs &middot; a focused sprint, or the full year</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <!-- Sprint -->
+        <div id="discipline-sprint" style="scroll-margin-top:90px;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
+          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">90 days · one discipline</span>
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">Single Discipline Sprint</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">When the problem is concentrated in one broken discipline, we fix that one — fast, fixed fee, immediate start. The momentum-catcher when a 12-month yes is more than you need right now.</p>
+          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;"><p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">$45K–$65K</p></div>
+        </div>
+        <!-- Partnership -->
+        <div id="performance-partnership" style="scroll-margin-top:90px;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
           <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">12 months · systemic</span>
           <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">Performance Partnership</h3>
           <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">When the dysfunction is systemic, the full engagement installs the Flag Model over a year, measured quarterly against metrics your CEO and CFO co-sign.</p>
           <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;"><p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">Base from $75K</p></div>
         </div>
       </div>
-      <p style="margin-top:18px;font-size:14.5px;color:#6B4A44;line-height:1.6;"><strong>Which one?</strong> The diagnostic decides: one broken discipline points to a Sprint; systemic dysfunction points to the Partnership; and for most teams the retreat is the natural, hopeful next move. We'll tell you honestly which fits.</p>
+
+      <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;line-height:1.6;"><strong>Which one?</strong> The read decides. One broken discipline points to a Sprint; systemic dysfunction points to the Partnership; and when the team needs an experience to change together, a single-day <a href={SLUGS.executiveImmersion} style="color:#C04A26;text-decoration:none;font-weight:600;">Executive Immersion</a> or a multi-day Retreat is the move. The retreat, the sprint and the partnership all accept your Team&nbsp;LFS credit; an Immersion begins from its own design call. We'll tell you honestly which fits.</p>
     </section>
 
     <!-- ============ THE 10x GUARANTEE (Partnership detail) ============ -->

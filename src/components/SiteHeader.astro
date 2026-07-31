@@ -29,9 +29,19 @@ export interface Props {
 }
 
 const TEAMS_LINKS = [
-  { label: 'How we work together', href: SLUGS.howWeWorkTogether },
+  {
+    label: 'How we work together',
+    href: SLUGS.howWeWorkTogether,
+    children: [
+      { label: 'Team LFS — the diagnostic', href: SLUGS.teamLfs },
+      { label: 'Executive Immersion', href: SLUGS.executiveImmersion },
+      { label: 'Leadership Retreat', href: SLUGS.teamRetreats },
+      { label: 'Discipline Sprint', href: `${SLUGS.howWeWorkTogether}#discipline-sprint` },
+      { label: 'Performance Partnership', href: `${SLUGS.howWeWorkTogether}#performance-partnership` },
+      { label: 'How we work together', href: SLUGS.howWeWorkTogether, divider: true },
+    ],
+  },
   { label: 'Retreats', href: SLUGS.teamRetreats },
-  { label: 'Executive Immersion', href: SLUGS.executiveImmersion },
   {
     label: 'Resources',
     href: SLUGS.resources,
