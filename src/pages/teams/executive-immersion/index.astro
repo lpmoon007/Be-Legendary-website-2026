@@ -17,6 +17,21 @@ const description = 'Executive Immersion: a single engineered day built from wha
 // Set once; drives the investment figure. Ported from the handoff `minimumFee` prop.
 const minimumFee = '$35,000';
 
+// FAQ — the buyer's own questions, answered plainly enough to forward. The
+// first four came with the handoff; the last six were answered by James.
+const faqs = [
+  { q: 'What if weather or a cancelled flight kills the plan?', a: 'Every design ships with a named alternate for each segment that depends on weather, aircraft or water, and a decision time by which we switch. It has happened. It has never cost a day. Teams routinely rate the improvised version as the best part — which is, after all, the point of the exercise.' },
+  { q: 'Can the CEO be a participant instead of the host?', a: "Yes — and they should be. James runs the day so the CEO doesn't have to. A CEO who is facilitating cannot be surprised, cannot struggle in front of the group, and cannot be seen needing help. Handing the day over is the most valuable thing they do all year." },
+  { q: 'How does this connect to our actual business goals?', a: "The day is designed backwards from one business outcome you name in the first call — a strategy that has stalled, a merger of two cultures, a leadership group that won't disagree in public. Every segment earns its place against that outcome, and the closing hour converts the day into specific commitments with names on them." },
+  { q: 'And what stops it evaporating by Friday?', a: "Each person leaves having committed, out loud and in front of the others, to one behaviour they will change. Thirty days later we measure that one behaviour — not satisfaction with the day. It's the difference between an experience and a change." },
+  { q: 'How much lead time do you need?', a: 'It depends entirely on the complexity of the day and what the executive wants from it — that part is one hundred per cent client-dependent. A straightforward day can come together in a couple of weeks; a more elaborate one can take a few months. We tell you which it is on the first call.' },
+  { q: 'How big can the group be?', a: "Up to twenty executives. The more people involved, the more complex the design and the longer the lead time — and beyond twenty the day stops doing what it does best and becomes more about bonding. That's fine if bonding is the outcome you want, and we'll tell you honestly when that's the case." },
+  { q: 'What about physical ability and accessibility?', a: 'Tell us the limitations within the group and we design around them. Any limitation can be accommodated — every day is built so that no one is excluded or exposed.' },
+  { q: 'Are we covered — insurance and liability?', a: 'Yes. We are fully covered and insured, and your risk team can have the details they need.' },
+  { q: "Can you run this for a team that isn't English-speaking?", a: 'Yes. We have master facilitators fluent in Spanish, French and Arabic — fully fluent in our process, not translators brought in on the side.' },
+  { q: 'How does pricing and the proposal work?', a: 'We start with interviews with the top executive, then deliver a proposal with three options, each with a price attached. The proposal itself is $5,000 — and that fee is fully credited toward whichever of the three experiences you choose. If you decide not to move forward, the proposal is yours to keep: take everything in it to another company, or run it yourself.' },
+];
+
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Be Legendary', item: `${SITE_URL}/` },
@@ -26,6 +41,10 @@ const schema = [
   { '@type': 'Service', name: 'Executive Immersion', serviceType: 'Executive team offsite experience design and facilitation',
     provider: { '@id': ORG_ID }, areaServed: 'Worldwide',
     description: "A single engineered day for executive teams, designed around whatever is within reach of the team's own location. Flagship format: One Crazy Day." },
+  { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({
+    '@type': 'Question', name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })) },
 ];
 ---
 <BaseLayout title={title} description={description} path={path} ogType="website" ogTitle={title} ogDescription={description} schema={schema} bodyBg="#EFE9DD">
@@ -299,10 +318,12 @@ const schema = [
       <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">The questions you're going to be asked</p>
       <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#3A0A0C;max-width:28ch;margin-bottom:34px;">Answers you can forward without editing.</h2>
       <div class="ei-two" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(100,1,10,0.14);border-radius:14px;overflow:hidden;">
-        <div style="background:#F6F1E7;padding:32px 34px;"><h3 style="font-size:18.5px;font-weight:700;color:#3A0A0C;margin-bottom:10px;">"What if weather or a cancelled flight kills the plan?"</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">Every design ships with a named alternate for each segment that depends on weather, aircraft or water, and a decision time by which we switch. It has happened. It has never cost a day. Teams routinely rate the improvised version as the best part — which is, after all, the point of the exercise.</p></div>
-        <div style="background:#F6F1E7;padding:32px 34px;"><h3 style="font-size:18.5px;font-weight:700;color:#3A0A0C;margin-bottom:10px;">"Can the CEO be a participant instead of the host?"</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">Yes — and they should be. James runs the day so the CEO doesn't have to. A CEO who is facilitating cannot be surprised, cannot struggle in front of the group, and cannot be seen needing help. Handing the day over is the most valuable thing they do all year.</p></div>
-        <div style="background:#F6F1E7;padding:32px 34px;"><h3 style="font-size:18.5px;font-weight:700;color:#3A0A0C;margin-bottom:10px;">"How does this connect to our actual business goals?"</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">The day is designed backwards from one business outcome you name in the first call — a strategy that has stalled, a merger of two cultures, a leadership group that won't disagree in public. Every segment earns its place against that outcome, and the closing hour converts the day into specific commitments with names on them.</p></div>
-        <div style="background:#F6F1E7;padding:32px 34px;"><h3 style="font-size:18.5px;font-weight:700;color:#3A0A0C;margin-bottom:10px;">"And what stops it evaporating by Friday?"</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">Each person leaves having committed, out loud and in front of the others, to one behaviour they will change. Thirty days later we measure that one behaviour — not satisfaction with the day. It's the difference between an experience and a change.</p></div>
+        {faqs.map((f) => (
+          <div style="background:#F6F1E7;padding:32px 34px;">
+            <h3 style="font-size:18.5px;font-weight:700;color:#3A0A0C;margin-bottom:10px;">&ldquo;{f.q}&rdquo;</h3>
+            <p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">{f.a}</p>
+          </div>
+        ))}
       </div>
     </section>
 
