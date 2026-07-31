@@ -5,8 +5,8 @@ import SiteFooter from '../../../components/SiteFooter.astro';
 import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
 
-const path = SLUGS.eiSystem;
-const title = 'One Crazy Day: Systems — Reno | Be Legendary';
+const path = SLUGS.eiOwnership;
+const title = 'One Crazy Day: Ownership — Reno | Be Legendary';
 const description = 'A full One Crazy Day in Reno: unknown budgets, blindfolded mousetraps, rotating cooking stations, an empty table at 7:00 p.m., and a dinner that was never theirs. What it reveals about handoffs, ownership and purpose.';
 
 const schema = [
@@ -14,7 +14,7 @@ const schema = [
     { '@type': 'ListItem', position: 1, name: 'Be Legendary', item: `${SITE_URL}/` },
     { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
     { '@type': 'ListItem', position: 3, name: 'Executive Immersion', item: `${SITE_URL}${SLUGS.executiveImmersion}` },
-    { '@type': 'ListItem', position: 4, name: 'Systems', item: `${SITE_URL}${path}` },
+    { '@type': 'ListItem', position: 4, name: 'Ownership', item: `${SITE_URL}${path}` },
   ] },
   { '@type': 'Service', name: 'Executive Immersion', serviceType: 'Executive team offsite experience design and facilitation',
     provider: { '@id': ORG_ID }, areaServed: 'Worldwide',
@@ -59,7 +59,7 @@ const conditions = ['Departmental silos', 'Weak handoffs between functions', 'Re
       <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
         <a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span>
         <a href={SLUGS.executiveImmersion} style="color:inherit;text-decoration:none;">Executive Immersion</a><span>/</span>
-        <span style="color:#64010a;">Systems</span>
+        <span style="color:#64010a;">Ownership</span>
       </nav>
     </section>
 
@@ -71,7 +71,7 @@ const conditions = ['Departmental silos', 'Weak handoffs between functions', 'Re
     <!-- DARK TIMELINE -->
     <section style="background:#2A0507;margin-top:56px;padding:80px 0;">
       <div style="max-width:1180px;margin:0 auto;padding:0 32px;">
-        <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9743F;margin-bottom:16px;">One Crazy Day: Systems &nbsp;&middot;&nbsp; Reno</p>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9743F;margin-bottom:16px;">One Crazy Day: Ownership &nbsp;&middot;&nbsp; Reno</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.06;color:#F6EFE0;max-width:28ch;">A destination, a set of checkpoints, and almost none of the information they wanted.</h2>
         <p style="margin-top:20px;font-size:18px;line-height:1.62;color:rgba(240,228,218,0.82);max-width:64ch;">Teams released into Reno in a race across the city. No private vehicles — buses, walking and rentable scooters, with taxis and rideshare available at a real cost against their own budget. Each person carried a preloaded card and was told two things: there is enough on it to complete the day, and whatever is left at the end will matter.</p>
 
