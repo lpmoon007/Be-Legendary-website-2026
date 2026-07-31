@@ -29,6 +29,22 @@ const schema = [
     reviewBody: 'James helped us turn seven groups of rivals into one leadership team. By the time US Holdings became Eagle Manufacturing Group and I moved from COO to CEO, we were no longer seven companies protecting our own territory. We were one company working toward the same outcome.' },
   { '@type': 'Organization', name: 'Eagle Manufacturing Group', alternateName: 'US Holdings', description: 'A construction holding company that unified seven competing firms into one, growing from $350M to $1.2B in revenue in a Performance Partnership with James Carter of Be Legendary.' },
 ];
+
+// Retreat case-study cards. `statItalic` renders a phrase instead of a number.
+// Federal-fiscal has no bespoke photo yet — a neutral facilitation shot stands in.
+const retreatCases = [
+  { href: SLUGS.caseAutoRetailer, tag: 'Bespoke · Off-road · Auto retailer', title: "Five-star egos, one fractured team, a minivan they'll never forget.", desc: 'Five all-stars poached from rivals, fighting for turf, remade into one team through a retreat built entirely around vehicles, empathy, and shared adversity.', stat: '178%', statLabel: 'teaming gain · 30 days', img: '/assets/cs-autoretailer.webp' },
+  { href: SLUGS.caseSanJuan, tag: 'Bespoke · Winter survival · Biomedical', title: 'Two camps, one mountain, and our biggest change ever.', desc: "A team split into two warring camps over work ethic, reunited by an avalanche-survival scenario in Colorado's San Juan Mountains.", stat: '268%', statLabel: 'behavioral gain · 30 days', img: '/assets/cs-sanjuan.webp' },
+  { href: SLUGS.caseEverglades, tag: 'Signature · Everglades · Professional services', title: 'A pile of trash, a floating island, a team that stopped seeing scarcity.', desc: "A CIO's team learned to maximize the resources they already had through a shelter-box survival simulation deep in the Everglades.", stat: '113%', statLabel: 'abundance-mindset gain', img: '/assets/cs-everglades-hammock.webp' },
+  { href: SLUGS.caseFederalFiscal, tag: 'Retreat series · Federal agency · $1B budget', title: 'Five former rivals, one fiscal branch.', desc: "Five executives from four formerly competing branches, virtual across every time zone, forged into one team — through a retreat in each leader's own time zone.", stat: '+2', statLabel: 'org layers added after', img: '/assets/sedona/sedona-facilitation.webp' },
+  { href: SLUGS.caseAlaska, tag: 'Bespoke · Fortune 100 · Vulnerability', title: 'The most polished team in the building. And the most alone.', desc: "A Fortune 100 team's professional armor dissolved in a staged Alaska survival scenario — into the closest executive group we've seen in 25 years.", statItalic: 'Bonds intact today', img: '/assets/cs-alaska.webp' },
+];
+
+const eiCases = [
+  { href: SLUGS.eiExpedition, tag: 'Expedition · Sedona → Grand Canyon', title: 'Uncertainty, shifting authority, and no complete answer in the room.', desc: "A dawn-to-dark off-road expedition that shows an established team how it operates when the plan stops working — and the sixteen problems it's built to surface.", img: '/assets/executive-immersion/cs-expedition.webp' },
+  { href: SLUGS.eiCity, tag: 'City · New York', title: 'Twenty dollars, one city, and a belief you have to prove.', desc: 'A values-and-contribution day that turns a room of guarded executives into a team before the real work starts — the eight-stage arc and the safeguards we run it under.', img: '/assets/executive-immersion/cs-city.webp' },
+  { href: SLUGS.eiOwnership, tag: 'Ownership · Reno', title: "Everyone did their job. Dinner still wasn't ready.", desc: 'A handoffs-and-ownership day where capable people, all busy, still miss the outcome — and the nine patterns it makes visible.', img: '/assets/executive-immersion/cs-ownership.webp' },
+];
 ---
 <BaseLayout title={title} description={description} path={SLUGS.caseStudies} ogType="website" ogTitle="Case studies — executive teams that chose to change" ogDescription="Real turnarounds, led by the executives who had the courage to look honestly at their teams." schema={schema}>
   <SiteHeader audience="teams" logoHref="/" />
@@ -127,47 +143,22 @@ const schema = [
       <p style="margin-top:20px;font-size:17px;line-height:1.6;color:rgba(244,240,231,0.72);max-width:64ch;">Bespoke and signature retreats where the environment does the teaching. Each was designed backward from a specific outcome, then tracked with our behavioral habit tracker for 30 days. Clients anonymized; engagement details shared with permission.</p>
 
       <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-
-        <a href={SLUGS.caseAutoRetailer} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Bespoke &middot; Off-road &middot; Auto retailer</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Five-star egos, one fractured team, a minivan they'll never forget.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">Five all-stars poached from rivals, fighting for turf, remade into one team through a retreat built entirely around vehicles, empathy, and shared adversity.</p>
-          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">178%</span><span style="font-size:13px;color:#8A8578;">teaming gain &middot; 30 days</span></span>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
-        </a>
-
-        <a href={SLUGS.caseSanJuan} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Bespoke &middot; Winter survival &middot; Biomedical</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Two camps, one mountain, and our biggest change ever.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A team split into two warring camps over work ethic, reunited by an avalanche-survival scenario in Colorado's San Juan Mountains.</p>
-          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">268%</span><span style="font-size:13px;color:#8A8578;">behavioral gain &middot; 30 days</span></span>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
-        </a>
-
-        <a href={SLUGS.caseEverglades} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Signature &middot; Everglades &middot; Professional services</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">A pile of trash, a floating island, a team that stopped seeing scarcity.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A CIO's team learned to maximize the resources they already had through a shelter-box survival simulation deep in the Everglades.</p>
-          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">113%</span><span style="font-size:13px;color:#8A8578;">abundance-mindset gain</span></span>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
-        </a>
-
-        <a href={SLUGS.caseFederalFiscal} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Retreat series &middot; Federal agency &middot; $1B budget</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Five former rivals, one fiscal branch.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">Five executives from four formerly competing branches, virtual across every time zone, forged into one team &mdash; through a retreat in each leader's own time zone.</p>
-          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">+2</span><span style="font-size:13px;color:#8A8578;">org layers added after</span></span>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
-        </a>
-
-        <a href={SLUGS.caseAlaska} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Bespoke &middot; Fortune 100 &middot; Vulnerability</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">The most polished team in the building. And the most alone.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A Fortune 100 team's professional armor dissolved in a staged Alaska survival scenario &mdash; into the closest executive group we've seen in 25 years.</p>
-          <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:18px;font-style:italic;color:#C04A26;">Bonds intact today</span></span>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
-        </a>
-
+        {retreatCases.map((c) => (
+          <a href={c.href} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(244,240,231,0.1);border-radius:18px;overflow:hidden;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <img src={c.img} alt={c.title} loading="lazy" width="800" height="440" style="width:100%;height:180px;object-fit:cover;display:block;" />
+            <div style="padding:28px 30px;display:flex;flex-direction:column;flex:1;">
+              <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">{c.tag}</span>
+              <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">{c.title}</h3>
+              <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">{c.desc}</p>
+              <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;">
+                {c.statItalic
+                  ? <span style="font-family:'Newsreader',serif;font-size:18px;font-style:italic;color:#C04A26;">{c.statItalic}</span>
+                  : <><span style="font-family:'Newsreader',serif;font-size:26px;color:#C04A26;">{c.stat}</span><span style="font-size:13px;color:#8A8578;">{c.statLabel}</span></>}
+              </span>
+              <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -181,28 +172,17 @@ const schema = [
       <p style="margin-top:20px;font-size:17px;line-height:1.6;color:#4A3A34;max-width:66ch;">Three real days, each built backward from one executive's outcome and told in full — the expedition, the city, and the ownership day. Clients anonymized; no outcome figures attached, because the day itself is the proof. <a href={SLUGS.executiveImmersion} style="color:#C04A26;text-decoration:none;font-weight:700;">See how a day gets built &rarr;</a></p>
 
       <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-
-        <a href={SLUGS.eiExpedition} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Expedition &middot; Sedona &rarr; Grand Canyon</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Uncertainty, shifting authority, and no complete answer in the room.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A dawn-to-dark off-road expedition that shows an established team how it operates when the plan stops working &mdash; and the sixteen problems it's built to surface.</p>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the day &rarr;</span>
-        </a>
-
-        <a href={SLUGS.eiCity} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">City &middot; New York</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Twenty dollars, one city, and a belief you have to prove.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A values-and-contribution day that turns a room of guarded executives into a team before the real work starts &mdash; the eight-stage arc and the safeguards we run it under.</p>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the day &rarr;</span>
-        </a>
-
-        <a href={SLUGS.eiOwnership} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Ownership &middot; Reno</span>
-          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Everyone did their job. Dinner still wasn't ready.</h3>
-          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A handoffs-and-ownership day where capable people, all busy, still miss the outcome &mdash; and the nine patterns it makes visible.</p>
-          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the day &rarr;</span>
-        </a>
-
+        {eiCases.map((c) => (
+          <a href={c.href} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(100,1,10,0.14);border-radius:18px;overflow:hidden;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <img src={c.img} alt={c.title} loading="lazy" width="800" height="440" style="width:100%;height:180px;object-fit:cover;display:block;" />
+            <div style="padding:28px 30px;display:flex;flex-direction:column;flex:1;">
+              <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">{c.tag}</span>
+              <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">{c.title}</h3>
+              <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">{c.desc}</p>
+              <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the day &rarr;</span>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>
