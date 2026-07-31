@@ -1,9 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+import imgKitchen from '../../../assets/executive-immersion/ownership/the-kitchen.png';
+import imgDelivery from '../../../assets/executive-immersion/ownership/the-delivery.png';
+import imgEmptyTable from '../../../assets/executive-immersion/ownership/empty-table.png';
 
 const path = SLUGS.eiOwnership;
 const title = 'One Crazy Day: Ownership — Reno | Be Legendary';
@@ -30,7 +34,7 @@ const beats = [
   { label: 'The kitchen', title: 'Eight stations and a culinary school', body: 'The house had been converted into stations — meat, pasta, vegetables, sauces, guacamole, prep, garnish. Students from a local university culinary programme moved between them teaching technique as the executives worked: which knife, how to cut this, how to season, how to make the dish better.' },
   { label: 'Sixty seconds in', title: 'Switch.', body: 'Everyone leaves the work they have started and moves to another station. No staying with the same partner. No time to explain what you did or why. You inherit someone else’s half-finished work, figure out its state, contribute, and leave again. Switch. Switch.' },
   { label: 'The meatballs', title: 'Two people, both right', body: 'One executive combined two ground meats, seasoned the mixture carefully, shaped meatballs, and had a clear picture of the finished dish. Several rotations later an executive from northern Italy arrived at that station. In her experience, that was not how this dish is made. She broke the meatballs apart, cooked the meat differently, and turned it into a rich pasta sauce. The result was excellent. When he came back and asked where his meatballs were, he was genuinely angry. He had invested effort and a plan; someone had erased the visible result of his work without asking. She believed she had improved it. Neither position was irrational. Work had moved between people — and ownership, intent, standards and context had not moved with it.' },
-  { label: '7:00 p.m.', title: 'The food was ready. The meal was not.', body: 'The facilitators stopped the activity. Every station had delivered. The dishes were finished, garnished, beautiful. And there were no plates on the table, no glasses, no place settings — nowhere for anyone to actually sit down and eat. The goal had never been to cook food. The goal was dinner, ready at 7:00. Setting the table belonged to no one, so no one did it. They fixed it fast: plates found, table set, music on, candles lit, food brought together. The room finally looked ready and they were seconds from eating.' },
+  { label: '7:00 p.m.', title: 'The food was ready. The meal was not.', body: 'The facilitators stopped the activity. Every station had delivered. The dishes were finished, garnished, beautiful. And there were no plates on the table, no glasses, no place settings — nowhere for anyone to actually sit down and eat. The goal had never been to cook food. The goal was dinner, ready at 7:00. Setting the table belonged to no one, so no one did it. They fixed it fast: plates found, table set, music on, candles lit, food brought together. The room finally looked ready and they were seconds from eating.', img: imgEmptyTable, imgAlt: 'Finished dishes crowd the kitchen island while the dining table in front sits completely bare — no plates, no settings.' },
   { label: 'Then', title: 'There is another place we could eat this', body: 'One facilitator suggested it. The other agreed. Containers appeared. At first they assumed it was a picnic. Then the carefully plated dishes started going into plastic. They were furious — hours of work, exhausted, hot, hungry, having watched their own contributions undone, having just fixed the table — and now the meal was being packed away. Every constraint of the day had collected on that dinner.' },
   { label: 'A few minutes later', title: 'The Ronald McDonald House', body: 'The vehicles turned into the car park and the group understood before anyone spoke. The dinner had never been for them. It was for parents and families staying near hospitalised children. The anger went. Nobody mentioned being hungry. The same food that had felt like payment for a hard day became something else entirely — relief and hospitality for people carrying far more than the executives had been asked to carry. They carried it in, put the candles they had lit for themselves on somebody else’s table, arranged the dishes, prepared plates, and turned the meal back into what it had been designed to be. They took a short tour, learned about the families, and stayed about twenty minutes. They were not there to be the centre of the moment. They were there to leave something useful behind.' },
   { label: 'Then pizza', title: 'Not elaborate. Unforgettable.', body: 'A few minutes away, pizza was waiting. Part of that was hunger. Most of it was meaning. The real debrief happened around that table.' },
@@ -77,8 +81,8 @@ const conditions = ['Departmental silos', 'Weak handoffs between functions', 'Re
 
         <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:34px;">
           <PhotoSlot variant="dark" title="The race" note="Executives on buses, scooters, or on foot downtown." />
-          <PhotoSlot variant="dark" title="The kitchen" note="Rotating stations mid-chaos. The switch is the story." />
-          <PhotoSlot variant="dark" title="The delivery" note="Food arriving at the Ronald McDonald House. Consent required — no families or children in frame without written permission." />
+          <Image src={imgKitchen} alt="Executives cooking at crowded kitchen stations, a chef among them, a tray of meatballs in the foreground." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
+          <Image src={imgDelivery} alt="Executives carrying trays and boxes of food through a doorway at night, greeted by a staff member." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
         </div>
 
         <div style="margin-top:40px;">
@@ -88,6 +92,9 @@ const conditions = ['Departmental silos', 'Weak handoffs between functions', 'Re
               <div>
                 <h3 style="font-size:20px;font-weight:700;color:#F6EFE0;margin-bottom:9px;">{b.title}</h3>
                 <p style="font-size:16.5px;line-height:1.62;color:rgba(240,228,218,0.84);max-width:76ch;">{b.body}</p>
+                {b.img && (
+                  <Image src={b.img} alt={b.imgAlt} width={1672} height={941} format="webp" quality={80} loading="lazy" style="margin-top:18px;width:100%;max-width:640px;height:auto;border-radius:12px;display:block;" />
+                )}
               </div>
             </div>
           ))}
