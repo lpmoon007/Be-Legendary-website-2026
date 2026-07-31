@@ -1,9 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+import imgTeams from '../../../assets/executive-immersion/city/teams-in-the-city.png';
+import imgShop from '../../../assets/executive-immersion/city/shop-of-dreams.png';
+import imgHospital from '../../../assets/executive-immersion/city/hospital-visit.png';
 
 const path = SLUGS.eiCity;
 const title = 'One Crazy Day: City — New York | Be Legendary';
@@ -29,7 +33,7 @@ const beats = [
   { label: 'One team', title: 'Five dollars in quarters', body: 'They had talked about family, responsibility, and protecting the people who depend on you — and about financial responsibility being less about accumulating money than about stopping small mistakes from becoming large, unnecessary consequences. So they changed five dollars into quarters and went looking for parked cars with meters about to expire. They fed the meters and left a handwritten note explaining that a stranger had paid to protect them from a ticket. They would never meet any of those drivers. That was part of the point.' },
   { label: 'Another team', title: '“You matter.”', body: 'They had talked about kindness, dignity, and the invisible effect people have on each other. They bought small notes and wrote on them — <em style="font-style:italic;">you matter; you are stronger than you know; there is something beautiful about you</em> — then hid them where strangers would find them by accident, behind ordinary products on shelves. To the recipients it looked random. The team understood it was not random at all: entirely intentional from the giver, unexpected only by the receiver.' },
   { label: 'Late afternoon', title: 'The awards become money — and the money is not theirs', body: 'Recognition was awarded on meaning, imagination, courage, collaboration and impact rather than volume. Back at base, those awards converted into money, and the teams entered what we call the Shop of Dreams. This company was in the jewellery business, with a real commitment to empowering girls. The leaders spent what they had earned choosing beautiful pieces, then wrapped each one carefully as a gift. Only then were they told where they were going.' },
-  { label: 'Evening', title: 'A children’s hospital', body: 'They were visiting young girls being treated in a burn unit. The gifts were not medical supplies; they were symbols of beauty, identity and a future beyond the hospital room. Some of the girls could not wear the jewellery yet — they could hold it, look at it, and imagine wearing it when they left. The executives went in in small groups: exhausted, jet-lagged, having eaten little, having spent the day exposing parts of themselves that never appear at work. They gave the gifts. They saw the girls smile. They came out crying and holding on to one another, and the professional boundaries of that morning no longer seemed particularly important.' },
+  { label: 'Evening', title: 'A children’s hospital', body: 'They were visiting young girls being treated in a burn unit. The gifts were not medical supplies; they were symbols of beauty, identity and a future beyond the hospital room. Some of the girls could not wear the jewellery yet — they could hold it, look at it, and imagine wearing it when they left. The executives went in in small groups: exhausted, jet-lagged, having eaten little, having spent the day exposing parts of themselves that never appear at work. They gave the gifts. They saw the girls smile. They came out crying and holding on to one another, and the professional boundaries of that morning no longer seemed particularly important.', img: imgHospital, imgAlt: 'Executives in a hospital corridor after the visit, holding one another, several visibly moved.' },
   { label: 'Dinner', title: 'A pizza place, and the real conversation', body: 'No elaborate closing reception. A simple restaurant, a private room, food already on the table. They talked about their values and whether their actions had actually reflected them; about the people they had met and the decisions their teams had made; about how their read on each other had changed. They described a bubble that had formed around the group — an unusual level of trust, honesty and emotional permission. The closing question was not how to preserve the day. It was how to carry that quality of relationship into the next two weeks and then back into the company: how will we disagree inside this? How will we tell the truth, and ask for help, when the stakes go back to budgets, strategy and politics?' },
 ];
 
@@ -94,8 +98,8 @@ const safeguards = ['A vetted community partner', 'A need defined by that partne
       <p style="margin-top:20px;font-size:18px;line-height:1.62;color:#4A3A34;max-width:66ch;">They arrived in New York from around the world for a two-week leadership programme. Some had travelled a few miles, others had crossed oceans, several were badly jet-lagged. They knew each other's names and titles and almost nothing else. Two weeks would not be enough if the first several days were spent establishing status and deciding whom to trust. The group needed to get deeper, faster — to know each other less as executives exchanging biographies and more as old friends. That became the purpose of day one.</p>
 
       <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:34px;">
-        <PhotoSlot title="Teams in the city" note="Executives on the street, mid-action." />
-        <PhotoSlot title="The Shop of Dreams" note="Gifts being chosen and wrapped." />
+        <Image src={imgTeams} alt="Four executives on a New York street corner, heads-down over a paper map, working out their route." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
+        <Image src={imgShop} alt="Executives at a jewellery table choosing pieces and wrapping a gift, city skyline behind." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
         <PhotoSlot title="The pizza table" note="The unglamorous room where it all landed. Consent required for any hospital imagery — do not use it here." />
       </div>
 
@@ -106,6 +110,9 @@ const safeguards = ['A vetted community partner', 'A need defined by that partne
             <div>
               <h3 style="font-size:20px;font-weight:700;color:#3A0A0C;margin-bottom:9px;">{b.title}</h3>
               <p style="font-size:16.5px;line-height:1.62;color:#4A3A34;max-width:76ch;" set:html={b.body}></p>
+              {b.img && (
+                <Image src={b.img} alt={b.imgAlt} width={1672} height={941} format="webp" quality={80} loading="lazy" style="margin-top:18px;width:100%;max-width:640px;height:auto;border-radius:12px;display:block;" />
+              )}
             </div>
           </div>
         ))}
