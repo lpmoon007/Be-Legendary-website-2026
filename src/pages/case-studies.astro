@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { CTA_URL, SLUGS } from '../lib/site';
+import { SITE_URL, CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Case Studies: Executive Team Turnarounds | Be Legendary';
 const description = 'Real executive-team turnarounds: a $350M construction group that unified seven rival firms, a family wine maker that ended the blame game, and more.';
@@ -19,6 +19,9 @@ const schema = [
     { '@type': 'ListItem', position: 3, item: { '@type': 'CreativeWork', name: 'Reuniting an executive team and 23 regional directors', about: 'A national franchise rebuilt trust between its executive team and 23 regional directors through a facilitated three-day conference during a crisis.', creator: { '@id': 'https://www.belegendary.org/#org' } } },
     { '@type': 'ListItem', position: 4, item: { '@type': 'CreativeWork', name: 'The honest call about who fits', about: 'An enterprise-software executive team of five worked through six months of retreats and coaching to resolve a fit issue and rebuild as a team.', creator: { '@id': 'https://www.belegendary.org/#org' } } },
     { '@type': 'ListItem', position: 5, item: { '@type': 'CreativeWork', name: 'Five former rivals, one fiscal branch', about: 'A federal agency branch running a $1B budget forged five previously competing sub-branches into one leadership team; the agency expanded the work to two further layers.', creator: { '@id': 'https://www.belegendary.org/#org' } } },
+    { '@type': 'ListItem', position: 6, item: { '@type': 'CreativeWork', name: 'Executive Immersion — Expedition: Sedona to the Grand Canyon', about: 'A single engineered day: a dawn-to-dark off-road expedition from Sedona to the Grand Canyon that exposes how an established executive team operates when the plan stops working, built to surface sixteen executive problems.', url: `${SITE_URL}${SLUGS.eiExpedition}`, creator: { '@id': 'https://www.belegendary.org/#org' } } },
+    { '@type': 'ListItem', position: 7, item: { '@type': 'CreativeWork', name: 'Executive Immersion — City: New York', about: 'A single engineered day in New York built around three real values, twenty dollars and a culminating act of contribution, following an eight-stage arc that turns guarded executives into a team.', url: `${SITE_URL}${SLUGS.eiCity}`, creator: { '@id': 'https://www.belegendary.org/#org' } } },
+    { '@type': 'ListItem', position: 8, item: { '@type': 'CreativeWork', name: 'Executive Immersion — Ownership: Reno', about: 'A single engineered day in Reno about handoffs, ownership and purpose, revealing nine patterns of how capable, busy people still miss the outcome.', url: `${SITE_URL}${SLUGS.eiOwnership}`, creator: { '@id': 'https://www.belegendary.org/#org' } } },
   ] },
   { '@type': 'Review', itemReviewed: { '@id': 'https://www.belegendary.org/#org' },
     author: { '@type': 'Person', name: 'Ronn Page', jobTitle: 'former CEO, Eagle Manufacturing Group' },
@@ -111,7 +114,7 @@ const schema = [
           <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;">Over six months of retreats and individual coaching with an executive team of five, it became clear &mdash; to everyone &mdash; that one leader wasn't a fit for the group. The CEO handled it with grace: an amicable parting, and a new hire chosen for fit, brought in with our help.</p>
         </article>
       </div>
-      <p style="margin-top:26px;font-size:15px;line-height:1.6;color:#56524A;">Looking for the immersive retreat stories &mdash; the auto retailer, the San Juans, the Everglades, the federal fiscal branch, Alaska? They&rsquo;re in <a href="#retreat-case-studies" style="color:#C04A26;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(192,74,38,0.35);">Retreat Case Studies</a> below.</p>
+      <p style="margin-top:26px;font-size:15px;line-height:1.6;color:#56524A;">Looking for the immersive retreat stories &mdash; the auto retailer, the San Juans, the Everglades, the federal fiscal branch, Alaska? They&rsquo;re in <a href="#retreat-case-studies" style="color:#C04A26;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(192,74,38,0.35);">Retreat Case Studies</a> below &mdash; and the single-day <a href="#executive-immersion-case-studies" style="color:#C04A26;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(192,74,38,0.35);">Executive Immersion</a> days are there too.</p>
     </div>
   </section>
 
@@ -163,6 +166,41 @@ const schema = [
           <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A Fortune 100 team's professional armor dissolved in a staged Alaska survival scenario &mdash; into the closest executive group we've seen in 25 years.</p>
           <span style="margin-top:18px;display:inline-flex;align-items:center;gap:10px;"><span style="font-family:'Newsreader',serif;font-size:18px;font-style:italic;color:#C04A26;">Bonds intact today</span></span>
           <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the case study &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE IMMERSION — deep-link target ("#executive-immersion-case-studies").
+       Anonymized single-day immersions; the format pages double as the examples. -->
+  <section id="executive-immersion-case-studies" style="scroll-margin-top:90px;background:#EFE9DD;color:#3A0A0C;padding:84px 32px;">
+    <div style="max-width:1080px;margin:0 auto;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Executive Immersion</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.08;letter-spacing:-0.015em;max-width:26ch;color:#3A0A0C;">The retreats' engineering, compressed into a single day.</h2>
+      <p style="margin-top:20px;font-size:17px;line-height:1.6;color:#4A3A34;max-width:66ch;">Three real days, each built backward from one executive's outcome and told in full — the expedition, the city, and the ownership day. Clients anonymized; no outcome figures attached, because the day itself is the proof. <a href={SLUGS.executiveImmersion} style="color:#C04A26;text-decoration:none;font-weight:700;">See how a day gets built &rarr;</a></p>
+
+      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+
+        <a href={SLUGS.eiExpedition} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Expedition &middot; Sedona &rarr; Grand Canyon</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Uncertainty, shifting authority, and no complete answer in the room.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A dawn-to-dark off-road expedition that shows an established team how it operates when the plan stops working &mdash; and the sixteen problems it's built to surface.</p>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the day &rarr;</span>
+        </a>
+
+        <a href={SLUGS.eiCity} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">City &middot; New York</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Twenty dollars, one city, and a belief you have to prove.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A values-and-contribution day that turns a room of guarded executives into a team before the real work starts &mdash; the eight-stage arc and the safeguards we run it under.</p>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the day &rarr;</span>
+        </a>
+
+        <a href={SLUGS.eiOwnership} style="display:flex;flex-direction:column;background:#FBF8F1;color:#1B1810;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px;text-decoration:none;transition:transform .16s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+          <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A8578;">Ownership &middot; Reno</span>
+          <h3 style="margin-top:12px;font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.14;">Everyone did their job. Dinner still wasn't ready.</h3>
+          <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#56524A;flex-grow:1;">A handoffs-and-ownership day where capable people, all busy, still miss the outcome &mdash; and the nine patterns it makes visible.</p>
+          <span style="margin-top:14px;font-size:13px;font-weight:700;color:#C04A26;">Read the day &rarr;</span>
         </a>
 
       </div>
