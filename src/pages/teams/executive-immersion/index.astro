@@ -7,6 +7,8 @@ import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
 import imgEvergladesAirboats from '../../../assets/executive-immersion/everglades/everglades-airboats.png';
 import imgEvergladesNav from '../../../assets/executive-immersion/everglades/everglades-navigation.png';
+import imgReachFrontDoor from '../../../assets/executive-immersion/hub/reach-front-door.png';
+import imgReachCharter from '../../../assets/executive-immersion/hub/reach-worth-a-charter.png';
 
 const path = SLUGS.executiveImmersion;
 const title = 'Executive Immersion — One Crazy Day, Built Where Your Team Already Is | Be Legendary';
@@ -105,7 +107,7 @@ const schema = [
       <p style="font-size:17.5px;line-height:1.65;color:#4A3A34;max-width:64ch;margin-bottom:34px;">Some teams will charter a jet for a 45-minute flight because the day on the other end is worth it. Others want to walk out the front door of their own building. Both produce legendary days. The difference is budget and appetite, and both are entirely yours to set.</p>
       <div class="ei-grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
-          <PhotoSlot title="Out the front door" note="A day that stayed inside the team's own city." height={170} />
+          <Image src={imgReachFrontDoor} alt="Executives walking a downtown sidewalk with a folded map, a black van alongside them." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:170px;object-fit:cover;display:block;" />
           <div style="padding:26px 28px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">Reach one</p><h3 style="font-family:'Newsreader',serif;font-size:26px;font-weight:400;color:#3A0A0C;margin-bottom:12px;">Out the front door</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">Everything happens on foot, by van, or on the water within the city the team is already in. No flights, no overnight, no travel approvals. The surprise is that it was all there the whole time.</p></div>
         </div>
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
@@ -113,7 +115,7 @@ const schema = [
           <div style="padding:26px 28px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">Reach two</p><h3 style="font-family:'Newsreader',serif;font-size:26px;font-weight:400;color:#3A0A0C;margin-bottom:12px;">Within a drive</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">Ninety minutes buys a completely different landscape — coast, canyon, altitude, wilderness. The team leaves at dawn and is genuinely somewhere else by mid-morning. This is where most days land.</p></div>
         </div>
         <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;">
-          <PhotoSlot title="Worth a charter" note="Aircraft, helicopter, or terrain only reachable by air." height={170} />
+          <Image src={imgReachCharter} alt="Executives with duffel bags boarding a light helicopter on a desert airstrip at golden hour, mountains behind." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:170px;object-fit:cover;display:block;" />
           <div style="padding:26px 28px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">Reach three</p><h3 style="font-family:'Newsreader',serif;font-size:26px;font-weight:400;color:#3A0A0C;margin-bottom:12px;">Worth a charter</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">A 45-to-90-minute charter or helicopter opens terrain that exists nowhere near a major city. Expensive, and for the right team on the right year, the single best money they spend.</p></div>
         </div>
       </div>
