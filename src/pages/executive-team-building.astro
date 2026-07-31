@@ -78,20 +78,26 @@ const schema = [
         <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A7F6C;margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
           <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#C04A26;">Executive Team Building</span>
         </nav>
-        <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Executive team building</p>
-        <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-0.024em;color:#1B1810;max-width:20ch;">Executive team building that builds how your leadership team <span style="font-style:italic;color:#C04A26;">decides, disagrees, and executes.</span></h1>
-        <p style="margin-top:26px;font-size:20px;line-height:1.6;color:#56524A;max-width:56ch;">Your executive team is the highest-leverage decision system in the company. This is a facilitated intervention engineered around how it actually operates under pressure &mdash; then reinforced so it holds. Not trust falls, not two days out of the office you&rsquo;ll have forgotten by Monday.</p>
-        <p style="margin-top:16px;font-size:16.5px;line-height:1.55;color:#7A7061;max-width:56ch;">It runs as a <strong style="color:#3A362D;font-weight:600;">single facilitated day</strong>, or as something longer when the problem needs it. The format follows the problem &mdash; never the other way around.</p>
-
-        <!-- short-answer / featured-snippet box (Section 2: What executive team building is) -->
-        <div style="margin-top:34px;max-width:64ch;background:#EFE8DA;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:26px 28px;">
-          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">What is executive team building?</p>
-          <p style="font-size:18px;line-height:1.62;color:#3A362D;">The deliberate work of turning capable functional leaders into a <strong style="font-weight:700;">single decision-making unit</strong> &mdash; one that sets shared priorities, disagrees productively, and executes across boundaries. The research is clear about where the value is: <strong style="font-weight:700;">not in the activity, but in what a team does with it</strong> &mdash; exposing how it really operates, then converting that into how it decides.</p>
+        <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.12fr 0.88fr;gap:52px;align-items:stretch;">
+          <div>
+            <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Executive team building</p>
+            <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-0.024em;color:#1B1810;max-width:20ch;">Executive team building that builds how your leadership team <span style="font-style:italic;color:#C04A26;">decides, disagrees, and executes.</span></h1>
+            <p style="margin-top:26px;font-size:20px;line-height:1.6;color:#56524A;max-width:56ch;">Your executive team is the highest-leverage decision system in the company. This is a facilitated intervention engineered around how it actually operates under pressure &mdash; then reinforced so it holds. Not trust falls, not two days out of the office you&rsquo;ll have forgotten by Monday.</p>
+            <p style="margin-top:16px;font-size:16.5px;line-height:1.55;color:#7A7061;max-width:56ch;">It runs as a <strong style="color:#3A362D;font-weight:600;">single facilitated day</strong>, or as something longer when the problem needs it. The format follows the problem &mdash; never the other way around.</p>
+            <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+              <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 40px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
+              <a href={SLUGS.breakPointAssessment} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#C04A26;text-decoration:none;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">or find where your team breaks first <span style="transition:transform .2s;">&rarr;</span></a>
+            </div>
+          </div>
+          <div style="border-radius:18px;overflow:hidden;box-shadow:0 26px 60px -28px rgba(27,24,16,0.5);min-height:360px;">
+            <img src="/assets/offroad/colorado/co-offroad-facilitation.webp" alt="James Carter facilitating a debrief circle with an executive team in the mountains." width="1000" height="640" loading="eager" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
         </div>
 
-        <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
-          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 40px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
-          <a href={SLUGS.breakPointAssessment} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#C04A26;text-decoration:none;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">or find where your team breaks first <span style="transition:transform .2s;">&rarr;</span></a>
+        <!-- short-answer / featured-snippet box (Section 2: What executive team building is) -->
+        <div style="margin-top:40px;max-width:72ch;background:#EFE8DA;border-left:3px solid #C04A26;border-radius:0 12px 12px 0;padding:26px 28px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8A7F6C;margin-bottom:10px;">What is executive team building?</p>
+          <p style="font-size:18px;line-height:1.62;color:#3A362D;">The deliberate work of turning capable functional leaders into a <strong style="font-weight:700;">single decision-making unit</strong> &mdash; one that sets shared priorities, disagrees productively, and executes across boundaries. The research is clear about where the value is: <strong style="font-weight:700;">not in the activity, but in what a team does with it</strong> &mdash; exposing how it really operates, then converting that into how it decides.</p>
         </div>
       </div>
     </section>
