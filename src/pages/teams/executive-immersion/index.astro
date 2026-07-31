@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+import imgEvergladesAirboats from '../../../assets/executive-immersion/everglades/everglades-airboats.png';
+import imgEvergladesNav from '../../../assets/executive-immersion/everglades/everglades-navigation.png';
 
 const path = SLUGS.executiveImmersion;
 const title = 'Executive Immersion — One Crazy Day, Built Where Your Team Already Is | Be Legendary';
@@ -166,7 +169,7 @@ const schema = [
             <p style="margin-top:20px;font-size:17.5px;line-height:1.66;color:#4A3A34;">The team was in Miami. The company was in a hiring freeze and a pay freeze, and the executives needed to stop asking for more and start solving with what they already had. That was the brief. Everything below was designed backwards from it.</p>
           </div>
           <div style="border-radius:14px;overflow:hidden;box-shadow:0 22px 48px -28px rgba(58,10,12,0.45);">
-            <PhotoSlot title="The Everglades day" note="Airboats, the hammock, or the survival structures they built. This is the page's most important photo." height={300} />
+            <Image src={imgEvergladesAirboats} alt="Executives stepping off airboats onto a dock at dawn, a guide briefing them, one holding a paper map." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:300px;object-fit:cover;display:block;" />
           </div>
         </div>
 
@@ -282,7 +285,7 @@ const schema = [
     <!-- PHOTO STRIP -->
     <section style="max-width:1180px;margin:88px auto 0;padding:0 32px;">
       <div class="ei-grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-        <PhotoSlot title="Under load" note="Mid-activity. Effort on faces, not a posed group shot." height={260} />
+        <Image src={imgEvergladesNav} alt="Executives heads-down over a paper map on a marsh boardwalk, working out a route." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:260px;object-fit:cover;border-radius:12px;display:block;" />
         <PhotoSlot title="The place" note="Wide shot that shows how far from a conference room they are." height={260} img="/assets/sedona/sedona-vista.webp" alt="A wide view over the red-rock canyons around Sedona." />
         <PhotoSlot title="The debrief" note="James facilitating — the meaning-making moment." height={260} img="/assets/offroad/colorado/co-offroad-facilitation.webp" alt="A facilitator leading a debrief circle with an executive team in the mountains." />
       </div>
