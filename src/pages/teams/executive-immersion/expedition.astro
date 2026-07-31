@@ -1,9 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+import imgDesertTable from '../../../assets/executive-immersion/expedition/desert-table.png';
+import imgExtraction from '../../../assets/executive-immersion/expedition/extraction.png';
+import imgCanyonBrief from '../../../assets/executive-immersion/expedition/canyon-brief.png';
+import imgCanyonOverlook from '../../../assets/executive-immersion/expedition/canyon-overlook.png';
 
 const path = SLUGS.eiExpedition;
 const title = 'One Crazy Day: Expedition — Sedona to the Grand Canyon | Be Legendary';
@@ -22,7 +27,7 @@ const schema = [
 ];
 
 const beats = [
-  { label: 'Before sunrise', title: 'A locked case and no complete picture', body: 'The group finds an expedition case, paper maps, a compass, a radio, a countdown clock and a set of incomplete instructions. Organise yourselves, decide what matters, and move before first light. When the case opens, the keys are inside.' },
+  { label: 'Before sunrise', title: 'A locked case and no complete picture', body: 'The group finds an expedition case, paper maps, a compass, a radio, a countdown clock and a set of incomplete instructions. Organise yourselves, decide what matters, and move before first light. When the case opens, the keys are inside.', img: imgCanyonBrief, imgAlt: 'Executives gathered around a field table of radios, maps and a case at first light, a guide briefing them.' },
   { label: 'First light', title: 'Two per Jeep, and nobody has it all', body: 'Executives are paired and released at staggered intervals into the red-rock country. One pair holds the route legend. Another the radio protocol. Another knows where a high-value flag may be. Another has intelligence on a road that looks fast and may cost them everything. Every route choice is a tradeoff: a flag may require a punishing detour, a clue may be useless now and decisive later, and one challenge cannot be solved unless two Jeeps cooperate. Driving faster earns nothing. Safety rules are absolute. The competition is judgement, navigation and communication under incomplete information.' },
   { label: 'Checkpoint one', title: 'The rules change', body: 'They arrive believing they understand the game. Then they learn the points were never awarded to the Jeeps. They were awarded to individuals — whoever found the route, recovered the flag, made the call. Whoever ignored a rule lost points. The leaderboard appears. Then the partnerships are broken apart: strong navigators paired with weaker drivers, allies separated, quiet contributors handed decision authority. Everyone who led after stage one must now prove it holds under different conditions with different people.' },
   { label: 'Stage two', title: 'Scarcity, and the need to trade', body: 'Each Jeep receives only part of what it needs — maps, recovery gear, route intelligence, water, fuel, comms. The best-equipped vehicle may not have the best route. The team leading on points may need help from the team in last place. Individual incentive starts to pull against the good of the expedition.' },
@@ -31,7 +36,7 @@ const beats = [
   { label: 'After lunch', title: 'The expedition continues north. Your vehicles do not.', body: 'The Jeeps are gone. The group moves by side-by-side, then on foot. Terrain changes, partnerships change again, and authority fragments — one person may not drive, another controls the map but not the radio, another owns safety but not the route.' },
   { label: 'Mid-afternoon', title: 'Two objectives, and not enough people', body: 'One offers visible points and a hard recovery challenge. The other requires several people to move ahead, establish comms, secure water and prepare the next checkpoint. One assignment looks impressive. The other protects the expedition. They must choose who goes where, and who gets the best equipment.' },
   { label: 'Late afternoon', title: 'The final drive to the rim', body: 'New Jeeps, easier routes, harder decisions. Fatigue has set in and every vehicle is under a constraint — someone cannot drive, someone cannot touch the map, one team has incomplete coordinates, another holds information that is worthless unless shared.' },
-  { label: 'At the canyon', title: 'Dinner is in Sedona in 75 minutes', body: 'They believe the day is over. There is no possible way to drive back in time. Studying the final clue, they realise the Grand Canyon was never the finish — it was the extraction point. Two helicopters are waiting at the nearby aviation facility. Minutes later they are airborne over northern Arizona, watching an entire day of ground disappear beneath them, and they land near Sedona at golden hour.' },
+  { label: 'At the canyon', title: 'Dinner is in Sedona in 75 minutes', body: 'They believe the day is over. There is no possible way to drive back in time. Studying the final clue, they realise the Grand Canyon was never the finish — it was the extraction point. Two helicopters are waiting at the nearby aviation facility. Minutes later they are airborne over northern Arizona, watching an entire day of ground disappear beneath them, and they land near Sedona at golden hour.', img: imgCanyonOverlook, imgAlt: 'Executives gathered at the Grand Canyon rim at golden hour, one pointing out across the canyon.' },
   { label: 'At dinner', title: 'The scoring, and the last rule', body: 'The winner is not necessarily whoever collected the most flags or arrived first. The final score weighs judgement, adaptability, contribution, safety, decision quality, and how much each person strengthened or weakened the whole expedition. Then the group learns the rule that was true all along.' },
 ];
 
@@ -91,8 +96,8 @@ const goals = [
 
         <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:34px;">
           <PhotoSlot variant="dark" title="Jeeps in red rock" note="Vehicles mid-route in the Sedona landscape." img="/assets/sedona/sedona-hero.webp" alt="A vehicle on red slickrock below the Sedona cliffs." />
-          <PhotoSlot variant="dark" title="The desert table" note="The five-star lunch with nothing else in sight. Highest-impact image on the page." />
-          <PhotoSlot variant="dark" title="The extraction" note="Helicopters at the canyon, or the group airborne at golden hour." />
+          <Image src={imgDesertTable} alt="A long linen dining table set under a canopy in the open Sedona desert, red rock beyond." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
+          <Image src={imgExtraction} alt="Executives walking toward two waiting helicopters in the desert at golden hour." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
         </div>
 
         <div style="margin-top:40px;">
@@ -102,6 +107,9 @@ const goals = [
               <div>
                 <h3 style="font-size:20px;font-weight:700;color:#F6EFE0;margin-bottom:9px;">{b.title}</h3>
                 <p style="font-size:16.5px;line-height:1.62;color:rgba(240,228,218,0.82);max-width:76ch;">{b.body}</p>
+                {b.img && (
+                  <Image src={b.img} alt={b.imgAlt} width={1672} height={941} format="webp" quality={80} loading="lazy" style="margin-top:18px;width:100%;max-width:640px;height:auto;border-radius:12px;display:block;" />
+                )}
               </div>
             </div>
           ))}

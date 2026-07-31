@@ -5,6 +5,7 @@ import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+import imgRace from '../../../assets/executive-immersion/ownership/the-race.png';
 import imgKitchen from '../../../assets/executive-immersion/ownership/the-kitchen.png';
 import imgDelivery from '../../../assets/executive-immersion/ownership/the-delivery.png';
 import imgEmptyTable from '../../../assets/executive-immersion/ownership/empty-table.png';
@@ -80,7 +81,7 @@ const conditions = ['Departmental silos', 'Weak handoffs between functions', 'Re
         <p style="margin-top:20px;font-size:18px;line-height:1.62;color:rgba(240,228,218,0.82);max-width:64ch;">Teams released into Reno in a race across the city. No private vehicles — buses, walking and rentable scooters, with taxis and rideshare available at a real cost against their own budget. Each person carried a preloaded card and was told two things: there is enough on it to complete the day, and whatever is left at the end will matter.</p>
 
         <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:34px;">
-          <PhotoSlot variant="dark" title="The race" note="Executives on buses, scooters, or on foot downtown." />
+          <Image src={imgRace} alt="Executives with scooters and maps crossing a downtown Reno street under the Reno arch." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
           <Image src={imgKitchen} alt="Executives cooking at crowded kitchen stations, a chef among them, a tray of meatballs in the foreground." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
           <Image src={imgDelivery} alt="Executives carrying trays and boxes of food through a doorway at night, greeted by a staff member." width={1672} height={941} format="webp" quality={80} loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:12px;display:block;" />
         </div>
