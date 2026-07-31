@@ -112,14 +112,14 @@ const flat = categories.flatMap((cat, ci) =>
       <div id="ls-growth" style="display:flex;flex-direction:column;gap:14px;"></div>
     </div>
 
-    <!-- PROVECQ CROSS-SELL (conditional) -->
-    <div id="ls-prove" style="margin-top:20px;display:none;">
+    <!-- PROVE CTA (self-directed; addressed to the person who just took this) -->
+    <div style="margin-top:20px;">
       <a href="https://provecq.com" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:#211D15;border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:24px 28px;text-decoration:none;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.8)'" onmouseout="this.style.borderColor='rgba(192,74,38,0.4)'">
         <div style="flex:1;min-width:280px;">
-          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Struggling to know who your real high-potentials are?</p>
-          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.7);">Be Legendary diagnoses your leadership. <strong style="color:#F4F0E7;">Prove</strong> measures your people — who’s actually ready to lead, before you have to guess.</p>
+          <p style="font-family:'Newsreader',serif;font-size:21px;color:#FBF8F1;line-height:1.15;">Take it further with Prove</p>
+          <p style="margin-top:7px;font-size:14.5px;line-height:1.5;color:rgba(244,240,231,0.7);">Prove is a forty-two day cycle. You choose your own commitments, you record what you actually did, and the result is yours.</p>
         </div>
-        <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">See what Prove measures &rarr;</span>
+        <span style="font-weight:700;color:#E0744A;font-size:15px;white-space:nowrap;">See how Prove works &rarr;</span>
       </a>
     </div>
 
@@ -286,9 +286,6 @@ const flat = categories.flatMap((cat, ci) =>
       growthWrap.appendChild(card);
     });
 
-    // ProveCQ cross-sell if a talent category (High-Potential or Retention) is a growth area
-    const showProve = bottom3.some((g) => cats[g.i].talent);
-    document.getElementById('ls-prove')!.style.display = showProve ? 'block' : 'none';
   }
 
   revealBtn.addEventListener('click', () => {
