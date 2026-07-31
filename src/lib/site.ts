@@ -211,13 +211,16 @@ export const SLUGS = {
   luxuryExecutiveRetreat: '/teams/luxury-executive-retreat/',
   // ── Executive Immersion — a single engineered day, built from the same logic
   // as a retreat but compressed into one impossible-feeling mission. Hub +
-  // archetype sub-pages (City / Expedition / Systems). Anonymized format
-  // examples, not client case studies. ("One crazy day" is the phrase
-  // participants land on at the end — kept as an earned motif, not the name.)
+  // three format pages (Expedition / City / Systems). Ported from the
+  // legendary-retreats handoff; canonicals match the .dc.html set. Category is
+  // "Executive Immersion"; the format at its center is "One Crazy Day".
   executiveImmersion: '/teams/executive-immersion/',
-  eiCity: '/teams/executive-immersion/the-city/',
-  eiExpedition: '/teams/executive-immersion/the-expedition/',
-  eiSystem: '/teams/executive-immersion/the-system/',
+  eiExpedition: '/teams/executive-immersion/expedition/',
+  eiCity: '/teams/executive-immersion/city/',
+  eiSystem: '/teams/executive-immersion/systems/',
+  // "The City Never Sleeps" — the larger command-center city simulation,
+  // illustrated with the six NYC renders. A distinct format from the City day.
+  eiCityNeverSleeps: '/teams/executive-immersion/the-city-never-sleeps/',
 
   // Legacy Library alias → the For Leaders home (old /library/ 301s here).
   library: '/leaders/',

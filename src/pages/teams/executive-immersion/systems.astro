@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
+import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+
+const path = SLUGS.eiSystem;
+const title = 'One Crazy Day: Systems — Reno | Be Legendary';
+const description = 'A full One Crazy Day in Reno: unknown budgets, blindfolded mousetraps, rotating cooking stations, an empty table at 7:00 p.m., and a dinner that was never theirs. What it reveals about handoffs, ownership and purpose.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Be Legendary', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
+    { '@type': 'ListItem', position: 3, name: 'Executive Immersion', item: `${SITE_URL}${SLUGS.executiveImmersion}` },
+    { '@type': 'ListItem', position: 4, name: 'Systems', item: `${SITE_URL}${path}` },
+  ] },
+  { '@type': 'Service', name: 'Executive Immersion', serviceType: 'Executive team offsite experience design and facilitation',
+    provider: { '@id': ORG_ID }, areaServed: 'Worldwide',
+    description: "A single engineered day for executive teams, designed around whatever is within reach of the team's own location. Flagship format: One Crazy Day." },
+];
+
+const beats = [
+  { label: 'The card', title: '$2,500, and they had no idea', body: 'Every card held far more than anyone could spend in a day. They were never told the balance. Not knowing turned every purchase into a judgement call: spend to move faster or conserve and lose time; buy food now or assume another chance to eat appears; take the direct route or chase extra checkpoints that might earn recognition and might drain the transport budget. We were not testing frugality. We wanted to see what they would spend money on, and how they would decide.' },
+  { label: 'Immediately', title: 'Four different instincts', body: 'Some teams started calculating at once. Some spent freely. Some treated the cards as individual property; others pooled information and ran a shared budget. A few asked what the money was ultimately for. Most simply started moving.' },
+  { label: 'At a checkpoint', title: 'A field of loaded mousetraps', body: 'Shoes off. One person blindfolded, a partner guiding them through by voice alone. Uncomfortable by design — but the mousetraps were never the challenge. The challenge was trust under consequence. The blindfolded person had to judge whether the instructions were precise enough to act on. The guide had to convert what they could see into something another body could actually use. Some overexplained. Some got louder when clarity failed. Some moved too fast. Others found a calm rhythm, confirmed understanding, and adjusted after every step. The difference between issuing instructions and creating understanding stopped being an abstraction.' },
+  { label: '11:00 a.m.', title: 'Lunch was mandatory. What they did with it was not.', body: 'They had to eat — and how they ate came straight off the card. Some went deliberately cheap and banked the difference. Others sat down to an expensive meal. Both were legitimate. Both were data.' },
+  { label: 'Late afternoon', title: 'A rented house, and a debrief that was not the end', body: 'Tired and increasingly hungry, they were directed to a house where they believed the race was finishing. A short debrief began — the decisions they had made, how they had used their money, what they had noticed in each other. Then the final assignment arrived: you are making dinner, and it must be complete and ready to eat at exactly 7:00 p.m.' },
+  { label: 'The kitchen', title: 'Eight stations and a culinary school', body: 'The house had been converted into stations — meat, pasta, vegetables, sauces, guacamole, prep, garnish. Students from a local university culinary programme moved between them teaching technique as the executives worked: which knife, how to cut this, how to season, how to make the dish better.' },
+  { label: 'Sixty seconds in', title: 'Switch.', body: 'Everyone leaves the work they have started and moves to another station. No staying with the same partner. No time to explain what you did or why. You inherit someone else’s half-finished work, figure out its state, contribute, and leave again. Switch. Switch.' },
+  { label: 'The meatballs', title: 'Two people, both right', body: 'One executive combined two ground meats, seasoned the mixture carefully, shaped meatballs, and had a clear picture of the finished dish. Several rotations later an executive from northern Italy arrived at that station. In her experience, that was not how this dish is made. She broke the meatballs apart, cooked the meat differently, and turned it into a rich pasta sauce. The result was excellent. When he came back and asked where his meatballs were, he was genuinely angry. He had invested effort and a plan; someone had erased the visible result of his work without asking. She believed she had improved it. Neither position was irrational. Work had moved between people — and ownership, intent, standards and context had not moved with it.' },
+  { label: '7:00 p.m.', title: 'The food was ready. The meal was not.', body: 'The facilitators stopped the activity. Every station had delivered. The dishes were finished, garnished, beautiful. And there were no plates on the table, no glasses, no place settings — nowhere for anyone to actually sit down and eat. The goal had never been to cook food. The goal was dinner, ready at 7:00. Setting the table belonged to no one, so no one did it. They fixed it fast: plates found, table set, music on, candles lit, food brought together. The room finally looked ready and they were seconds from eating.' },
+  { label: 'Then', title: 'There is another place we could eat this', body: 'One facilitator suggested it. The other agreed. Containers appeared. At first they assumed it was a picnic. Then the carefully plated dishes started going into plastic. They were furious — hours of work, exhausted, hot, hungry, having watched their own contributions undone, having just fixed the table — and now the meal was being packed away. Every constraint of the day had collected on that dinner.' },
+  { label: 'A few minutes later', title: 'The Ronald McDonald House', body: 'The vehicles turned into the car park and the group understood before anyone spoke. The dinner had never been for them. It was for parents and families staying near hospitalised children. The anger went. Nobody mentioned being hungry. The same food that had felt like payment for a hard day became something else entirely — relief and hospitality for people carrying far more than the executives had been asked to carry. They carried it in, put the candles they had lit for themselves on somebody else’s table, arranged the dishes, prepared plates, and turned the meal back into what it had been designed to be. They took a short tour, learned about the families, and stayed about twenty minutes. They were not there to be the centre of the moment. They were there to leave something useful behind.' },
+  { label: 'Then pizza', title: 'Not elaborate. Unforgettable.', body: 'A few minutes away, pizza was waiting. Part of that was hunger. Most of it was meaning. The real debrief happened around that table.' },
+];
+
+const patterns = [
+  { t: 'Resource behaviour under uncertainty', b: 'The unknown balance exposed how people allocate when the budget, the future demands and the scoring logic are all invisible — which is the normal condition of executive work. Some conserved against imagined need, some assumed sufficiency, some coordinated, some went alone.' },
+  { t: 'Local optimisation', b: 'Each station behaved like a department: good work produced inside the boundary of the current assignment, with nobody stepping back to ask whether the system was producing the required outcome. The food was finished. Dinner was not ready.' },
+  { t: 'The unowned work', b: 'The table was the work that falls between roles. Everyone assumed that if it mattered, someone else must own it. That is not laziness — it is responsibility divided more precisely than the outcome.' },
+  { t: 'Handoffs without context', b: 'Rotation meant constant transfer of half-finished work. Each person inherited ingredients and visible output but almost no intent, prior decisions, assumptions or standards. The result was rework and conflicting interpretations — exactly how it fails between functions, sites, shifts and levels.' },
+  { t: 'Attachment to personal work', b: 'The meatballs separated contribution from ownership. He saw his creation; she saw an input she was accountable for improving. The question is not whether people should care about their work. They should. It is whether attachment to an individual contribution blocks adaptation and integration.' },
+  { t: 'Initiative beyond the role', b: 'No one set the table because no one was told to. The lesson is not that everyone should do everyone else’s job — it is that leaders stay responsible for noticing the distance between assigned work and the required outcome.' },
+  { t: 'Communication under vulnerability', b: 'The blindfold tested whether someone can create clarity without control. The guide could see the risk but could not move the other person’s body; the follower had to act with no independent visibility. A working model for delegation and distributed leadership.' },
+  { t: 'Purpose as a regulator of effort', b: 'Before the reveal, losing the meal was unfair. After it, the same loss was meaningful. Nothing physical had changed — they were still hungry and tired. Purpose does not remove sacrifice. It changes how the sacrifice is understood.' },
+  { t: 'Emotional reset through contribution', b: 'The reveal interrupted a whole day of accumulated frustration and redirected attention outward. They stopped assessing the day by what they were receiving and started assessing it by what they were able to give — which is what made the debrief honest.' },
+];
+
+const conditions = ['Departmental silos', 'Weak handoffs between functions', 'Rework caused by missing context', 'Tasks completed without owning outcomes', 'Leaders who wait to be assigned', 'Resource hoarding', 'Poor cross-functional communication', 'Disagreement over standards or methods', 'Resistance when others modify prior work', 'No enterprise-level thinking', 'Effort disconnected from purpose', 'Low customer or stakeholder visibility', 'Frustration caused by change', 'Activity mistaken for completion', 'Values that have not become behaviour'];
+---
+<BaseLayout title={title} description={description} path={path} ogType="website" ogTitle={title} ogDescription="Everyone can be busy, capable, and doing what was assigned. The outcome can still fail." schema={schema} bodyBg="#EFE9DD">
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <section style="max-width:1180px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span>
+        <a href={SLUGS.executiveImmersion} style="color:inherit;text-decoration:none;">Executive Immersion</a><span>/</span>
+        <span style="color:#64010a;">Systems</span>
+      </nav>
+    </section>
+
+    <section style="max-width:1180px;margin:32px auto 0;padding:0 32px;">
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,4.6vw,58px);line-height:1.02;letter-spacing:-0.02em;color:#3A0A0C;max-width:24ch;">Everyone did their job. Dinner still wasn't ready.</h1>
+      <p style="margin-top:20px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:58ch;">A city day built around resources, handoffs, ownership and purpose — for organisations where every department reports progress and the customer still doesn't get what was promised. This one ran in Reno.</p>
+    </section>
+
+    <!-- DARK TIMELINE -->
+    <section style="background:#2A0507;margin-top:56px;padding:80px 0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9743F;margin-bottom:16px;">One Crazy Day: Systems &nbsp;&middot;&nbsp; Reno</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.06;color:#F6EFE0;max-width:28ch;">A destination, a set of checkpoints, and almost none of the information they wanted.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.62;color:rgba(240,228,218,0.82);max-width:64ch;">Teams released into Reno in a race across the city. No private vehicles — buses, walking and rentable scooters, with taxis and rideshare available at a real cost against their own budget. Each person carried a preloaded card and was told two things: there is enough on it to complete the day, and whatever is left at the end will matter.</p>
+
+        <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:34px;">
+          <PhotoSlot variant="dark" title="The race" note="Executives on buses, scooters, or on foot downtown." />
+          <PhotoSlot variant="dark" title="The kitchen" note="Rotating stations mid-chaos. The switch is the story." />
+          <PhotoSlot variant="dark" title="The delivery" note="Food arriving at the Ronald McDonald House. Consent required — no families or children in frame without written permission." />
+        </div>
+
+        <div style="margin-top:40px;">
+          {beats.map((b) => (
+            <div class="ei-row" style="display:grid;grid-template-columns:150px 1fr;gap:28px;padding:26px 0;border-top:1px solid rgba(246,239,224,0.16);">
+              <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D9743F;padding-top:5px;">{b.label}</p>
+              <div>
+                <h3 style="font-size:20px;font-weight:700;color:#F6EFE0;margin-bottom:9px;">{b.title}</h3>
+                <p style="font-size:16.5px;line-height:1.62;color:rgba(240,228,218,0.84);max-width:76ch;">{b.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:44px;background:#64010a;border-radius:16px;padding:44px 48px;">
+          <p style="font-family:'Newsreader',serif;font-size:clamp(26px,3.4vw,40px);line-height:1.12;color:#F6EFE0;max-width:34ch;">Nobody asked the only question that mattered: what else must be true for us to succeed?</p>
+          <p style="margin-top:18px;font-size:17px;line-height:1.62;color:rgba(240,228,218,0.82);max-width:70ch;">Not <em style="font-style:italic;">whose work should I take over</em>, and not <em style="font-style:italic;">how do I interfere in someone else’s role</em>. Simply: what is left undone because no one owns it?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9 PATTERNS -->
+    <section style="max-width:1180px;margin:88px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">What the day revealed</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#3A0A0C;max-width:30ch;margin-bottom:34px;">Nine patterns, all of them already running inside the business.</h2>
+      <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px 40px;">
+        {patterns.map((p) => (
+          <div style="border-top:1px solid rgba(100,1,10,0.16);padding-top:16px;"><h3 style="font-size:18px;font-weight:700;color:#3A0A0C;margin-bottom:8px;">{p.t}</h3><p style="font-size:15.5px;line-height:1.6;color:#4A3A34;">{p.b}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 15 CONDITIONS -->
+    <section style="max-width:1180px;margin:88px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Where this format fits</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#3A0A0C;max-width:30ch;margin-bottom:28px;">Fifteen conditions this day is built for.</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        {conditions.map((c) => (
+          <span style="font-size:13.5px;color:#64010a;background:rgba(100,1,10,0.07);border:1px solid rgba(100,1,10,0.16);border-radius:999px;padding:7px 15px;">{c}</span>
+        ))}
+      </div>
+      <div class="ei-two" style="margin-top:44px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:start;">
+        <div>
+          <h3 style="font-family:'Newsreader',serif;font-size:29px;font-weight:400;line-height:1.14;color:#3A0A0C;">Everyone can be busy. Everyone can be capable. Everyone can do what was assigned. The outcome can still fail.</h3>
+        </div>
+        <div>
+          <p style="font-size:17px;line-height:1.66;color:#4A3A34;margin-bottom:16px;">One Crazy Day makes that failure visible in a way a presentation cannot. It lets leaders feel the cost of fragmented ownership, incomplete handoffs, narrow role definitions and invisible purpose — and then hands them the contrasting experience immediately afterwards.</p>
+          <p style="font-size:17px;line-height:1.66;color:#4A3A34;">The same group that could not set its own table built an extraordinary table for people they had never met. The difference was not skill. It was clarity of purpose, shared ownership, and knowing who the work was actually for.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:70px auto 0;padding:0 32px;">
+      <a href={SLUGS.executiveImmersion} style="font-size:15.5px;font-weight:600;color:#64010a;text-decoration:none;border-bottom:1px solid rgba(100,1,10,0.3);padding-bottom:2px;">&larr; Back to Executive Immersion</a>
+    </section>
+
+    <section id="design-call" style="background:#64010a;margin-top:92px;padding:84px 0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.05;color:#F6EFE0;max-width:24ch;">Tell us where they'll be. We'll tell you what's possible there.</h2>
+        <p style="font-size:18.5px;line-height:1.6;color:rgba(240,228,218,0.78);max-width:56ch;">Thirty minutes with James. Bring the location and the problem — you'll leave the call knowing whether there's a legendary day in it, and roughly what it costs.</p>
+        <a href={CTA_URL} style="background:#F6EFE0;color:#64010a;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:800;font-size:16.5px;">Book a 30-minute design call</a>
+        <p style="font-size:14px;color:rgba(240,228,218,0.55);">No pitch deck. No proposal until you've asked for one.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    @media (max-width: 900px) {
+      .ei-two, .ei-grid3 { grid-template-columns: 1fr !important; }
+      .ei-row { grid-template-columns: 1fr !important; gap: 8px !important; }
+    }
+  </style>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>

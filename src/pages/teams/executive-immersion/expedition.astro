@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
+import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+
+const path = SLUGS.eiExpedition;
+const title = 'One Crazy Day: Expedition — Sedona to the Grand Canyon | Be Legendary';
+const description = 'A full One Crazy Day expedition, hour by hour: the 4:15 knock, partial information, individual scoring, a desert table, and a helicopter extraction. Plus the sixteen executive problems it exposes.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Be Legendary', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
+    { '@type': 'ListItem', position: 3, name: 'Executive Immersion', item: `${SITE_URL}${SLUGS.executiveImmersion}` },
+    { '@type': 'ListItem', position: 4, name: 'Expedition', item: `${SITE_URL}${path}` },
+  ] },
+  { '@type': 'Service', name: 'Executive Immersion', serviceType: 'Executive team offsite experience design and facilitation',
+    provider: { '@id': ORG_ID }, areaServed: 'Worldwide',
+    description: "A single engineered day for executive teams, designed around whatever is within reach of the team's own location. Flagship format: One Crazy Day." },
+];
+
+const beats = [
+  { label: 'Before sunrise', title: 'A locked case and no complete picture', body: 'The group finds an expedition case, paper maps, a compass, a radio, a countdown clock and a set of incomplete instructions. Organise yourselves, decide what matters, and move before first light. When the case opens, the keys are inside.' },
+  { label: 'First light', title: 'Two per Jeep, and nobody has it all', body: 'Executives are paired and released at staggered intervals into the red-rock country. One pair holds the route legend. Another the radio protocol. Another knows where a high-value flag may be. Another has intelligence on a road that looks fast and may cost them everything. Every route choice is a tradeoff: a flag may require a punishing detour, a clue may be useless now and decisive later, and one challenge cannot be solved unless two Jeeps cooperate. Driving faster earns nothing. Safety rules are absolute. The competition is judgement, navigation and communication under incomplete information.' },
+  { label: 'Checkpoint one', title: 'The rules change', body: 'They arrive believing they understand the game. Then they learn the points were never awarded to the Jeeps. They were awarded to individuals — whoever found the route, recovered the flag, made the call. Whoever ignored a rule lost points. The leaderboard appears. Then the partnerships are broken apart: strong navigators paired with weaker drivers, allies separated, quiet contributors handed decision authority. Everyone who led after stage one must now prove it holds under different conditions with different people.' },
+  { label: 'Stage two', title: 'Scarcity, and the need to trade', body: 'Each Jeep receives only part of what it needs — maps, recovery gear, route intelligence, water, fuel, comms. The best-equipped vehicle may not have the best route. The team leading on points may need help from the team in last place. Individual incentive starts to pull against the good of the expedition.' },
+  { label: 'Somewhere in the dust', title: 'A vehicle goes down', body: 'Safe, controlled, solvable — and expensive in time. The affected pair must decide whether to fix it alone, ask for help, or abandon part of their route. The others must decide whether to keep chasing points or stop. Nobody is told which choice will be rewarded.' },
+  { label: 'Near midday', title: 'A five-star table in the middle of the desert', body: 'Linen, glassware, a chef, cold towels, a plated meal, and nothing else in sight. For a moment the pressure lifts entirely. Then each person finds a sealed decision card at their place: protect the points you have earned, risk them for a higher-value route, transfer some to another person, or give up personal standing to create an advantage for the group. The choices are private. Only some are revealed.' },
+  { label: 'After lunch', title: 'The expedition continues north. Your vehicles do not.', body: 'The Jeeps are gone. The group moves by side-by-side, then on foot. Terrain changes, partnerships change again, and authority fragments — one person may not drive, another controls the map but not the radio, another owns safety but not the route.' },
+  { label: 'Mid-afternoon', title: 'Two objectives, and not enough people', body: 'One offers visible points and a hard recovery challenge. The other requires several people to move ahead, establish comms, secure water and prepare the next checkpoint. One assignment looks impressive. The other protects the expedition. They must choose who goes where, and who gets the best equipment.' },
+  { label: 'Late afternoon', title: 'The final drive to the rim', body: 'New Jeeps, easier routes, harder decisions. Fatigue has set in and every vehicle is under a constraint — someone cannot drive, someone cannot touch the map, one team has incomplete coordinates, another holds information that is worthless unless shared.' },
+  { label: 'At the canyon', title: 'Dinner is in Sedona in 75 minutes', body: 'They believe the day is over. There is no possible way to drive back in time. Studying the final clue, they realise the Grand Canyon was never the finish — it was the extraction point. Two helicopters are waiting at the nearby aviation facility. Minutes later they are airborne over northern Arizona, watching an entire day of ground disappear beneath them, and they land near Sedona at golden hour.' },
+  { label: 'At dinner', title: 'The scoring, and the last rule', body: 'The winner is not necessarily whoever collected the most flags or arrived first. The final score weighs judgement, adaptability, contribution, safety, decision quality, and how much each person strengthened or weakened the whole expedition. Then the group learns the rule that was true all along.' },
+];
+
+const shorthand = ['“Are we optimising our Jeep, or the expedition?”', '“Are we chasing a flag and missing the checkpoint?”', '“Who has the part of the map we need?”', '“Are we protecting points, or protecting the mission?”'];
+
+const goals = [
+  { name: 'Acting as one enterprise', headline: 'Whether they run the company or run their function.', rows: [
+    { label: 'Problem 01', title: 'Functional silos', onDay: 'No Jeep holds all the information and no individual can optimise the route alone. They must decide continuously what to share and what to protect.', tells: 'Where the business is losing speed because information, resources or trust stay trapped inside a function.' },
+    { label: 'Problem 02', title: 'Weak cross-functional trust', onDay: 'Partners are reassigned repeatedly, breaking established alliances and forcing dependence on people they would not naturally choose.', tells: 'Trust built on observed behaviour rather than a discussion about trust — the group now has evidence.' },
+    { label: 'Problem 07', title: 'Individual wins that cost the enterprise', onDay: 'Situations are engineered where a person can improve their own standing while raising risk for everyone. Then: no one can win unless everyone finishes.', tells: 'Whether your incentives quietly reward functional performance that damages the whole system.' },
+    { label: 'Problem 16', title: 'Weak shared identity', onDay: 'A hard day produces a common story — the broken vehicle, the impossible deadline, the desert table, the extraction.', tells: 'Shared language for the enterprise-versus-function tradeoff, earned rather than taught.' },
+  ] },
+  { name: 'How decisions get made', headline: 'Whether the group can decide, commit, and move.', rows: [
+    { label: 'Problem 04', title: 'Decision-making under uncertainty', onDay: 'Every choice arrives with incomplete facts, conflicting incentives and a real cost to delay — in a controlled environment.', tells: 'Whether they can separate what they know, what they assume, and what can be decided anyway.' },
+    { label: 'Problem 05', title: 'Slow execution', onDay: 'Checkpoint windows force a commitment. Overanalysis, revisiting settled decisions and unassigned ownership all cost time visibly.', tells: 'The line between healthy deliberation and organisational drag.' },
+    { label: 'Problem 11', title: 'Poor resource allocation', onDay: 'Maps, equipment, fuel, time and people are all deliberately insufficient. Not every flag can be pursued.', tells: 'A working model of strategic prioritisation — what to abandon, not just what to add.' },
+    { label: 'Problem 12', title: 'Urgent mistaken for important', onDay: 'A split mission: one objective is visible and impressive, the other quietly protects the whole expedition.', tells: 'How the company treats maintenance, risk, talent development and retention — the work nobody applauds.' },
+  ] },
+  { name: 'Who actually leads', headline: 'Whether authority sits where the capability is.', rows: [
+    { label: 'Problem 03', title: 'Overdependence on the CEO', onDay: 'The CEO’s authority is deliberately restricted — they may be barred from driving, from the map, or from certain decisions. Authority rotates.', tells: 'Whether the team can operate without constant escalation, and whether the others will actually exercise judgement.' },
+    { label: 'Problem 06', title: 'Unclear accountability', onDay: 'Scoring is individual. Whoever owns navigation owns that decision; whoever holds the radio owns communication; safety has a named owner.', tells: 'Whether authority, responsibility and consequence are aligned the same way inside the business.' },
+    { label: 'Problem 09', title: 'Dominance by a few voices', onDay: 'Critical information and decision rights are handed to the quieter participants. Dominant leaders get roles where they can advise but not decide.', tells: 'Whether you can reach all of your available intelligence, or hierarchy is suppressing it.' },
+    { label: 'Problem 15', title: 'Misreading who your strongest leaders are', onDay: 'A lower-profile executive stays composed, simplifies complexity and decides well. A celebrated one becomes controlling once authority is limited.', tells: 'Behavioural evidence you cannot get from a formal assessment.' },
+  ] },
+  { name: 'When the plan breaks', headline: 'Whether they recover, or lose cohesion and judgement.', rows: [
+    { label: 'Problem 08', title: 'Inability to adapt', onDay: 'Partners, information, transport, roles and rules all change mid-day. The strongest early performer often struggles afterwards.', tells: 'Real adaptability, rather than everyone’s self-assessment of it.' },
+    { label: 'Problem 10', title: 'Conflict avoidance', onDay: 'Legitimate, time-bound conflicts over route, resources, risk and priority. They must disagree, decide, and keep working together.', tells: 'Whether the team can disagree productively without paralysis, withdrawal or escalation.' },
+    { label: 'Problem 13', title: 'Fragile communication', onDay: 'Channels are limited and information is distributed. Radio discipline, message clarity and confirmation become operationally decisive.', tells: 'Whether the communication system improves execution or just generates noise.' },
+    { label: 'Problem 14', title: 'Low resilience', onDay: 'Controlled setbacks: a mechanical failure, a route change, an advantage lost. What matters is how fast they stabilise.', tells: 'A grounded basis for talking about continuity, leadership depth, succession and crisis response.' },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={path} ogType="website" ogTitle={title} ogDescription={description} schema={schema} bodyBg="#EFE9DD">
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <section style="max-width:1180px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span>
+        <a href={SLUGS.executiveImmersion} style="color:inherit;text-decoration:none;">Executive Immersion</a><span>/</span>
+        <span style="color:#64010a;">Expedition</span>
+      </nav>
+    </section>
+
+    <section style="max-width:1180px;margin:32px auto 0;padding:0 32px;">
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,4.6vw,58px);line-height:1.02;letter-spacing:-0.02em;color:#3A0A0C;max-width:24ch;">Uncertainty, shifting authority, and no complete answer anywhere in the group.</h1>
+      <p style="margin-top:20px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:56ch;">For an established executive team that needs to see how it actually operates when the plan stops working. Below is a real day, start to finish, and the sixteen problems it is built to expose.</p>
+    </section>
+
+    <!-- DARK TIMELINE -->
+    <section style="background:#2A0507;margin-top:56px;padding:80px 0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9743F;margin-bottom:16px;">One Crazy Day: Expedition &nbsp;&middot;&nbsp; Sedona to the Grand Canyon</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.06;color:#F6EFE0;max-width:26ch;">At 4:15 in the morning, there is a knock at the door.</h2>
+        <p style="margin-top:20px;font-size:18px;line-height:1.62;color:rgba(240,228,218,0.8);max-width:62ch;">A sealed envelope, a short packing list, and one instruction: <em style="font-style:italic;color:#F6EFE0;">be ready in twenty minutes, speak to no one.</em> They leave the resort separately, into the darkness outside Sedona. No Jeeps waiting. No guide explaining the day. No visible route.</p>
+
+        <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:34px;">
+          <PhotoSlot variant="dark" title="Jeeps in red rock" note="Vehicles mid-route in the Sedona landscape." />
+          <PhotoSlot variant="dark" title="The desert table" note="The five-star lunch with nothing else in sight. Highest-impact image on the page." />
+          <PhotoSlot variant="dark" title="The extraction" note="Helicopters at the canyon, or the group airborne at golden hour." />
+        </div>
+
+        <div style="margin-top:40px;">
+          {beats.map((b) => (
+            <div class="ei-row" style="display:grid;grid-template-columns:132px 1fr;gap:28px;padding:26px 0;border-top:1px solid rgba(246,239,224,0.16);">
+              <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#D9743F;padding-top:5px;">{b.label}</p>
+              <div>
+                <h3 style="font-size:20px;font-weight:700;color:#F6EFE0;margin-bottom:9px;">{b.title}</h3>
+                <p style="font-size:16.5px;line-height:1.62;color:rgba(240,228,218,0.82);max-width:76ch;">{b.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:44px;background:#64010a;border-radius:16px;padding:44px 48px;text-align:center;">
+          <p style="font-family:'Newsreader',serif;font-size:clamp(28px,3.6vw,42px);line-height:1.1;color:#F6EFE0;">No one can win unless everyone finishes.</p>
+        </div>
+
+        <div class="ei-two" style="display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px;">
+          <p style="font-size:17px;line-height:1.66;color:rgba(240,228,218,0.82);">It is not an off-road excursion, a scavenger hunt, or a team-building activity dressed up as entertainment. It is a full day built around uncertainty, shifting conditions, competing incentives, individual accountability and interdependence — the pressure to perform when nobody holds the complete answer.</p>
+          <p style="font-size:17px;line-height:1.66;color:rgba(240,228,218,0.82);">It gives a leadership team one extraordinary day they will talk about for years. More importantly, it makes visible how they actually operate when the plan changes, the information is incomplete, the pressure rises, and success depends on more than individual performance.</p>
+        </div>
+
+        <div style="margin-top:40px;border-top:1px solid rgba(246,239,224,0.18);padding-top:28px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D9743F;margin-bottom:18px;">The shorthand they take back to the office</p>
+          <div class="ei-two" style="display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;">
+            {shorthand.map((q) => (
+              <p style="font-family:'Newsreader',serif;font-size:21px;line-height:1.3;color:#F6EFE0;">{q}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 16 PROBLEMS — interactive tabs -->
+    <section style="background:#2A0507;margin-top:2px;padding:76px 0;">
+      <div id="ei-goals" style="max-width:1180px;margin:0 auto;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9743F;margin-bottom:16px;">What it makes visible</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#F6EFE0;max-width:30ch;margin-bottom:14px;">Sixteen problems the expedition is built to expose.</h2>
+        <p style="font-size:17px;line-height:1.65;color:rgba(240,228,218,0.72);max-width:64ch;margin-bottom:32px;">Name the one that is actually costing you money and the day gets designed backwards from it. Each of these has a mechanism inside the day — a moment engineered to make the behaviour happen where everyone can see it.</p>
+        <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:30px;">
+          {goals.map((g, i) => (
+            <button type="button" data-ei-tab={i} style={`cursor:pointer;font-family:'Hanken Grotesk',sans-serif;font-weight:${i === 0 ? 700 : 600};font-size:13.5px;padding:10px 17px;border-radius:999px;border:1px solid ${i === 0 ? '#F6EFE0' : 'rgba(246,239,224,0.28)'};background:${i === 0 ? '#F6EFE0' : 'transparent'};color:${i === 0 ? '#64010a' : 'rgba(240,228,218,0.72)'};text-align:left;`}>{g.name}</button>
+          ))}
+        </div>
+        <div style="border-top:1px solid rgba(246,239,224,0.16);padding-top:34px;">
+          {goals.map((g, i) => (
+            <div data-ei-panel={i} style={i === 0 ? 'display:block;' : 'display:none;'}>
+              <h3 style="font-family:'Newsreader',serif;font-size:30px;font-weight:400;line-height:1.14;color:#F6EFE0;margin-bottom:28px;max-width:34ch;">{g.headline}</h3>
+              <div class="ei-two" style="display:grid;grid-template-columns:1fr 1fr;gap:28px 44px;">
+                {g.rows.map((r) => (
+                  <div style="border-top:1px solid rgba(246,239,224,0.18);padding-top:16px;">
+                    <p style="font-size:11.5px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:#D9743F;margin-bottom:9px;">{r.label}</p>
+                    <p style="font-size:17px;font-weight:700;line-height:1.35;color:#F6EFE0;margin-bottom:10px;">{r.title}</p>
+                    <p style="font-size:15.5px;line-height:1.58;color:rgba(240,228,218,0.82);margin-bottom:10px;">{r.onDay}</p>
+                    <p style="font-size:15.5px;line-height:1.58;color:#D9A88F;">{r.tells}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:70px auto 0;padding:0 32px;">
+      <a href={SLUGS.executiveImmersion} style="font-size:15.5px;font-weight:600;color:#64010a;text-decoration:none;border-bottom:1px solid rgba(100,1,10,0.3);padding-bottom:2px;">&larr; Back to Executive Immersion</a>
+    </section>
+
+    <section id="design-call" style="background:#64010a;margin-top:92px;padding:84px 0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.05;color:#F6EFE0;max-width:24ch;">Tell us where they'll be. We'll tell you what's possible there.</h2>
+        <p style="font-size:18.5px;line-height:1.6;color:rgba(240,228,218,0.78);max-width:56ch;">Thirty minutes with James. Bring the location and the problem — you'll leave the call knowing whether there's a legendary day in it, and roughly what it costs.</p>
+        <a href={CTA_URL} style="background:#F6EFE0;color:#64010a;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:800;font-size:16.5px;">Book a 30-minute design call</a>
+        <p style="font-size:14px;color:rgba(240,228,218,0.55);">No pitch deck. No proposal until you've asked for one.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    @media (max-width: 900px) {
+      .ei-two, .ei-grid3 { grid-template-columns: 1fr !important; }
+      .ei-row { grid-template-columns: 1fr !important; gap: 8px !important; }
+    }
+  </style>
+
+  <script>
+    const root = document.getElementById('ei-goals');
+    if (root) {
+      const tabs = root.querySelectorAll('[data-ei-tab]');
+      const panels = root.querySelectorAll('[data-ei-panel]');
+      tabs.forEach((tab) => tab.addEventListener('click', () => {
+        const i = tab.getAttribute('data-ei-tab');
+        tabs.forEach((t) => {
+          const active = t.getAttribute('data-ei-tab') === i;
+          t.style.background = active ? '#F6EFE0' : 'transparent';
+          t.style.color = active ? '#64010a' : 'rgba(240,228,218,0.72)';
+          t.style.borderColor = active ? '#F6EFE0' : 'rgba(246,239,224,0.28)';
+          t.style.fontWeight = active ? '700' : '600';
+        });
+        panels.forEach((p) => { p.style.display = p.getAttribute('data-ei-panel') === i ? 'block' : 'none'; });
+      }));
+    }
+  </script>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>

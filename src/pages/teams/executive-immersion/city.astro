@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import PhotoSlot from '../../../components/ei/PhotoSlot.astro';
+import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../../../lib/site';
+
+const path = SLUGS.eiCity;
+const title = 'One Crazy Day: City — New York | Be Legendary';
+const description = 'A full One Crazy Day city experience: three real values, twenty dollars, a city, and a culminating act of contribution. Plus the eight-stage arc and the safeguards we run it under.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Be Legendary', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
+    { '@type': 'ListItem', position: 3, name: 'Executive Immersion', item: `${SITE_URL}${SLUGS.executiveImmersion}` },
+    { '@type': 'ListItem', position: 4, name: 'City', item: `${SITE_URL}${path}` },
+  ] },
+  { '@type': 'Service', name: 'Executive Immersion', serviceType: 'Executive team offsite experience design and facilitation',
+    provider: { '@id': ORG_ID }, areaServed: 'Worldwide',
+    description: "A single engineered day for executive teams, designed around whatever is within reach of the team's own location. Flagship format: One Crazy Day." },
+];
+
+const beats = [
+  { label: 'On the flight in', title: 'Find your three real values', body: "Before arriving, each person had an assignment: identify your three most important personal values and start examining the beliefs underneath them. Not the polished ones that go on a company website — the real ones. What do you believe about responsibility, family, courage, generosity, dignity, fairness, sacrifice? What experiences formed that belief, and how does it actually show up in your behaviour?" },
+  { label: 'Morning', title: 'Past the titles, quickly', body: 'In small teams they shared those values and dug into the beliefs beneath them. People spoke about parents, children, struggle, opportunity, loss, ambition and faith in other people. Job titles stopped being interesting within the first half hour.' },
+  { label: 'Then the assignment changed', title: 'Twenty dollars. Make the belief visible.', body: 'Describing what you believe was no longer enough. Each team was sent into New York City with $20 and a challenge: translate what you believe into action, and create as much meaningful impact as you can. Not one symbolic gesture — a set of repeatable actions that expressed their shared values, carried out across the city, and documented as they went.' },
+  { label: 'All day', title: 'A control centre watching the city', body: 'Teams sent back photographs, video, explanations and stories. Facilitators tracked progress, judged the creativity and meaning behind each choice, and awarded recognition as the day unfolded. Teams also moved through checkpoints — each one another task, another constraint, another chance to earn recognition, and another demand to explain how what they just did connects to what they claim to value.' },
+  { label: 'One team', title: 'Five dollars in quarters', body: 'They had talked about family, responsibility, and protecting the people who depend on you — and about financial responsibility being less about accumulating money than about stopping small mistakes from becoming large, unnecessary consequences. So they changed five dollars into quarters and went looking for parked cars with meters about to expire. They fed the meters and left a handwritten note explaining that a stranger had paid to protect them from a ticket. They would never meet any of those drivers. That was part of the point.' },
+  { label: 'Another team', title: '“You matter.”', body: 'They had talked about kindness, dignity, and the invisible effect people have on each other. They bought small notes and wrote on them — <em style="font-style:italic;">you matter; you are stronger than you know; there is something beautiful about you</em> — then hid them where strangers would find them by accident, behind ordinary products on shelves. To the recipients it looked random. The team understood it was not random at all: entirely intentional from the giver, unexpected only by the receiver.' },
+  { label: 'Late afternoon', title: 'The awards become money — and the money is not theirs', body: 'Recognition was awarded on meaning, imagination, courage, collaboration and impact rather than volume. Back at base, those awards converted into money, and the teams entered what we call the Shop of Dreams. This company was in the jewellery business, with a real commitment to empowering girls. The leaders spent what they had earned choosing beautiful pieces, then wrapped each one carefully as a gift. Only then were they told where they were going.' },
+  { label: 'Evening', title: 'A children’s hospital', body: 'They were visiting young girls being treated in a burn unit. The gifts were not medical supplies; they were symbols of beauty, identity and a future beyond the hospital room. Some of the girls could not wear the jewellery yet — they could hold it, look at it, and imagine wearing it when they left. The executives went in in small groups: exhausted, jet-lagged, having eaten little, having spent the day exposing parts of themselves that never appear at work. They gave the gifts. They saw the girls smile. They came out crying and holding on to one another, and the professional boundaries of that morning no longer seemed particularly important.' },
+  { label: 'Dinner', title: 'A pizza place, and the real conversation', body: 'No elaborate closing reception. A simple restaurant, a private room, food already on the table. They talked about their values and whether their actions had actually reflected them; about the people they had met and the decisions their teams had made; about how their read on each other had changed. They described a bubble that had formed around the group — an unusual level of trust, honesty and emotional permission. The closing question was not how to preserve the day. It was how to carry that quality of relationship into the next two weeks and then back into the company: how will we disagree inside this? How will we tell the truth, and ask for help, when the stakes go back to budgets, strategy and politics?' },
+];
+
+const stages = [
+  { n: '01', title: 'Strangers', body: 'Titles, reputations, assumptions, professional distance.' },
+  { n: '02', title: 'Disclosure', body: 'They name the experiences, beliefs and values that actually shaped them.' },
+  { n: '03', title: 'Expression', body: 'Those beliefs have to become visible action.' },
+  { n: '04', title: 'Interdependence', body: 'Navigating, solving and creating impact together.' },
+  { n: '05', title: 'Disruption', body: 'Constraints, fatigue and changing conditions test whether the stated values survive pressure.' },
+  { n: '06', title: 'Contribution', body: 'Their effort becomes worth something to someone beyond themselves.' },
+  { n: '07', title: 'Emotional consequence', body: 'They meet the human result of what they created.' },
+  { n: '08', title: 'Integration', body: 'The experience converts into commitments about how they will work together.' },
+];
+
+const conditions = [
+  'A newly formed executive team has to become effective quickly',
+  'Leaders have arrived through acquisition or reorganisation',
+  'A global team rarely meets in person',
+  'They know each other professionally but not personally',
+  'Cooperation is transactional and needs to become trust',
+  'A leadership programme cannot afford days of guarded participation',
+  'Company values exist as language but not as behaviour',
+  'Leaders need to reconnect with purpose, customers or community',
+  'Status, geography or hierarchy is blocking authentic relationships',
+  'A hard strategic conversation or transformation is coming',
+];
+
+const industries = [
+  { k: 'Healthcare', v: 'Dignity, access, caregiving, and the patient experience.' },
+  { k: 'Financial services', v: 'Security, opportunity, trust, and the consequences of financial exclusion.' },
+  { k: 'Technology', v: 'Connection, access, isolation, and the human consequences of innovation.' },
+  { k: 'Hospitality', v: 'Welcome, anticipation, service, and the experience of being unseen.' },
+  { k: 'Construction', v: 'Shelter, craftsmanship, safety, and the people whose work holds a city together.' },
+  { k: 'Consumer brands', v: 'Identity, belonging, beauty, confidence, and the lives of the people who use the product.' },
+];
+
+const components = ['Values and belief exploration', 'Race-style movement', 'Severely limited resources', 'Public transport', 'Strategic checkpoints', 'Service and community impact', 'Creative problem-solving', 'Business and cultural landmarks', 'Partner changes', 'Hidden assignments', 'Individual and team scoring', 'Story capture', 'A culminating act of contribution', 'A final shared meal and facilitated integration'];
+
+const safeguards = ['A vetted community partner', 'A need defined by that partner, not by us', 'Consent for photography and storytelling', 'Clear boundaries around vulnerable people', 'Pre-approved public and private locations', 'A safety and communications protocol', 'Scoring that never incentivises disruption', 'A contribution that stays valuable after the day', 'A facilitated translation into business behaviour'];
+---
+<BaseLayout title={title} description={description} path={path} ogType="website" ogTitle={title} ogDescription={description} schema={schema} bodyBg="#EFE9DD">
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <section style="max-width:1180px;margin:0 auto;padding:52px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span>
+        <a href={SLUGS.executiveImmersion} style="color:inherit;text-decoration:none;">Executive Immersion</a><span>/</span>
+        <span style="color:#64010a;">City</span>
+      </nav>
+    </section>
+
+    <section style="max-width:1180px;margin:32px auto 0;padding:0 32px;">
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(34px,4.6vw,58px);line-height:1.02;letter-spacing:-0.02em;color:#3A0A0C;max-width:24ch;">For a group that has to trust each other before the real work starts.</h1>
+      <p style="margin-top:20px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:56ch;">Connection, values, culture, service and human impact — built out of the city the team is already standing in. Below is a real day in New York, the arc underneath it, and how we design one now.</p>
+    </section>
+
+    <section style="max-width:1180px;margin:52px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">One Crazy Day: City &nbsp;&middot;&nbsp; New York</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.06;color:#3A0A0C;max-width:28ch;">Twenty dollars, one city, and a belief you have to prove.</h2>
+      <p style="margin-top:20px;font-size:18px;line-height:1.62;color:#4A3A34;max-width:66ch;">They arrived in New York from around the world for a two-week leadership programme. Some had travelled a few miles, others had crossed oceans, several were badly jet-lagged. They knew each other's names and titles and almost nothing else. Two weeks would not be enough if the first several days were spent establishing status and deciding whom to trust. The group needed to get deeper, faster — to know each other less as executives exchanging biographies and more as old friends. That became the purpose of day one.</p>
+
+      <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:34px;">
+        <PhotoSlot title="Teams in the city" note="Executives on the street, mid-action." />
+        <PhotoSlot title="The Shop of Dreams" note="Gifts being chosen and wrapped." />
+        <PhotoSlot title="The pizza table" note="The unglamorous room where it all landed. Consent required for any hospital imagery — do not use it here." />
+      </div>
+
+      <div style="margin-top:40px;">
+        {beats.map((b) => (
+          <div class="ei-row" style="display:grid;grid-template-columns:150px 1fr;gap:28px;padding:26px 0;border-top:1px solid rgba(100,1,10,0.16);">
+            <p style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C04A26;padding-top:5px;">{b.label}</p>
+            <div>
+              <h3 style="font-size:20px;font-weight:700;color:#3A0A0C;margin-bottom:9px;">{b.title}</h3>
+              <p style="font-size:16.5px;line-height:1.62;color:#4A3A34;max-width:76ch;" set:html={b.body}></p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="ei-two" style="margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:44px;">
+        <p style="font-size:17px;line-height:1.66;color:#4A3A34;">The two-week programme that followed did not begin with a room full of guarded executives. It began with people who had seen each other clearly. It did not take them out of the city to manufacture an experience — it turned the city into an environment for discovery, action, contribution and connection.</p>
+        <p style="font-size:17px;line-height:1.66;color:#4A3A34;">It did not ask them to discuss their values. It required them to prove those values could become behaviour. And it did not try to build trust through conversation — it accelerated trust through shared vulnerability, real human contact, collective fatigue, and a final hour none of them could have carried alone.</p>
+      </div>
+
+      <div style="margin-top:34px;background:#64010a;border-radius:16px;padding:40px 48px;text-align:center;">
+        <p style="font-family:'Newsreader',serif;font-size:clamp(26px,3.4vw,40px);line-height:1.1;color:#F6EFE0;">By dinner they were saying the phrase that became the name: “that was one crazy day.”</p>
+      </div>
+    </section>
+
+    <!-- TRANSFORMATION ARC -->
+    <section style="max-width:1180px;margin:88px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">The transformation arc</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#3A0A0C;max-width:32ch;margin-bottom:12px;">The effect comes from the sequence, not the ingredients.</h2>
+      <p style="font-size:17.5px;line-height:1.65;color:#4A3A34;max-width:64ch;margin-bottom:34px;">The service activity alone does not produce it. Neither does the values exercise, or the competition. Eight stages in this order do.</p>
+      <div class="ei-grid4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(100,1,10,0.14);border-radius:14px;overflow:hidden;">
+        {stages.map((s) => (
+          <div style="background:#F6F1E7;padding:26px 24px;"><p style="font-family:'Newsreader',serif;font-size:15px;color:#C04A26;margin-bottom:10px;">{s.n}</p><h3 style="font-size:17.5px;font-weight:700;color:#3A0A0C;margin-bottom:8px;">{s.title}</h3><p style="font-size:15px;line-height:1.58;color:#4A3A34;">{s.body}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 10 CONDITIONS -->
+    <section style="max-width:1180px;margin:88px auto 0;padding:0 32px;">
+      <div class="ei-two" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:52px;align-items:start;">
+        <div>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">When the city version is the right one</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3vw,36px);line-height:1.1;color:#3A0A0C;margin-bottom:16px;">Ten conditions where connection matters more than pressure.</h2>
+          <p style="font-size:16.5px;line-height:1.62;color:#4A3A34;">If several of these describe your situation, the city format will do more for you than the expedition.</p>
+        </div>
+        <div class="ei-two" style="display:grid;grid-template-columns:1fr 1fr;gap:0 40px;">
+          {conditions.map((c) => (
+            <p style="font-size:16px;line-height:1.5;color:#4A3A34;padding:13px 0;border-top:1px solid rgba(100,1,10,0.16);">{c}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TWO DESIGN NOTES -->
+    <section style="max-width:1180px;margin:88px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Two design notes</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#3A0A0C;max-width:34ch;margin-bottom:12px;">Both of these change how we run the day — when they apply.</h2>
+      <p style="font-size:17.5px;line-height:1.65;color:#4A3A34;max-width:66ch;margin-bottom:34px;">Neither is universally true of executive groups, which is exactly why they matter. When they are true of yours, they shape the language, the pairings and the debrief.</p>
+      <div class="ei-two" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(100,1,10,0.14);border-radius:14px;overflow:hidden;">
+        <div style="background:#F6F1E7;padding:32px 34px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">If the group is newly assembled or newly led</p><h3 style="font-size:19px;font-weight:700;color:#3A0A0C;margin-bottom:10px;">They are not yet a team</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">A newly formed executive group — or an inherited one under a new leader — is a community of individuals with impressive titles. Calling them a team before they are one is how you lose the room in the first ten minutes. We use different language until the word has been earned, and the day is what earns it.</p></div>
+        <div style="background:#F6F1E7;padding:32px 34px;"><p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8A6A64;margin-bottom:10px;">If the group is international</p><h3 style="font-size:19px;font-weight:700;color:#3A0A0C;margin-bottom:10px;">Diversity is visible; inclusion is the work</h3><p style="font-size:15.5px;line-height:1.62;color:#4A3A34;">In a global executive group, difference is obvious and is a genuine source of strength. Whether people are actually included is a separate question, and one a conference room will not answer. The day is built to answer it out loud — who gets handed authority, whose expertise is treated as relevant, whose contribution gets rewritten without being consulted.</p></div>
+      </div>
+    </section>
+
+    <!-- CITY AS DESIGN SURFACE -->
+    <section style="background:#2A0507;margin-top:92px;padding:76px 0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 32px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#D9743F;margin-bottom:16px;">The city as a design surface</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#F6EFE0;max-width:30ch;margin-bottom:14px;">The city is not the location. It is the material.</h2>
+        <p style="font-size:17px;line-height:1.65;color:rgba(240,228,218,0.78);max-width:66ch;margin-bottom:32px;">A living system of people, constraints, institutions, neighbourhoods, transport, culture and unplanned human encounter. The day is built from the identity of your company and the problem in front of your team — and it is never generic volunteering with a charitable ending bolted on. One question drives the whole design:</p>
+        <div style="border-left:3px solid #D9743F;padding:6px 0 6px 24px;margin-bottom:36px;">
+          <p style="font-family:'Newsreader',serif;font-size:clamp(21px,2.5vw,30px);line-height:1.28;color:#F6EFE0;max-width:52ch;">What does this company claim to believe, and what would those beliefs look like if its leaders had to make them real today?</p>
+        </div>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D9743F;margin-bottom:18px;">What that means by industry</p>
+        <div class="ei-grid3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px 40px;">
+          {industries.map((i) => (
+            <div style="border-top:1px solid rgba(246,239,224,0.18);padding-top:14px;"><p style="font-size:16px;font-weight:700;color:#F6EFE0;margin-bottom:7px;">{i.k}</p><p style="font-size:15.5px;line-height:1.56;color:rgba(240,228,218,0.78);">{i.v}</p></div>
+          ))}
+        </div>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D9743F;margin:38px 0 18px;">Components a city day can draw on</p>
+        <div style="display:flex;gap:9px;flex-wrap:wrap;">
+          {components.map((c) => (
+            <span style="font-size:13.5px;color:#F0E4DA;background:rgba(246,239,224,0.08);border:1px solid rgba(246,239,224,0.22);border-radius:999px;padding:7px 15px;">{c}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE RUN IT NOW — 9 safeguards -->
+    <section style="max-width:1180px;margin:88px auto 0;padding:0 32px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">How we run it now</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:#3A0A0C;max-width:34ch;margin-bottom:12px;">Same emotional architecture. Considerably more control.</h2>
+      <p style="font-size:17.5px;line-height:1.65;color:#4A3A34;max-width:68ch;margin-bottom:16px;">We have been running these days for a long time, and the way we run them has changed. Unapproved activity in hospitals, stores, transport systems or private property is out; prearranged partnership is in. Any contact with patients or vulnerable people is governed by the host institution and is never treated as an emotional device for the participants.</p>
+      <p style="font-size:17.5px;line-height:1.65;color:#4A3A34;max-width:68ch;margin-bottom:34px;">The emotional weight has to come from genuine contribution and real human connection — never from surprise access to somebody else's suffering. Every current design ships with all nine of these in place before anyone leaves the hotel.</p>
+      <div class="ei-grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(100,1,10,0.14);border-radius:14px;overflow:hidden;">
+        {safeguards.map((s) => (
+          <div style="background:#F6F1E7;padding:26px 26px;"><p style="font-size:16.5px;font-weight:700;color:#3A0A0C;">{s}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section style="max-width:1180px;margin:70px auto 0;padding:0 32px;">
+      <a href={SLUGS.executiveImmersion} style="font-size:15.5px;font-weight:600;color:#64010a;text-decoration:none;border-bottom:1px solid rgba(100,1,10,0.3);padding-bottom:2px;">&larr; Back to Executive Immersion</a>
+    </section>
+
+    <section id="design-call" style="background:#64010a;margin-top:92px;padding:84px 0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(32px,4.2vw,52px);line-height:1.05;color:#F6EFE0;max-width:24ch;">Tell us where they'll be. We'll tell you what's possible there.</h2>
+        <p style="font-size:18.5px;line-height:1.6;color:rgba(240,228,218,0.78);max-width:56ch;">Thirty minutes with James. Bring the location and the problem — you'll leave the call knowing whether there's a legendary day in it, and roughly what it costs.</p>
+        <a href={CTA_URL} style="background:#F6EFE0;color:#64010a;text-decoration:none;padding:17px 32px;border-radius:11px;font-weight:800;font-size:16.5px;">Book a 30-minute design call</a>
+        <p style="font-size:14px;color:rgba(240,228,218,0.55);">No pitch deck. No proposal until you've asked for one.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <style>
+    @media (max-width: 900px) {
+      .ei-two, .ei-grid3, .ei-grid4 { grid-template-columns: 1fr !important; }
+      .ei-row { grid-template-columns: 1fr !important; gap: 8px !important; }
+    }
+  </style>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>
