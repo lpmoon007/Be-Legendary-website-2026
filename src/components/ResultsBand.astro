@@ -1,0 +1,60 @@
+---
+// Firm-level results band. Every number here is real and attributed on the
+// case-studies page — this component only surfaces them. Framing is deliberately
+// firm-level ("across engagements and formats over the years"), never implying
+// any single product produced all four. Works on light or dark sections.
+import { SLUGS } from '../lib/site';
+
+export interface Props {
+  /** 'dark' for maroon/near-black sections, 'light' for cream sections. */
+  variant?: 'dark' | 'light';
+  maxWidth?: number;
+  /** Optional eyebrow override. */
+  eyebrow?: string;
+  /** Optional headline override. */
+  heading?: string;
+}
+const { variant = 'dark', maxWidth = 1100, eyebrow = 'Measured results', heading = 'The work holds up in the numbers.' } = Astro.props;
+
+// Real, attributed results — sourced from the case studies. `href` deep-links
+// to the relevant story so any claim is one click from its proof.
+const stats = [
+  { value: '$1.2B', label: 'revenue, up from $350M — seven rival firms unified into one', href: SLUGS.caseStudies },
+  { value: '268%', label: 'behavioral gain in 30 days — two warring camps, one team', href: SLUGS.caseSanJuan },
+  { value: '209%', label: 'mindset lift — Champion Iron executive retreat, AlUla', href: SLUGS.caseStudies },
+  { value: '178%', label: 'teaming gain in 30 days — five poached all-stars, one team', href: SLUGS.caseAutoRetailer },
+];
+
+const c = variant === 'light'
+  ? { border: 'rgba(100,1,10,0.16)', eyebrow: '#C04A26', head: '#3A0A0C', value: '#64010a', label: '#5A4A44', cta: '#C04A26', divider: 'rgba(100,1,10,0.12)' }
+  : { border: 'rgba(244,240,231,0.12)', eyebrow: '#E0744A', head: '#FBF8F1', value: '#E0744A', label: 'rgba(244,240,231,0.72)', cta: '#E0744A', divider: 'rgba(244,240,231,0.12)' };
+---
+<section aria-label="Client results" style={`border-top:1px solid ${c.border};border-bottom:1px solid ${c.border};padding:56px 32px;`}>
+  <div style={`max-width:${maxWidth}px;margin:0 auto;`}>
+    <div style="text-align:center;margin-bottom:36px;">
+      <p style={`font-size:11.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:${c.eyebrow};margin-bottom:12px;`}>{eyebrow}</p>
+      <h2 style={`font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.2vw,40px);line-height:1.1;color:${c.head};max-width:22ch;margin:0 auto;`}>{heading}</h2>
+    </div>
+    <div class="rb-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
+      {stats.map((s, i) => (
+        <a href={s.href} class="rb-cell" style={`display:block;text-decoration:none;padding:8px 24px;border-left:1px solid ${i === 0 ? 'transparent' : c.divider};`}>
+          <p style={`font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;color:${c.value};`}>{s.value}</p>
+          <p style={`margin-top:12px;font-size:14px;line-height:1.5;color:${c.label};`}>{s.label}</p>
+        </a>
+      ))}
+    </div>
+    <p style={`text-align:center;margin-top:36px;font-size:14.5px;color:${c.label};`}>
+      Real engagements across a decade of retreats, immersions and partnerships. <a href={SLUGS.caseStudies} style={`color:${c.cta};font-weight:700;text-decoration:none;white-space:nowrap;`}>See the case studies &rarr;</a>
+    </p>
+  </div>
+  <style>
+    @media (max-width: 820px) {
+      .rb-grid { grid-template-columns: 1fr 1fr !important; gap: 28px 0 !important; }
+      .rb-cell:nth-child(odd) { border-left: none !important; }
+    }
+    @media (max-width: 480px) {
+      .rb-grid { grid-template-columns: 1fr !important; }
+      .rb-cell { border-left: none !important; text-align: center; }
+    }
+  </style>
+</section>

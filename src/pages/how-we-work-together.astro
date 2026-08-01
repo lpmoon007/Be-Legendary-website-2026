@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import PressStrip from '../components/PressStrip.astro';
+import ResultsBand from '../components/ResultsBand.astro';
 import { SLUGS, CTA_URL } from '../lib/site';
 
 const path = SLUGS.howWeWorkTogether;
@@ -171,6 +172,11 @@ const schema = [
         <div style="border-top:2px solid rgba(100,1,10,0.25);padding-top:18px;"><span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;">03</span><h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:21px;color:#3A0A0C;margin:6px 0 8px;">Decide how far to go</h3><p style="font-size:14.5px;line-height:1.6;color:#5A4A44;">Sprint, retreat, or partnership — with your credit applied. You choose the depth.</p></div>
       </div>
     </section>
+
+    <!-- ============ RESULTS — firm-level proof ============ -->
+    <div style="max-width:1080px;margin:56px auto 0;padding:0 32px;">
+      <ResultsBand variant="light" maxWidth={1080} />
+    </div>
 
     <!-- ============ PRESS — longevity proof ============ -->
     <div style="max-width:1000px;margin:64px auto 0;padding:0 32px;">

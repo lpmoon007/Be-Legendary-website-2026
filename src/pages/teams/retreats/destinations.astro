@@ -11,15 +11,15 @@ const description =
 
 
 const places = [
-  { name: 'Moab, Utah', region: 'Utah', desc: 'Red-rock off-road country for the team that has to face real adversity together — and find out who it becomes under load.', img: '/assets/dest-moab.webp' },
-  { name: 'Sierra Nevada', region: 'California', desc: 'One range, four seasons — winter-survival grit or five-star stillness, chosen for what the team needs to feel, not the view.', img: '/assets/dest-rubicon.webp' },
-  { name: 'Great Basin Desert', region: 'Nevada', desc: 'Total signal blackout — for a team that has to strip everything away and rebuild how it depends on itself.', img: '/assets/dest-deathvalley.webp' },
-  { name: 'Sedona, Arizona', region: 'Arizona', desc: 'For the reset: red-rock high desert that slows a frantic team down enough to think clearly again.', img: '/assets/dest-sedona.webp' },
-  { name: 'Napa Valley', region: 'California', desc: 'For board-level strategy and realignment — the comfort that lets a team stop bracing and actually think.', img: '/assets/dest-napa.webp' },
-  { name: 'Lake Tahoe', region: 'CA / NV', desc: 'For teams that need beauty and real challenge in the same day — granite and alpine water, an hour apart.', img: '/assets/dest-tahoe.webp' },
-  { name: 'Jackson Hole', region: 'Wyoming', desc: 'For high-stakes offsites where the setting has to match the moment — the Tetons, and rooms that hold hard conversations.', img: '/assets/dest-jackson.webp' },
-  { name: 'Montana', region: 'Montana', desc: 'For deep disconnection — remote rivers and ranches, far enough off the grid that a team can finally reconnect.', img: '/assets/dest-montana.webp' },
-  { name: 'Death Valley', region: 'California', desc: 'Stark, elemental terrain that strips away the noise and forces a team back to what actually matters.', img: '/assets/dest-deathvalley.webp' },
+  { name: 'Moab, Utah', region: 'Utah', desc: 'Red-rock off-road country for the team that has to face real adversity together — and find out who it becomes under load.', img: '/assets/dest-moab.webp', alt: 'A vehicle threading a narrow red-rock slot canyon in the Moab, Utah backcountry.' },
+  { name: 'Sierra Nevada', region: 'California', desc: 'One range, four seasons — winter-survival grit or five-star stillness, chosen for what the team needs to feel, not the view.', img: '/assets/dest-rubicon.webp', alt: 'A rig on the Rubicon Trail in the Sierra Nevada high country at dusk.' },
+  { name: 'Great Basin Desert', region: 'Nevada', desc: 'Total signal blackout — for a team that has to strip everything away and rebuild how it depends on itself.', img: '/assets/offroad/las-vegas/lv-vista.webp', alt: 'A wide, empty desert vista in the Nevada Great Basin under an open sky.' },
+  { name: 'Sedona, Arizona', region: 'Arizona', desc: 'For the reset: red-rock high desert that slows a frantic team down enough to think clearly again.', img: '/assets/dest-sedona.webp', alt: 'A vehicle on red slickrock with the Sedona, Arizona red-rock mesas behind it.' },
+  { name: 'Napa Valley', region: 'California', desc: 'For board-level strategy and realignment — the comfort that lets a team stop bracing and actually think.', img: '/assets/dest-napa.webp', alt: 'A luxury wine-country resort ringed by vineyards and hills in Napa Valley at dusk.' },
+  { name: 'Lake Tahoe', region: 'CA / NV', desc: 'For teams that need beauty and real challenge in the same day — granite and alpine water, an hour apart.', img: '/assets/dest-tahoe.webp', alt: 'A timber-frame alpine lodge glowing at dusk near Lake Tahoe.' },
+  { name: 'Jackson Hole', region: 'Wyoming', desc: 'For high-stakes offsites where the setting has to match the moment — the Tetons, and rooms that hold hard conversations.', img: '/assets/dest-jackson.webp', alt: 'Two rocking chairs on a porch facing the snowcapped Teton peaks near Jackson Hole.' },
+  { name: 'Montana', region: 'Montana', desc: 'For deep disconnection — remote rivers and ranches, far enough off the grid that a team can finally reconnect.', img: '/assets/dest-montana.webp', alt: 'A remote log-and-stone ranch lodge lit at dusk against Montana foothills, firepit glowing.' },
+  { name: 'Death Valley', region: 'California', desc: 'Stark, elemental terrain that strips away the noise and forces a team back to what actually matters.', img: '/assets/dest-deathvalley.webp', alt: 'A rig crawling bare granite in the stark, elemental terrain around Death Valley.' },
 ];
 ---
 <BaseLayout
@@ -62,7 +62,7 @@ const places = [
       <div class="bl-grid-collapse" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
         {places.map((p) => (
           <a href={`${SLUGS.teamRetreats}#formats`} style="display:flex;flex-direction:column;text-decoration:none;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;overflow:hidden;transition:box-shadow .16s;" onmouseover="this.style.boxShadow='0 16px 34px -22px rgba(58,10,12,0.4)'" onmouseout="this.style.boxShadow='none'">
-            <img src={p.img} alt={p.name} loading="lazy" style="height:130px;width:100%;object-fit:cover;display:block;" />
+            <img src={p.img} alt={p.alt} loading="lazy" style="height:130px;width:100%;object-fit:cover;display:block;" />
             <div style="padding:22px 24px;">
               <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:8px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;">{p.name}</h3><span style="font-size:11px;color:#9A7A74;">{p.region}</span></div>
               <p style="font-size:14px;line-height:1.55;color:#5A4A44;">{p.desc}</p>

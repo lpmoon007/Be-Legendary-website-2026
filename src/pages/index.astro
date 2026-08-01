@@ -5,6 +5,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import FlagDiagram from '../components/FlagDiagram.astro';
 import Faq from '../components/Faq.astro';
 import PressStrip from '../components/PressStrip.astro';
+import ResultsBand from '../components/ResultsBand.astro';
 import Testimonials from '../components/Testimonials.astro';
 import TrustedBy from '../components/TrustedBy.astro';
 import { TESTIMONIALS } from '../lib/testimonials';
@@ -149,6 +150,10 @@ const homeLinks = [
   </section>
 
   <PressStrip />
+
+  <section style="background:#15130E;color:#F4F0E7;">
+    <ResultsBand variant="dark" maxWidth={1080} />
+  </section>
 
   <!-- THE LIGHTSWITCH TRUTH -->
   <section id="truth" class="bl-section-pad" style="background:#F4F0E7;color:#1B1810;padding:100px 32px;">

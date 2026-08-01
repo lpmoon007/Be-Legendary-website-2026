@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import PressStrip from '../components/PressStrip.astro';
+import ResultsBand from '../components/ResultsBand.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
 
 const path = SLUGS.executiveTeamDevelopment;
@@ -291,6 +292,11 @@ const schema = [
         </div>
       </div>
     </section>
+
+    <!-- ============ RESULTS — firm-level proof ============ -->
+    <div style="max-width:1080px;margin:0 auto;">
+      <ResultsBand variant="dark" maxWidth={1080} />
+    </div>
 
     <!-- ============ PRESS — longevity proof ============ -->
     <div style="max-width:1080px;margin:0 auto;">
