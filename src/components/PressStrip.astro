@@ -1,12 +1,35 @@
 ---
-// "As featured in" press strip. Text wordmarks (no third-party logo files), so
-// it's fast, safe, and on-brand. Works on the dark body background.
+// "Featured in the press since 2012" strip. The date is the point — being
+// covered this long ago signals we were doing this before it was a trend.
+// Outlet names link to the real features. Works on light or dark sections.
+import { PRESS, PRESS_SINCE } from '../lib/press';
+import { SLUGS } from '../lib/site';
+
+export interface Props {
+  /** 'dark' for maroon/near-black sections, 'light' for cream sections. */
+  variant?: 'dark' | 'light';
+  maxWidth?: number;
+}
+const { variant = 'dark', maxWidth = 1000 } = Astro.props;
+
+const c = variant === 'light'
+  ? { border: 'rgba(100,1,10,0.16)', label: '#8A6A64', mark: '#4A3A34', markHover: '#3A0A0C', accent: '#C04A26' }
+  : { border: 'rgba(244,240,231,0.1)', label: 'rgba(244,240,231,0.5)', mark: 'rgba(244,240,231,0.82)', markHover: '#FBF8F1', accent: '#E0744A' };
 ---
-<section aria-label="Press" style="border-top:1px solid rgba(244,240,231,0.1);border-bottom:1px solid rgba(244,240,231,0.1);padding:24px 32px;">
-  <div style="max-width:1000px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(18px,4vw,48px);flex-wrap:wrap;">
-    <span style="font-size:11.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,240,231,0.42);">As featured in</span>
-    <span style="font-family:'Newsreader',serif;font-size:clamp(17px,2.3vw,23px);color:rgba(244,240,231,0.8);letter-spacing:0.01em;">CNN</span>
-    <span style="font-family:'Newsreader',serif;font-size:clamp(17px,2.3vw,23px);color:rgba(244,240,231,0.8);letter-spacing:0.01em;">CNN Money</span>
-    <span style="font-family:'Newsreader',serif;font-size:clamp(17px,2.3vw,23px);color:rgba(244,240,231,0.8);letter-spacing:0.01em;">Business Insider</span>
+<section aria-label="Press coverage" style={`border-top:1px solid ${c.border};border-bottom:1px solid ${c.border};padding:24px 32px;`}>
+  <div style={`max-width:${maxWidth}px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(14px,3.4vw,40px);flex-wrap:wrap;`}>
+    <span style={`font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:${c.label};`}>Featured in the press since {PRESS_SINCE}</span>
+    {PRESS.map((p) => (
+      <a
+        href={p.url}
+        target="_blank"
+        rel="noopener"
+        title={`${p.outlet}${p.date ? ` · ${p.date}` : ''} — ${p.title}`}
+        style={`font-family:'Newsreader',serif;font-size:clamp(17px,2.2vw,22px);color:${c.mark};letter-spacing:0.01em;text-decoration:none;`}
+        onmouseover={`this.style.color='${c.markHover}'`}
+        onmouseout={`this.style.color='${c.mark}'`}
+      >{p.outlet}{p.year ? <span style={`font-size:0.62em;color:${c.accent};vertical-align:super;margin-left:2px;`}>{p.year}</span> : null}</a>
+    ))}
+    <a href={SLUGS.press} style={`font-size:13px;font-weight:700;color:${c.accent};text-decoration:none;white-space:nowrap;`}>All coverage &rarr;</a>
   </div>
 </section>

@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import ReinforcementModule from '../../../components/ReinforcementModule.astro';
+import PressStrip from '../../../components/PressStrip.astro';
 import { SLUGS, CTA_URL } from '../../../lib/site';
 
 const path = SLUGS.teamRetreats;
@@ -78,6 +79,14 @@ const schema = [
         </div>
       </div>
     </section>
+
+    <!-- ============ PRESS — longevity proof ============ -->
+    <section style="max-width:1240px;margin:40px auto 0;padding:0 32px;">
+      <p style="font-size:15.5px;line-height:1.62;color:#6B4A44;max-width:82ch;"><strong style="color:#3A0A0C;">CNN called these &ldquo;extreme retreats&rdquo; back in 2012</strong> &mdash; fire walks and snow survival with your workmates. We&rsquo;d been running them for years by then. You don&rsquo;t get written up for something extraordinary until you&rsquo;ve done it enough times to be great at it.</p>
+    </section>
+    <div style="max-width:1240px;margin:18px auto 0;">
+      <PressStrip variant="light" maxWidth={1240} />
+    </div>
 
     <!-- ============ THREE TIERS ============ -->
     <section id="tiers" style="max-width:1240px;margin:80px auto 0;padding:0 32px;">

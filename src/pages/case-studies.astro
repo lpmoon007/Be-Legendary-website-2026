@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import PressStrip from '../components/PressStrip.astro';
 import { SITE_URL, CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Case Studies: Executive Team Turnarounds | Be Legendary';
@@ -56,6 +57,10 @@ const eiCases = [
     <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(36px,5.4vw,68px);line-height:1.02;letter-spacing:-0.02em;max-width:18ch;color:#FBF8F1;">The leaders made the call. We helped them land it.</h1>
     <p style="margin-top:26px;font-size:clamp(18px,2.1vw,22px);line-height:1.52;max-width:60ch;color:rgba(244,240,231,0.8);">Every turnaround below started the same way: an executive looked honestly at a team that wasn't working and chose to do something about it. That choice is the hero of each story. Our job was to stand beside them and help the disciplines hold. The flagship case below is named and attributed; the others are anonymized at the clients&rsquo; request.</p>
   </header>
+
+  <div style="max-width:1080px;margin:0 auto;">
+    <PressStrip variant="dark" maxWidth={1080} />
+  </div>
 
   <section style="background:#F4F0E7;color:#1B1810;padding:84px 32px;">
     <div style="max-width:1080px;margin:0 auto;">

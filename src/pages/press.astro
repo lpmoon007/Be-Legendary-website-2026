@@ -3,25 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { SLUGS, CONTACT_EMAIL } from '../lib/site';
+import { PRESS } from '../lib/press';
 
 const title = 'Press & Media | Be Legendary';
 const description =
   'Be Legendary and James Carter in the press — features and mentions across CNN, CNN Money, Business Destinations and more, plus media enquiries and press-kit requests.';
 
-// ---------------------------------------------------------------------------
-// Press mentions. Each outlet the work has appeared in gets a card. To publish
-// a link, fill in `title`, `url` (and optionally `date` / `blurb`) — a card
-// with a `url` becomes a clickable feature; without one it shows the outlet
-// with a quiet "feature link coming" note. No coverage is described until the
-// real headline and URL are added, so nothing here is invented.
-// ---------------------------------------------------------------------------
-const PRESS = [
-  { outlet: 'CNN', title: 'Extreme retreats: Fire walks and snow survival with your workmates', date: 'Mar 2012', url: 'https://edition.cnn.com/2012/03/26/business/extreme-retreats/index.html', blurb: 'On team retreats taken to the extreme — and what they’re really for.' },
-  { outlet: 'CNN Money', title: 'Where high-level executives go to recharge', date: 'Aug 2018', url: 'https://web.archive.org/web/20180827210716/https://money.cnn.com/2018/08/27/pf/executive-retreats/index.html', blurb: 'Featuring Be Legendary. Archived from money.cnn.com, which has since retired.' },
-  { outlet: 'Business Insider', title: 'CEOs Are Going on $25,000 Executive Getaways to De-Stress', date: 'Sep 2018', url: 'https://www.businessinsider.com/ceos-executive-getaways-de-stress-luxury-resorts-2018-9', blurb: 'By Katie Warren. Features Be Legendary’s executive retreats.' },
-  { outlet: 'Business Destinations', title: 'Risky business', date: '', url: 'https://www.businessdestinations.com/work/risky-business/', blurb: 'By Nash Riggins. Quotes James Carter, founder of Be Legendary.' },
-];
-
+// Press mentions come from the shared source of truth (src/lib/press.ts), so
+// the /press/ page and the reusable PressStrip never drift apart.
 const featured = PRESS.filter((p) => p.url);
 
 // Earlier / archival coverage — older clippings, usually PDF scans. Drop the

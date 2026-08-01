@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import PressStrip from '../components/PressStrip.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
 
 const path = SLUGS.executiveTeamBuilding;
@@ -307,6 +308,10 @@ const schema = [
             <p style="margin-top:24px;font-size:16px;line-height:1.6;"><a href={SLUGS.caseStudies} style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;text-decoration:none;font-weight:700;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">See the teams behind the numbers &mdash; real turnarounds <span style="transition:transform .2s;">&rarr;</span></a></p>
           </div>
         </div>
+        <p style="margin-top:40px;font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.6);max-width:78ch;">And it&rsquo;s not new. The press has covered this work since <strong style="color:#FBF8F1;font-weight:600;">2012</strong> &mdash; you don&rsquo;t get written up for something extraordinary until you&rsquo;ve done it enough times to be great at it.</p>
+      </div>
+      <div style="margin-top:22px;">
+        <PressStrip variant="dark" />
       </div>
     </section>
 
