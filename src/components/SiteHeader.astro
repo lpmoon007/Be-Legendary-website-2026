@@ -17,7 +17,7 @@ export interface Props {
     label: string;
     href: string;
     external?: boolean;
-    children?: { label: string; href?: string; external?: boolean; soon?: boolean; divider?: boolean }[];
+    children?: { label: string; href?: string; desc?: string; external?: boolean; soon?: boolean; divider?: boolean }[];
   }[];
   /** Primary button (full variant). Defaults to the Calibration Call. Pass null to hide. */
   cta?: { label: string; href: string; external?: boolean } | null;
@@ -33,11 +33,11 @@ const TEAMS_LINKS = [
     label: 'How we work together',
     href: SLUGS.howWeWorkTogether,
     children: [
-      { label: 'Team LFS — the diagnostic', href: SLUGS.teamLfs },
-      { label: 'Executive Immersion', href: SLUGS.executiveImmersion },
-      { label: 'Leadership Retreat', href: SLUGS.teamRetreats },
-      { label: 'Discipline Sprint', href: `${SLUGS.howWeWorkTogether}#discipline-sprint` },
-      { label: 'Performance Partnership', href: `${SLUGS.howWeWorkTogether}#performance-partnership` },
+      { label: 'Leadership Failure Simulation', href: SLUGS.teamLfs, desc: 'Like a flight simulator, for your leadership team' },
+      { label: 'Executive Immersion', href: SLUGS.executiveImmersion, desc: 'One high-stakes day, engineered for your team' },
+      { label: 'Leadership Retreat', href: SLUGS.teamRetreats, desc: 'Multi-day, fully off-site' },
+      { label: 'Discipline Sprint', href: `${SLUGS.howWeWorkTogether}#discipline-sprint`, desc: 'A focused 90-day behavioral improvement' },
+      { label: 'Performance Partnership', href: `${SLUGS.howWeWorkTogether}#performance-partnership`, desc: '12-month engagement, 10×-return guarantee' },
       { label: 'How we work together', href: SLUGS.howWeWorkTogether, divider: true },
     ],
   },
@@ -141,11 +141,13 @@ const slim = variant === 'slim';
                     <span class="bl-dd-soon"><span>{c.label}</span><span class="bl-dd-tag">Coming</span></span>
                   ) : (
                     <a
-                      class={c.divider ? 'bl-dd-link bl-dd-all' : 'bl-dd-link'}
+                      class={c.divider ? 'bl-dd-link bl-dd-all' : (c.desc ? 'bl-dd-link bl-dd-rich' : 'bl-dd-link')}
                       role="menuitem"
                       href={c.href}
                       {...(c.external ? { target: '_blank', rel: 'noopener' } : {})}
-                    >{c.divider ? `${c.label} →` : c.label}</a>
+                    >{c.desc
+                      ? <><span class="bl-dd-label">{c.label}</span><span class="bl-dd-desc">{c.desc}</span></>
+                      : (c.divider ? `${c.label} →` : c.label)}</a>
                   )
                 ))}
               </div>
