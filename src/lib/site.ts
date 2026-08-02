@@ -91,6 +91,7 @@ export const SLUGS = {
   researchNotes: '/research-notes/',
   press: '/press/',
   // Field Notes cluster
+  feedbackVacuum: '/field-notes/the-feedback-vacuum/',
   whyNotExecuting: '/why-isnt-my-executive-team-executing/',
   wontDecide: '/leadership-team-wont-make-decisions-without-me/',
   initiativesNeverFinish: '/executive-team-initiatives-never-finish/',
