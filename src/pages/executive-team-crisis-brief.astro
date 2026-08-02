@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import { SLUGS, CTA_URL, CONTACT_EMAIL } from '../lib/site';
+
+const path = SLUGS.crisisBrief;
+const title = 'The Executive Team Crisis Nobody Is Talking About Yet — A Strategic Brief | Be Legendary';
+const description =
+  'A strategic brief for scaling-company leaders: as AI removes the layers that carried organizational reality upward, executive teams run on signal disconnected from the truth. The three consequences, the engagement that addresses them, and the 10x-return structure — with pricing.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Strategic Brief', item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'Article',
+    headline: 'The Executive Team Crisis Nobody Is Talking About Yet — A Strategic Brief for Scaling-Company Leaders',
+    datePublished: '2026-08-01', dateModified: '2026-08-01',
+    author: { '@id': 'https://www.belegendary.org/#james' },
+    publisher: { '@id': 'https://www.belegendary.org/#org' },
+    mainEntityOfPage: `https://www.belegendary.org${path}`,
+    description: 'The feedback vacuum forming in scaling companies as AI removes middle management, the three consequences for executive teams, and the sequenced engagement — Leadership Failure Simulation, 5LD Performance Audit, Performance Partnership — that addresses it, with pricing and a 10x-return guarantee.',
+  },
+];
+
+// Sources for the AI-displacement claims, supplied and confirmed.
+const sources = [
+  { name: 'CNBC &mdash; &ldquo;AI is taking white-collar jobs, and economists warn there&rsquo;s much more in the tank&rdquo;', meta: 'October 2025', url: 'https://www.cnbc.com/2025/10/22/ai-taking-white-collar-jobs-economists-warn-much-more-in-the-tank.html' },
+  { name: 'AIMultiple &mdash; AI job-loss research and statistics', meta: 'Ongoing', url: 'https://aimultiple.com/ai-job-loss' },
+];
+
+const bodyP = 'font-size:18px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:24px;';
+const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:56px 0 22px;";
+const h3 = "font-family:'Newsreader',serif;font-weight:500;font-size:22px;line-height:1.2;color:#FBF8F1;margin-bottom:8px;";
+const card = 'background:#1B1810;border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:28px 30px;';
+const stageWrap = 'background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.35);border-radius:18px;padding:30px 32px;';
+const priceStyle = "font-family:'Newsreader',serif;font-size:26px;color:#E0744A;";
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="The Executive Team Crisis Nobody Is Talking About Yet" ogDescription="A strategic brief for scaling-company leaders — the feedback vacuum, its three consequences, and the engagement (with pricing) that addresses it." schema={schema}>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+  <article>
+
+  <!-- HERO -->
+  <header style="position:relative;max-width:900px;margin:0 auto;padding:78px 32px 24px;">
+    <div style="position:absolute;top:-100px;right:-140px;width:460px;height:460px;background:radial-gradient(circle,rgba(192,74,38,0.15),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#D98A5E;">Strategic Brief</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E0744A;margin-bottom:16px;">A strategic brief for scaling-company leaders</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5.2vw,60px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">The executive-team crisis nobody is talking about yet.</h1>
+    <p style="margin-top:20px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a>, Founder &middot; Be Legendary (Repario Ltd.) &middot; A field report from two decades inside executive teams</p>
+  </header>
+
+  <!-- BEFORE YOU READ -->
+  <div style="max-width:900px;margin:0 auto;padding:8px 32px 0;">
+    <div style="background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;margin-bottom:14px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">Before you read this</p>
+      <p style="font-size:16.5px;line-height:1.62;color:#FBF8F1;">This is not a leadership-development pitch, a coaching proposal, or another framework promising to fix your culture. It&rsquo;s a field report from two decades working inside executive teams at companies between $50M and $500M &mdash; written because something is changing in those companies right now that most CEOs haven&rsquo;t named yet. By the time they do, it will already be expensive. If you run a company with 50 to 2,000 employees, you are either feeling this or you will be within 18 months. We&rsquo;d rather you see it coming.</p>
+    </div>
+    <p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.6);margin-bottom:8px;">Prefer the narrative version without the commercial detail? Read the field note: <a href={SLUGS.feedbackVacuum} style="color:#E0744A;text-decoration:underline;">The Feedback Vacuum</a>.</p>
+
+    <!-- THE PROBLEM -->
+    <h2 style={h2}>Your organization used to tell you the truth. It&rsquo;s stopping.</h2>
+    <p style={bodyP}>Think about how you actually found out about your last operational crisis &mdash; not the moment it became a crisis, but the moment someone first knew something was wrong. In most scaling companies the answer runs through a chain of humans: a foreman told a supervisor, who flagged a regional manager, who decided whether to escalate. That chain was slow, imperfect and political &mdash; but it carried organizational reality upward, from the people doing the work to the people making decisions.</p>
+    <p style={bodyP}>That chain is breaking. Not because your people have changed, but because the layers in between are disappearing &mdash; and the replacement isn&rsquo;t another human who escalates. It&rsquo;s a system that executes whatever you decide, faster and at greater scale than any team of middle managers ever could. AI-driven tools are replacing the coordinators, dispatchers, analysts, schedulers and junior managers who used to sit between executive decisions and front-line execution. Ford&rsquo;s CEO has warned that AI will replace a large share of white-collar work; Salesforce&rsquo;s CEO says it already carries a meaningful portion of that company&rsquo;s workload; Amazon has cut thousands of corporate roles citing leaner, AI-enabled structures. These are operators, not futurists &mdash; and the same shift is underway in dispatch centers, project-management offices and regional operations teams across logistics, construction, healthcare, environmental services and facilities.</p>
+
+    <!-- THREE CONSEQUENCES -->
+    <h2 style={h2}>The three consequences nobody warned you about</h2>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:10px;">
+      <div style={card}>
+        <h3 style={h3}>1. Your decisions execute faster than you can catch mistakes.</h3>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.8);margin:0;">The buffer is gone. A misaligned directive that used to take 90 days to prove wrong now proves wrong in two weeks &mdash; fully implemented, across every location, before anyone has time to surface the problem.</p>
+      </div>
+      <div style={card}>
+        <h3 style={h3}>2. Your team operates on information disconnected from reality.</h3>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.8);margin:0;">The dashboards are green and the people who actually know what&rsquo;s happening no longer have a path to reach you. This is the feedback vacuum &mdash; and most CEOs don&rsquo;t know it exists until a preventable crisis arrives.</p>
+      </div>
+      <div style={card}>
+        <h3 style={h3}>3. Your team has never been tested under the pressure it&rsquo;s about to face.</h3>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.8);margin:0;">Most executive teams have only ever been stress-tested by real crises &mdash; the worst possible time to learn that one executive hoards information, another can&rsquo;t coordinate without you, and a third freezes when the stakes are real.</p>
+      </div>
+    </div>
+    <p style="font-size:15px;line-height:1.6;color:rgba(244,240,231,0.62);margin:18px 0 0;">The full argument &mdash; including why operator-CEOs are the most exposed &mdash; is in the field note, <a href={SLUGS.feedbackVacuum} style="color:#E0744A;text-decoration:underline;">The Feedback Vacuum</a>.</p>
+
+    <!-- THE SOLUTION -->
+    <h2 style={h2}>What we do</h2>
+    <p style={bodyP}>We work with executive teams at scaling companies to solve three connected problems at once &mdash; not through workshops or coaching that produce insight without accountability, but through a structured, sequenced engagement that starts by showing you exactly where your team will break, and ends with a guarantee that it won&rsquo;t.</p>
+
+    <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:10px;">
+      <div style={card}>
+        <h3 style={h3}>The team breaks under pressure in ways you can&rsquo;t see.</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);margin:0;">We run a <strong style="color:#FBF8F1;">Leadership Failure Simulation</strong> &mdash; a live, ~90-minute crisis scenario calibrated to your company and industry. Each executive first completes a behavioral assessment that predicts how they should perform; the simulation shows the gap between prediction and reality. That gap is where the risk lives. Individual and team debriefs and a written report follow.</p>
+      </div>
+      <div style={card}>
+        <h3 style={h3}>The feedback vacuum is forming and you don&rsquo;t know what you&rsquo;re not being told.</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);margin:0;">We map the gap between what your executive team believes is true and what actually is &mdash; a structured organizational reality audit, not an engagement survey &mdash; then install a <strong style="color:#FBF8F1;">quarterly organizational pulse</strong> that keeps unfiltered signal reaching the team, so the vacuum never fully forms.</p>
+      </div>
+      <div style={card}>
+        <h3 style={h3}>Your people won&rsquo;t tell you the truth, and you don&rsquo;t have time to build the relationships that change that.</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);margin:0;">We build it at two levels: explicit cultural mechanisms that reward truth-telling upward, and experiential <strong style="color:#FBF8F1;">trust-acceleration</strong> events that create in hours the relational depth that used to take years &mdash; the bond that makes someone pick up the phone when something is going wrong, instead of waiting to see if it gets worse.</p>
+      </div>
+    </div>
+
+    <!-- THE ENGAGEMENT + PRICING -->
+    <h2 style={h2}>The engagement &mdash; and what it costs</h2>
+    <p style={bodyP}>The engagement is sequenced deliberately. Each stage creates the conditions for the next, and every paid stage credits toward the one after it.</p>
+
+    <div style="display:flex;flex-direction:column;gap:18px;">
+      <div style={stageWrap}>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Stage 1 &middot; Entry point</p>
+        <h3 style={h3}>The Leadership Failure Simulation</h3>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);margin:0 0 14px;">Virtual. Your full executive team (up to 8). Shows you where the team breaks, with behavioral evidence and a FlagScore baseline. Includes individual assessments, facilitation, individual and team debriefs, a written report, and a 30-day accountability system per executive.</p>
+        <p style="margin:0;"><span style={priceStyle}>$28,000&ndash;$35,000</span> <span style="font-size:14.5px;color:rgba(244,240,231,0.6);">&middot; credits $8,000 toward the audit</span></p>
+      </div>
+      <div style={stageWrap}>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Stage 2 &middot; ~3 weeks</p>
+        <h3 style={h3}>The 5LD Performance Audit</h3>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);margin:0 0 14px;">Quantifies what the simulation revealed and maps all three problem layers, with a cost estimate for your specific dysfunction and a go / no-go recommendation. Roughly 15% of audits end in a no-proceed recommendation &mdash; this is a fit assessment, not a sales funnel.</p>
+        <p style="margin:0;"><span style={priceStyle}>$15,000&ndash;$25,000</span> <span style="font-size:14.5px;color:rgba(244,240,231,0.6);">&middot; credited toward the Partnership if you proceed</span></p>
+      </div>
+      <div style={stageWrap}>
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Stage 3 &middot; 12 months</p>
+        <h3 style={h3}>The Performance Partnership</h3>
+        <p style="font-size:16px;line-height:1.6;color:rgba(244,240,231,0.8);margin:0 0 14px;">All three problems addressed at once: your executive team&rsquo;s operating system installed and running, quarterly reality checks, and the cultural and relational infrastructure for the AI era &mdash; including one turnkey trust-acceleration event with your broader organization in month two. Either party may exit at quarterly checkpoints.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 28px;">
+          <p style="margin:0;"><span style="font-size:13px;color:rgba(244,240,231,0.6);display:block;">$50M&ndash;$200M revenue</span><span style={priceStyle}>$75,000&ndash;$425,000</span></p>
+          <p style="margin:0;"><span style="font-size:13px;color:rgba(244,240,231,0.6);display:block;">$200M&ndash;$1B revenue</span><span style={priceStyle}>$100,000&ndash;$1.1M</span></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE GUARANTEE -->
+    <h2 style={h2}>The guarantee</h2>
+    <p style={bodyP}>We identify three metrics you already track, baseline them at the start, and measure cumulative improvement quarterly using your own data. If the value created doesn&rsquo;t reach <strong style="color:#FBF8F1;">10x your total investment</strong> &mdash; fees plus the loaded cost of executive time &mdash; the success fees adjust automatically downward to hold that ratio. You never pay more than a 10x return. Your maximum financial risk is the base fee; your maximum operational risk is your team&rsquo;s time. Both are bounded. The upside is not.</p>
+    <p style={bodyP}>We limit active Performance Partnerships to eight clients at a time. That isn&rsquo;t scarcity for its own sake &mdash; it&rsquo;s the delivery constraint of an engagement that requires genuine attention to produce guaranteed results.</p>
+
+    <!-- WHY NOW -->
+    <h2 style={h2}>Why now</h2>
+    <p style={bodyP}>The companies that navigate this shift well are not the ones that respond after the crisis arrives. They&rsquo;re the ones whose executive teams are already making clean decisions under pressure, operating on accurate signal, and leading teams that trust them enough to tell them the truth. The companies that wait will find out where their team breaks the hard way &mdash; when the board is watching, when the customer is threatening to leave, when the decision that just executed perfectly at scale was the wrong one. We show you first.</p>
+
+    <!-- IS THIS YOU (converted from the CAB questions) -->
+    <div style="margin:14px 0 8px;background:linear-gradient(120deg,#2A0507,#191610);border:1px solid rgba(192,74,38,0.5);border-radius:18px;padding:32px 34px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:14px;">Is this you?</p>
+      <ul style="list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:12px;">
+        <li style="font-size:16.5px;line-height:1.55;color:rgba(244,240,231,0.86);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E0744A;">&rarr;</span> Your dashboards look healthy, but you have a quiet sense you&rsquo;re not hearing everything.</li>
+        <li style="font-size:16.5px;line-height:1.55;color:rgba(244,240,231,0.86);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E0744A;">&rarr;</span> You couldn&rsquo;t honestly say how your executive team would hold up in a genuine crisis.</li>
+        <li style="font-size:16.5px;line-height:1.55;color:rgba(244,240,231,0.86);padding-left:20px;position:relative;"><span style="position:absolute;left:0;color:#E0744A;">&rarr;</span> Your organization is getting leaner and faster, and less forgiving of leadership dysfunction.</li>
+      </ul>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;box-shadow:0 16px 44px -14px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Start with a conversation <span style="font-size:18px;">&rarr;</span></a>
+      <p style="margin-top:16px;font-size:14.5px;color:rgba(244,240,231,0.6);">Or reach James directly &mdash; <a href={`mailto:${CONTACT_EMAIL}?subject=Strategic%20brief`} style="color:#E0744A;text-decoration:underline;">{CONTACT_EMAIL}</a> &middot; 800-513-8759.</p>
+    </div>
+
+    <!-- SOURCES -->
+    <div style="margin-top:44px;border-top:1px solid rgba(244,240,231,0.12);padding-top:24px;">
+      <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,240,231,0.45);margin-bottom:16px;">Sources on AI displacement</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;margin:0;padding:0;">
+        {sources.map((s) => (
+          <li>
+            <a href={s.url} target="_blank" rel="noopener" style="color:#F4F0E7;text-decoration:none;font-size:15px;line-height:1.5;" onmouseover="this.style.color='#E0744A'" onmouseout="this.style.color='#F4F0E7'"><span set:html={s.name}></span> <span style="color:#E0744A;">&#8599;</span></a>
+            <p style="margin-top:3px;font-size:13px;color:rgba(244,240,231,0.5);">{s.meta}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+    <ShareRow title={title} maxWidth={920} />
+  </article>
+  </div>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>
