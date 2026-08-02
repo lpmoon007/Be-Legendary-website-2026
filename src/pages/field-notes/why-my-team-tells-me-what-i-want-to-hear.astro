@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ShareRow from '../../components/ShareRow.astro';
+import ArticleEndCTA from '../../components/ArticleEndCTA.astro';
+import { SLUGS } from '../../lib/site';
+
+const path = SLUGS.truthStopsTraveling;
+const title = 'Why does my team tell me what I want to hear? | Be Legendary';
+const description =
+  'The people closest to the work stop delivering bad news to someone with the power to react badly to it. For operator-CEOs the danger is sharper — the front-line relationship signal feels like organizational truth, and the isolation feels like connection.';
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Field Notes', item: 'https://www.belegendary.org/field-notes/' },
+    { '@type': 'ListItem', position: 3, name: 'Why does my team tell me what I want to hear?', item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'Article', headline: 'Why does my team tell me what I want to hear?', datePublished: '2026-08-01', dateModified: '2026-08-01', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: `https://www.belegendary.org${path}`, description: 'Why the people closest to the work stop telling leaders the truth — and why operator-CEOs are the most exposed.' },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'Why does my team tell me what I want to hear?', acceptedAnswer: { '@type': 'Answer', text: 'Because delivering bad news to someone with the power to react badly to it is a risk, and people manage that risk the only way they can — by softening, delaying, or withholding it. It is rarely deliberate deception. It is rational self-preservation. The worker who says everything is fine when it is not is managing the relationship, not lying.' } },
+    { '@type': 'Question', name: 'Why are operator-CEOs especially exposed?', acceptedAnswer: { '@type': 'Answer', text: 'A CEO who came up through operations believes their front-line experience gives them ground-level awareness that office-bound executives lack. Often it does. But it also breeds confidence that the blind spot is not forming — because they would know, they have the relationships. What they miss is that the front line has learned exactly what they want to hear, and that the middle layer which used to translate and escalate that signal is gone. The relationship signal now arrives directly, with its social distortion intact, and gets mistaken for organizational truth.' } },
+    { '@type': 'Question', name: 'How do I get my team to tell me the truth?', acceptedAnswer: { '@type': 'Answer', text: 'You cannot mandate candor into existence; the incentive not to deliver bad news is stronger than an instruction to be honest. What works is building explicit mechanisms that reward truth-telling upward, creating trust deep enough that people pick up the phone before a problem grows, and testing how your executive team handles hard truth under pressure so you know where it breaks before a real crisis proves it.' } },
+  ] },
+];
+
+const bodyP = 'font-size:18px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;';
+const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.14;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 18px;";
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="Why does my team tell me what I want to hear?" ogDescription="People don't deliver bad news to someone with the power to react badly to it. For operator-CEOs, the isolation feels like connection." schema={schema}>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+  <article>
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 32px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.fieldNotes} style="color:inherit;text-decoration:none;">Field Notes</a><span>/</span><span style="color:#D98A5E;">Telling you what you want to hear</span>
+    </nav>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(30px,4.6vw,54px);line-height:1.04;letter-spacing:-0.02em;color:#FBF8F1;max-width:22ch;">Why does my team tell me what I want to hear?</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; August 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:24px 26px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p style="font-size:17px;line-height:1.6;color:#FBF8F1;">Because no one wants to hand bad news to a person with the power to react badly to it. It&rsquo;s rarely deception &mdash; it&rsquo;s self-preservation. And if you came up through operations, you&rsquo;re the most exposed: the front-line relationship signal arrives directly and feels like the truth, when it&rsquo;s really just what you want to hear.</p>
+    </div>
+  </header>
+
+  <div style="max-width:880px;margin:0 auto;padding:8px 32px 0;">
+    <h2 style={h2}>The rational reason people soften the truth</h2>
+    <p style={bodyP}>The worker who tells you everything is fine when everything is not fine is not lying. He is managing the relationship the only way he knows how &mdash; carefully, with self-preservation in mind. Delivering bad news upward is a risk, and people manage risk by softening it, delaying it, or letting someone else carry it. This dynamic has always existed in organizations. What has changed is what used to sit on top of it.</p>
+
+    <h2 style={h2}>Why the operator-CEO is the most exposed</h2>
+    <p style={bodyP}>If you started on the front line &mdash; in the field, on the floor, in the truck &mdash; you have a strong instinct that you understand your organization from the inside. Often you do. But that instinct now works against you, because it breeds a confidence that the blind spot isn&rsquo;t forming: you would know, you have the relationships.</p>
+    <p style={bodyP}>What that confidence misses is that the people on the front line have learned, over years, exactly what you want to hear &mdash; and that the middle layer of management that used to translate, filter and sometimes escalate their signal is disappearing. So the raw relationship signal now reaches you directly, with all its social distortion intact, and gets mistaken for organizational truth. The isolation doesn&rsquo;t look like isolation. It feels like connection. That&rsquo;s exactly what makes it dangerous.</p>
+
+    <h2 style={h2}>What actually changes it</h2>
+    <p style={bodyP}>You can&rsquo;t instruct candor into existence &mdash; the incentive not to deliver bad news is stronger than a request to be honest. What works is building explicit mechanisms that reward truth-telling upward, creating enough trust that people raise a problem while it&rsquo;s still small, and testing how your executive team handles hard truth under pressure &mdash; so you find out where it breaks in a controlled setting, not when a customer or a board is watching.</p>
+
+    <div style="margin:36px 0 8px;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:28px 30px;">
+      <p style="font-size:17px;line-height:1.62;color:rgba(244,240,231,0.86);margin:0;">This is drawn from the longer field note, <a href={SLUGS.feedbackVacuum} style="color:#E0744A;text-decoration:underline;">The executive-team crisis nobody is talking about yet</a>. To see how your team handles hard truth under pressure, start with the <a href={SLUGS.teamLfs} style="color:#E0744A;text-decoration:underline;">Leadership Failure Simulation</a>.</p>
+    </div>
+  </div>
+
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+  </article>
+  </div>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>
