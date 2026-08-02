@@ -273,7 +273,7 @@ export const ORG_NODE = {
   image: `${SITE_URL}/assets/share-card.png`,
   description: 'An executive-team diagnostic and performance firm. We rebuild the disciplines of the Flag Model that turn a stalled leadership team into one that executes.',
   founder: { '@id': PERSON_ID },
-  foundingDate: '2010',
+  foundingDate: '2003',
   areaServed: 'US',
   contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+1-800-513-8759', url: 'https://meetings-na2.hubspot.com/jcarter28' },
   subOrganization: [
