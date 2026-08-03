@@ -57,8 +57,11 @@ and reconcile Siemens (framed elsewhere as a keynote audience, not a team client
 4. **(Optional) a strong James headshot** if the current `james.jpg` is weak.
 
 ## Proposed fix batches (fixable now, no new assets)
-- **Batch E — Proof scaffolding.** Add ResultsBand + press to team-lfs; ResultsBand
-  to teams hub, executive-team-building, alignment-consultant. ☐
+- **Batch E — Proof scaffolding.** ✅ **DONE (2026-08).** Added ResultsBand + press
+  strip to the flagship `team-lfs` page (was zero proof); ResultsBand to the teams
+  hub (before TrustedBy), `executive-team-building` (firm-level band beside the 209%
+  story), and `executive-team-alignment-consultant` (+ press) before its CTA. Every
+  money page now carries firm-level proof.
 - **Batch F — Consolidate testimonials.** Put the two real quotes (Quinlan, Page)
   into the Testimonials wall so they read as social proof, and surface it on the
   money pages that lack any testimonial. ☐

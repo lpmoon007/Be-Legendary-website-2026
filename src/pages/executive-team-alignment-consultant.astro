@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import ResultsBand from '../components/ResultsBand.astro';
+import PressStrip from '../components/PressStrip.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Executive Team Alignment Consultant: Role, Cost & When to Hire';
@@ -74,6 +76,13 @@ const schema = [
       <li>What's your experience inside real executive teams, not just classrooms?</li>
       <li>What happens if it doesn't work?</li>
     </ul>
+  </div>
+
+  <div style="max-width:1080px;margin:52px auto 0;padding:0 32px;">
+    <ResultsBand variant="dark" maxWidth={1080} eyebrow="What alignment work is worth" heading="Aligned isn't the goal. This is." />
+  </div>
+  <div style="max-width:1080px;margin:8px auto 0;padding:0 32px;">
+    <PressStrip variant="dark" maxWidth={1080} />
   </div>
 
   <div style="max-width:880px;margin:36px auto 0;padding:0 32px;">

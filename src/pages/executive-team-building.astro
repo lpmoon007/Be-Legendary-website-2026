@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import PressStrip from '../components/PressStrip.astro';
+import ResultsBand from '../components/ResultsBand.astro';
 import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
 
 const path = SLUGS.executiveTeamBuilding;
@@ -309,6 +310,9 @@ const schema = [
             <p style="margin-top:20px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);max-width:56ch;">We ran an executive retreat for <strong style="color:#FBF8F1;font-weight:600;">Champion Iron</strong> in AlUla, Saudi Arabia. Each leader chose the specific behaviors they wanted to change &mdash; the personal markers of a more positive mindset &mdash; and against that baseline the team measured a <strong style="color:#FBF8F1;font-weight:600;">209% improvement</strong>. Their own conclusion after the retreat, the activities and the hard conversations: that mindset would reshape how they approach the challenges ahead, and how they treat one another.</p>
             <p style="margin-top:24px;font-size:16px;line-height:1.6;"><a href={SLUGS.caseStudies} style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;text-decoration:none;font-weight:700;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">See the teams behind the numbers &mdash; real turnarounds <span style="transition:transform .2s;">&rarr;</span></a></p>
           </div>
+        </div>
+        <div style="margin-top:40px;">
+          <ResultsBand variant="dark" maxWidth={1180} eyebrow="And it isn't one team" heading="The pattern holds across the work." />
         </div>
         <p style="margin-top:40px;font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.6);max-width:78ch;">And it&rsquo;s not new. The press has covered this work since <strong style="color:#FBF8F1;font-weight:600;">2012</strong> &mdash; you don&rsquo;t get written up for something extraordinary until you&rsquo;ve done it enough times to be great at it.</p>
       </div>

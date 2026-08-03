@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import TrustedBy from '../../components/TrustedBy.astro';
+import ResultsBand from '../../components/ResultsBand.astro';
 import { SITE_URL, ORG_ID, PERSON_ID, SLUGS, CTA_URL } from '../../lib/site';
 
 const path = SLUGS.teams;
@@ -252,6 +253,10 @@ const schema = [
           <span style="display:inline-flex;align-items:center;gap:9px;color:#F4F0E7;font-weight:700;font-size:15.5px;white-space:nowrap;">Read Field Notes <span>&rarr;</span></span>
         </a>
       </div>
+    </section>
+
+    <section style="background:#15130E;color:#F4F0E7;padding:0 32px 8px;">
+      <ResultsBand variant="dark" maxWidth={1180} />
     </section>
 
     <TrustedBy />
