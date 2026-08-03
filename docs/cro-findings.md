@@ -70,6 +70,12 @@ and reconcile Siemens (framed elsewhere as a keynote audience, not a team client
   conversion hub) right before the CTA. Broader placement on other money pages
   waits for more quotes — especially the EA/chief-of-staff quote — to avoid a
   thin two-quote section repeated everywhere.
-- **Batch G — Reuse existing human photos** on the human-light money pages
-  (honest reuse of retreat/off-road/EI imagery), pending James's net-new team
-  photos. ☐
+- **Batch G — Reuse existing human photos** on the human-light money pages.
+  ✅ **DONE (2026-08).** Added real photos of executive teams in the work:
+  how-we-work-together and executive-team-alignment-consultant now show James
+  facilitating a circle of executives (sedona-facilitation); executive-team-
+  development shows a real executive team on a development day (sedona-group).
+  **Deliberately skipped team-lfs** — it's a virtual/offsite behavioral simulation,
+  so an outdoor adventure photo would misrepresent it; honesty over filling the
+  slot. Net-new team photos from James would let us place human imagery there and
+  refresh these.
