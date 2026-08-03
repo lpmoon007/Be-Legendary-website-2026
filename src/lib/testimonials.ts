@@ -16,6 +16,12 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
+      'James helped us turn seven groups of rivals into one leadership team. By the time US Holdings became Eagle Manufacturing Group and I moved from COO to CEO, we were no longer seven companies protecting our own territory — we were one company working toward the same outcome.',
+    name: 'Ronn Page',
+    role: 'former CEO, Eagle Manufacturing Group',
+  },
+  {
+    quote:
       'This truly resonated and will have a lasting influence on us as we work to create a technology organization where the best and brightest choose to be.',
     name: 'Larry Quinlan',
     role: 'Global CIO, Deloitte',

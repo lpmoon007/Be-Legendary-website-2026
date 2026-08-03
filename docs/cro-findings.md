@@ -62,9 +62,14 @@ and reconcile Siemens (framed elsewhere as a keynote audience, not a team client
   hub (before TrustedBy), `executive-team-building` (firm-level band beside the 209%
   story), and `executive-team-alignment-consultant` (+ press) before its CTA. Every
   money page now carries firm-level proof.
-- **Batch F — Consolidate testimonials.** Put the two real quotes (Quinlan, Page)
-  into the Testimonials wall so they read as social proof, and surface it on the
-  money pages that lack any testimonial. ☐
+- **Batch F — Consolidate testimonials.** ✅ **DONE (2026-08).** Added Ronn Page
+  (Eagle Manufacturing CEO) to `testimonials.ts` alongside Larry Quinlan, so the
+  Testimonials wall now shows two real named quotes (and adds a 2nd Review schema
+  node). Fixed the component to render exactly two as a balanced 2-up grid instead
+  of a sparse 3-column masonry. Surfaced the wall on how-we-work-together (the main
+  conversion hub) right before the CTA. Broader placement on other money pages
+  waits for more quotes — especially the EA/chief-of-staff quote — to avoid a
+  thin two-quote section repeated everywhere.
 - **Batch G — Reuse existing human photos** on the human-light money pages
   (honest reuse of retreat/off-road/EI imagery), pending James's net-new team
   photos. ☐

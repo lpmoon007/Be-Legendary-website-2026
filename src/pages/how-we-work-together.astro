@@ -4,6 +4,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import PressStrip from '../components/PressStrip.astro';
 import ResultsBand from '../components/ResultsBand.astro';
+import Testimonials from '../components/Testimonials.astro';
 import { SLUGS, CTA_URL } from '../lib/site';
 
 const path = SLUGS.howWeWorkTogether;
@@ -204,8 +205,11 @@ const schema = [
       </div>
     </section>
 
+    <!-- ============ TESTIMONIALS ============ -->
+    <Testimonials heading="What leaders say after the work." />
+
     <!-- ============ CTA ============ -->
-    <section style="background:#64010a;color:#F6EFE0;margin-top:72px;">
+    <section style="background:#64010a;color:#F6EFE0;margin-top:0;">
       <div style="max-width:760px;margin:0 auto;padding:72px 32px;text-align:center;">
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,42px);line-height:1.08;letter-spacing:-0.02em;">Start small. See the truth. Then decide.</h2>
         <p style="margin:18px auto 0;max-width:48ch;font-size:16.5px;line-height:1.6;color:#F0D9D2;">Fifteen minutes with James tells you more than any brochure — and there's no obligation on the other side of it.</p>

@@ -8,9 +8,10 @@ export interface Props {
 }
 const { heading = 'What leaders say after the room goes quiet.', eyebrow = 'Client praise' } = Astro.props;
 const single = TESTIMONIALS.length === 1;
+const wallMax = TESTIMONIALS.length === 2 ? 900 : 1100;
 ---
 <section class="bl-section-pad" style="background:#F4F0E7;color:#1B1810;padding:100px 32px;">
-  <div style={`max-width:${single ? 780 : 1100}px;margin:0 auto;`}>
+  <div style={`max-width:${single ? 780 : wallMax}px;margin:0 auto;`}>
     <div style="text-align:center;max-width:640px;margin:0 auto 44px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">{eyebrow}</p>
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-0.015em;color:#1B1810;">{heading}</h2>
@@ -24,7 +25,7 @@ const single = TESTIMONIALS.length === 1;
         </figcaption>
       </figure>
     ) : (
-      <div class="bl-testimonial-cols" style="column-gap:22px;">
+      <div class={TESTIMONIALS.length === 2 ? 'bl-testimonial-grid' : 'bl-testimonial-cols'} style="column-gap:22px;gap:22px;">
         {TESTIMONIALS.map((t) => (
           <figure style="break-inside:avoid;margin:0 0 22px;background:#FFFFFF;border:1px solid rgba(33,27,22,0.1);border-radius:16px;padding:28px 30px;">
             <blockquote style="margin:0 0 18px;font-family:'Newsreader',serif;font-size:18.5px;line-height:1.5;color:#211B16;">{t.quote}</blockquote>
@@ -43,4 +44,8 @@ const single = TESTIMONIALS.length === 1;
   .bl-testimonial-cols { column-count: 3; }
   @media (max-width: 900px) { .bl-testimonial-cols { column-count: 2; } }
   @media (max-width: 600px) { .bl-testimonial-cols { column-count: 1; } }
+  /* Exactly two testimonials: a balanced 2-up instead of a sparse 3-col masonry. */
+  .bl-testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+  .bl-testimonial-grid figure { margin: 0 !important; }
+  @media (max-width: 600px) { .bl-testimonial-grid { grid-template-columns: 1fr; } }
 </style>
