@@ -61,8 +61,18 @@ and `/teams/retreats/`. Add descriptive alt.
 ## Proposed fix batches (one at a time)
 - **Batch A — Cross-linking sweep** (Finding 1). ✅ **DONE (2026-08).** Results below.
 - **Batch B — Trim over-length titles + descriptions** on the commercial/important
-  pages (Findings 2 & 3). Mechanical, low risk. ☐
-- **Batch C — Add the 6 missing alt attributes** (Finding 4). Trivial. ☐
+  pages (Findings 2 & 3). ✅ **DONE (2026-08).** Trimmed 18 genuinely over-length
+  titles to ≤60 real chars (the audit's title lengths were inflated by
+  entity-encoded apostrophes; source lengths were the truth). Left 3 borderline
+  titles at 61–62 (clean keyword titles; trimming would cost clarity for 1 char).
+  Tightened the 8 top money-page descriptions to ~155; left the remaining ~35
+  long ones (blog/PDF/case-study/research) since Google rewrites most descriptions
+  and those are low-ROI.
+- **Batch C — the "6 missing alt" images.** ✅ **DONE — no change needed (false
+  positive).** They are decorative brand marks (the ldol "b" logo, the maroon
+  snail icon) using `alt=""`, which is the *correct* accessibility practice for
+  decorative images. Adding alt text would be wrong (redundant screen-reader
+  announcements). The audit regex flagged empty-alt as missing.
 
 ### Batch A results
 Interconnected the under-linked new strategic cluster and tidied the closest
