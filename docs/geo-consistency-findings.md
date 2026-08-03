@@ -57,7 +57,14 @@ Not a credibility issue, but standardizing (™ on first mention per page, plain
 thereafter) reads more polished and protects the marks. Fixable in one pass.
 
 ## Proposed fix batch
-- **Batch D — standardize ™** on Flag Model / FlagScore / Lost Disciplines
-  (first-mention ™). Low risk, cosmetic. ☐
+- **Batch D — standardize ™** on Flag Model / FlagScore / Lost Disciplines.
+  ✅ **DONE (2026-08).** Added ™ to the first visible-prose mention on every page
+  (and the full SiteFooter + ArticleEndCTA) that mentioned a mark without one —
+  Flag Model™ now on 95 pages (was 86), plus FlagScore™ / Lost Disciplines™
+  standardized. Skipped titles, meta, schema, hrefs, alt text, nav-link labels,
+  and "Flag Model vs X" comparison names — ™ doesn't belong in those. Caught and
+  fixed a double-mark bug where an existing `&trade;` entity collided with the new
+  ™ character (6 spots). Remaining plain mentions are all in those intentionally-
+  skipped contexts (nav labels, comparison names, slim-footer utility pages).
 - **Finding 1 (client roster)** — hold for James's confirmation; no code change
-  until then.
+  until then. (Belongs to audit #3 / CRO — surfaced there too.)
