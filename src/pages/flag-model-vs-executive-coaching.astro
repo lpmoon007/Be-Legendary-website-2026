@@ -5,6 +5,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import ResultsBand from '../components/ResultsBand.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = "Flag Model vs Executive Coaching | Be Legendary";
@@ -21,6 +22,8 @@ const schema = [
     { '@type': 'Question', name: 'What is the difference between executive coaching and the Flag Model?', acceptedAnswer: { '@type': 'Answer', text: 'Executive coaching develops an individual leader — their judgment, blind spots, communication and confidence, usually one-on-one. The Flag Model develops the team as a unit — how it decides, focuses, holds standards and learns together. Coaching improves the player; the Flag Model improves how the players play together. A team of well-coached individuals can still execute poorly as a group.' } },
     { '@type': 'Question', name: 'Can executive coaching fix a dysfunctional leadership team?', acceptedAnswer: { '@type': 'Answer', text: "Rarely on its own. Coaching each executive can raise individual performance, but team dysfunction lives in the spaces between people — unclear decision rights, no shared standard, commitments that don't stick. Those are team-level disciplines that one-on-one coaching doesn't directly install. You usually need both: coaching for the individual, the Flag Model for the system." } },
     { '@type': 'Question', name: 'Do I need a coach or a team consultant?', acceptedAnswer: { '@type': 'Answer', text: "If the issue is a specific leader's growth, a coach is the right call. If the issue is that a capable group of leaders can't decide, finish, or hold each other accountable together, that's a team-discipline problem the Flag Model addresses. Many executive teams run both in parallel." } },
+    { '@type': 'Question', name: 'Is leadership development or team development what my executive team needs?', acceptedAnswer: { '@type': 'Answer', text: "Leadership development (including most executive coaching and leadership-training programs) builds better individual leaders. Team development builds a better-functioning unit — the shared decision-making, standards and follow-through that only exist between people. If your leaders are individually capable but stall as a group, more individual development won't close the gap; the constraint is at the team level. The Flag Model targets that team level directly, and can run alongside individual development." } },
+    { '@type': 'Question', name: 'Does executive or leadership coaching improve team performance?', acceptedAnswer: { '@type': 'Answer', text: "It can lift the individuals, which helps — but improved individuals don't automatically make a better-performing team, because team performance depends on how the group decides and executes together, not just on each person's ability. In Be Legendary's team engagements, teams have measured large, self-selected behavioral gains — for example a 268% gain in one case and a 209% improvement in another — by rebuilding team-level disciplines rather than only coaching individuals." } },
   ] },
 ];
 ---
@@ -71,7 +74,13 @@ const schema = [
   <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The trap of coaching your way out of a team problem</h2>
     <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">It's a natural move: the team is struggling, so you get each leader a coach. Six months later every individual is sharper &mdash; and the team still can't make a decision stick, still lets initiatives sprawl, still avoids the hard conversation. That's because the dysfunction was never inside any one person. It lived in the <em>system</em>: no shared decision protocol, no agreed standard of &ldquo;done,&rdquo; no learning loop. Coaching can't install what belongs to the group.</p>
-    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">The Flag Model works at that altitude. It gives the team the disciplines it can only hold collectively &mdash; the Decision, the Rhythm, the Standard, the Learning &mdash; so individually strong leaders finally perform like a strong team.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">The Flag Model works at that altitude. It gives the team the disciplines it can only hold collectively &mdash; the Decision, the Rhythm, the Standard, the Learning &mdash; so individually strong leaders finally perform like a strong team.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">This is also the honest limit of most <strong style="color:#FBF8F1;">leadership development</strong> and leadership-training programs. They build better individual leaders &mdash; genuinely valuable &mdash; but a roomful of better-developed individuals is not the same as a team that decides and executes well together. When leaders are already capable and the group still stalls, the constraint is at the team level, and that&rsquo;s where the measurable gains come from.</p>
+  </div>
+
+  <!-- PROOF -->
+  <div style="max-width:1080px;margin:40px auto 0;padding:0 32px;">
+    <ResultsBand variant="dark" maxWidth={1080} eyebrow="What team-level work produces" heading="Individual coaching doesn't claim numbers like these." />
   </div>
 
   <!-- STACK -->
