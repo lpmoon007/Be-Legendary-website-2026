@@ -59,11 +59,32 @@ the EI sub-pages, `signs-of-a-dysfunctional-leadership-team` (237).
 and `/teams/retreats/`. Add descriptive alt.
 
 ## Proposed fix batches (one at a time)
-- **Batch A — Cross-linking sweep** (Finding 1). Highest value; also closes the
-  loop on the new pages we just published. → this is workstream #4 from the plan.
+- **Batch A — Cross-linking sweep** (Finding 1). ✅ **DONE (2026-08).** Results below.
 - **Batch B — Trim over-length titles + descriptions** on the commercial/important
-  pages (Findings 2 & 3). Mechanical, low risk.
-- **Batch C — Add the 6 missing alt attributes** (Finding 4). Trivial.
+  pages (Findings 2 & 3). Mechanical, low risk. ☐
+- **Batch C — Add the 6 missing alt attributes** (Finding 4). Trivial. ☐
+
+### Batch A results
+Interconnected the under-linked new strategic cluster and tidied the closest
+topical matches. Inbound-source counts (before → after):
+- `/executive-team-crisis-brief/` 1 → 3 (added from board-meeting + executive-team-development)
+- `/field-notes/what-is-the-feedback-vacuum/` 1 → 3 (essay "Read next" + sibling)
+- `/field-notes/why-my-team-tells-me-what-i-want-to-hear/` 1 → 3 (essay + sibling)
+- `/how-to-run-a-board-meeting/` 1 → 3 (essay + executive-team-development)
+- `/teams/executive-immersion/the-city-never-sleeps/` 1 → 2 (from city.astro)
+- `/research-notes/a-priority-is-a-refusal/` 1 → 2 (from how-to-set-priorities)
+- `/field-notes/the-feedback-vacuum/` now 6 inbound
+Edits: feedback-vacuum essay "Read next" block; board-meeting "Keep reading" +
+feedback-vacuum & brief cards; executive-team-development "further reading" line;
+sibling links between the two mined field notes; city → the-city-never-sleeps;
+how-to-set-priorities → a-priority-is-a-refusal.
+
+**Left at 1 inbound on purpose** (each linked from its correct hub/sibling —
+reachable, not orphaned; forcing more links would be arbitrary):
+`/case-studies/federal-fiscal-leadership-team/` (case-studies hub),
+`/how-to-fix-a-dysfunctional-leadership-team/` (signs page),
+`/how-to-set-leadership-team-priorities/` (its cluster), and
+`/research-notes/leadership-team-aligned-not-executing/` (research-notes hub).
 
 ## Method note
 Ran via a Python crawl of `dist/`. The description-length check was first run with a
