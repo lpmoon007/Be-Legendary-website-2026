@@ -41,6 +41,13 @@ Redirect 301 /experiential-leadership-retreats/ /teams/retreats/
 Redirect 301 /executive-coaching/ /leaders/what-is-executive-coaching/
 RedirectMatch 301 ^/about-us/contact-us/?$ /contact/
 RedirectMatch 301 ^/about-us(/.*)?$ /about/
+# More legacy 404s with impressions (same GSC sweep):
+Redirect 301 /privacy-policy/ /privacy/
+RedirectMatch 301 ^/engagement-cycle(/.*)?$ /how-we-work-together/
+Redirect 301 /strategy-activation/ /how-we-work-together/
+Redirect 301 /teamworx/ /teams/
+Redirect 301 /talent-management/ /teams/
+Redirect 301 /cq-catalyst/ /teams/
 
 # ── Off-Road Immersion consolidation ──
 # The near-duplicate Denver + Sedona geo pages were merged into one
