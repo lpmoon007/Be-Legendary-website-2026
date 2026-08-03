@@ -14,6 +14,13 @@ const description =
 // JSON-LD — OfferCatalog of the PUBLIC rungs only. The audit and advisory
 // relationship are deliberately not listed (relationship offers, not products).
 // Partnership shows its base fee; the ceiling lives in the proposal, not here.
+const faqs = [
+  ['How do you work with executive teams?', 'There is more than one way in, and every paid step credits 50% toward the next. Most teams start with a read — the Team Leadership Failure Simulation, a live behavioral diagnostic that surfaces exactly where the team breaks with a FlagScore baseline. From there the depth is your choice: a single engineered Executive Immersion day, a facilitated Leadership Retreat, a 90-day Discipline Sprint on the one broken discipline, or a 12-month Performance Partnership. Whatever you run is engineered around the diagnosed fault line, not pulled off a shelf.'],
+  ['Where should we start?', 'A free 15-minute Calibration Call is the honest first step — you leave with a read on where your team likely breaks first, whether or not we work together. If you want evidence rather than a conversation, start with the Team Leadership Failure Simulation; its fee credits toward whatever you do next. The CEO who prefers to feel it alone first can run the solo version (ELFS).'],
+  ['How much does it cost to work with Be Legendary?', 'The public rungs: the Calibration Call is free; the solo ELFS is $7,500; the Team Leadership Failure Simulation is $28K–$35K; an Executive Immersion day is from $35K; a 90-day Discipline Sprint is $45K–$65K; a Leadership Retreat is $25K–$500K+; and the 12-month Performance Partnership starts from a $75K base fee, with success fees earned only when documented value confirms a 10x return. Every paid step credits 50% toward the next.'],
+  ['Is this coaching, consulting, or a program?', 'None of them exactly. Coaching develops individuals; a program delivers a fixed curriculum; both leave the team-level system untouched. This is an accountable, measured engagement that rebuilds how the team decides and executes together — closer to a team-performance advisory relationship paid on results, with a 10x-return structure on the Performance Partnership.'],
+];
+
 const schema = [
   {
     '@type': 'OfferCatalog',
@@ -29,6 +36,7 @@ const schema = [
       { '@type': 'Offer', name: 'Performance Partnership', priceCurrency: 'USD', price: '75000', description: 'The systemic 12-month engagement. Base fee from $75K; success fees only when documented value confirms a 10x return, so your direct risk is the base fee.' },
     ],
   },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
 ];
 
 ---
@@ -182,6 +190,19 @@ const schema = [
     <div style="max-width:1000px;margin:64px auto 0;padding:0 32px;">
       <PressStrip variant="light" maxWidth={1000} />
     </div>
+
+    <!-- ============ FAQ ============ -->
+    <section style="max-width:900px;margin:72px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Common questions</p>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        {faqs.map(([q, a]) => (
+          <div style="border-top:1px solid rgba(100,1,10,0.16);padding:22px 0;">
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:9px;">{q}</h3>
+            <p style="font-size:16px;line-height:1.66;color:#4A3A34;">{a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <!-- ============ CTA ============ -->
     <section style="background:#64010a;color:#F6EFE0;margin-top:72px;">
