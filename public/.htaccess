@@ -30,6 +30,18 @@ Redirect 301 /common-executive-team-challenges/ /teams/
 Redirect 301 /peopleops/ /teams/
 Redirect 301 /terms-of-use/ /privacy/
 
+# ── Legacy URLs still ranking in Search but 404ing (found in GSC, Aug 2026) ──
+# These old paths still rank and take clicks, but weren't in the new build and
+# had no redirect, so they returned 404 — bleeding traffic and backlink equity.
+# /shakubuku/ carries the Business Insider "$25K executive getaways" backlink and
+# ranked ~#5; /extreme-retreats/ (the CNN piece) ranked ~#3; /about-us/ ranked ~#4.
+Redirect 301 /shakubuku/ /teams/retreats/
+Redirect 301 /extreme-retreats/ /teams/retreats/
+Redirect 301 /experiential-leadership-retreats/ /teams/retreats/
+Redirect 301 /executive-coaching/ /leaders/what-is-executive-coaching/
+RedirectMatch 301 ^/about-us/contact-us/?$ /contact/
+RedirectMatch 301 ^/about-us(/.*)?$ /about/
+
 # ── Off-Road Immersion consolidation ──
 # The near-duplicate Denver + Sedona geo pages were merged into one
 # location-neutral page (both settings shown there, anchored #colorado/#sedona).
