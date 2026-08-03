@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const path = SLUGS.boardMeeting;
+const title = 'How to Run an Effective Board Meeting (That Decides, Not Reports) | Be Legendary';
+const description =
+  'Most board meetings default to polished status theater. An effective one produces oversight and decisions on the few things that matter. The agenda, the disciplines, and the CEO’s real job in the room.';
+
+const faqs = [
+  { q: 'How do you run an effective board meeting?', a: 'Design it to produce decisions and real oversight, not to receive a status update. Send the reporting material in advance and treat it as read; put the board’s scarce time on the two or three consequential questions that actually need the board’s judgment; assign each item a clear purpose (decide, advise, or inform); make dissent welcome in the room; and end with owned decisions and follow-through tracked between meetings. The test of a good board meeting is not how smoothly it ran — it’s whether the company is better governed because it happened.' },
+  { q: 'What should be on a board meeting agenda?', a: 'A decision-first board agenda has five parts: (1) a consent agenda for routine approvals batched into a single vote; (2) the CEO’s honest read on the state of the business — including what’s not working; (3) one to three strategic decisions or risks that need the board’s judgment, each with a clear ask; (4) required governance and committee business (audit, comp, risk); and (5) an executive session without management present. Pre-read the metrics; spend the meeting on judgment, not narration.' },
+  { q: 'How long should a board meeting be?', a: 'Most effective board meetings run two to four hours, with the material sent well in advance so no time is spent presenting it. If the meeting runs long, it’s usually because reporting that should have been pre-read is being narrated live, or because decisions weren’t framed clearly enough to resolve. Length is a symptom; the real target is how much of the time went to consequential judgment versus status.' },
+  { q: 'What’s the difference between a board meeting and an executive team meeting?', a: 'An executive team meeting is where management runs the business — weekly cadence, operational decisions, accountability for commitments. A board meeting is where the board governs the business — periodic oversight, a small number of consequential decisions, and holding the CEO and company accountable to strategy and risk. They fail for the same underlying reason, though: when the room reports instead of decides. See our companion guide on running an executive team meeting.' },
+  { q: 'Why do board meetings become status updates instead of real discussions?', a: 'Because reporting is safe and judgment is uncomfortable. A dashboard of green metrics and a rehearsed deck let everyone feel productive without anyone having to raise the hard question. It’s the same dynamic that lets a leadership team avoid the real conversation — comfort over truth. The fix is structural: pre-read the status, protect the agenda for the few things that need debate, and make it explicitly safe for a director to say what isn’t working.' },
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'How to run a board meeting', item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'Article', headline: 'How to run an effective board meeting', datePublished: '2026-08-01', dateModified: '2026-08-01', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: `https://www.belegendary.org${path}`, description: 'What separates a board meeting that governs and decides from one that receives a polished status update — the agenda, the disciplines, and the CEO’s real job.' },
+  { '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
+
+const bodyP = 'font-size:18.5px;line-height:1.72;color:rgba(244,240,231,0.84);margin-bottom:24px;';
+const h2 = "font-family:'Newsreader',serif;font-weight:500;font-size:clamp(25px,3.3vw,36px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:50px 0 20px;";
+---
+<BaseLayout title={title} description={description} path={path} ogType="article" ogTitle="How to run an effective board meeting" ogDescription="Most board meetings default to status theater. An effective one produces oversight and decisions on the few things that matter." schema={schema}>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <div style="background:#15130E;color:#F4F0E7;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+  <article>
+  <!-- HERO + ANSWER-FIRST -->
+  <header style="position:relative;max-width:880px;margin:0 auto;padding:80px 32px 36px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">How to run a board meeting</span>
+    </nav>
+    <p style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:16px;">A working guide</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">How to run an effective board meeting.</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; August 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">Design the meeting to <strong>decide and oversee</strong>, not to receive a status update. Send the reporting in advance and treat it as read; spend the board&rsquo;s scarce time on the two or three consequential questions that need its judgment; give every item a clear purpose &mdash; decide, advise, or inform; make dissent welcome in the room; and end with owned decisions and follow-through tracked between meetings. A good board meeting isn&rsquo;t the one that ran smoothly &mdash; it&rsquo;s the one that left the company better governed.</p>
+    </div>
+  </header>
+
+  <div style="max-width:880px;margin:0 auto;padding:8px 32px 0;">
+    <h2 style={h2}>What a board meeting is actually for</h2>
+    <p style={bodyP}>A board meeting exists to do three things a management meeting cannot: exercise <strong style="color:#FBF8F1;">oversight</strong> on behalf of shareholders, make the small number of <strong style="color:#FBF8F1;">decisions</strong> reserved to the board, and bring outside <strong style="color:#FBF8F1;">judgment</strong> to the few questions that will shape the company&rsquo;s next few years. None of those is served by a management status update. Yet that&rsquo;s what most board meetings quietly become &mdash; a sequence of polished presentations that inform without ever asking the board to think.</p>
+    <p style={bodyP}>The distinction matters because a board&rsquo;s time is the scarcest governance resource a company has: a handful of experienced people, in the room together, a few times a year. Spend it narrating what everyone could have read, and you&rsquo;ve converted your most valuable oversight into theater.</p>
+
+    <h2 style={h2}>Why most board meetings default to theater</h2>
+    <p style={bodyP}>Reporting is safe. Judgment is uncomfortable. A deck of green metrics lets everyone feel productive without anyone having to surface the hard question &mdash; the customer that&rsquo;s wavering, the strategy that isn&rsquo;t working, the risk no one wants to name. It&rsquo;s the same dynamic that lets a leadership team avoid the real conversation: comfort over truth, dressed up as diligence.</p>
+    <p style={bodyP}>There&rsquo;s a structural driver, too. As companies get leaner and reporting gets more automated, the board increasingly sees a clean, confident dashboard &mdash; while the early signals that a director most needs to hear have fewer and fewer paths into the room. We&rsquo;ve written about that gap forming inside companies as <a href={SLUGS.feedbackVacuum} style="color:#E0744A;text-decoration:underline;">the feedback vacuum</a>; a board meeting is where its consequences surface last, and most expensively.</p>
+
+    <h2 style={h2}>The four disciplines of a board meeting that decides</h2>
+    <p style={bodyP}>The same disciplines that keep an executive team from stalling &mdash; the four cables of the <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> &mdash; are what separate a governing board meeting from a performing one:</p>
+    <ul style="margin:0 0 26px;padding-left:22px;display:flex;flex-direction:column;gap:14px;font-size:18px;line-height:1.62;color:rgba(244,240,231,0.84);">
+      <li><strong style="color:#FBF8F1;">The Decision.</strong> Every substantive item carries an explicit purpose &mdash; <em>decide, advise, or inform</em> &mdash; and every decision item carries a clear ask and a recommendation. Ambiguity about whether the board is deciding or just discussing is what turns an hour into nothing.</li>
+      <li><strong style="color:#FBF8F1;">The Rhythm.</strong> A consent agenda batches routine approvals into one vote; the pre-read carries the status; and the meeting&rsquo;s protected time goes to the vital few. Cadence and preparation are what buy the room its judgment time.</li>
+      <li><strong style="color:#FBF8F1;">The Standard.</strong> Dissent is expected, not tolerated. A board where no one ever disagrees is not aligned &mdash; it&rsquo;s unsafe. The chair&rsquo;s job is to make it normal for a director to say what isn&rsquo;t working, and for the CEO to hear it without defending.</li>
+      <li><strong style="color:#FBF8F1;">The Learning.</strong> Decisions are logged, owners are named, and follow-through is tracked <em>between</em> meetings &mdash; so the next meeting opens on what actually happened, not on a fresh deck that quietly drops last quarter&rsquo;s commitments.</li>
+    </ul>
+
+    <h2 style={h2}>A board agenda that produces decisions</h2>
+    <p style={bodyP}>Structure the meeting so judgment gets the time and reporting doesn&rsquo;t:</p>
+    <ol style="margin:0 0 26px;padding-left:22px;display:flex;flex-direction:column;gap:12px;font-size:18px;line-height:1.6;color:rgba(244,240,231,0.84);">
+      <li><strong style="color:#FBF8F1;">Consent agenda.</strong> Minutes, routine approvals, committee reports &mdash; batched into a single vote, pulled out only if a director asks.</li>
+      <li><strong style="color:#FBF8F1;">The CEO&rsquo;s honest read.</strong> The real state of the business, including what isn&rsquo;t working. Short, candid, not a highlight reel.</li>
+      <li><strong style="color:#FBF8F1;">The vital few.</strong> One to three strategic decisions or risks that need the board&rsquo;s judgment &mdash; each framed with the ask, the options, and a recommendation. This is where most of the time goes.</li>
+      <li><strong style="color:#FBF8F1;">Governance business.</strong> Audit, compensation, risk, and any committee matters requiring formal action.</li>
+      <li><strong style="color:#FBF8F1;">Executive session.</strong> The board alone, without management &mdash; the safety valve that keeps oversight real.</li>
+    </ol>
+
+    <h2 style={h2}>The CEO&rsquo;s real job in the room</h2>
+    <p style={bodyP}>The instinct is to walk in and reassure &mdash; to show the board a company in control. The more valuable move is the harder one: bring the board the real picture, frame the genuine decisions, and actively invite challenge on the things you&rsquo;re least sure about. A board that only ever sees confidence can&rsquo;t govern, and can&rsquo;t help. A board that&rsquo;s trusted with the truth becomes the sharpest thinking partner a CEO has.</p>
+    <p style={bodyP}>That&rsquo;s the same shift that separates a leadership team that executes from one that stalls &mdash; and it&rsquo;s learnable. If your board or executive meetings report more than they decide, the fastest way to see why is to watch the team work a real decision under pressure and measure where it breaks.</p>
+
+    <!-- LFS tie-in -->
+    <div style="margin:36px 0 8px;background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:16px;padding:28px 30px;">
+      <p style="font-size:17px;line-height:1.62;color:rgba(244,240,231,0.86);margin:0;">Want to see where your team defaults to reporting over deciding? The <a href={SLUGS.teamLfs} style="color:#E0744A;text-decoration:underline;">Leadership Failure Simulation</a> puts your executive team through a live decision under pressure and shows, with behavioral evidence, exactly where it breaks. Also see the companion guide: <a href={SLUGS.executiveTeamMeeting} style="color:#E0744A;text-decoration:underline;">how to run an executive team meeting</a>.</p>
+    </div>
+
+    <!-- FAQ -->
+    <h2 style={h2}>Straight answers</h2>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px;">
+      {faqs.map((f) => (
+        <div style="border-top:1px solid rgba(244,240,231,0.12);padding:22px 0;">
+          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#FBF8F1;margin-bottom:10px;">{f.q}</h3>
+          <p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.78);">{f.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:880px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find out why the room reports instead of decides.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A Calibration Call is 15 minutes. You&rsquo;ll leave with a concrete read on where your executive team &mdash; and the meetings it runs &mdash; break first, whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div style="max-width:880px;margin:56px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.executiveTeamMeeting} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">How to run an executive team meeting</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">The weekly management meeting that decides instead of reports.</span>
+      </a>
+      <a href={SLUGS.meetingAgenda} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">A leadership team meeting agenda</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">A copy-ready structure that ends in owned decisions.</span>
+      </a>
+    </div>
+  </div>
+
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+  </article>
+  </div>
+
+  <SiteFooter audience="teams" />
+</BaseLayout>

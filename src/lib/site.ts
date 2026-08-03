@@ -117,6 +117,7 @@ export const SLUGS = {
   // How-to guides (bottom-funnel, mapped to the four disciplines)
   howToAccountable: '/how-to-hold-your-leadership-team-accountable/',
   executiveTeamMeeting: '/how-to-run-an-executive-team-meeting/',
+  boardMeeting: '/how-to-run-a-board-meeting/',
   decisionMaking: '/executive-team-decision-making/',
   highPerformingTeam: '/how-to-build-a-high-performing-leadership-team/',
   strategyExecutionGap: '/strategy-execution-gap/',
