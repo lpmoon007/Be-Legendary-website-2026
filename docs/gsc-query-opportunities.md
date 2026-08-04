@@ -48,8 +48,17 @@ Real demand, but page 6–7. No quick fix; the content + backlink work is the pa
 - Home and the `/leaders/workouts/` pages convert at higher CTR than the money pages.
 
 ## Recommended order
-1. **Tier 1 CTR batch** — rewrite titles/metas on the 6–8 page-1/2 pages earning
-   zero clicks (fastest measurable win; same work as the retreats title pass).
+1. **Tier 1 CTR batch** — ✅ **DONE (2026-08).** Rewrote titles/metas on the
+   pages with a clear CTR hook to add, leaving already-strong ones alone:
+   - `/roadmap-to-success/` → "Roadmap to Success — Free Chapter, with Chopra &
+     Blanchard" (leads with the famous co-authors vs. generic results).
+   - `/flag-model/` → "The Flag Model: Find Where Your Team Breaks First"
+     (outcome hook, was "The Execution Framework") + benefit-led description.
+   - `/case-studies/` → "…Turnarounds, By the Numbers" (proof hook).
+   - `/lost-disciplines/` → trimmed the over-long description.
+   Left `/state-of-executive-team-execution/`, `/leadership-team-offsite-facilitator/`,
+   `/glossary/`, `/resources/` as-is — already well-optimized (and glossary/resources
+   are inherently low-CTR intent). Rankings/CTR move over the coming weeks.
 2. **Tier 2** — term/title passes on executive-offsite-ideas, flag-model-vs-4dx,
    the offsite/retreat-planning guides.
 3. **Double down on research notes** (highest CTR content type).
