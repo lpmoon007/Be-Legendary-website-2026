@@ -84,6 +84,7 @@ export const SLUGS = {
   caseFederalFiscal: '/case-studies/federal-fiscal-leadership-team/',
   caseAlaska: '/case-studies/alaska-executive-vulnerability/',
   howWeWorkTogether: '/how-we-work-together/',
+  pricing: '/pricing/',
   elfs: '/elfs/',
   glossary: '/glossary/',
   resources: '/resources/',

@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SLUGS, CTA_URL, CONTACT_EMAIL } from '../lib/site';
+
+const path = SLUGS.pricing;
+const title = 'Pricing — What It Costs to Work With Be Legendary';
+const description =
+  'Straight pricing for every way to work with Be Legendary — from a free 15-minute call to a 12-month Performance Partnership. Every paid step credits 50% toward the next.';
+
+// The public ladder — source of truth mirrors the how-we-work-together OfferCatalog.
+const rungs = [
+  { name: 'Break-Point Self-Assessment', price: 'Free', meta: '4 minutes · self-serve', what: 'A fast, self-scored read on where your team is most likely to break first.', href: SLUGS.breakPointAssessment, cta: 'Take it' },
+  { name: 'Calibration Call', price: 'Free', meta: '15 minutes · with James', what: 'A short conversation to confirm fit and name your team’s first break point. A calibration, not a pitch.', href: CTA_URL, cta: 'Book it' },
+  { name: 'Solo ELFS', price: '$7,500', meta: '~30 minutes · the CEO alone', what: 'The Executive Leadership Failure Simulation, run solo — feel the diagnostic yourself before bringing the team. Credited toward Team LFS.', href: SLUGS.elfs, cta: 'How it works' },
+  { name: 'Team LFS', price: '$28K–$35K', meta: 'Up to 8 executives · ~90 minutes', what: 'The Team Leadership Failure Simulation — a live behavioral read that shows exactly where your team breaks, with a FlagScore™ baseline.', href: SLUGS.teamLfs, cta: 'See the read' },
+  { name: 'Executive Immersion', price: 'From $35K', meta: 'A single engineered day', what: 'One high-stakes day, built from whatever is within reach of your team — expedition, city, or ownership.', href: SLUGS.executiveImmersion, cta: 'See the day' },
+  { name: 'Discipline Sprint', price: '$45K–$65K', meta: '90 days · one broken discipline', what: 'A focused 90-day sprint that rebuilds the one discipline the diagnostic found broken.', href: `${SLUGS.howWeWorkTogether}#discipline-sprint`, cta: 'Learn more' },
+  { name: 'Leadership Retreat', price: '$25K–$500K+', meta: 'Focused · Signature · Bespoke', what: 'A facilitated, multi-day experiential retreat engineered around one outcome and reinforced for 30 days.', href: SLUGS.teamRetreats, cta: 'See the three ways' },
+  { name: 'Performance Partnership', price: 'From $75K base', meta: '12 months · 10×-return structure', what: 'The systemic engagement. Success fees only when documented value confirms a 10× return — your direct risk is the base fee. Tiers to $1.1M by company size.', href: SLUGS.crisisBrief, cta: 'Read the brief' },
+];
+
+// Chooser: situation → recommended starting point.
+const chooser = [
+  { key: 'explore', label: 'I’m not sure this is even my problem.', rec: 'Start free.', body: 'Take the 4-minute <a href="' + SLUGS.breakPointAssessment + '">Break-Point Self-Assessment</a>, or book a 15-minute <a href="' + CTA_URL + '">Calibration Call</a> — you’ll leave with a concrete read on where your team breaks first, whether or not we ever work together.', price: '$0' },
+  { key: 'proof', label: 'I want proof of exactly where my team breaks.', rec: 'The Team LFS.', body: 'The <a href="' + SLUGS.teamLfs + '">Team Leadership Failure Simulation</a> is a live behavioral read — real observed actions, not a survey — with a measurable baseline. Prefer to feel it solo first? <a href="' + SLUGS.elfs + '">ELFS</a> ($7,500) is the CEO-only version, credited toward the team run.', price: '$28K–$35K' },
+  { key: 'day', label: 'I want one high-impact experience for the team.', rec: 'An Immersion or a Retreat.', body: 'For a single engineered day, an <a href="' + SLUGS.executiveImmersion + '">Executive Immersion</a> (from $35K). For a multi-day, fully off-site experience, a <a href="' + SLUGS.teamRetreats + '">Leadership Retreat</a> ($25K–$500K+, in three tiers).', price: 'From $35K' },
+  { key: 'fix', label: 'I know the one thing that’s broken and want it fixed.', rec: 'A Discipline Sprint.', body: 'A focused 90-day <a href="' + SLUGS.howWeWorkTogether + '#discipline-sprint">Discipline Sprint</a> rebuilds the single discipline the diagnostic found broken — the fastest path from one clear problem to changed behavior.', price: '$45K–$65K' },
+  { key: 'all', label: 'I want the whole thing solved, with skin in the game.', rec: 'The Performance Partnership.', body: 'The 12-month <a href="' + SLUGS.crisisBrief + '">Performance Partnership</a> installs the operating system and stays accountable to a measured outcome — success fees only when documented value confirms a 10× return. Your direct risk is the base fee.', price: 'From $75K' },
+];
+
+const faqs = [
+  ['Why does every paid step credit toward the next?', 'Because you shouldn’t pay twice to go deeper. Every paid step credits 50% toward whatever you do next — so starting small is never a wasted spend, it’s a down payment on the fuller engagement if you choose it.'],
+  ['Why is this more expensive than a coach or a facilitator?', 'Because you’re not buying an event or a person’s hours — you’re buying a diagnosed, engineered change in how your team executes, reinforced and measured. A one-day facilitator is cheaper per day and more expensive per outcome. Judge the cost against the cost of the problem, which for most companies is several percent of revenue a year.'],
+  ['What if it doesn’t work?', 'On the Performance Partnership, success fees are earned only when documented value confirms a 10× return on metrics your CEO and CFO baseline and co-sign. If the ratio isn’t there, no success fee is invoiced against it — your maximum financial risk is the base fee.'],
+  ['Do you publish real numbers, or is this “contact us for pricing”?', 'Real numbers, above — from a free call to a $75K-base partnership with tiers to $1.1M by company size. The only thing that lives in the proposal is the exact configuration for your team.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: `https://www.belegendary.org${path}` },
+  ] },
+  { '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+];
+---
+<BaseLayout title={title} description={description} path={path} ogType="website" ogTitle="Pricing — what it costs to work with Be Legendary" ogDescription="Straight pricing for every way in — from a free call to a 12-month Performance Partnership. Every paid step credits 50% toward the next." schema={schema}>
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1080px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;">
+        <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#64010a;">Pricing</span>
+      </nav>
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Pricing</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1.02;letter-spacing:-0.022em;color:#3A0A0C;max-width:20ch;">What it costs — and where to start.</h1>
+      <p style="margin-top:22px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:60ch;">Most firms in this space won’t name a number until they’ve qualified you. Here’s the whole ladder, in the open — from a free 15-minute call to a 12-month partnership. And one principle that changes the math: <strong style="color:#3A0A0C;">every paid step credits 50% toward the next</strong>, so starting small is never wasted spend.</p>
+    </section>
+
+    <!-- CHOOSER -->
+    <section style="max-width:1080px;margin:52px auto 0;padding:0 32px;">
+      <div style="background:#64010a;color:#F6EFE0;border-radius:22px;padding:44px 46px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">Not sure which one?</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#FBF3E7;margin-bottom:26px;max-width:24ch;">Pick the sentence that sounds most like you.</h2>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          {chooser.map((c) => (
+            <button type="button" data-choose={c.key} style="text-align:left;cursor:pointer;background:rgba(246,239,224,0.08);border:1px solid rgba(246,239,224,0.22);color:#F6EFE0;border-radius:12px;padding:16px 20px;font-size:16.5px;font-family:inherit;transition:background .15s,border-color .15s;">{c.label}</button>
+          ))}
+        </div>
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px;">
+          {chooser.map((c) => (
+            <div data-rec={c.key} hidden style="background:#F6F1E7;color:#3A0A0C;border-radius:14px;padding:24px 26px;">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+                <p style="font-family:'Newsreader',serif;font-size:22px;color:#64010a;">{c.rec}</p>
+                <span style="font-family:'Newsreader',serif;font-size:20px;color:#C04A26;white-space:nowrap;">{c.price}</span>
+              </div>
+              <p style="margin-top:10px;font-size:16px;line-height:1.62;color:#4A3A34;" set:html={c.body}></p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- THE LADDER -->
+    <section style="max-width:1080px;margin:56px auto 0;padding:0 32px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.08;color:#3A0A0C;margin-bottom:8px;">The whole ladder, in the open.</h2>
+      <p style="font-size:16px;line-height:1.6;color:#6B5A54;margin-bottom:30px;max-width:60ch;">Ranges reflect group size, destination, duration, and how much diagnosis and follow-through is built in. Every paid step credits 50% toward the next.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        {rungs.map((r) => (
+          <a href={r.href} style="display:grid;grid-template-columns:1.4fr 1fr auto;gap:20px;align-items:center;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:24px 28px;text-decoration:none;color:inherit;" class="bl-price-row" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)'">
+            <div>
+              <p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">{r.name}</p>
+              <p style="margin-top:4px;font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#8A6A64;">{r.meta}</p>
+              <p style="margin-top:8px;font-size:15px;line-height:1.55;color:#5A4A44;max-width:52ch;">{r.what}</p>
+            </div>
+            <p style="font-family:'Newsreader',serif;font-size:clamp(22px,2.6vw,28px);color:#64010a;">{r.price}</p>
+            <span style="font-weight:700;font-size:14px;color:#C04A26;white-space:nowrap;">{r.cta} &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section style="max-width:1080px;margin:44px auto 0;padding:0 32px;">
+      <div style="background:#E7DECB;border-radius:18px;padding:34px 38px;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:10px;">The 10× guarantee</p>
+        <p style="font-size:18px;line-height:1.65;color:#3A2E29;max-width:74ch;">On the Performance Partnership, we baseline three metrics you already track — co-signed by your CEO and CFO — and measure quarterly against them. Success fees are earned only when documented value confirms a <strong>10× return</strong> on total investment. If the ratio isn’t there, no success fee is invoiced against it. Your maximum financial risk is the base fee. The upside is not capped.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="max-width:900px;margin:56px auto 0;padding:0 32px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#3A0A0C;margin-bottom:8px;">Pricing, answered plainly.</h2>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:16px;">
+        {faqs.map(([q, a]) => (
+          <div style="border-top:1px solid rgba(100,1,10,0.16);padding:22px 0;">
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:9px;">{q}</h3>
+            <p style="font-size:16px;line-height:1.66;color:#4A3A34;">{a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background:#64010a;color:#F6EFE0;margin-top:64px;">
+      <div style="max-width:760px;margin:0 auto;padding:72px 32px;text-align:center;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,44px);line-height:1.06;letter-spacing:-0.02em;">Still deciding? Start with the free read.</h2>
+        <p style="margin:18px auto 0;max-width:52ch;font-size:16.5px;line-height:1.6;color:#F0D9D2;">Fifteen minutes with James, and you’ll leave knowing your team’s first break point and roughly what fixing it costs — whether or not we work together.</p>
+        <div style="margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#F6EFE0;color:#64010a;padding:16px 30px;border-radius:999px;font-weight:800;font-size:15.5px;text-decoration:none;">Book a Calibration Call &rarr;</a>
+          <a href={`mailto:${CONTACT_EMAIL}?subject=Pricing%20question`} style="border:1px solid rgba(246,239,224,0.4);color:#F6EFE0;padding:16px 30px;border-radius:999px;font-weight:700;font-size:15.5px;text-decoration:none;">Email a question</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    document.querySelectorAll('[data-choose]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-choose');
+        document.querySelectorAll('[data-rec]').forEach((r) => { r.hidden = r.getAttribute('data-rec') !== key; });
+        document.querySelectorAll('[data-choose]').forEach((b) => {
+          const on = b === btn;
+          b.style.background = on ? 'rgba(246,239,224,0.2)' : 'rgba(246,239,224,0.08)';
+          b.style.borderColor = on ? '#E9A98F' : 'rgba(246,239,224,0.22)';
+        });
+      });
+    });
+  </script>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>
