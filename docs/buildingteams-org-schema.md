@@ -98,12 +98,55 @@ About page).
 3. **`url`.** Points to belegendary.org (the entity's primary site). Leave it if
    belegendary.org is the flagship; that's the intended reading.
 
-## Optional add: the Person node
+## Matching Person block
 
-buildingteams.com already hosts a James Carter bio
-(`/about/james-carter/`), so it's well-supported to also mirror the **Person**
-node there (same `@id` `belegendary.org/#james`, Wikidata `Q140514540`). Ask and
-I'll draft it.
+buildingteams.com already hosts a James Carter bio (`/about/james-carter/`), so
+mirror the **Person** node there — same `@id` (`belegendary.org/#james`) and
+Wikidata `Q140514540`, with `sameAs` flipped to point at the belegendary.org
+profile. The buildingteams bio is the self-page, so it is correctly omitted from
+`sameAs`. Best placed on `/about/james-carter/`.
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://www.belegendary.org/#james",
+  "name": "James Carter",
+  "givenName": "James",
+  "familyName": "Carter",
+  "alternateName": "James L. Carter",
+  "jobTitle": "Founder",
+  "worksFor": { "@id": "https://www.belegendary.org/#org" },
+  "description": "Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership; a collaborative author featured on the cover of Roadmap to Success (2012) alongside Deepak Chopra and Ken Blanchard; and co-author of Discover Your Inner Strength (2009) alongside Brian Tracy, Ken Blanchard and Stephen Covey. Twenty-five years working with hundreds of executive teams; featured in CNN, CNN Money and Business Insider.",
+  "url": "https://www.belegendary.org/about/james-carter/",
+  "knowsAbout": [
+    "executive team performance",
+    "leadership team alignment",
+    "the Flag Model",
+    "organizational execution",
+    "leadership development",
+    "executive facilitation",
+    "leadership offsites",
+    "team accountability",
+    "decision-making",
+    "leadership mindset",
+    "personal transformation"
+  ],
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q140514540",
+    "https://www.belegendary.org/about/james-carter/",
+    "https://www.linkedin.com/in/jlcarter/",
+    "https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG",
+    "https://www.crunchbase.com/person/james-carter-5417"
+  ]
+}
+</script>
+```
+
+Note: `url` stays the belegendary.org profile (the entity's primary), and
+`worksFor` resolves to the same `#org` node — so if you place both blocks on the
+same buildingteams.com page they link cleanly via `@id`.
 
 ## After you paste
 
