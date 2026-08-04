@@ -60,9 +60,30 @@ const faqs = [
 // routes (Resources → hub, Retreats → team retreats). The CTA button and the
 // For Teams/For Leaders toggle are supplied by SiteHeader.
 const homeLinks = [
-  { label: 'How we work together', href: SLUGS.howWeWorkTogether },
+  {
+    label: 'How we work together',
+    href: SLUGS.howWeWorkTogether,
+    children: [
+      { label: 'Leadership Failure Simulation', href: SLUGS.teamLfs, desc: 'Like a flight simulator, for your leadership team' },
+      { label: 'Executive Immersion', href: SLUGS.executiveImmersion, desc: 'One high-stakes day, engineered for your team' },
+      { label: 'Leadership Retreat', href: SLUGS.teamRetreats, desc: 'Multi-day, fully off-site' },
+      { label: 'Discipline Sprint', href: `${SLUGS.howWeWorkTogether}#discipline-sprint`, desc: 'A focused 90-day behavioral improvement' },
+      { label: 'Performance Partnership', href: `${SLUGS.howWeWorkTogether}#performance-partnership`, desc: '12-month engagement, 10×-return guarantee' },
+      { label: 'Pricing', href: SLUGS.pricing, desc: 'Every way in, with real prices' },
+      { label: 'How we work together', href: SLUGS.howWeWorkTogether, divider: true },
+    ],
+  },
   { label: 'Retreats', href: SLUGS.teamRetreats },
-  { label: 'Resources', href: SLUGS.resources },
+  {
+    label: 'Resources',
+    href: SLUGS.resources,
+    children: [
+      { label: 'Field Notes', href: SLUGS.fieldNotes },
+      { label: 'Research Notes', href: SLUGS.researchNotes },
+      { label: 'Case studies', href: SLUGS.caseStudies },
+      { label: 'All resources', href: SLUGS.resources, divider: true },
+    ],
+  },
   { label: 'James', href: '#james' },
 ];
 ---
