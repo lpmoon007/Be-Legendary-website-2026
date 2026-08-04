@@ -7,7 +7,7 @@ import PressStrip from '../../../components/PressStrip.astro';
 import { SLUGS, CTA_URL } from '../../../lib/site';
 
 const path = SLUGS.teamRetreats;
-const title = 'Team Retreats — Focused, Signature & Bespoke | Be Legendary';
+const title = 'Leadership & Executive Retreats | Be Legendary';
 const description =
   'Three ways to run an executive team building retreat: a Focused leadership retreat around one outcome, a Signature experiential retreat, or fully bespoke — facilitated and reinforced for 30 days.';
 
@@ -35,6 +35,8 @@ const dials = [
 // FAQ — captures "executive team building retreat" (and the offsite/retreat
 // distinction) with FAQPage schema. This page is the canonical owner of the term.
 const faqs = [
+  ['What is a leadership retreat?', 'A leadership retreat is a multi-day, off-site gathering where an executive team steps out of operations to work on how it leads together — how it decides, aligns, and holds itself accountable — rather than on the day-to-day. Done seriously, it isn’t a scenic offsite or a team-building day: it’s a facilitated experience built around one real outcome, run so the experience turns into commitments, and reinforced afterward so the change survives the trip home. The setting is the retreat; the product is the behavior change.'],
+  ['How much does an executive leadership retreat cost?', 'A serious executive leadership retreat generally runs from about $25,000 for a Focused, ready-to-run format up to $500,000+ for a fully bespoke engagement — driven by group size, destination, duration, and how much diagnosis, customization and follow-through is built in. The number that matters isn’t the fee but the cost of the problem you’re solving; a retreat that actually changes how the team executes returns many times its price, while a scenic offsite that changes nothing is expensive at any number.'],
   ['Is this an executive team building retreat?', 'Yes — but not an activities day dressed up as one. An executive team building retreat, the way we run it, is a facilitated multi-day experience built around one real outcome your team needs to reach. The experience becomes a laboratory for how the team actually decides and executes — then it is reinforced for 30 days so the change survives the trip home. The setting is the retreat; the product is the behavior change.'],
   ['What is the difference between an executive team building retreat and a corporate offsite?', 'An offsite is a block of time away from operations. A retreat is the facilitated version of it — built around a diagnosed outcome, run so the experience becomes commitments, and followed through afterward. A retreat with no real outcome and no follow-through is just an offsite with better catering. The question is never “where do we go?” but “what are we here to change, and how will we know it did?”'],
   ['How long is an executive team building retreat, and where does it run?', 'Most run multi-day, at curated venues — domestic or international — chosen to fit the outcome, not the other way around. We handle the venue, travel, food, facilitation and the 30-day reinforcement end to end; you bring the team and the outcome. A single dramatic day is possible when that is the right container, but the retreats are built for a depth a day cannot reach.'],
@@ -49,7 +51,7 @@ const schema = [
   description={description}
   path={path}
   schema={schema}
-  ogTitle="Team Retreats — Focused, Signature & Bespoke | Be Legendary"
+  ogTitle="Leadership & Executive Retreats — Focused, Signature & Bespoke"
   ogDescription="You already know your team needs this. The only question is the right shape for it."
   bodyBg="#EFE9DD"
 >
@@ -349,7 +351,7 @@ const schema = [
     <!-- ============ FAQ (captures "executive team building retreat") ============ -->
     <section style="max-width:900px;margin:88px auto 0;padding:0 32px 8px;">
       <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">Straight answers</p>
-      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.6vw,40px);line-height:1.08;letter-spacing:-0.02em;color:#3A0A0C;margin-bottom:32px;">Executive team building retreats, answered plainly.</h2>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.6vw,40px);line-height:1.08;letter-spacing:-0.02em;color:#3A0A0C;margin-bottom:32px;">Leadership &amp; executive retreats, answered plainly.</h2>
       <div style="display:flex;flex-direction:column;gap:26px;">
         {faqs.map(([q, a]) => (
           <div style="border-top:1px solid rgba(100,1,10,0.16);padding-top:22px;">
