@@ -268,32 +268,45 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 
 export const ORG_NODE = {
   // Plain Organization — not ProfessionalService/LocalBusiness, which would
-  // require a physical PostalAddress and flag a structured-data error on every
-  // page (we're a consulting firm, no walk-in address).
+  // require a full street PostalAddress and flag a structured-data error on
+  // every page (we're a consulting firm, no walk-in address). `location`
+  // carries locality-only (Denver, CO) — enough to place the entity without
+  // asserting a storefront.
   '@type': 'Organization',
   '@id': ORG_ID,
   name: 'Be Legendary',
-  alternateName: 'Repario',
+  // Building Teams is the same legal entity (a DBA), so it lives here and in
+  // sameAs — NOT as a subOrganization, which would assert a separate child.
+  alternateName: ['Repario', 'Building Teams', 'Repario Ltd Inc'],
   url: `${SITE_URL}/`,
   logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/favicon-snail.png`, width: 512, height: 512 },
   image: `${SITE_URL}/assets/share-card.png`,
   description: 'An executive-team diagnostic and performance firm. We rebuild the disciplines of the Flag Model that turn a stalled leadership team into one that executes.',
+  slogan: 'Where does your executive team break first?',
   founder: { '@id': PERSON_ID },
   foundingDate: '2003',
   areaServed: 'US',
+  location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Denver', addressRegion: 'CO', addressCountry: 'US' } },
   contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+1-800-513-8759', url: 'https://meetings-na2.hubspot.com/jcarter28' },
-  subOrganization: [
-    { '@type': 'Organization', name: 'Prove', url: 'https://www.provecq.com/', description: 'Prove measures who delivers — the Commitment Quotient (CQ), a behavioral measurement of Initiative, Follow-Through, and Learnability. The individual-capacity companion to the Flag Model.' },
-    { '@type': 'Organization', name: 'Building Teams', url: 'https://www.buildingteams.com/', description: 'The corporate team-building and charity-events arm of Be Legendary.' },
-  ],
-  sameAs: ['https://www.linkedin.com/company/repario-and-be-legendary/', 'https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
+  // Prove only — a genuinely separate product brand. Building Teams (a DBA of
+  // this same entity) was removed to resolve the same-entity-vs-child conflict.
+  subOrganization: { '@type': 'Organization', name: 'Prove', url: 'https://www.provecq.com/', description: 'Prove measures who delivers — the Commitment Quotient (CQ), a behavioral measurement of Initiative, Follow-Through, and Learnability. The individual-capacity companion to the Flag Model.' },
+  knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation', 'leadership offsites', 'team accountability'],
+  // Wikidata first — the anchor that resolves belegendary.org, buildingteams.com
+  // and the Wikidata item to one entity (bidirectional via P112 on the item).
+  sameAs: ['https://www.wikidata.org/wiki/Q140513581', 'https://www.linkedin.com/company/repario-and-be-legendary/', 'https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
 };
 
 export const PERSON_NODE = {
   '@type': 'Person',
   '@id': PERSON_ID,
   name: 'James Carter',
-  jobTitle: 'Founder, Be Legendary',
+  // givenName/familyName + "James L. Carter" disambiguate from the other two
+  // James Carters that already hold Wikidata/Crunchbase entities.
+  givenName: 'James',
+  familyName: 'Carter',
+  alternateName: 'James L. Carter',
+  jobTitle: 'Founder',
   description:
     'Founder of Be Legendary and creator of the Flag Model. Sole author of the forthcoming Lost Disciplines of Leadership; a collaborative author featured on the cover of Roadmap to Success (2012) alongside Deepak Chopra and Ken Blanchard; and co-author of Discover Your Inner Strength (2009) alongside Brian Tracy, Ken Blanchard and Stephen Covey. Twenty-five years working with hundreds of executive teams; featured in CNN, CNN Money and Business Insider.',
   knowsAbout: [
@@ -305,10 +318,11 @@ export const PERSON_NODE = {
   url: `${SITE_URL}/about/james-carter/`,
   worksFor: { '@id': ORG_ID },
   sameAs: [
-    'https://www.linkedin.com/in/jlcarter/',
-    'https://www.buildingteams.com/about/james-carter/',
-    'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG',
     'https://www.wikidata.org/wiki/Q140514540',
+    'https://www.linkedin.com/in/jlcarter/',
+    'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG',
+    'https://www.crunchbase.com/person/james-carter-5417',
+    'https://www.buildingteams.com/about/james-carter/',
   ],
 };
 
