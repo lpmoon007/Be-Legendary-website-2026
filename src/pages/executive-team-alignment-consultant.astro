@@ -7,7 +7,7 @@ import PressStrip from '../components/PressStrip.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
 const title = 'Executive Team Alignment Consultant: Role, Cost & When to Hire';
-const description = 'A guide to executive team alignment consultants: what the work involves, when you need one versus a facilitator or coach, and what to ask before hiring.';
+const description = 'A plain guide to team alignment consultants for executive teams: what the work involves, when to hire one vs a facilitator or coach, what it costs, and what to ask.';
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -20,6 +20,8 @@ const schema = [
     { '@type': 'Question', name: 'What does an executive team alignment consultant do?', acceptedAnswer: { '@type': 'Answer', text: 'An executive team alignment consultant helps a leadership team agree on a shared set of priorities and the way it makes decisions, holds standards, and works together — then helps install those as durable habits. The work usually combines a diagnostic of how the team actually operates, facilitated working sessions, and follow-through over time. It differs from one-off facilitation in that the goal is lasting behavior change, not a single productive meeting.' } },
     { '@type': 'Question', name: 'When should I hire an executive team alignment consultant?', acceptedAnswer: { '@type': 'Answer', text: "Consider one when the strategy is sound but execution stalls: leaders would name different top priorities, decisions don't stick, initiatives don't finish, or accountability only happens when the CEO is in the room. If the issue is a single leader's development, a coach is a better fit; if you need one productive session, a facilitator may be enough. An alignment consultant fits when the problem is how the team operates together over time." } },
     { '@type': 'Question', name: 'How do I choose an executive team alignment consultant?', acceptedAnswer: { '@type': 'Answer', text: "Look for a clear method rather than generic 'team building,' a diagnostic step that measures how your team actually works before prescribing, follow-through beyond the offsite, and senior experience inside real executive teams. Ask how they measure progress, what changes in the operating rhythm afterward, and what happens if it doesn't work." } },
+    { '@type': 'Question', name: 'Is a "team alignment consultant" the same as an "executive team alignment consultant"?', acceptedAnswer: { '@type': 'Answer', text: 'They usually mean the same role — "team alignment consultant" is just the shorter phrasing. This guide focuses on executive and senior leadership teams specifically, where the stakes and the group dynamics are highest, but the core work is the same whatever you call it: diagnose how the team operates, align on priorities and how decisions get made, then build the follow-through that turns it into habit.' } },
+    { '@type': 'Question', name: 'What does a team alignment consultant cost?', acceptedAnswer: { '@type': 'Answer', text: "There's no single sticker price — fees scale with scope, from a one-off facilitated session to a multi-quarter engagement with follow-through. The number that should decide it isn't the day rate but the cost of the problem, which for most companies runs to several points of revenue lost to a team that can't decide or finish. Be Legendary publishes its figures openly rather than gating them behind a sales call." } },
   ] },
 ];
 ---
@@ -81,6 +83,9 @@ const schema = [
       <li>What's your experience inside real executive teams, not just classrooms?</li>
       <li>What happens if it doesn't work?</li>
     </ul>
+
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-0.015em;color:#FBF8F1;margin:44px 0 20px;">What does a team alignment consultant cost?</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:24px;">There's no single sticker price &mdash; fees scale with scope. A one-off facilitated session is the cheapest and the shallowest; a diagnostic paired with working sessions costs more; and a sustained engagement that installs new operating habits over several quarters, with follow-through, sits at the top. The number that should decide it isn't the day rate &mdash; it's the cost of the problem, which for most companies runs to several points of revenue lost to a team that can't decide, finish, or hold the line. We publish our own figures rather than hide them: <a href={SLUGS.pricing} style="color:#E0744A;text-decoration:none;border-bottom:1px solid rgba(224,116,74,0.4);">see what it costs to work with us</a>, or <a href={SLUGS.costCalculator} style="color:#E0744A;text-decoration:none;border-bottom:1px solid rgba(224,116,74,0.4);">estimate what stalled execution is costing you</a> first.</p>
   </div>
 
   <div style="max-width:1080px;margin:52px auto 0;padding:0 32px;">
