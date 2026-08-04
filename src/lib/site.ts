@@ -265,6 +265,25 @@ export const SISTER = {
 export const ORG_ID = `${SITE_URL}/#org`;
 export const PERSON_ID = `${SITE_URL}/#james`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const OFFERCATALOG_ID = `${SITE_URL}/#offercatalog`;
+
+// Public-facing offerings only (GEO / entity understanding). Deliberately
+// excludes the confidential diagnostic audit and the behind-the-trust-wall
+// advisory (Performance Partnership, Discipline Sprint) — those stay out of
+// structured data. Prices live on /pricing/; only the free Calibration Call
+// carries a numeric price here.
+export const OFFER_CATALOG = {
+  '@type': 'OfferCatalog',
+  '@id': OFFERCATALOG_ID,
+  name: 'Ways to work with Be Legendary',
+  url: `${SITE_URL}${SLUGS.pricing}`,
+  itemListElement: [
+    { '@type': 'Offer', category: 'Diagnostic', priceSpecification: { '@type': 'PriceSpecification', price: 0, priceCurrency: 'USD' }, itemOffered: { '@type': 'Service', name: 'Calibration Call', serviceType: 'Executive-team fit call', url: `${SITE_URL}${CTA_URL}`, provider: { '@id': ORG_ID }, description: 'A free 15-minute call to name your team’s first break point. A calibration, not a pitch.' } },
+    { '@type': 'Offer', category: 'Diagnostic', itemOffered: { '@type': 'Service', name: 'Team LFS — Leadership Failure Simulation', serviceType: 'Executive-team diagnostic simulation', url: `${SITE_URL}${SLUGS.teamLfs}`, provider: { '@id': ORG_ID }, description: 'A live, instrumented behavioral read that shows exactly where an executive team breaks, with a FlagScore baseline.' } },
+    { '@type': 'Offer', category: 'Experience', itemOffered: { '@type': 'Service', name: 'Leadership Retreats', serviceType: 'Executive leadership retreat', url: `${SITE_URL}${SLUGS.teamRetreats}`, provider: { '@id': ORG_ID }, description: 'Facilitated multi-day experiential retreats engineered around one outcome and reinforced afterward — Focused, Signature and Bespoke tiers.' } },
+    { '@type': 'Offer', category: 'For Leaders', itemOffered: { '@type': 'Service', name: 'For Leaders — Mindset development', serviceType: 'Leadership development program', url: `${SITE_URL}${SLUGS.leaders}`, provider: { '@id': ORG_ID }, description: 'The individual-leader track: Mindset Workouts and the 30-Day Challenge that turn the legendary mindset into daily reps.' } },
+  ],
+};
 
 export const ORG_NODE = {
   // Plain Organization — not ProfessionalService/LocalBusiness, which would
@@ -292,6 +311,7 @@ export const ORG_NODE = {
   // this same entity) was removed to resolve the same-entity-vs-child conflict.
   subOrganization: { '@type': 'Organization', name: 'Prove', url: 'https://www.provecq.com/', description: 'Prove measures who delivers — the Commitment Quotient (CQ), a behavioral measurement of Initiative, Follow-Through, and Learnability. The individual-capacity companion to the Flag Model.' },
   knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation', 'leadership offsites', 'team accountability'],
+  hasOfferCatalog: OFFER_CATALOG,
   // Wikidata first — the anchor that resolves belegendary.org, buildingteams.com
   // and the Wikidata item to one entity (bidirectional via P112 on the item).
   sameAs: ['https://www.wikidata.org/wiki/Q140513581', 'https://www.linkedin.com/company/repario-and-be-legendary/', 'https://www.buildingteams.com/', 'https://www.amazon.com/stores/James-Carter/author/B009FAZ2NG'],
