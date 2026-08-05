@@ -84,13 +84,18 @@ Real demand, but page 6–7. No quick fix; the content + backlink work is the pa
 - **Bots dominate GA4** (Singapore/Urumqi/Vietnam data-center traffic, ~98%
   direct, 404 page is #1). Judge real demand from GSC + Clarity, not GA4 totals.
 
-## URLs to submit to GSC for indexing (after deploy)
+## URLs to submit to GSC for indexing
 
-⚠️ **Deploy `claude/epic-carson-cjyx09` before submitting.** These URLs only
-exist once the branch is live; submitting against current production returns
-"URL is not on Google / not found." All verified present in `sitemap.xml`;
-excludes `/fractional-chief-people-officer/` (301'd to provecq.com) and the two
-renamed immersion paths (`…/systems/`, `/teams/one-crazy-day/the-city/`).
+**These are already live.** `.github/workflows/deploy.yml` auto-builds and
+rsyncs to the production VPS on every push to `claude/epic-carson-cjyx09` (and
+`main`), so each commit ships within ~40s. That same deploy pings **IndexNow**
+(Bing / Yandex / Seznam) with changed URLs — but **Google does not use
+IndexNow**, so the manual GSC submission below is the Google-specific nudge.
+No "wait for deploy" step — submit any time.
+
+All verified present in `sitemap.xml`; excludes `/fractional-chief-people-officer/`
+(301'd to provecq.com) and the two renamed immersion paths (`…/systems/`,
+`/teams/one-crazy-day/the-city/`).
 
 GSC caps manual "Request Indexing" at ~10–12/day — if rationing, do Tier 1 +
 the two re-index URLs first, and let the sitemap carry the rest.
