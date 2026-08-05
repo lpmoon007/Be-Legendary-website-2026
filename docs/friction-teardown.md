@@ -32,15 +32,29 @@ the actual site, ordered by conversion cost. Companion to docs/cro-findings.md.
 ## Fix-now vs. needs-James
 | Item | Owner | Status |
 |---|---|---|
-| Single **/pricing/** page (consolidate published prices) | me | ✅ building now |
-| **"Which engagement is right for you"** chooser | me | ✅ building now |
-| Surface **lower-commitment CTAs** (assessment/brief) beside "book a call" | me | ☐ |
-| **"What to expect"** timeline/process concreteness | me | ☐ |
-| **EA-sendable one-pager** | me | ☐ |
-| **Jargon / plain-language** on-ramp (home hero) — careful, touches persuasive copy | me | ☐ |
+| Single **/pricing/** page (consolidate published prices) | me | ✅ done (live) |
+| **"Which engagement is right for you"** chooser | me | ✅ done (live) |
+| Surface **lower-commitment CTAs** (assessment/brief) beside "book a call" | me | ⏭️ NEXT SESSION |
+| **"What to expect"** timeline/process concreteness | me | ⏭️ NEXT SESSION |
+| **EA-sendable one-pager** | me | ⏭️ NEXT SESSION |
+| **Jargon / plain-language** on-ramp (home hero) — careful, touches persuasive copy | me | ⏭️ NEXT SESSION |
 | **Named, verifiable client proof** | James | ☐ (permission) |
 | **"Who delivers this" / team** answer | James | ☐ (is there a team?) |
 | **Email capture + nurture** wiring | James | ☐ (HubSpot) |
+
+## ⏭️ NEXT SESSION — confirmed scope (James approved 2026-08-05)
+Do the four **⏭️ NEXT SESSION** items above, in this order:
+1. **Lower-commitment CTAs** — add a secondary path (Break-Point Self-Assessment
+   / crisis brief download) beside "Book a Calibration Call" on the money pages,
+   so hand-raisers aren't forced to the founder's calendar. Highest leverage.
+2. **"What to expect"** — a concrete timeline/process block (deliverables by
+   week, exec-time required, "first 30 days"). Reduces six-figure risk-perception.
+3. **EA-sendable one-pager** — a "what to tell your principal" asset for the EA
+   (stated #1 buyer), who currently leaves with nothing to forward.
+4. **Jargon / plain-language on-ramp** on the home hero — surgical; keep the
+   persuasive voice, just lower the decode cost of ~9 proprietary terms.
+All four are "me"-owned, no external dependencies. Keep edits honest/surgical;
+no fabricated proof; commit + push each (auto-deploys on push).
 
 ## Priority
 #1 (lead capture) + #2 (who-delivers) + #3 (named proof) move the most money —
