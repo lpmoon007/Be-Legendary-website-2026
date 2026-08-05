@@ -63,3 +63,65 @@ Real demand, but page 6–7. No quick fix; the content + backlink work is the pa
    the offsite/retreat-planning guides.
 3. **Double down on research notes** (highest CTR content type).
 4. Leave Tier 3 broad terms ("leadership", "executive coaching") to the slow content/link climb.
+
+---
+
+## Follow-ups from the 2026-08-04 GSC snapshot (last 28 days)
+
+- **`/roadmap-to-success/` re-tuned.** The 28-day export showed the real winnable
+  queries are the book-specific ones carrying the co-author names — e.g.
+  `"roadmap to success" "deepak chopra" "ken blanchard"` at **pos 6, 86 impr, 0
+  clicks** (plus a "cyndi savage rice" cluster already at pos 2–5). Title →
+  "Roadmap to Success — Free PDF Chapter, Chopra & Blanchard" and description now
+  leads with the unique draw vs Amazon/Google Books (full chapter, free, no
+  email). Watch those Chopra/Blanchard queries for CTR coming off 0%.
+- **`/executive-team-alignment-consultant/` strengthened** (striking distance,
+  pos ~10). Broad query `team alignment consultant` (19 impr, pos 11) vs. the
+  narrower `executive team alignment consultant` (pos 5.8). Delivered the title's
+  unmet "Cost" promise with a "What does a team alignment consultant cost?"
+  section (bare phrase in the H2, internal links to `/pricing/` + the cost
+  calculator) and added terminology-bridge + cost FAQ entries.
+- **Bots dominate GA4** (Singapore/Urumqi/Vietnam data-center traffic, ~98%
+  direct, 404 page is #1). Judge real demand from GSC + Clarity, not GA4 totals.
+
+## URLs to submit to GSC for indexing (after deploy)
+
+⚠️ **Deploy `claude/epic-carson-cjyx09` before submitting.** These URLs only
+exist once the branch is live; submitting against current production returns
+"URL is not on Google / not found." All verified present in `sitemap.xml`;
+excludes `/fractional-chief-people-officer/` (301'd to provecq.com) and the two
+renamed immersion paths (`…/systems/`, `/teams/one-crazy-day/the-city/`).
+
+GSC caps manual "Request Indexing" at ~10–12/day — if rationing, do Tier 1 +
+the two re-index URLs first, and let the sitemap carry the rest.
+
+**Tier 1 — highest-value, brand-new**
+- https://www.belegendary.org/pricing/
+- https://www.belegendary.org/executive-team-crisis-brief/
+- https://www.belegendary.org/teams/executive-immersion/
+- https://www.belegendary.org/how-we-work-together/
+- https://www.belegendary.org/how-to-run-a-board-meeting/
+
+**Tier 2 — new content assets**
+- https://www.belegendary.org/field-notes/the-feedback-vacuum/
+- https://www.belegendary.org/field-notes/what-is-the-feedback-vacuum/
+- https://www.belegendary.org/field-notes/why-my-team-tells-me-what-i-want-to-hear/
+- https://www.belegendary.org/teams/executive-immersion/expedition/
+- https://www.belegendary.org/teams/executive-immersion/city/
+
+**Tier 3 — case studies + supporting pages**
+- https://www.belegendary.org/case-studies/san-juan-mountains-work-ethic/
+- https://www.belegendary.org/case-studies/online-auto-retailer-leadership-team/
+- https://www.belegendary.org/case-studies/federal-fiscal-leadership-team/
+- https://www.belegendary.org/case-studies/everglades-abundance-mindset/
+- https://www.belegendary.org/case-studies/alaska-executive-vulnerability/
+- https://www.belegendary.org/retreat-planning-kit/
+- https://www.belegendary.org/about/
+
+**Re-index (changed snippets this session — already indexed, just refresh)**
+- https://www.belegendary.org/roadmap-to-success/
+- https://www.belegendary.org/executive-team-alignment-consultant/
+
+**Then re-submit the sitemap** in GSC (Sitemaps → `https://www.belegendary.org/sitemap.xml`)
+after deploy — the most efficient signal for the whole batch, carrying fresh
+`lastmod` dates.
