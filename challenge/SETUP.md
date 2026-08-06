@@ -17,18 +17,24 @@ Total time: ~30–40 minutes.
 
 ---
 
-## Step 1 — Run the database migration (5 min)
+## Step 1 — Run the database migrations (5 min)
 
 1. Supabase → **SQL Editor** → **New query**.
-2. Open `challenge/supabase/migrations/001_schema.sql`, copy the whole file, paste, **Run**.
-   - Creates the 4 tables, indexes, RLS policies, and the `due_messages()` function.
-   - The `pg_cron` schedule block at the bottom stays **commented** — we turn it on in Step 6.
+2. Run **every file in `challenge/supabase/migrations/` in order** (`001` →
+   `008`): open each, copy the whole file, paste, **Run**. Each returns "Success.
+   No rows returned." They're additive and re-runnable.
+   - `001` creates the 4 tables, indexes, RLS, `due_messages()`.
+   - `002`–`008` add: nudges, the 8 a.m. default, workout enrollment, private
+     mode, configurable check-in time, the "why" field, and the accountability
+     partner (buddy) + `due_buddy_nudges()`.
+   - The `pg_cron` schedule block at the bottom of `001` stays **commented** — we
+     turn it on in Step 6.
 3. Verify: Supabase → **Table editor** → you should see `users`, `checkins`,
    `sms_log`, `conversation_state`.
 
-> The timezone problem is solved inside `due_messages()`: it asks Postgres
-> `now() AT TIME ZONE users.timezone`, so DST is always correct and we never
-> store a UTC offset anywhere.
+> The timezone problem is solved inside `due_messages()` / `due_nudges()` /
+> `due_buddy_nudges()`: they ask Postgres `now() AT TIME ZONE users.timezone`, so
+> DST is always correct and we never store a UTC offset.
 
 ---
 

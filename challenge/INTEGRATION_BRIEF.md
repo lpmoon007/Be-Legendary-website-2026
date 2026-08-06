@@ -67,7 +67,8 @@ Tables: `users`, `checkins`, `sms_log`, `conversation_state`.
 `users` columns of note: `phone` (UNIQUE E.164), `timezone` (IANA), `commitment`,
 `morning_time` (default `08:00`), `afternoon_time` (default `16:00`), `active`,
 `is_private` (private mode), `workout_id` + `email` (workout-block enrollment;
-`name` is nullable).
+`name` is nullable), `why` (motivation), and the accountability-partner fields
+`buddy_name` / `buddy_phone` / `buddy_status` / `buddy_invited_at`.
 
 **Migrations (run in order; all applied in prod):**
 - `001_schema.sql` — tables, RLS, indexes, `due_messages()`
@@ -76,12 +77,14 @@ Tables: `users`, `checkins`, `sms_log`, `conversation_state`.
 - `004_workout_enroll.sql` — `workout_id`, `email`, nullable `name`
 - `005_private_mode.sql` — `is_private` + `due_messages()` returns it
 - `006_configurable_reflection.sql` — afternoon dedup guard matches new "Check-in%" **and** legacy "It's 4 p.m.%" prefixes
+- `007_commitment_why.sql` — `why` (motivation)
+- `008_accountability_partner.sql` — buddy columns + `due_buddy_nudges()` (week-1 + at-risk nudges to confirmed buddies)
 
 **RLS:** `authenticated` (the coach) = full access; `anon` = nothing; server API
 routes use the **service_role** key (bypasses RLS).
 
-**Timezone engine (do NOT reimplement in JS):** `due_messages()` and
-`due_nudges()` decide who's due using `now() AT TIME ZONE users.timezone`.
+**Timezone engine (do NOT reimplement in JS):** `due_messages()`, `due_nudges()`,
+and `due_buddy_nudges()` decide who's due using `now() AT TIME ZONE users.timezone`.
 DST-safe. Send scheduling lives in Postgres.
 
 ---
@@ -89,22 +92,32 @@ DST-safe. Send scheduling lives in Postgres.
 ## 5. SMS flow & message contract (do-not-break)
 
 All SMS bodies live in `lib/messages.ts`. **The SQL duplicate guards match on
-text prefixes** — change a prefix and you must update the migration guards:
+text prefixes/phrases** — change one and you must update the migration guards:
 - morning → `'Morning.%'` (both `morning()` and `morningPrivate()` start with it)
 - afternoon → `'Check-in%'` OR legacy `'It''s 4 p.m.%'` (migration 006)
 - nudge → `'%quiet days%'` (in `due_nudges()`)
+- buddy week-1 → `'%just started their 30-day%'` (in `due_buddy_nudges()`)
+- buddy at-risk → `'%has gone quiet%'` (in `due_buddy_nudges()`)
 
 Afternoon check-in rates **effort** 1–10, time-neutral wording (participants pick
 their own check-in time). State machine (`lib/conversation.ts`, pure + tested):
-`awaiting_score` → 1–4 / 5–7 / 8–10 branches → `awaiting_journal` → `idle`.
-STOP → `active=false`.
+`awaiting_score` → **every** score (1–4 / 5–7 / 8–10) now prompts a reflection →
+`awaiting_journal` → `idle`. STOP → `active=false`.
 
 **Scheduler:** pg_cron every minute → `POST /api/send` (Bearer `CRON_SECRET`) →
-calls `due_messages()` + `due_nudges()` → sends via Twilio Messaging Service.
+calls `due_messages()` + `due_nudges()` + `due_buddy_nudges()` → sends via Twilio
+Messaging Service.
 
 **Private mode:** if `is_private`, the morning nudge is generic, the commitment is
 stored as `(private)`, reflections are never stored, inbound free-text is redacted
-in `sms_log`, and the coach UI shows 🔒 (effort score only).
+in `sms_log`, `why` isn't stored, and the coach UI shows 🔒 (effort score only).
+
+**Accountability partner (buddy):** one per participant, **double opt-in** — the
+buddy must reply YES to a one-time invite before any nudge is sent (STOP → opted
+out). Buddy sees effort framing only, never the behavior/journal (safe for private
+users). Buddy phone numbers are NOT `users` rows: `/api/sms/inbound` looks the
+`From` up against `users.buddy_phone` and handles YES/STOP; buddy-directed
+outbound is logged in `sms_log` under the **participant's** `user_id`.
 
 ---
 
@@ -118,12 +131,15 @@ in `sms_log`, and the coach UI shows 🔒 (effort score only).
 
 `/api/enroll` accepts both flows: `commitment` **or** `lead_measure`; optional
 `name`, `timezone`, `private`, `workout_id`, `email`, `reminder_time`,
-`reflection_time`. Inserts are built conditionally so a flow never references a
-column its migration hasn't added.
+`reflection_time`, `why`, `buddy_name`, `buddy_phone`. Inserts are built
+conditionally so a flow never references a column its migration hasn't added; a
+supplied buddy is invited via `lib/buddy.ts` `inviteBuddy()` (non-fatal — never
+blocks enrollment). `/api/sms/inbound` also routes buddy replies (see §5).
 
 Server actions (`app/admin/actions.ts`): `createUser`, `updateCommitment`,
 `updateSchedule(userId,morning,afternoon,tz)`, `toggleActive`, `sendCoachMessage`
-(returns `{error?}`, never throws).
+(returns `{error?}`, never throws), `setBuddy(userId,name,phone)` (invites/re-invites
+an accountability partner).
 
 ---
 
@@ -147,16 +163,21 @@ NEXT_PUBLIC_APP_URL=https://challenge.belegendary.org   CRON_SECRET
 ## 8. Compliance (built — keep intact)
 
 Optional SMS consent (checkbox not required to submit), `/terms` + `/privacy`
-pages with carrier-required language, STOP → `active=false`, Twilio signature on
-every inbound, phone numbers only in the DB. A2P campaign: Low Volume, approved.
+pages with carrier-required language, STOP → `active=false` (and buddy STOP →
+`buddy_status='stopped'`), Twilio signature on every inbound, phone numbers only
+in the DB. Accountability partners are a distinct opt-in recipient class (double
+opt-in) — the A2P campaign description should mention them. A2P campaign: Low
+Volume, approved.
 
 ---
 
 ## 9. Do-NOT-break checklist
 
-1. Keep migrations sequentially numbered from one place (next = `007`).
-2. Don't change SMS copy prefixes without updating the SQL `LIKE` dedup guards.
-3. Don't rename DB columns / the two RPCs (`due_messages`, `due_nudges`) without updating callers.
+1. Keep migrations sequentially numbered from one place (next = `009`).
+2. Don't change SMS copy prefixes/phrases without updating the SQL `LIKE` dedup
+   guards (morning, afternoon, nudge, **buddy week-1 "just started their 30-day",
+   buddy at-risk "has gone quiet"**).
+3. Don't rename DB columns / the RPCs (`due_messages`, `due_nudges`, `due_buddy_nudges`) without updating callers.
 4. Keep `challenge/` as Vercel Root Directory + the `vercel.json` framework pin.
 5. Never expose `SUPABASE_SERVICE_ROLE_KEY` to the client.
 6. Keep timezone math in Postgres — don't reimplement in JS.
