@@ -34,20 +34,25 @@ export function SignupFlow() {
   // Carried silently from a CQ report deep-link (/?email=…) so the enrollment
   // can be stitched back to the person's Commitment Quotient result by email.
   const [linkedEmail, setLinkedEmail] = useState<string | null>(null);
+  // Attribution tag from a deep-link (?workout_id= or ?source=) — which workout
+  // or simulation drove the enrollment.
+  const [attribution, setAttribution] = useState<string | null>(null);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // Outcome of step 2: did they opt in to texts or decline?
   const [outcome, setOutcome] = useState<"enrolled" | "declined" | null>(null);
 
-  // Deep-link support: /?rep=<behavior> (e.g. from a CQ report) pre-selects
-  // "Write my own…" and fills in the behavior so they land straight in setup.
+  // Deep-link support: /?rep=<behavior> pre-fills the commitment (from a workout,
+  // a leadership-failure simulation, a CQ report, etc.) and drops the person
+  // straight into step 2 with their specific rep already set.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const rep = params.get("rep");
     if (rep && rep.trim().length > 3) {
       setChoice(CUSTOM);
       setCustom(rep.trim());
+      setStep(2); // rep is already chosen — skip "Choose your rep"
       document
         .getElementById("signup")
         ?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -55,6 +60,10 @@ export function SignupFlow() {
     // Not shown in the UI — just remembered for the enroll payload.
     const email = params.get("email");
     if (email && email.includes("@")) setLinkedEmail(email.trim().toLowerCase());
+
+    // Which workout / simulation sent them here (for the coach roll-up).
+    const src = params.get("workout_id") || params.get("source");
+    if (src && src.trim()) setAttribution(src.trim());
 
     // Auto-detect the participant's timezone from their device.
     const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -127,6 +136,7 @@ export function SignupFlow() {
           why: why.trim() || undefined,
           buddy_name: buddyName.trim() || undefined,
           buddy_phone: buddyPhone.trim() || undefined,
+          workout_id: attribution ?? undefined,
           timezone,
           reminder_time: reminderTime,
           reflection_time: reflectionTime,

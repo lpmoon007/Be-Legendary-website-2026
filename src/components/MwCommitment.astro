@@ -229,7 +229,12 @@ const enrollEndpoint = `${CHALLENGE_URL}/api/enroll`;
           const hasCustom = this.state.custom && (this.state.cw.trim() || this.state.ci.trim() || this.state.ca.trim());
           if ((this.state.sel === null || this.state.sel === undefined) && !hasCustom) { this.state.chooseErr = true; this.render(); return; }
           this.state.commit = this.chosenCommit();
-          this.state.step = 'setup'; this.state.chooseErr = false; this.render();
+          // Hand off to the ONE main 30-day signup with this workout's rep
+          // pre-filled — so workout enrollees get the full flow (timezone,
+          // afternoon check-in, private mode, why, accountability partner).
+          try { if (window.gtag) window.gtag('event', 'challenge_handoff', { workout_id: id }); } catch (e) {}
+          var base = (this.getAttribute('data-enroll') || '').replace(/\/api\/enroll$/, '');
+          window.location.href = base + '/?rep=' + encodeURIComponent(this.state.commit) + '&workout_id=' + encodeURIComponent(id) + '#signup';
         });
 
         const begin = wrap.querySelector('[data-begin]');
