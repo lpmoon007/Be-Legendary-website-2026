@@ -141,6 +141,31 @@ Server actions (`app/admin/actions.ts`): `createUser`, `updateCommitment`,
 (returns `{error?}`, never throws), `setBuddy(userId,name,phone)` (invites/re-invites
 an accountability partner).
 
+### Deep-link enrollment contract (ONE signup form for all sources)
+
+There is exactly **one** enrollment UI: the main signup at
+`https://challenge.belegendary.org/` (`challenge/components/SignupFlow.tsx`). Any
+marketing-site source that has its own specific commitment — the Mindset Workouts,
+the leadership-failure simulations, CQ reports, future campaigns — must **hand off
+to it via a deep link**, never build its own enrollment form.
+
+**Link format:**
+```
+https://challenge.belegendary.org/?rep=<URL-ENCODED COMMITMENT>&source=<id>#signup
+```
+- `rep` (required to pre-fill) — the exact commitment text. `encodeURIComponent()`
+  it. If length > 3 the form pre-selects it and jumps **straight to step 2**.
+- `source` **or** `workout_id` (optional) — an attribution tag (e.g. `go-for-it`,
+  `lfs-city-never-sleeps`) stored on the user for the coach roll-up.
+- `email` (optional) — stitches the enrollment to a CQ/HubSpot record by email.
+- Keep the `#signup` hash so the page scrolls to the form.
+
+**Reference implementation:** `src/components/MwCommitment.astro` — its rep-builder
+(Step 1) computes the commitment, then its Continue handler redirects with the link
+above instead of collecting phone/time/consent itself. Copy that pattern for any
+new source. **Do NOT** rebuild the signup form in Astro — it drifts and loses
+features (timezone, afternoon time, private mode, why, accountability partner).
+
 ---
 
 ## 7. Env vars (Vercel; never commit)
@@ -183,5 +208,7 @@ Volume, approved.
 6. Keep timezone math in Postgres — don't reimplement in JS.
 7. Keep public API route signatures stable (`/api/enroll`, `/api/send`, `/api/sms/inbound`).
 8. Use the canonical name **"Your 30-Day Challenge"** everywhere.
+9. One enrollment UI only. New commitment sources **deep-link** to the main signup
+   (`?rep=…&source=…#signup`, see §6) — never rebuild the signup form.
 
 Go-live runbook: `challenge/SETUP.md`. Architecture rationale: `challenge/README.md`.
