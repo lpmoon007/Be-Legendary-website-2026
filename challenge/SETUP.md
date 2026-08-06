@@ -21,7 +21,7 @@ Total time: ~30–40 minutes.
 
 1. Supabase → **SQL Editor** → **New query**.
 2. Run **every file in `challenge/supabase/migrations/` in order** (`001` →
-   `009`): open each, copy the whole file, paste, **Run**. Each returns "Success.
+   `010`): open each, copy the whole file, paste, **Run**. Each returns "Success.
    No rows returned." They're additive and re-runnable.
    - `001` creates the 4 tables, indexes, RLS, `due_messages()`.
    - `002`–`008` add: nudges, the 8 a.m. default, workout enrollment, private
@@ -29,6 +29,8 @@ Total time: ~30–40 minutes.
      partner (buddy) + `due_buddy_nudges()`.
    - `009` adds deep-link attribution: `source` (channel) + `source_ref` (opaque
      id round-tripped back to the source, e.g. a TeamLFS completion webhook).
+   - `010` adds the completion round-trip: `completion_notified_at` +
+     `due_completions()` (inert until the webhook env vars in Step 5 are set).
    - The `pg_cron` schedule block at the bottom of `001` stays **commented** — we
      turn it on in Step 6.
 3. Verify: Supabase → **Table editor** → you should see `users`, `checkins`,
@@ -102,6 +104,17 @@ Vercel → your project → **Settings → Environment Variables**. Add each of 
 | `TWILIO_PHONE_NUMBER` | your Twilio number, E.164 (fallback if no Messaging Service) |
 | `NEXT_PUBLIC_APP_URL` | `https://challenge.belegendary.org` |
 | `CRON_SECRET` | the random string from Step 3 |
+| `TEAMLFS_WEBHOOK_URL` | *(optional)* source's completion endpoint — leave unset to keep the round-trip off |
+| `TEAMLFS_WEBHOOK_SECRET` | *(optional)* shared secret, sent as the `X-Webhook-Secret` header |
+| `TEAMLFS_WEBHOOK_SOURCE` | *(optional)* which channel's completions to send there (default `lfs`) |
+
+> **Completion round-trip (optional).** The last three are for sending a
+> participant's 30-day results back to the system that referred them (matched on
+> the opaque `ref` from their deep link). Leave them unset and the feature is
+> **inert** — nothing fires. Set `TEAMLFS_WEBHOOK_URL` **and**
+> `TEAMLFS_WEBHOOK_SECRET` (both required) once the source gives you their
+> endpoint + secret, and `/api/send` will POST `{ ref, days_logged, week1_avg,
+> week4_avg }` once per participant after day 30.
 
 > **Why the Messaging Service SID matters:** for A2P 10DLC, outbound must send
 > **through the Messaging Service** tied to your approved campaign — sending from

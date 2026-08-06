@@ -25,7 +25,7 @@ section.
   - **Shared touch-points to coordinate on:** `challenge/app/api/enroll/route.ts`,
     `challenge/app/layout.tsx`, and the migration numbering.
 - **Migrations are numbered sequentially from ONE place.** Highest is currently
-  `009`. Next new migration = `010`. Never reuse a number (we already had two
+  `010`. Next new migration = `011`. Never reuse a number (we already had two
   `004`s collide).
 
 ---
@@ -81,6 +81,7 @@ deep-link attribution fields `source` (channel) / `source_ref` (opaque id).
 - `007_commitment_why.sql` — `why` (motivation)
 - `008_accountability_partner.sql` — buddy columns + `due_buddy_nudges()` (week-1 + at-risk nudges to confirmed buddies)
 - `009_source_attribution.sql` — `source` (channel, e.g. `lfs`/`workout`) + `source_ref` (opaque id round-tripped back to the originating system) + index on `source_ref`
+- `010_completion_webhook.sql` — `completion_notified_at` marker + `due_completions()` (participants past day 30 who still need their results sent back to the source; summary computed in SQL)
 
 **RLS:** `authenticated` (the coach) = full access; `anon` = nothing; server API
 routes use the **service_role** key (bypasses RLS).
@@ -173,6 +174,19 @@ The signup form reads `rep`/`src`/`source`/`ref`/`email`/`workout_id` on load an
 passes `source`/`source_ref` through to `/api/enroll` (migration 009). The enroll
 route also accepts the short `src`/`ref` aliases for direct API callers.
 
+**Completion round-trip (optional, migration 010).** When a deep-link participant
+(one with a `source_ref`) finishes their 30 days, `/api/send` can POST a results
+summary back to the source, keyed on that `ref`. It is **inert** until the env
+vars below are set, so nothing fires without configuration:
+- `TEAMLFS_WEBHOOK_URL` — the source's endpoint.
+- `TEAMLFS_WEBHOOK_SECRET` — shared secret; sent as the `X-Webhook-Secret` header.
+- `TEAMLFS_WEBHOOK_SOURCE` — which channel's completions go to that URL (default `lfs`).
+
+`due_completions()` finds who's past day 30 (timezone-safe) and computes
+`days_logged`, `week1_avg`, `week4_avg`; the POST body is `{ ref, days_logged,
+week1_avg, week4_avg }`. A user is stamped `completion_notified_at` on a 2xx and
+never re-fired; a failed POST is retried on the next scheduler tick.
+
 **Reference implementation:** `src/components/MwCommitment.astro` — its rep-builder
 (Step 1) computes the commitment, then its Continue handler redirects with the link
 above instead of collecting phone/time/consent itself. Copy that pattern for any
@@ -187,6 +201,8 @@ features (timezone, afternoon time, private mode, why, accountability partner).
 NEXT_PUBLIC_SUPABASE_URL   NEXT_PUBLIC_SUPABASE_ANON_KEY   SUPABASE_SERVICE_ROLE_KEY
 TWILIO_ACCOUNT_SID   TWILIO_AUTH_TOKEN   TWILIO_MESSAGING_SERVICE_SID   TWILIO_PHONE_NUMBER
 NEXT_PUBLIC_APP_URL=https://challenge.belegendary.org   CRON_SECRET
+# Optional — completion round-trip (migration 010). Unset = feature is inert.
+TEAMLFS_WEBHOOK_URL   TEAMLFS_WEBHOOK_SECRET   TEAMLFS_WEBHOOK_SOURCE (default 'lfs')
 ```
 
 **Twilio A2P 10DLC (hard-won):**
@@ -211,11 +227,11 @@ Volume, approved.
 
 ## 9. Do-NOT-break checklist
 
-1. Keep migrations sequentially numbered from one place (next = `010`).
+1. Keep migrations sequentially numbered from one place (next = `011`).
 2. Don't change SMS copy prefixes/phrases without updating the SQL `LIKE` dedup
    guards (morning, afternoon, nudge, **buddy week-1 "just started their 30-day",
    buddy at-risk "has gone quiet"**).
-3. Don't rename DB columns / the RPCs (`due_messages`, `due_nudges`, `due_buddy_nudges`) without updating callers.
+3. Don't rename DB columns / the RPCs (`due_messages`, `due_nudges`, `due_buddy_nudges`, `due_completions`) without updating callers.
 4. Keep `challenge/` as Vercel Root Directory + the `vercel.json` framework pin.
 5. Never expose `SUPABASE_SERVICE_ROLE_KEY` to the client.
 6. Keep timezone math in Postgres — don't reimplement in JS.

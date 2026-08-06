@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { sendSms } from "@/lib/twilio";
 import { messages } from "@/lib/messages";
+import {
+  completionWebhookConfig,
+  postCompletion,
+  type CompletionRow,
+} from "@/lib/webhook";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -163,6 +168,45 @@ export async function POST(req: NextRequest) {
           ok: false,
           error: message,
         });
+      }
+    }
+  }
+
+  // ── Completion webhook (round-trip 30-day results back to the source) ───────
+  // Inert unless TEAMLFS_WEBHOOK_URL + TEAMLFS_WEBHOOK_SECRET are configured, so
+  // this is a true no-op until the source hands over their endpoint + secret.
+  const webhook = completionWebhookConfig();
+  if (webhook) {
+    const { data: doneData, error: doneError } = await supabase.rpc(
+      "due_completions"
+    );
+    if (doneError) {
+      console.error("due_completions RPC failed:", doneError);
+    } else {
+      for (const row of (doneData ?? []) as CompletionRow[]) {
+        // Only round-trip completions from the channel this webhook serves.
+        if (row.source !== webhook.source) continue;
+        const res = await postCompletion(webhook, row);
+        if (res.ok) {
+          // Stamp once so we never double-fire. A failed POST leaves the marker
+          // NULL, so the next scheduler tick retries it.
+          await supabase
+            .from("users")
+            .update({ completion_notified_at: new Date().toISOString() })
+            .eq("id", row.user_id);
+          results.push({ user_id: row.user_id, type: "completion", ok: true });
+        } else {
+          console.error(
+            `Completion webhook failed for ${row.user_id}:`,
+            res.error
+          );
+          results.push({
+            user_id: row.user_id,
+            type: "completion",
+            ok: false,
+            error: res.error,
+          });
+        }
       }
     }
   }
