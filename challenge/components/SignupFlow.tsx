@@ -34,9 +34,11 @@ export function SignupFlow() {
   // Carried silently from a CQ report deep-link (/?email=…) so the enrollment
   // can be stitched back to the person's Commitment Quotient result by email.
   const [linkedEmail, setLinkedEmail] = useState<string | null>(null);
-  // Attribution tag from a deep-link (?workout_id= or ?source=) — which workout
-  // or simulation drove the enrollment.
+  // Attribution from a deep-link: workout_id (Mindset Workouts), source/src
+  // (channel, e.g. 'lfs'), and ref (opaque id to round-trip back to the source).
   const [attribution, setAttribution] = useState<string | null>(null);
+  const [source, setSource] = useState<string | null>(null);
+  const [sourceRef, setSourceRef] = useState<string | null>(null);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,8 +64,12 @@ export function SignupFlow() {
     if (email && email.includes("@")) setLinkedEmail(email.trim().toLowerCase());
 
     // Which workout / simulation sent them here (for the coach roll-up).
-    const src = params.get("workout_id") || params.get("source");
-    if (src && src.trim()) setAttribution(src.trim());
+    const wid = params.get("workout_id");
+    if (wid && wid.trim()) setAttribution(wid.trim());
+    const src = params.get("src") || params.get("source");
+    if (src && src.trim()) setSource(src.trim());
+    const ref = params.get("ref");
+    if (ref && ref.trim()) setSourceRef(ref.trim());
 
     // Auto-detect the participant's timezone from their device.
     const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -137,6 +143,9 @@ export function SignupFlow() {
           buddy_name: buddyName.trim() || undefined,
           buddy_phone: buddyPhone.trim() || undefined,
           workout_id: attribution ?? undefined,
+          // Deep-link attribution: channel + opaque id to round-trip back.
+          source: source ?? undefined,
+          source_ref: sourceRef ?? undefined,
           timezone,
           reminder_time: reminderTime,
           reflection_time: reflectionTime,

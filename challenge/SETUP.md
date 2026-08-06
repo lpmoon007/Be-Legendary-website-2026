@@ -21,12 +21,14 @@ Total time: ~30–40 minutes.
 
 1. Supabase → **SQL Editor** → **New query**.
 2. Run **every file in `challenge/supabase/migrations/` in order** (`001` →
-   `008`): open each, copy the whole file, paste, **Run**. Each returns "Success.
+   `009`): open each, copy the whole file, paste, **Run**. Each returns "Success.
    No rows returned." They're additive and re-runnable.
    - `001` creates the 4 tables, indexes, RLS, `due_messages()`.
    - `002`–`008` add: nudges, the 8 a.m. default, workout enrollment, private
      mode, configurable check-in time, the "why" field, and the accountability
      partner (buddy) + `due_buddy_nudges()`.
+   - `009` adds deep-link attribution: `source` (channel) + `source_ref` (opaque
+     id round-tripped back to the source, e.g. a TeamLFS completion webhook).
    - The `pg_cron` schedule block at the bottom of `001` stays **commented** — we
      turn it on in Step 6.
 3. Verify: Supabase → **Table editor** → you should see `users`, `checkins`,
