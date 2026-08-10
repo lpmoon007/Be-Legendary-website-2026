@@ -179,7 +179,7 @@ route also accepts the short `src`/`ref` aliases for direct API callers.
 summary back to the source, keyed on that `ref`. It is **inert** until the env
 vars below are set, so nothing fires without configuration:
 - `TEAMLFS_WEBHOOK_URL` — the source's endpoint.
-- `TEAMLFS_WEBHOOK_SECRET` — shared secret; sent as the `X-Webhook-Secret` header.
+- `TEAMLFS_WEBHOOK_SECRET` — bearer token; sent as `Authorization: Bearer <token>`.
 - `TEAMLFS_WEBHOOK_SOURCE` — which channel's completions go to that URL (default `lfs`).
 
 `due_completions()` finds who's past day 30 (timezone-safe) and computes

@@ -4,9 +4,9 @@
 // unconfigured environment.
 //
 // Configure with env vars (server-only, never NEXT_PUBLIC_):
-//   TEAMLFS_WEBHOOK_URL     — the source's endpoint (e.g. https://…/api/challenge/webhook)
-//   TEAMLFS_WEBHOOK_SECRET  — shared secret; sent as the X-Webhook-Secret header so
-//                             the receiver can verify the call came from us
+//   TEAMLFS_WEBHOOK_URL     — the source's endpoint (TeamLFS: https://team-lfs.vercel.app/api/challenge/webhook)
+//   TEAMLFS_WEBHOOK_SECRET  — bearer token; sent as `Authorization: Bearer <token>`
+//                             so the receiver can verify the call came from us
 //   TEAMLFS_WEBHOOK_SOURCE  — which channel's completions to send here (default 'lfs');
 //                             a user's `source` must match this to be round-tripped
 
@@ -52,11 +52,13 @@ export async function postCompletion(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Webhook-Secret": config.secret,
+        Authorization: `Bearer ${config.secret}`,
       },
       body: JSON.stringify({
         ref: row.source_ref,
-        days_logged: row.days_logged,
+        // Their contract: days_logged is an integer 0–30 (required).
+        days_logged: Math.max(0, Math.min(30, Math.round(row.days_logged ?? 0))),
+        // Averages are optional; sent on the raw 1–10 effort scale.
         week1_avg: row.week1_avg,
         week4_avg: row.week4_avg,
       }),

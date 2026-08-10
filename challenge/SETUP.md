@@ -105,7 +105,7 @@ Vercel → your project → **Settings → Environment Variables**. Add each of 
 | `NEXT_PUBLIC_APP_URL` | `https://challenge.belegendary.org` |
 | `CRON_SECRET` | the random string from Step 3 |
 | `TEAMLFS_WEBHOOK_URL` | *(optional)* source's completion endpoint — leave unset to keep the round-trip off |
-| `TEAMLFS_WEBHOOK_SECRET` | *(optional)* shared secret, sent as the `X-Webhook-Secret` header |
+| `TEAMLFS_WEBHOOK_SECRET` | *(optional)* bearer token, sent as `Authorization: Bearer <token>` |
 | `TEAMLFS_WEBHOOK_SOURCE` | *(optional)* which channel's completions to send there (default `lfs`) |
 
 > **Completion round-trip (optional).** The last three are for sending a
