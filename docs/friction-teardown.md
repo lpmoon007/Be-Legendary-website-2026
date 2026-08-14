@@ -35,7 +35,7 @@ the actual site, ordered by conversion cost. Companion to docs/cro-findings.md.
 | Single **/pricing/** page (consolidate published prices) | me | ✅ done (live) |
 | **"Which engagement is right for you"** chooser | me | ✅ done (live) |
 | Surface **lower-commitment CTAs** (assessment/brief) beside "book a call" | me | ✅ done (live) |
-| **"What to expect"** timeline/process concreteness | me | ⏭️ NEXT SESSION |
+| **"What to expect"** timeline/process concreteness | me | ✅ done (live) |
 | **EA-sendable one-pager** | me | ⏭️ NEXT SESSION |
 | **Jargon / plain-language** on-ramp (home hero) — careful, touches persuasive copy | me | ⏭️ NEXT SESSION |
 | **Named, verifiable client proof** | James | ☐ (permission) |
@@ -50,8 +50,13 @@ Do the four **⏭️ NEXT SESSION** items above, in this order:
    had a solo book-a-call and no lower-commitment path: home, team-lfs, retreats,
    how-we-work-together, case-studies. (The 79 article pages already had the
    ladder via ArticleEndCTA.)
-2. **"What to expect"** — a concrete timeline/process block (deliverables by
-   week, exec-time required, "first 30 days"). Reduces six-figure risk-perception.
+2. ~~**"What to expect"**~~ — ✅ DONE. Added a "What to expect" section to
+   how-we-work-together (after "How it starts"): three cards — exec-time required
+   (15-min call → 90-min diagnostic, up to 8 execs), concrete deliverables
+   (individual + team-dynamics reports, FlagScore baseline, 30-day commitments),
+   and measurement (quarterly CEO/CFO-cosigned metrics). Built only from facts
+   already on the page; a closing line notes exact cadence/turnaround is set
+   per-engagement (no fabricated week-by-week schedule).
 3. **EA-sendable one-pager** — a "what to tell your principal" asset for the EA
    (stated #1 buyer), who currently leaves with nothing to forward.
 4. **Jargon / plain-language on-ramp** on the home hero — surgical; keep the
