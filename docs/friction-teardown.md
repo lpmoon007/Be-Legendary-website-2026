@@ -34,7 +34,7 @@ the actual site, ordered by conversion cost. Companion to docs/cro-findings.md.
 |---|---|---|
 | Single **/pricing/** page (consolidate published prices) | me | ✅ done (live) |
 | **"Which engagement is right for you"** chooser | me | ✅ done (live) |
-| Surface **lower-commitment CTAs** (assessment/brief) beside "book a call" | me | ⏭️ NEXT SESSION |
+| Surface **lower-commitment CTAs** (assessment/brief) beside "book a call" | me | ✅ done (live) |
 | **"What to expect"** timeline/process concreteness | me | ⏭️ NEXT SESSION |
 | **EA-sendable one-pager** | me | ⏭️ NEXT SESSION |
 | **Jargon / plain-language** on-ramp (home hero) — careful, touches persuasive copy | me | ⏭️ NEXT SESSION |
@@ -44,9 +44,12 @@ the actual site, ordered by conversion cost. Companion to docs/cro-findings.md.
 
 ## ⏭️ NEXT SESSION — confirmed scope (James approved 2026-08-05)
 Do the four **⏭️ NEXT SESSION** items above, in this order:
-1. **Lower-commitment CTAs** — add a secondary path (Break-Point Self-Assessment
-   / crisis brief download) beside "Book a Calibration Call" on the money pages,
-   so hand-raisers aren't forced to the founder's calendar. Highest leverage.
+1. ~~**Lower-commitment CTAs**~~ — ✅ DONE. Built `LowCommitmentCTA.astro`
+   (dark/light themes) offering the free Break-Point Self-Assessment (no email)
+   + straight pricing; placed beside the primary CTA on the 5 money pages that
+   had a solo book-a-call and no lower-commitment path: home, team-lfs, retreats,
+   how-we-work-together, case-studies. (The 79 article pages already had the
+   ladder via ArticleEndCTA.)
 2. **"What to expect"** — a concrete timeline/process block (deliverables by
    week, exec-time required, "first 30 days"). Reduces six-figure risk-perception.
 3. **EA-sendable one-pager** — a "what to tell your principal" asset for the EA

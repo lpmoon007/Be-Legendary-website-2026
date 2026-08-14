@@ -1,0 +1,43 @@
+---
+// A lower-commitment on-ramp to sit directly beneath a primary "Book a
+// Calibration Call" CTA on the money/hub pages. For the hand-raiser who isn't
+// ready to book the founder's calendar: two free, no-call, no-email paths —
+// the self-serve diagnostic and straight pricing. Content/article pages already
+// carry this ladder via ArticleEndCTA; this is for pages with bespoke CTAs.
+import { SLUGS } from '../lib/site';
+export interface Props {
+  maxWidth?: number;
+  /** Which free diagnostic to offer (teams -> Break-Point; leaders -> Scorecard). */
+  assess?: 'teams' | 'leaders';
+  /** Show the "See straight pricing" option as the second card. Default true. */
+  pricing?: boolean;
+  /** Match the host page (dark hubs vs light retreats/how-we-work). */
+  theme?: 'dark' | 'light';
+}
+const { maxWidth = 880, assess = 'teams', pricing = true, theme = 'dark' } = Astro.props;
+const a = assess === 'leaders'
+  ? { href: SLUGS.leadershipScorecard, label: 'Take the free Leadership Scorecard', sub: 'A real read on your leadership in ~4 minutes.' }
+  : { href: SLUGS.breakPointAssessment, label: 'Take the free Break-Point Self-Assessment', sub: 'See where your team breaks first in ~4 minutes.' };
+const dark = theme !== 'light';
+const t = dark
+  ? { outer: '#1B1810', outerBd: 'rgba(192,74,38,0.28)', card: '#211D15', cardBd: 'rgba(192,74,38,0.32)', cardBdHi: 'rgba(192,74,38,0.7)', eyebrow: '#E0744A', title: '#FBF8F1', sub: 'rgba(244,240,231,0.62)' }
+  : { outer: '#EFE9DD', outerBd: 'rgba(100,1,10,0.16)', card: '#FBF8F1', cardBd: 'rgba(100,1,10,0.16)', cardBdHi: 'rgba(192,74,38,0.6)', eyebrow: '#C04A26', title: '#3A0A0C', sub: '#5A4A44' };
+const cardBase = `flex:1;min-width:240px;background:${t.card};border:1px solid ${t.cardBd};border-radius:12px;padding:16px 18px;text-decoration:none;display:block;transition:border-color .16s;`;
+---
+<div style={`max-width:${maxWidth}px;margin:14px auto 0;padding:0 32px;text-align:left;`}>
+  <div style={`background:${t.outer};border:1px solid ${t.outerBd};border-radius:16px;padding:22px 26px;`}>
+    <p style={`font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:${t.eyebrow};margin-bottom:14px;`}>Not ready to book a call? Start free — no call, no email</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href={a.href} style={cardBase} onmouseover={`this.style.borderColor='${t.cardBdHi}'`} onmouseout={`this.style.borderColor='${t.cardBd}'`}>
+        <span style={`font-family:'Newsreader',serif;font-size:17px;color:${t.title};display:block;line-height:1.2;`}>{a.label} &rarr;</span>
+        <span style={`font-size:13.5px;line-height:1.5;color:${t.sub};margin-top:5px;display:block;`}>{a.sub} No email required to see your result.</span>
+      </a>
+      {pricing && (
+      <a href={SLUGS.pricing} style={cardBase} onmouseover={`this.style.borderColor='${t.cardBdHi}'`} onmouseout={`this.style.borderColor='${t.cardBd}'`}>
+        <span style={`font-family:'Newsreader',serif;font-size:17px;color:${t.title};display:block;line-height:1.2;`}>See straight pricing &rarr;</span>
+        <span style={`font-size:13.5px;line-height:1.5;color:${t.sub};margin-top:5px;display:block;`}>Every engagement and its real price, in the open — from a free call to a partnership.</span>
+      </a>
+      )}
+    </div>
+  </div>
+</div>

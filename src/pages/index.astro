@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import LowCommitmentCTA from '../components/LowCommitmentCTA.astro';
 import FlagDiagram from '../components/FlagDiagram.astro';
 import Faq from '../components/Faq.astro';
 import PressStrip from '../components/PressStrip.astro';
@@ -349,6 +350,8 @@ const homeLinks = [
       <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:36px;display:inline-flex;align-items:center;gap:10px;background:#C04A26;color:#fff;text-decoration:none;padding:18px 38px;border-radius:12px;font-weight:700;font-size:18px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:20px;">&rarr;</span></a>
     </div>
   </section>
+
+  <div style="background:#15130E;padding:0 0 8px;"><LowCommitmentCTA maxWidth={820} /></div>
 
   <SiteFooter audience="teams" />
 </BaseLayout>

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
+import LowCommitmentCTA from '../../components/LowCommitmentCTA.astro';
 import ResultsBand from '../../components/ResultsBand.astro';
 import PressStrip from '../../components/PressStrip.astro';
 import { SLUGS, CTA_URL, ORG_ID } from '../../lib/site';
@@ -197,6 +198,8 @@ const interventions = [
           </a>
         </div>
       </section>
+
+    <div style="padding-bottom:64px;"><LowCommitmentCTA maxWidth={860} theme="light" /></div>
 
   </div>
 

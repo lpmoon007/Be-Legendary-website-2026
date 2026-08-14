@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
+import LowCommitmentCTA from '../../../components/LowCommitmentCTA.astro';
 import ReinforcementModule from '../../../components/ReinforcementModule.astro';
 import PressStrip from '../../../components/PressStrip.astro';
 import { SLUGS, CTA_URL } from '../../../lib/site';
@@ -347,6 +348,8 @@ const schema = [
         <a href="tel:8005138759" style="border:1px solid rgba(100,1,10,0.3);color:#64010a;text-decoration:none;padding:18px 30px;border-radius:10px;font-weight:600;font-size:16px;">800-513-8759</a>
       </div>
     </section>
+
+    <LowCommitmentCTA maxWidth={900} theme="light" />
 
     <!-- ============ FAQ (captures "executive team building retreat") ============ -->
     <section style="max-width:900px;margin:88px auto 0;padding:0 32px 8px;">
