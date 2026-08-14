@@ -36,7 +36,7 @@ the actual site, ordered by conversion cost. Companion to docs/cro-findings.md.
 | **"Which engagement is right for you"** chooser | me | ✅ done (live) |
 | Surface **lower-commitment CTAs** (assessment/brief) beside "book a call" | me | ✅ done (live) |
 | **"What to expect"** timeline/process concreteness | me | ✅ done (live) |
-| **EA-sendable one-pager** | me | ⏭️ NEXT SESSION |
+| **EA-sendable one-pager** | me | ✅ done (live) |
 | **Jargon / plain-language** on-ramp (home hero) — careful, touches persuasive copy | me | ⏭️ NEXT SESSION |
 | **Named, verifiable client proof** | James | ☐ (permission) |
 | **"Who delivers this" / team** answer | James | ☐ (is there a team?) |
@@ -57,8 +57,14 @@ Do the four **⏭️ NEXT SESSION** items above, in this order:
    and measurement (quarterly CEO/CFO-cosigned metrics). Built only from facts
    already on the page; a closing line notes exact cadence/turnaround is set
    per-engagement (no fabricated week-by-week schedule).
-3. **EA-sendable one-pager** — a "what to tell your principal" asset for the EA
-   (stated #1 buyer), who currently leaves with nothing to forward.
+3. ~~**EA-sendable one-pager**~~ — ✅ DONE. New `/brief-your-principal/` page:
+   a copy-paste intro blurb (with a copy-to-clipboard button), a four-card
+   "what is it?" summary (what it is / why different / what it costs / first
+   step), the real proof bands (TrustedBy + ResultsBand + PressStrip, reused —
+   no fabrication), a "why raising this is a safe call" reassurance, and a
+   forward-the-PDF option. Linked from the footer (site-wide) and the existing
+   EA retreat page. Distinct from the retreat-planning EA page — this one sells
+   the firm to the principal.
 4. **Jargon / plain-language on-ramp** on the home hero — surgical; keep the
    persuasive voice, just lower the decode cost of ~9 proprietary terms.
 All four are "me"-owned, no external dependencies. Keep edits honest/surgical;

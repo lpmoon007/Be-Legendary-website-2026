@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import TrustedBy from '../components/TrustedBy.astro';
+import ResultsBand from '../components/ResultsBand.astro';
+import PressStrip from '../components/PressStrip.astro';
+import LowCommitmentCTA from '../components/LowCommitmentCTA.astro';
+import { SLUGS, CTA_URL, SITE_URL } from '../lib/site';
+
+const path = SLUGS.briefYourPrincipal;
+const title = 'Brief Your Principal — A One-Page Overview for EAs | Be Legendary';
+const description =
+  'For the executive assistant or chief of staff: everything you need to put Be Legendary in front of your principal — a copy-paste intro, the pricing, the proof, and a free first step with no obligation.';
+const PDF = '/assets/be-legendary-executive-team-crisis-brief.pdf';
+
+// Ready-to-send blurb for the EA to paste into an email or Slack to their principal.
+const blurb = "Quick one — I looked into outside help for the leadership team. Be Legendary is an executive-team performance firm: their diagnostic pinpoints exactly where a leadership team breaks first, then rebuilds that. Twenty-five years working with Fortune 100 teams, pricing published openly, and the first step is a free 15-minute call — no obligation, and you leave with a concrete read on the team either way. Overview: " + SITE_URL + "/";
+
+const summary = [
+  ['What it is', 'An executive-team performance firm. The Flag Model&trade; diagnostic finds where your leadership team breaks first &mdash; then rebuilds that one thing, instead of adding another framework on top.'],
+  ['Why it’s different', 'Not coaching, and not a course. It’s measured and accountable: on the year-long Performance Partnership, success fees are earned only when documented value confirms a 10&times; return on metrics your CEO and CFO co-sign.'],
+  ['What it costs', 'Published openly, not “contact us”: a free call, a $7,500 solo diagnostic, a $28K&ndash;$35K team read, up to a partnership from a $75K base. Every paid step credits 50% toward the next.'],
+  ['The first step', 'A free 15-minute Calibration Call &mdash; no obligation, and your principal leaves with a real read on the team whether or not they engage. Or a free 4-minute self-assessment, no email required.'],
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Brief your principal', item: `${SITE_URL}${path}` },
+  ] },
+];
+---
+<BaseLayout title={title} description={description} path={path} ogType="website" bodyBg="#EFE9DD" schema={schema}>
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;">
+
+    <!-- HERO -->
+    <section style="max-width:1000px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;">
+        <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><span style="color:#64010a;">Brief your principal</span>
+      </nav>
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">For the executive assistant &amp; chief of staff</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.03;letter-spacing:-0.022em;color:#3A0A0C;max-width:20ch;">Everything you need to brief your principal &mdash; on one page.</h1>
+      <p style="margin-top:22px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:62ch;">You found us; now you have to make the case in ten seconds of your principal&rsquo;s attention. Here&rsquo;s a ready-to-send intro, what it costs, the proof, and a first step that commits them to nothing.</p>
+    </section>
+
+    <!-- COPY-PASTE BLURB -->
+    <section style="max-width:1000px;margin:40px auto 0;padding:0 32px;">
+      <div style="background:#15130E;border-radius:20px;padding:32px 34px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;">Paste this into an email or Slack</p>
+          <button id="copy-blurb" data-blurb={blurb} style="flex:none;background:#C04A26;color:#fff;border:none;cursor:pointer;padding:11px 20px;border-radius:9px;font-family:inherit;font-weight:700;font-size:14px;">Copy the message</button>
+        </div>
+        <p id="blurb-text" style="font-size:17px;line-height:1.7;color:#F4F0E7;font-family:'Newsreader',serif;">{blurb}</p>
+      </div>
+      <p style="margin-top:12px;font-size:14px;color:#8A6A64;line-height:1.6;">Prefer to send something they can read on their own time? <a href={PDF} target="_blank" rel="noopener" style="color:#C04A26;font-weight:600;text-decoration:none;">Forward the one-page strategic brief (PDF) &rarr;</a></p>
+    </section>
+
+    <!-- WHAT TO TELL YOUR PRINCIPAL -->
+    <section style="max-width:1000px;margin:56px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">If they ask &ldquo;what is it?&rdquo;</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#3A0A0C;max-width:24ch;margin-bottom:28px;">Four things, in plain language.</h2>
+      <div class="bl-grid-collapse bl-grid-collapse--gap" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        {summary.map(([label, body]) => (
+          <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:24px 26px;">
+            <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:10px;">{label}</p>
+            <p style="font-size:15.5px;line-height:1.62;color:#4A3A34;" set:html={body}></p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PROOF (reuses the site's real, attributed proof) -->
+    <div style="max-width:1000px;margin:56px auto 0;padding:0 32px;">
+      <TrustedBy maxWidth={1000} />
+    </div>
+    <div style="max-width:1080px;margin:36px auto 0;padding:0 32px;">
+      <ResultsBand variant="light" maxWidth={1080} eyebrow="If they ask &ldquo;does it work?&rdquo;" heading="The work holds up in the numbers." />
+    </div>
+    <div style="max-width:1000px;margin:44px auto 0;padding:0 32px;">
+      <PressStrip variant="light" maxWidth={1000} />
+    </div>
+
+    <!-- WHY THIS MAKES YOU LOOK GOOD -->
+    <section style="max-width:1000px;margin:60px auto 0;padding:0 32px;">
+      <div style="background:#64010a;border-radius:22px;padding:44px 46px;color:#F6EFE0;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">Why raising this is a safe call</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#FBF3E7;max-width:24ch;margin-bottom:22px;">You&rsquo;re not committing anyone to anything.</h2>
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+          <div><p style="font-size:15.5px;line-height:1.6;color:rgba(246,239,224,0.9);"><strong style="color:#FBF3E7;">The first step is free.</strong> A 15-minute call, no obligation on the other side of it.</p></div>
+          <div><p style="font-size:15.5px;line-height:1.6;color:rgba(246,239,224,0.9);"><strong style="color:#FBF3E7;">Pricing is in the open.</strong> No &ldquo;request a quote&rdquo; runaround to explain to your principal.</p></div>
+          <div><p style="font-size:15.5px;line-height:1.6;color:rgba(246,239,224,0.9);"><strong style="color:#FBF3E7;">Discretion is the default.</strong> A single point of contact used to working with EAs and chiefs of staff.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIMARY CTA -->
+    <section style="max-width:1000px;margin:56px auto 0;padding:0 32px;text-align:center;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(26px,3.6vw,40px);line-height:1.08;color:#3A0A0C;">When your principal says &ldquo;set it up.&rdquo;</h2>
+      <p style="margin:18px auto 0;max-width:48ch;font-size:17px;line-height:1.6;color:#5A4A44;">Book the free 15-minute Calibration Call &mdash; or hand your principal the two free, no-call options below.</p>
+      <div style="margin-top:28px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+        <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;display:inline-flex;align-items:center;gap:9px;">Book a Calibration Call <span>&rarr;</span></a>
+        <a href={PDF} target="_blank" rel="noopener" style="border:1px solid rgba(100,1,10,0.3);color:#64010a;text-decoration:none;padding:16px 28px;border-radius:11px;font-weight:600;font-size:16px;">Forward the brief (PDF)</a>
+      </div>
+    </section>
+
+    <LowCommitmentCTA maxWidth={1000} theme="light" />
+
+    <div style="padding-bottom:8px;"></div>
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('copy-blurb');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-blurb') || (document.getElementById('blurb-text') || {}).textContent || '';
+      var done = function () { var o = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(function () { btn.textContent = o; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(function () { done(); });
+      } else {
+        var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta); done();
+      }
+    });
+  })();
+</script>
