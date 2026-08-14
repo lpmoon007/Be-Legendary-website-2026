@@ -6,7 +6,7 @@ export const SITE_URL = 'https://www.belegendary.org';
 // Site CTAs point at the on-domain /book/ page (which embeds the scheduler with
 // our reassurance copy) instead of throwing visitors straight to HubSpot.
 export const CTA_URL = '/book/';
-export const CTA_LABEL = 'Book a Calibration Call';
+export const CTA_LABEL = 'Book a free 15-minute call';
 
 // The real HubSpot Meetings scheduler (region na2). Embedded on /book/, and used
 // where an off-domain booking link is genuinely needed (generated PDFs, the

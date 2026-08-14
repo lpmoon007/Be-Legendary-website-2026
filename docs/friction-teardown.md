@@ -37,7 +37,7 @@ the actual site, ordered by conversion cost. Companion to docs/cro-findings.md.
 | Surface **lower-commitment CTAs** (assessment/brief) beside "book a call" | me | ✅ done (live) |
 | **"What to expect"** timeline/process concreteness | me | ✅ done (live) |
 | **EA-sendable one-pager** | me | ✅ done (live) |
-| **Jargon / plain-language** on-ramp (home hero) — careful, touches persuasive copy | me | ⏭️ NEXT SESSION |
+| **Jargon / plain-language** on-ramp (home hero) — careful, touches persuasive copy | me | ✅ done (live) |
 | **Named, verifiable client proof** | James | ☐ (permission) |
 | **"Who delivers this" / team** answer | James | ☐ (is there a team?) |
 | **Email capture + nurture** wiring | James | ☐ (HubSpot) |
@@ -65,8 +65,15 @@ Do the four **⏭️ NEXT SESSION** items above, in this order:
    forward-the-PDF option. Linked from the footer (site-wide) and the existing
    EA retreat page. Distinct from the retreat-planning EA page — this one sells
    the firm to the principal.
-4. **Jargon / plain-language on-ramp** on the home hero — surgical; keep the
-   persuasive voice, just lower the decode cost of ~9 proprietary terms.
+4. ~~**Jargon / plain-language on-ramp** on the home hero~~ — ✅ DONE. Audit
+   found the hero *copy* was already plain (H1/subhead/microcopy have zero
+   proprietary terms; the named model appears only after the plain value, well
+   sequenced). The one decode barrier was the CTA term "Calibration Call."
+   Per James's call (plain at first touch, branded once engaged): changed the
+   hero button + the site-wide header/footer `CTA_LABEL` to "Book a free
+   15-minute call", trimmed the now-redundant "15 minutes." microcopy, and left
+   the 72 deeper in-page CTAs as "Book a Calibration Call" (they come after
+   context). Persuasive H1/subhead untouched.
 All four are "me"-owned, no external dependencies. Keep edits honest/surgical;
 no fabricated proof; commit + push each (auto-deploys on push).
 
