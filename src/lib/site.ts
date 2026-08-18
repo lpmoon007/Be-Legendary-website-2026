@@ -111,6 +111,7 @@ export const SLUGS = {
   vsEos: '/flag-model-vs-eos/',
   vsOkrs: '/flag-model-vs-okrs/',
   vsScalingUp: '/flag-model-vs-scaling-up/',
+  vsRockefeller: '/flag-model-vs-rockefeller-habits/',
   // Buyer's guides
   alignmentConsultant: '/executive-team-alignment-consultant/',
   offsiteFacilitator: '/leadership-team-offsite-facilitator/',

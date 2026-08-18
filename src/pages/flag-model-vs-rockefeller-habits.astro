@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Flag Model vs the Rockefeller Habits: Building Habit #1 | Be Legendary';
+const description = "The Rockefeller Habits give you the operating rhythm — Top 5 priorities, the daily huddle, KPIs, the One-Page Strategic Plan. The Flag Model builds Habit #1: the healthy, aligned executive team the other nine sit on.";
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Flag Model vs the Rockefeller Habits', item: 'https://www.belegendary.org/flag-model-vs-rockefeller-habits/' },
+  ] },
+  { '@type': 'Article', headline: 'Flag Model vs the Rockefeller Habits: the habit underneath the other ten', datePublished: '2026-08-18', dateModified: '2026-08-18', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/flag-model-vs-rockefeller-habits/', description: "How the Flag Model's leadership disciplines build the healthy, aligned executive team the Rockefeller Habits assume you already have." },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is the difference between the Flag Model and the Rockefeller Habits?', acceptedAnswer: { '@type': 'Answer', text: "The Rockefeller Habits (from Verne Harnish's Mastering the Rockefeller Habits) are an operating rhythm: a Top 5 set of priorities with a single #1, a data pulse of KPIs, and a meeting cadence from the daily huddle to the annual planning session — all captured on a One-Page Strategic Plan. The very first habit is that the executive team is healthy and aligned, and the system assumes you already have it. The Flag Model builds that alignment. The Habits are the operating rhythm; the Flag Model is the leadership behavior that makes the rhythm bite." } },
+    { '@type': 'Question', name: 'Can you use the Flag Model and the Rockefeller Habits together?', acceptedAnswer: { '@type': 'Answer', text: 'Yes — they stack. Install the Flag Model first so the executive team is genuinely healthy and aligned (Rockefeller Habit #1), picks fewer and braver priorities, decides with clear ownership, and holds a real standard. Then run the full Rockefeller rhythm — the huddle, the KPIs, the quarterly Theme, the One-Page Strategic Plan — on top. The Flag Model keeps the rhythm from becoming a calendar that changes nothing.' } },
+    { '@type': 'Question', name: 'Are the Rockefeller Habits the same as Scaling Up?', acceptedAnswer: { '@type': 'Answer', text: 'Not quite. Scaling Up (2014) is Verne Harnish’s expansion of the original Rockefeller Habits (2002) into the Four Decisions every company must get right — People, Strategy, Execution, and Cash. The core habits — priorities, data, and rhythm, plus the daily huddle and the One-Page Strategic Plan — sit at the heart of both. Whether you run the classic ten habits or the fuller Scaling Up system, the Flag Model plays the same role underneath: the leadership behavior the operating system assumes.' } },
+    { '@type': 'Question', name: 'Why do the Rockefeller Habits sometimes stop working?', acceptedAnswer: { '@type': 'Answer', text: "When the underlying leadership disciplines are weak, the daily huddle turns into a round-robin status report nobody acts on, the Top 5 swells because no one will veto, the #1 priority is chosen for comfort, and the One-Page Strategic Plan gets printed and ignored. The rhythm runs on the calendar but changes nothing. That is not a flaw in the Habits — it is the absence of Habit #1, the healthy and aligned executive team the other nine were built to sit on. The Flag Model rebuilds it." } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={SLUGS.vsRockefeller}
+  ogType="article"
+  ogTitle="Flag Model vs the Rockefeller Habits — the habit underneath the ten"
+  ogDescription="The Rockefeller Habits are a superb operating rhythm. The Flag Model builds Habit #1 — the healthy, aligned team the other nine assume. Run both."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:920px;margin:0 auto;padding:80px 32px 40px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Flag Model vs the Rockefeller Habits</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Comparison</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">The Flag Model™ vs the Rockefeller Habits</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated August 2026</p>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">The Rockefeller Habits are one of the best <em>operating rhythms</em> ever written: a Top 5 of priorities with a single #1, a data pulse of KPIs, a meeting cadence from the daily huddle to the annual, all on a One-Page Strategic Plan. But the very first habit is <strong>&ldquo;the executive team is healthy and aligned&rdquo;</strong> &mdash; and the system assumes you already have it. The Flag Model isn&rsquo;t a competitor; it&rsquo;s the layer that <strong>builds Habit #1</strong>, so the huddle, the priorities, and the plan actually bite.</p>
+    </div>
+  </header>
+
+  <!-- HERO-AFFIRM -->
+  <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you brought the Rockefeller Habits into your company, you already did the hard, unglamorous thing most leaders avoid: you committed to a real operating rhythm instead of running on heroics. That instinct is exactly right. The only thing the Habits can&rsquo;t supply is the one they list first &mdash; a healthy, aligned executive team &mdash; and when that&rsquo;s thin, even a perfectly-run huddle starts to hum along while nothing actually moves.</p>
+  </div>
+
+  <!-- COMPARISON TABLE (semantic) -->
+  <ComparisonTable
+    heading="Where each one lives"
+    competitor="Rockefeller Habits"
+    rows={[
+      { attr: "What it governs", a: "The operating rhythm: priorities (Top 5 + a #1), a data pulse of KPIs, and a meeting cadence from the daily huddle to the annual &mdash; captured on the One-Page Strategic Plan.", b: "The leadership behavior beneath the rhythm: how the team aligns, decides, holds a standard, and learns." },
+      { attr: "It assumes", a: "Habit #1 &mdash; that the executive team is already healthy and aligned enough to set priorities and keep the rhythm.", b: "Nothing &mdash; it builds Habit #1, then hands the team to a rhythm like the Rockefeller Habits." },
+      { attr: "When it&rsquo;s thin, you see", a: "A daily huddle that&rsquo;s a status read; a Top 5 that&rsquo;s really fifteen; a quarterly Theme that fades by week three; an OPSP on the wall no decision references.", b: "Fewer, braver priorities; a huddle where blockers actually get removed; a Theme the team finishes." },
+    ]}
+  />
+
+  <!-- THE GAP -->
+  <div style="max-width:920px;margin:0 auto;padding:44px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">The honest failure mode of the Rockefeller Habits</h2>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);margin-bottom:20px;">Run the Habits on a team whose leadership disciplines have drifted and you get a recognizable pattern: a daily huddle that becomes a round-robin status report nobody acts on; a Top 5 that swells to fifteen because no one will veto; a #1 priority chosen for comfort; a meeting rhythm that runs on the calendar but changes nothing; and a One-Page Strategic Plan that&rsquo;s printed, framed, and quietly ignored. None of that is a flaw in the Habits. It&rsquo;s the absence of Habit #1 &mdash; the healthy, aligned executive team the other nine were built to sit on.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">The Flag Model rebuilds that behavior: the Flag forces a braver, smaller set of priorities; the Decision gives the #1 and every Rock an owner and a deadline; the Standard puts teeth into the huddle and the weekly; the Learning turns a missed quarter into a correction. Then the rhythm you already run starts to bite.</p>
+  </div>
+
+  <!-- STACK -->
+  <div style="max-width:920px;margin:32px auto 0;padding:0 32px;">
+    <div style="background:#F4F0E7;color:#1B1810;border-radius:18px;padding:34px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C04A26;margin-bottom:12px;">Keep the Habits. Build the one underneath.</p>
+      <p style="font-size:18px;line-height:1.62;color:#3A372F;margin-bottom:18px;">You don&rsquo;t rip anything out. You install the Flag Model first as Rockefeller Habit #1 &mdash; a genuinely healthy, aligned executive team &mdash; then run the full rhythm on top:</p>
+      <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;color:#3A372F;">
+        <li><strong>The Flag</strong> &rarr; cut the Top 5 to the 1&ndash;2 priorities the team will defend, trade-offs actually resolved.</li>
+        <li><strong>The Decision</strong> &rarr; give the #1 priority and each Rock an owner and a deadline, so the plan can change the moment evidence shifts.</li>
+        <li><strong>The Standard</strong> &rarr; make the daily huddle and the weekly enforce a real bar, with consequences, not just reporting.</li>
+        <li><strong>The Learning</strong> &rarr; each quarter, retire dead KPIs and reset the Theme against reality.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See which discipline is hollowing out your huddle.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which leadership discipline to rebuild so your Rockefeller rhythm finally moves the business &mdash; whether or not we work together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+
+  <!-- FAQ (visible; mirrors the FAQPage schema above) -->
+  <section style="max-width:920px;margin:60px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Common questions</h2>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What is the difference between the Flag Model and the Rockefeller Habits?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">The Rockefeller Habits (from Verne Harnish&rsquo;s <em>Mastering the Rockefeller Habits</em>) are an operating rhythm: a Top 5 set of priorities with a single #1, a data pulse of KPIs, and a meeting cadence from the daily huddle to the annual planning session &mdash; all captured on a One-Page Strategic Plan. The very first habit is that the executive team is healthy and aligned, and the system assumes you already have it. The Flag Model builds that alignment. The Habits are the operating rhythm; the Flag Model is the leadership behavior that makes the rhythm bite.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Can you use the Flag Model and the Rockefeller Habits together?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">Yes &mdash; they stack. Install the Flag Model first so the executive team is genuinely healthy and aligned (Rockefeller Habit #1), picks fewer and braver priorities, decides with clear ownership, and holds a real standard. Then run the full Rockefeller rhythm &mdash; the huddle, the KPIs, the quarterly Theme, the One-Page Strategic Plan &mdash; on top. The Flag Model keeps the rhythm from becoming a calendar that changes nothing.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Are the Rockefeller Habits the same as Scaling Up?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">Not quite. <a href={SLUGS.vsScalingUp} style="color:#E0744A;text-decoration:underline;">Scaling Up</a> (2014) is Verne Harnish&rsquo;s expansion of the original Rockefeller Habits (2002) into the Four Decisions every company must get right &mdash; People, Strategy, Execution, and Cash. The core habits &mdash; priorities, data, and rhythm, plus the daily huddle and the One-Page Strategic Plan &mdash; sit at the heart of both. Whether you run the classic ten habits or the fuller Scaling Up system, the Flag Model plays the same role underneath: the leadership behavior the operating system assumes.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Why do the Rockefeller Habits sometimes stop working?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">When the underlying leadership disciplines are weak, the daily huddle turns into a round-robin status report nobody acts on, the Top 5 swells because no one will veto, the #1 priority is chosen for comfort, and the One-Page Strategic Plan gets printed and ignored. The rhythm runs on the calendar but changes nothing. That is not a flaw in the Habits &mdash; it is the absence of Habit #1, the healthy and aligned executive team the other nine were built to sit on. The Flag Model rebuilds it.</p></div>
+    </div>
+  </section>
+
+  <!-- RELATED -->
+  <div style="max-width:920px;margin:60px auto 0;padding:0 32px 20px;">
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">Keep reading</p>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <a href={SLUGS.vsScalingUp} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs Scaling Up</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">When the OPSP stays on the wall.</span>
+      </a>
+      <a href={SLUGS.vsEos} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="font-family:'Newsreader',serif;font-size:20px;color:#FBF8F1;">Flag Model vs EOS &amp; Traction</span>
+        <span style="display:block;margin-top:8px;font-size:14.5px;color:rgba(244,240,231,0.66);line-height:1.5;">Why your Rocks keep rolling over.</span>
+      </a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={920} />
+    <ShareRow title={title} maxWidth={920} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={920} note="© 2026 Be Legendary. The Flag Model works alongside the Rockefeller Habits." />
+</BaseLayout>
