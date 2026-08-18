@@ -112,6 +112,7 @@ export const SLUGS = {
   vsOkrs: '/flag-model-vs-okrs/',
   vsScalingUp: '/flag-model-vs-scaling-up/',
   vsRockefeller: '/flag-model-vs-rockefeller-habits/',
+  frameworksCompared: '/team-execution-frameworks-compared/',
   // Buyer's guides
   alignmentConsultant: '/executive-team-alignment-consultant/',
   offsiteFacilitator: '/leadership-team-offsite-facilitator/',
