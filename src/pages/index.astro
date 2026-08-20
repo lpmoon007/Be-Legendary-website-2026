@@ -87,7 +87,16 @@ const homeLinks = [
       { label: 'All resources', href: SLUGS.resources, divider: true },
     ],
   },
-  { label: 'James', href: '#james' },
+  {
+    label: 'About',
+    href: SLUGS.aboutIndex,
+    children: [
+      { label: 'About Be Legendary', href: SLUGS.aboutIndex },
+      { label: 'James Carter', href: SLUGS.about },
+      { label: 'Press', href: SLUGS.press },
+      { label: 'Contact', href: SLUGS.contact },
+    ],
+  },
 ];
 ---
 <BaseLayout title={title} description={description} path="/" siteGraph={false} ogTitle="Where is your executive team going to break first?" ogDescription="There's no single fix for a stalled leadership team. But there is a place it breaks first. The Flag Model finds it." schema={schema}>
