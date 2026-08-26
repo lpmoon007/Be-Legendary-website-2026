@@ -42,3 +42,17 @@ Watch it build and deploy; then check belegendary.org.
 - The build runs on GitHub's runners (Node 22), so the VPS doesn't need Node.
 - To pause auto-deploy, just remove the `DEPLOY_SSH_KEY` secret — the workflow falls
   back to build-only.
+
+## Manual server-side steps (NOT handled by auto-deploy)
+
+The rsync pipeline above only syncs the built site into `httpdocs`. It does **not**
+touch nginx/Apache configuration, so anything that lives in Plesk's directive boxes
+has to be pasted in by hand, once, on the server. Tracking those here so they don't
+get lost:
+
+| Item | Status | What to do | Source in repo |
+|---|---|---|---|
+| **HSTS header** | ⏳ Pending | Semrush flags "No HSTS support" on `belegendary.org`. Paste the `Strict-Transport-Security` directive into Plesk → Domains → belegendary.org → Apache & nginx Settings → *Additional nginx directives* → Apply. | `redirects/plesk-nginx-hsts.conf` |
+| **gzip/brotli compression** | (verify) | Companion nginx directive block; paste alongside HSTS if not already present. | `redirects/plesk-nginx-compression.conf` |
+
+Once the HSTS directive is live, re-run the Semrush audit (or `curl -sI https://belegendary.org | grep -i strict`) to confirm the header is served, then mark this row done.
