@@ -56,3 +56,34 @@ get lost:
 | **gzip/brotli compression** | (verify) | Companion nginx directive block; paste alongside HSTS if not already present. | `redirects/plesk-nginx-compression.conf` |
 
 Once the HSTS directive is live, re-run the Semrush audit (or `curl -sI https://belegendary.org | grep -i strict`) to confirm the header is served, then mark this row done.
+
+## Post-deploy smoke check (run from an UNRESTRICTED network)
+
+A green Actions run only proves the build + rsync succeeded — it doesn't prove the
+served HTML looks right. These curls fetch the live pages and assert on the response.
+
+> ⚠️ Run these from your own machine or any box with normal internet — **not** from a
+> Claude Code web session. That sandbox routes outbound through a policy egress proxy
+> that blocks `belegendary.org` and `hbr.org` (403 CONNECT), so the requests return an
+> empty body and any `grep` on it is a false result, not a real reading.
+
+```bash
+# 1. Site is up and serving the page (expect: HTTP/2 200)
+curl -sI "https://www.belegendary.org/executive-team-building/" | head -1
+
+# 2. Research citations are FOLLOWED, not nofollow'd (expect: 0)
+#    (empty body from a blocked/failed request also prints 0 — so only trust this
+#     when curl #1 returned 200 and the body is non-empty)
+curl -s "https://www.belegendary.org/executive-team-building/" | grep -c nofollow
+
+# 3. HBR citation slug is the corrected one, not the broken 'unravelsand' (expect: 200)
+curl -sI "https://hbr.org/2015/03/why-strategy-execution-unravels-and-what-to-do-about-it" | head -1
+
+# 4. HSTS header is being served once the nginx directive is applied (expect: a
+#    strict-transport-security line; nothing until the manual step above is done)
+curl -sI "https://belegendary.org" | grep -i strict-transport-security
+```
+
+If #1 isn't `200`, stop — the rest are meaningless. If #2 isn't `0`, a `nofollow`
+crept back into the research citations. #4 stays empty until the HSTS manual step is
+applied on the server.
