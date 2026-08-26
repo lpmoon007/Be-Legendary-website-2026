@@ -90,6 +90,7 @@ export const SLUGS = {
   resources: '/resources/',
   fieldNotes: '/field-notes/',
   researchNotes: '/research-notes/',
+  researchAlignedNotExecuting: '/research-notes/leadership-team-aligned-not-executing/',
   press: '/press/',
   // Field Notes cluster
   feedbackVacuum: '/field-notes/the-feedback-vacuum/',
