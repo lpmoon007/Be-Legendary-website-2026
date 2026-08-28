@@ -13,6 +13,11 @@ export const CTA_LABEL = 'Book a free 15-minute call';
 // Organization contactPoint in schema).
 export const BOOKING_URL = 'https://meetings-na2.hubspot.com/jcarter28';
 
+// The live LFS demo — an interactive sample profile on a separate site
+// (demo.belegendary.org) with a completely different nav, so every link to it
+// must open in a new tab (target="_blank" rel="noopener").
+export const DEMO_URL = 'https://demo.belegendary.org/';
+
 // Public contact address — used for the footer/privacy contact path and as the
 // mailto fallback when a form's HubSpot POST fails or a GUID isn't wired yet, so
 // a lead is never silently lost. Swap for a shared alias (e.g. hello@) if preferred.

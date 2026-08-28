@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { CTA_URL, SLUGS } from '../lib/site';
+import { CTA_URL, SLUGS, DEMO_URL } from '../lib/site';
 
 const title = 'ELFS: Executive Leadership Failure Simulation | Be Legendary';
 const description = 'ELFS is a solo, ~30-minute pressure simulation for the CEO, with a written report on where you default to comfort over truth. Feel the diagnostic first.';
@@ -40,6 +40,7 @@ const schema = [
     </div>
     <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
       <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request your ELFS <span style="font-size:18px;">&rarr;</span></a>
+      <a href={DEMO_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:none;font-weight:700;font-size:15.5px;display:inline-flex;align-items:center;gap:7px;">See a live LFS demo profile <span aria-hidden="true">&#8599;</span></a>
       <span style="font-size:14px;color:rgba(244,240,231,0.6);max-width:30ch;line-height:1.45;">We'll confirm fit and timing in a short note &mdash; no sales call required to start.</span>
     </div>
   </header>
