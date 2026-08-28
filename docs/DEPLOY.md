@@ -82,8 +82,22 @@ curl -sI "https://hbr.org/2015/03/why-strategy-execution-unravels-and-what-to-do
 # 4. HSTS header is being served once the nginx directive is applied (expect: a
 #    strict-transport-security line; nothing until the manual step above is done)
 curl -sI "https://belegendary.org" | grep -i strict-transport-security
+
+# 5. LFS ↔ demo cross-links resolve in BOTH directions (expect: ≥1 on each line).
+#    The demo (demo.belegendary.org) is a separate site/repo deployed by Vercel, so
+#    its half only passes once Vercel has finished building the lfs-demo push — a
+#    green Actions run on THIS repo says nothing about the demo's deploy.
+#    Main site → demo:
+curl -s "https://www.belegendary.org/elfs/"           | grep -c "demo.belegendary.org"
+curl -s "https://www.belegendary.org/teams/team-lfs/" | grep -c "demo.belegendary.org"
+#    Demo → LFS pages:
+curl -s "https://demo.belegendary.org/" | grep -c "belegendary.org/elfs/"
+curl -s "https://demo.belegendary.org/" | grep -c "teams/team-lfs/"
 ```
 
 If #1 isn't `200`, stop — the rest are meaningless. If #2 isn't `0`, a `nofollow`
 crept back into the research citations. #4 stays empty until the HSTS manual step is
-applied on the server.
+applied on the server. In #5, every line should print a non-zero count; a `0` on the
+last two lines usually just means Vercel hasn't finished deploying the demo yet —
+re-run after a minute before treating it as a broken link. (As with #2, a `0` from a
+blocked or failed request is a false pass, so only trust these on a normal network.)
