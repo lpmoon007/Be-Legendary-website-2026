@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { SignupFlow } from "@/components/SignupFlow";
 import { SnailMark } from "@/components/Logo";
+import { LedgebrookMark } from "@/components/partners/LedgebrookMark";
 import { PARTNERS, getPartner } from "@/lib/partners";
+
+// Custom brand lockups for partners whose logo is drawn inline (vs. an uploaded
+// image at partner.logo). Rendered on the dark co-brand header.
+const PARTNER_MARKS: Record<string, ReactNode> = {
+  ledgebrook: (
+    <div className="flex items-center gap-3">
+      <LedgebrookMark className="h-8 w-auto" />
+      <span className="font-sans text-2xl font-800 leading-none tracking-tight text-ink-light">
+        Ledgebrook
+      </span>
+    </div>
+  ),
+};
 
 // Branded "skin" of the challenge for a specific client event — one route,
 // generated from the partner registry (lib/partners.ts). /ledgebrook, etc.
@@ -46,7 +61,9 @@ export default function CohortPage({ params }: { params: { cohort: string } }) {
         }}
       >
         <div className="mx-auto flex max-w-shell items-center justify-between px-6 py-4">
-          {p.logo ? (
+          {PARTNER_MARKS[p.slug] ? (
+            PARTNER_MARKS[p.slug]
+          ) : p.logo ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={p.logo} alt={p.name} className="h-8 w-auto" />
           ) : (
