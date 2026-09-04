@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PRESET_BEHAVIORS } from "@/lib/presets";
+import { PRESET_BEHAVIORS, type PresetChoice } from "@/lib/presets";
 import { digitCount } from "@/lib/phone";
 import { COMMON_TIMEZONES } from "@/lib/timezone";
 
@@ -13,12 +13,16 @@ export function SignupFlow({
   presets,
   initialSource,
 }: {
-  // Partner pages seed their own three commitments and an attribution tag; the
-  // default page falls back to the global presets and no source.
-  presets?: string[];
+  // Partner pages seed their own commitments and an attribution tag; the default
+  // page falls back to the global presets and no source. A preset can be a plain
+  // string or a { title, text } with a memorable name over the full rep.
+  presets?: (string | PresetChoice)[];
   initialSource?: string | null;
 } = {}) {
-  const behaviors = presets && presets.length ? presets : PRESET_BEHAVIORS;
+  // Normalize to { title, text } — title is display-only; text is the commitment.
+  const behaviors: { title: string | null; text: string }[] = (
+    presets && presets.length ? presets : PRESET_BEHAVIORS
+  ).map((b) => (typeof b === "string" ? { title: null, text: b } : b));
 
   const [step, setStep] = useState<Step>(1);
 
@@ -197,10 +201,11 @@ export function SignupFlow({
           <div className="mt-5 space-y-3">
             {behaviors.map((b) => (
               <ChoiceCard
-                key={b}
-                selected={choice === b}
-                onSelect={() => setChoice(b)}
-                label={b}
+                key={b.text}
+                selected={choice === b.text}
+                onSelect={() => setChoice(b.text)}
+                label={b.text}
+                title={b.title}
               />
             ))}
 
@@ -572,10 +577,13 @@ function ChoiceCard({
   selected,
   onSelect,
   label,
+  title,
 }: {
   selected: boolean;
   onSelect: () => void;
   label: string;
+  // Optional short name shown above the full commitment (partner presets).
+  title?: string | null;
 }) {
   return (
     <button
@@ -594,7 +602,16 @@ function ChoiceCard({
       >
         {selected && <span className="h-2.5 w-2.5 rounded-full bg-accent" />}
       </span>
-      <span className="text-ink-body">{label}</span>
+      {title ? (
+        <span>
+          <span className="block font-600 text-ink-heading">{title}</span>
+          <span className="mt-0.5 block text-sm leading-relaxed text-ink-body/80">
+            {label}
+          </span>
+        </span>
+      ) : (
+        <span className="text-ink-body">{label}</span>
+      )}
     </button>
   );
 }

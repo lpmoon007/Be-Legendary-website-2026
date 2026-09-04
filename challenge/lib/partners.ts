@@ -7,6 +7,8 @@
 // public/partners/<slug>.svg|png and set `logo`). No other code changes needed —
 // the /<slug> route and its metadata are generated from this map.
 
+import type { PresetChoice } from "@/lib/presets";
+
 export interface Partner {
   slug: string;
   /** Client name, e.g. "Ledgebrook". Used for the wordmark when no logo is set. */
@@ -24,11 +26,12 @@ export interface Partner {
   /** Attribution tag stored on each enrollment from this page (users.source). */
   source: string;
   /**
-   * The three lead-measure commitments offered on this page, in the habit-science
-   * format: "When I ___, instead of ___, I will ___." Participants pick one or
-   * write their own. Swap these when the client finalizes their summit-aligned set.
+   * The lead-measure commitments offered on this page, each in the habit-science
+   * format "When I ___, instead of ___, I will ___." A plain string is shown as-is;
+   * a { title, text } gives the card a short memorable name over the full rep.
+   * Participants pick one or write their own.
    */
-  presets: string[];
+  presets: (string | PresetChoice)[];
 }
 
 export const PARTNERS: Record<string, Partner> = {
@@ -36,18 +39,27 @@ export const PARTNERS: Record<string, Partner> = {
     slug: "ledgebrook",
     name: "Ledgebrook",
     event: "Ledgebrook People Leadership Summit",
-    // logo: "/partners/ledgebrook.svg", // drop the file in public/partners/ and uncomment
+    // Logo drawn inline (blue waves + wordmark) via the header lockup — see
+    // components/partners/LedgebrookMark.tsx.
     headline: "The summit ends.",
     headlineAccent: "The habit begins.",
     intro:
-      "You spent these days becoming a stronger leader of people. Now pick one thing to carry forward — a single small rep — and for the next thirty days we hold you to it by text. A morning nudge, an afternoon check-in, and a line on how it went. No app to download.",
+      "Pick one leader's move to carry out of these two days. For the next thirty, we hold you to it by text — one nudge, one check-in, one line on how it went.",
     source: "ledgebrook",
-    // Summit-aligned SAMPLES (swap for Bre's finalized three). People-leadership
-    // reps in the "when / instead of / I will" format.
+    // The three finalized summit commitments, in the "when / instead of / I will" format.
     presets: [
-      "When I start a conversation with someone on my team, instead of half-listening while I plan my reply, I will put down what I'm doing and hear them out fully before I respond.",
-      "When I notice someone doing good work, instead of moving on without a word, I will tell them specifically what I saw and why it mattered.",
-      "When someone brings me a problem, instead of jumping in with the answer, I will ask one question that helps them find their own next step.",
+      {
+        title: "Turn the wrench on someone else first",
+        text: "When I open my laptop to start work, instead of starting on my own list, I will send one message that hands something to a person on my team — a decision they can make, a task they can own, or a question instead of my answer.",
+      },
+      {
+        title: "Name the turn you saw",
+        text: "When I close my laptop at the end of the day, instead of just shutting it, I will send one message to someone naming the specific thing they did today that made the difference.",
+      },
+      {
+        title: "Say it without the cushion",
+        text: "When I pour my first coffee, instead of easing into the day, I will send the one message I've been softening because the person used to be my peer.",
+      },
     ],
   },
 };
