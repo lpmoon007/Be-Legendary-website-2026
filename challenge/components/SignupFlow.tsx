@@ -9,7 +9,17 @@ type Step = 1 | 2 | 3;
 
 const CUSTOM = "__custom__";
 
-export function SignupFlow() {
+export function SignupFlow({
+  presets,
+  initialSource,
+}: {
+  // Partner pages seed their own three commitments and an attribution tag; the
+  // default page falls back to the global presets and no source.
+  presets?: string[];
+  initialSource?: string | null;
+} = {}) {
+  const behaviors = presets && presets.length ? presets : PRESET_BEHAVIORS;
+
   const [step, setStep] = useState<Step>(1);
 
   // Step 1
@@ -37,7 +47,7 @@ export function SignupFlow() {
   // Attribution from a deep-link: workout_id (Mindset Workouts), source/src
   // (channel, e.g. 'lfs'), and ref (opaque id to round-trip back to the source).
   const [attribution, setAttribution] = useState<string | null>(null);
-  const [source, setSource] = useState<string | null>(null);
+  const [source, setSource] = useState<string | null>(initialSource ?? null);
   const [sourceRef, setSourceRef] = useState<string | null>(null);
 
   const [submitting, setSubmitting] = useState(false);
@@ -185,7 +195,7 @@ export function SignupFlow() {
           </p>
 
           <div className="mt-5 space-y-3">
-            {PRESET_BEHAVIORS.map((b) => (
+            {behaviors.map((b) => (
               <ChoiceCard
                 key={b}
                 selected={choice === b}
