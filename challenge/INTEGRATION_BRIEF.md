@@ -25,7 +25,7 @@ section.
   - **Shared touch-points to coordinate on:** `challenge/app/api/enroll/route.ts`,
     `challenge/app/layout.tsx`, and the migration numbering.
 - **Migrations are numbered sequentially from ONE place.** Highest is currently
-  `006`. Next new migration = `007`. Never reuse a number (we already had two
+  `010`. Next new migration = `011`. Never reuse a number (we already had two
   `004`s collide).
 
 ---
@@ -67,8 +67,9 @@ Tables: `users`, `checkins`, `sms_log`, `conversation_state`.
 `users` columns of note: `phone` (UNIQUE E.164), `timezone` (IANA), `commitment`,
 `morning_time` (default `08:00`), `afternoon_time` (default `16:00`), `active`,
 `is_private` (private mode), `workout_id` + `email` (workout-block enrollment;
-`name` is nullable), `why` (motivation), and the accountability-partner fields
-`buddy_name` / `buddy_phone` / `buddy_status` / `buddy_invited_at`.
+`name` is nullable), `why` (motivation), the accountability-partner fields
+`buddy_name` / `buddy_phone` / `buddy_status` / `buddy_invited_at`, and the
+deep-link attribution fields `source` (channel) / `source_ref` (opaque id).
 
 **Migrations (run in order; all applied in prod):**
 - `001_schema.sql` — tables, RLS, indexes, `due_messages()`
@@ -79,6 +80,8 @@ Tables: `users`, `checkins`, `sms_log`, `conversation_state`.
 - `006_configurable_reflection.sql` — afternoon dedup guard matches new "Check-in%" **and** legacy "It's 4 p.m.%" prefixes
 - `007_commitment_why.sql` — `why` (motivation)
 - `008_accountability_partner.sql` — buddy columns + `due_buddy_nudges()` (week-1 + at-risk nudges to confirmed buddies)
+- `009_source_attribution.sql` — `source` (channel, e.g. `lfs`/`workout`) + `source_ref` (opaque id round-tripped back to the originating system) + index on `source_ref`
+- `010_completion_webhook.sql` — `completion_notified_at` marker + `due_completions()` (participants past day 30 who still need their results sent back to the source; summary computed in SQL)
 
 **RLS:** `authenticated` (the coach) = full access; `anon` = nothing; server API
 routes use the **service_role** key (bypasses RLS).
@@ -131,7 +134,8 @@ outbound is logged in `sms_log` under the **participant's** `user_id`.
 
 `/api/enroll` accepts both flows: `commitment` **or** `lead_measure`; optional
 `name`, `timezone`, `private`, `workout_id`, `email`, `reminder_time`,
-`reflection_time`, `why`, `buddy_name`, `buddy_phone`. Inserts are built
+`reflection_time`, `why`, `buddy_name`, `buddy_phone`, `source`/`src`,
+`source_ref`/`ref`. Inserts are built
 conditionally so a flow never references a column its migration hasn't added; a
 supplied buddy is invited via `lib/buddy.ts` `inviteBuddy()` (non-fatal — never
 blocks enrollment). `/api/sms/inbound` also routes buddy replies (see §5).
@@ -151,14 +155,37 @@ to it via a deep link**, never build its own enrollment form.
 
 **Link format:**
 ```
-https://challenge.belegendary.org/?rep=<URL-ENCODED COMMITMENT>&source=<id>#signup
+https://challenge.belegendary.org/?rep=<URL-ENCODED COMMITMENT>&src=<channel>&ref=<opaque id>#signup
 ```
 - `rep` (required to pre-fill) — the exact commitment text. `encodeURIComponent()`
   it. If length > 3 the form pre-selects it and jumps **straight to step 2**.
-- `source` **or** `workout_id` (optional) — an attribution tag (e.g. `go-for-it`,
-  `lfs-city-never-sleeps`) stored on the user for the coach roll-up.
+  Parsed via `URLSearchParams`, so **param order doesn't matter** and the trailing
+  `#signup` fragment (it lives in `location.hash`, not the query) is ignored.
+- `src` (alias `source`) **or** `workout_id` (optional) — the **channel** that sent
+  them (e.g. `lfs`, `workout`, `go-for-it`). Stored as `users.source` for the coach
+  roll-up. `workout_id` is the older per-workout tag and still works.
+- `ref` (optional) — an **opaque id** the source owns (a run/session id). Stored as
+  `users.source_ref` and never interpreted — it exists purely to round-trip back to
+  the originating system (e.g. a TeamLFS completion webhook keyed on `ref`).
 - `email` (optional) — stitches the enrollment to a CQ/HubSpot record by email.
 - Keep the `#signup` hash so the page scrolls to the form.
+
+The signup form reads `rep`/`src`/`source`/`ref`/`email`/`workout_id` on load and
+passes `source`/`source_ref` through to `/api/enroll` (migration 009). The enroll
+route also accepts the short `src`/`ref` aliases for direct API callers.
+
+**Completion round-trip (optional, migration 010).** When a deep-link participant
+(one with a `source_ref`) finishes their 30 days, `/api/send` can POST a results
+summary back to the source, keyed on that `ref`. It is **inert** until the env
+vars below are set, so nothing fires without configuration:
+- `TEAMLFS_WEBHOOK_URL` — the source's endpoint.
+- `TEAMLFS_WEBHOOK_SECRET` — bearer token; sent as `Authorization: Bearer <token>`.
+- `TEAMLFS_WEBHOOK_SOURCE` — which channel's completions go to that URL (default `lfs`).
+
+`due_completions()` finds who's past day 30 (timezone-safe) and computes
+`days_logged`, `week1_avg`, `week4_avg`; the POST body is `{ ref, days_logged,
+week1_avg, week4_avg }`. A user is stamped `completion_notified_at` on a 2xx and
+never re-fired; a failed POST is retried on the next scheduler tick.
 
 **Reference implementation:** `src/components/MwCommitment.astro` — its rep-builder
 (Step 1) computes the commitment, then its Continue handler redirects with the link
@@ -174,6 +201,8 @@ features (timezone, afternoon time, private mode, why, accountability partner).
 NEXT_PUBLIC_SUPABASE_URL   NEXT_PUBLIC_SUPABASE_ANON_KEY   SUPABASE_SERVICE_ROLE_KEY
 TWILIO_ACCOUNT_SID   TWILIO_AUTH_TOKEN   TWILIO_MESSAGING_SERVICE_SID   TWILIO_PHONE_NUMBER
 NEXT_PUBLIC_APP_URL=https://challenge.belegendary.org   CRON_SECRET
+# Optional — completion round-trip (migration 010). Unset = feature is inert.
+TEAMLFS_WEBHOOK_URL   TEAMLFS_WEBHOOK_SECRET   TEAMLFS_WEBHOOK_SOURCE (default 'lfs')
 ```
 
 **Twilio A2P 10DLC (hard-won):**
@@ -198,11 +227,11 @@ Volume, approved.
 
 ## 9. Do-NOT-break checklist
 
-1. Keep migrations sequentially numbered from one place (next = `009`).
+1. Keep migrations sequentially numbered from one place (next = `011`).
 2. Don't change SMS copy prefixes/phrases without updating the SQL `LIKE` dedup
    guards (morning, afternoon, nudge, **buddy week-1 "just started their 30-day",
    buddy at-risk "has gone quiet"**).
-3. Don't rename DB columns / the RPCs (`due_messages`, `due_nudges`, `due_buddy_nudges`) without updating callers.
+3. Don't rename DB columns / the RPCs (`due_messages`, `due_nudges`, `due_buddy_nudges`, `due_completions`) without updating callers.
 4. Keep `challenge/` as Vercel Root Directory + the `vercel.json` framework pin.
 5. Never expose `SUPABASE_SERVICE_ROLE_KEY` to the client.
 6. Keep timezone math in Postgres — don't reimplement in JS.

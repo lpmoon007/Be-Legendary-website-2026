@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PRESET_BEHAVIORS } from "@/lib/presets";
+import { PRESET_BEHAVIORS, type PresetChoice } from "@/lib/presets";
 import { digitCount } from "@/lib/phone";
 import { COMMON_TIMEZONES } from "@/lib/timezone";
 
@@ -9,7 +9,21 @@ type Step = 1 | 2 | 3;
 
 const CUSTOM = "__custom__";
 
-export function SignupFlow() {
+export function SignupFlow({
+  presets,
+  initialSource,
+}: {
+  // Partner pages seed their own commitments and an attribution tag; the default
+  // page falls back to the global presets and no source. A preset can be a plain
+  // string or a { title, text } with a memorable name over the full rep.
+  presets?: (string | PresetChoice)[];
+  initialSource?: string | null;
+} = {}) {
+  // Normalize to { title, text } — title is display-only; text is the commitment.
+  const behaviors: { title: string | null; text: string }[] = (
+    presets && presets.length ? presets : PRESET_BEHAVIORS
+  ).map((b) => (typeof b === "string" ? { title: null, text: b } : b));
+
   const [step, setStep] = useState<Step>(1);
 
   // Step 1
@@ -34,9 +48,11 @@ export function SignupFlow() {
   // Carried silently from a CQ report deep-link (/?email=…) so the enrollment
   // can be stitched back to the person's Commitment Quotient result by email.
   const [linkedEmail, setLinkedEmail] = useState<string | null>(null);
-  // Attribution tag from a deep-link (?workout_id= or ?source=) — which workout
-  // or simulation drove the enrollment.
+  // Attribution from a deep-link: workout_id (Mindset Workouts), source/src
+  // (channel, e.g. 'lfs'), and ref (opaque id to round-trip back to the source).
   const [attribution, setAttribution] = useState<string | null>(null);
+  const [source, setSource] = useState<string | null>(initialSource ?? null);
+  const [sourceRef, setSourceRef] = useState<string | null>(null);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -62,8 +78,12 @@ export function SignupFlow() {
     if (email && email.includes("@")) setLinkedEmail(email.trim().toLowerCase());
 
     // Which workout / simulation sent them here (for the coach roll-up).
-    const src = params.get("workout_id") || params.get("source");
-    if (src && src.trim()) setAttribution(src.trim());
+    const wid = params.get("workout_id");
+    if (wid && wid.trim()) setAttribution(wid.trim());
+    const src = params.get("src") || params.get("source");
+    if (src && src.trim()) setSource(src.trim());
+    const ref = params.get("ref");
+    if (ref && ref.trim()) setSourceRef(ref.trim());
 
     // Auto-detect the participant's timezone from their device.
     const detected = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -137,6 +157,9 @@ export function SignupFlow() {
           buddy_name: buddyName.trim() || undefined,
           buddy_phone: buddyPhone.trim() || undefined,
           workout_id: attribution ?? undefined,
+          // Deep-link attribution: channel + opaque id to round-trip back.
+          source: source ?? undefined,
+          source_ref: sourceRef ?? undefined,
           timezone,
           reminder_time: reminderTime,
           reflection_time: reflectionTime,
@@ -176,12 +199,13 @@ export function SignupFlow() {
           </p>
 
           <div className="mt-5 space-y-3">
-            {PRESET_BEHAVIORS.map((b) => (
+            {behaviors.map((b) => (
               <ChoiceCard
-                key={b}
-                selected={choice === b}
-                onSelect={() => setChoice(b)}
-                label={b}
+                key={b.text}
+                selected={choice === b.text}
+                onSelect={() => setChoice(b.text)}
+                label={b.text}
+                title={b.title}
               />
             ))}
 
@@ -553,10 +577,13 @@ function ChoiceCard({
   selected,
   onSelect,
   label,
+  title,
 }: {
   selected: boolean;
   onSelect: () => void;
   label: string;
+  // Optional short name shown above the full commitment (partner presets).
+  title?: string | null;
 }) {
   return (
     <button
@@ -575,7 +602,16 @@ function ChoiceCard({
       >
         {selected && <span className="h-2.5 w-2.5 rounded-full bg-accent" />}
       </span>
-      <span className="text-ink-body">{label}</span>
+      {title ? (
+        <span>
+          <span className="block font-600 text-ink-heading">{title}</span>
+          <span className="mt-0.5 block text-sm leading-relaxed text-ink-body/80">
+            {label}
+          </span>
+        </span>
+      ) : (
+        <span className="text-ink-body">{label}</span>
+      )}
     </button>
   );
 }

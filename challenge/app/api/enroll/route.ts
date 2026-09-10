@@ -49,6 +49,13 @@ interface EnrollBody {
   // Workout-block extras (additive; require the workout-enroll migration).
   workout_id?: string;
   email?: string;
+  // Deep-link attribution (migration 009): the channel that sent them here
+  // (e.g. 'lfs', 'workout') and an opaque id to round-trip back to the source.
+  // Accept both the long and short aliases.
+  source?: string;
+  src?: string;
+  source_ref?: string;
+  ref?: string;
   // The chosen daily nudge time (HH:MM). Replaces the fixed 8 a.m. morning nudge.
   reminder_time?: string;
   // The chosen afternoon check-in time (HH:MM). Replaces the fixed 4 p.m. check-in.
@@ -85,6 +92,9 @@ export async function POST(req: NextRequest) {
       : "America/Denver";
   const workoutId = payload.workout_id?.trim() || null;
   const email = payload.email?.trim() || null;
+  // Deep-link attribution — accept the long or short alias of each.
+  const source = (payload.source ?? payload.src)?.trim() || null;
+  const sourceRef = (payload.source_ref ?? payload.ref)?.trim() || null;
   // Not stored in private mode (it may itself be personal).
   const why = isPrivate ? null : payload.why?.trim() || null;
   const buddyName = payload.buddy_name?.trim() || null;
@@ -136,6 +146,8 @@ export async function POST(req: NextRequest) {
     if (workoutId) update.workout_id = workoutId;
     if (email) update.email = email;
     if (why) update.why = why;
+    if (source) update.source = source;
+    if (sourceRef) update.source_ref = sourceRef;
     // Only reference the private column when it's set (works pre-migration for
     // the common non-private flows).
     if (isPrivate) update.is_private = true;
@@ -168,6 +180,8 @@ export async function POST(req: NextRequest) {
   if (email) insert.email = email;
   if (why) insert.why = why;
   if (isPrivate) insert.is_private = true;
+  if (source) insert.source = source;
+  if (sourceRef) insert.source_ref = sourceRef;
 
   const { data: user, error } = await supabase
     .from("users")
