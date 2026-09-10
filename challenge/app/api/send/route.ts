@@ -30,6 +30,14 @@ interface NudgeRow {
   local_date: string;
 }
 
+interface GraduationRow {
+  user_id: string;
+  phone: string;
+  name: string;
+  timezone: string;
+  local_date: string;
+}
+
 interface BuddyNudgeRow {
   user_id: string;
   participant_name: string;
@@ -52,6 +60,51 @@ export async function POST(req: NextRequest) {
 
   const supabase = createAdminClient();
 
+  const results: {
+    user_id: string;
+    type: string;
+    ok: boolean;
+    error?: string;
+  }[] = [];
+
+  // ── Day-30 graduations (run FIRST so a graduate isn't also nudged this tick) ─
+  // On day 31+ at their morning time we send one closing text and deactivate, so
+  // the challenge ends cleanly instead of running forever.
+  const { data: gradData, error: gradError } = await supabase.rpc(
+    "due_graduations"
+  );
+  if (gradError) {
+    console.error("due_graduations RPC failed:", gradError);
+  } else {
+    for (const row of (gradData ?? []) as GraduationRow[]) {
+      const body = messages.graduation(row.name?.split(" ")[0]);
+      try {
+        const sid = await sendSms(row.phone, body);
+        await supabase.from("sms_log").insert({
+          user_id: row.user_id,
+          direction: "outbound",
+          body,
+          twilio_sid: sid,
+        });
+        // The finish line: no more scheduled texts for this participant.
+        await supabase
+          .from("users")
+          .update({ active: false })
+          .eq("id", row.user_id);
+        results.push({ user_id: row.user_id, type: "graduation", ok: true });
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        console.error(`Graduation failed for ${row.user_id}:`, err);
+        results.push({
+          user_id: row.user_id,
+          type: "graduation",
+          ok: false,
+          error: message,
+        });
+      }
+    }
+  }
+
   const { data, error } = await supabase.rpc("due_messages");
   if (error) {
     console.error("due_messages RPC failed:", error);
@@ -59,12 +112,6 @@ export async function POST(req: NextRequest) {
   }
 
   const due = (data ?? []) as DueRow[];
-  const results: {
-    user_id: string;
-    type: string;
-    ok: boolean;
-    error?: string;
-  }[] = [];
 
   for (const row of due) {
     const body =

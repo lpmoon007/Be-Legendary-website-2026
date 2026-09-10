@@ -43,6 +43,11 @@ export const messages = {
   nudge: (name?: string) =>
     `Hey${name ? ` ${name}` : ""} — it's been a few quiet days, and that's okay. No judgment here. Just checking: everything alright? I'm still in your corner whenever you're ready to pick it back up.`,
 
+  // Day-30 graduation — the challenge is complete; this is the last scheduled text.
+  // Must start with "You did it" — due_graduations() dedupes on that prefix.
+  graduation: (name?: string) =>
+    `You did it${name ? `, ${name}` : ""} — thirty days, complete. That's the whole challenge, done. This is your last scheduled text; the habit is yours to keep now, on your own terms. That's what it means to Be Legendary.`,
+
   // ── Accountability Partner ("buddy") ─────────────────────────────────────
   // Double opt-in invite. The buddy must reply YES before we send anything else.
   buddyInvite: (participant: string, buddyName?: string) =>
