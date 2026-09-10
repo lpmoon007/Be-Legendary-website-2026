@@ -58,7 +58,7 @@ export const PARTNERS: Record<string, Partner> = {
       },
       {
         title: "Say it without the cushion",
-        text: "When I pour my first coffee, instead of easing into the day, I will send the one message I've been softening because the person used to be my peer.",
+        text: "When I pour my first coffee, instead of putting off a conversation that feels uncomfortable, I will take one step toward addressing it directly, with clarity, curiosity, and care.",
       },
     ],
   },
