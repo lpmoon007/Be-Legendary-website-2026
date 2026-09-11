@@ -41,6 +41,8 @@ const faqs = [
   ['Is this an executive team building retreat?', 'Yes — but not an activities day dressed up as one. An executive team building retreat, the way we run it, is a facilitated multi-day experience built around one real outcome your team needs to reach. The experience becomes a laboratory for how the team actually decides and executes — then it is reinforced for 30 days so the change survives the trip home. The setting is the retreat; the product is the behavior change.'],
   ['What is the difference between an executive team building retreat and a corporate offsite?', 'An offsite is a block of time away from operations. A retreat is the facilitated version of it — built around a diagnosed outcome, run so the experience becomes commitments, and followed through afterward. A retreat with no real outcome and no follow-through is just an offsite with better catering. The question is never “where do we go?” but “what are we here to change, and how will we know it did?”'],
   ['How long is an executive team building retreat, and where does it run?', 'Most run multi-day, at curated venues — domestic or international — chosen to fit the outcome, not the other way around. We handle the venue, travel, food, facilitation and the 30-day reinforcement end to end; you bring the team and the outcome. A single dramatic day is possible when that is the right container, but the retreats are built for a depth a day cannot reach.'],
+  ['Where are the best executive retreat locations?', 'The best executive retreat location is the one that fits the outcome, not the brochure. We run retreats at curated destinations — mountain, desert, coastal, backcountry and international — and choose the setting to serve what the team is there to change: a place remote enough to break routine, demanding enough to surface how the team actually operates, and comfortable enough that the work, not the logistics, is the hard part. We handle venue, travel and food end to end. The setting matters, but it is the container for the change, never the point of it.'],
+  ['Do you run luxury or private executive retreats?', 'Yes — fully private, single-team retreats, at a level of venue and service the team chooses. But we treat luxury as a means, not the product: a five-star setting that changes nothing is expensive at any price. What the investment should buy is a retreat engineered around one real outcome and reinforced afterward, delivered without a logistical worry landing on the team. The comfort removes friction from the work; the work is still the point.'],
 ];
 
 const schema = [
@@ -179,6 +181,34 @@ const schema = [
         ))}
       </div>
       <p style="margin-top:24px;font-size:15px;color:#6B4A44;">Something else entirely — jungle, desert, horseback, alpine? If the outcome calls for it, we have a format for it, or we build one. <a href={CTA_URL} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:none;font-weight:600;">Talk it through &rarr;</a></p>
+    </section>
+
+    <!-- ============ EXPLORE BY FOCUS (hub → commercial spokes) ============ -->
+    <section style="max-width:1240px;margin:88px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Explore by focus</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#3A0A0C;max-width:26ch;">More ways into a leadership or executive retreat.</h2>
+      <div class="bl-grid-collapse" style="margin-top:36px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+        <a href={SLUGS.destinations} style="display:block;text-decoration:none;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:26px 28px;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(100,1,10,0.4)';this.style.boxShadow='0 16px 34px -20px rgba(58,10,12,0.4)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)';this.style.boxShadow='none'">
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#3A0A0C;margin-bottom:8px;">Executive retreat locations &amp; destinations</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#5A4A44;margin-bottom:12px;">Where we run them — and how to choose a location by the outcome you need, not the view.</p>
+          <span style="font-size:13px;font-weight:700;color:#C04A26;">Explore locations &rarr;</span>
+        </a>
+        <a href={SLUGS.luxuryExecutiveRetreat} style="display:block;text-decoration:none;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:26px 28px;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(100,1,10,0.4)';this.style.boxShadow='0 16px 34px -20px rgba(58,10,12,0.4)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)';this.style.boxShadow='none'">
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#3A0A0C;margin-bottom:8px;">Luxury executive retreats</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#5A4A44;margin-bottom:12px;">What &ldquo;luxury&rdquo; should actually buy: change that lasts, not just a five-star venue.</p>
+          <span style="font-size:13px;font-weight:700;color:#C04A26;">See luxury retreats &rarr;</span>
+        </a>
+        <a href={SLUGS.corporateRetreatIdeas} style="display:block;text-decoration:none;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:26px 28px;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(100,1,10,0.4)';this.style.boxShadow='0 16px 34px -20px rgba(58,10,12,0.4)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)';this.style.boxShadow='none'">
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#3A0A0C;margin-bottom:8px;">Corporate retreat ideas</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#5A4A44;margin-bottom:12px;">Ideas and formats sorted by the outcome you need — not a generic list of activities.</p>
+          <span style="font-size:13px;font-weight:700;color:#C04A26;">Browse ideas &rarr;</span>
+        </a>
+        <a href={SLUGS.leadershipRetreatIdeas} style="display:block;text-decoration:none;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:26px 28px;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(100,1,10,0.4)';this.style.boxShadow='0 16px 34px -20px rgba(58,10,12,0.4)'" onmouseout="this.style.borderColor='rgba(100,1,10,0.14)';this.style.boxShadow='none'">
+          <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:22px;color:#3A0A0C;margin-bottom:8px;">Leadership retreat ideas</h3>
+          <p style="font-size:14.5px;line-height:1.55;color:#5A4A44;margin-bottom:12px;">Experiential formats that change how a leadership team works — not just a day out of the office.</p>
+          <span style="font-size:13px;font-weight:700;color:#C04A26;">Browse ideas &rarr;</span>
+        </a>
+      </div>
     </section>
 
     <!-- ============ ONLY HAVE ONE DAY? → EXECUTIVE IMMERSION ============ -->
