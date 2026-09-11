@@ -19,11 +19,19 @@ links** moves rankings, not volume. This play is ordered by leverage.
 The site is *already* featured in major press and carries rare author
 credentials. None of it requires cold outreach — it's reclamation and wiring.
 
-- [ ] **Reclaim / confirm the existing press links.** We cite four real features
-  (`src/lib/press.ts`). For each, confirm whether the article links to
-  belegendary.org, and if not, email the outlet/author to add one. A single live
-  do-follow link from CNN or Business Insider is transformational for a young
-  domain.
+- [x] **Reclaim / confirm the existing press links — NOT NEEDED for authority (2026-09-11).**
+  The old retreat URLs these links point at (`/extreme-retreats/`, `/shakubuku/`)
+  were confirmed 301-redirecting to the retreats hub in production on 2026-09-11
+  (`curl -sI /shakubuku/` → `301 → /teams/retreats/`). A 301 passes essentially
+  all PageRank (Google retired the old "~15% loss through a redirect" rule for
+  3xx), so the CNN/BI authority is **already flowing to the hub** — chasing the
+  publishers to edit the actual `href` adds no ranking value and is off the list.
+  The one thing a direct link buys is *durability*: the 301 works only while
+  Plesk keeps proxying misses to Apache, so if "smart static files" is ever
+  toggled the redirect (and the borrowed authority) dies silently. The right
+  hedge for that is internal, not outreach — paste `redirects/plesk-nginx-redirects.conf`
+  into Plesk so the redirects fire regardless of mode. Confirm the article links
+  still exist (data hygiene), but do not spend outreach effort reclaiming them.
   - **Business Insider** (2018, Katie Warren) — *"CEOs Are Going on $25,000
     Executive Getaways"* — live URL, high DA. **Highest-value reclaim.**
   - **CNN** (2012) — *"Extreme retreats"* — the longevity anchor; confirm the
