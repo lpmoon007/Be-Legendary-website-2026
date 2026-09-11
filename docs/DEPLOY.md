@@ -52,6 +52,7 @@ get lost:
 
 | Item | Status | What to do | Source in repo |
 |---|---|---|---|
+| **Legacy 301 redirects (nginx)** | 🔴 High priority | If `curl -sI https://www.belegendary.org/shakubuku/` returns 404 instead of a 301 to `/teams/retreats/`, Plesk's nginx is serving static files directly and bypassing the `.htaccess` redirects — so every legacy URL (incl. the CNN/BI retreat links) 404s. Paste the nginx port into Plesk → *Additional nginx directives* → Apply, then re-run the curl to confirm a 301. | `redirects/plesk-nginx-redirects.conf` |
 | **HSTS header** | ⏳ Pending | Semrush flags "No HSTS support" on `belegendary.org`. Paste the `Strict-Transport-Security` directive into Plesk → Domains → belegendary.org → Apache & nginx Settings → *Additional nginx directives* → Apply. | `redirects/plesk-nginx-hsts.conf` |
 | **gzip/brotli compression** | (verify) | Companion nginx directive block; paste alongside HSTS if not already present. | `redirects/plesk-nginx-compression.conf` |
 
