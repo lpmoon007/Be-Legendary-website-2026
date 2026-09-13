@@ -21,7 +21,7 @@ Total time: ~30–40 minutes.
 
 1. Supabase → **SQL Editor** → **New query**.
 2. Run **every file in `challenge/supabase/migrations/` in order** (`001` →
-   `010`): open each, copy the whole file, paste, **Run**. Each returns "Success.
+   `011`): open each, copy the whole file, paste, **Run**. Each returns "Success.
    No rows returned." They're additive and re-runnable.
    - `001` creates the 4 tables, indexes, RLS, `due_messages()`.
    - `002`–`008` add: nudges, the 8 a.m. default, workout enrollment, private
@@ -31,6 +31,8 @@ Total time: ~30–40 minutes.
      id round-tripped back to the source, e.g. a TeamLFS completion webhook).
    - `010` adds the completion round-trip: `completion_notified_at` +
      `due_completions()` (inert until the webhook env vars in Step 5 are set).
+   - `011` adds the day-30 finish: caps daily sends at days 1–30 (from
+     enrollment) and adds `due_graduations()` for the closing text.
    - The `pg_cron` schedule block at the bottom of `001` stays **commented** — we
      turn it on in Step 6.
 3. Verify: Supabase → **Table editor** → you should see `users`, `checkins`,
