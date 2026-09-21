@@ -254,7 +254,7 @@ export default function EnrollPage() {
               We&apos;ll never sell or give away your number. That just
               wouldn&apos;t <span className="italic text-accent-light">Be Legendary</span>.
             </p>
-            <p className="text-ink-light/40">Reply STOP to cancel, HELP for help.</p>
+            <p className="text-ink-light/40">Text program: reply STOP to cancel, HELP for help.</p>
             <nav className="flex items-center gap-4 text-ink-light/60">
               <a href="/terms" className="hover:text-ink-light">
                 SMS Terms

@@ -177,7 +177,7 @@ export default function CohortPage({ params }: { params: { cohort: string } }) {
             <span className="font-serif">Be Legendary</span>
           </div>
           <div className="flex flex-col items-center gap-2 sm:items-end">
-            <p className="text-ink-light/40">Reply STOP to cancel, HELP for help.</p>
+            <p className="text-ink-light/40">Text program: reply STOP to cancel, HELP for help.</p>
             <nav className="flex items-center gap-4 text-ink-light/60">
               <a href="/terms" className="hover:text-ink-light">
                 SMS Terms
