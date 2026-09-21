@@ -21,7 +21,7 @@ Total time: ~30–40 minutes.
 
 1. Supabase → **SQL Editor** → **New query**.
 2. Run **every file in `challenge/supabase/migrations/` in order** (`001` →
-   `011`): open each, copy the whole file, paste, **Run**. Each returns "Success.
+   `012`): open each, copy the whole file, paste, **Run**. Each returns "Success.
    No rows returned." They're additive and re-runnable.
    - `001` creates the 4 tables, indexes, RLS, `due_messages()`.
    - `002`–`008` add: nudges, the 8 a.m. default, workout enrollment, private

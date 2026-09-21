@@ -35,6 +35,7 @@ interface UserDetail {
   buddy_name: string | null;
   buddy_phone: string | null;
   buddy_status: string | null;
+  created_at: string;
 }
 
 export default async function UserDetailPage({
@@ -47,7 +48,7 @@ export default async function UserDetailPage({
   const { data: user } = await supabase
     .from("users")
     .select(
-      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private, why, buddy_name, buddy_phone, buddy_status"
+      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private, why, buddy_name, buddy_phone, buddy_status, created_at"
     )
     .eq("id", params.id)
     .maybeSingle();
@@ -78,6 +79,17 @@ export default async function UserDetailPage({
 
   const today = localDateISO(u.timezone);
 
+  // Enrollment date (in the participant's zone) + which day of the 30 they're on.
+  const enrolledLabel = new Date(u.created_at).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: u.timezone,
+  });
+  const enrolledISO = localDateISO(u.timezone, new Date(u.created_at));
+  const dayNumber =
+    Math.floor((Date.parse(today) - Date.parse(enrolledISO)) / 86_400_000) + 1;
+
   // Build a continuous 30-day series (missed days → null) for the chart.
   const series = build30DaySeries(checkins, today);
 
@@ -100,6 +112,9 @@ export default async function UserDetailPage({
       <div className="mt-2 flex flex-wrap items-center gap-x-6 gap-y-1 text-sm text-ink-light/50">
         <span>{u.phone}</span>
         <span>{u.timezone}</span>
+        <span>
+          Enrolled {enrolledLabel} · Day {dayNumber > 30 ? "30+" : dayNumber} of 30
+        </span>
         {u.is_private && (
           <span className="pill bg-accent/15 text-accent-light">
             🔒 Private participant

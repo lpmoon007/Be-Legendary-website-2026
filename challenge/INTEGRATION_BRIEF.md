@@ -25,7 +25,7 @@ section.
   - **Shared touch-points to coordinate on:** `challenge/app/api/enroll/route.ts`,
     `challenge/app/layout.tsx`, and the migration numbering.
 - **Migrations are numbered sequentially from ONE place.** Highest is currently
-  `011`. Next new migration = `012`. Never reuse a number (we already had two
+  `012`. Next new migration = `013`. Never reuse a number (we already had two
   `004`s collide).
 
 ---
@@ -83,6 +83,7 @@ deep-link attribution fields `source` (channel) / `source_ref` (opaque id).
 - `009_source_attribution.sql` — `source` (channel, e.g. `lfs`/`workout`) + `source_ref` (opaque id round-tripped back to the originating system) + index on `source_ref`
 - `010_completion_webhook.sql` — `completion_notified_at` marker + `due_completions()` (participants past day 30 who still need their results sent back to the source; summary computed in SQL)
 - `011_graduation.sql` — day-30 finish: caps `due_messages()` at days 1–30 (from enrollment) + `due_graduations()` (day-31 closing text, then the send route sets `active=false`)
+- `012_graduation_rescope.sql` — scopes the `due_graduations()` dedup to the current run (so a re-enrolled participant, whose clock `/api/enroll` restarts, can graduate again at its day 30)
 
 **RLS:** `authenticated` (the coach) = full access; `anon` = nothing; server API
 routes use the **service_role** key (bypasses RLS).
@@ -229,7 +230,7 @@ Volume, approved.
 
 ## 9. Do-NOT-break checklist
 
-1. Keep migrations sequentially numbered from one place (next = `012`).
+1. Keep migrations sequentially numbered from one place (next = `013`).
 2. Don't change SMS copy prefixes/phrases without updating the SQL `LIKE` dedup
    guards (morning, afternoon, nudge, **buddy week-1 "just started their 30-day",
    buddy at-risk "has gone quiet"**).
