@@ -106,7 +106,7 @@ export default async function RosterPage() {
               <Link
                 key={u.id}
                 href={`/admin/users/${u.id}`}
-                className={`surface flex flex-wrap items-center justify-between gap-4 bg-card-light px-5 py-4 shadow-card transition-transform hover:-translate-y-0.5 ${
+                className={`surface flex min-w-0 flex-wrap items-center justify-between gap-4 bg-card-light px-5 py-4 shadow-card transition-transform hover:-translate-y-0.5 ${
                   u.active ? "" : "opacity-60"
                 }`}
               >
