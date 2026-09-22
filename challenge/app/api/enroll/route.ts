@@ -130,7 +130,7 @@ export async function POST(req: NextRequest) {
   // Already enrolled? Reactivate + update their rep rather than erroring out.
   const { data: existing } = await supabase
     .from("users")
-    .select("id")
+    .select("id, active")
     .eq("phone", phone)
     .maybeSingle();
 
@@ -151,6 +151,14 @@ export async function POST(req: NextRequest) {
     // Only reference the private column when it's set (works pre-migration for
     // the common non-private flows).
     if (isPrivate) update.is_private = true;
+    // Re-enrolling someone who had STOPPED or already graduated is a fresh start,
+    // so restart their 30-day clock (and clear the completion marker) — otherwise
+    // the day-30 graduation would immediately finish them again. A currently-active
+    // participant editing their rep keeps their existing clock untouched.
+    if (!existing.active) {
+      update.created_at = new Date().toISOString();
+      update.completion_notified_at = null;
+    }
     await supabase.from("users").update(update).eq("id", existing.id);
     await supabase
       .from("conversation_state")
