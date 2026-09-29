@@ -81,7 +81,7 @@ export const PARTNERS: Record<string, Partner> = {
       {
         title: "Make a Difference",
         blurb: "Do one intentional thing each day that helps someone else.",
-        text: "When I see an opportunity to help, instead of assuming someone else will handle it, I will take one small action.",
+        text: "When I sit down at my desk to start the day, instead of diving into my own to-do list, I will do one small thing that helps someone else first.",
       },
       {
         title: "Show Gratitude",
@@ -92,7 +92,7 @@ export const PARTNERS: Record<string, Partner> = {
         title: "Create the Ripple",
         blurb:
           "Make one conscious choice each day that creates a positive effect beyond yourself — the tone of a reply-all, who gets the credit, how you frame a hard “no.”",
-        text: "When I am about to make a decision that affects someone else, instead of acting automatically, I will ask “What ripple will this create?” and act accordingly.",
+        text: "When I open my calendar for the day, instead of just scanning what's next, I will pick one decision ahead of me and choose the option that creates the best ripple for the people it touches.",
       },
     ],
   },
