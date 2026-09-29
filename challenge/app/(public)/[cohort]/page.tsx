@@ -98,7 +98,9 @@ export default function CohortPage({ params }: { params: { cohort: string } }) {
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-shell px-6 pb-14 pt-14 sm:pt-20">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">{p.event}</p>
+          <p className="text-lg font-800 uppercase tracking-[0.14em] text-accent-light sm:text-2xl">
+            {p.event}
+          </p>
           <h1 className="mt-4 font-serif text-[40px] font-400 leading-[1.06] text-ink-light sm:text-[60px]">
             {p.headline}{" "}
             <span className="italic text-accent-light">{p.headlineAccent}</span>
