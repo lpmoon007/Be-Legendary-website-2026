@@ -18,6 +18,7 @@ import {
   type CheckinRow,
 } from "@/lib/metrics";
 import { localDateISO } from "@/lib/timezone";
+import { cohortLabel } from "@/lib/partners";
 
 export const dynamic = "force-dynamic";
 
@@ -36,6 +37,7 @@ interface UserDetail {
   buddy_phone: string | null;
   buddy_status: string | null;
   created_at: string;
+  source: string | null;
 }
 
 export default async function UserDetailPage({
@@ -48,7 +50,7 @@ export default async function UserDetailPage({
   const { data: user } = await supabase
     .from("users")
     .select(
-      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private, why, buddy_name, buddy_phone, buddy_status, created_at"
+      "id, name, phone, timezone, commitment, morning_time, afternoon_time, active, is_private, why, buddy_name, buddy_phone, buddy_status, created_at, source"
     )
     .eq("id", params.id)
     .maybeSingle();
@@ -115,6 +117,11 @@ export default async function UserDetailPage({
         <span>
           Enrolled {enrolledLabel} · Day {dayNumber > 30 ? "30+" : dayNumber} of 30
         </span>
+        {u.source && (
+          <span className="pill border border-ink-light/25 text-ink-light/70">
+            {cohortLabel(u.source)}
+          </span>
+        )}
         {u.is_private && (
           <span className="pill bg-accent/15 text-accent-light">
             🔒 Private participant
