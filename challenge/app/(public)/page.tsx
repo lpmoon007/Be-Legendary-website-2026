@@ -93,7 +93,7 @@ export default function EnrollPage() {
           <div>
             <p className="eyebrow">Your 30-Day Challenge</p>
             <h1 className="mt-4 font-serif text-[44px] font-400 leading-[1.05] text-ink-light sm:text-[68px]">
-              A workout is one action.{" "}
+              One action a day.{" "}
               <span className="italic text-accent-light">
                 Thirty days is who you become.
               </span>
