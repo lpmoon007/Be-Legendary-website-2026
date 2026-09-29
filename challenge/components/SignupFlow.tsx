@@ -59,6 +59,9 @@ export function SignupFlow({
   const [error, setError] = useState<string | null>(null);
   // Outcome of step 2: did they opt in to texts or decline?
   const [outcome, setOutcome] = useState<"enrolled" | "declined" | null>(null);
+  // Shown when they try to continue WITHOUT opting in to texts — the challenge is
+  // delivered by SMS, so declining should be a deliberate choice, not an accident.
+  const [showConsentPrompt, setShowConsentPrompt] = useState(false);
 
   // Deep-link support: /?rep=<behavior> pre-fills the commitment (from a workout,
   // a leadership-failure simulation, a CQ report, etc.) and drops the person
@@ -129,19 +132,31 @@ export function SignupFlow({
     setTzEditing(false);
     setError(null);
     setOutcome(null);
+    setShowConsentPrompt(false);
   }
 
-  async function submit() {
+  function submit() {
     setError(null);
-
-    // Declined texts → complete the form without enrolling in SMS. No number is
-    // stored for messaging; they can still use Be Legendary's other services.
+    // The challenge is delivered entirely by SMS. If they haven't opted in, don't
+    // silently drop them — confirm the choice first. (Consent stays optional for
+    // A2P compliance; this just makes declining deliberate, not accidental.)
     if (!consent) {
-      setOutcome("declined");
-      setStep(3);
+      setShowConsentPrompt(true);
       return;
     }
+    doEnroll();
+  }
 
+  // Complete the form WITHOUT enrolling in SMS. No number is stored for messaging.
+  function declineTexts() {
+    setShowConsentPrompt(false);
+    setOutcome("declined");
+    setStep(3);
+  }
+
+  async function doEnroll() {
+    setError(null);
+    setShowConsentPrompt(false);
     setSubmitting(true);
     try {
       const res = await fetch("/api/enroll", {
@@ -152,7 +167,9 @@ export function SignupFlow({
           phone: phone.trim(),
           // In private mode the real behavior never leaves the browser.
           commitment: isPrivate ? "(private)" : commitment,
-          consent,
+          // doEnroll only runs once they've opted in (box checked, or via the
+          // consent prompt), so consent is always true here.
+          consent: true,
           private: isPrivate,
           why: why.trim() || undefined,
           buddy_name: buddyName.trim() || undefined,
@@ -449,18 +466,50 @@ export function SignupFlow({
             <p className="mt-4 text-sm font-600 text-accent">{error}</p>
           )}
 
-          <div className="mt-6 flex gap-3">
-            <button className="btn-ghost" onClick={() => setStep(1)}>
-              ← Back
-            </button>
-            <button
-              className="btn-cta flex-1"
-              disabled={!step2Valid || submitting}
-              onClick={submit}
-            >
-              {submitting ? "Enrolling…" : consent ? "Begin →" : "Continue →"}
-            </button>
-          </div>
+          {showConsentPrompt ? (
+            <div className="mt-6 rounded-btn border border-accent/40 bg-accent/5 p-4">
+              <p className="text-sm font-700 text-ink-heading">
+                The challenge runs entirely by text.
+              </p>
+              <p className="mt-1 text-sm text-ink-muted">
+                Without opting in, you won&apos;t get your daily challenge — the
+                reminders are the whole point. Getting a nudge is how the habit
+                sticks when the day gets busy.
+              </p>
+              <div className="mt-4 flex flex-col gap-2">
+                <button
+                  className="btn-cta w-full"
+                  disabled={submitting}
+                  onClick={() => {
+                    setConsent(true);
+                    doEnroll();
+                  }}
+                >
+                  {submitting ? "Enrolling…" : "Text me my daily challenge →"}
+                </button>
+                <button
+                  className="btn-ghost w-full"
+                  disabled={submitting}
+                  onClick={declineTexts}
+                >
+                  Continue without texts
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="mt-6 flex gap-3">
+              <button className="btn-ghost" onClick={() => setStep(1)}>
+                ← Back
+              </button>
+              <button
+                className="btn-cta flex-1"
+                disabled={!step2Valid || submitting}
+                onClick={submit}
+              >
+                {submitting ? "Enrolling…" : consent ? "Begin →" : "Continue →"}
+              </button>
+            </div>
+          )}
         </div>
       )}
 
