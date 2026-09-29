@@ -90,7 +90,8 @@ export const PARTNERS: Record<string, Partner> = {
       },
       {
         title: "Create the Ripple",
-        blurb: "Make one conscious choice each day that creates a positive effect beyond yourself.",
+        blurb:
+          "Make one conscious choice each day that creates a positive effect beyond yourself — the tone of a reply-all, who gets the credit, how you frame a hard “no.”",
         text: "When I am about to make a decision that affects someone else, instead of acting automatically, I will ask “What ripple will this create?” and act accordingly.",
       },
     ],
