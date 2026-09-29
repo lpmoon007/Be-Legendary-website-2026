@@ -28,7 +28,7 @@ export function PhoneMock() {
       </div>
       <div className="flex flex-col gap-2 rounded-[22px] bg-[#141210] p-3">
         <AgentBubble>
-          Morning. Today&apos;s rep: say the risky thing you&apos;d normally
+          Morning. Today&apos;s action: say the risky thing you&apos;d normally
           soften. You&apos;ve got this.
         </AgentBubble>
         <AgentBubble>

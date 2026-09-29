@@ -7,11 +7,11 @@ export const messages = {
   morning: (commitment: string) =>
     // Strip trailing sentence punctuation so a commitment that already ends in
     // "." doesn't produce "bad.. You've got this."
-    `Morning. Today's rep: ${commitment.trim().replace(/[.!?]+$/, "")}. You've got this.`,
+    `Morning. Today's action: ${commitment.trim().replace(/[.!?]+$/, "")}. You've got this.`,
 
   // Private-mode morning nudge — never names the behavior. Keeps the "Morning."
   // prefix so the duplicate guard in due_messages() still matches.
-  morningPrivate: () => `Morning. You know today's rep. Go do it — you've got this.`,
+  morningPrivate: () => `Morning. You know today's action. Go do it — you've got this.`,
 
   // Afternoon check-in rates today's EFFORT, 1–10. Time-neutral wording so a
   // participant's chosen check-in time is honored (was hardcoded "It's 4 p.m.").
@@ -25,7 +25,7 @@ export const messages = {
     `An ${score} — strong. What made it land today?`,
 
   // 5–7: acknowledge the rep, then invite a low-pressure one-line reflection.
-  midPrompt: () => `Solid — that's a rep in the bank. One line on how today went?`,
+  midPrompt: () => `Solid — that's one in the bank. One line on how today went?`,
 
   // Kept for reference / rollback; no longer used in the state machine.
   midAck: () => `Got it. See you tomorrow.`,

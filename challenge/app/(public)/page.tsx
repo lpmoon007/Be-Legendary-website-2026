@@ -26,7 +26,7 @@ const faqs = [
   },
   {
     q: "What behavior should I choose?",
-    a: "One small, daily action you control — a lead measure. Send one note of appreciation. Ten minutes of deep work before email. One honest conversation you've been avoiding. Small enough to do on your worst day, meaningful enough to change something.",
+    a: "One small, daily action you control. Send one note of appreciation. Ten minutes of deep work before email. One honest conversation you've been avoiding. Small enough to do on your worst day, meaningful enough to change something.",
   },
   {
     q: "What if I miss a day?",
@@ -93,7 +93,7 @@ export default function EnrollPage() {
           <div>
             <p className="eyebrow">Your 30-Day Challenge</p>
             <h1 className="mt-4 font-serif text-[44px] font-400 leading-[1.05] text-ink-light sm:text-[68px]">
-              A workout is a rep.{" "}
+              A workout is one action.{" "}
               <span className="italic text-accent-light">
                 Thirty days is who you become.
               </span>

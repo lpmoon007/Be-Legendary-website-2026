@@ -132,7 +132,7 @@ export default async function UserDetailPage({
       {/* Commitment (inline editable, or private) */}
       <div className="surface mt-6 bg-card-light p-5 shadow-card">
         <span className="text-xs font-700 uppercase tracking-wide text-ink-muted">
-          Lead measure
+          Commitment
         </span>
         <div className="mt-2">
           {u.is_private ? (
