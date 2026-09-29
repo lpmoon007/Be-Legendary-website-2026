@@ -96,6 +96,39 @@ export const PARTNERS: Record<string, Partner> = {
       },
     ],
   },
+
+  mckesson: {
+    slug: "mckesson",
+    name: "McKesson",
+    event: "McKesson Peak Performance",
+    // Logo rendered as a wordmark lockup in the header (see PARTNER_MARKS in the
+    // cohort page); swap for the official asset via `logo` when available.
+    headline: "The bikes are built.",
+    headlineAccent: "The habit begins.",
+    intro:
+      "You left it a little better than you found it today. Now carry that forward — pick one small move and for the next thirty days we hold you to it by text: one nudge, one check-in, one line on how it went.",
+    source: "mckesson",
+    // Commitments drawn from the Building a Dream themes — no one wins alone (the
+    // care team), leave it better than you found it, and choosing what you see.
+    // Title + landing blurb on the card; the habit version is the stored/texted rep.
+    presets: [
+      {
+        title: "No One Wins Alone",
+        blurb: "Each day, credit one person whose behind-the-scenes work made something possible.",
+        text: "When something goes well, instead of moving straight to what's next, I will tell one person whose behind-the-scenes work helped make it happen.",
+      },
+      {
+        title: "Leave It Better",
+        blurb: "Do one small thing each day that leaves a person or place better than you found it.",
+        text: "When I wrap up a call or a meeting, instead of just clicking off, I will do one small thing that leaves the other person a little better than I found them.",
+      },
+      {
+        title: "See What You'd Miss",
+        blurb: "Each day, deliberately look for the thing you'd normally overlook — a person, a need, a chance to help.",
+        text: "When I sit down to start my day, instead of diving straight into the to-do list, I will name one thing I want to notice today that I'd otherwise miss.",
+      },
+    ],
+  },
 };
 
 export function getPartner(slug: string): Partner | null {
