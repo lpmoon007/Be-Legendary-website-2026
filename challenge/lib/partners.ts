@@ -101,3 +101,19 @@ export const PARTNERS: Record<string, Partner> = {
 export function getPartner(slug: string): Partner | null {
   return PARTNERS[slug] ?? null;
 }
+
+// Friendly display label for a user's `source` (cohort) tag, shown in the admin.
+// Prefers a partner's name; falls back to a small map for non-partner sources,
+// then a capitalized version of the raw tag.
+const SOURCE_LABELS: Record<string, string> = {
+  lfs: "TeamLFS",
+  workout: "Mindset Workout",
+};
+export function cohortLabel(source: string | null | undefined): string | null {
+  if (!source) return null;
+  return (
+    PARTNERS[source]?.name ??
+    SOURCE_LABELS[source] ??
+    source.charAt(0).toUpperCase() + source.slice(1)
+  );
+}

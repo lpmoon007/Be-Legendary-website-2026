@@ -10,6 +10,7 @@ import {
   type CheckinRow,
 } from "@/lib/metrics";
 import { localDateISO } from "@/lib/timezone";
+import { cohortLabel } from "@/lib/partners";
 
 export const dynamic = "force-dynamic";
 
@@ -27,17 +28,33 @@ interface UserRow {
   active: boolean;
   is_private: boolean;
   created_at: string;
+  source: string | null;
 }
 
-export default async function RosterPage() {
+export default async function RosterPage({
+  searchParams,
+}: {
+  searchParams: { cohort?: string };
+}) {
   const supabase = createClient();
 
   const { data: users } = await supabase
     .from("users")
-    .select("id, name, timezone, commitment, active, is_private, created_at")
+    .select("id, name, timezone, commitment, active, is_private, created_at, source")
     .order("created_at", { ascending: true });
 
-  const roster = (users ?? []) as UserRow[];
+  const allUsers = (users ?? []) as UserRow[];
+
+  // Distinct cohorts present (for the filter chips), and the active filter.
+  const cohorts = [...new Set(allUsers.map((u) => u.source).filter(Boolean))]
+    .sort() as string[];
+  const activeCohort =
+    searchParams.cohort && cohorts.includes(searchParams.cohort)
+      ? searchParams.cohort
+      : null;
+  const roster = activeCohort
+    ? allUsers.filter((u) => u.source === activeCohort)
+    : allUsers;
 
   // Pull the last ~30 days of check-ins for everyone in one query.
   const since = new Date();
@@ -87,6 +104,23 @@ export default async function RosterPage() {
         </Link>
       </div>
 
+      {cohorts.length > 0 && (
+        <div className="mb-5 flex flex-wrap items-center gap-2">
+          <span className="mr-1 text-xs uppercase tracking-wide text-ink-light/40">
+            Cohort
+          </span>
+          <CohortChip href="/admin" label="All" active={!activeCohort} />
+          {cohorts.map((c) => (
+            <CohortChip
+              key={c}
+              href={`/admin?cohort=${encodeURIComponent(c)}`}
+              label={cohortLabel(c) ?? c}
+              active={activeCohort === c}
+            />
+          ))}
+        </div>
+      )}
+
       {roster.length === 0 ? (
         <EmptyState />
       ) : (
@@ -128,6 +162,11 @@ export default async function RosterPage() {
                     {weekOne && !atRisk && (
                       <span className="pill bg-accent-light/15 text-accent-light">
                         Week 1 · {w1Count} check-in{w1Count === 1 ? "" : "s"}
+                      </span>
+                    )}
+                    {u.source && (
+                      <span className="pill border border-ink-muted/40 text-ink-muted">
+                        {cohortLabel(u.source)}
                       </span>
                     )}
                   </div>
@@ -176,6 +215,29 @@ function Metric({
         {label}
       </div>
     </div>
+  );
+}
+
+function CohortChip({
+  href,
+  label,
+  active,
+}: {
+  href: string;
+  label: string;
+  active: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`pill border transition-colors ${
+        active
+          ? "border-accent-light bg-accent-light/15 text-accent-light"
+          : "border-ink-light/20 text-ink-light/60 hover:text-ink-light"
+      }`}
+    >
+      {label}
+    </Link>
   );
 }
 
