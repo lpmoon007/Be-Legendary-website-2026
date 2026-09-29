@@ -104,7 +104,7 @@ export const PARTNERS: Record<string, Partner> = {
     // Logo rendered as a wordmark lockup in the header (see PARTNER_MARKS in the
     // cohort page); swap for the official asset via `logo` when available.
     headline: "The bikes are built.",
-    headlineAccent: "The habit begins.",
+    headlineAccent: "The challenge begins.",
     intro:
       "You left it a little better than you found it today. Now carry that forward — pick one small move and for the next thirty days we hold you to it by text: one nudge, one check-in, one line on how it went.",
     source: "mckesson",
