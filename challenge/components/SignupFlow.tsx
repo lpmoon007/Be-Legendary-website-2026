@@ -205,10 +205,10 @@ export function SignupFlow({
       {step === 1 && (
         <div className="mt-6">
           <h3 className="font-serif text-2xl font-500 text-ink-heading">
-            Choose your lead measure
+            Choose your challenge
           </h3>
           <p className="mt-1 text-sm text-ink-muted">
-            One behavior. The smallest rep that changes who you become.
+            One behavior. The smallest action that changes who you become.
           </p>
           <p className="mt-2 text-xs text-ink-muted">
             Pick something you can practice <span className="font-600">every
@@ -248,7 +248,7 @@ export function SignupFlow({
             disabled={!step1Valid}
             onClick={() => setStep(2)}
           >
-            This is my rep →
+            This is my action →
           </button>
         </div>
       )}
@@ -261,7 +261,7 @@ export function SignupFlow({
 
           <div className="mt-4 rounded-btn border border-accent/30 bg-accent/5 px-4 py-3">
             <span className="text-xs font-700 uppercase tracking-wide text-accent">
-              Your rep
+              Your action
             </span>
             <p className="mt-1 text-ink-body">
               {isPrivate ? "🔒 Private — only you will see this" : commitment}
@@ -280,7 +280,7 @@ export function SignupFlow({
               <span className="font-700 text-ink-body">
                 Keep this private.
               </span>{" "}
-              Some reps are personal — a prayer, a private practice. Check this
+              Some actions are personal — a prayer, a private practice. Check this
               and your coach supports your effort (your daily 1–10) without ever
               seeing the behavior or what you write. We won&apos;t store your
               commitment or your reflections.
@@ -301,7 +301,7 @@ export function SignupFlow({
                 className="mt-1 w-full rounded-btn border border-ink-muted/40 bg-white px-4 py-3 text-ink-body outline-none focus:border-accent"
               />
               <span className="mt-1 block text-xs text-ink-muted">
-                A clear &ldquo;why&rdquo; is what gets you to do the rep on the
+                A clear &ldquo;why&rdquo; is what gets you to do the action on the
                 hard days.
               </span>
             </label>
@@ -334,7 +334,7 @@ export function SignupFlow({
             <div>
               <span className="text-sm font-600 text-ink-body">When should we text you?</span>
               <p className="mt-0.5 text-xs text-ink-muted">
-                A morning nudge to do your rep, and an afternoon check-in to rate
+                A morning nudge to do your action, and an afternoon check-in to rate
                 how it went — in your local time.
               </p>
               <div className="mt-2 grid grid-cols-2 gap-3">
@@ -527,7 +527,7 @@ export function SignupFlow({
 
           <div className="mt-5 rounded-btn border border-accent/30 bg-accent/5 px-4 py-3 text-left">
             <span className="text-xs font-700 uppercase tracking-wide text-accent">
-              Your rep
+              Your action
             </span>
             <p className="mt-1 text-ink-body">
               {isPrivate ? "🔒 Private — kept between you and you" : commitment}

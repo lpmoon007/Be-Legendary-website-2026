@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
 
   // ── Validation (name is optional — the workout block doesn't collect it) ───
   if (!commitment) {
-    return json({ error: "Choose a lead measure." }, 400);
+    return json({ error: "Choose your challenge." }, 400);
   }
   if (!consent) {
     return json({ error: "SMS consent is required to enroll." }, 400);

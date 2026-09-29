@@ -52,7 +52,7 @@ export function generateMetadata({
   if (!p) return {};
   return {
     title: p.event,
-    description: `Carry one leadership habit out of the ${p.event}. One small rep a day for thirty days, held to it by text.`,
+    description: `Carry one leadership habit out of the ${p.event}. One small action a day for thirty days, held to it by text.`,
     // A private cohort landing page — keep it out of search.
     robots: { index: false, follow: false },
     alternates: { canonical: `/${p.slug}` },
@@ -154,7 +154,7 @@ export default function CohortPage({ params }: { params: { cohort: string } }) {
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-ink-light/60">
               Pick one of the three below — or write your own. It becomes your
-              daily rep, starting tomorrow morning.
+              daily action, starting tomorrow morning.
             </p>
           </div>
 
