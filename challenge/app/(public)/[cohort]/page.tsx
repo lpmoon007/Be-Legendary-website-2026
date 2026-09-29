@@ -26,6 +26,11 @@ const PARTNER_MARKS: Record<string, ReactNode> = {
       </span>
     </div>
   ),
+  mckesson: (
+    <span className="font-sans text-2xl font-700 leading-none tracking-tight text-ink-light">
+      McKesson
+    </span>
+  ),
 };
 
 // Branded "skin" of the challenge for a specific client event — one route,
