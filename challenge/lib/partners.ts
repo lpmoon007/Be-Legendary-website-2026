@@ -108,24 +108,21 @@ export const PARTNERS: Record<string, Partner> = {
     intro:
       "You left it a little better than you found it today. Now carry that forward — pick one small move and for the next thirty days we hold you to it by text: one nudge, one check-in, one line on how it went.",
     source: "mckesson",
-    // Commitments drawn from the Building a Dream themes — no one wins alone (the
-    // care team), leave it better than you found it, and choosing what you see.
-    // Title + landing blurb on the card; the habit version is the stored/texted rep.
+    // Commitments anchored to an existing daily habit (habit-stacking) — the
+    // "when I <existing habit>, instead of <default>, I will <small action>"
+    // structure. No blurb, so the card shows the full anchored sentence.
     presets: [
       {
         title: "No One Wins Alone",
-        blurb: "Each day, credit one person whose behind-the-scenes work made something possible.",
-        text: "When something goes well, instead of moving straight to what's next, I will tell one person whose behind-the-scenes work helped make it happen.",
+        text: "When I pour my first coffee, instead of scrolling my phone, I will send one message crediting someone whose behind-the-scenes work helped make a recent win happen.",
       },
       {
         title: "Leave It Better",
-        blurb: "Do one small thing each day that leaves a person or place better than you found it.",
-        text: "When I wrap up a call or a meeting, instead of just clicking off, I will do one small thing that leaves the other person a little better than I found them.",
+        text: "When I open my email in the morning, instead of starting with what I need, I will begin with one message that leaves someone better than I found them — a thank-you, an answer they're waiting on, or an intro.",
       },
       {
         title: "See What You'd Miss",
-        blurb: "Each day, deliberately look for the thing you'd normally overlook — a person, a need, a chance to help.",
-        text: "When I sit down to start my day, instead of diving straight into the to-do list, I will name one thing I want to notice today that I'd otherwise miss.",
+        text: "When I sit down for lunch, instead of reaching for my phone, I will look up and name one person or one thing I'd normally overlook.",
       },
     ],
   },
