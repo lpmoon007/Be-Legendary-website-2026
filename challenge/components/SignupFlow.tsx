@@ -19,8 +19,9 @@ export function SignupFlow({
   presets?: (string | PresetChoice)[];
   initialSource?: string | null;
 } = {}) {
-  // Normalize to { title, text } — title is display-only; text is the commitment.
-  const behaviors: { title: string | null; text: string }[] = (
+  // Normalize to { title, blurb, text } — title/blurb are display-only; text is
+  // the stored commitment. A card shows the blurb when present, else the full text.
+  const behaviors: { title: string | null; blurb?: string; text: string }[] = (
     presets && presets.length ? presets : PRESET_BEHAVIORS
   ).map((b) => (typeof b === "string" ? { title: null, text: b } : b));
 
@@ -204,7 +205,7 @@ export function SignupFlow({
                 key={b.text}
                 selected={choice === b.text}
                 onSelect={() => setChoice(b.text)}
-                label={b.text}
+                label={b.blurb ?? b.text}
                 title={b.title}
               />
             ))}
