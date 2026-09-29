@@ -62,6 +62,39 @@ export const PARTNERS: Record<string, Partner> = {
       },
     ],
   },
+
+  microsoft: {
+    slug: "microsoft",
+    name: "Microsoft",
+    event: "Microsoft Strategy and Operations",
+    // Logo drawn inline (four-color squares + wordmark) via the header lockup —
+    // see components/partners/MicrosoftMark.tsx.
+    headline: "The meeting ends.",
+    headlineAccent: "The challenge begins.",
+    intro:
+      "Pick one leader's move to carry out of today's session. For the next thirty, we hold you to it by text — one nudge, one check-in, one line on how it went.",
+    source: "microsoft",
+    // Month-of-Giving commitments — title + landing blurb shown on the card; the
+    // behaviorally-strong "when / instead of / I will" habit version is stored and
+    // texted as the daily rep.
+    presets: [
+      {
+        title: "Make a Difference",
+        blurb: "Do one intentional thing each day that helps someone else.",
+        text: "When I see an opportunity to help, instead of assuming someone else will handle it, I will take one small action.",
+      },
+      {
+        title: "Show Gratitude",
+        blurb: "Recognize one person each day for the difference they made.",
+        text: "When I finish my workday, instead of immediately closing my laptop, I will send one message of specific gratitude.",
+      },
+      {
+        title: "Create the Ripple",
+        blurb: "Make one conscious choice each day that creates a positive effect beyond yourself.",
+        text: "When I am about to make a decision that affects someone else, instead of acting automatically, I will ask “What ripple will this create?” and act accordingly.",
+      },
+    ],
+  },
 };
 
 export function getPartner(slug: string): Partner | null {

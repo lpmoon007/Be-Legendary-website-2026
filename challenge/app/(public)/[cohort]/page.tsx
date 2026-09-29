@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { SignupFlow } from "@/components/SignupFlow";
 import { SnailMark } from "@/components/Logo";
 import { LedgebrookMark } from "@/components/partners/LedgebrookMark";
+import { MicrosoftMark } from "@/components/partners/MicrosoftMark";
 import { PARTNERS, getPartner } from "@/lib/partners";
 
 // Custom brand lockups for partners whose logo is drawn inline (vs. an uploaded
@@ -14,6 +15,14 @@ const PARTNER_MARKS: Record<string, ReactNode> = {
       <LedgebrookMark className="h-8 w-auto" />
       <span className="font-sans text-2xl font-800 leading-none tracking-tight text-ink-light">
         Ledgebrook
+      </span>
+    </div>
+  ),
+  microsoft: (
+    <div className="flex items-center gap-3">
+      <MicrosoftMark className="h-7 w-7" />
+      <span className="font-sans text-2xl font-600 leading-none tracking-tight text-ink-light">
+        Microsoft
       </span>
     </div>
   ),
