@@ -55,7 +55,7 @@ export function ProgressPreview() {
               <thead className="text-xs uppercase tracking-wide text-ink-muted">
                 <tr className="border-b border-ink-muted/20">
                   <th className="py-2 pr-4 font-600">Client</th>
-                  <th className="py-2 pr-4 font-600">Commitment</th>
+                  <th className="py-2 pr-4 font-600">Action</th>
                   <th className="py-2 pr-4 font-600">Day</th>
                   <th className="py-2 pr-4 font-600">Consistency</th>
                   <th className="py-2 font-600">Trend</th>
