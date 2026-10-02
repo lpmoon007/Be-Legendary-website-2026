@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS } from '../lib/site';
+
+const title = 'Best Executive Team Development Companies (2026) | Be Legendary';
+const description = 'A straight, criteria-based guide to the leading executive and leadership team development companies in 2026 — peer-advisory networks, research institutions, coaching firms and team-execution specialists — with what each is best for and how to choose.';
+
+const canonical = 'https://www.belegendary.org/best-executive-team-development-companies/';
+
+// Neutral, widely-known positioning of each. Grouped by the kind of outcome they serve.
+const firms = [
+  { name: 'Be Legendary', approach: 'Team execution & alignment', known: 'The Flag Model and a live leadership simulation (LFS) that reads how a team actually decides and executes, then rebuilds the behavior and measures it with a FlagScore.', bestWhen: 'The team is capable but not executing — misaligned priorities, decisions that stall, a standard that slips.', us: true },
+  { name: 'Center for Creative Leadership (CCL)', approach: 'Research-based development', known: 'One of the longest-running leadership-development institutions — open-enrollment and custom programs grounded in published research.', bestWhen: 'You want curriculum-driven individual leadership development at scale, backed by research.', us: false },
+  { name: 'Korn Ferry', approach: 'Consulting + assessment at scale', known: 'A global organizational-consulting firm pairing leadership development with assessment, succession and talent data.', bestWhen: 'A large enterprise needs development tied to assessment and succession across many leaders.', us: false },
+  { name: 'Vistage', approach: 'CEO peer advisory', known: 'Facilitated peer-advisory groups where CEOs and executives work through their real decisions with a chair and a room of peers.', bestWhen: 'An individual leader wants an ongoing peer sounding board more than a team intervention.', us: false },
+  { name: 'The Table Group', approach: 'Team health', known: 'Patrick Lencioni’s firm — the Five Dysfunctions model and organizational-health work focused on trust, conflict and cohesion.', bestWhen: 'You’re diagnosing why a team isn’t cohering and want the health model behind it.', us: false },
+  { name: 'Stewart Leadership', approach: 'Leadership & team consulting', known: 'Leadership and team-development consulting and coaching across the leader and team levels.', bestWhen: 'You want blended individual-and-team development through a consulting relationship.', us: false },
+  { name: 'University executive education (Stanford GSB, Harvard, etc.)', approach: 'Academic programs', known: 'Multi-day executive-education programs taught by business-school faculty.', bestWhen: 'An individual leader wants a credentialed academic program and a cohort network.', us: false },
+];
+
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
+    { '@type': 'ListItem', position: 3, name: 'Best Executive Team Development Companies', item: canonical },
+  ] },
+  { '@type': 'Article', headline: 'Best executive team development companies (2026)', datePublished: '2026-10-02', dateModified: '2026-10-02', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: canonical, description },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What are the best executive team development companies?', acceptedAnswer: { '@type': 'Answer', text: 'There is no single best one, because they solve different problems. For curriculum-driven individual development there is the Center for Creative Leadership and university executive education; for assessment and succession at enterprise scale, Korn Ferry; for a CEO peer network, Vistage; for team health and cohesion, the Table Group (Five Dysfunctions); and for getting an executive team that is capable but not executing to actually align, decide and hold a standard, team-execution specialists such as Be Legendary, which uses the Flag Model and a live leadership simulation. The right choice depends on whether you are developing individual leaders or fixing how the team operates together.' } },
+    { '@type': 'Question', name: 'What is the difference between leadership development and executive team development?', acceptedAnswer: { '@type': 'Answer', text: 'Leadership development builds the skills of individual leaders — one person at a time. Executive team development works on the team as a unit: how the group chooses priorities, makes and owns decisions, surfaces disagreement, holds a standard and learns from a miss. A team can be full of well-developed individual leaders and still fail to execute together, which is why team development is a distinct discipline and often the missing one.' } },
+    { '@type': 'Question', name: 'How do I choose an executive team development company?', acceptedAnswer: { '@type': 'Answer', text: 'Start from the outcome. If you need individual leaders to grow, choose a curriculum or coaching provider. If your team is capable but not executing together, choose a team-execution specialist and insist on three things: a real diagnosis of how your team actually behaves (not a survey), a specific mechanism to rebuild the broken behavior, and a measure that shows whether it changed. Development that hands you a framework and leaves has changed nothing.' } },
+    { '@type': 'Question', name: 'How much does executive team development cost?', acceptedAnswer: { '@type': 'Answer', text: 'It ranges widely by format. Open-enrollment programs and peer-advisory memberships run from a few thousand dollars per leader per year; custom team engagements and multi-day executive programs run from the low tens of thousands into six figures depending on scope, duration and how much diagnosis and follow-through is built in. The number that matters is not the fee but the cost of the problem: a misaligned executive team typically wastes far more in stalled decisions and misdirected effort than any engagement costs.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path="/best-executive-team-development-companies/"
+  ogType="article"
+  ogTitle="Best executive team development companies (2026)"
+  ogDescription="Peer advisory, research institutions, coaching firms and team-execution specialists — what each is best for, and how to choose."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:1000px;margin:0 auto;padding:80px 32px 36px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Best executive team development companies</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">A buyer's guide · 2026</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,56px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:22ch;">Best executive team development companies, compared.</h1>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">There's no single "best" — these firms solve <em>different</em> problems. For individual leadership development there's <strong>CCL</strong> and university exec-ed; for assessment at enterprise scale, <strong>Korn Ferry</strong>; for a CEO peer network, <strong>Vistage</strong>; for team health, <strong>the Table Group</strong>; and for an executive team that's capable but <em>not executing together</em>, team-execution specialists like <strong>Be Legendary</strong>. Choose by whether you're developing individual leaders or fixing how the team operates as a unit.</p>
+    </div>
+  </header>
+
+  <!-- MATRIX -->
+  <div style="max-width:1000px;margin:0 auto;padding:20px 32px 8px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,3vw,32px);line-height:1.1;color:#FBF8F1;margin-bottom:6px;">The companies, side by side</h2>
+    <p style="font-size:15px;color:rgba(244,240,231,0.6);margin-bottom:20px;">Grouped by the kind of outcome they serve — not ranked, because they aren't substitutes for each other.</p>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(244,240,231,0.12);border-radius:14px;">
+      <table style="border-collapse:collapse;width:100%;min-width:760px;font-size:14px;color:#F0E9DF;">
+        <caption class="bl-vh">Executive team development companies compared by approach and best use.</caption>
+        <thead>
+          <tr style="background:#211D15;">
+            <th scope="col" style="text-align:left;padding:12px 16px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#D98A5E;border-bottom:1px solid rgba(244,240,231,0.14);">Company</th>
+            <th scope="col" style="text-align:left;padding:12px 16px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#D98A5E;border-bottom:1px solid rgba(244,240,231,0.14);">Approach</th>
+            <th scope="col" style="text-align:left;padding:12px 16px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#D98A5E;border-bottom:1px solid rgba(244,240,231,0.14);">Best known for</th>
+            <th scope="col" style="text-align:left;padding:12px 16px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#D98A5E;border-bottom:1px solid rgba(244,240,231,0.14);">Best when</th>
+          </tr>
+        </thead>
+        <tbody>
+          {firms.map((f) => (
+            <tr style={f.us ? 'background:rgba(192,74,38,0.12);' : 'border-bottom:1px solid rgba(244,240,231,0.09);'}>
+              <th scope="row" style="text-align:left;padding:14px 16px;vertical-align:top;font-family:'Newsreader',serif;font-size:17px;color:#FBF8F1;">{f.us ? <span>{f.name} <span style="font-size:11px;color:#E0744A;font-family:system-ui;">(that's us)</span></span> : f.name}</th>
+              <td style="padding:14px 16px;vertical-align:top;line-height:1.5;color:rgba(240,233,223,0.85);">{f.approach}</td>
+              <td style="padding:14px 16px;vertical-align:top;line-height:1.5;color:rgba(240,233,223,0.85);">{f.known}</td>
+              <td style="padding:14px 16px;vertical-align:top;line-height:1.5;color:rgba(240,233,223,0.85);">{f.bestWhen}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13.5px;color:rgba(244,240,231,0.55);margin-top:12px;">Descriptions reflect what each firm is publicly known for; we've tried to be fair to categories we don't compete in. If something's out of date, <a href={SLUGS.contact} style="color:#D98A5E;">tell us</a>.</p>
+  </div>
+
+  <!-- HOW TO CHOOSE -->
+  <div style="max-width:820px;margin:0 auto;padding:44px 32px 8px;color:rgba(244,240,231,0.86);">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:16px;">How to choose — start from the outcome</h2>
+    <p style="font-size:18.5px;line-height:1.7;margin-bottom:18px;">The most common mistake is buying <em>leadership development</em> when the problem is <em>team execution</em>. They're different. Developing individual leaders — the skills, the mindset, the credential — is what CCL, university exec-ed and most coaching firms do well. But a team can be full of well-developed individuals and still fail to execute together, because the thing that's broken is how the group decides, aligns and holds a standard. No amount of individual development fixes a team-level behavior problem.</p>
+    <p style="font-size:18.5px;line-height:1.7;margin-bottom:18px;">If your team is capable but not executing, insist on three things from whoever you hire: a <strong>real diagnosis of how your team actually behaves</strong> — ideally a <a href={SLUGS.whatIsLeadershipSimulation} style="color:#E0744A;text-decoration:underline;">leadership simulation</a>, not a survey; a <strong>specific mechanism</strong> to rebuild the broken behavior; and a <strong>measure</strong> that shows whether it changed. That's the gap Be Legendary was built for — the <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a> names where a team breaks, <a href={SLUGS.teamLfs} style="color:#E0744A;text-decoration:underline;">Team LFS</a> measures it, and the work rebuilds it and re-measures.</p>
+  </div>
+
+  <!-- FAQ -->
+  <section style="max-width:820px;margin:40px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Common questions</h2>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What are the best executive team development companies?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">There's no single best — they solve different problems. CCL and university exec-ed for curriculum-driven individual development; Korn Ferry for assessment and succession at scale; Vistage for a CEO peer network; the Table Group for team health; and team-execution specialists like Be Legendary for a team that's capable but not executing together. Choose by whether you're developing individual leaders or fixing how the team operates as a unit.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Leadership development vs. executive team development — what's the difference?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">Leadership development builds individual leaders, one at a time. Team development works on the group as a unit — how it chooses priorities, owns decisions, surfaces disagreement and holds a standard. A team of well-developed individuals can still fail to execute together, which is why team development is a distinct — and often the missing — discipline.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How do I choose one?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">Start from the outcome. Individual growth → a curriculum or coaching provider. A team that can't execute together → a team-execution specialist, and insist on a real behavioral diagnosis (not a survey), a specific mechanism to rebuild what's broken, and a measure that proves it changed.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How much does it cost?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">Open-enrollment programs and peer memberships run from a few thousand per leader per year; custom team engagements and multi-day programs run from the low tens of thousands into six figures by scope. The number that matters is the cost of the problem — a misaligned team usually wastes more than any engagement costs. You can <a href={SLUGS.costCalculator} style="color:#E0744A;text-decoration:underline;">estimate that here</a>.</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div style="max-width:1000px;margin:52px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Not sure if it's a development problem or an execution problem?</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">That's exactly what a 15-minute <strong style="color:#F4F0E7;">Calibration Call</strong> sorts out — a quick read on whether your team needs development or needs to learn to execute, and who's actually right for it. No pitch required.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={1000} />
+    <ShareRow title={title} maxWidth={1000} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={1000} note="© 2026 Be Legendary. A fair, criteria-based guide — chosen by outcome, not ranked." />
+</BaseLayout>

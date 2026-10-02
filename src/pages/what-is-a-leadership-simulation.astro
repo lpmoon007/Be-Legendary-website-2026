@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ShareRow from '../components/ShareRow.astro';
+import ArticleEndCTA from '../components/ArticleEndCTA.astro';
+import { CTA_URL, SLUGS, DEMO_URL } from '../lib/site';
+
+const title = 'What Is a Leadership Simulation? | Be Legendary';
+const description = 'A leadership simulation is a live, instrumented scenario that shows how an executive team actually decides, aligns and holds a standard under pressure — not what a survey says it would do. How they work, why they beat 360s and assessments, and how to run one.';
+
+const canonical = 'https://www.belegendary.org/what-is-a-leadership-simulation/';
+const schema = [
+  { '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.belegendary.org/' },
+    { '@type': 'ListItem', position: 2, name: 'For Leaders', item: 'https://www.belegendary.org/leaders/' },
+    { '@type': 'ListItem', position: 3, name: 'What Is a Leadership Simulation?', item: canonical },
+  ] },
+  { '@type': 'Article', headline: 'What is a leadership simulation?', datePublished: '2026-10-02', dateModified: '2026-10-02', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: canonical, description },
+  { '@type': 'FAQPage', mainEntity: [
+    { '@type': 'Question', name: 'What is a leadership simulation?', acceptedAnswer: { '@type': 'Answer', text: 'A leadership simulation is a live, facilitated scenario — a realistic crisis or decision under pressure — that an executive runs or a leadership team runs together, while their actual behavior is observed and measured. Instead of asking people how they lead (a survey or 360), it watches how they actually decide, align, surface disagreement and hold a standard when the stakes feel real. The output is an evidence-based read of how the team truly operates, not a self-reported one.' } },
+    { '@type': 'Question', name: 'How is a leadership simulation different from a 360 or a personality assessment?', acceptedAnswer: { '@type': 'Answer', text: 'A 360 and a personality assessment are self- and peer-reported: they capture what people believe or remember about how a leader behaves. A simulation captures behavior directly — who spoke, who deferred, how fast a decision got an owner, whether the hard issue got named or avoided — in real time under pressure. Reports and surveys describe intent; a simulation records conduct. That is why the findings are harder to argue with and translate more directly into what to change.' } },
+    { '@type': 'Question', name: 'What does a leadership simulation measure?', acceptedAnswer: { '@type': 'Answer', text: 'The behaviors that determine whether a team executes: how priorities get chosen (and vetoed), whether decisions get a clear owner and a deadline, whether disagreement surfaces before the call or festers after it, whether a standard holds when it is inconvenient, and whether a miss becomes a correction or a search for blame. Be Legendary scores these against the Flag Model and returns a FlagScore baseline the team can be measured against over time.' } },
+    { '@type': 'Question', name: 'Can you run a leadership simulation for an executive team?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. There are two forms: a solo version a leader runs alone first (Be Legendary calls this ELFS — the Executive Leadership Failure Simulation — about 30 minutes, with a written report), and a team version where up to about eight executives run a scenario together while the facilitation team captures how the group actually operates (Team LFS, roughly 90 minutes). The team version is the one that reveals how the leadership team decides and executes as a unit.' } },
+    { '@type': 'Question', name: 'Why use a simulation instead of just talking about how the team works?', acceptedAnswer: { '@type': 'Answer', text: 'Because teams are unreliable narrators of themselves. In a conversation, the team describes the version of itself it wants to be true; the dysfunctions that matter are exactly the ones it has learned not to mention. A simulation makes the real behavior happen in the room, where it can be seen and named — so the debrief starts from evidence everyone watched, not from opinions that can be argued away.' } },
+  ] },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path="/what-is-a-leadership-simulation/"
+  ogType="article"
+  ogTitle="What is a leadership simulation?"
+  ogDescription="A live, instrumented scenario that shows how an executive team actually decides under pressure — not what a survey says it would do."
+  schema={schema}
+>
+  <SiteHeader audience="teams" logoHref="/" />
+
+  <article>
+  <!-- HERO -->
+  <header style="position:relative;max-width:1000px;margin:0 auto;padding:80px 32px 36px;">
+    <div style="position:absolute;top:-100px;right:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(192,74,38,0.16),transparent 62%);pointer-events:none;"></div>
+    <nav aria-label="Breadcrumb" style="font-size:13px;color:rgba(244,240,231,0.5);margin-bottom:26px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.leaders} style="color:inherit;text-decoration:none;">For Leaders</a><span>/</span><span style="color:#D98A5E;">What is a leadership simulation?</span>
+    </nav>
+    <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">The definition</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">What is a leadership simulation?</h1>
+    <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A <strong>leadership simulation</strong> is a live, facilitated scenario — a realistic crisis or decision under pressure — that an executive or a whole leadership team runs while their actual behavior is observed and measured. Instead of <em>asking</em> how a team leads, like a survey or a 360, it <em>watches</em> how the team actually decides, aligns and holds a standard when the stakes feel real. The product isn't a report of opinions — it's evidence of conduct.</p>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div style="max-width:820px;margin:0 auto;padding:20px 32px 8px;color:rgba(244,240,231,0.86);">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin:12px 0 14px;">Why "watch it" beats "ask about it"</h2>
+    <p style="font-size:18.5px;line-height:1.7;margin-bottom:18px;">Every other way of reading a team is self-reported. A 360 asks people what they think of each other. A personality assessment asks how someone believes they behave. An engagement survey asks how the room feels. All of it is filtered through what people are willing to say — and the dysfunctions that actually cost you are precisely the ones a team has learned <em>not</em> to say out loud.</p>
+    <p style="font-size:18.5px;line-height:1.7;margin-bottom:18px;">A simulation removes the filter. It puts the team inside a situation with real pressure and real ambiguity, and then records what happens: who talked and who went quiet, how long a decision floated before it got an owner, whether the hard disagreement surfaced before the call or leaked out after it, whether the standard held the first time it was inconvenient. You don't debrief opinions. You debrief <strong>a recording of how the team actually operates.</strong></p>
+
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin:30px 0 14px;">What a leadership simulation measures</h2>
+    <p style="font-size:18.5px;line-height:1.7;margin-bottom:14px;">The behaviors that decide whether a team executes — scored, in our case, against the <a href={SLUGS.flagModel} style="color:#E0744A;text-decoration:underline;">Flag Model</a>:</p>
+    <ul style="font-size:17.5px;line-height:1.6;margin:0 0 20px;padding-left:22px;display:flex;flex-direction:column;gap:9px;">
+      <li><strong>The Flag</strong> — do they choose a few priorities and <em>veto</em> the rest, or try to carry everything?</li>
+      <li><strong>The Decision</strong> — does a call get a named owner and a deadline, or dissolve into "let's circle back"?</li>
+      <li><strong>The Standard</strong> — does the bar hold when it's costly, or quietly fall to the most-tolerated behavior?</li>
+      <li><strong>The Learning</strong> — does a miss become a correction, or a hunt for who's to blame?</li>
+      <li><strong>Truth over comfort</strong> — does the disagreement that matters get named in the room, or swallowed?</li>
+    </ul>
+    <p style="font-size:18.5px;line-height:1.7;margin-bottom:18px;">Those come back as a <strong>FlagScore</strong> — a baseline you can measure the team against a quarter later, so "we feel better" becomes a number that either moved or didn't.</p>
+
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin:30px 0 14px;">Two forms: solo and team</h2>
+    <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px;">
+      <a href={SLUGS.elfs} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Solo · ~30 min</span>
+        <span style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">ELFS — run it on yourself first</span>
+        <span style="display:block;margin-top:8px;font-size:15px;color:rgba(244,240,231,0.68);line-height:1.5;">A solo executive leadership simulation with a written report on where you default to comfort over truth. The low-risk way to feel it before bringing the team.</span>
+      </a>
+      <a href={SLUGS.teamLfs} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#E0744A;margin-bottom:8px;">Team · ~90 min</span>
+        <span style="font-family:'Newsreader',serif;font-size:22px;color:#FBF8F1;">Team LFS — the team runs it together</span>
+        <span style="display:block;margin-top:8px;font-size:15px;color:rgba(244,240,231,0.68);line-height:1.5;">Up to eight executives run a live scenario together while we capture how the group actually decides and executes — returned as a FlagScore baseline.</span>
+      </a>
+    </div>
+    <p style="font-size:16px;line-height:1.6;margin:14px 0 0;color:rgba(244,240,231,0.7);">Want to see what the output looks like before you commit? <a href={DEMO_URL} target="_blank" rel="noopener" style="color:#E0744A;text-decoration:underline;">See a live sample leadership profile &#8599;</a></p>
+  </div>
+
+  <!-- FAQ -->
+  <section style="max-width:820px;margin:48px auto 0;padding:0 32px;">
+    <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:28px;">Common questions</h2>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">How is it different from a 360 or a personality assessment?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">A 360 and a personality test are self- and peer-reported — they capture what people believe about how a leader behaves. A simulation captures behavior directly, in real time under pressure: who deferred, how fast a decision got an owner, whether the hard issue got named. Surveys describe intent; a simulation records conduct — which is why the findings are harder to argue away.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">What does it measure?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">How priorities get chosen and vetoed, whether decisions get an owner and a deadline, whether disagreement surfaces before the call, whether the standard holds when it's inconvenient, and whether a miss becomes a correction. Scored against the Flag Model and returned as a FlagScore baseline.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Can you run one for an executive team?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">Yes — solo (<a href={SLUGS.elfs} style="color:#E0744A;text-decoration:underline;">ELFS</a>, ~30 min with a written report) or as a team (<a href={SLUGS.teamLfs} style="color:#E0744A;text-decoration:underline;">Team LFS</a>, up to eight executives, ~90 min). The team version is the one that shows how your leadership team decides and executes as a unit.</p></div>
+      <div><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF8F1;margin-bottom:8px;">Why not just talk through how the team works?</h3><p style="font-size:16.5px;line-height:1.65;color:rgba(244,240,231,0.82);">Because teams are unreliable narrators of themselves — in a conversation they describe the version they want to be true, and the dysfunctions that matter are the ones they've learned not to mention. A simulation makes the real behavior happen in the room, so the debrief starts from evidence everyone watched.</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div style="max-width:1000px;margin:52px auto 0;padding:0 32px;">
+    <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">See how your team actually operates — not how it describes itself.</h2>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes and lays out how a leadership simulation would work for your team — whether or not we ever run one together.</p>
+      <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
+    </div>
+  </div>
+    <ArticleEndCTA maxWidth={1000} />
+    <ShareRow title={title} maxWidth={1000} />
+</article>
+
+  <SiteFooter audience="teams" variant="slim" maxWidth={1000} note="© 2026 Be Legendary. A leadership simulation reads conduct under pressure — not self-reported intent." />
+</BaseLayout>

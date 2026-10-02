@@ -182,6 +182,9 @@ export const SLUGS = {
   // Leader SEO/GEO cluster — leadership definitional + recharge/retreat (individual)
   whatIsExecutiveCoaching: '/leaders/what-is-executive-coaching/',
   whatIsLeadership: '/leaders/what-is-leadership/',
+  // Leadership-simulation category (definitional GEO asset) + provider roundup
+  whatIsLeadershipSimulation: '/what-is-a-leadership-simulation/',
+  bestTeamDevelopmentCompanies: '/best-executive-team-development-companies/',
   whatMakesGoodLeader: '/leaders/what-makes-a-good-leader/',
   leadershipQualities: '/leaders/leadership-qualities/',
   improveLeadershipSkills: '/leaders/improve-leadership-skills/',
