@@ -85,12 +85,6 @@ export default function EnrollPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      {/* Tribute banner */}
-      <div className="bg-accent px-6 py-2.5 text-center text-sm font-600 text-ink-light">
-        Skip Riff was the most awesome person in the world.
-      </div>
-
       <SiteHeader />
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
