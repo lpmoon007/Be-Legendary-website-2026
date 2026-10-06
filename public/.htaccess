@@ -74,6 +74,15 @@ RedirectMatch 301 ^/wp-content/uploads/2015/02/Discover-Your-Inner-Strength.*$ /
 # Old WordPress blog posts (still indexed, now 404) → the current writing hub.
 RedirectMatch 301 ^/blog(/.*)?$ /field-notes/
 
+# ── Backlinked legacy URLs still 404ing (found via backlink audit, Oct 2026) ──
+# These old paths carry real external links but weren't in the map, so the link
+# equity was leaking to a 404. /effective-facilitator-workshop/ is the big one
+# (~38 links). Mapped to the closest live page so the authority is recovered.
+Redirect 301 /effective-facilitator-workshop/ /leadership-team-offsite-facilitator/
+Redirect 301 /mindset-information/ /leaders/
+# Old Joomla index.php URLs (a few backlinks) → home.
+RedirectMatch 301 ^/index\.php(/.*)?$ /
+
 # ── Text compression (biggest transfer win on an inline-styled site) ──
 <IfModule mod_brotli.c>
   AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json image/svg+xml application/manifest+json
