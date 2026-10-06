@@ -83,6 +83,19 @@ Redirect 301 /mindset-information/ /leaders/
 # Old Joomla index.php URLs (a few backlinks) → home.
 RedirectMatch 301 ^/index\.php(/.*)?$ /
 
+# ── Old pre-pivot service/content pages 404ing (GSC 404 drilldown, Oct 2026) ──
+# No external links on these, so it's UX/tidiness rather than equity — a stray
+# visitor or crawler lands on the nearest live page instead of a 404.
+Redirect 301 /team-coaching/ /how-we-work-together/
+Redirect 301 /employee-experience-coaching/ /how-we-work-together/
+Redirect 301 /speaking/ /about/james-carter/
+Redirect 301 /team-center/ /teams/
+Redirect 301 /conference-teambuilding/ /teams/
+Redirect 301 /start-your-talent-optimization/ /teams/
+Redirect 301 /four-forces-of-disengagement/ /field-notes/
+Redirect 301 /hvac_case_study/ /case-studies/
+RedirectMatch 301 ^/life-engagement(/.*)?$ /teams/
+
 # ── Text compression (biggest transfer win on an inline-styled site) ──
 <IfModule mod_brotli.c>
   AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json image/svg+xml application/manifest+json
