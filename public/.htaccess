@@ -38,6 +38,9 @@ Redirect 301 /terms-of-use/ /privacy/
 Redirect 301 /shakubuku/ /teams/retreats/
 Redirect 301 /extreme-retreats/ /teams/retreats/
 Redirect 301 /experiential-leadership-retreats/ /teams/retreats/
+# Consolidated Oct 2026: the luxury page and the retreats hub split the same
+# "executive retreat" intent; the hub is now the single canonical retreat page.
+Redirect 301 /teams/luxury-executive-retreat/ /teams/retreats/
 Redirect 301 /executive-coaching/ /leaders/what-is-executive-coaching/
 RedirectMatch 301 ^/about-us/contact-us/?$ /contact/
 RedirectMatch 301 ^/about-us(/.*)?$ /about/

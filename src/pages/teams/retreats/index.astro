@@ -5,12 +5,12 @@ import SiteFooter from '../../../components/SiteFooter.astro';
 import LowCommitmentCTA from '../../../components/LowCommitmentCTA.astro';
 import ReinforcementModule from '../../../components/ReinforcementModule.astro';
 import PressStrip from '../../../components/PressStrip.astro';
-import { SLUGS, CTA_URL } from '../../../lib/site';
+import { SLUGS, CTA_URL, HUBSPOT, CONTACT_EMAIL } from '../../../lib/site';
 
 const path = SLUGS.teamRetreats;
-const title = 'Leadership & Executive Retreats | Be Legendary';
+const title = 'Executive Retreats for Leadership Teams | Be Legendary';
 const description =
-  'Three ways to run an executive team building retreat: a Focused leadership retreat around one outcome, a Signature experiential retreat, or fully bespoke — facilitated and reinforced for 30 days.';
+  'Executive retreats for CEOs and their leadership teams: Focused ($25K–$50K), Signature experiential ($35K–$100K) or fully bespoke. Facilitated end to end and reinforced for 30 days. Check dates for your team.';
 
 // Ported from design; the reusable teams shell replaces the prototype header/footer.
 
@@ -42,6 +42,7 @@ const faqs = [
   ['What is the difference between an executive team building retreat and a corporate offsite?', 'An offsite is a block of time away from operations. A retreat is the facilitated version of it — built around a diagnosed outcome, run so the experience becomes commitments, and followed through afterward. A retreat with no real outcome and no follow-through is just an offsite with better catering. The question is never “where do we go?” but “what are we here to change, and how will we know it did?”'],
   ['How long is an executive team building retreat, and where does it run?', 'Most run multi-day, at curated venues — domestic or international — chosen to fit the outcome, not the other way around. We handle the venue, travel, food, facilitation and the 30-day reinforcement end to end; you bring the team and the outcome. A single dramatic day is possible when that is the right container, but the retreats are built for a depth a day cannot reach.'],
   ['Where are the best executive retreat locations?', 'The best executive retreat location is the one that fits the outcome, not the brochure. We run retreats at curated destinations — mountain, desert, coastal, backcountry and international — and choose the setting to serve what the team is there to change: a place remote enough to break routine, demanding enough to surface how the team actually operates, and comfortable enough that the work, not the logistics, is the hard part. We handle venue, travel and food end to end. The setting matters, but it is the container for the change, never the point of it.'],
+  ['What is an experiential leadership retreat?', 'An experiential leadership retreat replaces slide decks with lived challenge: off-road, backcountry, open water, or an estate designed for deep work. The shared experience surfaces how a team actually operates under pressure, and a facilitator turns that into specific commitments the team practices for 30 days afterward. It engages a team across four dimensions: physical, mental, emotional and spiritual.'],
   ['Do you run luxury or private executive retreats?', 'Yes — fully private, single-team retreats, at a level of venue and service the team chooses. But we treat luxury as a means, not the product: a five-star setting that changes nothing is expensive at any price. What the investment should buy is a retreat engineered around one real outcome and reinforced afterward, delivered without a logistical worry landing on the team. The comfort removes friction from the work; the work is still the point.'],
 ];
 
@@ -54,7 +55,7 @@ const schema = [
   description={description}
   path={path}
   schema={schema}
-  ogTitle="Leadership & Executive Retreats — Focused, Signature & Bespoke"
+  ogTitle="Executive Retreats for Leadership Teams — Focused, Signature & Bespoke"
   ogDescription="You already know your team needs this. The only question is the right shape for it."
   bodyBg="#EFE9DD"
 >
@@ -69,11 +70,12 @@ const schema = [
       </nav>
       <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;">
         <div>
-          <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Leadership &amp; executive team building retreats · CEOs &amp; their teams</p>
-          <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.0;letter-spacing:-0.022em;color:#3A0A0C;max-width:20ch;">Executive &amp; leadership retreats &mdash; three <span style="font-style:italic;color:#C04A26;">legendary</span> ways to run one.</h1>
+          <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Executive retreats · CEOs &amp; their leadership teams</p>
+          <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.0;letter-spacing:-0.022em;color:#3A0A0C;max-width:20ch;">Executive retreats, built around one outcome and <span style="font-style:italic;color:#C04A26;">reinforced for 30 days.</span></h1>
           <p style="margin-top:24px;font-size:18px;line-height:1.6;color:#4A3A34;max-width:48ch;">You already know your team needs this. The only question is the right shape for it. These are leadership retreats for executives and their teams — all three fully facilitated, built around a real outcome, and reinforced for 30 days afterward, measurably.</p>
           <div style="margin-top:30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
-            <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -16px rgba(192,74,38,0.6);">Book a Calibration Call <span>&rarr;</span></a>
+            <a href="#inquire" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -16px rgba(192,74,38,0.6);">Check dates for your team <span>&darr;</span></a>
+            <a href={CTA_URL} target="_blank" rel="noopener" style="color:#64010a;text-decoration:none;font-weight:700;font-size:15px;">Or book a free 15-minute call &rarr;</a>
             <a href="#tiers" style="color:#64010a;text-decoration:none;font-weight:700;font-size:15px;">See the three ways &darr;</a>
           </div>
         </div>
@@ -148,6 +150,31 @@ const schema = [
       </div>
       <p style="text-align:center;margin-top:26px;font-size:15.5px;color:#6B4A44;">Not sure which fits? That's the first conversation — <a href={CTA_URL} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:none;font-weight:600;">we'll tell you honestly</a>. Sometimes the right answer is the simpler one.</p>
       <p style="text-align:center;margin-top:10px;font-size:14.5px;color:#8A6A64;">Weighing the investment? First see what the problem is already costing you — <a href={SLUGS.costCalculator} style="color:#C04A26;text-decoration:none;font-weight:600;">run the cost calculator</a>.</p>
+    </section>
+
+
+    <!-- ============ RETREAT INQUIRY (low-friction, EA-friendly) ============ -->
+    <section id="inquire" style="max-width:1240px;margin:72px auto 0;padding:0 32px;scroll-margin-top:120px;">
+      <div class="bl-grid-collapse" style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:20px;padding:44px 46px;">
+        <div>
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:14px;">Check dates for your team</p>
+          <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.6vw,40px);line-height:1.08;color:#3A0A0C;">Tell us the basics. We reply within one business day.</h2>
+          <p style="margin-top:16px;font-size:16px;line-height:1.6;color:#5A4A44;">No call required to get started. Send what you know and we come back with availability, a recommended tier and a realistic budget.</p>
+          <p style="margin-top:20px;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#9A7A74;">Helpful to include</p>
+          <ul style="margin-top:10px;padding:0;list-style:none;display:grid;gap:8px;font-size:15px;color:#4A3A34;">
+            <li style="display:flex;gap:9px;"><span style="color:#C04A26;">&#10003;</span> How many people, and who (CEO and direct reports?)</li>
+            <li style="display:flex;gap:9px;"><span style="color:#C04A26;">&#10003;</span> Rough dates or season, and how many days</li>
+            <li style="display:flex;gap:9px;"><span style="color:#C04A26;">&#10003;</span> The one thing the team needs to leave with</li>
+            <li style="display:flex;gap:9px;"><span style="color:#C04A26;">&#10003;</span> A budget range, if you have one</li>
+          </ul>
+          <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;">Planning this for your executive? <a href={SLUGS.forExecutiveAssistants} style="color:#C04A26;text-decoration:none;font-weight:600;">The EA planning path &rarr;</a></p>
+        </div>
+        <div>
+          <div class="hs-form-frame" data-region={HUBSPOT.region} data-form-id={HUBSPOT.retreatInquiryFormGuid || HUBSPOT.contactFormGuid} data-portal-id={HUBSPOT.portalId} style="min-height:360px;"></div>
+          <noscript><p style="font-size:15px;color:#4A3A34;">The form needs JavaScript. Email <a href={`mailto:${CONTACT_EMAIL}?subject=Executive%20retreat%20inquiry`} style="color:#C04A26;text-decoration:none;">{CONTACT_EMAIL}</a> or call 800-513-8759.</p></noscript>
+          <p style="margin-top:12px;font-size:13.5px;color:#8A6A64;">Prefer email? <a href={`mailto:${CONTACT_EMAIL}?subject=Executive%20retreat%20inquiry`} style="color:#C04A26;text-decoration:none;font-weight:600;">{CONTACT_EMAIL}</a> &middot; 800-513-8759</p>
+        </div>
+      </div>
     </section>
 
     <!-- ============ FOUR FOCUS AREAS ============ -->
@@ -398,4 +425,6 @@ const schema = [
   </div>
 
   <SiteFooter audience="teams" variant="full" />
+<!-- HubSpot forms embed loader (renders the retreat inquiry frame) -->
+<script is:inline defer src={`https://js-${HUBSPOT.region}.hsforms.net/forms/embed/${HUBSPOT.portalId}.js`}></script>
 </BaseLayout>

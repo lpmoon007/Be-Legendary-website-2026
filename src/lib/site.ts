@@ -51,6 +51,11 @@ export const HUBSPOT = {
   // script on /contact/, so fields/validation/workflows are whatever is
   // configured in HubSpot for this form.
   contactFormGuid: 'bad3be34-c7d6-4d32-933c-508ecb972054',
+  // Retreat inquiry form on /teams/retreats/#inquire. Empty = falls back to the
+  // contact form above (which already routes to HubSpot). Create a dedicated
+  // "Retreat Inquiry" form (team size, dates, outcome, budget) and paste its
+  // GUID here to get structured fields and a separate follow-up workflow.
+  retreatInquiryFormGuid: '',
   // Complete Retreat Planning Kit lead magnet (embedded on /retreat-planning-kit/).
   // Submit triggers the HubSpot follow-up workflow that emails the ungated
   // download link (RETREAT_KIT_URL below). The download itself is not gated —
@@ -226,7 +231,6 @@ export const SLUGS = {
   corporateRetreatIdeas: '/teams/corporate-retreat-ideas/',
   executiveOffsiteIdeas: '/teams/executive-offsite-ideas/',
   leadershipRetreatIdeas: '/teams/leadership-retreat-ideas/',
-  luxuryExecutiveRetreat: '/teams/luxury-executive-retreat/',
   // ── Executive Immersion — a single engineered day, built from the same logic
   // as a retreat but compressed into one impossible-feeling mission. Hub +
   // three format pages (Expedition / City / Ownership). Ported from the
