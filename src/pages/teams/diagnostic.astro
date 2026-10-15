@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import LowCommitmentCTA from '../../components/LowCommitmentCTA.astro';
+import ResultsBand from '../../components/ResultsBand.astro';
+import PressStrip from '../../components/PressStrip.astro';
+import { SLUGS, CTA_URL, ORG_ID, SITE_URL } from '../../lib/site';
+
+const path = SLUGS.diagnostic;
+const title = 'The Executive Team Diagnostic | Be Legendary';
+const description =
+  'A structured, three-week outside read on how your executive team decides, disagrees and follows through: interviews, a live meeting observed, an analysis, and a CEO-first readout with a clear go or no-go.';
+
+const schema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
+      { '@type': 'ListItem', position: 3, name: 'Executive Team Diagnostic', item: `${SITE_URL}${path}` },
+    ],
+  },
+  {
+    '@type': 'Service',
+    name: 'Executive Team Diagnostic',
+    provider: { '@id': ORG_ID },
+    serviceType: 'Executive team diagnostic',
+    description:
+      'A structured, roughly three-week read on an executive team: interviews with the CEO and each executive, a live leadership meeting observed, and an analysis of how the team decides, disagrees and follows through, with a cost estimate and a clear go or no-go recommendation.',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is the Executive Team Diagnostic?', acceptedAnswer: { '@type': 'Answer', text: 'A structured, roughly three-week read on how your executive team actually works. We interview the CEO and each executive, observe a live leadership meeting, and analyze how the team decides, disagrees and follows through, mapped across the four disciplines and the Flag of the Flag Model. You get a readout to the CEO first, then the team, with a cost estimate for your specific dysfunction and a clear go or no-go recommendation.' } },
+      { '@type': 'Question', name: 'What happens during the Diagnostic?', acceptedAnswer: { '@type': 'Answer', text: 'Three things over about three weeks: confidential interviews with the CEO and each executive; observation of one live leadership meeting, where we watch how decisions actually get made; and an analysis that turns both into a picture of where the team breaks first. The readout goes to the CEO first, then to the team.' } },
+      { '@type': 'Question', name: 'How long does it take, and what does it cost?', acceptedAnswer: { '@type': 'Answer', text: 'About three weeks from start to readout. It is $15,000 to $25,000, and it credits toward the Performance Partnership if you proceed.' } },
+      { '@type': 'Question', name: 'Do we need to run the Leadership Failure Simulation first?', acceptedAnswer: { '@type': 'Answer', text: 'No. The Team LFS is an optional instrument. It can run before or inside the Diagnostic when you want the read instrumented with live behavioral evidence, but the Diagnostic stands on its own.' } },
+      { '@type': 'Question', name: 'What do we walk away with?', acceptedAnswer: { '@type': 'Answer', text: 'A readout for the CEO and then the team: where the team breaks first, mapped to the four disciplines and the Flag; a cost estimate for your specific dysfunction; and a clear go or no-go recommendation. If the partnership is not the right fit, we say so.' } },
+    ],
+  },
+];
+
+const steps = [
+  { n: '01', h: 'We interview first', p: 'Confidential conversations with the CEO and each executive, to hear how the team really runs from the inside, where the versions differ, and what no one says in the room.' },
+  { n: '02', h: 'We observe a live meeting', p: 'We sit in on one real leadership meeting and watch how decisions actually get made: who commits, who hedges, what gets named, and what gets left alone.' },
+  { n: '03', h: 'We analyze and read it back', p: 'Interviews and observation become one analysis of how the team decides, disagrees and follows through, mapped across the four disciplines and the Flag. The readout goes to the CEO first, then the team.' },
+];
+
+const getList = [
+  { h: 'Where you break first', p: 'The single discipline your team is most likely to lose under pressure, named in your own language and evidence, not a generic label.' },
+  { h: 'A cost estimate', p: 'A grounded estimate of what the dysfunction is costing you, built from what we find, so the decision to act is a business decision, not a feeling.' },
+  { h: 'A clear go or no-go', p: 'A direct recommendation on whether a Performance Partnership is the right next step. If it is not the right fit, we say so.' },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="The Executive Team Diagnostic — the outside read on how your team works"
+  ogDescription="A structured, three-week read: interviews, a live meeting observed, an analysis, and a CEO-first readout with a cost estimate and a clear go or no-go."
+  bodyBg="#EFE9DD"
+  schema={schema}
+>
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1080px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">Executive Team Diagnostic</span>
+      </nav>
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>The outside read</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.4vw,66px);line-height:1.0;letter-spacing:-0.022em;color:#3A0A0C;max-width:18ch;">An outside read on how your team <span style="font-style:italic;color:#C04A26;">actually works.</span></h1>
+      <p class="bl-speakable" style="margin-top:24px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:56ch;">The <strong style="color:#3A0A0C;">Executive Team Diagnostic</strong> is a structured, roughly three-week read. We interview you and each executive, observe a live leadership meeting, and analyze how the team decides, disagrees and follows through. The readout goes to the CEO first, then the team, with a cost estimate and a clear go or no-go.</p>
+      <div style="margin-top:32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -16px rgba(192,74,38,0.6);">Book a Calibration Call <span>&rarr;</span></a>
+        <a href="#how" style="color:#64010a;text-decoration:none;font-weight:700;font-size:15px;">What happens &darr;</a>
+      </div>
+    </section>
+
+    <!-- WHAT IT IS -->
+    <section style="max-width:1080px;margin:56px auto 0;padding:0 32px;">
+      <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-left:3px solid #C04A26;border-radius:0 16px 16px 0;padding:30px 34px;max-width:72ch;">
+        <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:12px;">What it is</p>
+        <p style="font-size:17.5px;line-height:1.62;color:#3A362D;">Most teams can tell you something is wrong. Few can say exactly where, or what it costs. The Diagnostic answers both. It is not a survey and not a workshop. It is a short, pointed investigation into how your team operates when the stakes are real, and it ends with a recommendation you can act on.</p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">What happens</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#3A0A0C;max-width:22ch;">Three weeks, three moves, one clear readout.</h2>
+      <div style="margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="bl-grid-collapse bl-grid-collapse--gap">
+        {steps.map((s) => (
+          <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;">
+            <span style="font-family:'Newsreader',serif;font-size:30px;color:#C04A26;">{s.n}</span>
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;margin:10px 0;color:#3A0A0C;">{s.h}</h3>
+            <p style="font-size:15px;line-height:1.55;color:#5A4A44;">{s.p}</p>
+          </div>
+        ))}
+      </div>
+      <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;">About three weeks start to readout &middot; CEO and executive interviews &middot; one live leadership meeting observed &middot; readout to the CEO first, then the team.</p>
+    </section>
+
+    <!-- WHAT IT STRESSES (FLAG MODEL) -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <div style="background:#64010a;border-radius:20px;padding:48px 46px;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:16px;">What it maps</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.12;color:#FBF3E7;max-width:24ch;margin-bottom:14px;">The four places every executive team breaks.</h2>
+        <p style="font-size:16.5px;line-height:1.65;color:rgba(246,239,224,0.82);max-width:58ch;margin-bottom:32px;">We read the team against the four disciplines of the <a href={SLUGS.flagModel} style="color:#E9A98F;text-decoration:underline;">Flag Model</a> and the Flag they serve. The analysis names which one is yours, and how it pulls the others down.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;" class="bl-grid-collapse bl-grid-collapse--gap">
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Decision</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">Who actually decides, and what happens when no one will.</p></div>
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Rhythm</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">Whether the team finishes, or lets work roll over quarter after quarter.</p></div>
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Standard</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">What the team tolerates when the standard gets expensive.</p></div>
+          <div style="border-top:2px solid #E9A98F;padding-top:16px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#FBF3E7;margin-bottom:8px;">The Learning</h3><p style="font-size:14px;line-height:1.55;color:rgba(246,239,224,0.75);">Whether the team changes from what happens, or repeats it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">What you get</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#3A0A0C;max-width:20ch;">A readout the CEO can act on.</h2>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="bl-grid-collapse bl-grid-collapse--gap">
+        {getList.map((g) => (
+          <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:28px 26px;"><h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:21px;color:#3A0A0C;margin-bottom:10px;">{g.h}</h3><p style="font-size:15px;line-height:1.6;color:#5A4A44;">{g.p}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <!-- THE GO / NO-GO -->
+    <section style="max-width:1080px;margin:72px auto 0;padding:0 32px;">
+      <div style="background:#211D15;border-radius:20px;padding:44px 46px;">
+        <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">The honest part</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#FBF3E7;max-width:26ch;margin-bottom:14px;">It ends in a go or no-go, not a sales pitch.</h2>
+        <p style="font-size:16.5px;line-height:1.68;color:rgba(246,239,224,0.82);max-width:64ch;">The Diagnostic ends with a clear recommendation on whether a Performance Partnership is the right next step for your team. If it is not the right fit, we tell you, and you keep the readout either way. That is the point of paying for an outside read rather than a proposal.</p>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <ResultsBand variant="light" maxWidth={1080} eyebrow="Where the read leads" heading="A diagnosis is only worth the change it produces." />
+    </section>
+    <div style="max-width:1080px;margin:8px auto 0;padding:0 32px;">
+      <PressStrip variant="light" maxWidth={1080} />
+    </div>
+
+    <!-- PRICE + OPTIONAL LFS + PARTNERSHIP -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.16);border-radius:20px;padding:40px 42px;display:grid;grid-template-columns:1.15fr 0.85fr;gap:36px;align-items:center;" class="bl-grid-collapse bl-grid-collapse--gap">
+        <div>
+          <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:14px;">Investment</p>
+          <p style="font-family:'Newsreader',serif;font-size:40px;color:#3A0A0C;line-height:1.05;">$15K&ndash;$25K</p>
+          <p style="font-size:15px;color:#6B5A54;margin:8px 0 18px;">~3 weeks &middot; credited toward the Performance Partnership if you proceed</p>
+          <p style="font-size:16px;line-height:1.65;color:#4A3A34;max-width:56ch;">Every paid step credits 50% toward the next, so starting here is never wasted spend. Want the read instrumented with live behavioral evidence? The <a href={SLUGS.teamLfs} style="color:#C04A26;text-decoration:underline;">Team Leadership Failure Simulation</a> is an optional instrument that can run before or inside the Diagnostic.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+          <a href={CTA_URL} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#64010a;color:#F6EFE0;padding:15px 26px;border-radius:10px;font-weight:700;font-size:15.5px;text-decoration:none;">Book a Calibration Call &rarr;</a>
+          <a href={SLUGS.crisisBrief} style="display:inline-flex;align-items:center;gap:7px;color:#64010a;font-weight:700;font-size:15px;text-decoration:none;">See how the full engagement works <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- keep-reading rail -->
+    <section style="max-width:860px;margin:64px auto 0;padding:0 32px 76px;">
+      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">Keep reading</p>
+      <div style="display:grid;gap:12px;">
+        <a href={SLUGS.teamLfs} style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+          <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">Team LFS: the instrumented behavioral read</span>
+          <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+        </a>
+        <a href={SLUGS.howWeWorkTogether} style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+          <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">How we work together, end to end</span>
+          <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+        </a>
+        <a href={SLUGS.pricing} style="display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;background:#F4F0E7;border:1px solid rgba(27,24,16,0.12);border-radius:12px;padding:18px 22px;">
+          <span style="font-family:'Newsreader',serif;font-size:19px;color:#1B1810;line-height:1.25;">The whole ladder, in the open</span>
+          <span style="color:#C04A26;font-weight:700;font-size:16px;">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <div style="padding-bottom:64px;"><LowCommitmentCTA maxWidth={860} theme="light" /></div>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>

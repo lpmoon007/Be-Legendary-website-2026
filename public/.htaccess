@@ -55,10 +55,8 @@ Redirect 301 /cq-catalyst/ /teams/
 Redirect 301 /denver-executive-leadership-retreat/ /executive-off-road-immersion/
 Redirect 301 /sedona-executive-leadership-retreat/ /executive-off-road-immersion/
 
-# ── Team Diagnostic → Team LFS (single canonical instrument) ──
-# Same behavioral simulation; the diagnostic page and its conflicting specs
-# were consolidated into the canonical Team LFS page (up to 8 executives, ~90 min).
-Redirect 301 /teams/diagnostic/ /teams/team-lfs/
+# ── /teams/diagnostic/ is now a live page (the Executive Team Diagnostic). ──
+# Its former 301 to Team LFS was removed when that page was built; do not re-add.
 
 # ── Fractional Chief People Officer → moved to Prove (provecq.com) ──
 # CQ/Prove owns the "who delivers" question; this page moved off the advisory

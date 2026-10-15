@@ -219,8 +219,14 @@ export const SLUGS = {
   waysToWorkTogether: '/teams/retreats/ways-to-work-together/',
   forExecutiveAssistants: '/teams/retreats/for-executive-assistants/',
   briefYourPrincipal: '/brief-your-principal/',
+  // The Executive Team Diagnostic — the ~3-week structured read (CEO and
+  // executive interviews, a live leadership meeting observed, and an analysis
+  // of how the team decides, disagrees and follows through) that leads into the
+  // Performance Partnership. Team LFS is an optional instrument inside it.
+  diagnostic: '/teams/diagnostic/',
   // The canonical Team LFS page — the instrumented, measured read on the team
-  // (behavioral simulation). Was /teams/diagnostic/, 301'd in public/.htaccess.
+  // (behavioral simulation). The /teams/diagnostic/ slug now serves the
+  // Executive Team Diagnostic page above; its old 301 to Team LFS was removed.
   teamLfs: '/teams/team-lfs/',
   followership: '/teams/followership/',
   corporateRetreatIdeas: '/teams/corporate-retreat-ideas/',
@@ -280,10 +286,9 @@ export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const OFFERCATALOG_ID = `${SITE_URL}/#offercatalog`;
 
 // Public-facing offerings only (GEO / entity understanding). Deliberately
-// excludes the confidential diagnostic audit and the behind-the-trust-wall
-// advisory (Performance Partnership, Discipline Sprint) — those stay out of
-// structured data. Prices live on /pricing/; only the free Calibration Call
-// carries a numeric price here.
+// excludes the behind-the-trust-wall advisory (Performance Partnership,
+// Discipline Sprint) — those stay out of structured data. Prices live on
+// /pricing/; only the free Calibration Call carries a numeric price here.
 export const OFFER_CATALOG = {
   '@type': 'OfferCatalog',
   '@id': OFFERCATALOG_ID,
@@ -292,6 +297,7 @@ export const OFFER_CATALOG = {
   itemListElement: [
     { '@type': 'Offer', category: 'Diagnostic', priceSpecification: { '@type': 'PriceSpecification', price: 0, priceCurrency: 'USD' }, itemOffered: { '@type': 'Service', name: 'Calibration Call', serviceType: 'Executive-team fit call', url: `${SITE_URL}${CTA_URL}`, provider: { '@id': ORG_ID }, description: 'A free 15-minute call to name your team’s first break point. A calibration, not a pitch.' } },
     { '@type': 'Offer', category: 'Diagnostic', itemOffered: { '@type': 'Service', name: 'Team LFS — Leadership Failure Simulation', serviceType: 'Executive-team diagnostic simulation', url: `${SITE_URL}${SLUGS.teamLfs}`, provider: { '@id': ORG_ID }, description: 'A live, instrumented behavioral read that shows exactly where an executive team breaks, with a FlagScore baseline.' } },
+    { '@type': 'Offer', category: 'Diagnostic', itemOffered: { '@type': 'Service', name: 'Executive Team Diagnostic', serviceType: 'Executive team diagnostic', url: `${SITE_URL}${SLUGS.diagnostic}`, provider: { '@id': ORG_ID }, description: 'A structured outside read on how an executive team decides, disagrees and follows through: CEO and executive interviews, a live leadership meeting observed, and an analysis with a cost estimate and a clear go or no-go recommendation.' } },
     { '@type': 'Offer', category: 'Experience', itemOffered: { '@type': 'Service', name: 'Leadership Retreats', serviceType: 'Executive leadership retreat', url: `${SITE_URL}${SLUGS.teamRetreats}`, provider: { '@id': ORG_ID }, description: 'Facilitated multi-day experiential retreats engineered around one outcome and reinforced afterward — Focused, Signature and Bespoke tiers.' } },
     { '@type': 'Offer', category: 'For Leaders', itemOffered: { '@type': 'Service', name: 'For Leaders — Mindset development', serviceType: 'Leadership development program', url: `${SITE_URL}${SLUGS.leaders}`, provider: { '@id': ORG_ID }, description: 'The individual-leader track: Mindset Workouts and Your 30-Day Challenge that turn the legendary mindset into daily reps.' } },
   ],
