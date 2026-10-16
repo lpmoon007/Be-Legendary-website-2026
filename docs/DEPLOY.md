@@ -102,3 +102,42 @@ applied on the server. In #5, every line should print a non-zero count; a `0` on
 last two lines usually just means Vercel hasn't finished deploying the demo yet —
 re-run after a minute before treating it as a broken link. (As with #2, a `0` from a
 blocked or failed request is a false pass, so only trust these on a normal network.)
+
+### Release check: Executive Team Diagnostic + offer-ladder reconciliation (2026-10-16)
+
+For the deploy that retired the "5LD Performance Audit", introduced the
+`/teams/diagnostic/` page, and moved every credit to the 50% rule. The critical
+assertion is #1: `/teams/diagnostic/` must now serve a **200**, because it used to
+be a `301` to `/teams/team-lfs/` and that redirect was removed from `.htaccess`.
+
+```bash
+# 1. The new Executive Team Diagnostic page is LIVE, not redirecting (expect: HTTP/2 200)
+curl -sI "https://www.belegendary.org/teams/diagnostic/" | head -1
+
+# 2. It is the Executive Team Diagnostic (expect: ≥1)
+curl -s "https://www.belegendary.org/teams/diagnostic/" | grep -c "Executive Team Diagnostic"
+
+# 3. The crisis brief retired the old offer name (expect: 0)
+curl -s "https://www.belegendary.org/executive-team-crisis-brief/" | grep -c "5LD Performance Audit"
+
+# 4. ...and now carries the new one (expect: ≥1)
+curl -s "https://www.belegendary.org/executive-team-crisis-brief/" | grep -c "Executive Team Diagnostic"
+
+# 5. The solo ELFS credit is now 50%, not "in full" (expect: ≥1 then 0)
+curl -s "https://www.belegendary.org/elfs/" | grep -c "credits 50%"
+curl -s "https://www.belegendary.org/elfs/" | grep -ci "applied in full"
+
+# 6. The downloadable strategic-brief PDF was regenerated (expect: 0, i.e. no "5LD" left)
+curl -s "https://www.belegendary.org/assets/be-legendary-executive-team-crisis-brief.pdf" | pdftotext - - | grep -c "5LD"
+```
+
+Expect: #1 `HTTP/2 200`; #2 ≥1; #3 `0`; #4 ≥1; #5 `≥1` then `0`; #6 `0`.
+
+If #1 returns **`301`** instead of `200`, the deployed `.htaccess` is being
+bypassed by a server-side nginx/Plesk redirect that still maps
+`/teams/diagnostic/ → /teams/team-lfs/`. That rule is not in the repo deploy —
+remove the stale `rewrite ^/teams/diagnostic/` line from the Plesk vhost's nginx
+directives (Plesk → Domains → belegendary.org → Apache & nginx Settings →
+Additional nginx directives) and reload. (As with the checks above, a `0`/empty
+result from a blocked or failed request is a false pass — run these on a normal
+network, never from a Claude Code web session.)
