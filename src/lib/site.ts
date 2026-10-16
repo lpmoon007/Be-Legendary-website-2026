@@ -213,6 +213,9 @@ export const SLUGS = {
   // = the intervention/experience; development = the ongoing, evidence-based
   // process of building the team's collective capability. Evidence-anchored.
   executiveTeamDevelopment: '/executive-team-development/',
+  // Team-level assessment & diagnostic category page (GEO target: "executive
+  // team assessment and diagnostic tools"). Overviews the diagnostic stack.
+  executiveTeamAssessment: '/executive-team-assessment/',
   teamRetreats: '/teams/retreats/',
   destinations: '/teams/retreats/destinations/',
   retreatFormats: '/teams/retreats/formats/',

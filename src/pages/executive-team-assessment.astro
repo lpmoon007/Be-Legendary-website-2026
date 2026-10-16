@@ -6,9 +6,7 @@ import LowCommitmentCTA from '../components/LowCommitmentCTA.astro';
 import ResultsBand from '../components/ResultsBand.astro';
 import { SLUGS, CTA_URL, ORG_ID, SITE_URL } from '../lib/site';
 
-// NOTE: staged proposal — noindex and not yet linked from nav or other pages.
-// On approval: remove noindex, add the SLUG, and wire inbound links.
-const path = '/executive-team-assessment/';
+const path = SLUGS.executiveTeamAssessment;
 const title = 'Executive Team Assessment & Diagnostic Tools | Be Legendary';
 const description =
   'Most executive team assessments measure individuals. A team-level diagnostic measures how the team actually decides, disagrees and follows through under pressure. The tools, and when to use each.';
@@ -44,7 +42,7 @@ const schema = [
 
 const tools = [
   { name: 'Break-Point Self-Assessment', measures: 'Where your team is most likely to break first, self-scored across the four disciplines.', format: 'Free · ~4 min · self-serve', when: 'You want a fast, no-commitment read before anything else.', href: SLUGS.breakPointAssessment },
-  { name: 'FlagScore', measures: "The team's composite health across the five components of the Flag Model, as a tracked number.", format: 'Produced by the LFS and the Diagnostic', when: 'You want a baseline you can measure progress against quarter over quarter.', href: SLUGS.leadershipScorecard },
+  { name: 'FlagScore', measures: "The team's composite health across the five components of the Flag Model, as a tracked number.", format: 'Produced by the LFS and the Diagnostic', when: 'You want a baseline you can measure progress against quarter over quarter.', href: SLUGS.glossary + '#flagscore' },
   { name: 'Team LFS', measures: 'How the team actually decides, coordinates and holds a standard under pressure, in real observed behavior.', format: '~90 min · up to 8 execs · virtual or in person', when: 'You want behavioral evidence, not self-report, with individual and team reports.', href: SLUGS.teamLfs },
   { name: 'Executive Team Diagnostic', measures: 'The full outside read: interviews, a live leadership meeting observed, and an analysis mapped to the four disciplines and the Flag.', format: '~3 weeks · CEO-first readout', when: 'You want a cost estimate for your specific dysfunction and a clear go or no-go.', href: SLUGS.diagnostic },
 ];
@@ -58,7 +56,6 @@ const tools = [
   ogDescription="Most executive assessments measure individuals. A team-level diagnostic measures how the team decides, disagrees and follows through under pressure."
   bodyBg="#EFE9DD"
   schema={schema}
-  noindex={true}
 >
   <SiteHeader audience="teams" variant="full" logoHref="/" />
 
