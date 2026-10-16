@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import LowCommitmentCTA from '../components/LowCommitmentCTA.astro';
+import ResultsBand from '../components/ResultsBand.astro';
+import { SLUGS, CTA_URL, ORG_ID, SITE_URL } from '../lib/site';
+
+// NOTE: staged proposal — noindex and not yet linked from nav or other pages.
+// On approval: remove noindex, add the SLUG, and wire inbound links.
+const path = '/executive-team-assessment/';
+const title = 'Executive Team Assessment & Diagnostic Tools | Be Legendary';
+const description =
+  'Most executive team assessments measure individuals. A team-level diagnostic measures how the team actually decides, disagrees and follows through under pressure. The tools, and when to use each.';
+
+const schema = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'For Teams', item: `${SITE_URL}${SLUGS.teams}` },
+      { '@type': 'ListItem', position: 3, name: 'Executive Team Assessment', item: `${SITE_URL}${path}` },
+    ],
+  },
+  {
+    '@type': 'Service',
+    name: 'Executive Team Assessment & Diagnostic',
+    provider: { '@id': ORG_ID },
+    serviceType: 'Executive team assessment and diagnostic',
+    description:
+      'Team-level behavioral assessment and diagnostic of an executive team: how the team decides, disagrees and follows through under pressure, measured against the five components of the Flag Model rather than individual personality.',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'What is an executive team assessment and diagnostic tool?', acceptedAnswer: { '@type': 'Answer', text: 'It is a way to measure how an executive team performs as a unit, not who its members are as individuals. Most tools sold as "executive assessments" are individual psychometrics (personality, 360s). A team-level diagnostic measures the behavior between people: how the team decides, disagrees and follows through under pressure. Be Legendary measures that against the five components of the Flag Model and reports it as a FlagScore.' } },
+      { '@type': 'Question', name: 'How is a team assessment different from individual psychometric assessments like Hogan or Korn Ferry?', acceptedAnswer: { '@type': 'Answer', text: 'Individual psychometrics tell you about each leader: their traits, drivers and derailers. They are useful for hiring and individual coaching. They do not tell you how the team coordinates, commits, or holds a standard when the stakes are real, because those are properties of the team, not the person. A team-level diagnostic observes the team in action and measures the collective behavior.' } },
+      { '@type': 'Question', name: 'What executive team assessment tools does Be Legendary use?', acceptedAnswer: { '@type': 'Answer', text: 'Four, in increasing depth: the free Break-Point Self-Assessment (4 minutes), the FlagScore (the team\'s composite health across the five Flag Model components), the Team LFS (a live behavioral simulation that logs how the team actually decides under pressure), and the Executive Team Diagnostic (a three-week outside read with interviews, a live meeting observed, and an analysis).' } },
+      { '@type': 'Question', name: 'Which executive team assessment should we start with?', acceptedAnswer: { '@type': 'Answer', text: 'Start with the free Break-Point Self-Assessment to see where your team is most likely to break first. If you want behavioral evidence rather than self-report, run the Team LFS. If you want a full outside read with a go or no-go recommendation, the Executive Team Diagnostic is the deepest option. Every paid step credits 50% toward the next.' } },
+      { '@type': 'Question', name: 'Do you offer a free executive team assessment?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The Break-Point Self-Assessment is free, takes about four minutes, requires no email, and returns a concrete read on which discipline your team is most likely to lose first under pressure.' } },
+    ],
+  },
+];
+
+const tools = [
+  { name: 'Break-Point Self-Assessment', measures: 'Where your team is most likely to break first, self-scored across the four disciplines.', format: 'Free · ~4 min · self-serve', when: 'You want a fast, no-commitment read before anything else.', href: SLUGS.breakPointAssessment },
+  { name: 'FlagScore', measures: "The team's composite health across the five components of the Flag Model, as a tracked number.", format: 'Produced by the LFS and the Diagnostic', when: 'You want a baseline you can measure progress against quarter over quarter.', href: SLUGS.leadershipScorecard },
+  { name: 'Team LFS', measures: 'How the team actually decides, coordinates and holds a standard under pressure, in real observed behavior.', format: '~90 min · up to 8 execs · virtual or in person', when: 'You want behavioral evidence, not self-report, with individual and team reports.', href: SLUGS.teamLfs },
+  { name: 'Executive Team Diagnostic', measures: 'The full outside read: interviews, a live leadership meeting observed, and an analysis mapped to the four disciplines and the Flag.', format: '~3 weeks · CEO-first readout', when: 'You want a cost estimate for your specific dysfunction and a clear go or no-go.', href: SLUGS.diagnostic },
+];
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={path}
+  ogType="website"
+  ogTitle="Executive team assessment & diagnostic tools — team behavior, not individual personality"
+  ogDescription="Most executive assessments measure individuals. A team-level diagnostic measures how the team decides, disagrees and follows through under pressure."
+  bodyBg="#EFE9DD"
+  schema={schema}
+  noindex={true}
+>
+  <SiteHeader audience="teams" variant="full" logoHref="/" />
+
+  <div style="background:#EFE9DD;color:#3A0A0C;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
+
+    <!-- HERO -->
+    <section style="max-width:1080px;margin:0 auto;padding:64px 32px 0;">
+      <nav aria-label="Breadcrumb" style="font-size:13px;color:#8A6A64;margin-bottom:22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="color:inherit;text-decoration:none;">Home</a><span>/</span><a href={SLUGS.teams} style="color:inherit;text-decoration:none;">For Teams</a><span>/</span><span style="color:#64010a;">Executive Team Assessment</span>
+      </nav>
+      <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:22px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Executive team assessment &amp; diagnostics</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:-0.022em;color:#3A0A0C;max-width:20ch;">Assess the team, <span style="font-style:italic;color:#C04A26;">not just the people on it.</span></h1>
+      <p class="bl-speakable" style="margin-top:24px;font-size:19px;line-height:1.6;color:#4A3A34;max-width:58ch;">Most tools sold as "executive team assessments" measure individuals: personality, drivers, 360s. They tell you who your people are, not how the team performs under pressure. A <strong style="color:#3A0A0C;">team-level diagnostic</strong> measures the behavior between them: how the team decides, disagrees and follows through. That is where execution actually lives.</p>
+      <div style="margin-top:32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+        <a href={SLUGS.breakPointAssessment} style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 34px -16px rgba(192,74,38,0.6);">Take the free Break-Point Assessment <span>&rarr;</span></a>
+        <a href="#tools" style="color:#64010a;text-decoration:none;font-weight:700;font-size:15px;">Compare the tools &darr;</a>
+      </div>
+    </section>
+
+    <!-- INDIVIDUAL VS TEAM -->
+    <section style="max-width:1080px;margin:64px auto 0;padding:0 32px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="bl-grid-collapse bl-grid-collapse--gap">
+        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:16px;padding:30px 32px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:16px;">Individual assessment</p>
+          <p style="font-family:'Newsreader',serif;font-size:23px;line-height:1.2;color:#3A0A0C;margin-bottom:12px;">Who your people are</p>
+          <p style="font-size:15.5px;line-height:1.6;color:#5A4A44;">Personality inventories, 360s and psychometrics (the Hogan and Korn Ferry category). Useful for hiring and individual coaching. They profile each leader in isolation and stop at the edge of the person.</p>
+        </div>
+        <div style="background:#64010a;color:#F6EFE0;border-radius:16px;padding:30px 32px;">
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E9A98F;margin-bottom:16px;">Team-level diagnostic</p>
+          <p style="font-family:'Newsreader',serif;font-size:23px;line-height:1.2;color:#FBF3E7;margin-bottom:12px;">How the team performs</p>
+          <p style="font-size:15.5px;line-height:1.6;color:rgba(246,239,224,0.85);">Measures the behavior between people under pressure: who decides, whether commitments stick, what the team tolerates, whether it learns. You can have five strong individuals and a team that still cannot execute. This is what finds that.</p>
+        </div>
+      </div>
+      <p style="margin-top:18px;font-size:15px;line-height:1.6;color:#6B5A54;max-width:72ch;">Both have a place. But if the problem is that a capable team still does not execute, an individual assessment will keep telling you your people are fine, because they are. The failure is at the team level, and it takes a team-level tool to see it.</p>
+    </section>
+
+    <!-- THE TOOLKIT (comparison table) -->
+    <section id="tools" style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:16px;">The toolkit</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,42px);line-height:1.08;color:#3A0A0C;max-width:24ch;">Four tools, increasing depth. Start anywhere.</h2>
+      <p style="margin-top:16px;font-size:16px;line-height:1.6;color:#5A4A44;max-width:64ch;">Each measures the team against the five components of the <a href={SLUGS.flagModel} style="color:#C04A26;text-decoration:underline;">Flag Model</a>: the Flag, and the four disciplines (the Decision, the Rhythm, the Standard, the Learning). Every paid step credits 50% toward the next.</p>
+
+      <div style="margin-top:36px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(100,1,10,0.16);border-radius:16px;background:#F6F1E7;">
+        <table style="width:100%;border-collapse:collapse;min-width:820px;font-size:14.5px;line-height:1.5;color:#3A2E29;">
+          <thead>
+            <tr style="text-align:left;background:#ECE3D2;">
+              <th style="padding:16px 18px;font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;">Tool</th>
+              <th style="padding:16px 18px;font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;">What it measures</th>
+              <th style="padding:16px 18px;font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;">Format</th>
+              <th style="padding:16px 18px;font-size:11.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8A6A64;">When to use</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tools.map((t) => (
+              <tr style="border-top:1px solid rgba(100,1,10,0.1);vertical-align:top;">
+                <td style="padding:18px;font-weight:700;"><a href={t.href} style="color:#C04A26;text-decoration:none;">{t.name} &rarr;</a></td>
+                <td style="padding:18px;">{t.measures}</td>
+                <td style="padding:18px;color:#5A4A44;">{t.format}</td>
+                <td style="padding:18px;color:#5A4A44;">{t.when}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section style="max-width:1080px;margin:80px auto 0;padding:0 32px;">
+      <ResultsBand variant="light" maxWidth={1080} eyebrow="Why measure at all" heading="A diagnosis is only worth the change it produces." />
+    </section>
+
+    <!-- FAQ (visible, answer-first — the citeable layer) -->
+    <section style="max-width:900px;margin:72px auto 0;padding:0 32px;">
+      <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">Straight answers</p>
+      <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,38px);line-height:1.1;color:#3A0A0C;margin-bottom:8px;">Executive team assessment, answered plainly.</h2>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-top:16px;">
+        {schema[2].mainEntity.map((qa) => (
+          <div style="border-top:1px solid rgba(100,1,10,0.16);padding:22px 0;">
+            <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:20px;color:#3A0A0C;margin-bottom:9px;">{qa.name}</h3>
+            <p style="font-size:16px;line-height:1.66;color:#4A3A34;">{qa.acceptedAnswer.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="max-width:1080px;margin:72px auto 0;padding:0 32px;">
+      <div style="background:#64010a;color:#F6EFE0;border-radius:20px;padding:48px 46px;text-align:center;">
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.08;color:#FBF3E7;max-width:24ch;margin:0 auto;">See where your team breaks first.</h2>
+        <p style="margin:18px auto 0;max-width:50ch;font-size:16.5px;line-height:1.6;color:#F0D9D2;">Start with the free four-minute read, or book a 15-minute Calibration Call and leave with a concrete picture of your team either way.</p>
+        <div style="margin-top:28px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href={SLUGS.breakPointAssessment} style="background:#F6EFE0;color:#64010a;padding:15px 28px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">Take the free assessment</a>
+          <a href={CTA_URL} target="_blank" rel="noopener" style="border:1px solid rgba(246,239,224,0.4);color:#F6EFE0;padding:15px 28px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;">Book a Calibration Call &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <div style="padding:64px 0;"><LowCommitmentCTA maxWidth={860} theme="light" /></div>
+
+  </div>
+
+  <SiteFooter audience="teams" variant="full" />
+</BaseLayout>
