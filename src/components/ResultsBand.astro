@@ -3,7 +3,14 @@
 // case-studies page — this component only surfaces them. Framing is deliberately
 // firm-level ("across engagements and formats over the years"), never implying
 // any single product produced all four. Works on light or dark sections.
-import { SLUGS } from '../lib/site';
+import { SISTER } from '../lib/site';
+
+// The detailed case studies behind these numbers are retreat engagements, so they
+// now live on legendary-retreats.com (retreats split off 2026-10-17). The aggregate
+// stats stay here as firm-level proof; each deep-links to its story on the retreat
+// site (absolute URL, new tab). belegendary.org builds its own coaching/performance
+// case studies over time (then these can point back on-domain).
+const CS = `${SISTER.retreats}/case-studies`;
 
 export interface Props {
   /** 'dark' for maroon/near-black sections, 'light' for cream sections. */
@@ -19,10 +26,10 @@ const { variant = 'dark', maxWidth = 1100, eyebrow = 'Measured results', heading
 // Real, attributed results — sourced from the case studies. `href` deep-links
 // to the relevant story so any claim is one click from its proof.
 const stats = [
-  { value: '$1.2B', label: 'revenue, up from $350M — seven rival firms unified into one', href: SLUGS.caseStudies },
-  { value: '268%', label: 'behavioral gain in 30 days — two warring camps, one team', href: SLUGS.caseSanJuan },
-  { value: '209%', label: 'mindset lift — Champion Iron executive retreat, AlUla', href: SLUGS.caseStudies },
-  { value: '178%', label: 'teaming gain in 30 days — five poached all-stars, one team', href: SLUGS.caseAutoRetailer },
+  { value: '$1.2B', label: 'revenue, up from $350M — seven rival firms unified into one', href: `${CS}/` },
+  { value: '268%', label: 'behavioral gain in 30 days — two warring camps, one team', href: `${CS}/san-juan-mountains-work-ethic/` },
+  { value: '209%', label: 'mindset lift — Champion Iron executive retreat, AlUla', href: `${CS}/` },
+  { value: '178%', label: 'teaming gain in 30 days — five poached all-stars, one team', href: `${CS}/online-auto-retailer-leadership-team/` },
 ];
 
 const c = variant === 'light'
@@ -37,14 +44,14 @@ const c = variant === 'light'
     </div>
     <div class="rb-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
       {stats.map((s, i) => (
-        <a href={s.href} class="rb-cell" style={`display:block;text-decoration:none;padding:8px 24px;border-left:1px solid ${i === 0 ? 'transparent' : c.divider};`}>
+        <a href={s.href} target="_blank" rel="noopener" class="rb-cell" style={`display:block;text-decoration:none;padding:8px 24px;border-left:1px solid ${i === 0 ? 'transparent' : c.divider};`}>
           <p style={`font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;color:${c.value};`}>{s.value}</p>
           <p style={`margin-top:12px;font-size:14px;line-height:1.5;color:${c.label};`}>{s.label}</p>
         </a>
       ))}
     </div>
     <p style={`text-align:center;margin-top:36px;font-size:14.5px;color:${c.label};`}>
-      Real engagements across a decade of retreats, immersions and partnerships. <a href={SLUGS.caseStudies} style={`color:${c.cta};font-weight:700;text-decoration:none;white-space:nowrap;`}>See the case studies &rarr;</a>
+      Real engagements across a decade of retreats, immersions and partnerships. <a href={`${CS}/`} target="_blank" rel="noopener" style={`color:${c.cta};font-weight:700;text-decoration:none;white-space:nowrap;`}>See the case studies &rarr;</a>
     </p>
   </div>
   <style>

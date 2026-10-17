@@ -17,7 +17,6 @@
 - About James Carter — founder, author, creator of the Flag Model: https://www.belegendary.org/about/james-carter/
 - Break-Point Self-Assessment — free tool to find your team's first break point: https://www.belegendary.org/break-point-self-assessment/
 - Cost of Lost Disciplines Calculator — estimate the cost of misalignment, built on third-party research: https://www.belegendary.org/cost-of-lost-disciplines-calculator/
-- Case studies — anonymized executive-team turnarounds: https://www.belegendary.org/case-studies/
 - Resources hub — tools, comparisons, research: https://www.belegendary.org/resources/
 
 ## Field notes (answers to common questions)
@@ -28,7 +27,6 @@
 - Nobody on my executive team holds anyone accountable. Why? https://www.belegendary.org/executive-team-no-accountability/
 - My executive team isn't aligned on priorities. Why? https://www.belegendary.org/executive-team-not-aligned/
 - Why does my team keep repeating the same mistakes? https://www.belegendary.org/team-keeps-making-same-mistakes/
-- Why don't our leadership offsites stick? https://www.belegendary.org/why-leadership-offsites-dont-stick/
 
 ## Research
 - The State of Executive Team Execution (2026 report): https://www.belegendary.org/state-of-executive-team-execution/
@@ -40,7 +38,6 @@
 
 ## Guides (informational)
 - What does an executive team alignment consultant do? https://www.belegendary.org/executive-team-alignment-consultant/
-- How to choose a leadership team offsite facilitator: https://www.belegendary.org/leadership-team-offsite-facilitator/
 - How much does executive team coaching cost? (2026 ranges): https://www.belegendary.org/executive-team-coaching-cost/
 
 ## For individual leaders
@@ -59,15 +56,19 @@
 - Recharge & reset: executive burnout retreat (/leaders/executive-burnout-retreat/), stress management retreat (/leaders/stress-management-retreat/), wilderness therapy for executives (/leaders/wilderness-therapy-for-executives/), where executives recharge (/leaders/where-executives-recharge/), what is Type 2 fun (/leaders/type-2-fun/).
 - Mindset vocabulary: what is Shakubuku (/leaders/what-is-shakubuku/), what is Kintsugi (/leaders/what-is-kintsugi/), what is a Misogi (/leaders/what-is-a-misogi/), the Golden Buddha story (/leaders/the-golden-buddha-story/).
 
-## For Teams — retreats & programs (all under /teams/)
-- For Teams hub — the framework, diagnostics, retreats, and guides in one place: https://www.belegendary.org/teams/
-- Team Retreats — executive-team retreats that turn alignment into execution: https://www.belegendary.org/teams/retreats/
-- Destinations — where the retreats happen: https://www.belegendary.org/teams/retreats/destinations/
-- Retreat Formats — the formats and how to choose: https://www.belegendary.org/teams/retreats/formats/
-- Ways to Work Together — engagement tiers: https://www.belegendary.org/teams/retreats/ways-to-work-together/
-- For Executive Assistants — planning a leadership retreat: https://www.belegendary.org/teams/retreats/for-executive-assistants/
+## For Teams — diagnostics & programs
+- For Teams hub — the framework, diagnostics, and programs in one place: https://www.belegendary.org/teams/
 - Executive Team Diagnostic — the outside read on how your team decides, disagrees and follows through: https://www.belegendary.org/teams/diagnostic/
-- Team guides: followership (/teams/followership/), corporate retreat ideas & locations (/teams/corporate-retreat-ideas/), executive offsite ideas (/teams/executive-offsite-ideas/), leadership retreat ideas (/teams/leadership-retreat-ideas/), luxury executive retreat (/teams/luxury-executive-retreat/).
+- Team LFS (Leadership Failure Simulation) — the instrumented, measured behavioral read on the team: https://www.belegendary.org/teams/team-lfs/
+- Followership — the other half of leadership: https://www.belegendary.org/teams/followership/
+- Executive Team Building — reframes "executive team building / offsite" demand toward the serious diagnostic: https://www.belegendary.org/executive-team-building/
+- Executive Team Development — the ongoing, evidence-based process of building the team's collective capability: https://www.belegendary.org/executive-team-development/
+- Executive Team Assessment & diagnostic tools — the diagnostic stack overview: https://www.belegendary.org/executive-team-assessment/
+
+## Related sites (same founder, distinct entities)
+- Legendary Retreats — multi-day, fully off-site experiential executive retreats (Focused, Signature, Bespoke) and executive immersions, run as a sister brand: https://www.legendary-retreats.com/
+- Building Teams — corporate team-building, events and sales kickoffs: https://www.buildingteams.com/
+- Prove — measures who delivers: the Commitment Quotient (CQ): https://www.provecq.com/
 
 ## Key definitions (for leaders)
 - Shakubuku: a sudden, radical shift in how you see yourself — an awakening to your own inherent greatness; also Be Legendary's flagship by-application experience.

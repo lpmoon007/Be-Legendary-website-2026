@@ -16,7 +16,6 @@ const meta: Record<string, [string, string]> = {
   [SLUGS.resources]: ['0.8', 'weekly'],
   [SLUGS.fieldNotes]: ['0.8', 'weekly'],
   [SLUGS.research]: ['0.8', 'yearly'],
-  [SLUGS.caseStudies]: ['0.7', 'monthly'],
   [SLUGS.glossary]: ['0.7', 'monthly'],
   [SLUGS.privacy]: ['0.3', 'yearly'],
   // For Leaders hubs + flagship
@@ -25,10 +24,28 @@ const meta: Record<string, [string, string]> = {
   [SLUGS.challenge]: ['0.8', 'monthly'],
   [SLUGS.leadersGlossary]: ['0.7', 'monthly'],
   [SLUGS.legendaryLeader]: ['0.8', 'monthly'],
-  [SLUGS.teamRetreats]: ['0.8', 'monthly'],
   [SLUGS.executiveTeamBuilding]: ['0.8', 'monthly'],
 };
 const DEFAULT: [string, string] = ['0.7', 'monthly'];
+
+// Retreats (and the experiential days, retreat guides and retreat case studies)
+// moved to legendary-retreats.com on 2026-10-17. Their slugs still exist in SLUGS
+// so in-page references resolve to the belegendary.org path, which 301s to the new
+// domain via public/.htaccess — but those paths must NOT appear in this sitemap
+// (they return a 301, not a 200). Excluded by value below.
+const MOVED_TO_RETREATS = new Set<string>([
+  SLUGS.teamRetreats, SLUGS.destinations, SLUGS.retreatFormats, SLUGS.waysToWorkTogether,
+  SLUGS.forExecutiveAssistants,
+  SLUGS.caseStudies, SLUGS.caseAutoRetailer, SLUGS.caseSanJuan, SLUGS.caseEverglades,
+  SLUGS.caseFederalFiscal, SLUGS.caseAlaska,
+  SLUGS.sailingTeamBuilding, SLUGS.offRoadImmersion, SLUGS.retreatKit,
+  SLUGS.corporateRetreatIdeas, SLUGS.executiveOffsiteIdeas, SLUGS.leadershipRetreatIdeas,
+  SLUGS.luxuryExecutiveRetreat,
+  SLUGS.executiveImmersion, SLUGS.eiExpedition, SLUGS.eiCity, SLUGS.eiOwnership,
+  SLUGS.eiCityNeverSleeps,
+  SLUGS.howToPlanRetreat, SLUGS.offsiteAgenda, SLUGS.executiveOffsite,
+  SLUGS.offsiteFacilitator, SLUGS.offsitesDontStick,
+]);
 
 // Lost Disciplines of Leadership book launch site (hosted at /lost-disciplines/).
 const BOOK_PATHS = [
@@ -53,8 +70,9 @@ export const GET: APIRoute = () => {
     new Set([...Object.values(SLUGS), ...WORKOUTS.map(workoutPath), ...BOOK_PATHS])
   )
     // Exclude the challenge app (SLUGS.challenge is the absolute app URL, not a
-    // canonical 200 page on this host) so the sitemap stays clean.
-    .filter((p) => p !== SLUGS.challenge)
+    // canonical 200 page on this host) and every path that now 301s to
+    // legendary-retreats.com, so the sitemap stays clean (200s only).
+    .filter((p) => p !== SLUGS.challenge && !MOVED_TO_RETREATS.has(p))
     .sort();
   const urls = paths
     .map((path) => {
