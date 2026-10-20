@@ -211,6 +211,7 @@ const flat = categories.flatMap((cat, ci) =>
 
   const answers = new Array(10).fill(0);
   let revealed = false;
+  let started = false; // fire assessment_start once, on the first answer
   const revealBtn = document.getElementById('ls-reveal') as HTMLButtonElement;
   const answeredLabel = document.getElementById('ls-answered')!;
   const result = document.getElementById('ls-result')!;
@@ -234,6 +235,12 @@ const flat = categories.flatMap((cat, ci) =>
         b.style.color = on ? '#fff' : 'rgba(244,240,231,0.7)';
       });
       const answered = answers.filter((a) => a > 0).length;
+      if (!started && answered > 0) {
+        started = true;
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'assessment_start', { assessment: 'leadership_scorecard' });
+        }
+      }
       const ready = answered === 10;
       answeredLabel.textContent = ready ? 'All ten answered — see your score.' : `${answered} of 10 answered`;
       revealBtn.disabled = !ready;
@@ -290,11 +297,12 @@ const flat = categories.flatMap((cat, ci) =>
 
   revealBtn.addEventListener('click', () => {
     if (answers.some((a) => a === 0)) return;
+    const firstReveal = !revealed;
     revealed = true;
     result.style.display = 'block';
     revealBtn.textContent = 'Updated below ↓';
     renderResult();
-    if (typeof (window as any).gtag === 'function') {
+    if (firstReveal && typeof (window as any).gtag === 'function') {
       (window as any).gtag('event', 'assessment_completed', { assessment: 'leadership_scorecard', score: total() });
     }
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });

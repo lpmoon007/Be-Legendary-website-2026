@@ -143,6 +143,7 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
 
   const answers = new Array(10).fill(0);
   let revealed = false;
+  let started = false; // fire assessment_start once, on the first answer
 
   const revealBtn = document.getElementById('bp-reveal') as HTMLButtonElement;
   const answeredLabel = document.getElementById('bp-answered')!;
@@ -171,6 +172,12 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
         b.style.color = on ? '#fff' : 'rgba(244,240,231,0.7)';
       });
       const answeredCount = answers.filter((a) => a > 0).length;
+      if (!started && answeredCount > 0) {
+        started = true;
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'assessment_start', { assessment: 'break_point' });
+        }
+      }
       const ready = answeredCount === 10;
       answeredLabel.textContent = ready ? 'All ten answered — see your read.' : `${answeredCount} of 10 answered`;
       revealBtn.disabled = !ready;
@@ -336,12 +343,13 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
 
   revealBtn.addEventListener('click', () => {
     if (answers.some((a) => a === 0)) return;
+    const firstReveal = !revealed;
     revealed = true;
     result.style.display = 'block';
     revealBtn.textContent = 'Updated below ↓';
     renderResult();
-    if (typeof (window as any).gtag === 'function') {
-      (window as any).gtag('event', 'assessment_completed', { break_point: comps[computeBreakIndex()].name });
+    if (firstReveal && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'assessment_completed', { assessment: 'break_point', break_point: comps[computeBreakIndex()].name });
     }
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
