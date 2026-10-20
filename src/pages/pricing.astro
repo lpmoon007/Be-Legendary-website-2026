@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { SLUGS, CTA_URL, CONTACT_EMAIL } from '../lib/site';
+import { SLUGS, CTA_URL, CONTACT_EMAIL, SISTER } from '../lib/site';
 
 const path = SLUGS.pricing;
 const title = 'Pricing — What It Costs to Work With Be Legendary';
@@ -16,9 +16,7 @@ const rungs = [
   { name: 'Solo ELFS', price: '$7,500', meta: '~30 minutes · the CEO alone', what: 'The Executive Leadership Failure Simulation, run solo — feel the diagnostic yourself before bringing the team. Credits 50% toward Team LFS.', href: SLUGS.elfs, cta: 'How it works' },
   { name: 'Team LFS', price: '$28K–$35K', meta: 'Up to 8 executives · ~90 minutes', what: 'The Team Leadership Failure Simulation — a live behavioral read that shows exactly where your team breaks, with a FlagScore™ baseline.', href: SLUGS.teamLfs, cta: 'See the read' },
   { name: 'Executive Team Diagnostic', price: '$15K–$25K', meta: '~3 weeks · the outside read', what: 'Interviews, a live leadership meeting observed, and an analysis of how your team decides, disagrees and follows through — with a cost estimate and a clear go or no-go. Credited toward the Partnership.', href: SLUGS.diagnostic, cta: 'How it works' },
-  { name: 'Executive Immersion', price: 'From $35K', meta: 'A single engineered day', what: 'One high-stakes day, built from whatever is within reach of your team — expedition, city, or ownership.', href: SLUGS.executiveImmersion, cta: 'See the day' },
   { name: 'Discipline Sprint', price: '$45K–$65K', meta: '90 days · one broken discipline', what: 'A focused 90-day sprint that rebuilds the one discipline the diagnostic found broken.', href: `${SLUGS.howWeWorkTogether}#discipline-sprint`, cta: 'Learn more' },
-  { name: 'Leadership Retreat', price: '$25K–$500K+', meta: 'Focused · Signature · Bespoke', what: 'A facilitated, multi-day experiential retreat engineered around one outcome and reinforced for 30 days.', href: SLUGS.teamRetreats, cta: 'See the three ways' },
   { name: 'Performance Partnership', price: 'From $75K base', meta: '12 months · 10×-return structure', what: 'The systemic engagement. Success fees only when documented value confirms a 10× return — your direct risk is the base fee. Tiers to $1.1M by company size.', href: SLUGS.crisisBrief, cta: 'Read the brief' },
 ];
 
@@ -27,7 +25,7 @@ const chooser = [
   { key: 'explore', label: 'I’m not sure this is even my problem.', rec: 'Start free.', body: 'Take the 4-minute <a href="' + SLUGS.breakPointAssessment + '">Break-Point Self-Assessment</a>, or book a 15-minute <a href="' + CTA_URL + '">Calibration Call</a> — you’ll leave with a concrete read on where your team breaks first, whether or not we ever work together.', price: '$0' },
   { key: 'proof', label: 'I want proof of exactly where my team breaks.', rec: 'The Team LFS.', body: 'The <a href="' + SLUGS.teamLfs + '">Team Leadership Failure Simulation</a> is a live behavioral read — real observed actions, not a survey — with a measurable baseline. Prefer to feel it solo first? <a href="' + SLUGS.elfs + '">ELFS</a> ($7,500) is the CEO-only version, credited 50% toward the team run.', price: '$28K–$35K' },
   { key: 'read', label: 'I want an outside read on how my team actually works.', rec: 'The Executive Team Diagnostic.', body: 'The <a href="' + SLUGS.diagnostic + '">Executive Team Diagnostic</a> is a structured ~3-week read: interviews with you and each executive, a live leadership meeting observed, and an analysis of how the team decides, disagrees and follows through — with a cost estimate and a clear go or no-go. It credits toward the Partnership if you proceed.', price: '$15K–$25K' },
-  { key: 'day', label: 'I want one high-impact experience for the team.', rec: 'An Immersion or a Retreat.', body: 'For a single engineered day, an <a href="' + SLUGS.executiveImmersion + '">Executive Immersion</a> (from $35K). For a multi-day, fully off-site experience, a <a href="' + SLUGS.teamRetreats + '">Leadership Retreat</a> ($25K–$500K+, in three tiers).', price: 'From $35K' },
+  { key: 'day', label: 'I want a multi-day retreat or a single engineered experience.', rec: 'Legendary Retreats.', body: 'Experiential executive retreats and single engineered days now run as our sister brand, <a href="' + SISTER.retreats + '" target="_blank" rel="noopener">Legendary Retreats &#8599;</a> — same founder, same diagnosis-first philosophy, on a dedicated site.', price: '—' },
   { key: 'fix', label: 'I know the one thing that’s broken and want it fixed.', rec: 'A Discipline Sprint.', body: 'A focused 90-day <a href="' + SLUGS.howWeWorkTogether + '#discipline-sprint">Discipline Sprint</a> rebuilds the single discipline the diagnostic found broken — the fastest path from one clear problem to changed behavior.', price: '$45K–$65K' },
   { key: 'all', label: 'I want the whole thing solved, with skin in the game.', rec: 'The Performance Partnership.', body: 'The 12-month <a href="' + SLUGS.crisisBrief + '">Performance Partnership</a> installs the operating system and stays accountable to a measured outcome — success fees only when documented value confirms a 10× return. Your direct risk is the base fee.', price: 'From $75K' },
 ];

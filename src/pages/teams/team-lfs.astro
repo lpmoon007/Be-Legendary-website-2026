@@ -27,7 +27,7 @@ const schema = [
     '@type': 'FAQPage',
     mainEntity: [
       { '@type': 'Question', name: 'How is Team LFS different from a team assessment survey?', acceptedAnswer: { '@type': 'Answer', text: "Surveys and 360s capture what people say about themselves and each other. Team LFS captures what they actually do. Your team works through a live crisis scenario built from your own organization's context — each person plays themselves, decisions ripple to affect what everyone else sees, and every action is logged. The result is behavioral evidence of how your team coordinates and breaks under real ambiguity, not opinions about it." } },
-      { '@type': 'Question', name: 'What does Team LFS produce?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: an individual report for each leader with trait-by-trait analysis backed by what they actually did in the simulation; a team dynamics report mapping influence, coordination patterns and where your collective failure modes appear; and a measurable FlagScore baseline plus a 30-day lead-measure commitment per participant. That becomes the blueprint for a retreat designed around your real fault lines, not generic ones.' } },
+      { '@type': 'Question', name: 'What does Team LFS produce?', acceptedAnswer: { '@type': 'Answer', text: 'Three things: an individual report for each leader with trait-by-trait analysis backed by what they actually did in the simulation; a team dynamics report mapping influence, coordination patterns and where your collective failure modes appear; and a measurable FlagScore baseline plus a 30-day lead-measure commitment per participant. That becomes the blueprint for the engagement we design around your real fault lines, not generic ones.' } },
       { '@type': 'Question', name: 'Can I run it on myself before bringing the team?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. ELFS — the Executive Leadership Failure Simulation, the solo, roughly 30-minute version for the CEO — is the low-risk way to feel the simulation on yourself first, with a written report on where you default to comfort over truth. If you proceed to the full team run, your ELFS fee credits 50% toward it.' } },
     ],
   },
@@ -36,9 +36,8 @@ const schema = [
 // What the read feeds into — the intervention is engineered around the fault
 // line Team LFS surfaces, not pulled off a shelf.
 const interventions = [
-  { name: 'The Leadership Retreat', href: SLUGS.teamRetreats, note: 'A facilitated, multi-day retreat that rebuilds the discipline the read surfaced — reinforced for 30 days so it holds.' },
-  { name: 'The Off-Road Immersion', href: SLUGS.offRoadImmersion, note: 'One dramatic day where real terrain makes the team’s operating system visible, then a facilitated debrief.' },
-  { name: 'Sailing Team Building', href: SLUGS.sailingTeamBuilding, note: 'A day on the water as a coupled system — real behavior under pressure, converted into how you operate.' },
+  { name: 'Single Discipline Sprint', href: `${SLUGS.howWeWorkTogether}#discipline-sprint`, note: 'When the break is concentrated in one discipline, a focused 90-day sprint rebuilds exactly that — fast, fixed-fee, immediate start.' },
+  { name: 'Performance Partnership', href: `${SLUGS.howWeWorkTogether}#performance-partnership`, note: 'When the dysfunction is systemic, the 12-month engagement installs the Flag Model and stays accountable to a measured outcome, quarter over quarter.' },
 ];
 ---
 <BaseLayout
@@ -163,9 +162,9 @@ const interventions = [
       <div style="background:linear-gradient(180deg,#211D15,#1A160F);border-radius:20px;padding:48px 46px;">
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E9A98F;margin-bottom:14px;">Then — the intervention it points to</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.12;color:#FBF3E7;margin-bottom:14px;max-width:22ch;">The read tells us what to build. Then we build it.</h2>
-        <p style="font-size:16px;line-height:1.65;color:rgba(246,239,224,0.82);max-width:64ch;">Team LFS shows exactly where the team breaks. What comes next is engineered around that fault line &mdash; never pulled off a shelf. Depending on what surfaces, that&rsquo;s a multi-day retreat, a single dramatic day off-road, or a day on the water. Evidence in, transformation out.</p>
+        <p style="font-size:16px;line-height:1.65;color:rgba(246,239,224,0.82);max-width:64ch;">Team LFS shows exactly where the team breaks. What comes next is engineered around that fault line &mdash; never pulled off a shelf. Depending on what surfaces, that&rsquo;s a focused 90-day sprint on one discipline, or the full Performance Partnership. Evidence in, transformation out.</p>
 
-        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:34px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
           {interventions.map((i) => (
             <a href={i.href} style="display:flex;flex-direction:column;background:rgba(246,239,224,0.06);border:1px solid rgba(246,239,224,0.16);border-radius:14px;padding:26px 26px;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(224,116,74,0.6)'" onmouseout="this.style.borderColor='rgba(246,239,224,0.16)'">
               <span style="font-family:'Newsreader',serif;font-size:20px;line-height:1.2;color:#FBF3E7;">{i.name}</span>

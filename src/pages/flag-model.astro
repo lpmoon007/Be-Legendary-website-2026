@@ -4,7 +4,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
-import { CTA_URL, SLUGS } from '../lib/site';
+import { CTA_URL, SLUGS, SISTER } from '../lib/site';
 
 const title = 'The Flag Model: Find Where Your Team Breaks First';
 const description = "The leadership-execution framework that locates where your team breaks first: a Flag (your 2–3 priorities) held upright by four disciplines under one principle — Truth Over Comfort.";
@@ -217,7 +217,7 @@ const schema = [
         <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#C04A26;margin-bottom:18px;">How it's measured</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(28px,3.8vw,44px);line-height:1.06;letter-spacing:-0.015em;">FlagScore™: your team's vitals.</h2>
         <p style="margin-top:22px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;"><strong style="color:#1B1810;">FlagScore</strong> is a composite read across the five components of the model &mdash; scored from <strong style="color:#1B1810;">observed behavior across an engagement,</strong> not a survey. It&rsquo;s how a Performance Partnership stays honest: we track FlagScore movement quarter over quarter, so a team can <em>see</em> progress instead of being told it happened.</p>
-        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;">It&rsquo;s the codification of what we&rsquo;ve measured in the room for years &mdash; including the multi-year work with <a href={SLUGS.caseStudies} style="color:#C04A26;text-decoration:none;font-weight:600;">Eagle Manufacturing Group</a>.</p>
+        <p style="margin-top:18px;font-size:17.5px;line-height:1.62;color:#56524A;max-width:50ch;">It&rsquo;s the codification of what we&rsquo;ve measured in the room for years &mdash; including the multi-year work with <a href={`${SISTER.retreats}/case-studies/`} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:none;font-weight:600;">Eagle Manufacturing Group</a>.</p>
         <p style="margin-top:18px;font-size:15px;line-height:1.55;color:#8A7F6C;max-width:50ch;">Not to be confused with the free <a href={SLUGS.breakPointAssessment} style="color:#9E3A1C;text-decoration:none;font-weight:600;">Break-Point self-assessment</a> &mdash; that&rsquo;s a 4-minute self-scored snapshot anyone can take. FlagScore is the measured, longitudinal instrument inside a partnership.</p>
       </div>
       <div style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.10);border-radius:20px;padding:36px;">

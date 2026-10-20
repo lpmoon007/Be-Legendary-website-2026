@@ -4,30 +4,21 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import PressStrip from '../components/PressStrip.astro';
 import ResultsBand from '../components/ResultsBand.astro';
-import { SITE_URL, ORG_ID, SLUGS, CTA_URL } from '../lib/site';
+import { SITE_URL, ORG_ID, SLUGS, CTA_URL, SISTER } from '../lib/site';
 
 const path = SLUGS.executiveTeamBuilding;
 const title = 'Executive Team Building That Changes How Teams Decide';
 const description =
   "Most executive team building changes nothing. We build your executive team as the company's highest-leverage decision system — engineered and reinforced to hold.";
 
-// The two single-day format "rooms." Each is a laboratory for real behavior —
-// the experience is not the intervention. Prices are deliberately omitted:
-// every engagement is scoped to the team, so a range would mislead.
-const formats = [
-  { name: 'The Executive Off-Road Immersion', href: SLUGS.offRoadImmersion, meta: 'One dramatic day', img: '/assets/offroad/colorado/co-offroad-hero.webp', desc: 'A single day where real terrain makes the team’s true operating system visible — then a facilitated debrief turns it into the conversation you’ve been avoiding.' },
-  { name: 'Sailing Team Building', href: SLUGS.sailingTeamBuilding, meta: 'One day on the water', img: '/assets/sailing/schooner.webp', desc: 'A day of sailing built as a coupled system where the team’s real behavior surfaces under pressure — then a structured debrief converts it into how you operate.' },
-  { name: 'Executive Immersion', href: SLUGS.executiveImmersion, meta: 'One engineered day', img: '/assets/executive-immersion/card-executive-immersion.webp', desc: 'One extraordinary day, engineered end to end from whatever is within reach of your team — expedition, city or ownership — built backwards from the outcome the top executive names.' },
-];
-
-// "At a glance" — the EA's payload. Group size, duration, location, lead time,
-// inclusions for every format including the retreat and Team LFS. No price.
+// "At a glance" — the comparison payload. Group, duration, how it runs, lead
+// time and what's included, for every belegendary engagement. No price — each
+// is scoped to the team, so a range would mislead.
 const glance = [
-  { name: 'Off-Road Immersion', href: SLUGS.offRoadImmersion, group: 'No minimum — teams from ~2 (two guests per Jeep)', duration: 'One day · multi-day expeditions available', where: 'Las Vegas · Phoenix · Sedona · Denver · Los Angeles · Salt Lake City', lead: 'A few weeks', includes: 'James Carter-led facilitation, guides & vehicles, staging & shuttle, premium food & beverage, permits, insurance & safety — everything but your arrival' },
-  { name: 'Sailing Team Building', href: SLUGS.sailingTeamBuilding, group: 'A single team; scaled by vessel', duration: 'A day, or a multi-day passage', where: 'Major U.S. harbors — Pacific, Northeast, Southeast/Gulf, Great Lakes', lead: 'A few weeks (seasonal by region)', includes: 'Skippered vessel(s), facilitation and a structured debrief' },
-  { name: 'Executive Immersion', href: SLUGS.executiveImmersion, group: 'Up to 20 executives', duration: 'One engineered day, dawn to well past dark', where: 'Anywhere your team already is — front door, a drive, or a short charter', lead: 'A couple of weeks to a few months, by complexity', includes: 'James Carter-led design & facilitation, a timed run-of-show, transport & staging, permits, insurance & safety, and a 30-day behavioural commitment tracked after' },
-  { name: 'The Leadership Retreat', href: SLUGS.teamRetreats, group: 'The executive team', duration: 'Multi-day', where: 'Curated venues, domestic or international', lead: 'Plan ahead — weeks to months (more for international)', includes: 'Venue, travel, facilitation and 30-day reinforcement' },
   { name: 'Team LFS', href: SLUGS.teamLfs, group: 'Up to 8 executives', duration: '~90 minutes', where: 'At your offsite, or virtually on individual devices', lead: 'Short — within weeks', includes: 'The simulation, individual & team reports, a FlagScore baseline and debrief' },
+  { name: 'Executive Team Diagnostic', href: SLUGS.diagnostic, group: 'The executive team (CEO + reports)', duration: 'About three weeks', where: 'Interviews plus one live leadership meeting observed — on-site or remote', lead: 'A few weeks to start', includes: 'CEO and executive interviews, a live meeting observed, a written analysis with a cost estimate and a clear go / no-go' },
+  { name: 'Discipline Sprint', href: `${SLUGS.howWeWorkTogether}#discipline-sprint`, group: 'The executive team', duration: '~90 days', where: 'Embedded in your existing operating rhythm', lead: 'Weeks to start', includes: 'A focused rebuild of the one discipline that broke, with measured behavior change across the sprint' },
+  { name: 'Performance Partnership', href: `${SLUGS.howWeWorkTogether}#performance-partnership`, group: 'The executive team', duration: '12 months', where: 'Ongoing, embedded in how the team works', lead: 'Planned around your calendar', includes: 'The full Flag Model installed over time, FlagScore tracked quarter over quarter, reinforced so it holds' },
 ];
 
 const faqs = [
@@ -40,8 +31,8 @@ const faqs = [
   ['We just need executive team building ideas or exercises. Can you help?', 'Yes — but we will start by talking you out of choosing the exercise first. Tell us the problem (slow decisions, silo conflict, a post-acquisition team, a new C-suite that has never actually functioned together) and the right format follows. Book a Calibration Call and you will leave with a real read on where your team breaks first, whether or not we work together.'],
   ['Are you executive team building consultants?', 'In the sense that we advise senior teams, yes — but "consultant" undersells what happens. Most executive team building consultants deliver an event or a report and leave; we run a facilitated intervention engineered around your team’s real fault line, reinforce it so behavior actually changes, and hold ourselves to a measured result. If you’re searching for an executive team building consultant or advisor, that intervention-versus-event distinction is the one worth weighing before you choose one.'],
   // ── EA questions (she will search these) ──
-  ['How far in advance do we need to book?', 'Enough time to interview the team and build the day around what we find. A single day — off-road, sailing, or Team LFS — typically comes together in a few weeks; a curated or international retreat needs longer, so plan months out. Tell us your target date on the Calibration Call and we will tell you straight whether it is doable.'],
-  ['What do you need from us before the day?', 'Very little. A short calibration call, then twenty to thirty minutes each with two or three people on the team, and your read on the one outcome that matters. That is enough for us to build the day around your real fault line. Everything else — logistics, venue, vehicles or vessel, facilitation, and the follow-up — is ours.'],
+  ['How far in advance do we need to book?', 'Enough time to interview the team and build the work around what we find. A single session like a Team LFS typically comes together in a few weeks; the Executive Team Diagnostic runs over about three weeks once it starts, and a sustained partnership needs more lead time. Tell us your target date on the Calibration Call and we will tell you straight whether it is doable.'],
+  ['What do you need from us before we start?', 'Very little. A short calibration call, then twenty to thirty minutes each with two or three people on the team, and your read on the one outcome that matters. That is enough for us to build the work around your real fault line. Everything else — scheduling, facilitation, the analysis, and the follow-up — is ours.'],
 ];
 
 const schema = [
@@ -87,7 +78,7 @@ const schema = [
             <p style="display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:24px;"><span style="width:7px;height:7px;border-radius:50%;background:#C04A26;"></span>Executive team building</p>
             <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(38px,5.6vw,72px);line-height:1.0;letter-spacing:-0.024em;color:#1B1810;max-width:20ch;">Executive team building that builds how your leadership team <span style="font-style:italic;color:#C04A26;">decides, disagrees, and executes.</span></h1>
             <p style="margin-top:26px;font-size:20px;line-height:1.6;color:#56524A;max-width:56ch;">Your executive team is the highest-leverage decision system in the company. This is a facilitated intervention engineered around how it actually operates under pressure &mdash; then reinforced so it holds. Not trust falls, not two days out of the office you&rsquo;ll have forgotten by Monday.</p>
-            <p style="margin-top:16px;font-size:16.5px;line-height:1.55;color:#7A7061;max-width:56ch;">It runs as a <strong style="color:#3A362D;font-weight:600;">single facilitated day</strong>, or as something longer when the problem needs it. The format follows the problem &mdash; never the other way around.</p>
+            <p style="margin-top:16px;font-size:16.5px;line-height:1.55;color:#7A7061;max-width:56ch;">It scales to the problem &mdash; from a <strong style="color:#3A362D;font-weight:600;">single instrumented read</strong> to a sustained partnership. The format follows the problem &mdash; never the other way around.</p>
             <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
               <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 32px;border-radius:10px;font-weight:700;font-size:17px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 16px 40px -16px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
               <a href={SLUGS.breakPointAssessment} style="display:inline-flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700;color:#C04A26;text-decoration:none;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">or find where your team breaks first <span style="transition:transform .2s;">&rarr;</span></a>
@@ -110,7 +101,7 @@ const schema = [
     <section style="background:#15130E;color:#F4F0E7;padding:104px 32px 72px;">
       <div style="max-width:1180px;margin:0 auto;">
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">What we run</p>
-        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:20ch;color:#FBF8F1;">A day built for your team &mdash; or something longer.</h2>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-0.02em;max-width:22ch;color:#FBF8F1;">Built around your team&rsquo;s real fault line &mdash; from a single read to a full partnership.</h2>
 
         <!-- 3a. We interview before we design (full-width, not a card) -->
         <div style="margin-top:40px;background:linear-gradient(120deg,rgba(192,74,38,0.16),rgba(244,240,231,0.03));border:1px solid rgba(192,74,38,0.42);border-radius:18px;padding:36px 38px;">
@@ -119,46 +110,41 @@ const schema = [
           <p style="margin-top:16px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.86);max-width:70ch;">We start with a calibration call, then talk with two or three people on the team. From that we state a hypothesis about where the team actually breaks &mdash; and build the day around that fault line, rather than pulling one off a shelf. That single step is the difference between this and what an events vendor sells you.</p>
         </div>
 
-        <!-- 3b. Single-day format cards -->
-        <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-          {formats.map((c) => (
-            <a href={c.href} style="background:rgba(244,240,231,0.04);border:1px solid rgba(244,240,231,0.14);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s;" onmouseover="this.style.borderColor='rgba(244,240,231,0.42)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.14)'">
-              <img src={c.img} alt={c.name} loading="lazy" width="800" height="440" style="width:100%;height:210px;object-fit:cover;display:block;" />
-              <div style="padding:28px 32px 32px;display:flex;flex-direction:column;flex:1;">
-                <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">{c.meta}</span>
-                <h3 style="font-family:'Newsreader',serif;font-weight:400;font-size:25px;margin-bottom:10px;color:#FBF8F1;">{c.name}</h3>
-                <p style="font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);margin-bottom:18px;">{c.desc}</p>
-                <span style="margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#F4F0E7;">Explore <span>&rarr;</span></span>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        <!-- 3c. Ceiling elements (not peers of the single days) -->
+        <!-- 3b. The instruments, lightest to deepest (text rows — no event imagery) -->
         <div style="margin-top:34px;display:flex;flex-direction:column;gap:14px;">
-          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(244,240,231,0.45);">When a day isn’t the right container</p>
-          <a href={SLUGS.teamRetreats} style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:26px 30px;text-decoration:none;" onmouseover="this.style.background='rgba(244,240,231,0.06)'" onmouseout="this.style.background='rgba(244,240,231,0.03)'">
-            <span style="flex:1 1 340px;">
-              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;margin-bottom:6px;">The Leadership Retreat &mdash; when a day isn’t enough</span>
-              <span style="display:block;font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);max-width:70ch;">A facilitated, multi-day executive team building retreat that rebuilds the discipline the day surfaced &mdash; reinforced for 30 days so it survives contact with Monday.</span>
-            </span>
-            <span style="flex:none;font-size:14px;font-weight:700;color:#F4F0E7;">Explore &rarr;</span>
-          </a>
+          <p style="font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(244,240,231,0.45);">The instruments, lightest to deepest</p>
           <a href={SLUGS.teamLfs} style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:26px 30px;text-decoration:none;" onmouseover="this.style.background='rgba(244,240,231,0.06)'" onmouseout="this.style.background='rgba(244,240,231,0.03)'">
             <span style="flex:1 1 340px;">
-              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;margin-bottom:6px;">Team LFS &mdash; when the read needs to be instrumented</span>
-              <span style="display:block;font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);max-width:70ch;">When a conversation isn’t enough: a live behavioral simulation that logs how the team actually decides under pressure, with a FlagScore™ baseline you can measure against.</span>
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;margin-bottom:6px;">Team LFS &mdash; the instrumented read</span>
+              <span style="display:block;font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);max-width:70ch;">A live behavioral simulation, about 90 minutes, that logs how your team actually decides under pressure &mdash; with individual and team reports and a FlagScore™ baseline you can measure against.</span>
             </span>
             <span style="flex:none;font-size:14px;font-weight:700;color:#F4F0E7;">Explore &rarr;</span>
           </a>
           <a href={SLUGS.diagnostic} style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:26px 30px;text-decoration:none;" onmouseover="this.style.background='rgba(244,240,231,0.06)'" onmouseout="this.style.background='rgba(244,240,231,0.03)'">
             <span style="flex:1 1 340px;">
-              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;margin-bottom:6px;">The Executive Team Diagnostic &mdash; the outside read on how the team works</span>
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;margin-bottom:6px;">The Executive Team Diagnostic &mdash; the outside read</span>
               <span style="display:block;font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);max-width:70ch;">Over about three weeks: interviews with the CEO and each executive, a live leadership meeting observed, and an analysis of how the team decides, disagrees and follows through, with a cost estimate and a clear go or no-go.</span>
             </span>
             <span style="flex:none;font-size:14px;font-weight:700;color:#F4F0E7;">Explore &rarr;</span>
           </a>
+          <a href={`${SLUGS.howWeWorkTogether}#discipline-sprint`} style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:26px 30px;text-decoration:none;" onmouseover="this.style.background='rgba(244,240,231,0.06)'" onmouseout="this.style.background='rgba(244,240,231,0.03)'">
+            <span style="flex:1 1 340px;">
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;margin-bottom:6px;">The Discipline Sprint &mdash; a focused 90-day rebuild</span>
+              <span style="display:block;font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);max-width:70ch;">When the fault line is clear: a focused 90-day push on the one discipline that broke, reinforced so the change survives contact with Monday.</span>
+            </span>
+            <span style="flex:none;font-size:14px;font-weight:700;color:#F4F0E7;">Explore &rarr;</span>
+          </a>
+          <a href={`${SLUGS.howWeWorkTogether}#performance-partnership`} style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-left:3px solid #C04A26;border-radius:0 14px 14px 0;padding:26px 30px;text-decoration:none;" onmouseover="this.style.background='rgba(244,240,231,0.06)'" onmouseout="this.style.background='rgba(244,240,231,0.03)'">
+            <span style="flex:1 1 340px;">
+              <span style="display:block;font-family:'Newsreader',serif;font-size:23px;color:#FBF8F1;margin-bottom:6px;">The Performance Partnership &mdash; when the rebuild is the relationship</span>
+              <span style="display:block;font-size:15.5px;line-height:1.58;color:rgba(244,240,231,0.72);max-width:70ch;">A sustained engagement that installs the Flag Model over time and tracks FlagScore™ quarter over quarter &mdash; a relationship, not a workshop.</span>
+            </span>
+            <span style="flex:none;font-size:14px;font-weight:700;color:#F4F0E7;">Explore &rarr;</span>
+          </a>
         </div>
+
+        <!-- 3c. Experiential-format pointer (those run as the sister brand now) -->
+        <p style="margin-top:26px;font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.62);max-width:72ch;">Want the experiential format &mdash; an engineered off-site day, an expedition, or a multi-day retreat? Those run as our sister brand, <a href={`${SISTER.retreats}/`} target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;font-weight:600;">Legendary Retreats &rarr;</a></p>
       </div>
     </section>
 
@@ -167,7 +153,7 @@ const schema = [
       <div style="max-width:1180px;margin:0 auto;">
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">At a glance</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.06;letter-spacing:-0.02em;max-width:24ch;">Everything you need to build the comparison.</h2>
-        <p style="margin-top:18px;font-size:16.5px;line-height:1.6;color:#56524A;max-width:60ch;">Group size, duration, where it runs, lead time, and what&rsquo;s included &mdash; for every format. Pricing is scoped to your team on the call; a generic range would only mislead.</p>
+        <p style="margin-top:18px;font-size:16.5px;line-height:1.6;color:#56524A;max-width:60ch;">Group, duration, how it runs, lead time, and what&rsquo;s included &mdash; for every engagement. Pricing is scoped to your team on the call; a generic range would only mislead.</p>
 
         <div style="margin-top:36px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid rgba(27,24,16,0.14);border-radius:16px;background:#FBF8F1;">
           <table style="width:100%;border-collapse:collapse;min-width:940px;font-size:14.5px;line-height:1.5;color:#3A362D;">
@@ -196,7 +182,7 @@ const schema = [
           </table>
         </div>
 
-        <p style="margin-top:24px;font-size:15.5px;line-height:1.6;color:#56524A;">Planning this on behalf of an executive? <a href={SLUGS.forExecutiveAssistants} style="color:#C04A26;text-decoration:none;font-weight:700;">Here&rsquo;s exactly what to bring back &rarr;</a></p>
+        <p style="margin-top:24px;font-size:15.5px;line-height:1.6;color:#56524A;">Planning this on behalf of an executive? <a href={SLUGS.briefYourPrincipal} style="color:#C04A26;text-decoration:none;font-weight:700;">Here&rsquo;s exactly what to bring back &rarr;</a></p>
       </div>
     </section>
 
@@ -315,7 +301,7 @@ const schema = [
           <div>
             <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(28px,3.8vw,44px);line-height:1.08;letter-spacing:-0.02em;color:#FBF8F1;max-width:20ch;">One team. A shift you can put a number on.</h2>
             <p style="margin-top:20px;font-size:18px;line-height:1.68;color:rgba(244,240,231,0.82);max-width:56ch;">We ran an executive retreat for <strong style="color:#FBF8F1;font-weight:600;">Champion Iron</strong> in AlUla, Saudi Arabia. Each leader chose the specific behaviors they wanted to change &mdash; the personal markers of a more positive mindset &mdash; and against that baseline the team measured a <strong style="color:#FBF8F1;font-weight:600;">209% improvement</strong>. Their own conclusion after the retreat, the activities and the hard conversations: that mindset would reshape how they approach the challenges ahead, and how they treat one another.</p>
-            <p style="margin-top:24px;font-size:16px;line-height:1.6;"><a href={SLUGS.caseStudies} style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;text-decoration:none;font-weight:700;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">See the teams behind the numbers &mdash; real turnarounds <span style="transition:transform .2s;">&rarr;</span></a></p>
+            <p style="margin-top:24px;font-size:16px;line-height:1.6;"><a href={`${SISTER.retreats}/case-studies/`} target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:#E0744A;text-decoration:none;font-weight:700;" onmouseover="this.querySelector('span').style.transform='translateX(4px)'" onmouseout="this.querySelector('span').style.transform='translateX(0)'">See the teams behind the numbers &mdash; real turnarounds <span style="transition:transform .2s;">&rarr;</span></a></p>
           </div>
         </div>
         <div style="margin-top:40px;">
@@ -354,7 +340,7 @@ const schema = [
           <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:18px 34px;border-radius:11px;font-weight:700;font-size:18px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 18px 50px -14px rgba(192,74,38,0.65);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span>&rarr;</span></a>
           <a href={SLUGS.breakPointAssessment} style="border:1px solid rgba(244,240,231,0.28);color:#F4F0E7;text-decoration:none;padding:18px 30px;border-radius:11px;font-weight:600;font-size:16px;" onmouseover="this.style.borderColor='rgba(244,240,231,0.6)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.28)'">Take the free self-assessment</a>
         </div>
-        <p style="margin-top:28px;font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.72);max-width:60ch;margin-left:auto;margin-right:auto;">Arranging this for an executive? <a href={SLUGS.forExecutiveAssistants} style="color:#D98A5E;text-decoration:none;font-weight:600;">Here&rsquo;s what to bring back &rarr;</a> &nbsp;·&nbsp; If what surfaces is bigger than a day, <a href={SLUGS.teamRetreats} style="color:#D98A5E;text-decoration:none;font-weight:600;">that&rsquo;s what the retreats are for &rarr;</a></p>
+        <p style="margin-top:28px;font-size:15.5px;line-height:1.6;color:rgba(244,240,231,0.72);max-width:62ch;margin-left:auto;margin-right:auto;">Arranging this for an executive? <a href={SLUGS.briefYourPrincipal} style="color:#D98A5E;text-decoration:none;font-weight:600;">Here&rsquo;s what to bring back &rarr;</a> &nbsp;·&nbsp; Want an experiential off-site or retreat instead? <a href={`${SISTER.retreats}/`} target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;font-weight:600;">Legendary Retreats &rarr;</a></p>
         <p style="margin-top:22px;font-size:14px;line-height:1.5;color:rgba(244,240,231,0.5);">Want the corporate give-back and large-group events instead? That&rsquo;s our sister brand &mdash; browse the <a href="https://www.buildingteams.com/experiences/" target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;">Building Teams give-back experiences &rarr;</a></p>
       </div>
     </section>

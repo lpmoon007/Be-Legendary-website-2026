@@ -6,7 +6,7 @@ import LowCommitmentCTA from '../components/LowCommitmentCTA.astro';
 import PressStrip from '../components/PressStrip.astro';
 import ResultsBand from '../components/ResultsBand.astro';
 import Testimonials from '../components/Testimonials.astro';
-import { SLUGS, CTA_URL } from '../lib/site';
+import { SLUGS, CTA_URL, SISTER } from '../lib/site';
 
 const path = SLUGS.howWeWorkTogether;
 const title = 'How We Work Together | Be Legendary';
@@ -138,33 +138,8 @@ const schema = [
       <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:8px;">The ways to work together</p>
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;color:#3A0A0C;max-width:28ch;margin-bottom:28px;">Start with the read above, or start right here. They aren't equal, and they aren't a checklist.</h2>
 
-      <!-- Experiences -->
-      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:14px;">Experiences &middot; a designed day, or a multi-day retreat</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-        <!-- Executive Immersion -->
-        <div id="executive-immersion" style="scroll-margin-top:90px;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">One engineered day</span>
-          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">Executive Immersion</h3>
-          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">One extraordinary day, engineered end to end and built from whatever is within reach of your team — expedition, city or ownership — designed backward from the outcome the top executive names.</p>
-          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
-            <p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">From $35K</p>
-            <a href={SLUGS.executiveImmersion} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:13.5px;white-space:nowrap;">See how a day gets built &rarr;</a>
-          </div>
-        </div>
-        <!-- Leadership Retreat -->
-        <div style="background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
-          <span style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;">Multi-day · the step most teams take</span>
-          <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:23px;line-height:1.08;margin:10px 0 8px;color:#3A0A0C;">A Leadership Retreat</h3>
-          <p style="font-size:14.5px;line-height:1.6;color:#4A3A34;margin-bottom:16px;flex:1;">"Let's go fix it together." The diagnostic becomes the retreat's agenda — here's what broke, here's the retreat built to rebuild exactly that. Focused, Signature, or Bespoke.</p>
-          <div style="border-top:1px solid rgba(100,1,10,0.14);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;">
-            <p style="font-family:'Newsreader',serif;font-size:22px;color:#3A0A0C;">$25K–$500K+</p>
-            <a href={SLUGS.teamRetreats} style="color:#C04A26;text-decoration:none;font-weight:700;font-size:13.5px;white-space:nowrap;">See tiers &rarr;</a>
-          </div>
-        </div>
-      </div>
-
       <!-- Programs -->
-      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin:30px 0 14px;">Programs &middot; a focused sprint, or the full year</p>
+      <p style="font-size:11.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9A7A74;margin-bottom:14px;">Programs &middot; a focused sprint, or the full year</p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
         <!-- Sprint -->
         <div id="discipline-sprint" style="scroll-margin-top:90px;background:#F6F1E7;border:1px solid rgba(100,1,10,0.14);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;">
@@ -182,7 +157,8 @@ const schema = [
         </div>
       </div>
 
-      <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;line-height:1.6;"><strong>Not sure where to begin?</strong> Any of them can be the way in. Many teams start with the read and let it point the way &mdash; one broken discipline to a Sprint, systemic dysfunction to the Partnership, and for many the experience of a single-day <a href={SLUGS.executiveImmersion} style="color:#C04A26;text-decoration:none;font-weight:600;">Executive Immersion</a> or a multi-day Retreat. Every paid step credits 50% toward whatever you do next, and we'll tell you honestly which fits.</p>
+      <p style="margin-top:22px;font-size:14.5px;color:#6B4A44;line-height:1.6;"><strong>Not sure where to begin?</strong> Any of them can be the way in. Many teams start with the read and let it point the way &mdash; one broken discipline to a Sprint, systemic dysfunction to the Partnership. Every paid step credits 50% toward whatever you do next, and we'll tell you honestly which fits.</p>
+      <p style="margin-top:12px;font-size:13.5px;color:#8A6A64;line-height:1.6;">Want a multi-day executive retreat or a single engineered day instead? Those now run as our sister brand, <a href={SISTER.retreats} target="_blank" rel="noopener" style="color:#C04A26;text-decoration:none;font-weight:600;">Legendary Retreats &#8599;</a>.</p>
     </section>
 
     <!-- ============ THE 10x GUARANTEE (Partnership detail) ============ -->

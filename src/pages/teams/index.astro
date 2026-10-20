@@ -26,26 +26,13 @@ const diagnose = [
 ];
 
 const work = [
-  { name: 'Team Retreats', href: SLUGS.teamRetreats, desc: 'Focused, Signature or Bespoke — every retreat facilitated, built around one outcome, reinforced for 30 days.', meta: 'The core engagement' },
-  { name: 'Ways to Work Together', href: SLUGS.waysToWorkTogether, desc: 'The three shapes an engagement can take, and how to tell which one your team actually needs.', meta: 'Engagement shapes' },
-  { name: 'Case Studies', href: SLUGS.caseStudies, desc: 'Executive teams that chose to change — with the measured behavior shifts to show for it.', meta: 'Proof' },
+  { name: 'How We Work Together', href: SLUGS.howWeWorkTogether, desc: 'The engagement ladder — a focused 90-day Discipline Sprint or a 12-month Performance Partnership, matched to what your team actually needs.', meta: 'Engagement shapes' },
+  { name: 'Pricing', href: SLUGS.pricing, desc: 'Every way in and its real price, in the open — from a free call to a performance partnership.', meta: 'Real prices' },
   { name: 'Research Report', href: SLUGS.research, desc: 'The State of Executive Team Execution — 2026 data on where leadership teams stall.', meta: '2026 research' },
 ];
 
 // SEO/GEO cluster — currently orphaned; linking these is the whole point of the hub.
 const guideGroups = [
-  {
-    title: 'Plan the retreat',
-    items: [
-      { name: 'How to Plan a Leadership Retreat', href: SLUGS.howToPlanRetreat },
-      { name: 'How to Plan an Executive Offsite', href: SLUGS.executiveOffsite },
-      { name: 'Leadership Offsite Agenda Template', href: SLUGS.offsiteAgenda },
-      { name: 'Corporate Retreat Ideas', href: SLUGS.corporateRetreatIdeas },
-      { name: 'Executive Offsite Ideas', href: SLUGS.executiveOffsiteIdeas },
-      { name: 'Leadership Retreat Ideas', href: SLUGS.leadershipRetreatIdeas },
-      { name: 'Luxury Executive Retreats', href: SLUGS.luxuryExecutiveRetreat },
-    ],
-  },
   {
     title: 'How the Flag Model compares',
     items: [
@@ -76,7 +63,6 @@ const guideGroups = [
     items: [
       { name: 'Executive Team Building', href: SLUGS.executiveTeamBuilding },
       { name: 'Executive Team Alignment Consultant', href: SLUGS.alignmentConsultant },
-      { name: 'Leadership Offsite Facilitator', href: SLUGS.offsiteFacilitator },
       { name: 'Executive Team Coaching Cost', href: SLUGS.coachingCost },
       { name: 'Followership', href: SLUGS.followership },
     ],
@@ -97,7 +83,7 @@ const schema = [
     url: `${SITE_URL}/teams/`,
     name: 'Be Legendary for Teams',
     description:
-      'The hub for executive teams: the Flag Model™ framework, the diagnostics that show where a team breaks first, the retreats that rebuild it, and the guides that answer the questions leaders ask.',
+      'The hub for executive teams: the Flag Model™ framework, the diagnostics that show where a team breaks first, the engagements that rebuild it, and the guides that answer the questions leaders ask.',
     isPartOf: { '@id': `${SITE_URL}/#website` },
     about: { '@id': ORG_ID },
     publisher: { '@id': ORG_ID },
@@ -209,8 +195,8 @@ const schema = [
     <section id="work" style="background:#F4F0E7;color:#1B1810;padding:112px 32px;">
       <div style="max-width:1180px;margin:0 auto;">
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#C04A26;margin-bottom:20px;">Then work together</p>
-        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-0.015em;max-width:18ch;">A facilitated experience that rebuilds the disciplines — and holds after.</h2>
-        <p style="margin-top:18px;font-size:18px;line-height:1.65;color:#56524A;max-width:48ch;">The retreat is where the diagnosis becomes change. Outcome-driven, honestly facilitated, and reinforced for 30 days so it doesn't evaporate by Monday.</p>
+        <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-0.015em;max-width:18ch;">The engagement that rebuilds the disciplines — and holds after.</h2>
+        <p style="margin-top:18px;font-size:18px;line-height:1.65;color:#56524A;max-width:48ch;">This is where the diagnosis becomes change — a focused sprint or a full partnership, outcome-driven and reinforced so it doesn't evaporate by Monday.</p>
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
           {work.map((c) => (
             <a href={c.href} style="background:#FBF8F1;border:1px solid rgba(27,24,16,0.11);border-radius:16px;padding:32px 32px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .16s,box-shadow .16s;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)';this.style.boxShadow='0 16px 34px -22px rgba(26,23,18,0.4)'" onmouseout="this.style.borderColor='rgba(27,24,16,0.11)';this.style.boxShadow='none'">
@@ -229,7 +215,7 @@ const schema = [
       <div style="max-width:1180px;margin:0 auto;">
         <p style="font-size:12.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E0744A;margin-bottom:20px;">Guides &amp; straight answers</p>
         <h2 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(30px,4.2vw,46px);line-height:1.08;letter-spacing:-0.015em;max-width:20ch;color:#FBF8F1;">The questions leaders ask before they call us — answered.</h2>
-        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.78);max-width:50ch;">Planning a retreat, weighing the Flag Model against another approach, or figuring out what help you actually need. Start here.</p>
+        <p style="margin-top:20px;font-size:18px;line-height:1.65;color:rgba(244,240,231,0.78);max-width:50ch;">Weighing the Flag Model against another approach, running a sharper leadership meeting, or figuring out what help you actually need. Start here.</p>
         <div class="bl-grid-collapse bl-grid-collapse--gap" style="margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
           {guideGroups.map((g) => (
             <div style="background:rgba(244,240,231,0.03);border:1px solid rgba(244,240,231,0.12);border-radius:16px;padding:30px 30px;">

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
-import { CTA_URL, SLUGS } from '../lib/site';
+import { CTA_URL, SLUGS, SISTER } from '../lib/site';
 
 const title = 'Resources: Executive Team Tools & Research | Be Legendary';
 const description = 'Free tools and straight answers for executive teams: the Cost of Lost Disciplines Calculator, the Flag Model, and comparisons with EOS, OKRs and 4DX.';
@@ -247,9 +247,9 @@ const schema = [
         <p style="margin-top:7px;font-size:14px;color:rgba(244,240,231,0.62);line-height:1.45;">What the work involves, and when you need one.</p>
         <span style="margin-top:14px;display:inline-block;font-weight:700;font-size:13.5px;color:#E0744A;">Read &rarr;</span>
       </a>
-      <a href={SLUGS.offsiteFacilitator} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
-        <p style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;line-height:1.15;">How to choose an offsite facilitator</p>
-        <p style="margin-top:7px;font-size:14px;color:rgba(244,240,231,0.62);line-height:1.45;">What a great one does, and what to ask.</p>
+      <a href={SLUGS.bestTeamDevelopmentCompanies} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+        <p style="font-family:'Newsreader',serif;font-size:19px;color:#FBF8F1;line-height:1.15;">Best team development companies</p>
+        <p style="margin-top:7px;font-size:14px;color:rgba(244,240,231,0.62);line-height:1.45;">Who to consider, and how to compare them.</p>
         <span style="margin-top:14px;display:inline-block;font-weight:700;font-size:13.5px;color:#E0744A;">Read &rarr;</span>
       </a>
       <a href={SLUGS.coachingCost} style="text-decoration:none;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:14px;padding:24px 26px;display:block;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
@@ -263,7 +263,7 @@ const schema = [
   <!-- PROOF -->
   <section style="max-width:1140px;margin:0 auto;padding:44px 32px 8px;">
     <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:20px;">See it in the wild</p>
-    <a href={SLUGS.caseStudies} style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:30px 32px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
+    <a href={`${SISTER.retreats}/case-studies/`} target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:18px;padding:30px 32px;flex-wrap:wrap;" onmouseover="this.style.borderColor='rgba(192,74,38,0.5)'" onmouseout="this.style.borderColor='rgba(244,240,231,0.11)'">
       <div style="flex:1;min-width:280px;">
         <p style="font-family:'Newsreader',serif;font-size:24px;color:#FBF8F1;line-height:1.12;">Case studies: teams that chose to change</p>
         <p style="margin-top:8px;font-size:15px;line-height:1.55;color:rgba(244,240,231,0.66);max-width:54ch;">A $350M construction holding company that unified seven rivals into one ~$1B firm, a wine maker that tripled, and leadership teams that rebuilt trust under pressure.</p>

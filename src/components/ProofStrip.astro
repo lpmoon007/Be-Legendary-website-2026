@@ -4,7 +4,7 @@
 // the homepage carries the Review JSON-LD, so we don't repeat review markup on
 // every page (which would read as manipulative).
 import { TESTIMONIALS } from '../lib/testimonials';
-import { SLUGS } from '../lib/site';
+import { SISTER } from '../lib/site';
 export interface Props {
   maxWidth?: number;
   /** Which testimonial to feature (index into TESTIMONIALS). */
@@ -24,7 +24,7 @@ const t = TESTIMONIALS[((featured % TESTIMONIALS.length) + TESTIMONIALS.length) 
       <span style="font-family:'Newsreader',serif;font-size:17px;color:rgba(244,240,231,0.78);">CNN</span>
       <span style="font-family:'Newsreader',serif;font-size:17px;color:rgba(244,240,231,0.78);">CNN Money</span>
       <span style="font-family:'Newsreader',serif;font-size:17px;color:rgba(244,240,231,0.78);">Business Insider</span>
-      <a href={SLUGS.caseStudies} style="font-size:13.5px;font-weight:700;color:#E0744A;text-decoration:none;">Client results &rarr;</a>
+      <a href={`${SISTER.retreats}/case-studies/`} target="_blank" rel="noopener" style="font-size:13.5px;font-weight:700;color:#E0744A;text-decoration:none;">Client results &rarr;</a>
     </div>
   </div>
 </div>
