@@ -324,7 +324,6 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       doc.text(`${st.label}  ·  ${p}%`, W - M, y, { align: 'right' }); y += 9;
       doc.setFillColor(...CREAM); doc.roundedRect(M, y, CW, 5, 2, 2, 'F');
       const w = CW * p / 100; doc.setFillColor(...st.col); doc.roundedRect(M, y, Math.max(3, w), 5, w < 4 ? 0 : 2, w < 4 ? 0 : 2, 'F'); y += 14;
-      para(c.def, { size: 9.5, color: MUTED, lh: 13, gap: 4 });
       para(`At ${p}%, ${st.mean}`, { size: 9.5, color: INK, style: 'bold', lh: 13, gap: 4 });
       para(`First move: ${c.fix}`, { size: 9.5, color: DEEP, lh: 13, gap: 12 });
     });
@@ -355,10 +354,10 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     para('The Flag Model is the codification of what we have measured inside hundreds of leadership teams over twenty-five years. A few of those results:', { size: 10.5, color: MUTED, lh: 14.5, gap: 14 });
     const stats: [string, string][] = [
       ['268%', 'behavioral gain in 30 days — two warring camps made one team'],
-      ['209%', 'mindset lift across an executive team'],
+      ['178%', 'teaming gain in 30 days — five poached all-stars made one team'],
       ['$1.2B', 'revenue, up from $350M — seven rival firms unified into one'],
     ];
-    ensure(66);
+    ensure(64);
     const colW = CW / 3;
     stats.forEach((s, i) => {
       const cx = M + i * colW;
@@ -367,14 +366,29 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       let cyy = y + 20;
       (doc.splitTextToSize(s[1], colW - 14) as string[]).forEach((ln) => { doc.text(ln, cx, cyy); cyy += 11; });
     });
-    y += 66;
-    para(`Real engagements across a decade of work. Your break point — ${d.name} — is where that work would start for your team.`, { size: 10.5, color: INK, lh: 14.5, gap: 8 });
+    y += 60;
+
+    // One named case, up close (Champion Iron — a real, named engagement).
+    const caseText = 'We ran an executive engagement with Champion Iron’s leadership team in AlUla, Saudi Arabia. Each leader chose the behaviors they most wanted to change — the personal markers of a more accountable mindset — and against that baseline the team measured a 209% improvement in exactly those behaviors.';
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
+    const caseRX = M + 128;
+    const caseLines = doc.splitTextToSize(caseText, M + CW - caseRX - 20) as string[];
+    const caseH = Math.max(92, 40 + caseLines.length * 13.5);
+    ensure(caseH + 12);
+    const qy = y;
+    doc.setFillColor(...CREAM); doc.roundedRect(M, qy, CW, caseH, 10, 10, 'F');
+    doc.setFillColor(...TERRA); doc.rect(M, qy + 12, 4, caseH - 24, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(30); doc.setTextColor(...TERRA); doc.text('209%', M + 24, qy + 46);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(7.5); doc.setTextColor(...MUTED); doc.text('MEASURED LIFT', M + 24, qy + 60);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT); doc.text('A NAMED EXAMPLE — CHAMPION IRON', caseRX, qy + 24);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(...INK);
+    let cly = qy + 40; caseLines.forEach((ln) => { doc.text(ln, caseRX, cly); cly += 13.5; });
+    y = qy + caseH + 12;
 
     // ── What to do next ──
     heading('What to do next');
-    para(`1.  Start with one component — your break point, ${d.name}. Trying to fix all five at once is how teams stall; sequence beats scope.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 7 });
-    para(`2.  Install the first move. ${d.fix} Then put it on the agenda of your next three leadership meetings and watch whether it actually holds.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 7 });
-    para(`3.  Re-take this assessment in 90 days. If ${d.name} has climbed out of the danger zone, you're rebuilding the right thing.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 10 });
+    para(`1.  Fix one thing first — your break point, ${d.name}. Trying to fix all five at once is how teams stall; sequence beats scope.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 7 });
+    para(`2.  Install its first move (above), put it on your next three leadership-meeting agendas, then re-take this assessment in 90 days to see whether ${d.name} has climbed out of the danger zone.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 10 });
 
     // ── Put a number on it (calculator) ──
     heading('Put a number on it');
