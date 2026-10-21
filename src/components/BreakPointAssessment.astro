@@ -249,6 +249,10 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     const M = 56, CW = W - M * 2, BOTTOM = PH - 52;
     let y = M;
 
+    const CREAM: [number, number, number] = [244, 239, 228];
+    const RULE: [number, number, number] = [226, 220, 206];
+    const WHITE: [number, number, number] = [255, 255, 255];
+
     const ensure = (h: number) => { if (y + h > BOTTOM) { doc.addPage(); y = M; } };
     const para = (text: string, o: { size?: number; color?: [number, number, number]; style?: string; font?: string; gap?: number; lh?: number; x?: number; width?: number } = {}) => {
       const size = o.size ?? 10.5, lh = o.lh ?? size * 1.45, x = o.x ?? M, width = o.width ?? CW;
@@ -257,30 +261,56 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
       (doc.splitTextToSize(text, width) as string[]).forEach((ln) => { ensure(lh); doc.text(ln, x, y); y += lh; });
       y += o.gap ?? 9;
     };
-    const eyebrow = (label: string) => { ensure(16); doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT); doc.text(label, M, y); y += 16; };
-    const heading = (label: string) => { ensure(48); y += 8; doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 20; doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor(...INK); doc.text(label, M, y); y += 20; };
-    const linkCTA = (label: string, url: string) => { ensure(18); doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...TERRA); doc.textWithLink(label, M, y, { url }); y += 20; };
+    const heading = (label: string) => { ensure(52); y += 10; doc.setDrawColor(...RULE); doc.setLineWidth(0.7); doc.line(M, y, W - M, y); y += 22; doc.setFont('helvetica', 'bold'); doc.setFontSize(14); doc.setTextColor(...INK); doc.text(label, M, y); y += 20; };
+    // A real filled button (no arrow glyphs — the base PDF font lacks them).
+    const button = (label: string, url: string, o: { full?: boolean; fill?: [number, number, number]; textCol?: [number, number, number]; gap?: number } = {}) => {
+      const h = 30, padX = 20;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5);
+      const w = o.full ? CW : Math.min(CW, doc.getTextWidth(label) + padX * 2);
+      ensure(h + 8);
+      doc.setFillColor(...(o.fill ?? TERRA)); doc.roundedRect(M, y, w, h, 7, 7, 'F');
+      doc.setTextColor(...(o.textCol ?? WHITE)); doc.text(label, M + w / 2, y + h / 2 + 3.6, { align: 'center' });
+      doc.link(M, y, w, h, { url });
+      y += h + (o.gap ?? 16);
+    };
 
-    // Header — logo mark + wordmark (left), report label + date (right), vertically centered on the mark
+    // Header — logo mark + wordmark (left), report label + date (right)
     const boxSize = 24, cy = y + boxSize / 2;
     doc.setFillColor(...TERRA); doc.roundedRect(M, y, boxSize, boxSize, 5, 5, 'F');
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.setTextColor(255, 255, 255); doc.text('B', M + boxSize / 2, cy + 5.2, { align: 'center' });
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(15); doc.setTextColor(...WHITE); doc.text('B', M + boxSize / 2, cy + 5.2, { align: 'center' });
     doc.setFontSize(12); doc.setTextColor(...INK); doc.text('BE LEGENDARY', M + boxSize + 11, cy + 4);
     doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...TERRA); doc.text('BREAK-POINT REPORT', W - M, cy - 1.5, { align: 'right' });
     doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(...FAINT);
     doc.text(new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }), W - M, cy + 10, { align: 'right' });
-    y += boxSize + 18;
-    doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 26;
+    y += boxSize + 16;
+    doc.setDrawColor(...TERRA); doc.setLineWidth(2); doc.line(M, y, W - M, y); y += 24;
 
-    // Break point headline + interpretation
+    // ── Break-point hero panel (tinted, controlled padding → no overlap) ──
     const bpStatus = statusFor(pcts[idx]);
-    eyebrow("YOUR TEAM'S MOST LIKELY FIRST BREAK POINT");
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(26); doc.setTextColor(...INK); doc.text(d.name, M, y); y += 20;
+    const heroText = `Of the five components that hold a leadership team upright, this is the one your answers say will give first under real pressure. ${d.def}`;
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5);
+    const heroLines = doc.splitTextToSize(heroText, CW - 44) as string[];
+    const panelH = 110 + heroLines.length * 14.5;
+    ensure(panelH + 6);
+    const py = y;
+    doc.setFillColor(...CREAM); doc.roundedRect(M, py, CW, panelH, 10, 10, 'F');
+    doc.setFillColor(...TERRA); doc.rect(M, py + 12, 4, panelH - 24, 'F');
+    const hx = M + 24;
+    let hy = py + 24;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
+    doc.text("YOUR TEAM'S MOST LIKELY FIRST BREAK POINT", hx, hy); hy += 20;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(24); doc.setTextColor(...INK);
+    doc.text(d.name, hx, hy); hy += 30;
     doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...bpStatus.col);
-    doc.text(`${d.tag.toUpperCase()}  ·  ${pcts[idx]}% HEALTHY`, M, y); y += 20;
-    para(`Of the five components that hold a leadership team upright, this is the one your answers say will give first under real pressure. ${d.def}`, { size: 11, lh: 15.5, gap: 8 });
-    eyebrow('YOUR FIRST MOVE');
-    para(d.fix, { size: 11, color: DEEP, style: 'bold', lh: 15.5, gap: 12 });
+    doc.text(`${d.tag.toUpperCase()}  ·  ${pcts[idx]}% HEALTHY`, hx, hy); hy += 18;
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5); doc.setTextColor(...INK);
+    heroLines.forEach((ln) => { doc.text(ln, hx, hy); hy += 14.5; });
+    y = py + panelH + 18;
+
+    // First move + overall
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
+    ensure(16); doc.text('YOUR FIRST MOVE', M, y); y += 15;
+    para(d.fix, { size: 11.5, color: DEEP, style: 'bold', lh: 15.5, gap: 11 });
     para(`Across all five, your team averaged ${overall}% — ${overall >= 70 ? 'a generally strong team with one clear weak point to protect.' : overall >= 50 ? 'a capable team carrying real strain in a few places.' : 'a team under significant strain across more than one component.'}`, { size: 10, color: MUTED, gap: 4 });
 
     // Components — definition + what the score means + first move
@@ -288,46 +318,113 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     comps.forEach((c, i) => {
       const p = pcts[i];
       const st = statusFor(p);
-      ensure(74);
+      ensure(76);
       doc.setFont('helvetica', 'bold'); doc.setFontSize(12.5); doc.setTextColor(...INK); doc.text(c.name, M, y);
       doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); doc.setTextColor(...st.col);
       doc.text(`${st.label}  ·  ${p}%`, W - M, y, { align: 'right' }); y += 9;
-      doc.setFillColor(239, 234, 221); doc.roundedRect(M, y, CW, 5, 2, 2, 'F');
+      doc.setFillColor(...CREAM); doc.roundedRect(M, y, CW, 5, 2, 2, 'F');
       const w = CW * p / 100; doc.setFillColor(...st.col); doc.roundedRect(M, y, Math.max(3, w), 5, w < 4 ? 0 : 2, w < 4 ? 0 : 2, 'F'); y += 14;
       para(c.def, { size: 9.5, color: MUTED, lh: 13, gap: 4 });
       para(`At ${p}%, ${st.mean}`, { size: 9.5, color: INK, style: 'bold', lh: 13, gap: 4 });
       para(`First move: ${c.fix}`, { size: 9.5, color: DEEP, lh: 13, gap: 12 });
     });
 
-    // What to do next — concrete, sequenced
+    // ── What the Flag Model is (the framework behind the report) ──
+    heading('What the Flag Model is');
+    para('Your break point is one part of the Flag Model — the framework behind this report. One Flag, held upright by four disciplines. Cut one and the flag tilts; cut two and it falls.', { size: 10.5, color: MUTED, lh: 14.5, gap: 12 });
+    const fm: [string, string][] = [
+      ['The Flag', 'The 2–3 priorities everything serves — the center the whole team aligns to.'],
+      ['The Decision', 'The ability to commit: a call gets made, it sticks, and it does not route back to you.'],
+      ['The Rhythm', 'The discipline of finishing, not just starting — the work in flight actually ships.'],
+      ['The Standard', 'How the team holds the bar: a missed commitment gets named in the room, not the hallway.'],
+      ['The Learning', 'Examining misses and changing because of them, so the same mistake does not return.'],
+    ];
+    fm.forEach(([name, desc]) => {
+      ensure(32);
+      doc.setFillColor(...TERRA); doc.rect(M + 1, y - 7, 4, 4, 'F');
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...INK);
+      doc.text(name, M + 14, y); y += 13;
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.setTextColor(...MUTED);
+      (doc.splitTextToSize(desc, CW - 14) as string[]).forEach((ln) => { ensure(12.5); doc.text(ln, M + 14, y); y += 12.5; });
+      y += 8;
+    });
+    para('The governing principle under all four: Truth Over Comfort — paid daily, or not at all.', { size: 10.5, color: DEEP, style: 'bold', lh: 14.5, gap: 8 });
+
+    // ── The proof (measured results — firm-level) ──
+    heading('The proof — measured, not asserted');
+    para('The Flag Model is the codification of what we have measured inside hundreds of leadership teams over twenty-five years. A few of those results:', { size: 10.5, color: MUTED, lh: 14.5, gap: 14 });
+    const stats: [string, string][] = [
+      ['268%', 'behavioral gain in 30 days — two warring camps made one team'],
+      ['209%', 'mindset lift across an executive team'],
+      ['$1.2B', 'revenue, up from $350M — seven rival firms unified into one'],
+    ];
+    ensure(66);
+    const colW = CW / 3;
+    stats.forEach((s, i) => {
+      const cx = M + i * colW;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(23); doc.setTextColor(...TERRA); doc.text(s[0], cx, y + 4);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(...MUTED);
+      let cyy = y + 20;
+      (doc.splitTextToSize(s[1], colW - 14) as string[]).forEach((ln) => { doc.text(ln, cx, cyy); cyy += 11; });
+    });
+    y += 66;
+    para(`Real engagements across a decade of work. Your break point — ${d.name} — is where that work would start for your team.`, { size: 10.5, color: INK, lh: 14.5, gap: 8 });
+
+    // ── What to do next ──
     heading('What to do next');
     para(`1.  Start with one component — your break point, ${d.name}. Trying to fix all five at once is how teams stall; sequence beats scope.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 7 });
     para(`2.  Install the first move. ${d.fix} Then put it on the agenda of your next three leadership meetings and watch whether it actually holds.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 7 });
-    para(`3.  Re-take this assessment in 90 days. If ${d.name} has climbed out of the danger zone, you're rebuilding the right thing.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 8 });
+    para(`3.  Re-take this assessment in 90 days. If ${d.name} has climbed out of the danger zone, you're rebuilding the right thing.`, { size: 10.5, color: MUTED, lh: 14.5, gap: 10 });
 
-    // Put a number on it — calculator
+    // ── Put a number on it (calculator) ──
     heading('Put a number on it');
-    para("Your break point isn't just friction — it carries a dollar figure. The Cost of Lost Disciplines Calculator turns it into an annual range for your company, built on third-party McKinsey and LSA Global research. We've carried your result over so it's pre-filled:", { size: 10.5, color: MUTED, lh: 14.5, gap: 6 });
-    linkCTA('Run the calculator with your result →', `${SITE}/cost-of-lost-disciplines-calculator/?from=assessment&break=${d.key}&waste=${suggestedWaste}`);
+    para("Your break point isn't just friction — it carries a dollar figure. The Cost of Lost Disciplines Calculator turns it into an annual range for your company, built on third-party McKinsey and LSA Global research. We've carried your result over so it's pre-filled:", { size: 10.5, color: MUTED, lh: 14.5, gap: 10 });
+    button('Run the calculator with your result', `${SITE}/cost-of-lost-disciplines-calculator/?from=assessment&break=${d.key}&waste=${suggestedWaste}`, { fill: INK, gap: 12 });
 
-    // Go deeper
+    // ── Go deeper ──
     heading('Go deeper');
-    para('The Flag Model, in full — how the five components fit together, and how each one is rebuilt:', { size: 10.5, color: MUTED, lh: 14.5, gap: 4 });
-    linkCTA('Read the Flag Model →', `${SITE}/flag-model/`);
-    para("James Carter's forthcoming book, Lost Disciplines of Leadership™, goes deeper on why capable teams know what to do and still don't do it:", { size: 10.5, color: MUTED, lh: 14.5, gap: 4 });
-    linkCTA('More from James Carter →', `${SITE}/about/james-carter/`);
+    para('The Flag Model, in full — how the five components fit together, and how each one is rebuilt. And James Carter’s forthcoming book, Lost Disciplines of Leadership™, on why capable teams know what to do and still don’t do it:', { size: 10.5, color: MUTED, lh: 14.5, gap: 10 });
+    // Two deep-dive buttons, side by side (keeps the report to three pages).
+    {
+      const gbH = 30, gbGap = 12, gbW = (CW - gbGap) / 2;
+      ensure(gbH + 8);
+      const deeps: [string, string][] = [
+        ['Read the Flag Model', `${SITE}/flag-model/`],
+        ['More from James Carter', `${SITE}/about/james-carter/`],
+      ];
+      deeps.forEach(([lab, u], i) => {
+        const gx = M + i * (gbW + gbGap);
+        doc.setFillColor(...INK); doc.roundedRect(gx, y, gbW, gbH, 7, 7, 'F');
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); doc.setTextColor(...WHITE);
+        doc.text(lab, gx + gbW / 2, y + gbH / 2 + 3.6, { align: 'center' });
+        doc.link(gx, y, gbW, gbH, { url: u });
+      });
+      y += gbH + 14;
+    }
 
-    // Honest CTA
-    heading('Want a second set of eyes?');
-    para("A free 15-minute, CEO-only Calibration Call won't hand you certainty — but it will sharpen this read. You'll run a short exercise that surfaces where your team actually stands, and leave knowing where to start. A calibration, not a pitch.", { size: 10.5, color: MUTED, lh: 14.5, gap: 6 });
-    linkCTA('Book a Calibration Call → meetings-na2.hubspot.com/jcarter28', 'https://meetings-na2.hubspot.com/jcarter28');
+    // ── Prominent closing CTA (filled panel: copy left, button right) ──
+    ensure(96);
+    const cpY = y, cpH = 90;
+    const bw = 188, bh = 34, bx = M + CW - bw - 26, by = cpY + (cpH - bh) / 2;
+    const leftW = CW - bw - 68;
+    doc.setFillColor(...TERRA); doc.roundedRect(M, cpY, CW, cpH, 12, 12, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(16); doc.setTextColor(...WHITE);
+    doc.text('Book a free Calibration Call', M + 26, cpY + 30);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(255, 232, 222);
+    let tcy = cpY + 48;
+    (doc.splitTextToSize('A second set of eyes on this read — 15 minutes with James, and a sharper read on where your team stands, whether or not we work together.', leftW) as string[]).forEach((ln) => { doc.text(ln, M + 26, tcy); tcy += 13; });
+    doc.setFillColor(...WHITE); doc.roundedRect(bx, by, bw, bh, 8, 8, 'F');
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...DEEP);
+    doc.text('Book your call', bx + bw / 2, by + bh / 2 + 4, { align: 'center' });
+    doc.link(M, cpY, CW, cpH, { url: 'https://meetings-na2.hubspot.com/jcarter28' });
+    y = cpY + cpH + 10;
 
     // Footer on every page
     const pages = doc.getNumberOfPages();
     for (let i = 1; i <= pages; i++) {
       doc.setPage(i);
       const fy = PH - 30;
-      doc.setDrawColor(226, 220, 206); doc.setLineWidth(0.7); doc.line(M, fy, W - M, fy);
+      doc.setDrawColor(...RULE); doc.setLineWidth(0.7); doc.line(M, fy, W - M, fy);
       doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); doc.setTextColor(...FAINT);
       doc.text('© 2026 Be Legendary · The Flag Model™', M, fy + 13);
       doc.text(`belegendary.org   ·   ${i} / ${pages}`, W - M, fy + 13, { align: 'right' });
