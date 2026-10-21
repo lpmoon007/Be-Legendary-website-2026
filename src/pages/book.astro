@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { BOOKING_URL, SLUGS, CONTACT_EMAIL } from '../lib/site';
+import { BOOKING_URL, SLUGS, CONTACT_EMAIL, GA_MEASUREMENT_ID } from '../lib/site';
 
 const title = 'Book a Calibration Call | Be Legendary';
 const description =
@@ -40,7 +40,8 @@ const description =
       <div>
         <div style="background:#FBF8F1;border-radius:16px;padding:8px;box-shadow:0 30px 70px -34px rgba(0,0,0,0.6);">
           <iframe
-            src={`${BOOKING_URL}?embed=true`}
+            id="bl-scheduler"
+            data-src={`${BOOKING_URL}?embed=true`}
             title="Book a Calibration Call with James Carter"
             loading="lazy"
             style="width:100%;min-height:720px;border:0;border-radius:10px;display:block;"
@@ -52,4 +53,44 @@ const description =
   </main>
 
   <SiteFooter audience="teams" variant="slim" maxWidth={1040} note="© 2026 Be Legendary. A calibration, not a pitch." />
+
+  <!-- Carry the GA4 client_id / session_id into the HubSpot Meetings scheduler so
+       a booking (the main path to a deal) can be attributed in GA4. HubSpot
+       ignores unknown URL params, so this is harmless until the meeting form
+       has the ga_client_id field; it never blocks the scheduler from loading. -->
+  <script is:inline define:vars={{ GA_ID: GA_MEASUREMENT_ID }}>
+    (function () {
+      var iframe = document.getElementById('bl-scheduler');
+      if (!iframe) return;
+      var base = iframe.getAttribute('data-src');
+      var done = false;
+      function load() {
+        if (done) return; done = true;
+        var url = base;
+        try {
+          var ga = (window.blGetGaIds && window.blGetGaIds()) || {};
+          var qs = [];
+          if (ga.client_id) qs.push('ga_client_id=' + encodeURIComponent(ga.client_id));
+          if (ga.session_id) qs.push('ga_session_id=' + encodeURIComponent(ga.session_id));
+          if (qs.length) url += (url.indexOf('?') === -1 ? '?' : '&') + qs.join('&');
+        } catch (e) {}
+        iframe.src = url;
+      }
+      var ga0 = (window.blGetGaIds && window.blGetGaIds()) || {};
+      if (ga0.client_id) { load(); return; }
+      // Direct landing without the GA cookie yet: force GA to load so the cookie
+      // populates, then load the scheduler as soon as we have the id (max ~1.5s).
+      try {
+        var s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+        document.head.appendChild(s);
+      } catch (e) {}
+      var tries = 0;
+      var t = setInterval(function () {
+        tries++;
+        var ga = (window.blGetGaIds && window.blGetGaIds()) || {};
+        if (ga.client_id || tries >= 10) { clearInterval(t); load(); }
+      }, 150);
+    })();
+  </script>
 </BaseLayout>
