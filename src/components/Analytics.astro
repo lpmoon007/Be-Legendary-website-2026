@@ -19,6 +19,27 @@ import { GA_MEASUREMENT_ID as GA_ID, CLARITY_ID } from '../lib/site';
     gtag('js', new Date());
     gtag('config', GA_ID, { anonymize_ip: true });
 
+    // ── GA4 identity capture for HubSpot → GA4 stitching ──
+    // Lead forms call window.blGetGaIds() at submit and send client_id +
+    // session_id to HubSpot, so a later deal-close can be attributed back to
+    // this visit via the Measurement Protocol. Reads the GA cookies (always
+    // current) and pre-caches gtag('get') values once gtag.js has loaded.
+    window.__blGa = { client_id: '', session_id: '' };
+    var GA_SESSION_COOKIE = '_ga_' + GA_ID.replace(/^G-/, '');
+    window.blGetGaIds = function () {
+      try {
+        var c = document.cookie.match(/(?:^|;\s*)_ga=GA\d+\.\d+\.(\d+\.\d+)/);
+        if (c) window.__blGa.client_id = c[1];
+        var s = document.cookie.match(new RegExp('(?:^|;\\s*)' + GA_SESSION_COOKIE + '=GS\\d+\\.\\d+\\.(\\d+)'));
+        if (s) window.__blGa.session_id = s[1];
+      } catch (e) {}
+      return window.__blGa;
+    };
+    try {
+      gtag('get', GA_ID, 'client_id', function (v) { if (v) window.__blGa.client_id = v; });
+      gtag('get', GA_ID, 'session_id', function (v) { if (v) window.__blGa.session_id = String(v); });
+    } catch (e) {}
+
     var gaLoaded = false;
     function loadGA() {
       if (gaLoaded) return; gaLoaded = true;

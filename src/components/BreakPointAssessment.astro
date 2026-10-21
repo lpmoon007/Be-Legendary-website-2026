@@ -366,6 +366,7 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
     if (!EMAIL_RE.test(value)) { err.textContent = 'Please enter a valid work email.'; err.style.visibility = 'visible'; return; }
     const pcts = scores();
     const breakpoint = comps[computeBreakIndex()].name;
+    const ga = (window as any).blGetGaIds ? (window as any).blGetGaIds() : {};
     // Confirm only if HubSpot accepted the submission (res.ok) — otherwise the
     // lead is lost and we must say so, not fake success.
     let ok = false;
@@ -382,6 +383,8 @@ const scaleLabels = ['Rarely', 'Sometimes', 'Often', 'Usually', 'Always'];
             { name: 'rhythm_score', value: String(pcts[2]) },
             { name: 'standard_score', value: String(pcts[3]) },
             { name: 'learning_score', value: String(pcts[4]) },
+            ...(ga.client_id ? [{ name: 'ga_client_id', value: ga.client_id }] : []),
+            ...(ga.session_id ? [{ name: 'ga_session_id', value: ga.session_id }] : []),
           ],
           context: { pageUri: location.href, pageName: document.title },
         }),

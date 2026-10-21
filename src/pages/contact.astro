@@ -77,4 +77,24 @@ const schema = [
 
 <!-- HubSpot forms embed loader (renders the .hs-form-frame above) -->
 <script is:inline defer src={`https://js-${HUBSPOT.region}.hsforms.net/forms/embed/${HUBSPOT.portalId}.js`}></script>
+<!-- Populate the GA4 client_id / session_id hidden fields once the embed renders,
+     so a contact who later becomes a deal can be attributed in GA4 (HubSpot → GA4
+     Measurement Protocol). Fully wrapped: can never block or break the form. -->
+<script is:inline>
+  window.addEventListener('message', function (e) {
+    try {
+      if (!e.data || e.data.type !== 'hsFormCallback' || e.data.eventName !== 'onFormReady') return;
+      var ga = (window.blGetGaIds && window.blGetGaIds()) || {};
+      var frame = document.querySelector('.hs-form-frame');
+      if (!frame) return;
+      var set = function (name, val) {
+        if (!val) return;
+        var input = frame.querySelector('input[name="' + name + '"]');
+        if (input) { input.value = val; input.dispatchEvent(new Event('input', { bubbles: true })); }
+      };
+      set('ga_client_id', ga.client_id);
+      set('ga_session_id', ga.session_id);
+    } catch (err) {}
+  });
+</script>
 </BaseLayout>

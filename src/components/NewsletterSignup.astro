@@ -44,12 +44,20 @@ import { HUBSPOT, CONTACT_EMAIL } from '../lib/site';
       }
       // Only confirm success if HubSpot actually accepted the submission — a
       // swallowed error used to show "success" while the lead was lost.
+      const ga = (window as any).blGetGaIds ? (window as any).blGetGaIds() : {};
       let ok = false;
       try {
         const res = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portal}/${guid}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ fields: [{ name: 'email', value }], context: { pageUri: location.href, pageName: document.title } }),
+          body: JSON.stringify({
+            fields: [
+              { name: 'email', value },
+              ...(ga.client_id ? [{ name: 'ga_client_id', value: ga.client_id }] : []),
+              ...(ga.session_id ? [{ name: 'ga_session_id', value: ga.session_id }] : []),
+            ],
+            context: { pageUri: location.href, pageName: document.title },
+          }),
         });
         ok = res.ok;
       } catch (e) { ok = false; }
