@@ -14,7 +14,7 @@ The Otterly GEO audit (Oct 2026) found belegendary's **on-site content and techn
 
 **The three levers, in priority order:** A) roundup inclusion (fastest) · B) backlinks & earned mentions · C) entity graph.
 
-**Measure the baseline first (one-time):** pull belegendary.org's current Authority Score + referring-domain count in Semrush, alongside CCL / Korn Ferry / Vistage. That's the gap we're closing, and the number we'll watch. *(Claude can run this on request.)*
+**Baseline measured ✅ (2026-10-22):** belegendary.org = **AS 12 / 326 referring domains**, vs CCL (57 / 17.2K), Korn Ferry (49 / 27.8K), Vistage (44 / 12.7K) — a 32–45-pt authority gap and ~40–85× fewer referring domains. Full snapshot + link-gap targets in **`GEO-SEMRUSH-BASELINE.md`**. Re-pull in ~90 days. The numbers confirm the thesis: the gap is off-page authority, not content.
 
 ---
 
@@ -77,10 +77,10 @@ AI models resolve and trust *entities*. The more corroborated "Be Legendary = ex
 ## Priority & sequence
 
 **Weeks 1–2 — quick wins**
-1. Semrush authority baseline (Claude, on request) — the number we measure against.
-2. Claim/optimize Clutch + G2 + DesignRush; verify Crunchbase (feeds roundups + entity).
-3. Strengthen the two Wikidata items + create the Flag Model item (Claude drafts statements; someone with a Wikidata login applies).
-4. Launch podcast + HARO outreach (Claude drafts one-sheet/bio/pitches; James or a VA sends).
+1. ~~Semrush authority baseline~~ ✅ **done** → `GEO-SEMRUSH-BASELINE.md`.
+2. Claim/optimize Clutch + G2 + DesignRush; verify Crunchbase (feeds roundups + entity). Targets + templates in `GEO-ROUNDUP-OUTREACH-KIT.md`.
+3. Strengthen the two Wikidata items + create the Flag Model item → ready-to-apply statement set in **`GEO-WIKIDATA-SET.md`** (someone with a Wikidata login applies; 2 open confirmations for James).
+4. Launch podcast + HARO outreach (Claude drafts one-sheet/bio/pitches on request; James or a VA sends).
 
 **Weeks 2–6 — compounding**
 5. Roundup-inclusion outreach (Claude drafts pitches; send in batches).
