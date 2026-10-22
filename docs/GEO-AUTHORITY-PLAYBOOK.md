@@ -52,9 +52,9 @@ Goal: trusted domains linking to or citing belegendary. By ROI:
 
 **B1 — Digital PR around your original research *(highest ROI)*.** `/state-of-executive-team-execution/` is your most-cited page (38) because **research is link-bait and LLMs cite primary data sources.** Pitch the report's key stats to business/leadership press and newsletters as a data story ("X% of executive teams can't name their top 3 priorities…"). Each pickup = a high-authority backlink + a citeable stat. *Pairs with producing a fresh annual data cut to re-pitch.*
 
-**B2 — Podcast guesting *(fast; James is a strong guest)*.** Author + Flag Model + CNN/BI coverage. Leadership/CEO podcasts link the guest's site in show notes = backlinks + mentions the engines read. **Angle:** "Why your leadership team knows what to do and still doesn't do it — the Flag Model." *Claude can draft the one-sheet + pitch + a target-show list.*
+**B2 — Podcast guesting *(fast; James is a strong guest)*.** Author + Flag Model + CNN/BI coverage. Leadership/CEO podcasts link the guest's site in show notes = backlinks + mentions the engines read. **Angle:** "Why your leadership team knows what to do and still doesn't do it — the Flag Model." ✅ **Ready:** one-sheet, episode angles, pitch template, and a tiered target-show list in **`GEO-PODCAST-ONE-SHEET.md`**.
 
-**B3 — Expert-quote services (HARO / Qwoted / Featured).** A used quote = a backlink from a real publication. James answering 2–3 relevant queries/week compounds fast. *Claude can draft James's expert bio + response templates.*
+**B3 — Expert-quote services (HARO / Qwoted / Featured).** A used quote = a backlink from a real publication. James answering 2–3 relevant queries/week compounds fast. ✅ **Ready:** pre-approved bios (1-line/50/100-word), topic filters, answering rules, and 4 worked response templates in **`GEO-HARO-EXPERT-KIT.md`**.
 
 **B4 — Contributed / guest articles.** Forbes Councils (paid), industry pubs, LinkedIn/Substack newsletters in the leadership space. Byline + bio link.
 
@@ -93,13 +93,17 @@ AI models resolve and trust *entities*. The more corroborated "Be Legendary = ex
 
 ---
 
-## What Claude can produce next (pick any)
-- Podcast **one-sheet + pitch + target-show list**
-- HARO/Qwoted **expert bio + response templates**
-- Roundup **outreach email templates + a vetted target list**
-- **Wikidata statement set** (ready to apply) + the Flag Model item draft
-- **Semrush backlink baseline** (belegendary vs CCL / Korn Ferry / Vistage)
-- Expanded / new **comparison + "best-of" pages**
+## Deliverables produced (ready to use)
+- ✅ Podcast **one-sheet + pitch + target-show list** → `GEO-PODCAST-ONE-SHEET.md`
+- ✅ HARO/Qwoted/Featured **expert bios + response templates** → `GEO-HARO-EXPERT-KIT.md`
+- ✅ Roundup **outreach email templates + a vetted target list** → `GEO-ROUNDUP-OUTREACH-KIT.md`
+- ✅ **Wikidata statement set** (ready to apply) + the Flag Model item draft → `GEO-WIKIDATA-SET.md`
+- ✅ **Semrush authority baseline** (belegendary vs CCL / Korn Ferry / Vistage) → `GEO-SEMRUSH-BASELINE.md`
+
+## Still available on request
+- Expanded / new **comparison + "best-of" pages** (Track A2 — these go live on the site, not in a doc)
+- **Digital-PR pitch + stat angles** for the research report (Track B1)
+- Forbes Councils / guest-article **bylines + target pubs** (Track B4)
 
 ## Realistic expectations
 Authority is earned over weeks-to-months, and engines re-crawl on their own schedule. Expect the first new citations in the Otterly re-runs over the coming weeks, accelerating as backlinks and roundup inclusions accumulate. Because Step A configured real competitors + the priority prompts, we'll actually *see* it move.
