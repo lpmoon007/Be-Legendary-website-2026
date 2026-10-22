@@ -50,7 +50,7 @@ belegendary's own `/best-executive-team-development-companies/` is cited **22 ti
 
 Goal: trusted domains linking to or citing belegendary. By ROI:
 
-**B1 — Digital PR around your original research *(highest ROI)*.** `/state-of-executive-team-execution/` is your most-cited page (38) because **research is link-bait and LLMs cite primary data sources.** Pitch the report's key stats to business/leadership press and newsletters as a data story ("X% of executive teams can't name their top 3 priorities…"). Each pickup = a high-authority backlink + a citeable stat. *Pairs with producing a fresh annual data cut to re-pitch.*
+**B1 — Digital PR around your research *(highest ROI)*.** `/state-of-executive-team-execution/` is your most-cited page (38) because **research is link-bait and LLMs cite primary data sources.** Pitch the report's key stats to business/leadership press and newsletters as a data story. Each pickup = a high-authority backlink + a citeable stat. ✅ **Ready:** 4 data-story angles (each on real, sourced stats), 3 pitch templates, a tiered target list, and the annual re-pitch calendar in **`GEO-DIGITAL-PR-KIT.md`** — *with the honesty rule up top: the 2026 report is a synthesis of third-party studies, not our primary data; the FlagScore primary-data edition is the big 2027 re-pitch.*
 
 **B2 — Podcast guesting *(fast; James is a strong guest)*.** Author + Flag Model + CNN/BI coverage. Leadership/CEO podcasts link the guest's site in show notes = backlinks + mentions the engines read. **Angle:** "Why your leadership team knows what to do and still doesn't do it — the Flag Model." ✅ **Ready:** one-sheet, episode angles, pitch template, and a tiered target-show list in **`GEO-PODCAST-ONE-SHEET.md`**.
 
@@ -100,10 +100,12 @@ AI models resolve and trust *entities*. The more corroborated "Be Legendary = ex
 - ✅ **Wikidata statement set** (ready to apply) + the Flag Model item draft → `GEO-WIKIDATA-SET.md`
 - ✅ **Semrush authority baseline** (belegendary vs CCL / Korn Ferry / Vistage) → `GEO-SEMRUSH-BASELINE.md`
 
+- ✅ **Digital-PR pitch + stat angles** for the research report → `GEO-DIGITAL-PR-KIT.md`
+
 ## Still available on request
 - Expanded / new **comparison + "best-of" pages** (Track A2 — these go live on the site, not in a doc)
-- **Digital-PR pitch + stat angles** for the research report (Track B1)
 - Forbes Councils / guest-article **bylines + target pubs** (Track B4)
+- A one-page **fact sheet** built from the report's top stats (the data asset the PR kit attaches)
 
 ## Realistic expectations
 Authority is earned over weeks-to-months, and engines re-crawl on their own schedule. Expect the first new citations in the Otterly re-runs over the coming weeks, accelerating as backlinks and roundup inclusions accumulate. Because Step A configured real competitors + the priority prompts, we'll actually *see* it move.
