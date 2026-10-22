@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Be Legendary — Research Fact Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+  :root{
+    --ground:#15130E; --panel:#1B1810; --panel2:#211D15;
+    --cream:#FBF8F1; --cream-80:rgba(244,240,231,0.82); --cream-60:rgba(244,240,231,0.6);
+    --muted:#8A8578; --terra:#C04A26; --terra-lt:#E0744A; --eyebrow:#D98A5E;
+    --line:rgba(244,240,231,0.12);
+  }
+  @page{ size:Letter; margin:0; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ background:var(--ground); }
+  body{
+    width:8.5in; height:11in; color:var(--cream);
+    font-family:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;
+    padding:0.52in 0.56in 0.46in; display:flex; flex-direction:column;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .eyebrow{ font-size:8.5pt; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; }
+
+  /* Masthead */
+  .top{ display:flex; justify-content:space-between; align-items:baseline; }
+  .wordmark{ font-weight:700; font-size:12pt; letter-spacing:0.22em; text-transform:uppercase; color:var(--cream); }
+  .top .label{ color:var(--eyebrow); }
+  .rule{ height:1px; background:var(--line); margin:11px 0 0; }
+
+  /* Title */
+  header.title{ padding:17px 0 13px; position:relative; }
+  header.title .kicker{ color:var(--eyebrow); margin-bottom:8px; }
+  h1{ font-family:'Newsreader',Georgia,serif; font-weight:500; font-size:28pt; line-height:1.0; letter-spacing:-0.01em; color:var(--cream); max-width:17ch; }
+  header.title p.sub{ margin-top:11px; font-size:10pt; line-height:1.48; color:var(--cream-80); max-width:62ch; }
+
+  /* Stat grid */
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; flex:1; align-content:start; }
+  .cell{ background:var(--panel); border:1px solid var(--line); border-radius:11px; padding:14px 14px 12px; display:flex; flex-direction:column; }
+  .cell .tag{ font-size:7pt; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--terra-lt); margin-bottom:9px; }
+  .cell .fig{ font-family:'Newsreader',Georgia,serif; font-weight:500; font-size:27pt; line-height:0.98; color:var(--terra-lt); }
+  .cell .desc{ margin-top:9px; font-size:9pt; line-height:1.42; color:var(--cream-80); flex:1; }
+  .cell .src{ margin-top:11px; font-size:7pt; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--muted); }
+
+  /* Footer */
+  footer{ margin-top:12px; }
+  .cite{ background:var(--panel2); border:1px solid var(--line); border-left:2.5px solid var(--terra); border-radius:10px; padding:12px 15px; }
+  .cite .eyebrow{ color:var(--terra-lt); margin-bottom:6px; }
+  .cite .ref{ font-size:9pt; line-height:1.45; color:var(--cream-80); }
+  .cite .ref em{ color:var(--cream); font-style:italic; }
+  .foot-row{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:11px; gap:20px; }
+  .about{ font-size:8.5pt; line-height:1.5; color:var(--cream-60); max-width:68ch; }
+  .about strong{ color:var(--cream-80); font-weight:700; }
+  .contact{ font-size:8.5pt; line-height:1.6; color:var(--cream-80); text-align:right; white-space:nowrap; }
+  .contact b{ color:var(--terra-lt); font-weight:700; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <span class="wordmark">Be&nbsp;Legendary</span>
+    <span class="eyebrow label">Research Fact Sheet · 2026</span>
+  </div>
+  <div class="rule"></div>
+
+  <header class="title">
+    <p class="eyebrow kicker">The data behind the execution gap</p>
+    <h1>The State of Executive Team Execution</h1>
+    <p class="sub">A synthesis of 20+ published studies on <em>why</em> leadership teams stall — organized by the five components of the Flag Model™. Every figure is drawn from third-party research and linked to its original source. Free to cite with attribution.</p>
+  </header>
+
+  <div class="grid">
+    <div class="cell">
+      <span class="tag">Execution</span>
+      <span class="fig">½–⅔</span>
+      <span class="desc">of companies fall short at <strong style="color:#FBF8F1;font-weight:700">executing</strong> their strategy — not formulating it. The gap is the doing, not the plan.</span>
+      <span class="src">MIT Sloan · Donald Sull</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Execution</span>
+      <span class="fig">15%</span>
+      <span class="desc">achieve two-thirds or more of their strategic objectives; 48% miss even half of them.</span>
+      <span class="src">Bridges Business Consultancy · 2020</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Alignment</span>
+      <span class="fig">58% / 72%</span>
+      <span class="desc">aligned companies grow revenue 58% faster and are 72% more profitable than misaligned peers.</span>
+      <span class="src">LSA Global · 410 companies (proprietary)</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Alignment</span>
+      <span class="fig">95%</span>
+      <span class="desc">of employees were unaware of, or didn't understand, their company's strategy — so effort scatters.</span>
+      <span class="src">Kaplan &amp; Norton · HBR 2005</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Decisions</span>
+      <span class="fig">~$250M</span>
+      <span class="desc">in annual labor lost to ineffective decisions at a typical Fortune 500 — managers waste ~58% of decision time.</span>
+      <span class="src">McKinsey</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Decisions</span>
+      <span class="fig">20%</span>
+      <span class="desc">of leaders say their organizations are actually good at making decisions — only the top fifth.</span>
+      <span class="src">McKinsey</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Focus &amp; Rhythm</span>
+      <span class="fig">52%</span>
+      <span class="desc">of leaders describe their work as chaotic and fragmented — reactive work crowding out the plan.</span>
+      <span class="src">Microsoft · 2025</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Accountability</span>
+      <span class="fig">82%</span>
+      <span class="desc">of managers have tried and failed — or avoided — holding others accountable, yet 91% call it a top need.</span>
+      <span class="src">Workplace Accountability Study</span>
+    </div>
+    <div class="cell">
+      <span class="tag">Learning</span>
+      <span class="fig">20–25%</span>
+      <span class="desc">performance improvement from properly run after-action reviews — meta-analysis of 46 samples, 2,136 people.</span>
+      <span class="src">Tannenbaum &amp; Cerasoli</span>
+    </div>
+  </div>
+
+  <footer>
+    <div class="cite">
+      <p class="eyebrow">Cite this report</p>
+      <p class="ref">Be Legendary (2026). <em>The State of Executive Team Execution: 2026 Research Report.</em> belegendary.org/state-of-executive-team-execution/ — free to quote and cite with attribution to belegendary.org.</p>
+    </div>
+    <div class="foot-row">
+      <p class="about"><strong>About Be Legendary.</strong> An executive-team performance firm founded by James Carter, creator of the Flag Model™ — a diagnostic that finds where a leadership team breaks first, measures it, and rebuilds the discipline that broke. Featured in CNN, CNN Money and Business Insider.</p>
+      <p class="contact"><b>belegendary.org</b><br>jcarter@belegendary.org<br>800-513-8759</p>
+    </div>
+  </footer>
+</body>
+</html>

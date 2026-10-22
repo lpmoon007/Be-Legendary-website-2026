@@ -11,3 +11,9 @@ belegendary-site.zip
 
 # Freshness report (regenerated each build)
 reports/
+
+# fact-sheet build outputs (regenerable)
+docs/fact-sheet/fonts.css
+docs/fact-sheet/preview.png
+docs/fact-sheet/_render.html
+docs/fact-sheet/*.pdf
