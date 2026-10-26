@@ -4,31 +4,19 @@ import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import { Image } from 'astro:assets';
 import shakubukuField from '../../assets/shakubuku-field.jpg';
-import { SITE_URL, ORG_ID, SLUGS } from '../../lib/site';
+import { SLUGS } from '../../lib/site';
 
 const path = SLUGS.legendaryLeader;
 const title = 'The Legendary Leader — The Individual Executive Retreat';
 const description =
   'The Legendary Leader is the one retreat built for a single executive, not a team — a Shakubuku run by our sister brand Legendary Retreats, across four dimensions: body, mind, heart and spirit. By invitation.';
 
-const canonical = new URL(path, SITE_URL).href;
-
 // The retreat is run by the sister brand, so applying goes to Legendary Retreats.
 const RETREAT_APPLY = 'https://www.legendary-retreats.com/luxury-executive-retreat/';
 
-// JSON-LD: the design's Service + FAQPage, enriched so the org/founder graph
-// resolves by @id (provider → ORG_ID).
+// JSON-LD: FAQPage only. The retreat itself is a Legendary Retreats offering,
+// so Be Legendary no longer declares a Service/provider for it.
 const schema = [
-  {
-    '@type': 'Service',
-    '@id': `${canonical}#service`,
-    name: 'The Legendary Leader',
-    provider: { '@id': ORG_ID },
-    serviceType: 'Individual executive retreat',
-    description:
-      'An individual executive retreat for a single leader — a Shakubuku, the multi-day adventure immersion run by sister brand Legendary Retreats, working the leader across four dimensions: body, mind, heart and spirit. By invitation.',
-    offers: { '@type': 'Offer', availability: 'https://schema.org/LimitedAvailability', url: `${SITE_URL}/leaders/the-legendary-leader/` },
-  },
   {
     '@type': 'FAQPage',
     mainEntity: [
