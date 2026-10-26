@@ -327,9 +327,13 @@ export const ORG_NODE = {
   areaServed: 'US',
   location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Denver', addressRegion: 'CO', addressCountry: 'US' } },
   contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: '+1-800-513-8759', url: 'https://meetings-na2.hubspot.com/jcarter28' },
-  // Prove only — a genuinely separate product brand. Building Teams (a DBA of
-  // this same entity) was removed to resolve the same-entity-vs-child conflict.
-  subOrganization: { '@type': 'Organization', name: 'Prove', url: 'https://www.provecq.com/', description: 'Prove measures who delivers — the Commitment Quotient (CQ), a behavioral measurement of Initiative, Follow-Through, and Learnability. The individual-capacity companion to the Flag Model.' },
+  // Two genuinely separate brands (not DBAs): Prove (product) and Legendary
+  // Retreats (the sister retreat brand). Legendary Retreats declares
+  // parentOrganization Be Legendary on its side, so this link is bidirectional.
+  subOrganization: [
+    { '@type': 'Organization', name: 'Prove', url: 'https://www.provecq.com/', description: 'Prove measures who delivers — the Commitment Quotient (CQ), a behavioral measurement of Initiative, Follow-Through, and Learnability. The individual-capacity companion to the Flag Model.' },
+    { '@type': 'Organization', name: 'Legendary Retreats', url: 'https://www.legendary-retreats.com/', description: 'The sister brand for multi-day, fully off-site experiential executive retreats and immersions — Be Legendary’s performance work run as a destination retreat.' },
+  ],
   knowsAbout: ['executive team performance', 'leadership team alignment', 'decision-making', 'organizational execution', 'leadership development', 'executive facilitation', 'leadership offsites', 'team accountability'],
   hasOfferCatalog: OFFER_CATALOG,
   // Wikidata first — the anchor that resolves belegendary.org, buildingteams.com

@@ -49,11 +49,11 @@ Redirect 301 /teamworx/ /teams/
 Redirect 301 /talent-management/ /teams/
 Redirect 301 /cq-catalyst/ /teams/
 
-# ── Off-Road Immersion consolidation ──
-# The near-duplicate Denver + Sedona geo pages were merged into one
-# location-neutral page (both settings shown there, anchored #colorado/#sedona).
-Redirect 301 /denver-executive-leadership-retreat/ https://www.legendary-retreats.com/executive-off-road-immersion/
-Redirect 301 /sedona-executive-leadership-retreat/ https://www.legendary-retreats.com/executive-off-road-immersion/
+# ── Retreat geo pages → legendary-retreats.com destination pages ──
+# Point each city at its own destination page on the sister site (AI engines
+# were citing these legacy URLs and landing on the generic off-road page).
+Redirect 301 /denver-executive-leadership-retreat/ https://www.legendary-retreats.com/destinations/colorado/
+Redirect 301 /sedona-executive-leadership-retreat/ https://www.legendary-retreats.com/destinations/sedona-arizona/
 
 # ── /teams/diagnostic/ is now a live page (the Executive Team Diagnostic). ──
 # Its former 301 to Team LFS was removed when that page was built; do not re-add.

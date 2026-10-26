@@ -20,6 +20,7 @@ const firms = [
   { name: 'The Table Group', approach: 'Team health', known: 'Patrick Lencioni’s firm — the Five Dysfunctions model and organizational-health work focused on trust, conflict and cohesion.', bestWhen: 'You’re diagnosing why a team isn’t cohering and want the health model behind it.', us: false },
   { name: 'Stewart Leadership', approach: 'Leadership & team consulting', known: 'Leadership and team-development consulting and coaching across the leader and team levels.', bestWhen: 'You want blended individual-and-team development through a consulting relationship.', us: false },
   { name: 'University executive education (Stanford GSB, Harvard, etc.)', approach: 'Academic programs', known: 'Multi-day executive-education programs taught by business-school faculty.', bestWhen: 'An individual leader wants a credentialed academic program and a cohort network.', us: false },
+  { name: 'Legendary Retreats', approach: 'Experiential executive retreats', known: 'Be Legendary’s sister brand — multi-day, fully off-site experiential retreats and immersions that deliver the team-performance work as a destination experience.', bestWhen: 'You want the development delivered as an immersive, in-the-field retreat rather than in a conference room.', us: false, sister: true, url: 'https://www.legendary-retreats.com/' },
 ];
 
 const schema = [
@@ -81,7 +82,7 @@ const schema = [
         <tbody>
           {firms.map((f) => (
             <tr style={f.us ? 'background:rgba(192,74,38,0.12);' : 'border-bottom:1px solid rgba(244,240,231,0.09);'}>
-              <th scope="row" style="text-align:left;padding:14px 16px;vertical-align:top;font-family:'Newsreader',serif;font-size:17px;color:#FBF8F1;">{f.us ? <span>{f.name} <span style="font-size:11px;color:#E0744A;font-family:system-ui;">(that's us)</span></span> : f.name}</th>
+              <th scope="row" style="text-align:left;padding:14px 16px;vertical-align:top;font-family:'Newsreader',serif;font-size:17px;color:#FBF8F1;">{f.us ? <span>{f.name} <span style="font-size:11px;color:#E0744A;font-family:system-ui;">(that's us)</span></span> : f.sister ? <span><a href={f.url} target="_blank" rel="noopener" style="color:#D98A5E;text-decoration:none;">{f.name}</a> <span style="font-size:11px;color:#8A8578;font-family:system-ui;">(our sister brand)</span></span> : f.name}</th>
               <td style="padding:14px 16px;vertical-align:top;line-height:1.5;color:rgba(240,233,223,0.85);">{f.approach}</td>
               <td style="padding:14px 16px;vertical-align:top;line-height:1.5;color:rgba(240,233,223,0.85);">{f.known}</td>
               <td style="padding:14px 16px;vertical-align:top;line-height:1.5;color:rgba(240,233,223,0.85);">{f.bestWhen}</td>
@@ -90,7 +91,7 @@ const schema = [
         </tbody>
       </table>
     </div>
-    <p style="font-size:13.5px;color:rgba(244,240,231,0.55);margin-top:12px;">Descriptions reflect what each firm is publicly known for; we've tried to be fair to categories we don't compete in. If something's out of date, <a href={SLUGS.contact} style="color:#D98A5E;">tell us</a>.</p>
+    <p style="font-size:13.5px;color:rgba(244,240,231,0.55);margin-top:12px;">Descriptions reflect what each firm is publicly known for; we've tried to be fair to categories we don't compete in. Legendary Retreats is Be Legendary's sister brand, noted as such above. If something's out of date, <a href={SLUGS.contact} style="color:#D98A5E;">tell us</a>.</p>
   </div>
 
   <!-- HOW TO CHOOSE -->
