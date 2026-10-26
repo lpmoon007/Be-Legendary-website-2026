@@ -4,7 +4,7 @@ import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import { Image } from 'astro:assets';
 import shakubukuField from '../../assets/shakubuku-field.jpg';
-import { SITE_URL, CTA_URL, ORG_ID, SLUGS } from '../../lib/site';
+import { SITE_URL, ORG_ID, SLUGS } from '../../lib/site';
 
 const path = SLUGS.legendaryLeader;
 const title = 'The Legendary Leader — The Individual Executive Retreat';
@@ -12,6 +12,9 @@ const description =
   'The Legendary Leader is the one retreat built for a single executive, not a team — a Shakubuku run by our sister brand Legendary Retreats, across four dimensions: body, mind, heart and spirit. By invitation.';
 
 const canonical = new URL(path, SITE_URL).href;
+
+// The retreat is run by the sister brand, so applying goes to Legendary Retreats.
+const RETREAT_APPLY = 'https://www.legendary-retreats.com/luxury-executive-retreat/';
 
 // JSON-LD: the design's Service + FAQPage, enriched so the org/founder graph
 // resolves by @id (provider → ORG_ID).
@@ -63,7 +66,7 @@ const schema = [
     audience="leaders"
     variant="full"
     logoHref={SLUGS.leaders}
-    cta={{ label: 'Request an invitation', href: CTA_URL, external: true }}
+    cta={{ label: 'Request an invitation', href: RETREAT_APPLY, external: true }}
   />
 
   <div style="background:#EFE8DA;color:#1B1810;font-family:'Hanken Grotesk',sans-serif;overflow:hidden;">
@@ -78,7 +81,7 @@ const schema = [
       <h1 style="font-family:'Newsreader',serif;font-weight:400;font-size:clamp(40px,5.6vw,70px);line-height:1.0;letter-spacing:-0.022em;color:#1B1810;max-width:15ch;">One leader. One retreat. <span style="font-style:italic;color:#C04A26;">The whole you.</span></h1>
       <p style="margin-top:24px;font-size:19px;line-height:1.6;color:#2E2A22;max-width:50ch;">Everything else develops a part of you. The Legendary Leader is the one retreat we build for a single executive, not a team — a <a href="https://www.legendary-retreats.com/" target="_blank" rel="noopener" style="color:#C04A26;text-decoration:underline;">Shakubuku</a>, the adventure immersion run by our sister brand, Legendary Retreats, that changes all of you at once: body, mind, heart and spirit.</p>
       <div style="margin-top:32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
-        <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation <span>&rarr;</span></a>
+        <a href={RETREAT_APPLY} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;box-shadow:0 14px 40px -12px rgba(192,74,38,0.6);" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation <span>&rarr;</span></a>
         <a href="#four" style="color:#C04A26;text-decoration:none;font-weight:700;font-size:15px;">The four dimensions &darr;</a>
       </div>
     </section>
@@ -119,7 +122,7 @@ const schema = [
           <p style="margin-top:14px;font-size:16px;line-height:1.6;color:#56524A;max-width:36ch;">One leader, one Shakubuku — the only retreat we run for an individual, not a team. By invitation: a short conversation tells us both whether this is your moment, and the investment is discussed on acceptance.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href={CTA_URL} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:700;font-size:16px;text-align:center;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation</a>
+          <a href={RETREAT_APPLY} target="_blank" rel="noopener" style="background:#C04A26;color:#fff;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:700;font-size:16px;text-align:center;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Request an invitation</a>
           <a href={`${SLUGS.leaders}#climb`} style="border:1px solid rgba(27,24,16,0.26);color:#1B1810;text-decoration:none;padding:16px 26px;border-radius:10px;font-weight:600;font-size:15.5px;text-align:center;">See the whole climb</a>
         </div>
       </div>
