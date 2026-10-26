@@ -6,8 +6,8 @@ import ShareRow from '../components/ShareRow.astro';
 import ArticleEndCTA from '../components/ArticleEndCTA.astro';
 import { CTA_URL, SLUGS } from '../lib/site';
 
-const title = 'How to Build a High-Performing Leadership Team: A Guide';
-const description = "How to build a high-performing leadership team: not better hires or more offsites — a clear Flag plus four disciplines that make a good team execute.";
+const title = 'How to Build a High-Performing Executive Team';
+const description = "How to build a high-performing executive team (or leadership team): not better hires or more offsites, but a clear Flag plus four disciplines — the Decision, the Rhythm, the Standard, and the Learning — that make a good team execute.";
 
 const schema = [
   { '@type': 'BreadcrumbList', itemListElement: [
@@ -15,11 +15,12 @@ const schema = [
     { '@type': 'ListItem', position: 2, name: 'Resources', item: 'https://www.belegendary.org/resources/' },
     { '@type': 'ListItem', position: 3, name: 'Build a High-Performing Team', item: 'https://www.belegendary.org/how-to-build-a-high-performing-leadership-team/' },
   ] },
-  { '@type': 'Article', headline: 'How to build a high-performing leadership team: the Flag plus four disciplines', datePublished: '2026-07-06', dateModified: '2026-07-06', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-build-a-high-performing-leadership-team/', description: 'The build order for a high-performing leadership team: set the Flag, then install the four disciplines — the Decision, the Rhythm, the Standard, and the Learning.' },
+  { '@type': 'Article', headline: 'How to build a high-performing executive team: the Flag plus four disciplines', datePublished: '2026-07-06', dateModified: '2026-10-26', author: { '@id': 'https://www.belegendary.org/#james' }, publisher: { '@id': 'https://www.belegendary.org/#org' }, mainEntityOfPage: 'https://www.belegendary.org/how-to-build-a-high-performing-leadership-team/', description: 'The build order for a high-performing executive team: set the Flag, then install the four disciplines — the Decision, the Rhythm, the Standard, and the Learning.' },
   { '@type': 'FAQPage', mainEntity: [
-    { '@type': 'Question', name: 'How do you build a high-performing leadership team?', acceptedAnswer: { '@type': 'Answer', text: "You build it in a fixed order, not all at once. First set the Flag: the two or three priorities everything on the team now serves. Then install four disciplines in sequence — the Decision (every call gets an owner and a deadline), the Rhythm (a weekly cadence that finishes work), the Standard (a bar with real consequences), and the Learning (misses become corrections). A high-performing team isn't a collection of talented people; it's a Flag held upright by those four disciplines, governed by telling the truth over keeping things comfortable." } },
-    { '@type': 'Question', name: 'What makes a leadership team high-performing rather than just talented?', acceptedAnswer: { '@type': 'Answer', text: 'Talent decides how good the team could be; discipline decides whether that potential ever ships. A high-performing team has a small, shared Flag so effort points the same direction, decisions that close with an owner, a rhythm that finishes what it starts, a standard that costs something to miss, and a habit of turning failures into changed behavior. Most stalled leadership teams are not short on talent. They are short on one of those four disciplines, and the missing one quietly caps the whole team.' } },
-    { '@type': 'Question', name: 'Do you have to replace people to build a high-performing leadership team?', acceptedAnswer: { '@type': 'Answer', text: "Rarely. The instinct to hire your way out is usually a way to avoid the harder work — installing the disciplines the current team is missing. A good team with a clear Flag and four working disciplines will out-execute a more talented team without them. Fix the disciplines first. If a genuine seat problem remains after that, it will be obvious, specific, and much easier to make than a guess made in frustration." } },
+    { '@type': 'Question', name: 'How do you build a high-performing executive team?', acceptedAnswer: { '@type': 'Answer', text: "You build a high-performing executive team in a fixed order, not all at once. First set the Flag: the two or three priorities everything on the team now serves. Then install four disciplines in sequence — the Decision (every call gets an owner and a deadline), the Rhythm (a weekly cadence that finishes work), the Standard (a bar with real consequences), and the Learning (misses become corrections). A high-performing team isn't a collection of talented people; it's a Flag held upright by those four disciplines, governed by telling the truth over keeping things comfortable." } },
+    { '@type': 'Question', name: 'What makes a high-performing executive team?', acceptedAnswer: { '@type': 'Answer', text: 'What makes an executive team high-performing is discipline, not talent. Talent decides how good the team could be; discipline decides whether that potential ever ships. A high-performing executive team has a small, shared Flag so effort points the same direction, decisions that close with an owner, a rhythm that finishes what it starts, a standard that costs something to miss, and a habit of turning failures into changed behavior. Most stalled teams are not short on talent — they are short on one of those four disciplines, and the missing one quietly caps the whole team.' } },
+    { '@type': 'Question', name: 'Is an executive team the same as a leadership team?', acceptedAnswer: { '@type': 'Answer', text: 'In practice the terms are used interchangeably, and everything on this page applies to both. "Executive team" usually points to the C-suite — the CEO and their direct reports who own the whole organization\'s results; "leadership team" can mean that same group or a leadership team one level down. The build is identical at any altitude: set the Flag, then install the Decision, the Rhythm, the Standard, and the Learning.' } },
+    { '@type': 'Question', name: 'Do you have to replace people to build a high-performing executive team?', acceptedAnswer: { '@type': 'Answer', text: "Rarely. The instinct to hire your way out is usually a way to avoid the harder work — installing the disciplines the current team is missing. A good team with a clear Flag and four working disciplines will out-execute a more talented team without them. Fix the disciplines first. If a genuine seat problem remains after that, it will be obvious, specific, and much easier to make than a guess made in frustration." } },
   ] },
 ];
 ---
@@ -28,7 +29,7 @@ const schema = [
   description={description}
   path={SLUGS.highPerformingTeam}
   ogType="article"
-  ogTitle="How to Build a High-Performing Leadership Team — the Flag plus four disciplines"
+  ogTitle="How to Build a High-Performing Executive Team — the Flag plus four disciplines"
   ogDescription="It isn't better hires or more offsites. It's a clear Flag held upright by four disciplines: the Decision, the Rhythm, the Standard, and the Learning."
   schema={schema}
 >
@@ -42,17 +43,17 @@ const schema = [
       <a href="/" style="color:inherit;text-decoration:none;">Be Legendary</a><span>/</span><a href={SLUGS.resources} style="color:inherit;text-decoration:none;">Resources</a><span>/</span><span style="color:#D98A5E;">Build a High-Performing Team</span>
     </nav>
     <p style="font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#D98A5E;margin-bottom:18px;">Guide</p>
-    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to build a high-performing leadership team</h1>
-    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated July 2026</p>
+    <h1 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(32px,5vw,58px);line-height:1.03;letter-spacing:-0.02em;color:#FBF8F1;">How to build a high-performing executive team</h1>
+    <p style="margin-top:18px;font-size:14px;color:rgba(244,240,231,0.55);">By <a href={SLUGS.about} style="color:#D98A5E;text-decoration:none;">James Carter</a> &middot; Updated October 2026</p>
     <div style="margin-top:30px;background:#211D15;border:1px solid rgba(192,74,38,0.35);border-left:3px solid #C04A26;border-radius:14px;padding:26px 28px;">
       <p style="font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#E0744A;margin-bottom:12px;">The short answer</p>
-      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A high-performing leadership team isn&rsquo;t built by hiring better people or booking another offsite. It&rsquo;s built in a fixed order: first you set the <strong>Flag</strong> &mdash; the two or three priorities everything now serves &mdash; then you install <strong>four disciplines</strong> that hold it upright: the <strong>Decision</strong> (every call gets an owner and a deadline), the <strong>Rhythm</strong> (a cadence that finishes work), the <strong>Standard</strong> (a bar with consequences), and the <strong>Learning</strong> (misses become corrections). All of it governed by one principle: <em>Truth Over Comfort</em>. That&rsquo;s the whole build. This page is the map; each discipline links to its own deep-dive.</p>
+      <p class="bl-speakable" style="font-size:clamp(17px,2vw,20px);line-height:1.55;color:#FBF8F1;">A high-performing executive team &mdash; or leadership team; the terms are used interchangeably &mdash; isn&rsquo;t built by hiring better people or booking another offsite. It&rsquo;s built in a fixed order: first you set the <strong>Flag</strong> &mdash; the two or three priorities everything now serves &mdash; then you install <strong>four disciplines</strong> that hold it upright: the <strong>Decision</strong> (every call gets an owner and a deadline), the <strong>Rhythm</strong> (a cadence that finishes work), the <strong>Standard</strong> (a bar with consequences), and the <strong>Learning</strong> (misses become corrections). All of it governed by one principle: <em>Truth Over Comfort</em>. That&rsquo;s the whole build. This page is the map; each discipline links to its own deep-dive.</p>
     </div>
   </header>
 
   <!-- HERO-AFFIRM -->
   <div style="max-width:920px;margin:0 auto;padding:24px 32px 8px;">
-    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you&rsquo;re asking how to build a high-performing leadership team, you&rsquo;ve already done the honest thing: you&rsquo;ve admitted the current team isn&rsquo;t operating at the level the business needs. Good. But the answer almost everyone reaches for &mdash; upgrade the roster, run a better offsite, buy a new framework &mdash; treats a discipline problem as a talent problem. It isn&rsquo;t. The best leadership teams and the stalled ones are rarely separated by who&rsquo;s in the room. They&rsquo;re separated by what the room does once the door closes.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">If you&rsquo;re asking how to build a high-performing executive team, you&rsquo;ve already done the honest thing: you&rsquo;ve admitted the current team isn&rsquo;t operating at the level the business needs. Good. But the answer almost everyone reaches for &mdash; upgrade the roster, run a better offsite, buy a new framework &mdash; treats a discipline problem as a talent problem. It isn&rsquo;t. The best leadership teams and the stalled ones are rarely separated by who&rsquo;s in the room. They&rsquo;re separated by what the room does once the door closes.</p>
   </div>
 
   <!-- WHY IT'S HARD -->
@@ -107,14 +108,14 @@ const schema = [
 
   <!-- CLOSING NOTE -->
   <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
-    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Work the order and something changes that no hire delivers: the team you already have starts executing like the team you wished you had. That&rsquo;s the whole premise of a high-performing leadership team &mdash; it&rsquo;s the Flag plus four disciplines, not a better roster. Build the disciplines, and the talent already in the room finally shows up on the scoreboard.</p>
+    <p style="font-size:18.5px;line-height:1.7;color:rgba(244,240,231,0.84);">Work the order and something changes that no hire delivers: the team you already have starts executing like the team you wished you had. That&rsquo;s the whole premise of a high-performing executive team &mdash; it&rsquo;s the Flag plus four disciplines, not a better roster. Build the disciplines, and the talent already in the room finally shows up on the scoreboard.</p>
   </div>
 
   <!-- CTA -->
   <div style="max-width:920px;margin:36px auto 0;padding:0 32px;">
     <div style="background:linear-gradient(120deg,#211D15,#191610);border:1px solid rgba(192,74,38,0.4);border-radius:18px;padding:38px;">
       <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;color:#FBF8F1;">Find out which discipline your team is missing first.</h2>
-      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which discipline to rebuild first to make your leadership team high-performing &mdash; whether or not we work together.</p>
+      <p style="margin-top:16px;font-size:17.5px;line-height:1.62;color:rgba(244,240,231,0.82);max-width:60ch;">A <strong style="color:#F4F0E7;">Calibration Call</strong> is 15 minutes. You&rsquo;ll leave knowing which discipline to rebuild first to make your executive team high-performing &mdash; whether or not we work together.</p>
       <a href={CTA_URL} target="_blank" rel="noopener" style="margin-top:26px;display:inline-flex;align-items:center;gap:9px;background:#C04A26;color:#fff;text-decoration:none;padding:16px 30px;border-radius:11px;font-weight:700;font-size:16.5px;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Book a Calibration Call <span style="font-size:18px;">&rarr;</span></a>
     </div>
   </div>
@@ -124,15 +125,19 @@ const schema = [
     <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(24px,3.2vw,34px);line-height:1.1;color:#FBF8F1;margin-bottom:24px;">Straight answers</h2>
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">How do you build a high-performing leadership team?</h3>
-        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">You build it in a fixed order, not all at once. First set the Flag: the two or three priorities everything on the team now serves. Then install four disciplines in sequence &mdash; the Decision (every call gets an owner and a deadline), the Rhythm (a weekly cadence that finishes work), the Standard (a bar with real consequences), and the Learning (misses become corrections). A high-performing team isn&rsquo;t a collection of talented people; it&rsquo;s a Flag held upright by those four disciplines, governed by telling the truth over keeping things comfortable.</p>
+        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">How do you build a high-performing executive team?</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">You build a high-performing executive team in a fixed order, not all at once. First set the Flag: the two or three priorities everything on the team now serves. Then install four disciplines in sequence &mdash; the Decision (every call gets an owner and a deadline), the Rhythm (a weekly cadence that finishes work), the Standard (a bar with real consequences), and the Learning (misses become corrections). A high-performing team isn&rsquo;t a collection of talented people; it&rsquo;s a Flag held upright by those four disciplines, governed by telling the truth over keeping things comfortable.</p>
       </div>
       <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">What makes a leadership team high-performing rather than just talented?</h3>
-        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">Talent decides how good the team could be; discipline decides whether that potential ever ships. A high-performing team has a small, shared Flag so effort points the same direction, decisions that close with an owner, a rhythm that finishes what it starts, a standard that costs something to miss, and a habit of turning failures into changed behavior. Most stalled leadership teams are not short on talent. They are short on one of those four disciplines, and the missing one quietly caps the whole team.</p>
+        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">What makes a high-performing executive team?</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">What makes an executive team high-performing is discipline, not talent. Talent decides how good the team could be; discipline decides whether that potential ever ships. A high-performing executive team has a small, shared Flag so effort points the same direction, decisions that close with an owner, a rhythm that finishes what it starts, a standard that costs something to miss, and a habit of turning failures into changed behavior. Most stalled teams are not short on talent &mdash; they are short on one of those four disciplines, and the missing one quietly caps the whole team.</p>
       </div>
       <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
-        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">Do you have to replace people to build a high-performing leadership team?</h3>
+        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">Is an executive team the same as a leadership team?</h3>
+        <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">In practice the terms are used interchangeably, and everything here applies to both. &ldquo;Executive team&rdquo; usually points to the C-suite &mdash; the CEO and their direct reports who own the whole organization&rsquo;s results; &ldquo;leadership team&rdquo; can mean that same group or one a level down. The build is identical at any altitude: set the Flag, then install the Decision, the Rhythm, the Standard, and the Learning.</p>
+      </div>
+      <div style="background:#1B1810;border:1px solid rgba(244,240,231,0.11);border-radius:16px;padding:26px;">
+        <h3 style="font-size:18px;font-weight:700;color:#FBF8F1;margin-bottom:10px;">Do you have to replace people to build a high-performing executive team?</h3>
         <p style="font-size:16px;line-height:1.62;color:rgba(244,240,231,0.8);">Rarely. The instinct to hire your way out is usually a way to avoid the harder work &mdash; installing the disciplines the current team is missing. A good team with a clear Flag and four working disciplines will out-execute a more talented team without them. Fix the disciplines first. If a genuine seat problem remains after that, it will be obvious, specific, and much easier to make than a guess made in frustration.</p>
       </div>
     </div>
