@@ -44,7 +44,7 @@ And when we *do* appear, we're elite: **position 1.6** when named, **sentiment +
 
 **B. Our own category term, nearly absent.** "leadership simulation for executive teams" — 920 citations, we have **3**. We literally own this category (Team LFS + the `/what-is-a-leadership-simulation/` page, published Oct 2) and we're invisible on it. Low-hanging and strategically ours.
 
-**C. Two "high-performing team" prompts where we have no cited page at all** (788 + 171 citations, zero us). A clear content hole.
+**C. Two "high-performing *executive* team" prompts with zero presence** (788 + 171 citations). *Correction (2026-10-26): this is not a missing page — the pillar `/how-to-build-a-high-performing-leadership-team/` exists and is strong, but it was phrased almost entirely as "leadership team" (20× vs 2× "executive team"), so it couldn't match the "executive team" query. Fixed by optimizing that one page to dual-target both synonyms (ratio now 28/9, plus an exact-match "What makes a high-performing executive team?" FAQ) rather than creating a cannibalizing duplicate — deployed 2026-10-26.*
 
 ## Who's actually winning the citations (the targets)
 
@@ -63,7 +63,7 @@ And the top *source domains overall* include two channels we don't use: **linked
 
 **2. Reclaim our own category term: "leadership simulation."** 920 citations, we have 3. Strengthen `/what-is-a-leadership-simulation/` and the Team LFS page (answer-first, more internal links, a citeable definition block), and pitch the term in digital PR. *This ties directly to the LFS product-naming work in flight — the naming decision should keep "leadership simulation" as the discoverable descriptor for exactly this reason.*
 
-**3. Fill the "high-performing executive team" content hole.** Build/optimize a pillar page for "how to build / what makes a high-performing executive team" (788 + 171 citations, zero presence). High-volume, high-intent, buildable now — the clearest content gap in the set.
+**3. ~~Fill the "high-performing executive team" content hole.~~ ✅ Done (2026-10-26).** Not a hole after all — the existing pillar was optimized to dual-target "executive team" + "leadership team" (title/H1/schema/FAQ), so it can now match the 788 + 171-citation prompts. Watch whether it starts getting cited on them in the next Otterly run; if not, that confirms the limiter is off-page authority (levers 1 & 5), not on-page.
 
 **4. Keep feeding the citation engine that already works:** expand the comparison/"best-of" family (Track A2) and produce the **2027 research edition with primary FlagScore data** (the research report is our #1 cited asset; primary data is the big re-pitch).
 
