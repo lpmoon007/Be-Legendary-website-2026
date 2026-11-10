@@ -6,6 +6,10 @@ import { SITE_URL, ORG_NODE, PERSON_NODE, WEBSITE_NODE, WEBSITE_ID } from '../li
 // Hanken body) isn't stuck behind the full 9-weight font download. Vite
 // resolves these to the hashed /_astro/ URLs at build.
 import fontHeadline from '@fontsource/newsreader/files/newsreader-latin-500-normal.woff2';
+// The H1/H2 accent phrase (the LCP element on most pages) is Newsreader 500
+// *italic* — preload it too, or the headline's italic half waits on the slower
+// CSS @font-face chain and drags text-LCP on slow connections.
+import fontHeadlineItalic from '@fontsource/newsreader/files/newsreader-latin-500-italic.woff2';
 import fontBody from '@fontsource/hanken-grotesk/files/hanken-grotesk-latin-400-normal.woff2';
 import fontUi from '@fontsource/hanken-grotesk/files/hanken-grotesk-latin-600-normal.woff2';
 
@@ -149,6 +153,7 @@ const jsonLd = graphNodes.length
 
   <!-- Preload critical above-the-fold fonts (LCP) -->
   <link rel="preload" href={fontHeadline} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={fontHeadlineItalic} as="font" type="font/woff2" crossorigin />
   <link rel="preload" href={fontBody} as="font" type="font/woff2" crossorigin />
   <link rel="preload" href={fontUi} as="font" type="font/woff2" crossorigin />
 

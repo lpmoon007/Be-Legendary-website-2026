@@ -7,121 +7,117 @@ ErrorDocument 404 /404.html
 ErrorDocument 403 /404.html
 Options -Indexes
 
+# ── Redirects ──────────────────────────────────────────────────────────────
+# Every legacy/removed-page redirect uses RedirectMatch with an optional-slash
+# anchor (^/path/?$) so BOTH /path and /path/ redirect. A plain `Redirect /path/`
+# only matches the trailing-slash prefix, so the no-slash form fell through to a
+# 404 — AI engines and humans were hitting those dead URLs. Kept in lockstep with
+# redirects/plesk-nginx-redirects.conf and redirects/plesk-apache-redirects.conf.
+# Order matters: more specific patterns come before the general ones they'd
+# otherwise be swallowed by (mod_alias applies the first match).
+
 # ── Library → Leaders migration (301) ──
-# Redirect preserves the path suffix, so /library/mindset-of-a-legend/ →
-# /leaders/mindset-of-a-legend/ (same leaf slugs), and /library/ → /leaders/.
-Redirect 301 /library/ /leaders/
+# Carries the path suffix: /library/mindset-of-a-legend/ → /leaders/mindset-of-a-legend/.
+RedirectMatch 301 ^/library/(.+)$ /leaders/$1
+RedirectMatch 301 ^/library/?$ /leaders/
 
 # ── 30-Day Challenge (301) ──
-# /leaders/30-day-challenge/ is the canonical slug we cite (SLUGS.challenge,
-# llms.txt, cross-domain redirects) but has no static page — the live app runs
-# on the challenge subdomain. Send it there so the canonical URL resolves.
-Redirect 301 /leaders/30-day-challenge/ https://challenge.belegendary.org/
+# Canonical slug we cite (SLUGS.challenge, llms.txt, cross-domain redirects) but
+# with no static page — the live app runs on the challenge subdomain.
+RedirectMatch 301 ^/leaders/30-day-challenge/?$ https://challenge.belegendary.org/
 
 # ── Retired pages from the previous site (301 → nearest live equivalent) ──
-# These old URLs still surface in crawlers/backlinks and were returning 404.
-# Clear mappings:
-Redirect 301 /actionable-coaching/ /leaders/actionable-coaching/
-Redirect 301 /articles/ /field-notes/
-Redirect 301 /free-leadership-tools/ /resources/
+RedirectMatch 301 ^/actionable-coaching/?$ /leaders/actionable-coaching/
+RedirectMatch 301 ^/articles/?$ /field-notes/
+RedirectMatch 301 ^/free-leadership-tools/?$ /resources/
 # Judgment calls (nearest-topic hub — change target if a better page exists):
-Redirect 301 /commitment-quotient/ /break-point-self-assessment/
-Redirect 301 /common-executive-team-challenges/ /teams/
-Redirect 301 /peopleops/ /teams/
-Redirect 301 /terms-of-use/ /privacy/
+RedirectMatch 301 ^/commitment-quotient/?$ /break-point-self-assessment/
+RedirectMatch 301 ^/common-executive-team-challenges/?$ /teams/
+RedirectMatch 301 ^/peopleops/?$ /teams/
+RedirectMatch 301 ^/terms-of-use/?$ /privacy/
 
 # ── Legacy URLs still ranking in Search but 404ing (found in GSC, Aug 2026) ──
-# These old paths still rank and take clicks, but weren't in the new build and
-# had no redirect, so they returned 404 — bleeding traffic and backlink equity.
 # /shakubuku/ carries the Business Insider "$25K executive getaways" backlink and
 # ranked ~#5; /extreme-retreats/ (the CNN piece) ranked ~#3; /about-us/ ranked ~#4.
-Redirect 301 /shakubuku/ https://www.legendary-retreats.com/
-Redirect 301 /extreme-retreats/ https://www.legendary-retreats.com/
-Redirect 301 /experiential-leadership-retreats/ https://www.legendary-retreats.com/
-Redirect 301 /executive-coaching/ /leaders/what-is-executive-coaching/
+RedirectMatch 301 ^/shakubuku/?$ https://www.legendary-retreats.com/
+RedirectMatch 301 ^/extreme-retreats/?$ https://www.legendary-retreats.com/
+RedirectMatch 301 ^/experiential-leadership-retreats/?$ https://www.legendary-retreats.com/
+RedirectMatch 301 ^/executive-coaching/?$ /leaders/what-is-executive-coaching/
 RedirectMatch 301 ^/about-us/contact-us/?$ /contact/
 RedirectMatch 301 ^/about-us(/.*)?$ /about/
 # More legacy 404s with impressions (same GSC sweep):
-Redirect 301 /privacy-policy/ /privacy/
+RedirectMatch 301 ^/privacy-policy/?$ /privacy/
 RedirectMatch 301 ^/engagement-cycle(/.*)?$ /how-we-work-together/
-Redirect 301 /strategy-activation/ /how-we-work-together/
-Redirect 301 /teamworx/ /teams/
-Redirect 301 /talent-management/ /teams/
-Redirect 301 /cq-catalyst/ /teams/
+RedirectMatch 301 ^/strategy-activation/?$ /how-we-work-together/
+RedirectMatch 301 ^/teamworx/?$ /teams/
+RedirectMatch 301 ^/talent-management/?$ /teams/
+RedirectMatch 301 ^/cq-catalyst/?$ /teams/
 
 # ── Retreat geo pages → legendary-retreats.com destination pages ──
 # Point each city at its own destination page on the sister site (AI engines
 # were citing these legacy URLs and landing on the generic off-road page).
-Redirect 301 /denver-executive-leadership-retreat/ https://www.legendary-retreats.com/destinations/colorado/
-Redirect 301 /sedona-executive-leadership-retreat/ https://www.legendary-retreats.com/destinations/sedona-arizona/
+RedirectMatch 301 ^/denver-executive-leadership-retreat/?$ https://www.legendary-retreats.com/destinations/colorado/
+RedirectMatch 301 ^/sedona-executive-leadership-retreat/?$ https://www.legendary-retreats.com/destinations/sedona-arizona/
 
 # ── /teams/diagnostic/ is now a live page (the Executive Team Diagnostic). ──
 # Its former 301 to Team LFS was removed when that page was built; do not re-add.
 
 # ── Fractional Chief People Officer → moved to Prove (provecq.com) ──
-# CQ/Prove owns the "who delivers" question; this page moved off the advisory
-# site. Catch both slash forms → the exact non-trailing-slash Prove URL.
+# Catch both slash forms → the exact non-trailing-slash Prove URL.
 RedirectMatch 301 ^/fractional-chief-people-officer/?$ https://provecq.com/fractional-chief-people-officer
 
 # ── Legacy WordPress assets & blog (301) ──
 # The 2015 "Roadmap to Success" PDF is still the domain's top-clicked URL in
-# Search Console (pos ~11) but is an orphaned dead-end. Send it to the new
-# HTML page that captures the same intent and converts.
+# Search Console (pos ~11) but is an orphaned dead-end — send it to the new page.
 RedirectMatch 301 ^/wp-content/uploads/2015/02/Roadmap-to-Success-James-Carter\.pdf$ /roadmap-to-success/
 RedirectMatch 301 ^/wp-content/uploads/2015/02/Discover-Your-Inner-Strength.*$ /discover-your-inner-strength/
 # Old WordPress blog posts (still indexed, now 404) → the current writing hub.
 RedirectMatch 301 ^/blog(/.*)?$ /field-notes/
 
 # ── Backlinked legacy URLs still 404ing (found via backlink audit, Oct 2026) ──
-# These old paths carry real external links but weren't in the map, so the link
-# equity was leaking to a 404. /effective-facilitator-workshop/ is the big one
-# (~38 links). Mapped to the closest live page so the authority is recovered.
-Redirect 301 /effective-facilitator-workshop/ https://www.legendary-retreats.com/leadership-team-offsite-facilitator/
-Redirect 301 /mindset-information/ /leaders/
+# /effective-facilitator-workshop/ is the big one (~38 links) → closest live page.
+RedirectMatch 301 ^/effective-facilitator-workshop/?$ https://www.legendary-retreats.com/leadership-team-offsite-facilitator/
+RedirectMatch 301 ^/mindset-information/?$ /leaders/
 # Old Joomla index.php URLs (a few backlinks) → home.
 RedirectMatch 301 ^/index\.php(/.*)?$ /
 
 # ── Old pre-pivot service/content pages 404ing (GSC 404 drilldown, Oct 2026) ──
-# No external links on these, so it's UX/tidiness rather than equity — a stray
-# visitor or crawler lands on the nearest live page instead of a 404.
-Redirect 301 /team-coaching/ /how-we-work-together/
-Redirect 301 /employee-experience-coaching/ /how-we-work-together/
-Redirect 301 /speaking/ /about/james-carter/
-Redirect 301 /team-center/ /teams/
-Redirect 301 /conference-teambuilding/ /teams/
-Redirect 301 /start-your-talent-optimization/ /teams/
-Redirect 301 /four-forces-of-disengagement/ /field-notes/
-Redirect 301 /hvac_case_study/ https://www.legendary-retreats.com/case-studies/
+# No external links on these, so it's UX/tidiness — a stray visitor or crawler
+# lands on the nearest live page instead of a 404.
+RedirectMatch 301 ^/team-coaching/?$ /how-we-work-together/
+RedirectMatch 301 ^/employee-experience-coaching/?$ /how-we-work-together/
+RedirectMatch 301 ^/speaking/?$ /about/james-carter/
+RedirectMatch 301 ^/team-center/?$ /teams/
+RedirectMatch 301 ^/conference-teambuilding/?$ /teams/
+RedirectMatch 301 ^/start-your-talent-optimization/?$ /teams/
+RedirectMatch 301 ^/four-forces-of-disengagement/?$ /field-notes/
+RedirectMatch 301 ^/hvac_case_study/?$ https://www.legendary-retreats.com/case-studies/
 RedirectMatch 301 ^/life-engagement(/.*)?$ /teams/
 
 # ── Retreats split out to legendary-retreats.com (2026-10-17) ──
 # Retreats, experiential days, retreat guides and retreat case studies moved to
 # the dedicated domain. Single hop, www + trailing slash, /teams/ prefix dropped.
-# The /teams/retreats/ line is a prefix match, so it also carries the children
-# (destinations, formats, ways-to-work-together, for-executive-assistants) to the
-# matching new-domain slug; same for /teams/executive-immersion/ and its children.
-Redirect 301 /teams/retreats/ https://www.legendary-retreats.com/
-Redirect 301 /teams/luxury-executive-retreat/ https://www.legendary-retreats.com/luxury-executive-retreat/
-Redirect 301 /teams/corporate-retreat-ideas/ https://www.legendary-retreats.com/corporate-retreat-ideas/
-Redirect 301 /teams/executive-offsite-ideas/ https://www.legendary-retreats.com/executive-offsite-ideas/
-Redirect 301 /teams/leadership-retreat-ideas/ https://www.legendary-retreats.com/leadership-retreat-ideas/
-Redirect 301 /teams/executive-immersion/ https://www.legendary-retreats.com/executive-immersion/
-Redirect 301 /sailing-team-building/ https://www.legendary-retreats.com/sailing-team-building/
-Redirect 301 /executive-off-road-immersion/ https://www.legendary-retreats.com/executive-off-road-immersion/
-Redirect 301 /how-to-plan-a-leadership-retreat/ https://www.legendary-retreats.com/how-to-plan-a-leadership-retreat/
-Redirect 301 /how-to-plan-an-executive-offsite/ https://www.legendary-retreats.com/how-to-plan-an-executive-offsite/
-Redirect 301 /leadership-offsite-agenda/ https://www.legendary-retreats.com/leadership-offsite-agenda/
-Redirect 301 /why-leadership-offsites-dont-stick/ https://www.legendary-retreats.com/why-leadership-offsites-dont-stick/
-Redirect 301 /leadership-team-offsite-facilitator/ https://www.legendary-retreats.com/leadership-team-offsite-facilitator/
-Redirect 301 /retreat-planning-kit/ https://www.legendary-retreats.com/retreat-planning-kit/
-Redirect 301 /assets/downloads/complete-retreat-planning-kit.pdf https://www.legendary-retreats.com/assets/downloads/complete-retreat-planning-kit.pdf
-# The 5 retreat case studies that moved, plus the index (exact-match so a future
+# /teams/retreats and /teams/executive-immersion carry their children (destinations,
+# formats, etc.) to the matching new-domain slug; the rest are exact-page. The
+# optional-slash anchor means the no-slash form (which AI engines cite) also hops.
+RedirectMatch 301 ^/teams/retreats(/.*)?$ https://www.legendary-retreats.com$1
+RedirectMatch 301 ^/teams/luxury-executive-retreat/?$ https://www.legendary-retreats.com/luxury-executive-retreat/
+RedirectMatch 301 ^/teams/corporate-retreat-ideas/?$ https://www.legendary-retreats.com/corporate-retreat-ideas/
+RedirectMatch 301 ^/teams/executive-offsite-ideas/?$ https://www.legendary-retreats.com/executive-offsite-ideas/
+RedirectMatch 301 ^/teams/leadership-retreat-ideas/?$ https://www.legendary-retreats.com/leadership-retreat-ideas/
+RedirectMatch 301 ^/teams/executive-immersion(/.*)?$ https://www.legendary-retreats.com/executive-immersion$1
+RedirectMatch 301 ^/sailing-team-building/?$ https://www.legendary-retreats.com/sailing-team-building/
+RedirectMatch 301 ^/executive-off-road-immersion/?$ https://www.legendary-retreats.com/executive-off-road-immersion/
+RedirectMatch 301 ^/how-to-plan-a-leadership-retreat/?$ https://www.legendary-retreats.com/how-to-plan-a-leadership-retreat/
+RedirectMatch 301 ^/how-to-plan-an-executive-offsite/?$ https://www.legendary-retreats.com/how-to-plan-an-executive-offsite/
+RedirectMatch 301 ^/leadership-offsite-agenda/?$ https://www.legendary-retreats.com/leadership-offsite-agenda/
+RedirectMatch 301 ^/why-leadership-offsites-dont-stick/?$ https://www.legendary-retreats.com/why-leadership-offsites-dont-stick/
+RedirectMatch 301 ^/leadership-team-offsite-facilitator/?$ https://www.legendary-retreats.com/leadership-team-offsite-facilitator/
+RedirectMatch 301 ^/retreat-planning-kit/?$ https://www.legendary-retreats.com/retreat-planning-kit/
+RedirectMatch 301 ^/assets/downloads/complete-retreat-planning-kit\.pdf$ https://www.legendary-retreats.com/assets/downloads/complete-retreat-planning-kit.pdf
+# The 5 retreat case studies that moved, plus the index (exact slugs so a future
 # belegendary.org coaching case study at a new slug is not caught):
-Redirect 301 /case-studies/online-auto-retailer-leadership-team/ https://www.legendary-retreats.com/case-studies/online-auto-retailer-leadership-team/
-Redirect 301 /case-studies/san-juan-mountains-work-ethic/ https://www.legendary-retreats.com/case-studies/san-juan-mountains-work-ethic/
-Redirect 301 /case-studies/everglades-abundance-mindset/ https://www.legendary-retreats.com/case-studies/everglades-abundance-mindset/
-Redirect 301 /case-studies/federal-fiscal-leadership-team/ https://www.legendary-retreats.com/case-studies/federal-fiscal-leadership-team/
-Redirect 301 /case-studies/alaska-executive-vulnerability/ https://www.legendary-retreats.com/case-studies/alaska-executive-vulnerability/
+RedirectMatch 301 ^/case-studies/(online-auto-retailer-leadership-team|san-juan-mountains-work-ethic|everglades-abundance-mindset|federal-fiscal-leadership-team|alaska-executive-vulnerability)/?$ https://www.legendary-retreats.com/case-studies/$1/
 RedirectMatch 301 ^/case-studies/?$ https://www.legendary-retreats.com/case-studies/
 
 # ── Text compression (biggest transfer win on an inline-styled site) ──
