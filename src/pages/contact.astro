@@ -38,13 +38,38 @@ const schema = [
   <section style="max-width:1080px;margin:0 auto;padding:8px 32px 92px;">
     <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:start;">
 
-      <!-- Message form (HubSpot embed on a light card so its default styling reads as intentional) -->
+      <!-- Message form: native, posts to the HubSpot Forms API (no embed, no HubSpot
+           branding). Fields match the "Be Legendary Contact Form" (bad3be34) exactly. -->
       <div style="background:#F4F0E7;color:#1B1810;border-radius:20px;padding:38px;">
         <h2 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.12;color:#1B1810;">Send us a message</h2>
         <p style="margin-top:12px;font-size:15.5px;line-height:1.55;color:#4A473F;max-width:44ch;">Tell us what&rsquo;s going on with your team or what you&rsquo;d like to know. We read every message and reply personally &mdash; usually within one business day.</p>
 
-        <div class="hs-form-frame" data-region={HUBSPOT.region} data-form-id={HUBSPOT.contactFormGuid} data-portal-id={HUBSPOT.portalId} style="margin-top:22px;min-height:320px;"></div>
-        <noscript><p style="margin-top:16px;font-size:15px;color:#4A473F;">The message form needs JavaScript. You can email us at <a href={`mailto:${CONTACT_EMAIL}`} style="color:#C04A26;text-decoration:none;">{CONTACT_EMAIL}</a> or call 800-513-8759.</p></noscript>
+        <form id="bl-contact" data-portal={HUBSPOT.portalId} data-guid={HUBSPOT.contactFormGuid} data-contact={CONTACT_EMAIL} style="margin-top:22px;display:flex;flex-direction:column;gap:14px;">
+          <div class="bl-grid-collapse" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <label style="font-size:13px;font-weight:600;color:#4A473F;display:flex;flex-direction:column;gap:6px;">First name
+              <input name="firstname" type="text" required autocomplete="given-name" style="padding:13px 15px;border-radius:10px;border:1px solid rgba(27,24,16,0.22);background:#FFFDF9;color:#1B1810;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+            </label>
+            <label style="font-size:13px;font-weight:600;color:#4A473F;display:flex;flex-direction:column;gap:6px;">Last name
+              <input name="lastname" type="text" required autocomplete="family-name" style="padding:13px 15px;border-radius:10px;border:1px solid rgba(27,24,16,0.22);background:#FFFDF9;color:#1B1810;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+            </label>
+          </div>
+          <label style="font-size:13px;font-weight:600;color:#4A473F;display:flex;flex-direction:column;gap:6px;">Work email
+            <input name="email" type="email" required autocomplete="email" style="padding:13px 15px;border-radius:10px;border:1px solid rgba(27,24,16,0.22);background:#FFFDF9;color:#1B1810;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+          </label>
+          <label style="font-size:13px;font-weight:600;color:#4A473F;display:flex;flex-direction:column;gap:6px;">Phone
+            <input name="phone" type="tel" required autocomplete="tel" style="padding:13px 15px;border-radius:10px;border:1px solid rgba(27,24,16,0.22);background:#FFFDF9;color:#1B1810;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;" />
+          </label>
+          <label style="font-size:13px;font-weight:600;color:#4A473F;display:flex;flex-direction:column;gap:6px;">What&rsquo;s going on with your team?
+            <textarea name="tell_us_about_your_event" rows="4" required style="padding:13px 15px;border-radius:10px;border:1px solid rgba(27,24,16,0.22);background:#FFFDF9;color:#1B1810;font-size:16px;font-family:'Hanken Grotesk',sans-serif;outline:none;resize:vertical;"></textarea>
+          </label>
+          <p class="bl-contact-err" style="margin:0;font-size:13px;color:#C04A26;min-height:18px;visibility:hidden;"></p>
+          <button type="submit" class="bl-tap" style="background:#C04A26;color:#fff;border:none;cursor:pointer;padding:15px 18px;border-radius:11px;font-weight:700;font-size:16px;font-family:'Hanken Grotesk',sans-serif;" onmouseover="this.style.background='#9E3A1C'" onmouseout="this.style.background='#C04A26'">Send message</button>
+          <noscript><p style="margin:4px 0 0;font-size:14px;color:#4A473F;">The form needs JavaScript. Email <a href={`mailto:${CONTACT_EMAIL}`} style="color:#C04A26;">{CONTACT_EMAIL}</a> or call 800-513-8759.</p></noscript>
+        </form>
+        <div class="bl-contact-sent" style="display:none;margin-top:22px;">
+          <p style="font-family:'Newsreader',serif;font-size:24px;color:#1B1810;">Message sent.</p>
+          <p style="margin-top:8px;font-size:15.5px;line-height:1.55;color:#4A473F;">We read every message and reply personally &mdash; usually within one business day.</p>
+        </div>
       </div>
 
       <!-- Direct channels -->
@@ -75,26 +100,55 @@ const schema = [
 
 </div>
 
-<!-- HubSpot forms embed loader (renders the .hs-form-frame above) -->
-<script is:inline defer src={`https://js-${HUBSPOT.region}.hsforms.net/forms/embed/${HUBSPOT.portalId}.js`}></script>
-<!-- Populate the GA4 client_id / session_id hidden fields once the embed renders,
-     so a contact who later becomes a deal can be attributed in GA4 (HubSpot → GA4
-     Measurement Protocol). Fully wrapped: can never block or break the form. -->
+<!-- Native contact form → HubSpot Forms API (no embed, no HubSpot branding).
+     Posts exactly the fields on the "Be Legendary Contact Form" (bad3be34), plus
+     the GA ids for HubSpot → GA4 attribution. Requires reCAPTCHA OFF on that form
+     (same API-submit path as every other form on the site). Confirms success only
+     on res.ok — never a false "sent" while the lead is lost. -->
 <script is:inline>
-  window.addEventListener('message', function (e) {
-    try {
-      if (!e.data || e.data.type !== 'hsFormCallback' || e.data.eventName !== 'onFormReady') return;
-      var ga = (window.blGetGaIds && window.blGetGaIds()) || {};
-      var frame = document.querySelector('.hs-form-frame');
-      if (!frame) return;
-      var set = function (name, val) {
-        if (!val) return;
-        var input = frame.querySelector('input[name="' + name + '"]');
-        if (input) { input.value = val; input.dispatchEvent(new Event('input', { bubbles: true })); }
+  (function () {
+    var form = document.getElementById('bl-contact');
+    if (!form) return;
+    var err = form.querySelector('.bl-contact-err');
+    var sent = document.querySelector('.bl-contact-sent');
+    var EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    var portal = form.dataset.portal, guid = form.dataset.guid, contact = form.dataset.contact;
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var f = {
+        firstname: form.firstname.value.trim(),
+        lastname: form.lastname.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        tell_us_about_your_event: form.tell_us_about_your_event.value.trim(),
       };
-      set('ga_client_id', ga.client_id);
-      set('ga_session_id', ga.session_id);
-    } catch (err) {}
-  });
+      if (!f.firstname || !f.lastname || !f.phone || !f.tell_us_about_your_event || !EMAIL_RE.test(f.email)) {
+        err.textContent = 'Please complete every field with a valid email.';
+        err.style.visibility = 'visible';
+        return;
+      }
+      var ga = (window.blGetGaIds && window.blGetGaIds()) || {};
+      var fields = Object.keys(f).map(function (k) { return { name: k, value: f[k] }; });
+      if (ga.client_id) fields.push({ name: 'ga_client_id', value: ga.client_id });
+      if (ga.session_id) fields.push({ name: 'ga_session_id', value: ga.session_id });
+      var ok = false;
+      try {
+        var res = await fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + portal + '/' + guid, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fields: fields, context: { pageUri: location.href, pageName: document.title } }),
+        });
+        ok = res.ok;
+      } catch (e2) { ok = false; }
+      if (!ok) {
+        err.innerHTML = 'Couldn’t send just now. <a href="mailto:' + contact + '" style="color:#C04A26;text-decoration:underline;">Email us</a> and we’ll pick it up.';
+        err.style.visibility = 'visible';
+        return;
+      }
+      form.style.display = 'none';
+      if (sent) sent.style.display = 'block';
+      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: 'contact' });
+    });
+  })();
 </script>
 </BaseLayout>
